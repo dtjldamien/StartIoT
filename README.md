@@ -13,8 +13,6 @@ Device ID
 84decb16-fef3-4920-8f9e-932fc7555800
 PSK (required when DTLS is used)
 04f9be20a39e5ec6feae9b12fa6fdbfd
-
-Ai Fen (SoC), [09.01.20 16:17]
 Node ID: 12346789
 
 应用密钥
