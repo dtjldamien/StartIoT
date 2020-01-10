@@ -1,0 +1,683 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"sal_netdb.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC0:
+  20 0000 25642E25 		.ascii	"%d.%d.%d.%d\000"
+  20      642E2564 
+  20      2E256400 
+  21              		.section	.text.inet_addr,"ax",%progbits
+  22              		.align	1
+  23              		.weak	inet_addr
+  24              		.syntax unified
+  25              		.thumb
+  26              		.thumb_func
+  27              		.fpu fpv4-sp-d16
+  29              	inet_addr:
+  30              	.LFB3:
+  31              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpi
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  *---------------------------------------------------------------------------*/
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 2
+
+
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** /**
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  *  2019-05-09 16:17  zhangqianfu  The first version  
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  *
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****  */
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** #include <stdint.h>
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** #include <stddef.h>
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** #include <string.h>
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** #include <sal.h>
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** __attribute__((weak)) in_addr_t inet_addr(const char *addr)
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** {
+  32              		.loc 1 47 0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 40
+  35              		@ frame_needed = 1, uses_anonymous_args = 0
+  36 0000 80B5     		push	{r7, lr}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 8CB0     		sub	sp, sp, #48
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 56
+  44 0004 02AF     		add	r7, sp, #8
+  45              	.LCFI2:
+  46              		.cfi_def_cfa 7, 48
+  47 0006 7860     		str	r0, [r7, #4]
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     int para;
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     int tmp[4];
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     in_addr_t result = INADDR_NONE;
+  48              		.loc 1 50 0
+  49 0008 0023     		movs	r3, #0
+  50 000a 3B61     		str	r3, [r7, #16]
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     unsigned char  ip[4];
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     para = sscanf(addr,"%d.%d.%d.%d",&tmp[0],&tmp[1],&tmp[2],&tmp[3]);
+  51              		.loc 1 53 0
+  52 000c 07F11403 		add	r3, r7, #20
+  53 0010 191D     		adds	r1, r3, #4
+  54 0012 07F11402 		add	r2, r7, #20
+  55 0016 07F11403 		add	r3, r7, #20
+  56 001a 0C33     		adds	r3, r3, #12
+  57 001c 0193     		str	r3, [sp, #4]
+  58 001e 07F11403 		add	r3, r7, #20
+  59 0022 0833     		adds	r3, r3, #8
+  60 0024 0093     		str	r3, [sp]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 3
+
+
+  61 0026 0B46     		mov	r3, r1
+  62 0028 0D49     		ldr	r1, .L4
+  63 002a 7868     		ldr	r0, [r7, #4]
+  64 002c FFF7FEFF 		bl	sscanf
+  65 0030 7862     		str	r0, [r7, #36]
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     if(para == 4)
+  66              		.loc 1 54 0
+  67 0032 7B6A     		ldr	r3, [r7, #36]
+  68 0034 042B     		cmp	r3, #4
+  69 0036 0DD1     		bne	.L2
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     {
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         ip[0] = (unsigned char)tmp[0];
+  70              		.loc 1 56 0
+  71 0038 7B69     		ldr	r3, [r7, #20]
+  72 003a DBB2     		uxtb	r3, r3
+  73 003c 3B73     		strb	r3, [r7, #12]
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         ip[1] = (unsigned char)tmp[1];
+  74              		.loc 1 57 0
+  75 003e BB69     		ldr	r3, [r7, #24]
+  76 0040 DBB2     		uxtb	r3, r3
+  77 0042 7B73     		strb	r3, [r7, #13]
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         ip[2] = (unsigned char)tmp[2];
+  78              		.loc 1 58 0
+  79 0044 FB69     		ldr	r3, [r7, #28]
+  80 0046 DBB2     		uxtb	r3, r3
+  81 0048 BB73     		strb	r3, [r7, #14]
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         ip[3] = (unsigned char)tmp[3];
+  82              		.loc 1 59 0
+  83 004a 3B6A     		ldr	r3, [r7, #32]
+  84 004c DBB2     		uxtb	r3, r3
+  85 004e FB73     		strb	r3, [r7, #15]
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         memcpy((void *)&result,(void *)ip,sizeof(result));
+  86              		.loc 1 60 0
+  87 0050 FB68     		ldr	r3, [r7, #12]
+  88 0052 3B61     		str	r3, [r7, #16]
+  89              	.L2:
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     }
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     return result;
+  90              		.loc 1 62 0
+  91 0054 3B69     		ldr	r3, [r7, #16]
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** }
+  92              		.loc 1 63 0
+  93 0056 1846     		mov	r0, r3
+  94 0058 2837     		adds	r7, r7, #40
+  95              	.LCFI3:
+  96              		.cfi_def_cfa_offset 8
+  97 005a BD46     		mov	sp, r7
+  98              	.LCFI4:
+  99              		.cfi_def_cfa_register 13
+ 100              		@ sp needed
+ 101 005c 80BD     		pop	{r7, pc}
+ 102              	.L5:
+ 103 005e 00BF     		.align	2
+ 104              	.L4:
+ 105 0060 00000000 		.word	.LC0
+ 106              		.cfi_endproc
+ 107              	.LFE3:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 4
+
+
+ 109              		.section	.text.inet_aton,"ax",%progbits
+ 110              		.align	1
+ 111              		.weak	inet_aton
+ 112              		.syntax unified
+ 113              		.thumb
+ 114              		.thumb_func
+ 115              		.fpu fpv4-sp-d16
+ 117              	inet_aton:
+ 118              	.LFB4:
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** __attribute__((weak)) int inet_aton(const char *string,struct in_addr *addr)
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** {
+ 119              		.loc 1 66 0
+ 120              		.cfi_startproc
+ 121              		@ args = 0, pretend = 0, frame = 40
+ 122              		@ frame_needed = 1, uses_anonymous_args = 0
+ 123 0000 80B5     		push	{r7, lr}
+ 124              	.LCFI5:
+ 125              		.cfi_def_cfa_offset 8
+ 126              		.cfi_offset 7, -8
+ 127              		.cfi_offset 14, -4
+ 128 0002 8CB0     		sub	sp, sp, #48
+ 129              	.LCFI6:
+ 130              		.cfi_def_cfa_offset 56
+ 131 0004 02AF     		add	r7, sp, #8
+ 132              	.LCFI7:
+ 133              		.cfi_def_cfa 7, 48
+ 134 0006 7860     		str	r0, [r7, #4]
+ 135 0008 3960     		str	r1, [r7]
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     int para;
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     int tmp[4];
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     unsigned char  ip[4];
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     int result = 0;
+ 136              		.loc 1 70 0
+ 137 000a 0023     		movs	r3, #0
+ 138 000c 7B62     		str	r3, [r7, #36]
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     para = sscanf(string,"%d.%d.%d.%d",&tmp[0],&tmp[1],&tmp[2],&tmp[3]);
+ 139              		.loc 1 72 0
+ 140 000e 07F11003 		add	r3, r7, #16
+ 141 0012 191D     		adds	r1, r3, #4
+ 142 0014 07F11002 		add	r2, r7, #16
+ 143 0018 07F11003 		add	r3, r7, #16
+ 144 001c 0C33     		adds	r3, r3, #12
+ 145 001e 0193     		str	r3, [sp, #4]
+ 146 0020 07F11003 		add	r3, r7, #16
+ 147 0024 0833     		adds	r3, r3, #8
+ 148 0026 0093     		str	r3, [sp]
+ 149 0028 0B46     		mov	r3, r1
+ 150 002a 0F49     		ldr	r1, .L9
+ 151 002c 7868     		ldr	r0, [r7, #4]
+ 152 002e FFF7FEFF 		bl	sscanf
+ 153 0032 3862     		str	r0, [r7, #32]
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     if(para == 4)
+ 154              		.loc 1 73 0
+ 155 0034 3B6A     		ldr	r3, [r7, #32]
+ 156 0036 042B     		cmp	r3, #4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 5
+
+
+ 157 0038 10D1     		bne	.L7
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     {
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         ip[0] = (unsigned char)tmp[0];
+ 158              		.loc 1 75 0
+ 159 003a 3B69     		ldr	r3, [r7, #16]
+ 160 003c DBB2     		uxtb	r3, r3
+ 161 003e 3B73     		strb	r3, [r7, #12]
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         ip[1] = (unsigned char)tmp[1];
+ 162              		.loc 1 76 0
+ 163 0040 7B69     		ldr	r3, [r7, #20]
+ 164 0042 DBB2     		uxtb	r3, r3
+ 165 0044 7B73     		strb	r3, [r7, #13]
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         ip[2] = (unsigned char)tmp[2];
+ 166              		.loc 1 77 0
+ 167 0046 BB69     		ldr	r3, [r7, #24]
+ 168 0048 DBB2     		uxtb	r3, r3
+ 169 004a BB73     		strb	r3, [r7, #14]
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         ip[3] = (unsigned char)tmp[3];
+ 170              		.loc 1 78 0
+ 171 004c FB69     		ldr	r3, [r7, #28]
+ 172 004e DBB2     		uxtb	r3, r3
+ 173 0050 FB73     		strb	r3, [r7, #15]
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         memcpy((void *)addr,(void *)ip,sizeof(ip));
+ 174              		.loc 1 79 0
+ 175 0052 FA68     		ldr	r2, [r7, #12]
+ 176 0054 3B68     		ldr	r3, [r7]
+ 177 0056 1A60     		str	r2, [r3]	@ unaligned
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         result = 1;
+ 178              		.loc 1 80 0
+ 179 0058 0123     		movs	r3, #1
+ 180 005a 7B62     		str	r3, [r7, #36]
+ 181              	.L7:
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     }
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     return result;
+ 182              		.loc 1 83 0
+ 183 005c 7B6A     		ldr	r3, [r7, #36]
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** }
+ 184              		.loc 1 84 0
+ 185 005e 1846     		mov	r0, r3
+ 186 0060 2837     		adds	r7, r7, #40
+ 187              	.LCFI8:
+ 188              		.cfi_def_cfa_offset 8
+ 189 0062 BD46     		mov	sp, r7
+ 190              	.LCFI9:
+ 191              		.cfi_def_cfa_register 13
+ 192              		@ sp needed
+ 193 0064 80BD     		pop	{r7, pc}
+ 194              	.L10:
+ 195 0066 00BF     		.align	2
+ 196              	.L9:
+ 197 0068 00000000 		.word	.LC0
+ 198              		.cfi_endproc
+ 199              	.LFE4:
+ 201              		.section	.bss.s_inet_addr_buf,"aw",%nobits
+ 202              		.align	2
+ 205              	s_inet_addr_buf:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 6
+
+
+ 206 0000 00000000 		.space	16
+ 206      00000000 
+ 206      00000000 
+ 206      00000000 
+ 207              		.section	.text.inet_ntoa,"ax",%progbits
+ 208              		.align	1
+ 209              		.weak	inet_ntoa
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 213              		.fpu fpv4-sp-d16
+ 215              	inet_ntoa:
+ 216              	.LFB5:
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** #define cn_inet_addrlen_max     16
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** static  char s_inet_addr_buf[cn_inet_addrlen_max];
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** __attribute__((weak)) char *inet_ntoa(struct in_addr addr)
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** {
+ 217              		.loc 1 91 0
+ 218              		.cfi_startproc
+ 219              		@ args = 0, pretend = 0, frame = 32
+ 220              		@ frame_needed = 1, uses_anonymous_args = 0
+ 221 0000 80B5     		push	{r7, lr}
+ 222              	.LCFI10:
+ 223              		.cfi_def_cfa_offset 8
+ 224              		.cfi_offset 7, -8
+ 225              		.cfi_offset 14, -4
+ 226 0002 8AB0     		sub	sp, sp, #40
+ 227              	.LCFI11:
+ 228              		.cfi_def_cfa_offset 48
+ 229 0004 02AF     		add	r7, sp, #8
+ 230              	.LCFI12:
+ 231              		.cfi_def_cfa 7, 40
+ 232 0006 7860     		str	r0, [r7, #4]
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     unsigned char ip[4];
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     int tmp[4];
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     memcpy((void *)ip,(void *)&addr,sizeof(ip));
+ 233              		.loc 1 94 0
+ 234 0008 7B68     		ldr	r3, [r7, #4]
+ 235 000a FB61     		str	r3, [r7, #28]
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     memset((void *)s_inet_addr_buf,0,cn_inet_addrlen_max);
+ 236              		.loc 1 95 0
+ 237 000c 1022     		movs	r2, #16
+ 238 000e 0021     		movs	r1, #0
+ 239 0010 0D48     		ldr	r0, .L13
+ 240 0012 FFF7FEFF 		bl	memset
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     tmp[0] = (int)ip[0];
+ 241              		.loc 1 97 0
+ 242 0016 3B7F     		ldrb	r3, [r7, #28]	@ zero_extendqisi2
+ 243 0018 FB60     		str	r3, [r7, #12]
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     tmp[1] = (int)ip[1];
+ 244              		.loc 1 98 0
+ 245 001a 7B7F     		ldrb	r3, [r7, #29]	@ zero_extendqisi2
+ 246 001c 3B61     		str	r3, [r7, #16]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 7
+
+
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     tmp[2] = (int)ip[2];
+ 247              		.loc 1 99 0
+ 248 001e BB7F     		ldrb	r3, [r7, #30]	@ zero_extendqisi2
+ 249 0020 7B61     		str	r3, [r7, #20]
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     tmp[3] = (int)ip[3];
+ 250              		.loc 1 100 0
+ 251 0022 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 252 0024 BB61     		str	r3, [r7, #24]
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     sprintf(s_inet_addr_buf,"%d.%d.%d.%d",tmp[0],tmp[1],tmp[2],tmp[3]);
+ 253              		.loc 1 101 0
+ 254 0026 F968     		ldr	r1, [r7, #12]
+ 255 0028 3869     		ldr	r0, [r7, #16]
+ 256 002a 7B69     		ldr	r3, [r7, #20]
+ 257 002c BA69     		ldr	r2, [r7, #24]
+ 258 002e 0192     		str	r2, [sp, #4]
+ 259 0030 0093     		str	r3, [sp]
+ 260 0032 0346     		mov	r3, r0
+ 261 0034 0A46     		mov	r2, r1
+ 262 0036 0549     		ldr	r1, .L13+4
+ 263 0038 0348     		ldr	r0, .L13
+ 264 003a FFF7FEFF 		bl	sprintf
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     return (char *)s_inet_addr_buf;
+ 265              		.loc 1 103 0
+ 266 003e 024B     		ldr	r3, .L13
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** }
+ 267              		.loc 1 104 0
+ 268 0040 1846     		mov	r0, r3
+ 269 0042 2037     		adds	r7, r7, #32
+ 270              	.LCFI13:
+ 271              		.cfi_def_cfa_offset 8
+ 272 0044 BD46     		mov	sp, r7
+ 273              	.LCFI14:
+ 274              		.cfi_def_cfa_register 13
+ 275              		@ sp needed
+ 276 0046 80BD     		pop	{r7, pc}
+ 277              	.L14:
+ 278              		.align	2
+ 279              	.L13:
+ 280 0048 00000000 		.word	s_inet_addr_buf
+ 281 004c 00000000 		.word	.LC0
+ 282              		.cfi_endproc
+ 283              	.LFE5:
+ 285              		.section	.text.inet_ntop,"ax",%progbits
+ 286              		.align	1
+ 287              		.weak	inet_ntop
+ 288              		.syntax unified
+ 289              		.thumb
+ 290              		.thumb_func
+ 291              		.fpu fpv4-sp-d16
+ 293              	inet_ntop:
+ 294              	.LFB6:
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** __attribute__((weak)) const char *inet_ntop(int af, const void *src, char *dst, socklen_t cnt)
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** {
+ 295              		.loc 1 107 0
+ 296              		.cfi_startproc
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 8
+
+
+ 297              		@ args = 0, pretend = 0, frame = 32
+ 298              		@ frame_needed = 1, uses_anonymous_args = 0
+ 299 0000 80B5     		push	{r7, lr}
+ 300              	.LCFI15:
+ 301              		.cfi_def_cfa_offset 8
+ 302              		.cfi_offset 7, -8
+ 303              		.cfi_offset 14, -4
+ 304 0002 88B0     		sub	sp, sp, #32
+ 305              	.LCFI16:
+ 306              		.cfi_def_cfa_offset 40
+ 307 0004 00AF     		add	r7, sp, #0
+ 308              	.LCFI17:
+ 309              		.cfi_def_cfa_register 7
+ 310 0006 F860     		str	r0, [r7, #12]
+ 311 0008 B960     		str	r1, [r7, #8]
+ 312 000a 7A60     		str	r2, [r7, #4]
+ 313 000c 3B60     		str	r3, [r7]
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     char *str;
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     char          *result = NULL;
+ 314              		.loc 1 109 0
+ 315 000e 0023     		movs	r3, #0
+ 316 0010 FB61     		str	r3, [r7, #28]
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     struct in_addr addr;
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     if((NULL == src)||(NULL == dst))
+ 317              		.loc 1 112 0
+ 318 0012 BB68     		ldr	r3, [r7, #8]
+ 319 0014 002B     		cmp	r3, #0
+ 320 0016 02D0     		beq	.L16
+ 321              		.loc 1 112 0 is_stmt 0 discriminator 1
+ 322 0018 7B68     		ldr	r3, [r7, #4]
+ 323 001a 002B     		cmp	r3, #0
+ 324 001c 01D1     		bne	.L17
+ 325              	.L16:
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     {
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         return result;
+ 326              		.loc 1 114 0 is_stmt 1
+ 327 001e FB69     		ldr	r3, [r7, #28]
+ 328 0020 21E0     		b	.L20
+ 329              	.L17:
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     }
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     if(af==AF_INET)
+ 330              		.loc 1 117 0
+ 331 0022 FB68     		ldr	r3, [r7, #12]
+ 332 0024 022B     		cmp	r3, #2
+ 333 0026 1DD1     		bne	.L19
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     {
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         memcpy((void *)&addr,src,sizeof(addr));
+ 334              		.loc 1 120 0
+ 335 0028 BB68     		ldr	r3, [r7, #8]
+ 336 002a 1B68     		ldr	r3, [r3]	@ unaligned
+ 337 002c 7B61     		str	r3, [r7, #20]
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         str = inet_ntoa(addr);
+ 338              		.loc 1 121 0
+ 339 002e 7869     		ldr	r0, [r7, #20]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 9
+
+
+ 340 0030 FFF7FEFF 		bl	inet_ntoa
+ 341 0034 B861     		str	r0, [r7, #24]
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         if((NULL != str)&&(cnt > (strlen(str)+1)))
+ 342              		.loc 1 123 0
+ 343 0036 BB69     		ldr	r3, [r7, #24]
+ 344 0038 002B     		cmp	r3, #0
+ 345 003a 13D0     		beq	.L19
+ 346              		.loc 1 123 0 is_stmt 0 discriminator 1
+ 347 003c B869     		ldr	r0, [r7, #24]
+ 348 003e FFF7FEFF 		bl	strlen
+ 349 0042 0346     		mov	r3, r0
+ 350 0044 5A1C     		adds	r2, r3, #1
+ 351 0046 3B68     		ldr	r3, [r7]
+ 352 0048 9A42     		cmp	r2, r3
+ 353 004a 0BD2     		bcs	.L19
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         {
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****             memcpy((void*)dst,(void*)str,strlen(str)+1);
+ 354              		.loc 1 125 0 is_stmt 1
+ 355 004c B869     		ldr	r0, [r7, #24]
+ 356 004e FFF7FEFF 		bl	strlen
+ 357 0052 0346     		mov	r3, r0
+ 358 0054 0133     		adds	r3, r3, #1
+ 359 0056 1A46     		mov	r2, r3
+ 360 0058 B969     		ldr	r1, [r7, #24]
+ 361 005a 7868     		ldr	r0, [r7, #4]
+ 362 005c FFF7FEFF 		bl	memcpy
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****             result = dst;
+ 363              		.loc 1 126 0
+ 364 0060 7B68     		ldr	r3, [r7, #4]
+ 365 0062 FB61     		str	r3, [r7, #28]
+ 366              	.L19:
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         }
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     }
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     return result;
+ 367              		.loc 1 130 0
+ 368 0064 FB69     		ldr	r3, [r7, #28]
+ 369              	.L20:
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** }
+ 370              		.loc 1 131 0 discriminator 1
+ 371 0066 1846     		mov	r0, r3
+ 372 0068 2037     		adds	r7, r7, #32
+ 373              	.LCFI18:
+ 374              		.cfi_def_cfa_offset 8
+ 375 006a BD46     		mov	sp, r7
+ 376              	.LCFI19:
+ 377              		.cfi_def_cfa_register 13
+ 378              		@ sp needed
+ 379 006c 80BD     		pop	{r7, pc}
+ 380              		.cfi_endproc
+ 381              	.LFE6:
+ 383              		.section	.text.inet_pton,"ax",%progbits
+ 384              		.align	1
+ 385              		.weak	inet_pton
+ 386              		.syntax unified
+ 387              		.thumb
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 10
+
+
+ 388              		.thumb_func
+ 389              		.fpu fpv4-sp-d16
+ 391              	inet_pton:
+ 392              	.LFB7:
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** __attribute__((weak)) int inet_pton(int af, const char *src, void *dst)
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** {
+ 393              		.loc 1 134 0
+ 394              		.cfi_startproc
+ 395              		@ args = 0, pretend = 0, frame = 24
+ 396              		@ frame_needed = 1, uses_anonymous_args = 0
+ 397 0000 80B5     		push	{r7, lr}
+ 398              	.LCFI20:
+ 399              		.cfi_def_cfa_offset 8
+ 400              		.cfi_offset 7, -8
+ 401              		.cfi_offset 14, -4
+ 402 0002 86B0     		sub	sp, sp, #24
+ 403              	.LCFI21:
+ 404              		.cfi_def_cfa_offset 32
+ 405 0004 00AF     		add	r7, sp, #0
+ 406              	.LCFI22:
+ 407              		.cfi_def_cfa_register 7
+ 408 0006 F860     		str	r0, [r7, #12]
+ 409 0008 B960     		str	r1, [r7, #8]
+ 410 000a 7A60     		str	r2, [r7, #4]
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     int result = -1;
+ 411              		.loc 1 136 0
+ 412 000c 4FF0FF33 		mov	r3, #-1
+ 413 0010 7B61     		str	r3, [r7, #20]
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     struct in_addr addr;
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     if((NULL == src)||(NULL == dst))
+ 414              		.loc 1 139 0
+ 415 0012 BB68     		ldr	r3, [r7, #8]
+ 416 0014 002B     		cmp	r3, #0
+ 417 0016 02D0     		beq	.L22
+ 418              		.loc 1 139 0 is_stmt 0 discriminator 1
+ 419 0018 7B68     		ldr	r3, [r7, #4]
+ 420 001a 002B     		cmp	r3, #0
+ 421 001c 03D1     		bne	.L23
+ 422              	.L22:
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     {
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         result = 0;
+ 423              		.loc 1 141 0 is_stmt 1
+ 424 001e 0023     		movs	r3, #0
+ 425 0020 7B61     		str	r3, [r7, #20]
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         return result;
+ 426              		.loc 1 142 0
+ 427 0022 7B69     		ldr	r3, [r7, #20]
+ 428 0024 11E0     		b	.L26
+ 429              	.L23:
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     }
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     if(af==AF_INET)
+ 430              		.loc 1 145 0
+ 431 0026 FB68     		ldr	r3, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 11
+
+
+ 432 0028 022B     		cmp	r3, #2
+ 433 002a 0DD1     		bne	.L25
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     {
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         if(inet_aton(src,&addr))
+ 434              		.loc 1 147 0
+ 435 002c 07F11003 		add	r3, r7, #16
+ 436 0030 1946     		mov	r1, r3
+ 437 0032 B868     		ldr	r0, [r7, #8]
+ 438 0034 FFF7FEFF 		bl	inet_aton
+ 439 0038 0346     		mov	r3, r0
+ 440 003a 002B     		cmp	r3, #0
+ 441 003c 04D0     		beq	.L25
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         {
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****             memcpy((void *)dst,&addr,sizeof(addr));
+ 442              		.loc 1 149 0
+ 443 003e 3A69     		ldr	r2, [r7, #16]
+ 444 0040 7B68     		ldr	r3, [r7, #4]
+ 445 0042 1A60     		str	r2, [r3]	@ unaligned
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****             result = 1;
+ 446              		.loc 1 150 0
+ 447 0044 0123     		movs	r3, #1
+ 448 0046 7B61     		str	r3, [r7, #20]
+ 449              	.L25:
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****         }
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     }
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** 
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c ****     return result;
+ 450              		.loc 1 154 0
+ 451 0048 7B69     		ldr	r3, [r7, #20]
+ 452              	.L26:
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/tcpip/sal\sal_netdb.c **** }
+ 453              		.loc 1 155 0 discriminator 1
+ 454 004a 1846     		mov	r0, r3
+ 455 004c 1837     		adds	r7, r7, #24
+ 456              	.LCFI23:
+ 457              		.cfi_def_cfa_offset 8
+ 458 004e BD46     		mov	sp, r7
+ 459              	.LCFI24:
+ 460              		.cfi_def_cfa_register 13
+ 461              		@ sp needed
+ 462 0050 80BD     		pop	{r7, pc}
+ 463              		.cfi_endproc
+ 464              	.LFE7:
+ 466              		.text
+ 467              	.Letext0:
+ 468              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 469              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 470              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 471              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 472              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 473              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 474              		.file 8 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/inc/sal_type
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sal_netdb.c
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:18     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:22     .text.inet_addr:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:29     .text.inet_addr:00000000 inet_addr
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:105    .text.inet_addr:00000060 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:110    .text.inet_aton:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:117    .text.inet_aton:00000000 inet_aton
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:197    .text.inet_aton:00000068 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:202    .bss.s_inet_addr_buf:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:205    .bss.s_inet_addr_buf:00000000 s_inet_addr_buf
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:208    .text.inet_ntoa:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:215    .text.inet_ntoa:00000000 inet_ntoa
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:280    .text.inet_ntoa:00000048 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:286    .text.inet_ntop:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:293    .text.inet_ntop:00000000 inet_ntop
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:384    .text.inet_pton:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdPBlm7.s:391    .text.inet_pton:00000000 inet_pton
+
+UNDEFINED SYMBOLS
+sscanf
+memset
+sprintf
+strlen
+memcpy

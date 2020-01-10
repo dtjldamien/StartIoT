@@ -1,0 +1,540 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"object_firmware.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.get_object_firmware,"ax",%progbits
+  18              		.align	1
+  19              		.global	get_object_firmware
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	get_object_firmware:
+  26              	.LFB4:
+  27              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 2
+
+
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** /*******************************************************************************
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * Copyright (c) 2013, 2014 Intel Corporation and others.
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * The Eclipse Public License is available at
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * Contributors:
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *    Julien Vermillard - initial implementation
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *    Fabien Fleutot - Please refer to git log
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *    David Navarro, Intel Corporation - Please refer to git log
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *    Pascal Rieux - Please refer to git log
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  *******************************************************************************/
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** /*
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * This object is single instance only, and provide firmware upgrade functionality.
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * Object ID is 5.
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  */
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** /*
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * resources:
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * 0 package                   write
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * 1 package url               write
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * 2 update                    exec
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * 3 state                     read
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * 4 update supported objects  read/write
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  * 5 update result             read
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****  */
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #include <atiny_log.h>
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #include "internals.h"
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #include "agenttiny.h"
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #ifdef CONFIG_FEATURE_FOTA
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #include "atiny_fota_manager.h"
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** // ---- private object "Firmware" specific defines ----
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** // Resource Id's:
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #define RES_M_PACKAGE                   0
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #define RES_M_PACKAGE_URI               1
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #define RES_M_UPDATE                    2
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #define RES_M_STATE                     3
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #define RES_O_UPDATE_SUPPORTED_OBJECTS  4
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #define RES_M_UPDATE_RESULT             5
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #define RES_O_PKG_NAME                  6
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #define RES_O_PKG_VERSION               7
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 3
+
+
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #define RES_O_FIRMWARE_UPDATE_DELIVER_METHOD               8
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** static uint8_t prv_firmware_read(uint16_t instanceId,
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                  int *numDataP,
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                  lwm2m_data_t **dataArrayP,
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                  lwm2m_data_cfg_t *dataCfg,
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                  lwm2m_object_t *objectP)
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** {
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     uint32_t i;
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     uint8_t result;
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     // this is a single instance object
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     if (instanceId != 0)
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         return COAP_404_NOT_FOUND;
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     // is the server asking for the full object ?
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     if (*numDataP == 0)
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         uint16_t resources[] = {RES_M_PACKAGE_URI, RES_M_STATE,
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                 RES_M_UPDATE_RESULT, RES_O_FIRMWARE_UPDATE_DELIVER_METHOD
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                };
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         *dataArrayP = lwm2m_data_new(array_size(resources));
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         if (*dataArrayP == NULL) return COAP_500_INTERNAL_SERVER_ERROR;
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         *numDataP = array_size(resources);
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         for(i = 0 ; i < array_size(resources); ++i)
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             (*dataArrayP)[i].id = resources[i];
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     i = 0;
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     do
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         switch ((*dataArrayP)[i].id)
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         case RES_M_PACKAGE:
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_405_METHOD_NOT_ALLOWED;
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             break;
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         case RES_M_PACKAGE_URI:
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #ifdef CONFIG_FEATURE_FOTA
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             const char *pkg_uri;
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             pkg_uri = atiny_fota_manager_get_pkg_uri(atiny_fota_manager_get_instance());
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             if(pkg_uri == NULL)
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             {
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                 pkg_uri = "";
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             }
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             lwm2m_data_encode_nstring(pkg_uri, strlen(pkg_uri) + 1, *dataArrayP + i);
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_205_CONTENT;
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #else 
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_405_METHOD_NOT_ALLOWED; 
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #endif 
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             break;
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 4
+
+
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         case RES_M_UPDATE:
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_405_METHOD_NOT_ALLOWED;
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             break;
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         case RES_M_STATE:
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             // firmware update state (int)
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #ifdef CONFIG_FEATURE_FOTA    
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             int state = atiny_fota_manager_get_rpt_state(atiny_fota_manager_get_instance());
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             lwm2m_data_encode_int(state, *dataArrayP + i);
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_205_CONTENT;
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #else
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_405_METHOD_NOT_ALLOWED; 
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #endif
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             break;
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         case RES_M_UPDATE_RESULT:
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #ifdef CONFIG_FEATURE_FOTA    
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             int updateresult = atiny_fota_manager_get_update_result(atiny_fota_manager_get_instance
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             lwm2m_data_encode_int(updateresult, *dataArrayP + i);
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_205_CONTENT;
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #else
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_405_METHOD_NOT_ALLOWED; 
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #endif         
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             break;
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         case RES_O_FIRMWARE_UPDATE_DELIVER_METHOD:
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #ifdef CONFIG_FEATURE_FOTA   
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             int method = atiny_fota_manager_get_deliver_method(atiny_fota_manager_get_instance());
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             lwm2m_data_encode_int(method, *dataArrayP + i);
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_205_CONTENT;
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #else
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_405_METHOD_NOT_ALLOWED; 
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #endif
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         break;
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         default:
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_404_NOT_FOUND;
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         i++;
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     while (i < *numDataP && result == COAP_205_CONTENT);
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #ifdef CONFIG_FEATURE_FOTA   
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     if(dataCfg && (1 == *numDataP) && (RES_M_STATE == (*dataArrayP)[0].id))
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         atiny_fota_manager_get_data_cfg(atiny_fota_manager_get_instance(), dataCfg);
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #endif
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 5
+
+
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     return result;
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** }
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** static uint8_t prv_firmware_write(uint16_t instanceId,
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                   int numData,
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                   lwm2m_data_t *dataArray,
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                   lwm2m_object_t *objectP)
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** {
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     int i;
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     uint8_t result;
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     // this is a single instance object
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     if (instanceId != 0)
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         return COAP_404_NOT_FOUND;
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 219:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 220:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     i = 0;
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 222:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     do
+ 223:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 224:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         switch (dataArray[i].id)
+ 225:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 226:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 227:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         case RES_M_PACKAGE_URI:
+ 228:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             // URL for download the firmware
+ 229:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             int ret;
+ 231:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             if(dataArray[i].type != LWM2M_TYPE_STRING || NULL == dataArray[i].value.asBuffer.buffer
+ 232:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             {
+ 233:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                 ATINY_LOG(LOG_ERR, "type ERR %d", dataArray[i].type);
+ 234:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                 result = COAP_400_BAD_REQUEST;
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                 break;
+ 236:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             }
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #ifdef CONFIG_FEATURE_FOTA   
+ 238:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 239:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             ret = atiny_fota_manager_start_download(atiny_fota_manager_get_instance(), \
+ 240:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                                     (const char *)(dataArray[i].value.asBuffer.buff
+ 241:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #else
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             ret = ATINY_ERR;
+ 243:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #endif
+ 244:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = (ATINY_OK == ret ? COAP_204_CHANGED : COAP_405_METHOD_NOT_ALLOWED);
+ 245:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             break;
+ 246:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 247:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         default:
+ 249:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             result = COAP_405_METHOD_NOT_ALLOWED;
+ 250:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 252:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         i++;
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     while (i < numData && result == COAP_204_CHANGED);
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     return result;
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** }
+ 258:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 259:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** static uint8_t prv_firmware_execute(uint16_t instanceId,
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 6
+
+
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                     uint16_t resourceId,
+ 261:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                     uint8_t *buffer,
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                     int length,
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****                                     lwm2m_object_t *objectP)
+ 264:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** {
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 266:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     // this is a single instance object
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     if (instanceId != 0)
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         return COAP_404_NOT_FOUND;
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     if (length != 0) return COAP_400_BAD_REQUEST;
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     // for execute callback, resId is always set.
+ 275:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     switch (resourceId)
+ 276:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 277:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     case RES_M_UPDATE:
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 279:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #ifdef CONFIG_FEATURE_FOTA 
+ 280:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         int ret = atiny_fota_manager_execute_update(atiny_fota_manager_get_instance());
+ 281:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #else
+ 282:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         int ret = ATINY_ERR;
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #endif
+ 284:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         if (ATINY_OK == ret)
+ 285:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 286:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             return COAP_204_CHANGED;
+ 287:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 288:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         else
+ 289:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 290:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             // firmware update already running
+ 291:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #ifdef CONFIG_FEATURE_FOTA
+ 292:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             return COAP_400_BAD_REQUEST;
+ 293:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #else
+ 294:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             return COAP_405_METHOD_NOT_ALLOWED;
+ 295:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #endif
+ 296:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 297:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 298:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     default:
+ 299:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         return COAP_405_METHOD_NOT_ALLOWED;
+ 300:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 301:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 302:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 303:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** }
+ 304:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 305:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 306:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** lwm2m_object_t *get_object_firmware(atiny_param_t *atiny_params)
+ 307:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** {
+ 308:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     /*
+ 309:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****      * The get_object_firmware function create the object itself and return a pointer to the struct
+ 310:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****      */
+ 311:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     lwm2m_object_t *firmwareObj;
+ 312:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 313:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     firmwareObj = (lwm2m_object_t *)lwm2m_malloc(sizeof(lwm2m_object_t));
+ 314:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 315:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     if (NULL != firmwareObj)
+ 316:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 7
+
+
+ 317:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         memset(firmwareObj, 0, sizeof(lwm2m_object_t));
+ 318:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 319:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         /*
+ 320:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          * It assigns its unique ID
+ 321:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          * The 5 is the standard ID for the optional object "Object firmware".
+ 322:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          */
+ 323:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         firmwareObj->objID = LWM2M_FIRMWARE_UPDATE_OBJECT_ID;
+ 324:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 325:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         /*
+ 326:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          * and its unique instance
+ 327:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          *
+ 328:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          */
+ 329:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         firmwareObj->instanceList = (lwm2m_list_t *)lwm2m_malloc(sizeof(lwm2m_list_t));
+ 330:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         if (NULL != firmwareObj->instanceList)
+ 331:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 332:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             memset(firmwareObj->instanceList, 0, sizeof(lwm2m_list_t));
+ 333:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 334:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         else
+ 335:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         {
+ 336:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             lwm2m_free(firmwareObj);
+ 337:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****             return NULL;
+ 338:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         }
+ 339:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 340:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         /*
+ 341:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          * And the private function that will access the object.
+ 342:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          * Those function will be called when a read/write/execute query is made by the server. In 
+ 343:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          * know the resources of the object, only the server does.
+ 344:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          */
+ 345:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         firmwareObj->readFunc    = prv_firmware_read;
+ 346:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         firmwareObj->writeFunc   = prv_firmware_write;
+ 347:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         firmwareObj->executeFunc = prv_firmware_execute;
+ 348:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         firmwareObj->userData    = NULL;
+ 349:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 350:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         /*
+ 351:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          * Also some user data can be stored in the object with a private structure containing the 
+ 352:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****          */
+ 353:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 354:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 355:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     return firmwareObj;
+ 356:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** }
+ 357:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 358:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** void free_object_firmware(lwm2m_object_t *objectP)
+ 359:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** {
+ 360:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     if (NULL != objectP->userData)
+ 361:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 362:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         lwm2m_free(objectP->userData);
+ 363:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         objectP->userData = NULL;
+ 364:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 365:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     if (NULL != objectP->instanceList)
+ 366:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     {
+ 367:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         lwm2m_free(objectP->instanceList);
+ 368:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****         objectP->instanceList = NULL;
+ 369:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     }
+ 370:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     lwm2m_free(objectP);
+ 371:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** }
+ 372:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 373:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** #else
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 8
+
+
+ 374:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 375:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 376:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** lwm2m_object_t *get_object_firmware(atiny_param_t *atiny_params)
+ 377:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** {
+  28              		.loc 1 377 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 80B4     		push	{r7}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 4
+  36              		.cfi_offset 7, -4
+  37 0002 83B0     		sub	sp, sp, #12
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 16
+  40 0004 00AF     		add	r7, sp, #0
+  41              	.LCFI2:
+  42              		.cfi_def_cfa_register 7
+  43 0006 7860     		str	r0, [r7, #4]
+ 378:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     (void)atiny_params;
+ 379:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     return NULL;
+  44              		.loc 1 379 0
+  45 0008 0023     		movs	r3, #0
+ 380:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** }
+  46              		.loc 1 380 0
+  47 000a 1846     		mov	r0, r3
+  48 000c 0C37     		adds	r7, r7, #12
+  49              	.LCFI3:
+  50              		.cfi_def_cfa_offset 4
+  51 000e BD46     		mov	sp, r7
+  52              	.LCFI4:
+  53              		.cfi_def_cfa_register 13
+  54              		@ sp needed
+  55 0010 5DF8047B 		ldr	r7, [sp], #4
+  56              	.LCFI5:
+  57              		.cfi_restore 7
+  58              		.cfi_def_cfa_offset 0
+  59 0014 7047     		bx	lr
+  60              		.cfi_endproc
+  61              	.LFE4:
+  63              		.section	.text.free_object_firmware,"ax",%progbits
+  64              		.align	1
+  65              		.global	free_object_firmware
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  69              		.fpu fpv4-sp-d16
+  71              	free_object_firmware:
+  72              	.LFB5:
+ 381:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 382:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** 
+ 383:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** void free_object_firmware(lwm2m_object_t *objectP)
+ 384:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** {
+  73              		.loc 1 384 0
+  74              		.cfi_startproc
+  75              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 9
+
+
+  76              		@ frame_needed = 1, uses_anonymous_args = 0
+  77              		@ link register save eliminated.
+  78 0000 80B4     		push	{r7}
+  79              	.LCFI6:
+  80              		.cfi_def_cfa_offset 4
+  81              		.cfi_offset 7, -4
+  82 0002 83B0     		sub	sp, sp, #12
+  83              	.LCFI7:
+  84              		.cfi_def_cfa_offset 16
+  85 0004 00AF     		add	r7, sp, #0
+  86              	.LCFI8:
+  87              		.cfi_def_cfa_register 7
+  88 0006 7860     		str	r0, [r7, #4]
+ 385:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c ****     (void)objectP;
+ 386:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\object_firmware.c **** }
+  89              		.loc 1 386 0
+  90 0008 00BF     		nop
+  91 000a 0C37     		adds	r7, r7, #12
+  92              	.LCFI9:
+  93              		.cfi_def_cfa_offset 4
+  94 000c BD46     		mov	sp, r7
+  95              	.LCFI10:
+  96              		.cfi_def_cfa_register 13
+  97              		@ sp needed
+  98 000e 5DF8047B 		ldr	r7, [sp], #4
+  99              	.LCFI11:
+ 100              		.cfi_restore 7
+ 101              		.cfi_def_cfa_offset 0
+ 102 0012 7047     		bx	lr
+ 103              		.cfi_endproc
+ 104              	.LFE5:
+ 106              		.text
+ 107              	.Letext0:
+ 108              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 109              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 110              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 111              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 112              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 113              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 114              		.file 8 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2
+ 115              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 116              		.file 10 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 117              		.file 11 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 118              		.file 12 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 119              		.file 13 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 120              		.file 14 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 object_firmware.c
+C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s:18     .text.get_object_firmware:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s:25     .text.get_object_firmware:00000000 get_object_firmware
+C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s:64     .text.free_object_firmware:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cch8aWf0.s:71     .text.free_object_firmware:00000000 free_object_firmware
+
+NO UNDEFINED SYMBOLS

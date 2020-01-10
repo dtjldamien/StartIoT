@@ -1,0 +1,758 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"uart_debug.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.data.s_pUSART,"aw",%progbits
+  18              		.align	2
+  21              	s_pUSART:
+  22 0000 00380140 		.word	1073821696
+  23              		.section	.data.s_uwIRQn,"aw",%progbits
+  24              		.align	2
+  27              	s_uwIRQn:
+  28 0000 25000000 		.word	37
+  29              		.section	.bss.s_uart_init,"aw",%nobits
+  30              		.align	2
+  33              	s_uart_init:
+  34 0000 00000000 		.space	4
+  35              		.section	.bss.s_uartdebug_rcv_ring,"aw",%nobits
+  36              		.align	2
+  39              	s_uartdebug_rcv_ring:
+  40 0000 00000000 		.space	16
+  40      00000000 
+  40      00000000 
+  40      00000000 
+  41              		.section	.bss.s_uartdebug_rcv_ringmem,"aw",%nobits
+  42              		.align	2
+  45              	s_uartdebug_rcv_ringmem:
+  46 0000 00000000 		.space	128
+  46      00000000 
+  46      00000000 
+  46      00000000 
+  46      00000000 
+  47              		.section	.bss.s_uartdebug_rcv_sync,"aw",%nobits
+  48              		.align	2
+  51              	s_uartdebug_rcv_sync:
+  52 0000 00000000 		.space	4
+  53              		.section	.text.uart_debug_irq,"ax",%progbits
+  54              		.align	1
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  58              		.fpu fpv4-sp-d16
+  60              	uart_debug_irq:
+  61              	.LFB133:
+  62              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** /*----------------------------------------------------------------------------
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 2
+
+
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** //#include "usart.h"
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #include "gd32f30x.h"
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #include "BearPi-IoT_gd32f303.h"
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #include <stdint.h>
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #include <stddef.h>
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #include <osal.h>
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #include <link_misc.h>
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #include <los_hwi.h>
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #include <los_sem.h>
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #include <los_base.h>
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #define CN_RCV_RING_BUFLEN  128
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** static uint32_t s_pUSART = EVAL_COM0;
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** static uint32_t s_uwIRQn = USART0_IRQn;
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** static bool_t s_uart_init = false;
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** /* USART1 init function */
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 3
+
+
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** static tag_ring_buffer_t  s_uartdebug_rcv_ring;
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** static unsigned char      s_uartdebug_rcv_ringmem[CN_RCV_RING_BUFLEN];
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** static UINT32        s_uartdebug_rcv_sync;
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** static void uart_debug_irq(void)
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** {
+  63              		.loc 1 63 0
+  64              		.cfi_startproc
+  65              		@ args = 0, pretend = 0, frame = 8
+  66              		@ frame_needed = 1, uses_anonymous_args = 0
+  67 0000 80B5     		push	{r7, lr}
+  68              	.LCFI0:
+  69              		.cfi_def_cfa_offset 8
+  70              		.cfi_offset 7, -8
+  71              		.cfi_offset 14, -4
+  72 0002 82B0     		sub	sp, sp, #8
+  73              	.LCFI1:
+  74              		.cfi_def_cfa_offset 16
+  75 0004 00AF     		add	r7, sp, #0
+  76              	.LCFI2:
+  77              		.cfi_def_cfa_register 7
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     unsigned char value;
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     if(usart_flag_get(s_pUSART, USART_FLAG_RBNE) != RESET)
+  78              		.loc 1 65 0
+  79 0006 134B     		ldr	r3, .L5
+  80 0008 1B68     		ldr	r3, [r3]
+  81 000a 0521     		movs	r1, #5
+  82 000c 1846     		mov	r0, r3
+  83 000e FFF7FEFF 		bl	usart_flag_get
+  84 0012 0346     		mov	r3, r0
+  85 0014 002B     		cmp	r3, #0
+  86 0016 13D0     		beq	.L2
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     {
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         value = (uint8_t)(usart_data_receive(s_pUSART) & 0x00FF);
+  87              		.loc 1 67 0
+  88 0018 0E4B     		ldr	r3, .L5
+  89 001a 1B68     		ldr	r3, [r3]
+  90 001c 1846     		mov	r0, r3
+  91 001e FFF7FEFF 		bl	usart_data_receive
+  92 0022 0346     		mov	r3, r0
+  93 0024 DBB2     		uxtb	r3, r3
+  94 0026 FB71     		strb	r3, [r7, #7]
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         ring_buffer_write(&s_uartdebug_rcv_ring,&value,1);
+  95              		.loc 1 68 0
+  96 0028 FB1D     		adds	r3, r7, #7
+  97 002a 0122     		movs	r2, #1
+  98 002c 1946     		mov	r1, r3
+  99 002e 0A48     		ldr	r0, .L5+4
+ 100 0030 FFF7FEFF 		bl	ring_buffer_write
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         LOS_SemPost(s_uartdebug_rcv_sync);
+ 101              		.loc 1 69 0
+ 102 0034 094B     		ldr	r3, .L5+8
+ 103 0036 1B68     		ldr	r3, [r3]
+ 104 0038 1846     		mov	r0, r3
+ 105 003a FFF7FEFF 		bl	LOS_SemPost
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     }
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     else if (usart_flag_get(s_pUSART,USART_FLAG_IDLE) != RESET)
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 4
+
+
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     	//usart_flag_clear(&uart_debug);
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     }
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** }
+ 106              		.loc 1 75 0
+ 107 003e 05E0     		b	.L4
+ 108              	.L2:
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     {
+ 109              		.loc 1 71 0
+ 110 0040 044B     		ldr	r3, .L5
+ 111 0042 1B68     		ldr	r3, [r3]
+ 112 0044 0421     		movs	r1, #4
+ 113 0046 1846     		mov	r0, r3
+ 114 0048 FFF7FEFF 		bl	usart_flag_get
+ 115              	.L4:
+ 116              		.loc 1 75 0
+ 117 004c 00BF     		nop
+ 118 004e 0837     		adds	r7, r7, #8
+ 119              	.LCFI3:
+ 120              		.cfi_def_cfa_offset 8
+ 121 0050 BD46     		mov	sp, r7
+ 122              	.LCFI4:
+ 123              		.cfi_def_cfa_register 13
+ 124              		@ sp needed
+ 125 0052 80BD     		pop	{r7, pc}
+ 126              	.L6:
+ 127              		.align	2
+ 128              	.L5:
+ 129 0054 00000000 		.word	s_pUSART
+ 130 0058 00000000 		.word	s_uartdebug_rcv_ring
+ 131 005c 00000000 		.word	s_uartdebug_rcv_sync
+ 132              		.cfi_endproc
+ 133              	.LFE133:
+ 135              		.section	.text.shell_uart_init,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	shell_uart_init
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 141              		.fpu fpv4-sp-d16
+ 143              	shell_uart_init:
+ 144              	.LFB134:
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** void shell_uart_init(int baud)
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** {
+ 145              		.loc 1 77 0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 8
+ 148              		@ frame_needed = 1, uses_anonymous_args = 0
+ 149 0000 80B5     		push	{r7, lr}
+ 150              	.LCFI5:
+ 151              		.cfi_def_cfa_offset 8
+ 152              		.cfi_offset 7, -8
+ 153              		.cfi_offset 14, -4
+ 154 0002 84B0     		sub	sp, sp, #16
+ 155              	.LCFI6:
+ 156              		.cfi_def_cfa_offset 24
+ 157 0004 02AF     		add	r7, sp, #8
+ 158              	.LCFI7:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 5
+
+
+ 159              		.cfi_def_cfa 7, 16
+ 160 0006 7860     		str	r0, [r7, #4]
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 	gd_eval_com_init(s_pUSART, baud);
+ 161              		.loc 1 78 0
+ 162 0008 154B     		ldr	r3, .L8
+ 163 000a 1B68     		ldr	r3, [r3]
+ 164 000c 7A68     		ldr	r2, [r7, #4]
+ 165 000e 1146     		mov	r1, r2
+ 166 0010 1846     		mov	r0, r3
+ 167 0012 FFF7FEFF 		bl	gd_eval_com_init
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     LOS_HwiCreate(s_uwIRQn, 3, 0, uart_debug_irq, 0);
+ 168              		.loc 1 79 0
+ 169 0016 134B     		ldr	r3, .L8+4
+ 170 0018 1868     		ldr	r0, [r3]
+ 171 001a 0023     		movs	r3, #0
+ 172 001c 0093     		str	r3, [sp]
+ 173 001e 124B     		ldr	r3, .L8+8
+ 174 0020 0022     		movs	r2, #0
+ 175 0022 0321     		movs	r1, #3
+ 176 0024 FFF7FEFF 		bl	LOS_HwiCreate
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     //usart_interrupt_enable(s_pUSART, USART_INT_IDLE);
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     usart_interrupt_enable(s_pUSART, USART_INT_RBNE);
+ 177              		.loc 1 81 0
+ 178 0028 0D4B     		ldr	r3, .L8
+ 179 002a 1B68     		ldr	r3, [r3]
+ 180 002c 40F20531 		movw	r1, #773
+ 181 0030 1846     		mov	r0, r3
+ 182 0032 FFF7FEFF 		bl	usart_interrupt_enable
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     //create the receive buffer and receive sync
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     extern UINT32 osSemCreate (UINT16 usCount, UINT16 usMaxCount, UINT32 *puwSemHandle);
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     osSemCreate(0,CN_RCV_RING_BUFLEN,(UINT32 *)&s_uartdebug_rcv_sync);
+ 183              		.loc 1 85 0
+ 184 0036 0D4A     		ldr	r2, .L8+12
+ 185 0038 8021     		movs	r1, #128
+ 186 003a 0020     		movs	r0, #0
+ 187 003c FFF7FEFF 		bl	osSemCreate
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     ring_buffer_init(&s_uartdebug_rcv_ring,s_uartdebug_rcv_ringmem,CN_RCV_RING_BUFLEN,0,0);
+ 188              		.loc 1 86 0
+ 189 0040 0023     		movs	r3, #0
+ 190 0042 0093     		str	r3, [sp]
+ 191 0044 0023     		movs	r3, #0
+ 192 0046 8022     		movs	r2, #128
+ 193 0048 0949     		ldr	r1, .L8+16
+ 194 004a 0A48     		ldr	r0, .L8+20
+ 195 004c FFF7FEFF 		bl	ring_buffer_init
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     s_uart_init = true;
+ 196              		.loc 1 87 0
+ 197 0050 094B     		ldr	r3, .L8+24
+ 198 0052 0122     		movs	r2, #1
+ 199 0054 1A60     		str	r2, [r3]
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** }
+ 200              		.loc 1 89 0
+ 201 0056 00BF     		nop
+ 202 0058 0837     		adds	r7, r7, #8
+ 203              	.LCFI8:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 6
+
+
+ 204              		.cfi_def_cfa_offset 8
+ 205 005a BD46     		mov	sp, r7
+ 206              	.LCFI9:
+ 207              		.cfi_def_cfa_register 13
+ 208              		@ sp needed
+ 209 005c 80BD     		pop	{r7, pc}
+ 210              	.L9:
+ 211 005e 00BF     		.align	2
+ 212              	.L8:
+ 213 0060 00000000 		.word	s_pUSART
+ 214 0064 00000000 		.word	s_uwIRQn
+ 215 0068 00000000 		.word	uart_debug_irq
+ 216 006c 00000000 		.word	s_uartdebug_rcv_sync
+ 217 0070 00000000 		.word	s_uartdebug_rcv_ringmem
+ 218 0074 00000000 		.word	s_uartdebug_rcv_ring
+ 219 0078 00000000 		.word	s_uart_init
+ 220              		.cfi_endproc
+ 221              	.LFE134:
+ 223              		.section	.text._put_char,"ax",%progbits
+ 224              		.align	1
+ 225              		.global	_put_char
+ 226              		.syntax unified
+ 227              		.thumb
+ 228              		.thumb_func
+ 229              		.fpu fpv4-sp-d16
+ 231              	_put_char:
+ 232              	.LFB135:
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** /* define fputc */
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #if defined ( __CC_ARM ) || defined ( __ICCARM__ )  /* KEIL and IAR: printf will call fputc to prin
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** int fputc(int ch, FILE *f)
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** {
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     usart_data_transmit(s_pUSART, (uint8_t)ch);
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     while (RESET == usart_flag_get(s_pUSART, USART_FLAG_TBE))
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         ;
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     return ch;
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** }
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** int fgetc(FILE *f){
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     int ret = 0;
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     unsigned char  value;
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     do
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     {
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         if(LOS_OK == LOS_SemPend(s_uartdebug_rcv_sync,LOS_WAIT_FOREVER))
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         {
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****             ret = ring_read(&s_uartdebug_rcv_ring,&value,1);
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         }
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     }while(ret <=0);
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     ret = value;
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     return ret;
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** }
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** #elif defined ( __GNUC__ )  /* GCC: printf will call _write to print */
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** int _put_char(int ch)
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** {
+ 233              		.loc 1 117 0
+ 234              		.cfi_startproc
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 7
+
+
+ 235              		@ args = 0, pretend = 0, frame = 8
+ 236              		@ frame_needed = 1, uses_anonymous_args = 0
+ 237 0000 80B5     		push	{r7, lr}
+ 238              	.LCFI10:
+ 239              		.cfi_def_cfa_offset 8
+ 240              		.cfi_offset 7, -8
+ 241              		.cfi_offset 14, -4
+ 242 0002 82B0     		sub	sp, sp, #8
+ 243              	.LCFI11:
+ 244              		.cfi_def_cfa_offset 16
+ 245 0004 00AF     		add	r7, sp, #0
+ 246              	.LCFI12:
+ 247              		.cfi_def_cfa_register 7
+ 248 0006 7860     		str	r0, [r7, #4]
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     usart_data_transmit(s_pUSART, (uint8_t) ch );
+ 249              		.loc 1 118 0
+ 250 0008 0B4B     		ldr	r3, .L13
+ 251 000a 1B68     		ldr	r3, [r3]
+ 252 000c 7A68     		ldr	r2, [r7, #4]
+ 253 000e D2B2     		uxtb	r2, r2
+ 254 0010 1146     		mov	r1, r2
+ 255 0012 1846     		mov	r0, r3
+ 256 0014 FFF7FEFF 		bl	usart_data_transmit
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     while (usart_flag_get(s_pUSART, USART_FLAG_TBE)== RESET){
+ 257              		.loc 1 119 0
+ 258 0018 00BF     		nop
+ 259              	.L11:
+ 260              		.loc 1 119 0 is_stmt 0 discriminator 1
+ 261 001a 074B     		ldr	r3, .L13
+ 262 001c 1B68     		ldr	r3, [r3]
+ 263 001e 0721     		movs	r1, #7
+ 264 0020 1846     		mov	r0, r3
+ 265 0022 FFF7FEFF 		bl	usart_flag_get
+ 266 0026 0346     		mov	r3, r0
+ 267 0028 002B     		cmp	r3, #0
+ 268 002a F6D0     		beq	.L11
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     }
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     return ch;
+ 269              		.loc 1 122 0 is_stmt 1
+ 270 002c 7B68     		ldr	r3, [r7, #4]
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** }
+ 271              		.loc 1 123 0
+ 272 002e 1846     		mov	r0, r3
+ 273 0030 0837     		adds	r7, r7, #8
+ 274              	.LCFI13:
+ 275              		.cfi_def_cfa_offset 8
+ 276 0032 BD46     		mov	sp, r7
+ 277              	.LCFI14:
+ 278              		.cfi_def_cfa_register 13
+ 279              		@ sp needed
+ 280 0034 80BD     		pop	{r7, pc}
+ 281              	.L14:
+ 282 0036 00BF     		.align	2
+ 283              	.L13:
+ 284 0038 00000000 		.word	s_pUSART
+ 285              		.cfi_endproc
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 8
+
+
+ 286              	.LFE135:
+ 288              		.section	.text.puts,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	puts
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 294              		.fpu fpv4-sp-d16
+ 296              	puts:
+ 297              	.LFB136:
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** int puts(const char* string) {
+ 298              		.loc 1 125 0
+ 299              		.cfi_startproc
+ 300              		@ args = 0, pretend = 0, frame = 8
+ 301              		@ frame_needed = 1, uses_anonymous_args = 0
+ 302 0000 80B5     		push	{r7, lr}
+ 303              	.LCFI15:
+ 304              		.cfi_def_cfa_offset 8
+ 305              		.cfi_offset 7, -8
+ 306              		.cfi_offset 14, -4
+ 307 0002 82B0     		sub	sp, sp, #8
+ 308              	.LCFI16:
+ 309              		.cfi_def_cfa_offset 16
+ 310 0004 00AF     		add	r7, sp, #0
+ 311              	.LCFI17:
+ 312              		.cfi_def_cfa_register 7
+ 313 0006 7860     		str	r0, [r7, #4]
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 	return _write(0, (const void *) string, strlen(string));
+ 314              		.loc 1 126 0
+ 315 0008 7868     		ldr	r0, [r7, #4]
+ 316 000a FFF7FEFF 		bl	strlen
+ 317 000e 0346     		mov	r3, r0
+ 318 0010 1A46     		mov	r2, r3
+ 319 0012 7968     		ldr	r1, [r7, #4]
+ 320 0014 0020     		movs	r0, #0
+ 321 0016 FFF7FEFF 		bl	_write
+ 322 001a 0346     		mov	r3, r0
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** }
+ 323              		.loc 1 127 0
+ 324 001c 1846     		mov	r0, r3
+ 325 001e 0837     		adds	r7, r7, #8
+ 326              	.LCFI18:
+ 327              		.cfi_def_cfa_offset 8
+ 328 0020 BD46     		mov	sp, r7
+ 329              	.LCFI19:
+ 330              		.cfi_def_cfa_register 13
+ 331              		@ sp needed
+ 332 0022 80BD     		pop	{r7, pc}
+ 333              		.cfi_endproc
+ 334              	.LFE136:
+ 336              		.section	.text._write,"ax",%progbits
+ 337              		.align	1
+ 338              		.global	_write
+ 339              		.syntax unified
+ 340              		.thumb
+ 341              		.thumb_func
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 9
+
+
+ 342              		.fpu fpv4-sp-d16
+ 344              	_write:
+ 345              	.LFB137:
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** __attribute__((used)) int _write(int fd, char *ptr, int len)
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** {
+ 346              		.loc 1 130 0
+ 347              		.cfi_startproc
+ 348              		@ args = 0, pretend = 0, frame = 24
+ 349              		@ frame_needed = 1, uses_anonymous_args = 0
+ 350 0000 80B5     		push	{r7, lr}
+ 351              	.LCFI20:
+ 352              		.cfi_def_cfa_offset 8
+ 353              		.cfi_offset 7, -8
+ 354              		.cfi_offset 14, -4
+ 355 0002 86B0     		sub	sp, sp, #24
+ 356              	.LCFI21:
+ 357              		.cfi_def_cfa_offset 32
+ 358 0004 00AF     		add	r7, sp, #0
+ 359              	.LCFI22:
+ 360              		.cfi_def_cfa_register 7
+ 361 0006 F860     		str	r0, [r7, #12]
+ 362 0008 B960     		str	r1, [r7, #8]
+ 363 000a 7A60     		str	r2, [r7, #4]
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     if(s_uart_init)
+ 364              		.loc 1 131 0
+ 365 000c 124B     		ldr	r3, .L23
+ 366 000e 1B68     		ldr	r3, [r3]
+ 367 0010 002B     		cmp	r3, #0
+ 368 0012 1BD0     		beq	.L18
+ 369              	.LBB2:
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     {
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     	const uint8_t * current = (const uint8_t *) ptr;
+ 370              		.loc 1 133 0
+ 371 0014 BB68     		ldr	r3, [r7, #8]
+ 372 0016 3B61     		str	r3, [r7, #16]
+ 373              	.LBB3:
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     	for (size_t jj = 0; jj < len; jj++)
+ 374              		.loc 1 135 0
+ 375 0018 0023     		movs	r3, #0
+ 376 001a 7B61     		str	r3, [r7, #20]
+ 377 001c 12E0     		b	.L19
+ 378              	.L21:
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     	{
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     		_put_char(current[jj]);
+ 379              		.loc 1 137 0
+ 380 001e 3A69     		ldr	r2, [r7, #16]
+ 381 0020 7B69     		ldr	r3, [r7, #20]
+ 382 0022 1344     		add	r3, r3, r2
+ 383 0024 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 384 0026 1846     		mov	r0, r3
+ 385 0028 FFF7FEFF 		bl	_put_char
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** 
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     		if (current[jj] == '\n')
+ 386              		.loc 1 139 0
+ 387 002c 3A69     		ldr	r2, [r7, #16]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 10
+
+
+ 388 002e 7B69     		ldr	r3, [r7, #20]
+ 389 0030 1344     		add	r3, r3, r2
+ 390 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 391 0034 0A2B     		cmp	r3, #10
+ 392 0036 02D1     		bne	.L20
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     		{
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     			_put_char('\r');
+ 393              		.loc 1 141 0
+ 394 0038 0D20     		movs	r0, #13
+ 395 003a FFF7FEFF 		bl	_put_char
+ 396              	.L20:
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     	{
+ 397              		.loc 1 135 0 discriminator 2
+ 398 003e 7B69     		ldr	r3, [r7, #20]
+ 399 0040 0133     		adds	r3, r3, #1
+ 400 0042 7B61     		str	r3, [r7, #20]
+ 401              	.L19:
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     	{
+ 402              		.loc 1 135 0 is_stmt 0 discriminator 1
+ 403 0044 7B68     		ldr	r3, [r7, #4]
+ 404 0046 7A69     		ldr	r2, [r7, #20]
+ 405 0048 9A42     		cmp	r2, r3
+ 406 004a E8D3     		bcc	.L21
+ 407              	.L18:
+ 408              	.LBE3:
+ 409              	.LBE2:
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     		}
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     	}
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     }
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     return len;
+ 410              		.loc 1 145 0 is_stmt 1
+ 411 004c 7B68     		ldr	r3, [r7, #4]
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** }
+ 412              		.loc 1 146 0
+ 413 004e 1846     		mov	r0, r3
+ 414 0050 1837     		adds	r7, r7, #24
+ 415              	.LCFI23:
+ 416              		.cfi_def_cfa_offset 8
+ 417 0052 BD46     		mov	sp, r7
+ 418              	.LCFI24:
+ 419              		.cfi_def_cfa_register 13
+ 420              		@ sp needed
+ 421 0054 80BD     		pop	{r7, pc}
+ 422              	.L24:
+ 423 0056 00BF     		.align	2
+ 424              	.L23:
+ 425 0058 00000000 		.word	s_uart_init
+ 426              		.cfi_endproc
+ 427              	.LFE137:
+ 429              		.section	.text._read,"ax",%progbits
+ 430              		.align	1
+ 431              		.global	_read
+ 432              		.syntax unified
+ 433              		.thumb
+ 434              		.thumb_func
+ 435              		.fpu fpv4-sp-d16
+ 437              	_read:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 11
+
+
+ 438              	.LFB138:
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** __attribute__((used)) int _read(int fd, char *ptr, int len)
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** {
+ 439              		.loc 1 148 0
+ 440              		.cfi_startproc
+ 441              		@ args = 0, pretend = 0, frame = 24
+ 442              		@ frame_needed = 1, uses_anonymous_args = 0
+ 443 0000 80B5     		push	{r7, lr}
+ 444              	.LCFI25:
+ 445              		.cfi_def_cfa_offset 8
+ 446              		.cfi_offset 7, -8
+ 447              		.cfi_offset 14, -4
+ 448 0002 86B0     		sub	sp, sp, #24
+ 449              	.LCFI26:
+ 450              		.cfi_def_cfa_offset 32
+ 451 0004 00AF     		add	r7, sp, #0
+ 452              	.LCFI27:
+ 453              		.cfi_def_cfa_register 7
+ 454 0006 F860     		str	r0, [r7, #12]
+ 455 0008 B960     		str	r1, [r7, #8]
+ 456 000a 7A60     		str	r2, [r7, #4]
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     int ret = 0;
+ 457              		.loc 1 149 0
+ 458 000c 0023     		movs	r3, #0
+ 459 000e 7B61     		str	r3, [r7, #20]
+ 460              	.L27:
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     unsigned char  value;
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     do
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     {
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         if(LOS_OK == LOS_SemPend(s_uartdebug_rcv_sync,LOS_WAIT_FOREVER))
+ 461              		.loc 1 153 0
+ 462 0010 0E4B     		ldr	r3, .L29
+ 463 0012 1B68     		ldr	r3, [r3]
+ 464 0014 4FF0FF31 		mov	r1, #-1
+ 465 0018 1846     		mov	r0, r3
+ 466 001a FFF7FEFF 		bl	LOS_SemPend
+ 467 001e 0346     		mov	r3, r0
+ 468 0020 002B     		cmp	r3, #0
+ 469 0022 07D1     		bne	.L26
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         {
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****             ret = ring_buffer_read(&s_uartdebug_rcv_ring,&value,1);
+ 470              		.loc 1 155 0
+ 471 0024 07F11303 		add	r3, r7, #19
+ 472 0028 0122     		movs	r2, #1
+ 473 002a 1946     		mov	r1, r3
+ 474 002c 0848     		ldr	r0, .L29+4
+ 475 002e FFF7FEFF 		bl	ring_buffer_read
+ 476 0032 7861     		str	r0, [r7, #20]
+ 477              	.L26:
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****         }
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     }while(ret <=0);
+ 478              		.loc 1 157 0
+ 479 0034 7B69     		ldr	r3, [r7, #20]
+ 480 0036 002B     		cmp	r3, #0
+ 481 0038 EADD     		ble	.L27
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     *(unsigned char *)ptr = value;
+ 482              		.loc 1 158 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 12
+
+
+ 483 003a FA7C     		ldrb	r2, [r7, #19]	@ zero_extendqisi2
+ 484 003c BB68     		ldr	r3, [r7, #8]
+ 485 003e 1A70     		strb	r2, [r3]
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c ****     return 1;
+ 486              		.loc 1 159 0
+ 487 0040 0123     		movs	r3, #1
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\uart_debug.c **** }
+ 488              		.loc 1 160 0
+ 489 0042 1846     		mov	r0, r3
+ 490 0044 1837     		adds	r7, r7, #24
+ 491              	.LCFI28:
+ 492              		.cfi_def_cfa_offset 8
+ 493 0046 BD46     		mov	sp, r7
+ 494              	.LCFI29:
+ 495              		.cfi_def_cfa_register 13
+ 496              		@ sp needed
+ 497 0048 80BD     		pop	{r7, pc}
+ 498              	.L30:
+ 499 004a 00BF     		.align	2
+ 500              	.L29:
+ 501 004c 00000000 		.word	s_uartdebug_rcv_sync
+ 502 0050 00000000 		.word	s_uartdebug_rcv_ring
+ 503              		.cfi_endproc
+ 504              	.LFE138:
+ 506              		.text
+ 507              	.Letext0:
+ 508              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 509              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 510              		.file 4 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/ar
+ 511              		.file 5 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+ 512              		.file 6 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+ 513              		.file 7 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/G
+ 514              		.file 8 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/G
+ 515              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 516              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 517              		.file 11 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 518              		.file 12 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 519              		.file 13 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 520              		.file 14 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_misc/l
+ 521              		.file 15 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 522              		.file 16 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 523              		.file 17 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 524              		.file 18 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/a
+ 525              		.file 19 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 526              		.file 20 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 527              		.file 21 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 uart_debug.c
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:18     .data.s_pUSART:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:21     .data.s_pUSART:00000000 s_pUSART
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:24     .data.s_uwIRQn:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:27     .data.s_uwIRQn:00000000 s_uwIRQn
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:30     .bss.s_uart_init:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:33     .bss.s_uart_init:00000000 s_uart_init
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:36     .bss.s_uartdebug_rcv_ring:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:39     .bss.s_uartdebug_rcv_ring:00000000 s_uartdebug_rcv_ring
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:42     .bss.s_uartdebug_rcv_ringmem:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:45     .bss.s_uartdebug_rcv_ringmem:00000000 s_uartdebug_rcv_ringmem
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:48     .bss.s_uartdebug_rcv_sync:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:51     .bss.s_uartdebug_rcv_sync:00000000 s_uartdebug_rcv_sync
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:54     .text.uart_debug_irq:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:60     .text.uart_debug_irq:00000000 uart_debug_irq
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:129    .text.uart_debug_irq:00000054 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:136    .text.shell_uart_init:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:143    .text.shell_uart_init:00000000 shell_uart_init
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:213    .text.shell_uart_init:00000060 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:224    .text._put_char:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:231    .text._put_char:00000000 _put_char
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:284    .text._put_char:00000038 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:289    .text.puts:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:296    .text.puts:00000000 puts
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:344    .text._write:00000000 _write
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:337    .text._write:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:425    .text._write:00000058 $d
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:430    .text._read:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:437    .text._read:00000000 _read
+C:\Users\dtjld\AppData\Local\Temp\ccpQg6uo.s:501    .text._read:0000004c $d
+
+UNDEFINED SYMBOLS
+usart_flag_get
+usart_data_receive
+ring_buffer_write
+LOS_SemPost
+gd_eval_com_init
+LOS_HwiCreate
+usart_interrupt_enable
+osSemCreate
+ring_buffer_init
+usart_data_transmit
+strlen
+LOS_SemPend
+ring_buffer_read

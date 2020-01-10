@@ -1,0 +1,2018 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"E53_IA1.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	POLYNOMIAL
+  18              		.section	.rodata.POLYNOMIAL,"a",%progbits
+  19              		.align	1
+  22              	POLYNOMIAL:
+  23 0000 3101     		.short	305
+  24              		.section	.text.delay_us,"ax",%progbits
+  25              		.align	1
+  26              		.global	delay_us
+  27              		.syntax unified
+  28              		.thumb
+  29              		.thumb_func
+  30              		.fpu fpv4-sp-d16
+  32              	delay_us:
+  33              	.LFB123:
+  34              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /********************************************************************************
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     * 文件名称 ：E53_IA1.C
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     * 作     者：物联网俱乐部
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     * 版     本：V1.0
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     * 编写日期 ：2019-5-31
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     * 功     能：E53_IA1扩展板驱动
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** *********************************************************************************
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     * 说    明 ：本例程配套小熊派-IoT(GD)开发板使用
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     *
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     * 淘     宝：https://shop336827451.taobao.com/
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     * 论     坛：https://bbs.huaweicloud.com/forum/forum-734-1.html
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** *********************************************************************************/
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** #include "E53_IA1.h"
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** #include "gd32f30x.h"
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** #include "i2c.h"
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** const int16_t POLYNOMIAL = 0x131;
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void delay_us(uint32_t n)
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+  35              		.loc 1 21 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 16
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39              		@ link register save eliminated.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 2
+
+
+  40 0000 80B4     		push	{r7}
+  41              	.LCFI0:
+  42              		.cfi_def_cfa_offset 4
+  43              		.cfi_offset 7, -4
+  44 0002 85B0     		sub	sp, sp, #20
+  45              	.LCFI1:
+  46              		.cfi_def_cfa_offset 24
+  47 0004 00AF     		add	r7, sp, #0
+  48              	.LCFI2:
+  49              		.cfi_def_cfa_register 7
+  50 0006 7860     		str	r0, [r7, #4]
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     uint8_t j;
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (n--)
+  51              		.loc 1 23 0
+  52 0008 08E0     		b	.L2
+  53              	.L5:
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         for (j = 0; j < 10; j++)
+  54              		.loc 1 24 0
+  55 000a 0023     		movs	r3, #0
+  56 000c FB73     		strb	r3, [r7, #15]
+  57 000e 02E0     		b	.L3
+  58              	.L4:
+  59              		.loc 1 24 0 is_stmt 0 discriminator 3
+  60 0010 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  61 0012 0133     		adds	r3, r3, #1
+  62 0014 FB73     		strb	r3, [r7, #15]
+  63              	.L3:
+  64              		.loc 1 24 0 discriminator 1
+  65 0016 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+  66 0018 092B     		cmp	r3, #9
+  67 001a F9D9     		bls	.L4
+  68              	.L2:
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         for (j = 0; j < 10; j++)
+  69              		.loc 1 23 0 is_stmt 1
+  70 001c 7B68     		ldr	r3, [r7, #4]
+  71 001e 5A1E     		subs	r2, r3, #1
+  72 0020 7A60     		str	r2, [r7, #4]
+  73 0022 002B     		cmp	r3, #0
+  74 0024 F1D1     		bne	.L5
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             ;
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+  75              		.loc 1 26 0
+  76 0026 00BF     		nop
+  77 0028 1437     		adds	r7, r7, #20
+  78              	.LCFI3:
+  79              		.cfi_def_cfa_offset 4
+  80 002a BD46     		mov	sp, r7
+  81              	.LCFI4:
+  82              		.cfi_def_cfa_register 13
+  83              		@ sp needed
+  84 002c 5DF8047B 		ldr	r7, [sp], #4
+  85              	.LCFI5:
+  86              		.cfi_restore 7
+  87              		.cfi_def_cfa_offset 0
+  88 0030 7047     		bx	lr
+  89              		.cfi_endproc
+  90              	.LFE123:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 3
+
+
+  92              		.section	.text.delay_ms,"ax",%progbits
+  93              		.align	1
+  94              		.global	delay_ms
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  98              		.fpu fpv4-sp-d16
+ 100              	delay_ms:
+ 101              	.LFB124:
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void delay_ms(uint32_t n)
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 102              		.loc 1 28 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 8
+ 105              		@ frame_needed = 1, uses_anonymous_args = 0
+ 106 0000 80B5     		push	{r7, lr}
+ 107              	.LCFI6:
+ 108              		.cfi_def_cfa_offset 8
+ 109              		.cfi_offset 7, -8
+ 110              		.cfi_offset 14, -4
+ 111 0002 82B0     		sub	sp, sp, #8
+ 112              	.LCFI7:
+ 113              		.cfi_def_cfa_offset 16
+ 114 0004 00AF     		add	r7, sp, #0
+ 115              	.LCFI8:
+ 116              		.cfi_def_cfa_register 7
+ 117 0006 7860     		str	r0, [r7, #4]
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (n--)
+ 118              		.loc 1 29 0
+ 119 0008 03E0     		b	.L7
+ 120              	.L8:
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         delay_us(1000);
+ 121              		.loc 1 30 0
+ 122 000a 4FF47A70 		mov	r0, #1000
+ 123 000e FFF7FEFF 		bl	delay_us
+ 124              	.L7:
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (n--)
+ 125              		.loc 1 29 0
+ 126 0012 7B68     		ldr	r3, [r7, #4]
+ 127 0014 5A1E     		subs	r2, r3, #1
+ 128 0016 7A60     		str	r2, [r7, #4]
+ 129 0018 002B     		cmp	r3, #0
+ 130 001a F6D1     		bne	.L8
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 131              		.loc 1 31 0
+ 132 001c 00BF     		nop
+ 133 001e 0837     		adds	r7, r7, #8
+ 134              	.LCFI9:
+ 135              		.cfi_def_cfa_offset 8
+ 136 0020 BD46     		mov	sp, r7
+ 137              	.LCFI10:
+ 138              		.cfi_def_cfa_register 13
+ 139              		@ sp needed
+ 140 0022 80BD     		pop	{r7, pc}
+ 141              		.cfi_endproc
+ 142              	.LFE124:
+ 144              		.section	.text.E53_IA1_I2C_Master_Transmit,"ax",%progbits
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 4
+
+
+ 145              		.align	1
+ 146              		.global	E53_IA1_I2C_Master_Transmit
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 150              		.fpu fpv4-sp-d16
+ 152              	E53_IA1_I2C_Master_Transmit:
+ 153              	.LFB125:
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void E53_IA1_I2C_Master_Transmit(uint8_t slaveAddr, uint8_t *pBuffer, uint8_t NumByteToRead)
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 154              		.loc 1 34 0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 16
+ 157              		@ frame_needed = 1, uses_anonymous_args = 0
+ 158 0000 80B5     		push	{r7, lr}
+ 159              	.LCFI11:
+ 160              		.cfi_def_cfa_offset 8
+ 161              		.cfi_offset 7, -8
+ 162              		.cfi_offset 14, -4
+ 163 0002 84B0     		sub	sp, sp, #16
+ 164              	.LCFI12:
+ 165              		.cfi_def_cfa_offset 24
+ 166 0004 00AF     		add	r7, sp, #0
+ 167              	.LCFI13:
+ 168              		.cfi_def_cfa_register 7
+ 169 0006 0346     		mov	r3, r0
+ 170 0008 3960     		str	r1, [r7]
+ 171 000a FB71     		strb	r3, [r7, #7]
+ 172 000c 1346     		mov	r3, r2
+ 173 000e BB71     		strb	r3, [r7, #6]
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until I2C bus is idle */
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (i2c_flag_get(I2C0, I2C_FLAG_I2CBSY))
+ 174              		.loc 1 36 0
+ 175 0010 00BF     		nop
+ 176              	.L10:
+ 177              		.loc 1 36 0 is_stmt 0 discriminator 1
+ 178 0012 40F20161 		movw	r1, #1537
+ 179 0016 2C48     		ldr	r0, .L18
+ 180 0018 FFF7FEFF 		bl	i2c_flag_get
+ 181 001c 0346     		mov	r3, r0
+ 182 001e 002B     		cmp	r3, #0
+ 183 0020 F7D1     		bne	.L10
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* send a start condition to I2C bus */
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_start_on_bus(I2C0);
+ 184              		.loc 1 39 0 is_stmt 1
+ 185 0022 2948     		ldr	r0, .L18
+ 186 0024 FFF7FEFF 		bl	i2c_start_on_bus
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until SBSEND bit is set */
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (!i2c_flag_get(I2C0, I2C_FLAG_SBSEND))
+ 187              		.loc 1 41 0
+ 188 0028 00BF     		nop
+ 189              	.L11:
+ 190              		.loc 1 41 0 is_stmt 0 discriminator 1
+ 191 002a 4FF4A061 		mov	r1, #1280
+ 192 002e 2648     		ldr	r0, .L18
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 5
+
+
+ 193 0030 FFF7FEFF 		bl	i2c_flag_get
+ 194 0034 0346     		mov	r3, r0
+ 195 0036 002B     		cmp	r3, #0
+ 196 0038 F7D0     		beq	.L11
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* send slave address to I2C bus */
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_master_addressing(I2C0, slaveAddr, I2C_TRANSMITTER);
+ 197              		.loc 1 44 0 is_stmt 1
+ 198 003a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 199 003c 6FF00102 		mvn	r2, #1
+ 200 0040 1946     		mov	r1, r3
+ 201 0042 2148     		ldr	r0, .L18
+ 202 0044 FFF7FEFF 		bl	i2c_master_addressing
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until ADDSEND bit is set */
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (!i2c_flag_get(I2C0, I2C_FLAG_ADDSEND))
+ 203              		.loc 1 46 0
+ 204 0048 00BF     		nop
+ 205              	.L12:
+ 206              		.loc 1 46 0 is_stmt 0 discriminator 1
+ 207 004a 40F20151 		movw	r1, #1281
+ 208 004e 1E48     		ldr	r0, .L18
+ 209 0050 FFF7FEFF 		bl	i2c_flag_get
+ 210 0054 0346     		mov	r3, r0
+ 211 0056 002B     		cmp	r3, #0
+ 212 0058 F7D0     		beq	.L12
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* clear ADDSEND bit */
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_flag_clear(I2C0, I2C_FLAG_ADDSEND);
+ 213              		.loc 1 49 0 is_stmt 1
+ 214 005a 40F20151 		movw	r1, #1281
+ 215 005e 1A48     		ldr	r0, .L18
+ 216 0060 FFF7FEFF 		bl	i2c_flag_clear
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until the transmit data buffer is empty */
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (!i2c_flag_get(I2C0, I2C_FLAG_TBE))
+ 217              		.loc 1 51 0
+ 218 0064 00BF     		nop
+ 219              	.L13:
+ 220              		.loc 1 51 0 is_stmt 0 discriminator 1
+ 221 0066 40F20751 		movw	r1, #1287
+ 222 006a 1748     		ldr	r0, .L18
+ 223 006c FFF7FEFF 		bl	i2c_flag_get
+ 224 0070 0346     		mov	r3, r0
+ 225 0072 002B     		cmp	r3, #0
+ 226 0074 F7D0     		beq	.L13
+ 227              	.LBB2:
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     for (int i = 0; i < NumByteToRead; i++)
+ 228              		.loc 1 54 0 is_stmt 1
+ 229 0076 0023     		movs	r3, #0
+ 230 0078 FB60     		str	r3, [r7, #12]
+ 231 007a 13E0     		b	.L14
+ 232              	.L16:
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         /* data transmission */
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         i2c_data_transmit(I2C0, pBuffer[i]);
+ 233              		.loc 1 57 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 6
+
+
+ 234 007c FB68     		ldr	r3, [r7, #12]
+ 235 007e 3A68     		ldr	r2, [r7]
+ 236 0080 1344     		add	r3, r3, r2
+ 237 0082 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 238 0084 1946     		mov	r1, r3
+ 239 0086 1048     		ldr	r0, .L18
+ 240 0088 FFF7FEFF 		bl	i2c_data_transmit
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         /* wait until the TBE bit is set */
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         while (!i2c_flag_get(I2C0, I2C_FLAG_TBE))
+ 241              		.loc 1 59 0
+ 242 008c 00BF     		nop
+ 243              	.L15:
+ 244              		.loc 1 59 0 is_stmt 0 discriminator 1
+ 245 008e 40F20751 		movw	r1, #1287
+ 246 0092 0D48     		ldr	r0, .L18
+ 247 0094 FFF7FEFF 		bl	i2c_flag_get
+ 248 0098 0346     		mov	r3, r0
+ 249 009a 002B     		cmp	r3, #0
+ 250 009c F7D0     		beq	.L15
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+ 251              		.loc 1 54 0 is_stmt 1 discriminator 2
+ 252 009e FB68     		ldr	r3, [r7, #12]
+ 253 00a0 0133     		adds	r3, r3, #1
+ 254 00a2 FB60     		str	r3, [r7, #12]
+ 255              	.L14:
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+ 256              		.loc 1 54 0 is_stmt 0 discriminator 1
+ 257 00a4 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 258 00a6 FA68     		ldr	r2, [r7, #12]
+ 259 00a8 9A42     		cmp	r2, r3
+ 260 00aa E7DB     		blt	.L16
+ 261              	.LBE2:
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             ;
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     }
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* send a stop condition to I2C bus */
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_stop_on_bus(I2C0);
+ 262              		.loc 1 63 0 is_stmt 1
+ 263 00ac 0648     		ldr	r0, .L18
+ 264 00ae FFF7FEFF 		bl	i2c_stop_on_bus
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (I2C_CTL0(I2C0) & 0x0200)
+ 265              		.loc 1 64 0
+ 266 00b2 00BF     		nop
+ 267              	.L17:
+ 268              		.loc 1 64 0 is_stmt 0 discriminator 1
+ 269 00b4 044B     		ldr	r3, .L18
+ 270 00b6 1B68     		ldr	r3, [r3]
+ 271 00b8 03F40073 		and	r3, r3, #512
+ 272 00bc 002B     		cmp	r3, #0
+ 273 00be F9D1     		bne	.L17
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 274              		.loc 1 66 0 is_stmt 1
+ 275 00c0 00BF     		nop
+ 276 00c2 1037     		adds	r7, r7, #16
+ 277              	.LCFI14:
+ 278              		.cfi_def_cfa_offset 8
+ 279 00c4 BD46     		mov	sp, r7
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 7
+
+
+ 280              	.LCFI15:
+ 281              		.cfi_def_cfa_register 13
+ 282              		@ sp needed
+ 283 00c6 80BD     		pop	{r7, pc}
+ 284              	.L19:
+ 285              		.align	2
+ 286              	.L18:
+ 287 00c8 00540040 		.word	1073763328
+ 288              		.cfi_endproc
+ 289              	.LFE125:
+ 291              		.section	.text.E53_IA1_I2C_Master_Receive,"ax",%progbits
+ 292              		.align	1
+ 293              		.global	E53_IA1_I2C_Master_Receive
+ 294              		.syntax unified
+ 295              		.thumb
+ 296              		.thumb_func
+ 297              		.fpu fpv4-sp-d16
+ 299              	E53_IA1_I2C_Master_Receive:
+ 300              	.LFB126:
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void E53_IA1_I2C_Master_Receive(uint8_t slaveAddr, uint8_t *pBuffer, uint8_t NumByteToRead)
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 301              		.loc 1 69 0
+ 302              		.cfi_startproc
+ 303              		@ args = 0, pretend = 0, frame = 8
+ 304              		@ frame_needed = 1, uses_anonymous_args = 0
+ 305 0000 80B5     		push	{r7, lr}
+ 306              	.LCFI16:
+ 307              		.cfi_def_cfa_offset 8
+ 308              		.cfi_offset 7, -8
+ 309              		.cfi_offset 14, -4
+ 310 0002 82B0     		sub	sp, sp, #8
+ 311              	.LCFI17:
+ 312              		.cfi_def_cfa_offset 16
+ 313 0004 00AF     		add	r7, sp, #0
+ 314              	.LCFI18:
+ 315              		.cfi_def_cfa_register 7
+ 316 0006 0346     		mov	r3, r0
+ 317 0008 3960     		str	r1, [r7]
+ 318 000a FB71     		strb	r3, [r7, #7]
+ 319 000c 1346     		mov	r3, r2
+ 320 000e BB71     		strb	r3, [r7, #6]
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until I2C bus is idle */
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (i2c_flag_get(I2C0, I2C_FLAG_I2CBSY))
+ 321              		.loc 1 71 0
+ 322 0010 00BF     		nop
+ 323              	.L21:
+ 324              		.loc 1 71 0 is_stmt 0 discriminator 1
+ 325 0012 40F20161 		movw	r1, #1537
+ 326 0016 4748     		ldr	r0, .L34
+ 327 0018 FFF7FEFF 		bl	i2c_flag_get
+ 328 001c 0346     		mov	r3, r0
+ 329 001e 002B     		cmp	r3, #0
+ 330 0020 F7D1     		bne	.L21
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* send a start condition to I2C bus */
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_start_on_bus(I2C0);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 8
+
+
+ 331              		.loc 1 74 0 is_stmt 1
+ 332 0022 4448     		ldr	r0, .L34
+ 333 0024 FFF7FEFF 		bl	i2c_start_on_bus
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until SBSEND bit is set */
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (!i2c_flag_get(I2C0, I2C_FLAG_SBSEND))
+ 334              		.loc 1 76 0
+ 335 0028 00BF     		nop
+ 336              	.L22:
+ 337              		.loc 1 76 0 is_stmt 0 discriminator 1
+ 338 002a 4FF4A061 		mov	r1, #1280
+ 339 002e 4148     		ldr	r0, .L34
+ 340 0030 FFF7FEFF 		bl	i2c_flag_get
+ 341 0034 0346     		mov	r3, r0
+ 342 0036 002B     		cmp	r3, #0
+ 343 0038 F7D0     		beq	.L22
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* send slave address to I2C bus */
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_master_addressing(I2C0, slaveAddr, I2C_TRANSMITTER);
+ 344              		.loc 1 79 0 is_stmt 1
+ 345 003a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 346 003c 6FF00102 		mvn	r2, #1
+ 347 0040 1946     		mov	r1, r3
+ 348 0042 3C48     		ldr	r0, .L34
+ 349 0044 FFF7FEFF 		bl	i2c_master_addressing
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until ADDSEND bit is set */
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (!i2c_flag_get(I2C0, I2C_FLAG_ADDSEND))
+ 350              		.loc 1 81 0
+ 351 0048 00BF     		nop
+ 352              	.L23:
+ 353              		.loc 1 81 0 is_stmt 0 discriminator 1
+ 354 004a 40F20151 		movw	r1, #1281
+ 355 004e 3948     		ldr	r0, .L34
+ 356 0050 FFF7FEFF 		bl	i2c_flag_get
+ 357 0054 0346     		mov	r3, r0
+ 358 0056 002B     		cmp	r3, #0
+ 359 0058 F7D0     		beq	.L23
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* clear ADDSEND bit */
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_flag_clear(I2C0, I2C_FLAG_ADDSEND);
+ 360              		.loc 1 84 0 is_stmt 1
+ 361 005a 40F20151 		movw	r1, #1281
+ 362 005e 3548     		ldr	r0, .L34
+ 363 0060 FFF7FEFF 		bl	i2c_flag_clear
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until the transmit data buffer is empty */
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (!i2c_flag_get(I2C0, I2C_FLAG_TBE))
+ 364              		.loc 1 86 0
+ 365 0064 00BF     		nop
+ 366              	.L24:
+ 367              		.loc 1 86 0 is_stmt 0 discriminator 1
+ 368 0066 40F20751 		movw	r1, #1287
+ 369 006a 3248     		ldr	r0, .L34
+ 370 006c FFF7FEFF 		bl	i2c_flag_get
+ 371 0070 0346     		mov	r3, r0
+ 372 0072 002B     		cmp	r3, #0
+ 373 0074 F7D0     		beq	.L24
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* send a stop condition to I2C bus */
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 9
+
+
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_stop_on_bus(I2C0);
+ 374              		.loc 1 89 0 is_stmt 1
+ 375 0076 2F48     		ldr	r0, .L34
+ 376 0078 FFF7FEFF 		bl	i2c_stop_on_bus
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (I2C_CTL0(I2C0) & 0x0200)
+ 377              		.loc 1 90 0
+ 378 007c 00BF     		nop
+ 379              	.L25:
+ 380              		.loc 1 90 0 is_stmt 0 discriminator 1
+ 381 007e 2D4B     		ldr	r3, .L34
+ 382 0080 1B68     		ldr	r3, [r3]
+ 383 0082 03F40073 		and	r3, r3, #512
+ 384 0086 002B     		cmp	r3, #0
+ 385 0088 F9D1     		bne	.L25
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until I2C bus is idle */
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (i2c_flag_get(I2C0, I2C_FLAG_I2CBSY))
+ 386              		.loc 1 94 0 is_stmt 1
+ 387 008a 00BF     		nop
+ 388              	.L26:
+ 389              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 390 008c 40F20161 		movw	r1, #1537
+ 391 0090 2848     		ldr	r0, .L34
+ 392 0092 FFF7FEFF 		bl	i2c_flag_get
+ 393 0096 0346     		mov	r3, r0
+ 394 0098 002B     		cmp	r3, #0
+ 395 009a F7D1     		bne	.L26
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* send a start condition to I2C bus */
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_start_on_bus(I2C0);
+ 396              		.loc 1 97 0 is_stmt 1
+ 397 009c 2548     		ldr	r0, .L34
+ 398 009e FFF7FEFF 		bl	i2c_start_on_bus
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until SBSEND bit is set */
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (!i2c_flag_get(I2C0, I2C_FLAG_SBSEND))
+ 399              		.loc 1 99 0
+ 400 00a2 00BF     		nop
+ 401              	.L27:
+ 402              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 403 00a4 4FF4A061 		mov	r1, #1280
+ 404 00a8 2248     		ldr	r0, .L34
+ 405 00aa FFF7FEFF 		bl	i2c_flag_get
+ 406 00ae 0346     		mov	r3, r0
+ 407 00b0 002B     		cmp	r3, #0
+ 408 00b2 F7D0     		beq	.L27
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* send slave address to I2C bus */
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_master_addressing(I2C0, slaveAddr, I2C_RECEIVER);
+ 409              		.loc 1 102 0 is_stmt 1
+ 410 00b4 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 411 00b6 0122     		movs	r2, #1
+ 412 00b8 1946     		mov	r1, r3
+ 413 00ba 1E48     		ldr	r0, .L34
+ 414 00bc FFF7FEFF 		bl	i2c_master_addressing
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* wait until ADDSEND bit is set */
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (!i2c_flag_get(I2C0, I2C_FLAG_ADDSEND))
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 10
+
+
+ 415              		.loc 1 104 0
+ 416 00c0 00BF     		nop
+ 417              	.L28:
+ 418              		.loc 1 104 0 is_stmt 0 discriminator 1
+ 419 00c2 40F20151 		movw	r1, #1281
+ 420 00c6 1B48     		ldr	r0, .L34
+ 421 00c8 FFF7FEFF 		bl	i2c_flag_get
+ 422 00cc 0346     		mov	r3, r0
+ 423 00ce 002B     		cmp	r3, #0
+ 424 00d0 F7D0     		beq	.L28
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         ;
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* clear ADDSEND bit */
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_flag_clear(I2C0, I2C_FLAG_ADDSEND);
+ 425              		.loc 1 107 0 is_stmt 1
+ 426 00d2 40F20151 		movw	r1, #1281
+ 427 00d6 1748     		ldr	r0, .L34
+ 428 00d8 FFF7FEFF 		bl	i2c_flag_clear
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* While there is data to be read */
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     while (NumByteToRead)
+ 429              		.loc 1 110 0
+ 430 00dc 1FE0     		b	.L29
+ 431              	.L32:
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         if (NumByteToRead == 1)
+ 432              		.loc 1 112 0
+ 433 00de BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 434 00e0 012B     		cmp	r3, #1
+ 435 00e2 06D1     		bne	.L33
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         {
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             /* Disable Acknowledgement */
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             i2c_ack_config(I2C0, I2C_ACK_DISABLE);
+ 436              		.loc 1 115 0
+ 437 00e4 0021     		movs	r1, #0
+ 438 00e6 1348     		ldr	r0, .L34
+ 439 00e8 FFF7FEFF 		bl	i2c_ack_config
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             /* Send STOP Condition */
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             i2c_stop_on_bus(I2C0);
+ 440              		.loc 1 118 0
+ 441 00ec 1148     		ldr	r0, .L34
+ 442 00ee FFF7FEFF 		bl	i2c_stop_on_bus
+ 443              	.L33:
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         }
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         /* wait until the RBNE bit is set */
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         while (!i2c_flag_get(I2C0, I2C_FLAG_RBNE))
+ 444              		.loc 1 121 0
+ 445 00f2 00BF     		nop
+ 446              	.L31:
+ 447              		.loc 1 121 0 is_stmt 0 discriminator 1
+ 448 00f4 40F20651 		movw	r1, #1286
+ 449 00f8 0E48     		ldr	r0, .L34
+ 450 00fa FFF7FEFF 		bl	i2c_flag_get
+ 451 00fe 0346     		mov	r3, r0
+ 452 0100 002B     		cmp	r3, #0
+ 453 0102 F7D0     		beq	.L31
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             ;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 11
+
+
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         /* Read a byte from the MPU6050 */
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         *pBuffer = i2c_data_receive(I2C0);
+ 454              		.loc 1 124 0 is_stmt 1
+ 455 0104 0B48     		ldr	r0, .L34
+ 456 0106 FFF7FEFF 		bl	i2c_data_receive
+ 457 010a 0346     		mov	r3, r0
+ 458 010c 1A46     		mov	r2, r3
+ 459 010e 3B68     		ldr	r3, [r7]
+ 460 0110 1A70     		strb	r2, [r3]
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         /* Point to the next location where the byte read will be saved */
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         pBuffer++;
+ 461              		.loc 1 126 0
+ 462 0112 3B68     		ldr	r3, [r7]
+ 463 0114 0133     		adds	r3, r3, #1
+ 464 0116 3B60     		str	r3, [r7]
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         /* Decrement the read bytes counter */
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         NumByteToRead--;
+ 465              		.loc 1 128 0
+ 466 0118 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 467 011a 013B     		subs	r3, r3, #1
+ 468 011c BB71     		strb	r3, [r7, #6]
+ 469              	.L29:
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+ 470              		.loc 1 110 0
+ 471 011e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 472 0120 002B     		cmp	r3, #0
+ 473 0122 DCD1     		bne	.L32
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     }
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_ack_config(I2C0, I2C_ACK_ENABLE);
+ 474              		.loc 1 130 0
+ 475 0124 0121     		movs	r1, #1
+ 476 0126 0348     		ldr	r0, .L34
+ 477 0128 FFF7FEFF 		bl	i2c_ack_config
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 478              		.loc 1 131 0
+ 479 012c 00BF     		nop
+ 480 012e 0837     		adds	r7, r7, #8
+ 481              	.LCFI19:
+ 482              		.cfi_def_cfa_offset 8
+ 483 0130 BD46     		mov	sp, r7
+ 484              	.LCFI20:
+ 485              		.cfi_def_cfa_register 13
+ 486              		@ sp needed
+ 487 0132 80BD     		pop	{r7, pc}
+ 488              	.L35:
+ 489              		.align	2
+ 490              	.L34:
+ 491 0134 00540040 		.word	1073763328
+ 492              		.cfi_endproc
+ 493              	.LFE126:
+ 495              		.section	.text.Init_BH1750,"ax",%progbits
+ 496              		.align	1
+ 497              		.global	Init_BH1750
+ 498              		.syntax unified
+ 499              		.thumb
+ 500              		.thumb_func
+ 501              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 12
+
+
+ 503              	Init_BH1750:
+ 504              	.LFB127:
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: Init_BH1750
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 写命令初始化BH1750
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: 无
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void Init_BH1750(void)
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 505              		.loc 1 140 0
+ 506              		.cfi_startproc
+ 507              		@ args = 0, pretend = 0, frame = 8
+ 508              		@ frame_needed = 1, uses_anonymous_args = 0
+ 509 0000 80B5     		push	{r7, lr}
+ 510              	.LCFI21:
+ 511              		.cfi_def_cfa_offset 8
+ 512              		.cfi_offset 7, -8
+ 513              		.cfi_offset 14, -4
+ 514 0002 82B0     		sub	sp, sp, #8
+ 515              	.LCFI22:
+ 516              		.cfi_def_cfa_offset 16
+ 517 0004 00AF     		add	r7, sp, #0
+ 518              	.LCFI23:
+ 519              		.cfi_def_cfa_register 7
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     uint8_t t_Data = 0x01;
+ 520              		.loc 1 141 0
+ 521 0006 0123     		movs	r3, #1
+ 522 0008 FB71     		strb	r3, [r7, #7]
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     E53_IA1_I2C_Master_Transmit(BH1750_Addr, &t_Data, 1);
+ 523              		.loc 1 142 0
+ 524 000a FB1D     		adds	r3, r7, #7
+ 525 000c 0122     		movs	r2, #1
+ 526 000e 1946     		mov	r1, r3
+ 527 0010 4620     		movs	r0, #70
+ 528 0012 FFF7FEFF 		bl	E53_IA1_I2C_Master_Transmit
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 529              		.loc 1 143 0
+ 530 0016 00BF     		nop
+ 531 0018 0837     		adds	r7, r7, #8
+ 532              	.LCFI24:
+ 533              		.cfi_def_cfa_offset 8
+ 534 001a BD46     		mov	sp, r7
+ 535              	.LCFI25:
+ 536              		.cfi_def_cfa_register 13
+ 537              		@ sp needed
+ 538 001c 80BD     		pop	{r7, pc}
+ 539              		.cfi_endproc
+ 540              	.LFE127:
+ 542              		.section	.text.Start_BH1750,"ax",%progbits
+ 543              		.align	1
+ 544              		.global	Start_BH1750
+ 545              		.syntax unified
+ 546              		.thumb
+ 547              		.thumb_func
+ 548              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 13
+
+
+ 550              	Start_BH1750:
+ 551              	.LFB128:
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: Start_BH1750
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 启动BH1750
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: 无
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void Start_BH1750(void)
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 552              		.loc 1 152 0
+ 553              		.cfi_startproc
+ 554              		@ args = 0, pretend = 0, frame = 8
+ 555              		@ frame_needed = 1, uses_anonymous_args = 0
+ 556 0000 80B5     		push	{r7, lr}
+ 557              	.LCFI26:
+ 558              		.cfi_def_cfa_offset 8
+ 559              		.cfi_offset 7, -8
+ 560              		.cfi_offset 14, -4
+ 561 0002 82B0     		sub	sp, sp, #8
+ 562              	.LCFI27:
+ 563              		.cfi_def_cfa_offset 16
+ 564 0004 00AF     		add	r7, sp, #0
+ 565              	.LCFI28:
+ 566              		.cfi_def_cfa_register 7
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     uint8_t t_Data = 0x10;
+ 567              		.loc 1 153 0
+ 568 0006 1023     		movs	r3, #16
+ 569 0008 FB71     		strb	r3, [r7, #7]
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     E53_IA1_I2C_Master_Transmit(BH1750_Addr, &t_Data, 1);
+ 570              		.loc 1 154 0
+ 571 000a FB1D     		adds	r3, r7, #7
+ 572 000c 0122     		movs	r2, #1
+ 573 000e 1946     		mov	r1, r3
+ 574 0010 4620     		movs	r0, #70
+ 575 0012 FFF7FEFF 		bl	E53_IA1_I2C_Master_Transmit
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 576              		.loc 1 155 0
+ 577 0016 00BF     		nop
+ 578 0018 0837     		adds	r7, r7, #8
+ 579              	.LCFI29:
+ 580              		.cfi_def_cfa_offset 8
+ 581 001a BD46     		mov	sp, r7
+ 582              	.LCFI30:
+ 583              		.cfi_def_cfa_register 13
+ 584              		@ sp needed
+ 585 001c 80BD     		pop	{r7, pc}
+ 586              		.cfi_endproc
+ 587              	.LFE128:
+ 589              		.global	__aeabi_i2d
+ 590              		.global	__aeabi_ddiv
+ 591              		.global	__aeabi_d2f
+ 592              		.section	.text.Convert_BH1750,"ax",%progbits
+ 593              		.align	1
+ 594              		.global	Convert_BH1750
+ 595              		.syntax unified
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 14
+
+
+ 596              		.thumb
+ 597              		.thumb_func
+ 598              		.fpu fpv4-sp-d16
+ 600              	Convert_BH1750:
+ 601              	.LFB129:
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: Convert_BH1750
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 数值转换
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: 无
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 光强值
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** float Convert_BH1750(void)
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 602              		.loc 1 164 0
+ 603              		.cfi_startproc
+ 604              		@ args = 0, pretend = 0, frame = 16
+ 605              		@ frame_needed = 1, uses_anonymous_args = 0
+ 606 0000 90B5     		push	{r4, r7, lr}
+ 607              	.LCFI31:
+ 608              		.cfi_def_cfa_offset 12
+ 609              		.cfi_offset 4, -12
+ 610              		.cfi_offset 7, -8
+ 611              		.cfi_offset 14, -4
+ 612 0002 85B0     		sub	sp, sp, #20
+ 613              	.LCFI32:
+ 614              		.cfi_def_cfa_offset 32
+ 615 0004 00AF     		add	r7, sp, #0
+ 616              	.LCFI33:
+ 617              		.cfi_def_cfa_register 7
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     float result_lx;
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     uint8_t BUF[2];
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     int result;
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     Start_BH1750();
+ 618              		.loc 1 168 0
+ 619 0006 FFF7FEFF 		bl	Start_BH1750
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     delay_ms(180);
+ 620              		.loc 1 169 0
+ 621 000a B420     		movs	r0, #180
+ 622 000c FFF7FEFF 		bl	delay_ms
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     E53_IA1_I2C_Master_Receive(BH1750_Addr + 1, BUF, 2);
+ 623              		.loc 1 170 0
+ 624 0010 3B1D     		adds	r3, r7, #4
+ 625 0012 0222     		movs	r2, #2
+ 626 0014 1946     		mov	r1, r3
+ 627 0016 4720     		movs	r0, #71
+ 628 0018 FFF7FEFF 		bl	E53_IA1_I2C_Master_Receive
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     result = BUF[0];
+ 629              		.loc 1 171 0
+ 630 001c 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 631 001e FB60     		str	r3, [r7, #12]
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     result = (result << 8) + BUF[1]; // Synthetic Digital Illumination Intensity Data
+ 632              		.loc 1 172 0
+ 633 0020 FB68     		ldr	r3, [r7, #12]
+ 634 0022 1B02     		lsls	r3, r3, #8
+ 635 0024 7A79     		ldrb	r2, [r7, #5]	@ zero_extendqisi2
+ 636 0026 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 15
+
+
+ 637 0028 FB60     		str	r3, [r7, #12]
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     result_lx = (float)(result / 1.2);
+ 638              		.loc 1 173 0
+ 639 002a F868     		ldr	r0, [r7, #12]
+ 640 002c FFF7FEFF 		bl	__aeabi_i2d
+ 641              	.LVL0:
+ 642 0030 4FF03332 		mov	r2, #858993459
+ 643 0034 094B     		ldr	r3, .L40
+ 644 0036 FFF7FEFF 		bl	__aeabi_ddiv
+ 645              	.LVL1:
+ 646 003a 0346     		mov	r3, r0
+ 647 003c 0C46     		mov	r4, r1
+ 648 003e 1846     		mov	r0, r3
+ 649 0040 2146     		mov	r1, r4
+ 650 0042 FFF7FEFF 		bl	__aeabi_d2f
+ 651              	.LVL2:
+ 652 0046 0346     		mov	r3, r0	@ float
+ 653 0048 BB60     		str	r3, [r7, #8]	@ float
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     return result_lx;
+ 654              		.loc 1 174 0
+ 655 004a BB68     		ldr	r3, [r7, #8]	@ float
+ 656 004c 07EE903A 		vmov	s15, r3
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 657              		.loc 1 175 0
+ 658 0050 B0EE670A 		vmov.f32	s0, s15
+ 659 0054 1437     		adds	r7, r7, #20
+ 660              	.LCFI34:
+ 661              		.cfi_def_cfa_offset 12
+ 662 0056 BD46     		mov	sp, r7
+ 663              	.LCFI35:
+ 664              		.cfi_def_cfa_register 13
+ 665              		@ sp needed
+ 666 0058 90BD     		pop	{r4, r7, pc}
+ 667              	.L41:
+ 668 005a 00BF     		.align	2
+ 669              	.L40:
+ 670 005c 3333F33F 		.word	1072902963
+ 671              		.cfi_endproc
+ 672              	.LFE129:
+ 674              		.section	.rodata
+ 675              		.align	2
+ 676              	.LC0:
+ 677 0000 30       		.byte	48
+ 678 0001 A2       		.byte	-94
+ 679              		.section	.text.SHT30_reset,"ax",%progbits
+ 680              		.align	1
+ 681              		.global	SHT30_reset
+ 682              		.syntax unified
+ 683              		.thumb
+ 684              		.thumb_func
+ 685              		.fpu fpv4-sp-d16
+ 687              	SHT30_reset:
+ 688              	.LFB130:
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: SHT30_reset
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: SHT30复位
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 16
+
+
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: 无
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void SHT30_reset(void)
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 689              		.loc 1 184 0
+ 690              		.cfi_startproc
+ 691              		@ args = 0, pretend = 0, frame = 8
+ 692              		@ frame_needed = 1, uses_anonymous_args = 0
+ 693 0000 80B5     		push	{r7, lr}
+ 694              	.LCFI36:
+ 695              		.cfi_def_cfa_offset 8
+ 696              		.cfi_offset 7, -8
+ 697              		.cfi_offset 14, -4
+ 698 0002 82B0     		sub	sp, sp, #8
+ 699              	.LCFI37:
+ 700              		.cfi_def_cfa_offset 16
+ 701 0004 00AF     		add	r7, sp, #0
+ 702              	.LCFI38:
+ 703              		.cfi_def_cfa_register 7
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Resetcommand_Buffer[2] = {0x30, 0xA2}; // soft reset
+ 704              		.loc 1 185 0
+ 705 0006 084B     		ldr	r3, .L43
+ 706 0008 1B88     		ldrh	r3, [r3]	@ movhi
+ 707 000a BB80     		strh	r3, [r7, #4]	@ movhi
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     E53_IA1_I2C_Master_Transmit(SHT30_Addr << 1, SHT3X_Resetcommand_Buffer, 2);
+ 708              		.loc 1 186 0
+ 709 000c 3B1D     		adds	r3, r7, #4
+ 710 000e 0222     		movs	r2, #2
+ 711 0010 1946     		mov	r1, r3
+ 712 0012 8820     		movs	r0, #136
+ 713 0014 FFF7FEFF 		bl	E53_IA1_I2C_Master_Transmit
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     delay_ms(15);
+ 714              		.loc 1 187 0
+ 715 0018 0F20     		movs	r0, #15
+ 716 001a FFF7FEFF 		bl	delay_ms
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 717              		.loc 1 188 0
+ 718 001e 00BF     		nop
+ 719 0020 0837     		adds	r7, r7, #8
+ 720              	.LCFI39:
+ 721              		.cfi_def_cfa_offset 8
+ 722 0022 BD46     		mov	sp, r7
+ 723              	.LCFI40:
+ 724              		.cfi_def_cfa_register 13
+ 725              		@ sp needed
+ 726 0024 80BD     		pop	{r7, pc}
+ 727              	.L44:
+ 728 0026 00BF     		.align	2
+ 729              	.L43:
+ 730 0028 00000000 		.word	.LC0
+ 731              		.cfi_endproc
+ 732              	.LFE130:
+ 734              		.section	.rodata
+ 735 0002 0000     		.align	2
+ 736              	.LC1:
+ 737 0004 22       		.byte	34
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 17
+
+
+ 738 0005 36       		.byte	54
+ 739              		.section	.text.Init_SHT30,"ax",%progbits
+ 740              		.align	1
+ 741              		.global	Init_SHT30
+ 742              		.syntax unified
+ 743              		.thumb
+ 744              		.thumb_func
+ 745              		.fpu fpv4-sp-d16
+ 747              	Init_SHT30:
+ 748              	.LFB131:
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: Init_SHT30
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 初始化SHT30，设置测量周期
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: 无
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void Init_SHT30(void)
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 749              		.loc 1 197 0
+ 750              		.cfi_startproc
+ 751              		@ args = 0, pretend = 0, frame = 8
+ 752              		@ frame_needed = 1, uses_anonymous_args = 0
+ 753 0000 80B5     		push	{r7, lr}
+ 754              	.LCFI41:
+ 755              		.cfi_def_cfa_offset 8
+ 756              		.cfi_offset 7, -8
+ 757              		.cfi_offset 14, -4
+ 758 0002 82B0     		sub	sp, sp, #8
+ 759              	.LCFI42:
+ 760              		.cfi_def_cfa_offset 16
+ 761 0004 00AF     		add	r7, sp, #0
+ 762              	.LCFI43:
+ 763              		.cfi_def_cfa_register 7
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Modecommand_Buffer[2] = {0x22, 0x36};                        // periodic mode com
+ 764              		.loc 1 198 0
+ 765 0006 064B     		ldr	r3, .L46
+ 766 0008 1B88     		ldrh	r3, [r3]	@ movhi
+ 767 000a BB80     		strh	r3, [r7, #4]	@ movhi
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     E53_IA1_I2C_Master_Transmit(SHT30_Addr << 1, SHT3X_Modecommand_Buffer, 2); // send periodic mod
+ 768              		.loc 1 199 0
+ 769 000c 3B1D     		adds	r3, r7, #4
+ 770 000e 0222     		movs	r2, #2
+ 771 0010 1946     		mov	r1, r3
+ 772 0012 8820     		movs	r0, #136
+ 773 0014 FFF7FEFF 		bl	E53_IA1_I2C_Master_Transmit
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 774              		.loc 1 200 0
+ 775 0018 00BF     		nop
+ 776 001a 0837     		adds	r7, r7, #8
+ 777              	.LCFI44:
+ 778              		.cfi_def_cfa_offset 8
+ 779 001c BD46     		mov	sp, r7
+ 780              	.LCFI45:
+ 781              		.cfi_def_cfa_register 13
+ 782              		@ sp needed
+ 783 001e 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 18
+
+
+ 784              	.L47:
+ 785              		.align	2
+ 786              	.L46:
+ 787 0020 04000000 		.word	.LC1
+ 788              		.cfi_endproc
+ 789              	.LFE131:
+ 791              		.section	.text.SHT3x_CheckCrc,"ax",%progbits
+ 792              		.align	1
+ 793              		.global	SHT3x_CheckCrc
+ 794              		.syntax unified
+ 795              		.thumb
+ 796              		.thumb_func
+ 797              		.fpu fpv4-sp-d16
+ 799              	SHT3x_CheckCrc:
+ 800              	.LFB132:
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** * 函数名称: SHT3x_CheckCrc
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** * 说    明: 检查数据正确性
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** * 参    数: data：读取到的数据
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             nbrOfBytes：需要校验的数量
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             checksum：读取到的校对比验值
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** * 返 回 值: 校验结果，0-成功		1-失败
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** ***************************************************************/
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** uint8_t SHT3x_CheckCrc(char data[], char nbrOfBytes, char checksum)
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 801              		.loc 1 211 0
+ 802              		.cfi_startproc
+ 803              		@ args = 0, pretend = 0, frame = 16
+ 804              		@ frame_needed = 1, uses_anonymous_args = 0
+ 805              		@ link register save eliminated.
+ 806 0000 80B4     		push	{r7}
+ 807              	.LCFI46:
+ 808              		.cfi_def_cfa_offset 4
+ 809              		.cfi_offset 7, -4
+ 810 0002 85B0     		sub	sp, sp, #20
+ 811              	.LCFI47:
+ 812              		.cfi_def_cfa_offset 24
+ 813 0004 00AF     		add	r7, sp, #0
+ 814              	.LCFI48:
+ 815              		.cfi_def_cfa_register 7
+ 816 0006 7860     		str	r0, [r7, #4]
+ 817 0008 0B46     		mov	r3, r1
+ 818 000a FB70     		strb	r3, [r7, #3]
+ 819 000c 1346     		mov	r3, r2
+ 820 000e BB70     		strb	r3, [r7, #2]
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     char crc = 0xFF;
+ 821              		.loc 1 213 0
+ 822 0010 FF23     		movs	r3, #255
+ 823 0012 FB73     		strb	r3, [r7, #15]
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     char bit = 0;
+ 824              		.loc 1 214 0
+ 825 0014 0023     		movs	r3, #0
+ 826 0016 BB73     		strb	r3, [r7, #14]
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     char byteCtr;
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 19
+
+
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     // calculates 8-Bit checksum with given polynomial
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     for (byteCtr = 0; byteCtr < nbrOfBytes; ++byteCtr)
+ 827              		.loc 1 218 0
+ 828 0018 0023     		movs	r3, #0
+ 829 001a 7B73     		strb	r3, [r7, #13]
+ 830 001c 23E0     		b	.L49
+ 831              	.L54:
+ 219:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+ 220:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         crc ^= (data[byteCtr]);
+ 832              		.loc 1 220 0
+ 833 001e 7B7B     		ldrb	r3, [r7, #13]	@ zero_extendqisi2
+ 834 0020 7A68     		ldr	r2, [r7, #4]
+ 835 0022 1344     		add	r3, r3, r2
+ 836 0024 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 837 0026 FB7B     		ldrb	r3, [r7, #15]
+ 838 0028 5340     		eors	r3, r3, r2
+ 839 002a FB73     		strb	r3, [r7, #15]
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         for (bit = 8; bit > 0; --bit)
+ 840              		.loc 1 221 0
+ 841 002c 0823     		movs	r3, #8
+ 842 002e BB73     		strb	r3, [r7, #14]
+ 843 0030 13E0     		b	.L50
+ 844              	.L53:
+ 222:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         {
+ 223:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             if (crc & 0x80)
+ 845              		.loc 1 223 0
+ 846 0032 97F90F30 		ldrsb	r3, [r7, #15]
+ 847 0036 002B     		cmp	r3, #0
+ 848 0038 09DA     		bge	.L51
+ 224:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****                 crc = (crc << 1) ^ POLYNOMIAL;
+ 849              		.loc 1 224 0
+ 850 003a FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 851 003c 5B00     		lsls	r3, r3, #1
+ 852 003e 5AB2     		sxtb	r2, r3
+ 853 0040 40F23113 		movw	r3, #305
+ 854 0044 5BB2     		sxtb	r3, r3
+ 855 0046 5340     		eors	r3, r3, r2
+ 856 0048 5BB2     		sxtb	r3, r3
+ 857 004a FB73     		strb	r3, [r7, #15]
+ 858 004c 02E0     		b	.L52
+ 859              	.L51:
+ 225:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****             else
+ 226:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****                 crc = (crc << 1);
+ 860              		.loc 1 226 0
+ 861 004e FB7B     		ldrb	r3, [r7, #15]
+ 862 0050 5B00     		lsls	r3, r3, #1
+ 863 0052 FB73     		strb	r3, [r7, #15]
+ 864              	.L52:
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         {
+ 865              		.loc 1 221 0 discriminator 2
+ 866 0054 BB7B     		ldrb	r3, [r7, #14]
+ 867 0056 013B     		subs	r3, r3, #1
+ 868 0058 BB73     		strb	r3, [r7, #14]
+ 869              	.L50:
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         {
+ 870              		.loc 1 221 0 is_stmt 0 discriminator 1
+ 871 005a BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 20
+
+
+ 872 005c 002B     		cmp	r3, #0
+ 873 005e E8D1     		bne	.L53
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+ 874              		.loc 1 218 0 is_stmt 1 discriminator 2
+ 875 0060 7B7B     		ldrb	r3, [r7, #13]
+ 876 0062 0133     		adds	r3, r3, #1
+ 877 0064 7B73     		strb	r3, [r7, #13]
+ 878              	.L49:
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+ 879              		.loc 1 218 0 is_stmt 0 discriminator 1
+ 880 0066 7A7B     		ldrb	r2, [r7, #13]	@ zero_extendqisi2
+ 881 0068 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 882 006a 9A42     		cmp	r2, r3
+ 883 006c D7D3     		bcc	.L54
+ 227:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         }
+ 228:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     }
+ 229:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     if (crc != checksum)
+ 884              		.loc 1 230 0 is_stmt 1
+ 885 006e FA7B     		ldrb	r2, [r7, #15]	@ zero_extendqisi2
+ 886 0070 BB78     		ldrb	r3, [r7, #2]	@ zero_extendqisi2
+ 887 0072 9A42     		cmp	r2, r3
+ 888 0074 01D0     		beq	.L55
+ 231:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         return 1;
+ 889              		.loc 1 231 0
+ 890 0076 0123     		movs	r3, #1
+ 891 0078 00E0     		b	.L56
+ 892              	.L55:
+ 232:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     else
+ 233:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         return 0;
+ 893              		.loc 1 233 0
+ 894 007a 0023     		movs	r3, #0
+ 895              	.L56:
+ 234:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 896              		.loc 1 234 0
+ 897 007c 1846     		mov	r0, r3
+ 898 007e 1437     		adds	r7, r7, #20
+ 899              	.LCFI49:
+ 900              		.cfi_def_cfa_offset 4
+ 901 0080 BD46     		mov	sp, r7
+ 902              	.LCFI50:
+ 903              		.cfi_def_cfa_register 13
+ 904              		@ sp needed
+ 905 0082 5DF8047B 		ldr	r7, [sp], #4
+ 906              	.LCFI51:
+ 907              		.cfi_restore 7
+ 908              		.cfi_def_cfa_offset 0
+ 909 0086 7047     		bx	lr
+ 910              		.cfi_endproc
+ 911              	.LFE132:
+ 913              		.section	.text.SHT3x_CalcTemperatureC,"ax",%progbits
+ 914              		.align	1
+ 915              		.global	SHT3x_CalcTemperatureC
+ 916              		.syntax unified
+ 917              		.thumb
+ 918              		.thumb_func
+ 919              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 21
+
+
+ 921              	SHT3x_CalcTemperatureC:
+ 922              	.LFB133:
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 236:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: SHT3x_CalcTemperatureC
+ 238:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 温度计算
+ 239:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: u16sT：读取到的温度原始数据
+ 240:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 计算后的温度数据
+ 241:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** float SHT3x_CalcTemperatureC(unsigned short u16sT)
+ 243:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 923              		.loc 1 243 0
+ 924              		.cfi_startproc
+ 925              		@ args = 0, pretend = 0, frame = 16
+ 926              		@ frame_needed = 1, uses_anonymous_args = 0
+ 927              		@ link register save eliminated.
+ 928 0000 80B4     		push	{r7}
+ 929              	.LCFI52:
+ 930              		.cfi_def_cfa_offset 4
+ 931              		.cfi_offset 7, -4
+ 932 0002 85B0     		sub	sp, sp, #20
+ 933              	.LCFI53:
+ 934              		.cfi_def_cfa_offset 24
+ 935 0004 00AF     		add	r7, sp, #0
+ 936              	.LCFI54:
+ 937              		.cfi_def_cfa_register 7
+ 938 0006 0346     		mov	r3, r0
+ 939 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 244:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 245:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     float temperatureC = 0; // variable for result
+ 940              		.loc 1 245 0
+ 941 000a 4FF00003 		mov	r3, #0
+ 942 000e FB60     		str	r3, [r7, #12]	@ float
+ 246:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 247:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     u16sT &= ~0x0003; // clear bits [1..0] (status bits)
+ 943              		.loc 1 247 0
+ 944 0010 FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 945 0012 23F00303 		bic	r3, r3, #3
+ 946 0016 FB80     		strh	r3, [r7, #6]	@ movhi
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     //-- calculate temperature [℃] --
+ 249:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     temperatureC = (175 * (float)u16sT / 65535 - 45); // T = -45 + 175 * rawValue / (2^16-1)
+ 947              		.loc 1 249 0
+ 948 0018 FB88     		ldrh	r3, [r7, #6]
+ 949 001a 07EE903A 		vmov	s15, r3	@ int
+ 950 001e F8EE677A 		vcvt.f32.u32	s15, s15
+ 951 0022 9FED0C7A 		vldr.32	s14, .L59
+ 952 0026 27EE877A 		vmul.f32	s14, s15, s14
+ 953 002a DFED0B6A 		vldr.32	s13, .L59+4
+ 954 002e C7EE267A 		vdiv.f32	s15, s14, s13
+ 955 0032 9FED0A7A 		vldr.32	s14, .L59+8
+ 956 0036 77EEC77A 		vsub.f32	s15, s15, s14
+ 957 003a C7ED037A 		vstr.32	s15, [r7, #12]
+ 250:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     return temperatureC;
+ 958              		.loc 1 251 0
+ 959 003e FB68     		ldr	r3, [r7, #12]	@ float
+ 960 0040 07EE903A 		vmov	s15, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 22
+
+
+ 252:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 961              		.loc 1 252 0
+ 962 0044 B0EE670A 		vmov.f32	s0, s15
+ 963 0048 1437     		adds	r7, r7, #20
+ 964              	.LCFI55:
+ 965              		.cfi_def_cfa_offset 4
+ 966 004a BD46     		mov	sp, r7
+ 967              	.LCFI56:
+ 968              		.cfi_def_cfa_register 13
+ 969              		@ sp needed
+ 970 004c 5DF8047B 		ldr	r7, [sp], #4
+ 971              	.LCFI57:
+ 972              		.cfi_restore 7
+ 973              		.cfi_def_cfa_offset 0
+ 974 0050 7047     		bx	lr
+ 975              	.L60:
+ 976 0052 00BF     		.align	2
+ 977              	.L59:
+ 978 0054 00002F43 		.word	1127153664
+ 979 0058 00FF7F47 		.word	1199570688
+ 980 005c 00003442 		.word	1110704128
+ 981              		.cfi_endproc
+ 982              	.LFE133:
+ 984              		.section	.text.SHT3x_CalcRH,"ax",%progbits
+ 985              		.align	1
+ 986              		.global	SHT3x_CalcRH
+ 987              		.syntax unified
+ 988              		.thumb
+ 989              		.thumb_func
+ 990              		.fpu fpv4-sp-d16
+ 992              	SHT3x_CalcRH:
+ 993              	.LFB134:
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: SHT3x_CalcRH
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 湿度计算
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: u16sRH：读取到的湿度原始数据
+ 258:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 计算后的湿度数据
+ 259:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** float SHT3x_CalcRH(unsigned short u16sRH)
+ 261:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 994              		.loc 1 261 0
+ 995              		.cfi_startproc
+ 996              		@ args = 0, pretend = 0, frame = 16
+ 997              		@ frame_needed = 1, uses_anonymous_args = 0
+ 998              		@ link register save eliminated.
+ 999 0000 80B4     		push	{r7}
+ 1000              	.LCFI58:
+ 1001              		.cfi_def_cfa_offset 4
+ 1002              		.cfi_offset 7, -4
+ 1003 0002 85B0     		sub	sp, sp, #20
+ 1004              	.LCFI59:
+ 1005              		.cfi_def_cfa_offset 24
+ 1006 0004 00AF     		add	r7, sp, #0
+ 1007              	.LCFI60:
+ 1008              		.cfi_def_cfa_register 7
+ 1009 0006 0346     		mov	r3, r0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 23
+
+
+ 1010 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     float humidityRH = 0; // variable for result
+ 1011              		.loc 1 263 0
+ 1012 000a 4FF00003 		mov	r3, #0
+ 1013 000e FB60     		str	r3, [r7, #12]	@ float
+ 264:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     u16sRH &= ~0x0003; // clear bits [1..0] (status bits)
+ 1014              		.loc 1 265 0
+ 1015 0010 FB88     		ldrh	r3, [r7, #6]	@ movhi
+ 1016 0012 23F00303 		bic	r3, r3, #3
+ 1017 0016 FB80     		strh	r3, [r7, #6]	@ movhi
+ 266:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     //-- calculate relative humidity [%RH] --
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     humidityRH = (100 * (float)u16sRH / 65535); // RH = rawValue / (2^16-1) * 10
+ 1018              		.loc 1 267 0
+ 1019 0018 FB88     		ldrh	r3, [r7, #6]
+ 1020 001a 07EE903A 		vmov	s15, r3	@ int
+ 1021 001e F8EE677A 		vcvt.f32.u32	s15, s15
+ 1022 0022 9FED0A7A 		vldr.32	s14, .L63
+ 1023 0026 27EE877A 		vmul.f32	s14, s15, s14
+ 1024 002a DFED096A 		vldr.32	s13, .L63+4
+ 1025 002e C7EE267A 		vdiv.f32	s15, s14, s13
+ 1026 0032 C7ED037A 		vstr.32	s15, [r7, #12]
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     return humidityRH;
+ 1027              		.loc 1 269 0
+ 1028 0036 FB68     		ldr	r3, [r7, #12]	@ float
+ 1029 0038 07EE903A 		vmov	s15, r3
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 1030              		.loc 1 270 0
+ 1031 003c B0EE670A 		vmov.f32	s0, s15
+ 1032 0040 1437     		adds	r7, r7, #20
+ 1033              	.LCFI61:
+ 1034              		.cfi_def_cfa_offset 4
+ 1035 0042 BD46     		mov	sp, r7
+ 1036              	.LCFI62:
+ 1037              		.cfi_def_cfa_register 13
+ 1038              		@ sp needed
+ 1039 0044 5DF8047B 		ldr	r7, [sp], #4
+ 1040              	.LCFI63:
+ 1041              		.cfi_restore 7
+ 1042              		.cfi_def_cfa_offset 0
+ 1043 0048 7047     		bx	lr
+ 1044              	.L64:
+ 1045 004a 00BF     		.align	2
+ 1046              	.L63:
+ 1047 004c 0000C842 		.word	1120403456
+ 1048 0050 00FF7F47 		.word	1199570688
+ 1049              		.cfi_endproc
+ 1050              	.LFE134:
+ 1052              		.section	.text.Init_Motor,"ax",%progbits
+ 1053              		.align	1
+ 1054              		.global	Init_Motor
+ 1055              		.syntax unified
+ 1056              		.thumb
+ 1057              		.thumb_func
+ 1058              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 24
+
+
+ 1060              	Init_Motor:
+ 1061              	.LFB135:
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: Init_Motor
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 初始化Init_E53_IA1的马达
+ 275:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: 无
+ 276:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 277:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void Init_Motor(void)
+ 279:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 1062              		.loc 1 279 0
+ 1063              		.cfi_startproc
+ 1064              		@ args = 0, pretend = 0, frame = 0
+ 1065              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1066 0000 80B5     		push	{r7, lr}
+ 1067              	.LCFI64:
+ 1068              		.cfi_def_cfa_offset 8
+ 1069              		.cfi_offset 7, -8
+ 1070              		.cfi_offset 14, -4
+ 1071 0002 00AF     		add	r7, sp, #0
+ 1072              	.LCFI65:
+ 1073              		.cfi_def_cfa_register 7
+ 280:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* enable the led clock */
+ 281:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     rcu_periph_clock_enable(IA1_Motor_GPIO_CLK);
+ 1074              		.loc 1 281 0
+ 1075 0004 40F20360 		movw	r0, #1539
+ 1076 0008 FFF7FEFF 		bl	rcu_periph_clock_enable
+ 282:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* configure led GPIO port */
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     gpio_init(IA1_Motor_GPIO_Port, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, IA1_Motor_Pin);
+ 1077              		.loc 1 283 0
+ 1078 000c 4FF48073 		mov	r3, #256
+ 1079 0010 0322     		movs	r2, #3
+ 1080 0012 1021     		movs	r1, #16
+ 1081 0014 0448     		ldr	r0, .L66
+ 1082 0016 FFF7FEFF 		bl	gpio_init
+ 284:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /*configure GPIO pin Output Level */
+ 285:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     gpio_bit_reset(IA1_Motor_GPIO_Port, IA1_Motor_Pin);
+ 1083              		.loc 1 285 0
+ 1084 001a 4FF48071 		mov	r1, #256
+ 1085 001e 0248     		ldr	r0, .L66
+ 1086 0020 FFF7FEFF 		bl	gpio_bit_reset
+ 286:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 1087              		.loc 1 286 0
+ 1088 0024 00BF     		nop
+ 1089 0026 80BD     		pop	{r7, pc}
+ 1090              	.L67:
+ 1091              		.align	2
+ 1092              	.L66:
+ 1093 0028 000C0140 		.word	1073810432
+ 1094              		.cfi_endproc
+ 1095              	.LFE135:
+ 1097              		.section	.text.Init_Light,"ax",%progbits
+ 1098              		.align	1
+ 1099              		.global	Init_Light
+ 1100              		.syntax unified
+ 1101              		.thumb
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 25
+
+
+ 1102              		.thumb_func
+ 1103              		.fpu fpv4-sp-d16
+ 1105              	Init_Light:
+ 1106              	.LFB136:
+ 287:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 288:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 289:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: Init_Light
+ 290:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 初始化Init_E53_IA1的补光灯
+ 291:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: 无
+ 292:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 293:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 294:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void Init_Light(void)
+ 295:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 1107              		.loc 1 295 0
+ 1108              		.cfi_startproc
+ 1109              		@ args = 0, pretend = 0, frame = 0
+ 1110              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1111 0000 80B5     		push	{r7, lr}
+ 1112              	.LCFI66:
+ 1113              		.cfi_def_cfa_offset 8
+ 1114              		.cfi_offset 7, -8
+ 1115              		.cfi_offset 14, -4
+ 1116 0002 00AF     		add	r7, sp, #0
+ 1117              	.LCFI67:
+ 1118              		.cfi_def_cfa_register 7
+ 296:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* enable the led clock */
+ 297:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     rcu_periph_clock_enable(IA1_Light_GPIO_CLK);
+ 1119              		.loc 1 297 0
+ 1120 0004 40F20460 		movw	r0, #1540
+ 1121 0008 FFF7FEFF 		bl	rcu_periph_clock_enable
+ 298:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* configure led GPIO port */
+ 299:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     gpio_init(IA1_Light_GPIO_Port, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, IA1_Light_Pin);
+ 1122              		.loc 1 299 0
+ 1123 000c 4FF40073 		mov	r3, #512
+ 1124 0010 0322     		movs	r2, #3
+ 1125 0012 1021     		movs	r1, #16
+ 1126 0014 0448     		ldr	r0, .L69
+ 1127 0016 FFF7FEFF 		bl	gpio_init
+ 300:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /*configure GPIO pin Output Level */
+ 301:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     gpio_bit_reset(IA1_Light_GPIO_Port, IA1_Light_Pin);
+ 1128              		.loc 1 301 0
+ 1129 001a 4FF40071 		mov	r1, #512
+ 1130 001e 0248     		ldr	r0, .L69
+ 1131 0020 FFF7FEFF 		bl	gpio_bit_reset
+ 302:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 1132              		.loc 1 302 0
+ 1133 0024 00BF     		nop
+ 1134 0026 80BD     		pop	{r7, pc}
+ 1135              	.L70:
+ 1136              		.align	2
+ 1137              	.L69:
+ 1138 0028 00100140 		.word	1073811456
+ 1139              		.cfi_endproc
+ 1140              	.LFE136:
+ 1142              		.section	.text.E53_IA1_Light_StatusSet,"ax",%progbits
+ 1143              		.align	1
+ 1144              		.global	E53_IA1_Light_StatusSet
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 26
+
+
+ 1145              		.syntax unified
+ 1146              		.thumb
+ 1147              		.thumb_func
+ 1148              		.fpu fpv4-sp-d16
+ 1150              	E53_IA1_Light_StatusSet:
+ 1151              	.LFB137:
+ 303:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 304:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 305:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: E53_IA1_Light_StatusSet
+ 306:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: E53_IA1开发板上的LED灯的亮灭控制
+ 307:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: status,LED灯的状态
+ 308:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  *									OFF,关灯
+ 309:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  *									ON,开灯
+ 310:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 311:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 312:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void E53_IA1_Light_StatusSet(E53_IA1_Status_ENUM status)
+ 313:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 1152              		.loc 1 313 0
+ 1153              		.cfi_startproc
+ 1154              		@ args = 0, pretend = 0, frame = 8
+ 1155              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1156 0000 80B5     		push	{r7, lr}
+ 1157              	.LCFI68:
+ 1158              		.cfi_def_cfa_offset 8
+ 1159              		.cfi_offset 7, -8
+ 1160              		.cfi_offset 14, -4
+ 1161 0002 82B0     		sub	sp, sp, #8
+ 1162              	.LCFI69:
+ 1163              		.cfi_def_cfa_offset 16
+ 1164 0004 00AF     		add	r7, sp, #0
+ 1165              	.LCFI70:
+ 1166              		.cfi_def_cfa_register 7
+ 1167 0006 0346     		mov	r3, r0
+ 1168 0008 FB71     		strb	r3, [r7, #7]
+ 314:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     if (status == ON)
+ 1169              		.loc 1 314 0
+ 1170 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1171 000c 012B     		cmp	r3, #1
+ 1172 000e 05D1     		bne	.L72
+ 315:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         gpio_bit_set(IA1_Light_GPIO_Port, IA1_Light_Pin);
+ 1173              		.loc 1 315 0
+ 1174 0010 4FF40071 		mov	r1, #512
+ 1175 0014 0648     		ldr	r0, .L75
+ 1176 0016 FFF7FEFF 		bl	gpio_bit_set
+ 316:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     else
+ 317:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         gpio_bit_reset(IA1_Light_GPIO_Port, IA1_Light_Pin);
+ 318:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 1177              		.loc 1 318 0
+ 1178 001a 04E0     		b	.L74
+ 1179              	.L72:
+ 317:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 1180              		.loc 1 317 0
+ 1181 001c 4FF40071 		mov	r1, #512
+ 1182 0020 0348     		ldr	r0, .L75
+ 1183 0022 FFF7FEFF 		bl	gpio_bit_reset
+ 1184              	.L74:
+ 1185              		.loc 1 318 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 27
+
+
+ 1186 0026 00BF     		nop
+ 1187 0028 0837     		adds	r7, r7, #8
+ 1188              	.LCFI71:
+ 1189              		.cfi_def_cfa_offset 8
+ 1190 002a BD46     		mov	sp, r7
+ 1191              	.LCFI72:
+ 1192              		.cfi_def_cfa_register 13
+ 1193              		@ sp needed
+ 1194 002c 80BD     		pop	{r7, pc}
+ 1195              	.L76:
+ 1196 002e 00BF     		.align	2
+ 1197              	.L75:
+ 1198 0030 00100140 		.word	1073811456
+ 1199              		.cfi_endproc
+ 1200              	.LFE137:
+ 1202              		.section	.text.E53_IA1_Motor_StatusSet,"ax",%progbits
+ 1203              		.align	1
+ 1204              		.global	E53_IA1_Motor_StatusSet
+ 1205              		.syntax unified
+ 1206              		.thumb
+ 1207              		.thumb_func
+ 1208              		.fpu fpv4-sp-d16
+ 1210              	E53_IA1_Motor_StatusSet:
+ 1211              	.LFB138:
+ 319:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 320:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 321:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: E53_IA1_Motor_StatusSet
+ 322:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: E53_IA1开发板上的电机控制
+ 323:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: status,电机的状态
+ 324:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  *									OFF,关电机
+ 325:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  *									ON,开电机
+ 326:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 327:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 328:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void E53_IA1_Motor_StatusSet(E53_IA1_Status_ENUM status)
+ 329:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 1212              		.loc 1 329 0
+ 1213              		.cfi_startproc
+ 1214              		@ args = 0, pretend = 0, frame = 8
+ 1215              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1216 0000 80B5     		push	{r7, lr}
+ 1217              	.LCFI73:
+ 1218              		.cfi_def_cfa_offset 8
+ 1219              		.cfi_offset 7, -8
+ 1220              		.cfi_offset 14, -4
+ 1221 0002 82B0     		sub	sp, sp, #8
+ 1222              	.LCFI74:
+ 1223              		.cfi_def_cfa_offset 16
+ 1224 0004 00AF     		add	r7, sp, #0
+ 1225              	.LCFI75:
+ 1226              		.cfi_def_cfa_register 7
+ 1227 0006 0346     		mov	r3, r0
+ 1228 0008 FB71     		strb	r3, [r7, #7]
+ 330:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     if (status == ON)
+ 1229              		.loc 1 330 0
+ 1230 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1231 000c 012B     		cmp	r3, #1
+ 1232 000e 05D1     		bne	.L78
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 28
+
+
+ 331:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         gpio_bit_set(IA1_Motor_GPIO_Port, IA1_Motor_Pin);
+ 1233              		.loc 1 331 0
+ 1234 0010 4FF48071 		mov	r1, #256
+ 1235 0014 0648     		ldr	r0, .L81
+ 1236 0016 FFF7FEFF 		bl	gpio_bit_set
+ 332:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     else
+ 333:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         gpio_bit_reset(IA1_Motor_GPIO_Port, IA1_Motor_Pin);
+ 334:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 1237              		.loc 1 334 0
+ 1238 001a 04E0     		b	.L80
+ 1239              	.L78:
+ 333:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 1240              		.loc 1 333 0
+ 1241 001c 4FF48071 		mov	r1, #256
+ 1242 0020 0348     		ldr	r0, .L81
+ 1243 0022 FFF7FEFF 		bl	gpio_bit_reset
+ 1244              	.L80:
+ 1245              		.loc 1 334 0
+ 1246 0026 00BF     		nop
+ 1247 0028 0837     		adds	r7, r7, #8
+ 1248              	.LCFI76:
+ 1249              		.cfi_def_cfa_offset 8
+ 1250 002a BD46     		mov	sp, r7
+ 1251              	.LCFI77:
+ 1252              		.cfi_def_cfa_register 13
+ 1253              		@ sp needed
+ 1254 002c 80BD     		pop	{r7, pc}
+ 1255              	.L82:
+ 1256 002e 00BF     		.align	2
+ 1257              	.L81:
+ 1258 0030 000C0140 		.word	1073810432
+ 1259              		.cfi_endproc
+ 1260              	.LFE138:
+ 1262              		.section	.text.Init_E53_IA1,"ax",%progbits
+ 1263              		.align	1
+ 1264              		.global	Init_E53_IA1
+ 1265              		.syntax unified
+ 1266              		.thumb
+ 1267              		.thumb_func
+ 1268              		.fpu fpv4-sp-d16
+ 1270              	Init_E53_IA1:
+ 1271              	.LFB139:
+ 335:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 336:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: Init_E53_IA1
+ 337:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 初始化Init_E53_IA1
+ 338:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: 无
+ 339:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 340:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 341:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void Init_E53_IA1(void)
+ 342:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 1272              		.loc 1 342 0
+ 1273              		.cfi_startproc
+ 1274              		@ args = 0, pretend = 0, frame = 0
+ 1275              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1276 0000 80B5     		push	{r7, lr}
+ 1277              	.LCFI78:
+ 1278              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 29
+
+
+ 1279              		.cfi_offset 7, -8
+ 1280              		.cfi_offset 14, -4
+ 1281 0002 00AF     		add	r7, sp, #0
+ 1282              	.LCFI79:
+ 1283              		.cfi_def_cfa_register 7
+ 343:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* configure GPIO */
+ 344:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     gpio_config();
+ 1284              		.loc 1 344 0
+ 1285 0004 FFF7FEFF 		bl	gpio_config
+ 345:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* configure I2C */
+ 346:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     i2c_config();
+ 1286              		.loc 1 346 0
+ 1287 0008 FFF7FEFF 		bl	i2c_config
+ 347:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* init BH1750 */
+ 348:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     Init_BH1750();
+ 1288              		.loc 1 348 0
+ 1289 000c FFF7FEFF 		bl	Init_BH1750
+ 349:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* init SHT30 */
+ 350:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     Init_SHT30();
+ 1290              		.loc 1 350 0
+ 1291 0010 FFF7FEFF 		bl	Init_SHT30
+ 351:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* init Motor */
+ 352:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     Init_Motor();
+ 1292              		.loc 1 352 0
+ 1293 0014 FFF7FEFF 		bl	Init_Motor
+ 353:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     /* init Light*/
+ 354:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     Init_Light();
+ 1294              		.loc 1 354 0
+ 1295 0018 FFF7FEFF 		bl	Init_Light
+ 355:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 1296              		.loc 1 355 0
+ 1297 001c 00BF     		nop
+ 1298 001e 80BD     		pop	{r7, pc}
+ 1299              		.cfi_endproc
+ 1300              	.LFE139:
+ 1302              		.section	.text.E53_IA1_Read_Data,"ax",%progbits
+ 1303              		.align	1
+ 1304              		.global	E53_IA1_Read_Data
+ 1305              		.syntax unified
+ 1306              		.thumb
+ 1307              		.thumb_func
+ 1308              		.fpu fpv4-sp-d16
+ 1310              	E53_IA1_Read_Data:
+ 1311              	.LFB140:
+ 356:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 357:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** /***************************************************************
+ 358:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 函数名称: E53_IA1_Read_Data
+ 359:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 说    明: 测量光照强度、温度、湿度
+ 360:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 参    数: 无
+ 361:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  * 返 回 值: 无
+ 362:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****  ***************************************************************/
+ 363:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** void E53_IA1_Read_Data(void)
+ 364:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** {
+ 1312              		.loc 1 364 0
+ 1313              		.cfi_startproc
+ 1314              		@ args = 0, pretend = 0, frame = 32
+ 1315              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 30
+
+
+ 1316 0000 80B5     		push	{r7, lr}
+ 1317              	.LCFI80:
+ 1318              		.cfi_def_cfa_offset 8
+ 1319              		.cfi_offset 7, -8
+ 1320              		.cfi_offset 14, -4
+ 1321 0002 88B0     		sub	sp, sp, #32
+ 1322              	.LCFI81:
+ 1323              		.cfi_def_cfa_offset 40
+ 1324 0004 00AF     		add	r7, sp, #0
+ 1325              	.LCFI82:
+ 1326              		.cfi_def_cfa_register 7
+ 365:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 366:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     char data[3]; // data array for checksum verification
+ 367:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     unsigned char addr = 0;
+ 1327              		.loc 1 367 0
+ 1328 0006 0023     		movs	r3, #0
+ 1329 0008 FB77     		strb	r3, [r7, #31]
+ 368:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     unsigned short tmp = 0;
+ 1330              		.loc 1 368 0
+ 1331 000a 0023     		movs	r3, #0
+ 1332 000c BB83     		strh	r3, [r7, #28]	@ movhi
+ 369:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     float t = 0;
+ 1333              		.loc 1 369 0
+ 1334 000e 4FF00003 		mov	r3, #0
+ 1335 0012 BB61     		str	r3, [r7, #24]	@ float
+ 370:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     uint16_t dat;
+ 371:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Fetchcommand_Bbuffer[2] = {0xE0, 0x00}; // read the measurement results
+ 1336              		.loc 1 371 0
+ 1337 0014 E023     		movs	r3, #224
+ 1338 0016 3B73     		strb	r3, [r7, #12]
+ 1339 0018 0023     		movs	r3, #0
+ 1340 001a 7B73     		strb	r3, [r7, #13]
+ 372:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     uint8_t SHT3X_Data_Buffer[6];                         // byte 0,1 is temperature byte 4,5 is hu
+ 373:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 374:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     E53_IA1_Data.Lux = Convert_BH1750(); // Read bh1750 sensor data
+ 1341              		.loc 1 374 0
+ 1342 001c FFF7FEFF 		bl	Convert_BH1750
+ 1343 0020 F0EE407A 		vmov.f32	s15, s0
+ 1344 0024 2C4B     		ldr	r3, .L88
+ 1345 0026 C3ED007A 		vstr.32	s15, [r3]
+ 375:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 376:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     E53_IA1_I2C_Master_Transmit(SHT30_Addr << 1, SHT3X_Fetchcommand_Bbuffer, 2); // Read sht30 sens
+ 1346              		.loc 1 376 0
+ 1347 002a 07F10C03 		add	r3, r7, #12
+ 1348 002e 0222     		movs	r2, #2
+ 1349 0030 1946     		mov	r1, r3
+ 1350 0032 8820     		movs	r0, #136
+ 1351 0034 FFF7FEFF 		bl	E53_IA1_I2C_Master_Transmit
+ 377:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     E53_IA1_I2C_Master_Receive((SHT30_Addr << 1) + 1, SHT3X_Data_Buffer, 6);
+ 1352              		.loc 1 377 0
+ 1353 0038 3B1D     		adds	r3, r7, #4
+ 1354 003a 0622     		movs	r2, #6
+ 1355 003c 1946     		mov	r1, r3
+ 1356 003e 8920     		movs	r0, #137
+ 1357 0040 FFF7FEFF 		bl	E53_IA1_I2C_Master_Receive
+ 378:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 379:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         /* check tem */
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 31
+
+
+ 380:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     data[0] = SHT3X_Data_Buffer[0];
+ 1358              		.loc 1 380 0
+ 1359 0044 3B79     		ldrb	r3, [r7, #4]	@ zero_extendqisi2
+ 1360 0046 3B74     		strb	r3, [r7, #16]
+ 381:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     data[1] = SHT3X_Data_Buffer[1];
+ 1361              		.loc 1 381 0
+ 1362 0048 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 1363 004a 7B74     		strb	r3, [r7, #17]
+ 382:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     data[2] = SHT3X_Data_Buffer[2];
+ 1364              		.loc 1 382 0
+ 1365 004c BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 1366 004e BB74     		strb	r3, [r7, #18]
+ 383:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 384:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     tmp = SHT3x_CheckCrc(data, 2, data[2]);
+ 1367              		.loc 1 384 0
+ 1368 0050 BA7C     		ldrb	r2, [r7, #18]	@ zero_extendqisi2
+ 1369 0052 07F11003 		add	r3, r7, #16
+ 1370 0056 0221     		movs	r1, #2
+ 1371 0058 1846     		mov	r0, r3
+ 1372 005a FFF7FEFF 		bl	SHT3x_CheckCrc
+ 1373 005e 0346     		mov	r3, r0
+ 1374 0060 BB83     		strh	r3, [r7, #28]	@ movhi
+ 385:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     if (!tmp) /* value is ture */
+ 1375              		.loc 1 385 0
+ 1376 0062 BB8B     		ldrh	r3, [r7, #28]
+ 1377 0064 002B     		cmp	r3, #0
+ 1378 0066 10D1     		bne	.L85
+ 386:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+ 387:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         dat = ((uint16_t)data[0] << 8) | data[1];
+ 1379              		.loc 1 387 0
+ 1380 0068 3B7C     		ldrb	r3, [r7, #16]	@ zero_extendqisi2
+ 1381 006a 1B02     		lsls	r3, r3, #8
+ 1382 006c 1AB2     		sxth	r2, r3
+ 1383 006e 7B7C     		ldrb	r3, [r7, #17]	@ zero_extendqisi2
+ 1384 0070 1BB2     		sxth	r3, r3
+ 1385 0072 1343     		orrs	r3, r3, r2
+ 1386 0074 1BB2     		sxth	r3, r3
+ 1387 0076 FB82     		strh	r3, [r7, #22]	@ movhi
+ 388:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         E53_IA1_Data.Temperature = SHT3x_CalcTemperatureC(dat);
+ 1388              		.loc 1 388 0
+ 1389 0078 FB8A     		ldrh	r3, [r7, #22]
+ 1390 007a 1846     		mov	r0, r3
+ 1391 007c FFF7FEFF 		bl	SHT3x_CalcTemperatureC
+ 1392 0080 F0EE407A 		vmov.f32	s15, s0
+ 1393 0084 144B     		ldr	r3, .L88
+ 1394 0086 C3ED027A 		vstr.32	s15, [r3, #8]
+ 1395              	.L85:
+ 389:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     }
+ 390:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 391:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         /* check humidity */
+ 392:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     data[0] = SHT3X_Data_Buffer[3];
+ 1396              		.loc 1 392 0
+ 1397 008a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1398 008c 3B74     		strb	r3, [r7, #16]
+ 393:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     data[1] = SHT3X_Data_Buffer[4];
+ 1399              		.loc 1 393 0
+ 1400 008e 3B7A     		ldrb	r3, [r7, #8]	@ zero_extendqisi2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 32
+
+
+ 1401 0090 7B74     		strb	r3, [r7, #17]
+ 394:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     data[2] = SHT3X_Data_Buffer[5];
+ 1402              		.loc 1 394 0
+ 1403 0092 7B7A     		ldrb	r3, [r7, #9]	@ zero_extendqisi2
+ 1404 0094 BB74     		strb	r3, [r7, #18]
+ 395:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** 
+ 396:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     tmp = SHT3x_CheckCrc(data, 2, data[2]);
+ 1405              		.loc 1 396 0
+ 1406 0096 BA7C     		ldrb	r2, [r7, #18]	@ zero_extendqisi2
+ 1407 0098 07F11003 		add	r3, r7, #16
+ 1408 009c 0221     		movs	r1, #2
+ 1409 009e 1846     		mov	r0, r3
+ 1410 00a0 FFF7FEFF 		bl	SHT3x_CheckCrc
+ 1411 00a4 0346     		mov	r3, r0
+ 1412 00a6 BB83     		strh	r3, [r7, #28]	@ movhi
+ 397:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     if (!tmp) /* value is ture */
+ 1413              		.loc 1 397 0
+ 1414 00a8 BB8B     		ldrh	r3, [r7, #28]
+ 1415 00aa 002B     		cmp	r3, #0
+ 1416 00ac 10D1     		bne	.L87
+ 398:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     {
+ 399:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         dat = ((uint16_t)data[0] << 8) | data[1];
+ 1417              		.loc 1 399 0
+ 1418 00ae 3B7C     		ldrb	r3, [r7, #16]	@ zero_extendqisi2
+ 1419 00b0 1B02     		lsls	r3, r3, #8
+ 1420 00b2 1AB2     		sxth	r2, r3
+ 1421 00b4 7B7C     		ldrb	r3, [r7, #17]	@ zero_extendqisi2
+ 1422 00b6 1BB2     		sxth	r3, r3
+ 1423 00b8 1343     		orrs	r3, r3, r2
+ 1424 00ba 1BB2     		sxth	r3, r3
+ 1425 00bc FB82     		strh	r3, [r7, #22]	@ movhi
+ 400:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****         E53_IA1_Data.Humidity = SHT3x_CalcRH(dat);
+ 1426              		.loc 1 400 0
+ 1427 00be FB8A     		ldrh	r3, [r7, #22]
+ 1428 00c0 1846     		mov	r0, r3
+ 1429 00c2 FFF7FEFF 		bl	SHT3x_CalcRH
+ 1430 00c6 F0EE407A 		vmov.f32	s15, s0
+ 1431 00ca 034B     		ldr	r3, .L88
+ 1432 00cc C3ED017A 		vstr.32	s15, [r3, #4]
+ 1433              	.L87:
+ 401:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c ****     }
+ 402:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/E53_IA1\E53_IA1.c **** }
+ 1434              		.loc 1 402 0
+ 1435 00d0 00BF     		nop
+ 1436 00d2 2037     		adds	r7, r7, #32
+ 1437              	.LCFI83:
+ 1438              		.cfi_def_cfa_offset 8
+ 1439 00d4 BD46     		mov	sp, r7
+ 1440              	.LCFI84:
+ 1441              		.cfi_def_cfa_register 13
+ 1442              		@ sp needed
+ 1443 00d6 80BD     		pop	{r7, pc}
+ 1444              	.L89:
+ 1445              		.align	2
+ 1446              	.L88:
+ 1447 00d8 00000000 		.word	E53_IA1_Data
+ 1448              		.cfi_endproc
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 33
+
+
+ 1449              	.LFE140:
+ 1451              		.text
+ 1452              	.Letext0:
+ 1453              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1454              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1455              		.file 4 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/ar
+ 1456              		.file 5 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+ 1457              		.file 6 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/G
+ 1458              		.file 7 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/G
+ 1459              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1460              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1461              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1462              		.file 11 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1463              		.file 12 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1464              		.file 13 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bea
+ 1465              		.file 14 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 34
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 E53_IA1.c
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:22     .rodata.POLYNOMIAL:00000000 POLYNOMIAL
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:19     .rodata.POLYNOMIAL:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:25     .text.delay_us:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:32     .text.delay_us:00000000 delay_us
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:93     .text.delay_ms:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:100    .text.delay_ms:00000000 delay_ms
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:145    .text.E53_IA1_I2C_Master_Transmit:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:152    .text.E53_IA1_I2C_Master_Transmit:00000000 E53_IA1_I2C_Master_Transmit
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:287    .text.E53_IA1_I2C_Master_Transmit:000000c8 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:292    .text.E53_IA1_I2C_Master_Receive:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:299    .text.E53_IA1_I2C_Master_Receive:00000000 E53_IA1_I2C_Master_Receive
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:491    .text.E53_IA1_I2C_Master_Receive:00000134 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:496    .text.Init_BH1750:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:503    .text.Init_BH1750:00000000 Init_BH1750
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:543    .text.Start_BH1750:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:550    .text.Start_BH1750:00000000 Start_BH1750
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:593    .text.Convert_BH1750:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:600    .text.Convert_BH1750:00000000 Convert_BH1750
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:670    .text.Convert_BH1750:0000005c $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:675    .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:680    .text.SHT30_reset:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:687    .text.SHT30_reset:00000000 SHT30_reset
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:730    .text.SHT30_reset:00000028 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:740    .text.Init_SHT30:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:747    .text.Init_SHT30:00000000 Init_SHT30
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:787    .text.Init_SHT30:00000020 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:792    .text.SHT3x_CheckCrc:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:799    .text.SHT3x_CheckCrc:00000000 SHT3x_CheckCrc
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:914    .text.SHT3x_CalcTemperatureC:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:921    .text.SHT3x_CalcTemperatureC:00000000 SHT3x_CalcTemperatureC
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:978    .text.SHT3x_CalcTemperatureC:00000054 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:985    .text.SHT3x_CalcRH:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:992    .text.SHT3x_CalcRH:00000000 SHT3x_CalcRH
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1047   .text.SHT3x_CalcRH:0000004c $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1053   .text.Init_Motor:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1060   .text.Init_Motor:00000000 Init_Motor
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1093   .text.Init_Motor:00000028 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1098   .text.Init_Light:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1105   .text.Init_Light:00000000 Init_Light
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1138   .text.Init_Light:00000028 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1143   .text.E53_IA1_Light_StatusSet:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1150   .text.E53_IA1_Light_StatusSet:00000000 E53_IA1_Light_StatusSet
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1198   .text.E53_IA1_Light_StatusSet:00000030 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1203   .text.E53_IA1_Motor_StatusSet:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1210   .text.E53_IA1_Motor_StatusSet:00000000 E53_IA1_Motor_StatusSet
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1258   .text.E53_IA1_Motor_StatusSet:00000030 $d
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1263   .text.Init_E53_IA1:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1270   .text.Init_E53_IA1:00000000 Init_E53_IA1
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1303   .text.E53_IA1_Read_Data:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1310   .text.E53_IA1_Read_Data:00000000 E53_IA1_Read_Data
+C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s:1447   .text.E53_IA1_Read_Data:000000d8 $d
+
+UNDEFINED SYMBOLS
+i2c_flag_get
+i2c_start_on_bus
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc8oJISh.s 			page 35
+
+
+i2c_master_addressing
+i2c_flag_clear
+i2c_data_transmit
+i2c_stop_on_bus
+i2c_ack_config
+i2c_data_receive
+__aeabi_i2d
+__aeabi_ddiv
+__aeabi_d2f
+rcu_periph_clock_enable
+gpio_init
+gpio_bit_reset
+gpio_bit_set
+gpio_config
+i2c_config
+E53_IA1_Data

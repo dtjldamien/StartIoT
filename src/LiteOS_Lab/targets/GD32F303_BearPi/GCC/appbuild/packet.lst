@@ -1,0 +1,1961 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"packet.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC0:
+  20 0000 5B25645D 		.ascii	"[%d][%s:%d] Entering\015\012\000"
+  20      5B25733A 
+  20      25645D20 
+  20      456E7465 
+  20      72696E67 
+  21              		.section	.text.handle_reset,"ax",%progbits
+  22              		.align	1
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  26              		.fpu fpv4-sp-d16
+  28              	handle_reset:
+  29              	.LFB4:
+  30              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 2
+
+
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** /*******************************************************************************
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Copyright (c) 2013, 2014 Intel Corporation and others.
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * The Eclipse Public License is available at
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Contributors:
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    domedambrosio - Please refer to git log
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    Fabien Fleutot - Please refer to git log
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    Fabien Fleutot - Please refer to git log
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    Simon Bernard - Please refer to git log
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    Toby Jaffey - Please refer to git log
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    Pascal Rieux - Please refer to git log
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *******************************************************************************/
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** /*
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  Copyright (c) 2013, 2014 Intel Corporation
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  Redistribution and use in source and binary forms, with or without modification,
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  are permitted provided that the following conditions are met:
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****      * Redistributions of source code must retain the above copyright notice,
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****        this list of conditions and the following disclaimer.
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****      * Redistributions in binary form must reproduce the above copyright notice,
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****        this list of conditions and the following disclaimer in the documentation
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****        and/or other materials provided with the distribution.
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****      * Neither the name of Intel Corporation nor the names of its contributors
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****        may be used to endorse or promote products derived from this software
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****        without specific prior written permission.
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 3
+
+
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  THE POSSIBILITY OF SUCH DAMAGE.
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  David Navarro <david.navarro@intel.com>
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** */
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** /*
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** Contains code snippets which are:
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Copyright (c) 2013, Institute for Pervasive Computing, ETH Zurich
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * All rights reserved.
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Redistribution and use in source and binary forms, with or without
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * modification, are permitted provided that the following conditions
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * are met:
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * 1. Redistributions of source code must retain the above copyright
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    notice, this list of conditions and the following disclaimer.
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * 2. Redistributions in binary form must reproduce the above copyright
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    notice, this list of conditions and the following disclaimer in the
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    documentation and/or other materials provided with the distribution.
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * 3. Neither the name of the Institute nor the names of its contributors
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    may be used to endorse or promote products derived from this software
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *    without specific prior written permission.
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  *
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * ARE DISCLAIMED.  IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * SUCH DAMAGE.
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** */
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #include "internals.h"
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #include <stdlib.h>
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #include <string.h>
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #include <stdio.h>
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #include "commandline.h"
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** static void handle_reset(lwm2m_context_t *contextP,
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                          void *fromSessionH,
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                          coap_packet_t *message)
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** {
+  31              		.loc 1 133 0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 16
+  34              		@ frame_needed = 1, uses_anonymous_args = 0
+  35 0000 90B5     		push	{r4, r7, lr}
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 4
+
+
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 12
+  38              		.cfi_offset 4, -12
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 85B0     		sub	sp, sp, #20
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 32
+  44 0004 00AF     		add	r7, sp, #0
+  45              	.LCFI2:
+  46              		.cfi_def_cfa_register 7
+  47 0006 F860     		str	r0, [r7, #12]
+  48 0008 B960     		str	r1, [r7, #8]
+  49 000a 7A60     		str	r2, [r7, #4]
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_CLIENT_MODE
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     LOG("Entering");
+  50              		.loc 1 135 0
+  51 000c FFF7FEFF 		bl	lwm2m_gettime
+  52 0010 0346     		mov	r3, r0
+  53 0012 0C46     		mov	r4, r1
+  54 0014 1946     		mov	r1, r3
+  55 0016 8723     		movs	r3, #135
+  56 0018 074A     		ldr	r2, .L2
+  57 001a 0848     		ldr	r0, .L2+4
+  58 001c FFF7FEFF 		bl	atiny_printf
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     observe_cancel(contextP, message->mid, fromSessionH);
+  59              		.loc 1 136 0
+  60 0020 7B68     		ldr	r3, [r7, #4]
+  61 0022 1B89     		ldrh	r3, [r3, #8]
+  62 0024 BA68     		ldr	r2, [r7, #8]
+  63 0026 1946     		mov	r1, r3
+  64 0028 F868     		ldr	r0, [r7, #12]
+  65 002a FFF7FEFF 		bl	observe_cancel
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** }
+  66              		.loc 1 138 0
+  67 002e 00BF     		nop
+  68 0030 1437     		adds	r7, r7, #20
+  69              	.LCFI3:
+  70              		.cfi_def_cfa_offset 12
+  71 0032 BD46     		mov	sp, r7
+  72              	.LCFI4:
+  73              		.cfi_def_cfa_register 13
+  74              		@ sp needed
+  75 0034 90BD     		pop	{r4, r7, pc}
+  76              	.L3:
+  77 0036 00BF     		.align	2
+  78              	.L2:
+  79 0038 00000000 		.word	__func__.8556
+  80 003c 00000000 		.word	.LC0
+  81              		.cfi_endproc
+  82              	.LFE4:
+  84              		.section	.text.handle_request,"ax",%progbits
+  85              		.align	1
+  86              		.syntax unified
+  87              		.thumb
+  88              		.thumb_func
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 5
+
+
+  89              		.fpu fpv4-sp-d16
+  91              	handle_request:
+  92              	.LFB5:
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** static uint8_t handle_request(lwm2m_context_t *contextP,
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                               void *fromSessionH,
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                               coap_packet_t *message,
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                               coap_packet_t *response)
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** {
+  93              		.loc 1 144 0
+  94              		.cfi_startproc
+  95              		@ args = 0, pretend = 0, frame = 32
+  96              		@ frame_needed = 1, uses_anonymous_args = 0
+  97 0000 90B5     		push	{r4, r7, lr}
+  98              	.LCFI5:
+  99              		.cfi_def_cfa_offset 12
+ 100              		.cfi_offset 4, -12
+ 101              		.cfi_offset 7, -8
+ 102              		.cfi_offset 14, -4
+ 103 0002 8BB0     		sub	sp, sp, #44
+ 104              	.LCFI6:
+ 105              		.cfi_def_cfa_offset 56
+ 106 0004 02AF     		add	r7, sp, #8
+ 107              	.LCFI7:
+ 108              		.cfi_def_cfa 7, 48
+ 109 0006 F860     		str	r0, [r7, #12]
+ 110 0008 B960     		str	r1, [r7, #8]
+ 111 000a 7A60     		str	r2, [r7, #4]
+ 112 000c 3B60     		str	r3, [r7]
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     lwm2m_uri_t *uriP;
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     uint8_t result = COAP_IGNORE;
+ 113              		.loc 1 146 0
+ 114 000e 0123     		movs	r3, #1
+ 115 0010 FB77     		strb	r3, [r7, #31]
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     LOG("Entering");
+ 116              		.loc 1 148 0
+ 117 0012 FFF7FEFF 		bl	lwm2m_gettime
+ 118 0016 0346     		mov	r3, r0
+ 119 0018 0C46     		mov	r4, r1
+ 120 001a 1946     		mov	r1, r3
+ 121 001c 9423     		movs	r3, #148
+ 122 001e 224A     		ldr	r2, .L14
+ 123 0020 2248     		ldr	r0, .L14+4
+ 124 0022 FFF7FEFF 		bl	atiny_printf
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_CLIENT_MODE
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     uriP = uri_decode(contextP->altPath, message->uri_path);
+ 125              		.loc 1 151 0
+ 126 0026 FB68     		ldr	r3, [r7, #12]
+ 127 0028 DA68     		ldr	r2, [r3, #12]
+ 128 002a 7B68     		ldr	r3, [r7, #4]
+ 129 002c 5B6C     		ldr	r3, [r3, #68]
+ 130 002e 1946     		mov	r1, r3
+ 131 0030 1046     		mov	r0, r2
+ 132 0032 FFF7FEFF 		bl	uri_decode
+ 133 0036 B861     		str	r0, [r7, #24]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 6
+
+
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #else
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     uriP = uri_decode(NULL, message->uri_path);
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     if (uriP == NULL) return COAP_400_BAD_REQUEST;
+ 134              		.loc 1 156 0
+ 135 0038 BB69     		ldr	r3, [r7, #24]
+ 136 003a 002B     		cmp	r3, #0
+ 137 003c 01D1     		bne	.L5
+ 138              		.loc 1 156 0 is_stmt 0 discriminator 1
+ 139 003e 8023     		movs	r3, #128
+ 140 0040 2EE0     		b	.L6
+ 141              	.L5:
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     switch(uriP->flag & LWM2M_URI_MASK_TYPE)
+ 142              		.loc 1 158 0 is_stmt 1
+ 143 0042 BB69     		ldr	r3, [r7, #24]
+ 144 0044 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 145 0046 03F07003 		and	r3, r3, #112
+ 146 004a 002B     		cmp	r3, #0
+ 147 004c 12D1     		bne	.L12
+ 148              	.LBB2:
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     {
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_CLIENT_MODE
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_DM:
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     {
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         lwm2m_server_t *serverP;
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         serverP = utils_findServer(contextP, fromSessionH);
+ 149              		.loc 1 165 0
+ 150 004e B968     		ldr	r1, [r7, #8]
+ 151 0050 F868     		ldr	r0, [r7, #12]
+ 152 0052 FFF7FEFF 		bl	utils_findServer
+ 153 0056 7861     		str	r0, [r7, #20]
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         if (serverP != NULL)
+ 154              		.loc 1 166 0
+ 155 0058 7B69     		ldr	r3, [r7, #20]
+ 156 005a 002B     		cmp	r3, #0
+ 157 005c 0DD0     		beq	.L13
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         {
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             result = dm_handleRequest(contextP, uriP, serverP, message, response);
+ 158              		.loc 1 168 0
+ 159 005e 3B68     		ldr	r3, [r7]
+ 160 0060 0093     		str	r3, [sp]
+ 161 0062 7B68     		ldr	r3, [r7, #4]
+ 162 0064 7A69     		ldr	r2, [r7, #20]
+ 163 0066 B969     		ldr	r1, [r7, #24]
+ 164 0068 F868     		ldr	r0, [r7, #12]
+ 165 006a FFF7FEFF 		bl	dm_handleRequest
+ 166 006e 0346     		mov	r3, r0
+ 167 0070 FB77     		strb	r3, [r7, #31]
+ 168              	.LBE2:
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         }
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_BOOTSTRAP
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         else
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         {
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             serverP = utils_findBootstrapServer(contextP, fromSessionH);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 7
+
+
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             if (serverP != NULL)
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 result = bootstrap_handleCommand(contextP, uriP, serverP, message, response);
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         }
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     }
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     break;
+ 169              		.loc 1 181 0
+ 170 0072 02E0     		b	.L13
+ 171              	.L12:
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_BOOTSTRAP
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_DELETE_ALL:
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         if (COAP_DELETE != message->code)
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         {
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             result = COAP_400_BAD_REQUEST;
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         }
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         else
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         {
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             result = bootstrap_handleDeleteAll(contextP, fromSessionH);
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         }
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         break;
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_BOOTSTRAP:
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         if (message->code == COAP_POST)
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         {
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             result = bootstrap_handleFinish(contextP, fromSessionH);
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         }
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         break;
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_SERVER_MODE
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_REGISTRATION:
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         result = registration_handleRequest(contextP, uriP, fromSessionH, message, response);
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         break;
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_BOOTSTRAP_SERVER_MODE
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     case LWM2M_URI_FLAG_BOOTSTRAP:
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         result = bootstrap_handleRequest(contextP, uriP, fromSessionH, message, response);
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         break;
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     default:
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         result = COAP_IGNORE;
+ 172              		.loc 1 215 0
+ 173 0074 0123     		movs	r3, #1
+ 174 0076 FB77     		strb	r3, [r7, #31]
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         break;
+ 175              		.loc 1 216 0
+ 176 0078 00E0     		b	.L10
+ 177              	.L13:
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 178              		.loc 1 181 0
+ 179 007a 00BF     		nop
+ 180              	.L10:
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     }
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 8
+
+
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 219:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     coap_set_status_code(response, result);
+ 181              		.loc 1 219 0
+ 182 007c FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 183 007e 1946     		mov	r1, r3
+ 184 0080 3868     		ldr	r0, [r7]
+ 185 0082 FFF7FEFF 		bl	coap_set_status_code
+ 220:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     if (COAP_IGNORE < result && result < COAP_400_BAD_REQUEST)
+ 186              		.loc 1 221 0
+ 187 0086 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 188 0088 012B     		cmp	r3, #1
+ 189 008a 05D9     		bls	.L11
+ 190              		.loc 1 221 0 is_stmt 0 discriminator 1
+ 191 008c 97F91F30 		ldrsb	r3, [r7, #31]
+ 192 0090 002B     		cmp	r3, #0
+ 193 0092 01DB     		blt	.L11
+ 222:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     {
+ 223:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         result = NO_ERROR;
+ 194              		.loc 1 223 0 is_stmt 1
+ 195 0094 0023     		movs	r3, #0
+ 196 0096 FB77     		strb	r3, [r7, #31]
+ 197              	.L11:
+ 224:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     }
+ 225:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 226:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     lwm2m_free(uriP);
+ 198              		.loc 1 226 0
+ 199 0098 B869     		ldr	r0, [r7, #24]
+ 200 009a FFF7FEFF 		bl	lwm2m_free
+ 227:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     return result;
+ 201              		.loc 1 227 0
+ 202 009e FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 203              	.L6:
+ 228:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** }
+ 204              		.loc 1 228 0
+ 205 00a0 1846     		mov	r0, r3
+ 206 00a2 2437     		adds	r7, r7, #36
+ 207              	.LCFI8:
+ 208              		.cfi_def_cfa_offset 12
+ 209 00a4 BD46     		mov	sp, r7
+ 210              	.LCFI9:
+ 211              		.cfi_def_cfa_register 13
+ 212              		@ sp needed
+ 213 00a6 90BD     		pop	{r4, r7, pc}
+ 214              	.L15:
+ 215              		.align	2
+ 216              	.L14:
+ 217 00a8 00000000 		.word	__func__.8565
+ 218 00ac 00000000 		.word	.LC0
+ 219              		.cfi_endproc
+ 220              	.LFE5:
+ 222              		.section	.rodata
+ 223 0017 00       		.align	2
+ 224              	.LC1:
+ 225 0018 5B25645D 		.ascii	"[%d][%s:%d] Parsed: ver %u, type %u, tkl %u, code %"
+ 225      5B25733A 
+ 225      25645D20 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 9
+
+
+ 225      50617273 
+ 225      65643A20 
+ 226 004b 752E252E 		.ascii	"u.%.2u, mid %u, Content type: %d\015\012\000"
+ 226      32752C20 
+ 226      6D696420 
+ 226      25752C20 
+ 226      436F6E74 
+ 227 006e 0000     		.align	2
+ 228              	.LC2:
+ 229 0070 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: block request %u (%u/%u) @ %"
+ 229      5B25733A 
+ 229      25645D20 
+ 229      426C6F63 
+ 229      6B776973 
+ 230 00a3 75206279 		.ascii	"u bytes\015\012\000"
+ 230      7465730D 
+ 230      0A00
+ 231 00ad 000000   		.align	2
+ 232              	.LC3:
+ 233 00b0 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: block1 request NUM %u (SZX %"
+ 233      5B25733A 
+ 233      25645D20 
+ 233      426C6F63 
+ 233      6B776973 
+ 234 00e3 752F2053 		.ascii	"u/ SZX Max%u) MORE %u\015\012\000"
+ 234      5A58204D 
+ 234      61782575 
+ 234      29204D4F 
+ 234      52452025 
+ 235 00fb 00       		.align	2
+ 236              	.LC4:
+ 237 00fc 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: unaware resource with payloa"
+ 237      5B25733A 
+ 237      25645D20 
+ 237      426C6F63 
+ 237      6B776973 
+ 238 012f 64206C65 		.ascii	"d length %u/%u\015\012\000"
+ 238      6E677468 
+ 238      2025752F 
+ 238      25750D0A 
+ 238      00
+ 239              		.align	2
+ 240              	.LC5:
+ 241 0140 5B25645D 		.ascii	"[%d][%s:%d] handle_incoming_data(): block_offset >="
+ 241      5B25733A 
+ 241      25645D20 
+ 241      68616E64 
+ 241      6C655F69 
+ 242 0173 20726573 		.ascii	" response->payload_len\015\012\000"
+ 242      706F6E73 
+ 242      652D3E70 
+ 242      61796C6F 
+ 242      61645F6C 
+ 243              		.align	2
+ 244              	.LC6:
+ 245 018c 426C6F63 		.ascii	"BlockOutOfScope\000"
+ 245      6B4F7574 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 10
+
+
+ 245      4F665363 
+ 245      6F706500 
+ 246              		.align	2
+ 247              	.LC7:
+ 248 019c 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: blockwise resource, new offs"
+ 248      5B25733A 
+ 248      25645D20 
+ 248      426C6F63 
+ 248      6B776973 
+ 249 01cf 65742025 		.ascii	"et %d\015\012\000"
+ 249      640D0A00 
+ 250 01d7 00       		.align	2
+ 251              	.LC8:
+ 252 01d8 5B25645D 		.ascii	"[%d][%s:%d] Blockwise: no block option for blockwis"
+ 252      5B25733A 
+ 252      25645D20 
+ 252      426C6F63 
+ 252      6B776973 
+ 253 020b 65207265 		.ascii	"e resource, using block size %u\015\012\000"
+ 253      736F7572 
+ 253      63652C20 
+ 253      7573696E 
+ 253      6720626C 
+ 254 022d 000000   		.align	2
+ 255              	.LC9:
+ 256 0230 5B25645D 		.ascii	"[%d][%s:%d] Message parsing failed %u.%2u\015\012\000"
+ 256      5B25733A 
+ 256      25645D20 
+ 256      4D657373 
+ 256      61676520 
+ 257              		.align	2
+ 258              	.LC10:
+ 259 025c 5B25645D 		.ascii	"[%d][%s:%d] ERROR %u: %s\015\012\000"
+ 259      5B25733A 
+ 259      25645D20 
+ 259      4552524F 
+ 259      52202575 
+ 260              		.section	.text.lwm2m_handle_packet,"ax",%progbits
+ 261              		.align	1
+ 262              		.global	lwm2m_handle_packet
+ 263              		.syntax unified
+ 264              		.thumb
+ 265              		.thumb_func
+ 266              		.fpu fpv4-sp-d16
+ 268              	lwm2m_handle_packet:
+ 269              	.LFB6:
+ 229:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** /* This function is an adaptation of function coap_receive() from Erbium's er-coap-13-engine.c.
+ 231:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * Erbium is Copyright (c) 2013, Institute for Pervasive Computing, ETH Zurich
+ 232:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  * All rights reserved.
+ 233:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****  */
+ 234:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** void lwm2m_handle_packet(lwm2m_context_t *contextP,
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                          uint8_t *buffer,
+ 236:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                          int length,
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                          void *fromSessionH)
+ 238:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** {
+ 270              		.loc 1 238 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 11
+
+
+ 271              		.cfi_startproc
+ 272              		@ args = 0, pretend = 0, frame = 72
+ 273              		@ frame_needed = 1, uses_anonymous_args = 0
+ 274 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 275              	.LCFI10:
+ 276              		.cfi_def_cfa_offset 20
+ 277              		.cfi_offset 4, -20
+ 278              		.cfi_offset 5, -16
+ 279              		.cfi_offset 6, -12
+ 280              		.cfi_offset 7, -8
+ 281              		.cfi_offset 14, -4
+ 282 0002 9BB0     		sub	sp, sp, #108
+ 283              	.LCFI11:
+ 284              		.cfi_def_cfa_offset 128
+ 285 0004 08AF     		add	r7, sp, #32
+ 286              	.LCFI12:
+ 287              		.cfi_def_cfa 7, 96
+ 288 0006 F860     		str	r0, [r7, #12]
+ 289 0008 B960     		str	r1, [r7, #8]
+ 290 000a 7A60     		str	r2, [r7, #4]
+ 291 000c 3B60     		str	r3, [r7]
+ 239:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     uint8_t coap_error_code = NO_ERROR;
+ 292              		.loc 1 239 0
+ 293 000e 0023     		movs	r3, #0
+ 294 0010 87F84730 		strb	r3, [r7, #71]
+ 240:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     static coap_packet_t message[1];
+ 241:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     static coap_packet_t response[1];
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 243:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     LOG("Entering");
+ 295              		.loc 1 243 0
+ 296 0014 FFF7FEFF 		bl	lwm2m_gettime
+ 297 0018 0346     		mov	r3, r0
+ 298 001a 0C46     		mov	r4, r1
+ 299 001c 1946     		mov	r1, r3
+ 300 001e F323     		movs	r3, #243
+ 301 0020 874A     		ldr	r2, .L53
+ 302 0022 8848     		ldr	r0, .L53+4
+ 303 0024 FFF7FEFF 		bl	atiny_printf
+ 244:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     coap_error_code = coap_parse_message(message, buffer, (uint16_t)length);
+ 304              		.loc 1 244 0
+ 305 0028 7B68     		ldr	r3, [r7, #4]
+ 306 002a 9BB2     		uxth	r3, r3
+ 307 002c 1A46     		mov	r2, r3
+ 308 002e B968     		ldr	r1, [r7, #8]
+ 309 0030 8548     		ldr	r0, .L53+8
+ 310 0032 FFF7FEFF 		bl	coap_parse_message
+ 311 0036 0346     		mov	r3, r0
+ 312 0038 87F84730 		strb	r3, [r7, #71]
+ 245:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     if (coap_error_code == NO_ERROR)
+ 313              		.loc 1 245 0
+ 314 003c 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 315 0040 002B     		cmp	r3, #0
+ 316 0042 40F07F82 		bne	.L17
+ 246:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     {
+ 247:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         LOG_ARG("Parsed: ver %u, type %u, tkl %u, code %u.%.2u, mid %u, Content type: %d",
+ 317              		.loc 1 247 0
+ 318 0046 FFF7FEFF 		bl	lwm2m_gettime
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 12
+
+
+ 319 004a 0346     		mov	r3, r0
+ 320 004c 0C46     		mov	r4, r1
+ 321 004e 9C46     		mov	ip, r3
+ 322 0050 7D4B     		ldr	r3, .L53+8
+ 323 0052 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 324 0054 1946     		mov	r1, r3
+ 325 0056 7C4B     		ldr	r3, .L53+8
+ 326 0058 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 327 005a 1846     		mov	r0, r3
+ 328 005c 7A4B     		ldr	r3, .L53+8
+ 329 005e 93F84C30 		ldrb	r3, [r3, #76]	@ zero_extendqisi2
+ 330 0062 1C46     		mov	r4, r3
+ 331 0064 784B     		ldr	r3, .L53+8
+ 332 0066 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 333 0068 5B09     		lsrs	r3, r3, #5
+ 334 006a DBB2     		uxtb	r3, r3
+ 335 006c 1D46     		mov	r5, r3
+ 336 006e 764B     		ldr	r3, .L53+8
+ 337 0070 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 338 0072 03F01F03 		and	r3, r3, #31
+ 339 0076 744A     		ldr	r2, .L53+8
+ 340 0078 1289     		ldrh	r2, [r2, #8]
+ 341 007a 1646     		mov	r6, r2
+ 342 007c 724A     		ldr	r2, .L53+8
+ 343 007e 128A     		ldrh	r2, [r2, #16]
+ 344 0080 0692     		str	r2, [sp, #24]
+ 345 0082 0596     		str	r6, [sp, #20]
+ 346 0084 0493     		str	r3, [sp, #16]
+ 347 0086 0395     		str	r5, [sp, #12]
+ 348 0088 0294     		str	r4, [sp, #8]
+ 349 008a 0190     		str	r0, [sp, #4]
+ 350 008c 0091     		str	r1, [sp]
+ 351 008e F823     		movs	r3, #248
+ 352 0090 6B4A     		ldr	r2, .L53
+ 353 0092 6146     		mov	r1, ip
+ 354 0094 6D48     		ldr	r0, .L53+12
+ 355 0096 FFF7FEFF 		bl	atiny_printf
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 message->version, message->type, message->token_len, message->code >> 5, message->c
+ 249:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         //LOG_ARG("Payload: %.*s", message->payload_len, message->payload);   //%s can not used for
+ 250:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         if (message->code >= COAP_GET && message->code <= COAP_DELETE)
+ 356              		.loc 1 250 0
+ 357 009a 6B4B     		ldr	r3, .L53+8
+ 358 009c 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 359 009e 002B     		cmp	r3, #0
+ 360 00a0 00F0F081 		beq	.L18
+ 361              		.loc 1 250 0 is_stmt 0 discriminator 1
+ 362 00a4 684B     		ldr	r3, .L53+8
+ 363 00a6 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 364 00a8 042B     		cmp	r3, #4
+ 365 00aa 00F2EB81 		bhi	.L18
+ 366              	.LBB3:
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         {
+ 252:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             uint32_t block_num = 0;
+ 367              		.loc 1 252 0 is_stmt 1
+ 368 00ae 0023     		movs	r3, #0
+ 369 00b0 FB62     		str	r3, [r7, #44]
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             uint16_t block_size = REST_MAX_CHUNK_SIZE;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 13
+
+
+ 370              		.loc 1 253 0
+ 371 00b2 8023     		movs	r3, #128
+ 372 00b4 7B85     		strh	r3, [r7, #42]	@ movhi
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             uint32_t block_offset = 0;
+ 373              		.loc 1 254 0
+ 374 00b6 0023     		movs	r3, #0
+ 375 00b8 7B62     		str	r3, [r7, #36]
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             int64_t new_offset = 0;
+ 376              		.loc 1 255 0
+ 377 00ba 4FF00003 		mov	r3, #0
+ 378 00be 4FF00004 		mov	r4, #0
+ 379 00c2 C7E90E34 		strd	r3, [r7, #56]
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             /* prepare response */
+ 258:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             if (message->type == COAP_TYPE_CON)
+ 380              		.loc 1 258 0
+ 381 00c6 604B     		ldr	r3, .L53+8
+ 382 00c8 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 383 00ca 002B     		cmp	r3, #0
+ 384 00cc 07D1     		bne	.L19
+ 259:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 /* Reliable CON requests are answered with an ACK. */
+ 261:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 coap_init_message(response, COAP_TYPE_ACK, COAP_205_CONTENT, message->mid);
+ 385              		.loc 1 261 0
+ 386 00ce 5E4B     		ldr	r3, .L53+8
+ 387 00d0 1B89     		ldrh	r3, [r3, #8]
+ 388 00d2 4522     		movs	r2, #69
+ 389 00d4 0221     		movs	r1, #2
+ 390 00d6 5E48     		ldr	r0, .L53+16
+ 391 00d8 FFF7FEFF 		bl	coap_init_message
+ 392 00dc 0AE0     		b	.L20
+ 393              	.L19:
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             else
+ 264:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 /* Unreliable NON requests are answered with a NON as well. */
+ 266:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 coap_init_message(response, COAP_TYPE_NON, COAP_205_CONTENT, contextP->nextMID++);
+ 394              		.loc 1 266 0
+ 395 00de FB68     		ldr	r3, [r7, #12]
+ 396 00e0 9B8D     		ldrh	r3, [r3, #44]
+ 397 00e2 5A1C     		adds	r2, r3, #1
+ 398 00e4 91B2     		uxth	r1, r2
+ 399 00e6 FA68     		ldr	r2, [r7, #12]
+ 400 00e8 9185     		strh	r1, [r2, #44]	@ movhi
+ 401 00ea 4522     		movs	r2, #69
+ 402 00ec 0121     		movs	r1, #1
+ 403 00ee 5848     		ldr	r0, .L53+16
+ 404 00f0 FFF7FEFF 		bl	coap_init_message
+ 405              	.L20:
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             /* mirror token */
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             if (message->token_len)
+ 406              		.loc 1 270 0
+ 407 00f4 544B     		ldr	r3, .L53+8
+ 408 00f6 93F84C30 		ldrb	r3, [r3, #76]	@ zero_extendqisi2
+ 409 00fa 002B     		cmp	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 14
+
+
+ 410 00fc 07D0     		beq	.L21
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 coap_set_header_token(response, message->token, message->token_len);
+ 411              		.loc 1 272 0
+ 412 00fe 5549     		ldr	r1, .L53+20
+ 413 0100 514B     		ldr	r3, .L53+8
+ 414 0102 93F84C30 		ldrb	r3, [r3, #76]	@ zero_extendqisi2
+ 415 0106 1A46     		mov	r2, r3
+ 416 0108 5148     		ldr	r0, .L53+16
+ 417 010a FFF7FEFF 		bl	coap_set_header_token
+ 418              	.L21:
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 275:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             /* get offset for blockwise transfers */
+ 276:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             if (coap_get_header_block2(message, &block_num, NULL, &block_size, &block_offset))
+ 419              		.loc 1 276 0
+ 420 010e 07F12A02 		add	r2, r7, #42
+ 421 0112 07F12C01 		add	r1, r7, #44
+ 422 0116 07F12403 		add	r3, r7, #36
+ 423 011a 0093     		str	r3, [sp]
+ 424 011c 1346     		mov	r3, r2
+ 425 011e 0022     		movs	r2, #0
+ 426 0120 4948     		ldr	r0, .L53+8
+ 427 0122 FFF7FEFF 		bl	coap_get_header_block2
+ 428 0126 0346     		mov	r3, r0
+ 429 0128 002B     		cmp	r3, #0
+ 430 012a 1FD0     		beq	.L22
+ 277:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 LOG_ARG("Blockwise: block request %u (%u/%u) @ %u bytes", block_num, block_size, RE
+ 431              		.loc 1 278 0
+ 432 012c FFF7FEFF 		bl	lwm2m_gettime
+ 433 0130 0346     		mov	r3, r0
+ 434 0132 0C46     		mov	r4, r1
+ 435 0134 1846     		mov	r0, r3
+ 436 0136 FB6A     		ldr	r3, [r7, #44]
+ 437 0138 7A8D     		ldrh	r2, [r7, #42]
+ 438 013a 1146     		mov	r1, r2
+ 439 013c 7A6A     		ldr	r2, [r7, #36]
+ 440 013e 0392     		str	r2, [sp, #12]
+ 441 0140 8022     		movs	r2, #128
+ 442 0142 0292     		str	r2, [sp, #8]
+ 443 0144 0191     		str	r1, [sp, #4]
+ 444 0146 0093     		str	r3, [sp]
+ 445 0148 4FF48B73 		mov	r3, #278
+ 446 014c 3C4A     		ldr	r2, .L53
+ 447 014e 0146     		mov	r1, r0
+ 448 0150 4148     		ldr	r0, .L53+24
+ 449 0152 FFF7FEFF 		bl	atiny_printf
+ 279:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 block_size = MIN(block_size, REST_MAX_CHUNK_SIZE);
+ 450              		.loc 1 279 0
+ 451 0156 7B8D     		ldrh	r3, [r7, #42]
+ 452 0158 802B     		cmp	r3, #128
+ 453 015a 28BF     		it	cs
+ 454 015c 8023     		movcs	r3, #128
+ 455 015e 9BB2     		uxth	r3, r3
+ 456 0160 7B85     		strh	r3, [r7, #42]	@ movhi
+ 280:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 new_offset = block_offset;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 15
+
+
+ 457              		.loc 1 280 0
+ 458 0162 7B6A     		ldr	r3, [r7, #36]
+ 459 0164 4FF00004 		mov	r4, #0
+ 460 0168 C7E90E34 		strd	r3, [r7, #56]
+ 461              	.L22:
+ 281:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 282:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             /* handle block1 option */
+ 284:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             if (IS_OPTION(message, COAP_OPTION_BLOCK1))
+ 462              		.loc 1 284 0
+ 463 016c 364B     		ldr	r3, .L53+8
+ 464 016e 5B7B     		ldrb	r3, [r3, #13]	@ zero_extendqisi2
+ 465 0170 03F00803 		and	r3, r3, #8
+ 466 0174 002B     		cmp	r3, #0
+ 467 0176 00F08380 		beq	.L23
+ 468              	.LBB4:
+ 285:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 286:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_CLIENT_MODE
+ 287:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 // get server
+ 288:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 lwm2m_server_t *serverP;
+ 289:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 serverP = utils_findServer(contextP, fromSessionH);
+ 469              		.loc 1 289 0
+ 470 017a 3968     		ldr	r1, [r7]
+ 471 017c F868     		ldr	r0, [r7, #12]
+ 472 017e FFF7FEFF 		bl	utils_findServer
+ 473 0182 7863     		str	r0, [r7, #52]
+ 290:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_BOOTSTRAP
+ 291:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 if (serverP == NULL)
+ 292:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 {
+ 293:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     serverP = utils_findBootstrapServer(contextP, fromSessionH);
+ 294:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 }
+ 295:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 296:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 if (serverP == NULL)
+ 474              		.loc 1 296 0
+ 475 0184 7B6B     		ldr	r3, [r7, #52]
+ 476 0186 002B     		cmp	r3, #0
+ 477 0188 03D1     		bne	.L24
+ 297:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 {
+ 298:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     coap_error_code = COAP_500_INTERNAL_SERVER_ERROR;
+ 478              		.loc 1 298 0
+ 479 018a A023     		movs	r3, #160
+ 480 018c 87F84730 		strb	r3, [r7, #71]
+ 481 0190 76E0     		b	.L23
+ 482              	.L24:
+ 483              	.LBB5:
+ 299:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 }
+ 300:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 else
+ 301:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 {
+ 302:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     uint32_t block1_num;
+ 303:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     uint8_t  block1_more;
+ 304:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     uint16_t block1_size;
+ 305:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     uint8_t *complete_buffer = NULL;
+ 484              		.loc 1 305 0
+ 485 0192 0023     		movs	r3, #0
+ 486 0194 BB61     		str	r3, [r7, #24]
+ 306:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     size_t complete_buffer_size;
+ 307:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 16
+
+
+ 308:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     // parse block1 header
+ 309:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     coap_get_header_block1(message, &block1_num, &block1_more, &block1_size, NULL);
+ 487              		.loc 1 309 0
+ 488 0196 07F11C00 		add	r0, r7, #28
+ 489 019a 07F11F02 		add	r2, r7, #31
+ 490 019e 07F12001 		add	r1, r7, #32
+ 491 01a2 0023     		movs	r3, #0
+ 492 01a4 0093     		str	r3, [sp]
+ 493 01a6 0346     		mov	r3, r0
+ 494 01a8 2748     		ldr	r0, .L53+8
+ 495 01aa FFF7FEFF 		bl	coap_get_header_block1
+ 310:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     LOG_ARG("Blockwise: block1 request NUM %u (SZX %u/ SZX Max%u) MORE %u", block1_
+ 496              		.loc 1 310 0
+ 497 01ae FFF7FEFF 		bl	lwm2m_gettime
+ 498 01b2 0346     		mov	r3, r0
+ 499 01b4 0C46     		mov	r4, r1
+ 500 01b6 1846     		mov	r0, r3
+ 501 01b8 3B6A     		ldr	r3, [r7, #32]
+ 502 01ba BA8B     		ldrh	r2, [r7, #28]
+ 503 01bc 1146     		mov	r1, r2
+ 504 01be FA7F     		ldrb	r2, [r7, #31]	@ zero_extendqisi2
+ 505 01c0 0392     		str	r2, [sp, #12]
+ 506 01c2 8022     		movs	r2, #128
+ 507 01c4 0292     		str	r2, [sp, #8]
+ 508 01c6 0191     		str	r1, [sp, #4]
+ 509 01c8 0093     		str	r3, [sp]
+ 510 01ca 4FF49B73 		mov	r3, #310
+ 511 01ce 1C4A     		ldr	r2, .L53
+ 512 01d0 0146     		mov	r1, r0
+ 513 01d2 2248     		ldr	r0, .L53+28
+ 514 01d4 FFF7FEFF 		bl	atiny_printf
+ 311:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 312:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     // handle block 1
+ 313:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     coap_error_code = coap_block1_handler(&serverP->block1Data, message->mid, messa
+ 515              		.loc 1 313 0
+ 516 01d8 7B6B     		ldr	r3, [r7, #52]
+ 517 01da 03F12C04 		add	r4, r3, #44
+ 518 01de 1A4B     		ldr	r3, .L53+8
+ 519 01e0 1D89     		ldrh	r5, [r3, #8]
+ 520 01e2 194B     		ldr	r3, .L53+8
+ 521 01e4 D3F88860 		ldr	r6, [r3, #136]
+ 522 01e8 174B     		ldr	r3, .L53+8
+ 523 01ea B3F88630 		ldrh	r3, [r3, #134]
+ 524 01ee 9C46     		mov	ip, r3
+ 525 01f0 BB8B     		ldrh	r3, [r7, #28]
+ 526 01f2 3A6A     		ldr	r2, [r7, #32]
+ 527 01f4 F97F     		ldrb	r1, [r7, #31]	@ zero_extendqisi2
+ 528 01f6 0029     		cmp	r1, #0
+ 529 01f8 14BF     		ite	ne
+ 530 01fa 0121     		movne	r1, #1
+ 531 01fc 0021     		moveq	r1, #0
+ 532 01fe C9B2     		uxtb	r1, r1
+ 533 0200 07F11400 		add	r0, r7, #20
+ 534 0204 0490     		str	r0, [sp, #16]
+ 535 0206 07F11800 		add	r0, r7, #24
+ 536 020a 0390     		str	r0, [sp, #12]
+ 537 020c 0291     		str	r1, [sp, #8]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 17
+
+
+ 538 020e 0192     		str	r2, [sp, #4]
+ 539 0210 0093     		str	r3, [sp]
+ 540 0212 6346     		mov	r3, ip
+ 541 0214 3246     		mov	r2, r6
+ 542 0216 2946     		mov	r1, r5
+ 543 0218 2046     		mov	r0, r4
+ 544 021a FFF7FEFF 		bl	coap_block1_handler
+ 545 021e 0346     		mov	r3, r0
+ 546 0220 87F84730 		strb	r3, [r7, #71]
+ 314:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 315:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     // if payload is complete, replace it in the coap message.
+ 316:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     if (coap_error_code == NO_ERROR)
+ 547              		.loc 1 316 0
+ 548 0224 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 549 0228 002B     		cmp	r3, #0
+ 550 022a 19D1     		bne	.L25
+ 317:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     {
+ 318:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         message->payload = complete_buffer;
+ 551              		.loc 1 318 0
+ 552 022c BB69     		ldr	r3, [r7, #24]
+ 553 022e 064A     		ldr	r2, .L53+8
+ 554 0230 C2F88830 		str	r3, [r2, #136]
+ 319:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         message->payload_len = complete_buffer_size;
+ 555              		.loc 1 319 0
+ 556 0234 7B69     		ldr	r3, [r7, #20]
+ 557 0236 9AB2     		uxth	r2, r3
+ 558 0238 034B     		ldr	r3, .L53+8
+ 559 023a A3F88620 		strh	r2, [r3, #134]	@ movhi
+ 560 023e 1FE0     		b	.L23
+ 561              	.L54:
+ 562              		.align	2
+ 563              	.L53:
+ 564 0240 00000000 		.word	__func__.8579
+ 565 0244 00000000 		.word	.LC0
+ 566 0248 00000000 		.word	message.8577
+ 567 024c 18000000 		.word	.LC1
+ 568 0250 00000000 		.word	response.8578
+ 569 0254 4D000000 		.word	message.8577+77
+ 570 0258 70000000 		.word	.LC2
+ 571 025c B0000000 		.word	.LC3
+ 572              	.L25:
+ 320:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     }
+ 321:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     else if (coap_error_code == COAP_231_CONTINUE)
+ 573              		.loc 1 321 0
+ 574 0260 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 575 0264 5F2B     		cmp	r3, #95
+ 576 0266 0BD1     		bne	.L23
+ 322:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     {
+ 323:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         block1_size = MIN(block1_size, REST_MAX_CHUNK_SIZE);
+ 577              		.loc 1 323 0
+ 578 0268 BB8B     		ldrh	r3, [r7, #28]
+ 579 026a 802B     		cmp	r3, #128
+ 580 026c 28BF     		it	cs
+ 581 026e 8023     		movcs	r3, #128
+ 582 0270 9BB2     		uxth	r3, r3
+ 583 0272 BB83     		strh	r3, [r7, #28]	@ movhi
+ 324:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         coap_set_header_block1(response, block1_num, block1_more, block1_size);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 18
+
+
+ 584              		.loc 1 324 0
+ 585 0274 396A     		ldr	r1, [r7, #32]
+ 586 0276 FA7F     		ldrb	r2, [r7, #31]	@ zero_extendqisi2
+ 587 0278 BB8B     		ldrh	r3, [r7, #28]
+ 588 027a AA48     		ldr	r0, .L55
+ 589 027c FFF7FEFF 		bl	coap_set_header_block1
+ 590              	.L23:
+ 591              	.LBE5:
+ 592              	.LBE4:
+ 325:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     }
+ 326:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 }
+ 327:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #else
+ 328:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 coap_error_code = COAP_501_NOT_IMPLEMENTED;
+ 329:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 330:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 331:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             if (coap_error_code == NO_ERROR)
+ 593              		.loc 1 331 0
+ 594 0280 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 595 0284 002B     		cmp	r3, #0
+ 596 0286 08D1     		bne	.L27
+ 332:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 333:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 coap_error_code = handle_request(contextP, fromSessionH, message, response);
+ 597              		.loc 1 333 0
+ 598 0288 A64B     		ldr	r3, .L55
+ 599 028a A74A     		ldr	r2, .L55+4
+ 600 028c 3968     		ldr	r1, [r7]
+ 601 028e F868     		ldr	r0, [r7, #12]
+ 602 0290 FFF7FEFF 		bl	handle_request
+ 603 0294 0346     		mov	r3, r0
+ 604 0296 87F84730 		strb	r3, [r7, #71]
+ 605              	.L27:
+ 334:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 335:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             if (coap_error_code == NO_ERROR)
+ 606              		.loc 1 335 0
+ 607 029a 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 608 029e 002B     		cmp	r3, #0
+ 609 02a0 40F0DA80 		bne	.L28
+ 336:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 337:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 if ( IS_OPTION(message, COAP_OPTION_BLOCK2) )
+ 610              		.loc 1 337 0
+ 611 02a4 A04B     		ldr	r3, .L55+4
+ 612 02a6 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 613 02a8 5BB2     		sxtb	r3, r3
+ 614 02aa 002B     		cmp	r3, #0
+ 615 02ac 80F28F80 		bge	.L29
+ 338:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 {
+ 339:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     /* unchanged new_offset indicates that resource is unaware of blockwise transfe
+ 340:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     if (new_offset == block_offset)
+ 616              		.loc 1 340 0
+ 617 02b0 7B6A     		ldr	r3, [r7, #36]
+ 618 02b2 4FF00004 		mov	r4, #0
+ 619 02b6 D7E90E12 		ldrd	r1, [r7, #56]
+ 620 02ba A242     		cmp	r2, r4
+ 621 02bc 08BF     		it	eq
+ 622 02be 9942     		cmpeq	r1, r3
+ 623 02c0 52D1     		bne	.L30
+ 341:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 19
+
+
+ 342:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         LOG_ARG("Blockwise: unaware resource with payload length %u/%u", response->
+ 624              		.loc 1 342 0
+ 625 02c2 FFF7FEFF 		bl	lwm2m_gettime
+ 626 02c6 0346     		mov	r3, r0
+ 627 02c8 0C46     		mov	r4, r1
+ 628 02ca 1946     		mov	r1, r3
+ 629 02cc 954B     		ldr	r3, .L55
+ 630 02ce B3F88630 		ldrh	r3, [r3, #134]
+ 631 02d2 7A8D     		ldrh	r2, [r7, #42]
+ 632 02d4 0192     		str	r2, [sp, #4]
+ 633 02d6 0093     		str	r3, [sp]
+ 634 02d8 4FF4AB73 		mov	r3, #342
+ 635 02dc 934A     		ldr	r2, .L55+8
+ 636 02de 9448     		ldr	r0, .L55+12
+ 637 02e0 FFF7FEFF 		bl	atiny_printf
+ 343:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         if (block_offset >= message->payload_len)
+ 638              		.loc 1 343 0
+ 639 02e4 904B     		ldr	r3, .L55+4
+ 640 02e6 B3F88630 		ldrh	r3, [r3, #134]
+ 641 02ea 1A46     		mov	r2, r3
+ 642 02ec 7B6A     		ldr	r3, [r7, #36]
+ 643 02ee 9A42     		cmp	r2, r3
+ 644 02f0 13D8     		bhi	.L31
+ 344:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         {
+ 345:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                             LOG("handle_incoming_data(): block_offset >= response->payload_len");
+ 645              		.loc 1 345 0
+ 646 02f2 FFF7FEFF 		bl	lwm2m_gettime
+ 647 02f6 0346     		mov	r3, r0
+ 648 02f8 0C46     		mov	r4, r1
+ 649 02fa 1946     		mov	r1, r3
+ 650 02fc 40F25913 		movw	r3, #345
+ 651 0300 8A4A     		ldr	r2, .L55+8
+ 652 0302 8C48     		ldr	r0, .L55+16
+ 653 0304 FFF7FEFF 		bl	atiny_printf
+ 346:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 347:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                             response->code = COAP_402_BAD_OPTION;
+ 654              		.loc 1 347 0
+ 655 0308 864B     		ldr	r3, .L55
+ 656 030a 8222     		movs	r2, #130
+ 657 030c 9A71     		strb	r2, [r3, #6]
+ 348:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                             coap_set_payload(response, "BlockOutOfScope", 15); /* a const char str[
+ 658              		.loc 1 348 0
+ 659 030e 0F22     		movs	r2, #15
+ 660 0310 8949     		ldr	r1, .L55+20
+ 661 0312 8448     		ldr	r0, .L55
+ 662 0314 FFF7FEFF 		bl	coap_set_payload
+ 663 0318 87E0     		b	.L37
+ 664              	.L31:
+ 349:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         }
+ 350:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         else
+ 351:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         {
+ 352:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                             coap_set_header_block2(response, block_num, response->payload_len - blo
+ 665              		.loc 1 352 0
+ 666 031a F96A     		ldr	r1, [r7, #44]
+ 667 031c 814B     		ldr	r3, .L55
+ 668 031e B3F88630 		ldrh	r3, [r3, #134]
+ 669 0322 1A46     		mov	r2, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 20
+
+
+ 670 0324 7B6A     		ldr	r3, [r7, #36]
+ 671 0326 D31A     		subs	r3, r2, r3
+ 672 0328 7A8D     		ldrh	r2, [r7, #42]
+ 673 032a 9342     		cmp	r3, r2
+ 674 032c 8CBF     		ite	hi
+ 675 032e 0123     		movhi	r3, #1
+ 676 0330 0023     		movls	r3, #0
+ 677 0332 DBB2     		uxtb	r3, r3
+ 678 0334 1A46     		mov	r2, r3
+ 679 0336 7B8D     		ldrh	r3, [r7, #42]
+ 680 0338 7A48     		ldr	r0, .L55
+ 681 033a FFF7FEFF 		bl	coap_set_header_block2
+ 353:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                             coap_set_payload(response, response->payload + block_offset, MIN(respon
+ 682              		.loc 1 353 0
+ 683 033e 794B     		ldr	r3, .L55
+ 684 0340 D3F88820 		ldr	r2, [r3, #136]
+ 685 0344 7B6A     		ldr	r3, [r7, #36]
+ 686 0346 D118     		adds	r1, r2, r3
+ 687 0348 7B8D     		ldrh	r3, [r7, #42]
+ 688 034a 1A46     		mov	r2, r3
+ 689 034c 754B     		ldr	r3, .L55
+ 690 034e B3F88630 		ldrh	r3, [r3, #134]
+ 691 0352 1846     		mov	r0, r3
+ 692 0354 7B6A     		ldr	r3, [r7, #36]
+ 693 0356 C31A     		subs	r3, r0, r3
+ 694 0358 9342     		cmp	r3, r2
+ 695 035a 28BF     		it	cs
+ 696 035c 1346     		movcs	r3, r2
+ 697 035e 1A46     		mov	r2, r3
+ 698 0360 7048     		ldr	r0, .L55
+ 699 0362 FFF7FEFF 		bl	coap_set_payload
+ 700 0366 60E0     		b	.L37
+ 701              	.L30:
+ 354:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         } /* if (valid offset) */
+ 355:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     }
+ 356:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     else
+ 357:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     {
+ 358:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         /* resource provides chunk-wise data */
+ 359:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         LOG_ARG("Blockwise: blockwise resource, new offset %d", (int) new_offset);
+ 702              		.loc 1 359 0
+ 703 0368 FFF7FEFF 		bl	lwm2m_gettime
+ 704 036c 0346     		mov	r3, r0
+ 705 036e 0C46     		mov	r4, r1
+ 706 0370 1946     		mov	r1, r3
+ 707 0372 BB6B     		ldr	r3, [r7, #56]
+ 708 0374 0093     		str	r3, [sp]
+ 709 0376 40F26713 		movw	r3, #359
+ 710 037a 6C4A     		ldr	r2, .L55+8
+ 711 037c 6F48     		ldr	r0, .L55+24
+ 712 037e FFF7FEFF 		bl	atiny_printf
+ 360:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         coap_set_header_block2(response, block_num, new_offset != -1 || response->p
+ 713              		.loc 1 360 0
+ 714 0382 F96A     		ldr	r1, [r7, #44]
+ 715 0384 D7E90E34 		ldrd	r3, [r7, #56]
+ 716 0388 B4F1FF3F 		cmp	r4, #-1
+ 717 038c 08BF     		it	eq
+ 718 038e B3F1FF3F 		cmpeq	r3, #-1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 21
+
+
+ 719 0392 05D1     		bne	.L34
+ 720              		.loc 1 360 0 is_stmt 0 discriminator 2
+ 721 0394 634B     		ldr	r3, .L55
+ 722 0396 B3F88620 		ldrh	r2, [r3, #134]
+ 723 039a 7B8D     		ldrh	r3, [r7, #42]
+ 724 039c 9A42     		cmp	r2, r3
+ 725 039e 01D9     		bls	.L35
+ 726              	.L34:
+ 727              		.loc 1 360 0 discriminator 3
+ 728 03a0 0123     		movs	r3, #1
+ 729 03a2 00E0     		b	.L36
+ 730              	.L35:
+ 731              		.loc 1 360 0 discriminator 4
+ 732 03a4 0023     		movs	r3, #0
+ 733              	.L36:
+ 734              		.loc 1 360 0 discriminator 6
+ 735 03a6 DAB2     		uxtb	r2, r3
+ 736 03a8 7B8D     		ldrh	r3, [r7, #42]
+ 737 03aa 5E48     		ldr	r0, .L55
+ 738 03ac FFF7FEFF 		bl	coap_set_header_block2
+ 361:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         if (response->payload_len > block_size) coap_set_payload(response, response
+ 739              		.loc 1 361 0 is_stmt 1 discriminator 6
+ 740 03b0 5C4B     		ldr	r3, .L55
+ 741 03b2 B3F88620 		ldrh	r2, [r3, #134]
+ 742 03b6 7B8D     		ldrh	r3, [r7, #42]
+ 743 03b8 9A42     		cmp	r2, r3
+ 744 03ba 36D9     		bls	.L37
+ 745              		.loc 1 361 0 is_stmt 0 discriminator 1
+ 746 03bc 594B     		ldr	r3, .L55
+ 747 03be D3F88830 		ldr	r3, [r3, #136]
+ 748 03c2 7A8D     		ldrh	r2, [r7, #42]
+ 749 03c4 1946     		mov	r1, r3
+ 750 03c6 5748     		ldr	r0, .L55
+ 751 03c8 FFF7FEFF 		bl	coap_set_payload
+ 752 03cc 2DE0     		b	.L37
+ 753              	.L29:
+ 362:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     } /* if (resource aware of blockwise) */
+ 363:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 }
+ 364:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 else if (new_offset != 0)
+ 754              		.loc 1 364 0 is_stmt 1
+ 755 03ce D7E90E34 		ldrd	r3, [r7, #56]
+ 756 03d2 2343     		orrs	r3, r3, r4
+ 757 03d4 29D0     		beq	.L37
+ 365:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 {
+ 366:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     LOG_ARG("Blockwise: no block option for blockwise resource, using block size %u
+ 758              		.loc 1 366 0
+ 759 03d6 FFF7FEFF 		bl	lwm2m_gettime
+ 760 03da 0346     		mov	r3, r0
+ 761 03dc 0C46     		mov	r4, r1
+ 762 03de 1946     		mov	r1, r3
+ 763 03e0 8023     		movs	r3, #128
+ 764 03e2 0093     		str	r3, [sp]
+ 765 03e4 4FF4B773 		mov	r3, #366
+ 766 03e8 504A     		ldr	r2, .L55+8
+ 767 03ea 5548     		ldr	r0, .L55+28
+ 768 03ec FFF7FEFF 		bl	atiny_printf
+ 367:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 22
+
+
+ 368:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     coap_set_header_block2(response, 0, new_offset != -1, REST_MAX_CHUNK_SIZE);
+ 769              		.loc 1 368 0
+ 770 03f0 BA6B     		ldr	r2, [r7, #56]
+ 771 03f2 FB6B     		ldr	r3, [r7, #60]
+ 772 03f4 1340     		ands	r3, r3, r2
+ 773 03f6 B3F1FF3F 		cmp	r3, #-1
+ 774 03fa 14BF     		ite	ne
+ 775 03fc 0123     		movne	r3, #1
+ 776 03fe 0023     		moveq	r3, #0
+ 777 0400 DBB2     		uxtb	r3, r3
+ 778 0402 1A46     		mov	r2, r3
+ 779 0404 8023     		movs	r3, #128
+ 780 0406 0021     		movs	r1, #0
+ 781 0408 4648     		ldr	r0, .L55
+ 782 040a FFF7FEFF 		bl	coap_set_header_block2
+ 369:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     coap_set_payload(response, response->payload, MIN(response->payload_len, REST_M
+ 783              		.loc 1 369 0
+ 784 040e 454B     		ldr	r3, .L55
+ 785 0410 D3F88810 		ldr	r1, [r3, #136]
+ 786 0414 434B     		ldr	r3, .L55
+ 787 0416 B3F88630 		ldrh	r3, [r3, #134]
+ 788 041a 802B     		cmp	r3, #128
+ 789 041c 28BF     		it	cs
+ 790 041e 8023     		movcs	r3, #128
+ 791 0420 9BB2     		uxth	r3, r3
+ 792 0422 1A46     		mov	r2, r3
+ 793 0424 3F48     		ldr	r0, .L55
+ 794 0426 FFF7FEFF 		bl	coap_set_payload
+ 795              	.L37:
+ 370:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 } /* if (blockwise request) */
+ 371:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 372:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 coap_error_code = message_send(contextP, response, fromSessionH);
+ 796              		.loc 1 372 0
+ 797 042a 3A68     		ldr	r2, [r7]
+ 798 042c 3D49     		ldr	r1, .L55
+ 799 042e F868     		ldr	r0, [r7, #12]
+ 800 0430 FFF7FEFF 		bl	message_send
+ 801 0434 0346     		mov	r3, r0
+ 802 0436 87F84730 		strb	r3, [r7, #71]
+ 373:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 374:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 lwm2m_free(response->payload);
+ 803              		.loc 1 374 0
+ 804 043a 3A4B     		ldr	r3, .L55
+ 805 043c D3F88830 		ldr	r3, [r3, #136]
+ 806 0440 1846     		mov	r0, r3
+ 807 0442 FFF7FEFF 		bl	lwm2m_free
+ 375:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 response->payload = NULL;
+ 808              		.loc 1 375 0
+ 809 0446 374B     		ldr	r3, .L55
+ 810 0448 0022     		movs	r2, #0
+ 811 044a C3F88820 		str	r2, [r3, #136]
+ 376:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 response->payload_len = 0;
+ 812              		.loc 1 376 0
+ 813 044e 354B     		ldr	r3, .L55
+ 814 0450 0022     		movs	r2, #0
+ 815 0452 A3F88620 		strh	r2, [r3, #134]	@ movhi
+ 816              	.LBE3:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 23
+
+
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             uint32_t block_num = 0;
+ 817              		.loc 1 251 0
+ 818 0456 5CE0     		b	.L49
+ 819              	.L28:
+ 820              	.LBB6:
+ 377:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 378:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             else if (coap_error_code != COAP_IGNORE)
+ 821              		.loc 1 378 0
+ 822 0458 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 823 045c 012B     		cmp	r3, #1
+ 824 045e 58D0     		beq	.L49
+ 379:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 380:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 if (1 == coap_set_status_code(response, coap_error_code))
+ 825              		.loc 1 380 0
+ 826 0460 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 827 0464 1946     		mov	r1, r3
+ 828 0466 2F48     		ldr	r0, .L55
+ 829 0468 FFF7FEFF 		bl	coap_set_status_code
+ 830 046c 0346     		mov	r3, r0
+ 831 046e 012B     		cmp	r3, #1
+ 832 0470 4FD1     		bne	.L49
+ 381:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 {
+ 382:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     coap_error_code = message_send(contextP, response, fromSessionH);
+ 833              		.loc 1 382 0
+ 834 0472 3A68     		ldr	r2, [r7]
+ 835 0474 2B49     		ldr	r1, .L55
+ 836 0476 F868     		ldr	r0, [r7, #12]
+ 837 0478 FFF7FEFF 		bl	message_send
+ 838 047c 0346     		mov	r3, r0
+ 839 047e 87F84730 		strb	r3, [r7, #71]
+ 840              	.LBE6:
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             uint32_t block_num = 0;
+ 841              		.loc 1 251 0
+ 842 0482 46E0     		b	.L49
+ 843              	.L18:
+ 383:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 }
+ 384:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 385:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         }
+ 386:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         else
+ 387:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         {
+ 388:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             /* Responses */
+ 389:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             switch (message->type)
+ 844              		.loc 1 389 0
+ 845 0484 284B     		ldr	r3, .L55+4
+ 846 0486 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 847 0488 032B     		cmp	r3, #3
+ 848 048a 44D8     		bhi	.L50
+ 849 048c 01A2     		adr	r2, .L42
+ 850 048e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 851 0492 00BF     		.p2align 2
+ 852              	.L42:
+ 853 0494 A5040000 		.word	.L41+1
+ 854 0498 A5040000 		.word	.L41+1
+ 855 049c 05050000 		.word	.L43+1
+ 856 04a0 ED040000 		.word	.L44+1
+ 857              		.p2align 1
+ 858              	.L41:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 24
+
+
+ 859              	.LBB7:
+ 390:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 391:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             case COAP_TYPE_NON:
+ 392:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             case COAP_TYPE_CON:
+ 393:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             {
+ 394:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 bool done = transaction_handleResponse(contextP, fromSessionH, message, response);
+ 860              		.loc 1 394 0
+ 861 04a4 1F4B     		ldr	r3, .L55
+ 862 04a6 204A     		ldr	r2, .L55+4
+ 863 04a8 3968     		ldr	r1, [r7]
+ 864 04aa F868     		ldr	r0, [r7, #12]
+ 865 04ac FFF7FEFF 		bl	transaction_handleResponse
+ 866 04b0 0346     		mov	r3, r0
+ 867 04b2 87F83330 		strb	r3, [r7, #51]
+ 395:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 396:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #ifdef LWM2M_SERVER_MODE
+ 397:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 if (!done && IS_OPTION(message, COAP_OPTION_OBSERVE) &&
+ 398:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                         ((message->code == COAP_204_CHANGED) || (message->code == COAP_205_CONTENT)
+ 399:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 {
+ 400:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     done = observe_handleNotify(contextP, fromSessionH, message, response);
+ 401:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 }
+ 402:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** #endif
+ 403:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 if (!done && message->type == COAP_TYPE_CON )
+ 868              		.loc 1 403 0
+ 869 04b6 97F83330 		ldrb	r3, [r7, #51]
+ 870 04ba 83F00103 		eor	r3, r3, #1
+ 871 04be DBB2     		uxtb	r3, r3
+ 872 04c0 002B     		cmp	r3, #0
+ 873 04c2 2AD0     		beq	.L51
+ 874              		.loc 1 403 0 is_stmt 0 discriminator 1
+ 875 04c4 184B     		ldr	r3, .L55+4
+ 876 04c6 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 877 04c8 002B     		cmp	r3, #0
+ 878 04ca 26D1     		bne	.L51
+ 404:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 {
+ 405:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     coap_init_message(response, COAP_TYPE_ACK, 0, message->mid);
+ 879              		.loc 1 405 0 is_stmt 1
+ 880 04cc 164B     		ldr	r3, .L55+4
+ 881 04ce 1B89     		ldrh	r3, [r3, #8]
+ 882 04d0 0022     		movs	r2, #0
+ 883 04d2 0221     		movs	r1, #2
+ 884 04d4 1348     		ldr	r0, .L55
+ 885 04d6 FFF7FEFF 		bl	coap_init_message
+ 406:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                     coap_error_code = message_send(contextP, response, fromSessionH);
+ 886              		.loc 1 406 0
+ 887 04da 3A68     		ldr	r2, [r7]
+ 888 04dc 1149     		ldr	r1, .L55
+ 889 04de F868     		ldr	r0, [r7, #12]
+ 890 04e0 FFF7FEFF 		bl	message_send
+ 891 04e4 0346     		mov	r3, r0
+ 892 04e6 87F84730 		strb	r3, [r7, #71]
+ 893              	.LBE7:
+ 407:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 }
+ 408:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 409:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             break;
+ 894              		.loc 1 409 0
+ 895 04ea 16E0     		b	.L51
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 25
+
+
+ 896              	.L44:
+ 410:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 411:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             case COAP_TYPE_RST:
+ 412:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 /* Cancel possible subscriptions. */
+ 413:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 handle_reset(contextP, fromSessionH, message);
+ 897              		.loc 1 413 0
+ 898 04ec 0E4A     		ldr	r2, .L55+4
+ 899 04ee 3968     		ldr	r1, [r7]
+ 900 04f0 F868     		ldr	r0, [r7, #12]
+ 901 04f2 FFF7FEFF 		bl	handle_reset
+ 414:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 transaction_handleResponse(contextP, fromSessionH, message, NULL);
+ 902              		.loc 1 414 0
+ 903 04f6 0023     		movs	r3, #0
+ 904 04f8 0B4A     		ldr	r2, .L55+4
+ 905 04fa 3968     		ldr	r1, [r7]
+ 906 04fc F868     		ldr	r0, [r7, #12]
+ 907 04fe FFF7FEFF 		bl	transaction_handleResponse
+ 415:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 break;
+ 908              		.loc 1 415 0
+ 909 0502 0BE0     		b	.L39
+ 910              	.L43:
+ 416:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 417:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             case COAP_TYPE_ACK:
+ 418:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 transaction_handleResponse(contextP, fromSessionH, message, NULL);
+ 911              		.loc 1 418 0
+ 912 0504 0023     		movs	r3, #0
+ 913 0506 084A     		ldr	r2, .L55+4
+ 914 0508 3968     		ldr	r1, [r7]
+ 915 050a F868     		ldr	r0, [r7, #12]
+ 916 050c FFF7FEFF 		bl	transaction_handleResponse
+ 419:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 break;
+ 917              		.loc 1 419 0
+ 918 0510 04E0     		b	.L39
+ 919              	.L49:
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             uint32_t block_num = 0;
+ 920              		.loc 1 251 0
+ 921 0512 00BF     		nop
+ 922 0514 02E0     		b	.L39
+ 923              	.L50:
+ 420:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 421:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             default:
+ 422:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                 break;
+ 924              		.loc 1 422 0
+ 925 0516 00BF     		nop
+ 926 0518 00E0     		b	.L39
+ 927              	.L51:
+ 409:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 928              		.loc 1 409 0
+ 929 051a 00BF     		nop
+ 930              	.L39:
+ 423:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             }
+ 424:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         } /* Request or Response */
+ 425:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         coap_free_header(message);
+ 931              		.loc 1 425 0
+ 932 051c 0248     		ldr	r0, .L55+4
+ 933 051e FFF7FEFF 		bl	coap_free_header
+ 934 0522 25E0     		b	.L46
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 26
+
+
+ 935              	.L56:
+ 936              		.align	2
+ 937              	.L55:
+ 938 0524 00000000 		.word	response.8578
+ 939 0528 00000000 		.word	message.8577
+ 940 052c 00000000 		.word	__func__.8579
+ 941 0530 FC000000 		.word	.LC4
+ 942 0534 40010000 		.word	.LC5
+ 943 0538 8C010000 		.word	.LC6
+ 944 053c 9C010000 		.word	.LC7
+ 945 0540 D8010000 		.word	.LC8
+ 946              	.L17:
+ 426:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     } /* if (parsed correctly) */
+ 427:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     else
+ 428:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     {
+ 429:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         LOG_ARG("Message parsing failed %u.%2u", coap_error_code >> 5, coap_error_code & 0x1F);
+ 947              		.loc 1 429 0
+ 948 0544 FFF7FEFF 		bl	lwm2m_gettime
+ 949 0548 0346     		mov	r3, r0
+ 950 054a 0C46     		mov	r4, r1
+ 951 054c 1946     		mov	r1, r3
+ 952 054e 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 953 0552 5B09     		lsrs	r3, r3, #5
+ 954 0554 DBB2     		uxtb	r3, r3
+ 955 0556 1A46     		mov	r2, r3
+ 956 0558 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 957 055c 03F01F03 		and	r3, r3, #31
+ 958 0560 0193     		str	r3, [sp, #4]
+ 959 0562 0092     		str	r2, [sp]
+ 960 0564 40F2AD13 		movw	r3, #429
+ 961 0568 204A     		ldr	r2, .L57
+ 962 056a 2148     		ldr	r0, .L57+4
+ 963 056c FFF7FEFF 		bl	atiny_printf
+ 964              	.L46:
+ 430:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     }
+ 431:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 432:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     if (coap_error_code != NO_ERROR && coap_error_code != COAP_IGNORE)
+ 965              		.loc 1 432 0
+ 966 0570 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 967 0574 002B     		cmp	r3, #0
+ 968 0576 35D0     		beq	.L52
+ 969              		.loc 1 432 0 is_stmt 0 discriminator 1
+ 970 0578 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 971 057c 012B     		cmp	r3, #1
+ 972 057e 31D0     		beq	.L52
+ 433:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     {
+ 434:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         LOG_ARG("ERROR %u: %s", coap_error_code, coap_error_message);
+ 973              		.loc 1 434 0 is_stmt 1
+ 974 0580 FFF7FEFF 		bl	lwm2m_gettime
+ 975 0584 0346     		mov	r3, r0
+ 976 0586 0C46     		mov	r4, r1
+ 977 0588 1946     		mov	r1, r3
+ 978 058a 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 979 058e 194A     		ldr	r2, .L57+8
+ 980 0590 1268     		ldr	r2, [r2]
+ 981 0592 0192     		str	r2, [sp, #4]
+ 982 0594 0093     		str	r3, [sp]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 27
+
+
+ 983 0596 4FF4D973 		mov	r3, #434
+ 984 059a 144A     		ldr	r2, .L57
+ 985 059c 1648     		ldr	r0, .L57+12
+ 986 059e FFF7FEFF 		bl	atiny_printf
+ 435:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 436:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         /* Set to sendable error code. */
+ 437:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         if (coap_error_code >= 192)
+ 987              		.loc 1 437 0
+ 988 05a2 97F84730 		ldrb	r3, [r7, #71]	@ zero_extendqisi2
+ 989 05a6 BF2B     		cmp	r3, #191
+ 990 05a8 02D9     		bls	.L48
+ 438:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         {
+ 439:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             coap_error_code = COAP_500_INTERNAL_SERVER_ERROR;
+ 991              		.loc 1 439 0
+ 992 05aa A023     		movs	r3, #160
+ 993 05ac 87F84730 		strb	r3, [r7, #71]
+ 994              	.L48:
+ 440:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         }
+ 441:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         /* Reuse input buffer for error message. */
+ 442:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         coap_init_message(message, COAP_TYPE_ACK, coap_error_code, message->mid);
+ 995              		.loc 1 442 0
+ 996 05b0 124B     		ldr	r3, .L57+16
+ 997 05b2 1B89     		ldrh	r3, [r3, #8]
+ 998 05b4 97F84720 		ldrb	r2, [r7, #71]	@ zero_extendqisi2
+ 999 05b8 0221     		movs	r1, #2
+ 1000 05ba 1048     		ldr	r0, .L57+16
+ 1001 05bc FFF7FEFF 		bl	coap_init_message
+ 443:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         coap_set_payload(message, coap_error_message, strlen(coap_error_message));
+ 1002              		.loc 1 443 0
+ 1003 05c0 0C4B     		ldr	r3, .L57+8
+ 1004 05c2 1C68     		ldr	r4, [r3]
+ 1005 05c4 0B4B     		ldr	r3, .L57+8
+ 1006 05c6 1B68     		ldr	r3, [r3]
+ 1007 05c8 1846     		mov	r0, r3
+ 1008 05ca FFF7FEFF 		bl	strlen
+ 1009 05ce 0346     		mov	r3, r0
+ 1010 05d0 1A46     		mov	r2, r3
+ 1011 05d2 2146     		mov	r1, r4
+ 1012 05d4 0948     		ldr	r0, .L57+16
+ 1013 05d6 FFF7FEFF 		bl	coap_set_payload
+ 444:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         message_send(contextP, message, fromSessionH);
+ 1014              		.loc 1 444 0
+ 1015 05da 3A68     		ldr	r2, [r7]
+ 1016 05dc 0749     		ldr	r1, .L57+16
+ 1017 05de F868     		ldr	r0, [r7, #12]
+ 1018 05e0 FFF7FEFF 		bl	message_send
+ 1019              	.L52:
+ 445:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     }
+ 446:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** }
+ 1020              		.loc 1 446 0
+ 1021 05e4 00BF     		nop
+ 1022 05e6 4C37     		adds	r7, r7, #76
+ 1023              	.LCFI13:
+ 1024              		.cfi_def_cfa_offset 20
+ 1025 05e8 BD46     		mov	sp, r7
+ 1026              	.LCFI14:
+ 1027              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 28
+
+
+ 1028              		@ sp needed
+ 1029 05ea F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1030              	.L58:
+ 1031              		.align	2
+ 1032              	.L57:
+ 1033 05ec 00000000 		.word	__func__.8579
+ 1034 05f0 30020000 		.word	.LC9
+ 1035 05f4 00000000 		.word	coap_error_message
+ 1036 05f8 5C020000 		.word	.LC10
+ 1037 05fc 00000000 		.word	message.8577
+ 1038              		.cfi_endproc
+ 1039              	.LFE6:
+ 1041              		.section	.rodata
+ 1042 0277 00       		.align	2
+ 1043              	.LC11:
+ 1044 0278 5B25645D 		.ascii	"[%d][%s:%d] Size to allocate: %d\015\012\000"
+ 1044      5B25733A 
+ 1044      25645D20 
+ 1044      53697A65 
+ 1044      20746F20 
+ 1045 029b 00       		.align	2
+ 1046              	.LC12:
+ 1047 029c 5B25645D 		.ascii	"[%d][%s:%d] coap_serialize_message() returned %d\015"
+ 1047      5B25733A 
+ 1047      25645D20 
+ 1047      636F6170 
+ 1047      5F736572 
+ 1048 02cd 0A00     		.ascii	"\012\000"
+ 1049              		.section	.text.message_send,"ax",%progbits
+ 1050              		.align	1
+ 1051              		.global	message_send
+ 1052              		.syntax unified
+ 1053              		.thumb
+ 1054              		.thumb_func
+ 1055              		.fpu fpv4-sp-d16
+ 1057              	message_send:
+ 1058              	.LFB7:
+ 447:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 448:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 449:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** uint8_t message_send(lwm2m_context_t *contextP,
+ 450:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                      coap_packet_t *message,
+ 451:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****                      void *sessionH)
+ 452:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** {
+ 1059              		.loc 1 452 0
+ 1060              		.cfi_startproc
+ 1061              		@ args = 0, pretend = 0, frame = 32
+ 1062              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1063 0000 90B5     		push	{r4, r7, lr}
+ 1064              	.LCFI15:
+ 1065              		.cfi_def_cfa_offset 12
+ 1066              		.cfi_offset 4, -12
+ 1067              		.cfi_offset 7, -8
+ 1068              		.cfi_offset 14, -4
+ 1069 0002 8BB0     		sub	sp, sp, #44
+ 1070              	.LCFI16:
+ 1071              		.cfi_def_cfa_offset 56
+ 1072 0004 02AF     		add	r7, sp, #8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 29
+
+
+ 1073              	.LCFI17:
+ 1074              		.cfi_def_cfa 7, 48
+ 1075 0006 F860     		str	r0, [r7, #12]
+ 1076 0008 B960     		str	r1, [r7, #8]
+ 1077 000a 7A60     		str	r2, [r7, #4]
+ 453:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     uint8_t result = COAP_500_INTERNAL_SERVER_ERROR;
+ 1078              		.loc 1 453 0
+ 1079 000c A023     		movs	r3, #160
+ 1080 000e FB77     		strb	r3, [r7, #31]
+ 454:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     uint8_t *pktBuffer;
+ 455:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     size_t pktBufferLen = 0;
+ 1081              		.loc 1 455 0
+ 1082 0010 0023     		movs	r3, #0
+ 1083 0012 BB61     		str	r3, [r7, #24]
+ 456:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     size_t allocLen;
+ 457:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 458:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     LOG("Entering");
+ 1084              		.loc 1 458 0
+ 1085 0014 FFF7FEFF 		bl	lwm2m_gettime
+ 1086 0018 0346     		mov	r3, r0
+ 1087 001a 0C46     		mov	r4, r1
+ 1088 001c 1946     		mov	r1, r3
+ 1089 001e 4FF4E573 		mov	r3, #458
+ 1090 0022 274A     		ldr	r2, .L64
+ 1091 0024 2748     		ldr	r0, .L64+4
+ 1092 0026 FFF7FEFF 		bl	atiny_printf
+ 459:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     allocLen = coap_serialize_get_size(message);
+ 1093              		.loc 1 459 0
+ 1094 002a B868     		ldr	r0, [r7, #8]
+ 1095 002c FFF7FEFF 		bl	coap_serialize_get_size
+ 1096 0030 7861     		str	r0, [r7, #20]
+ 460:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     LOG_ARG("Size to allocate: %d", allocLen);
+ 1097              		.loc 1 460 0
+ 1098 0032 FFF7FEFF 		bl	lwm2m_gettime
+ 1099 0036 0346     		mov	r3, r0
+ 1100 0038 0C46     		mov	r4, r1
+ 1101 003a 1946     		mov	r1, r3
+ 1102 003c 7B69     		ldr	r3, [r7, #20]
+ 1103 003e 0093     		str	r3, [sp]
+ 1104 0040 4FF4E673 		mov	r3, #460
+ 1105 0044 1E4A     		ldr	r2, .L64
+ 1106 0046 2048     		ldr	r0, .L64+8
+ 1107 0048 FFF7FEFF 		bl	atiny_printf
+ 461:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     if (allocLen == 0) return COAP_500_INTERNAL_SERVER_ERROR;
+ 1108              		.loc 1 461 0
+ 1109 004c 7B69     		ldr	r3, [r7, #20]
+ 1110 004e 002B     		cmp	r3, #0
+ 1111 0050 01D1     		bne	.L60
+ 1112              		.loc 1 461 0 is_stmt 0 discriminator 1
+ 1113 0052 A023     		movs	r3, #160
+ 1114 0054 30E0     		b	.L61
+ 1115              	.L60:
+ 462:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 463:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     pktBuffer = (uint8_t *)lwm2m_malloc(allocLen);
+ 1116              		.loc 1 463 0 is_stmt 1
+ 1117 0056 7869     		ldr	r0, [r7, #20]
+ 1118 0058 FFF7FEFF 		bl	lwm2m_malloc
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 30
+
+
+ 1119 005c 3861     		str	r0, [r7, #16]
+ 464:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     if (pktBuffer != NULL)
+ 1120              		.loc 1 464 0
+ 1121 005e 3B69     		ldr	r3, [r7, #16]
+ 1122 0060 002B     		cmp	r3, #0
+ 1123 0062 28D0     		beq	.L62
+ 465:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     {
+ 466:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         pktBufferLen = coap_serialize_message(message, pktBuffer);
+ 1124              		.loc 1 466 0
+ 1125 0064 3969     		ldr	r1, [r7, #16]
+ 1126 0066 B868     		ldr	r0, [r7, #8]
+ 1127 0068 FFF7FEFF 		bl	coap_serialize_message
+ 1128 006c B861     		str	r0, [r7, #24]
+ 467:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         LOG_ARG("coap_serialize_message() returned %d", pktBufferLen);
+ 1129              		.loc 1 467 0
+ 1130 006e FFF7FEFF 		bl	lwm2m_gettime
+ 1131 0072 0346     		mov	r3, r0
+ 1132 0074 0C46     		mov	r4, r1
+ 1133 0076 1946     		mov	r1, r3
+ 1134 0078 BB69     		ldr	r3, [r7, #24]
+ 1135 007a 0093     		str	r3, [sp]
+ 1136 007c 40F2D313 		movw	r3, #467
+ 1137 0080 0F4A     		ldr	r2, .L64
+ 1138 0082 1248     		ldr	r0, .L64+12
+ 1139 0084 FFF7FEFF 		bl	atiny_printf
+ 468:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         if (0 != pktBufferLen)
+ 1140              		.loc 1 468 0
+ 1141 0088 BB69     		ldr	r3, [r7, #24]
+ 1142 008a 002B     		cmp	r3, #0
+ 1143 008c 10D0     		beq	.L63
+ 469:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         {
+ 470:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             result = lwm2m_buffer_send(sessionH, pktBuffer, pktBufferLen, contextP->userData);
+ 1144              		.loc 1 470 0
+ 1145 008e FB68     		ldr	r3, [r7, #12]
+ 1146 0090 5B6B     		ldr	r3, [r3, #52]
+ 1147 0092 BA69     		ldr	r2, [r7, #24]
+ 1148 0094 3969     		ldr	r1, [r7, #16]
+ 1149 0096 7868     		ldr	r0, [r7, #4]
+ 1150 0098 FFF7FEFF 		bl	lwm2m_buffer_send
+ 1151 009c 0346     		mov	r3, r0
+ 1152 009e FB77     		strb	r3, [r7, #31]
+ 471:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****             output_buffer(stderr, (uint8_t *)pktBuffer, pktBufferLen, 0);
+ 1153              		.loc 1 471 0
+ 1154 00a0 0B4B     		ldr	r3, .L64+16
+ 1155 00a2 1B68     		ldr	r3, [r3]
+ 1156 00a4 D868     		ldr	r0, [r3, #12]
+ 1157 00a6 BA69     		ldr	r2, [r7, #24]
+ 1158 00a8 0023     		movs	r3, #0
+ 1159 00aa 3969     		ldr	r1, [r7, #16]
+ 1160 00ac FFF7FEFF 		bl	output_buffer
+ 1161              	.L63:
+ 472:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         }
+ 473:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****         lwm2m_free(pktBuffer);
+ 1162              		.loc 1 473 0
+ 1163 00b0 3869     		ldr	r0, [r7, #16]
+ 1164 00b2 FFF7FEFF 		bl	lwm2m_free
+ 1165              	.L62:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 31
+
+
+ 474:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     }
+ 475:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** 
+ 476:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c ****     return result;
+ 1166              		.loc 1 476 0
+ 1167 00b6 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 1168              	.L61:
+ 477:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\packet.c **** }
+ 1169              		.loc 1 477 0
+ 1170 00b8 1846     		mov	r0, r3
+ 1171 00ba 2437     		adds	r7, r7, #36
+ 1172              	.LCFI18:
+ 1173              		.cfi_def_cfa_offset 12
+ 1174 00bc BD46     		mov	sp, r7
+ 1175              	.LCFI19:
+ 1176              		.cfi_def_cfa_register 13
+ 1177              		@ sp needed
+ 1178 00be 90BD     		pop	{r4, r7, pc}
+ 1179              	.L65:
+ 1180              		.align	2
+ 1181              	.L64:
+ 1182 00c0 00000000 		.word	__func__.8606
+ 1183 00c4 00000000 		.word	.LC0
+ 1184 00c8 78020000 		.word	.LC11
+ 1185 00cc 9C020000 		.word	.LC12
+ 1186 00d0 00000000 		.word	_impure_ptr
+ 1187              		.cfi_endproc
+ 1188              	.LFE7:
+ 1190              		.section	.rodata.__func__.8556,"a",%progbits
+ 1191              		.align	2
+ 1194              	__func__.8556:
+ 1195 0000 68616E64 		.ascii	"handle_reset\000"
+ 1195      6C655F72 
+ 1195      65736574 
+ 1195      00
+ 1196              		.section	.rodata.__func__.8565,"a",%progbits
+ 1197              		.align	2
+ 1200              	__func__.8565:
+ 1201 0000 68616E64 		.ascii	"handle_request\000"
+ 1201      6C655F72 
+ 1201      65717565 
+ 1201      737400
+ 1202              		.section	.rodata.__func__.8579,"a",%progbits
+ 1203              		.align	2
+ 1206              	__func__.8579:
+ 1207 0000 6C776D32 		.ascii	"lwm2m_handle_packet\000"
+ 1207      6D5F6861 
+ 1207      6E646C65 
+ 1207      5F706163 
+ 1207      6B657400 
+ 1208              		.section	.bss.message.8577,"aw",%nobits
+ 1209              		.align	2
+ 1212              	message.8577:
+ 1213 0000 00000000 		.space	140
+ 1213      00000000 
+ 1213      00000000 
+ 1213      00000000 
+ 1213      00000000 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 32
+
+
+ 1214              		.section	.bss.response.8578,"aw",%nobits
+ 1215              		.align	2
+ 1218              	response.8578:
+ 1219 0000 00000000 		.space	140
+ 1219      00000000 
+ 1219      00000000 
+ 1219      00000000 
+ 1219      00000000 
+ 1220              		.section	.rodata.__func__.8606,"a",%progbits
+ 1221              		.align	2
+ 1224              	__func__.8606:
+ 1225 0000 6D657373 		.ascii	"message_send\000"
+ 1225      6167655F 
+ 1225      73656E64 
+ 1225      00
+ 1226              		.text
+ 1227              	.Letext0:
+ 1228              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1229              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1230              		.file 4 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2
+ 1231              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1232              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1233              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1234              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1235              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1236              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1237              		.file 11 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 1238              		.file 12 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 1239              		.file 13 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1240              		.file 14 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 33
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 packet.c
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:18     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:22     .text.handle_reset:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:28     .text.handle_reset:00000000 handle_reset
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:79     .text.handle_reset:00000038 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1194   .rodata.__func__.8556:00000000 __func__.8556
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:85     .text.handle_request:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:91     .text.handle_request:00000000 handle_request
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:217    .text.handle_request:000000a8 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1200   .rodata.__func__.8565:00000000 __func__.8565
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:261    .text.lwm2m_handle_packet:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:268    .text.lwm2m_handle_packet:00000000 lwm2m_handle_packet
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:564    .text.lwm2m_handle_packet:00000240 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1206   .rodata.__func__.8579:00000000 __func__.8579
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1212   .bss.message.8577:00000000 message.8577
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1218   .bss.response.8578:00000000 response.8578
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:574    .text.lwm2m_handle_packet:00000260 $t
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1057   .text.message_send:00000000 message_send
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:853    .text.lwm2m_handle_packet:00000494 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:857    .text.lwm2m_handle_packet:000004a4 $t
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:938    .text.lwm2m_handle_packet:00000524 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:948    .text.lwm2m_handle_packet:00000544 $t
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1033   .text.lwm2m_handle_packet:000005ec $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1050   .text.message_send:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1182   .text.message_send:000000c0 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1224   .rodata.__func__.8606:00000000 __func__.8606
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1191   .rodata.__func__.8556:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1197   .rodata.__func__.8565:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1203   .rodata.__func__.8579:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1209   .bss.message.8577:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1215   .bss.response.8578:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s:1221   .rodata.__func__.8606:00000000 $d
+
+UNDEFINED SYMBOLS
+lwm2m_gettime
+atiny_printf
+observe_cancel
+uri_decode
+utils_findServer
+dm_handleRequest
+coap_set_status_code
+lwm2m_free
+coap_parse_message
+coap_init_message
+coap_set_header_token
+coap_get_header_block2
+coap_get_header_block1
+coap_block1_handler
+coap_set_header_block1
+coap_set_payload
+coap_set_header_block2
+transaction_handleResponse
+coap_free_header
+strlen
+coap_error_message
+coap_serialize_get_size
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccc6whBF.s 			page 34
+
+
+lwm2m_malloc
+coap_serialize_message
+lwm2m_buffer_send
+output_buffer
+_impure_ptr

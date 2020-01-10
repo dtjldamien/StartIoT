@@ -1,0 +1,469 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"platform_adapter.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.lwm2m_malloc,"ax",%progbits
+  18              		.align	1
+  19              		.global	lwm2m_malloc
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	lwm2m_malloc:
+  26              	.LFB3:
+  27              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s 			page 2
+
+
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** /*******************************************************************************
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  *
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * Copyright (c) 2013, 2014, 2015 Intel Corporation and others.
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  *
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * The Eclipse Public License is available at
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  *
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  * Contributors:
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****  *******************************************************************************/
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** #include <stdint.h>
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** #include <stddef.h>
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** #include <string.h>
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** #include <osal.h>
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** #include <link_misc.h>
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** #ifndef LWM2M_MEMORY_TRACE
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** void *lwm2m_malloc(size_t s)
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** {
+  28              		.loc 1 63 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 82B0     		sub	sp, sp, #8
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 16
+  40 0004 00AF     		add	r7, sp, #0
+  41              	.LCFI2:
+  42              		.cfi_def_cfa_register 7
+  43 0006 7860     		str	r0, [r7, #4]
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****     return osal_malloc(s);
+  44              		.loc 1 64 0
+  45 0008 7868     		ldr	r0, [r7, #4]
+  46 000a FFF7FEFF 		bl	osal_malloc
+  47 000e 0346     		mov	r3, r0
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** }
+  48              		.loc 1 66 0
+  49 0010 1846     		mov	r0, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s 			page 3
+
+
+  50 0012 0837     		adds	r7, r7, #8
+  51              	.LCFI3:
+  52              		.cfi_def_cfa_offset 8
+  53 0014 BD46     		mov	sp, r7
+  54              	.LCFI4:
+  55              		.cfi_def_cfa_register 13
+  56              		@ sp needed
+  57 0016 80BD     		pop	{r7, pc}
+  58              		.cfi_endproc
+  59              	.LFE3:
+  61              		.section	.text.lwm2m_free,"ax",%progbits
+  62              		.align	1
+  63              		.global	lwm2m_free
+  64              		.syntax unified
+  65              		.thumb
+  66              		.thumb_func
+  67              		.fpu fpv4-sp-d16
+  69              	lwm2m_free:
+  70              	.LFB4:
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** void lwm2m_free(void *p)
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** {
+  71              		.loc 1 69 0
+  72              		.cfi_startproc
+  73              		@ args = 0, pretend = 0, frame = 8
+  74              		@ frame_needed = 1, uses_anonymous_args = 0
+  75 0000 80B5     		push	{r7, lr}
+  76              	.LCFI5:
+  77              		.cfi_def_cfa_offset 8
+  78              		.cfi_offset 7, -8
+  79              		.cfi_offset 14, -4
+  80 0002 82B0     		sub	sp, sp, #8
+  81              	.LCFI6:
+  82              		.cfi_def_cfa_offset 16
+  83 0004 00AF     		add	r7, sp, #0
+  84              	.LCFI7:
+  85              		.cfi_def_cfa_register 7
+  86 0006 7860     		str	r0, [r7, #4]
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****     osal_free(p);
+  87              		.loc 1 70 0
+  88 0008 7868     		ldr	r0, [r7, #4]
+  89 000a FFF7FEFF 		bl	osal_free
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** }
+  90              		.loc 1 71 0
+  91 000e 00BF     		nop
+  92 0010 0837     		adds	r7, r7, #8
+  93              	.LCFI8:
+  94              		.cfi_def_cfa_offset 8
+  95 0012 BD46     		mov	sp, r7
+  96              	.LCFI9:
+  97              		.cfi_def_cfa_register 13
+  98              		@ sp needed
+  99 0014 80BD     		pop	{r7, pc}
+ 100              		.cfi_endproc
+ 101              	.LFE4:
+ 103              		.section	.text.lwm2m_strdup,"ax",%progbits
+ 104              		.align	1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s 			page 4
+
+
+ 105              		.global	lwm2m_strdup
+ 106              		.syntax unified
+ 107              		.thumb
+ 108              		.thumb_func
+ 109              		.fpu fpv4-sp-d16
+ 111              	lwm2m_strdup:
+ 112              	.LFB5:
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** char *lwm2m_strdup(const char *str)
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** {
+ 113              		.loc 1 74 0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 8
+ 116              		@ frame_needed = 1, uses_anonymous_args = 0
+ 117 0000 80B5     		push	{r7, lr}
+ 118              	.LCFI10:
+ 119              		.cfi_def_cfa_offset 8
+ 120              		.cfi_offset 7, -8
+ 121              		.cfi_offset 14, -4
+ 122 0002 82B0     		sub	sp, sp, #8
+ 123              	.LCFI11:
+ 124              		.cfi_def_cfa_offset 16
+ 125 0004 00AF     		add	r7, sp, #0
+ 126              	.LCFI12:
+ 127              		.cfi_def_cfa_register 7
+ 128 0006 7860     		str	r0, [r7, #4]
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****     return osal_strdup(str);
+ 129              		.loc 1 75 0
+ 130 0008 7868     		ldr	r0, [r7, #4]
+ 131 000a FFF7FEFF 		bl	osal_strdup
+ 132 000e 0346     		mov	r3, r0
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** }
+ 133              		.loc 1 76 0
+ 134 0010 1846     		mov	r0, r3
+ 135 0012 0837     		adds	r7, r7, #8
+ 136              	.LCFI13:
+ 137              		.cfi_def_cfa_offset 8
+ 138 0014 BD46     		mov	sp, r7
+ 139              	.LCFI14:
+ 140              		.cfi_def_cfa_register 13
+ 141              		@ sp needed
+ 142 0016 80BD     		pop	{r7, pc}
+ 143              		.cfi_endproc
+ 144              	.LFE5:
+ 146              		.section	.text.lwm2m_strncmp,"ax",%progbits
+ 147              		.align	1
+ 148              		.global	lwm2m_strncmp
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.fpu fpv4-sp-d16
+ 154              	lwm2m_strncmp:
+ 155              	.LFB6:
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** #endif
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** int lwm2m_strncmp(const char *s1,
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s 			page 5
+
+
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****                   const char *s2,
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****                   size_t n)
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** {
+ 156              		.loc 1 83 0
+ 157              		.cfi_startproc
+ 158              		@ args = 0, pretend = 0, frame = 16
+ 159              		@ frame_needed = 1, uses_anonymous_args = 0
+ 160 0000 80B5     		push	{r7, lr}
+ 161              	.LCFI15:
+ 162              		.cfi_def_cfa_offset 8
+ 163              		.cfi_offset 7, -8
+ 164              		.cfi_offset 14, -4
+ 165 0002 84B0     		sub	sp, sp, #16
+ 166              	.LCFI16:
+ 167              		.cfi_def_cfa_offset 24
+ 168 0004 00AF     		add	r7, sp, #0
+ 169              	.LCFI17:
+ 170              		.cfi_def_cfa_register 7
+ 171 0006 F860     		str	r0, [r7, #12]
+ 172 0008 B960     		str	r1, [r7, #8]
+ 173 000a 7A60     		str	r2, [r7, #4]
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****     return strncmp(s1, s2, n);
+ 174              		.loc 1 84 0
+ 175 000c 7A68     		ldr	r2, [r7, #4]
+ 176 000e B968     		ldr	r1, [r7, #8]
+ 177 0010 F868     		ldr	r0, [r7, #12]
+ 178 0012 FFF7FEFF 		bl	strncmp
+ 179 0016 0346     		mov	r3, r0
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** }
+ 180              		.loc 1 85 0
+ 181 0018 1846     		mov	r0, r3
+ 182 001a 1037     		adds	r7, r7, #16
+ 183              	.LCFI18:
+ 184              		.cfi_def_cfa_offset 8
+ 185 001c BD46     		mov	sp, r7
+ 186              	.LCFI19:
+ 187              		.cfi_def_cfa_register 13
+ 188              		@ sp needed
+ 189 001e 80BD     		pop	{r7, pc}
+ 190              		.cfi_endproc
+ 191              	.LFE6:
+ 193              		.global	__aeabi_uldivmod
+ 194              		.section	.text.lwm2m_gettime,"ax",%progbits
+ 195              		.align	1
+ 196              		.global	lwm2m_gettime
+ 197              		.syntax unified
+ 198              		.thumb
+ 199              		.thumb_func
+ 200              		.fpu fpv4-sp-d16
+ 202              	lwm2m_gettime:
+ 203              	.LFB7:
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** unsigned int lwm2m_gettime(void)
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** {
+ 204              		.loc 1 88 0
+ 205              		.cfi_startproc
+ 206              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s 			page 6
+
+
+ 207              		@ frame_needed = 1, uses_anonymous_args = 0
+ 208 0000 98B5     		push	{r3, r4, r7, lr}
+ 209              	.LCFI20:
+ 210              		.cfi_def_cfa_offset 16
+ 211              		.cfi_offset 3, -16
+ 212              		.cfi_offset 4, -12
+ 213              		.cfi_offset 7, -8
+ 214              		.cfi_offset 14, -4
+ 215 0002 00AF     		add	r7, sp, #0
+ 216              	.LCFI21:
+ 217              		.cfi_def_cfa_register 7
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****     return (uint32_t)(osal_sys_time()/1000);
+ 218              		.loc 1 89 0
+ 219 0004 FFF7FEFF 		bl	osal_sys_time
+ 220 0008 4FF47A72 		mov	r2, #1000
+ 221 000c 4FF00003 		mov	r3, #0
+ 222 0010 FFF7FEFF 		bl	__aeabi_uldivmod
+ 223              	.LVL0:
+ 224 0014 0346     		mov	r3, r0
+ 225 0016 0C46     		mov	r4, r1
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** }
+ 226              		.loc 1 90 0
+ 227 0018 1846     		mov	r0, r3
+ 228 001a 98BD     		pop	{r3, r4, r7, pc}
+ 229              		.cfi_endproc
+ 230              	.LFE7:
+ 232              		.section	.text.lwm2m_rand,"ax",%progbits
+ 233              		.align	1
+ 234              		.global	lwm2m_rand
+ 235              		.syntax unified
+ 236              		.thumb
+ 237              		.thumb_func
+ 238              		.fpu fpv4-sp-d16
+ 240              	lwm2m_rand:
+ 241              	.LFB8:
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** int lwm2m_rand(void *output, size_t len)
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** {
+ 242              		.loc 1 93 0
+ 243              		.cfi_startproc
+ 244              		@ args = 0, pretend = 0, frame = 8
+ 245              		@ frame_needed = 1, uses_anonymous_args = 0
+ 246 0000 80B5     		push	{r7, lr}
+ 247              	.LCFI22:
+ 248              		.cfi_def_cfa_offset 8
+ 249              		.cfi_offset 7, -8
+ 250              		.cfi_offset 14, -4
+ 251 0002 82B0     		sub	sp, sp, #8
+ 252              	.LCFI23:
+ 253              		.cfi_def_cfa_offset 16
+ 254 0004 00AF     		add	r7, sp, #0
+ 255              	.LCFI24:
+ 256              		.cfi_def_cfa_register 7
+ 257 0006 7860     		str	r0, [r7, #4]
+ 258 0008 3960     		str	r1, [r7]
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****     return link_random(output, len);
+ 259              		.loc 1 94 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s 			page 7
+
+
+ 260 000a 3B68     		ldr	r3, [r7]
+ 261 000c 1946     		mov	r1, r3
+ 262 000e 7868     		ldr	r0, [r7, #4]
+ 263 0010 FFF7FEFF 		bl	link_random
+ 264 0014 0346     		mov	r3, r0
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** }
+ 265              		.loc 1 95 0
+ 266 0016 1846     		mov	r0, r3
+ 267 0018 0837     		adds	r7, r7, #8
+ 268              	.LCFI25:
+ 269              		.cfi_def_cfa_offset 8
+ 270 001a BD46     		mov	sp, r7
+ 271              	.LCFI26:
+ 272              		.cfi_def_cfa_register 13
+ 273              		@ sp needed
+ 274 001c 80BD     		pop	{r7, pc}
+ 275              		.cfi_endproc
+ 276              	.LFE8:
+ 278              		.section	.text.lwm2m_delay,"ax",%progbits
+ 279              		.align	1
+ 280              		.global	lwm2m_delay
+ 281              		.syntax unified
+ 282              		.thumb
+ 283              		.thumb_func
+ 284              		.fpu fpv4-sp-d16
+ 286              	lwm2m_delay:
+ 287              	.LFB9:
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** 
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** void lwm2m_delay(uint32_t second)
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** {
+ 288              		.loc 1 98 0
+ 289              		.cfi_startproc
+ 290              		@ args = 0, pretend = 0, frame = 8
+ 291              		@ frame_needed = 1, uses_anonymous_args = 0
+ 292 0000 80B5     		push	{r7, lr}
+ 293              	.LCFI27:
+ 294              		.cfi_def_cfa_offset 8
+ 295              		.cfi_offset 7, -8
+ 296              		.cfi_offset 14, -4
+ 297 0002 82B0     		sub	sp, sp, #8
+ 298              	.LCFI28:
+ 299              		.cfi_def_cfa_offset 16
+ 300 0004 00AF     		add	r7, sp, #0
+ 301              	.LCFI29:
+ 302              		.cfi_def_cfa_register 7
+ 303 0006 7860     		str	r0, [r7, #4]
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c ****     osal_task_sleep(second*1000);
+ 304              		.loc 1 99 0
+ 305 0008 7B68     		ldr	r3, [r7, #4]
+ 306 000a 4FF47A72 		mov	r2, #1000
+ 307 000e 02FB03F3 		mul	r3, r2, r3
+ 308 0012 1846     		mov	r0, r3
+ 309 0014 FFF7FEFF 		bl	osal_task_sleep
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\platform_adapter.c **** }
+ 310              		.loc 1 100 0
+ 311 0018 00BF     		nop
+ 312 001a 0837     		adds	r7, r7, #8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s 			page 8
+
+
+ 313              	.LCFI30:
+ 314              		.cfi_def_cfa_offset 8
+ 315 001c BD46     		mov	sp, r7
+ 316              	.LCFI31:
+ 317              		.cfi_def_cfa_register 13
+ 318              		@ sp needed
+ 319 001e 80BD     		pop	{r7, pc}
+ 320              		.cfi_endproc
+ 321              	.LFE9:
+ 323              		.text
+ 324              	.Letext0:
+ 325              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 326              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 327              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 328              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 329              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 330              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 platform_adapter.c
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:18     .text.lwm2m_malloc:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:25     .text.lwm2m_malloc:00000000 lwm2m_malloc
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:62     .text.lwm2m_free:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:69     .text.lwm2m_free:00000000 lwm2m_free
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:104    .text.lwm2m_strdup:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:111    .text.lwm2m_strdup:00000000 lwm2m_strdup
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:147    .text.lwm2m_strncmp:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:154    .text.lwm2m_strncmp:00000000 lwm2m_strncmp
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:195    .text.lwm2m_gettime:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:202    .text.lwm2m_gettime:00000000 lwm2m_gettime
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:233    .text.lwm2m_rand:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:240    .text.lwm2m_rand:00000000 lwm2m_rand
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:279    .text.lwm2m_delay:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdy7BVp.s:286    .text.lwm2m_delay:00000000 lwm2m_delay
+
+UNDEFINED SYMBOLS
+osal_malloc
+osal_free
+osal_strdup
+strncmp
+__aeabi_uldivmod
+osal_sys_time
+link_random
+osal_task_sleep

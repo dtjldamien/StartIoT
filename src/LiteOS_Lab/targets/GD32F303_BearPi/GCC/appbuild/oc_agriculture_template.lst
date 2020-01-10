@@ -1,0 +1,1428 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"oc_agriculture_template.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	context,4,4
+  18              		.comm	E53_IA1_Data,12,4
+  19              		.section	.bss.s_rcv_buffer,"aw",%nobits
+  20              		.align	2
+  23              	s_rcv_buffer:
+  24 0000 00000000 		.space	512
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  25              		.section	.bss.s_rcv_datalen,"aw",%nobits
+  26              		.align	2
+  29              	s_rcv_datalen:
+  30 0000 00000000 		.space	4
+  31              		.section	.bss.s_rcv_sync,"aw",%nobits
+  32              		.align	2
+  35              	s_rcv_sync:
+  36 0000 00000000 		.space	4
+  37              		.section	.rodata
+  38              		.align	2
+  39              	.LC0:
+  40 0000 4F432072 		.ascii	"OC respond message received! \012\015\000"
+  40      6573706F 
+  40      6E64206D 
+  40      65737361 
+  40      67652072 
+  41              		.section	.text.app_msg_deal,"ax",%progbits
+  42              		.align	1
+  43              		.syntax unified
+  44              		.thumb
+  45              		.thumb_func
+  46              		.fpu fpv4-sp-d16
+  48              	app_msg_deal:
+  49              	.LFB126:
+  50              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 2
+
+
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** /**
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *  2019-05-14 17:21  zhangqianfu  The first version  
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  *
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****  */
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <stdint.h>
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <stddef.h>
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <string.h>
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <osal.h>
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <oc_lwm2m_al.h>
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include <link_endian.h>
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include "E53_IA1.h"
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include "BearPi-IoT_gd32f303.h"
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #include "lcd.h"
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_endpoint_id        "12346789"
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_server         "49.4.85.232"
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_port           "5683"
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_Agriculture 0x0
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_Agriculture_Control_Light 0x1
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_response_Agriculture_Control_Light 0x2
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_Agriculture_Control_Motor 0x3
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_response_Agriculture_Control_Motor 0x4
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #pragma pack(1)
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 3
+
+
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t messageId;
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t Temperature;
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t Humidity;
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t Luminance;
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Agriculture;
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t messageId;
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t mid;
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t errcode;
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t Light_State;
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Response_Agriculture_Control_Light;
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t messageId;
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t mid;
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t errcode;
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t Motor_State;
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Response_Agriculture_Control_Motor;
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t messageId;
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t mid;
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     char Light[3];
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Agriculture_Control_Light;
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** typedef struct
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint8_t messageId;
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     uint16_t mid;
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     char Motor[3];
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** } tag_app_Agriculture_Control_Motor;
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #pragma pack()
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** void *context;
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** extern const unsigned char gImage_Huawei_IoT_QR_Code[114720];
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** E53_IA1_Data_TypeDef E53_IA1_Data;
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** //if your command is very fast,please use a queue here--TODO
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** #define cn_app_rcv_buf_len 128
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int             s_rcv_buffer[cn_app_rcv_buf_len];
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int             s_rcv_datalen;
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** static osal_semp_t     s_rcv_sync;
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** //use this function to push all the message to the buffer
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int app_msg_deal(void *usr_data, en_oc_lwm2m_msg_t type, void *data, int len)
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+  51              		.loc 1 116 0
+  52              		.cfi_startproc
+  53              		@ args = 0, pretend = 0, frame = 24
+  54              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 4
+
+
+  55 0000 80B5     		push	{r7, lr}
+  56              	.LCFI0:
+  57              		.cfi_def_cfa_offset 8
+  58              		.cfi_offset 7, -8
+  59              		.cfi_offset 14, -4
+  60 0002 86B0     		sub	sp, sp, #24
+  61              	.LCFI1:
+  62              		.cfi_def_cfa_offset 32
+  63 0004 00AF     		add	r7, sp, #0
+  64              	.LCFI2:
+  65              		.cfi_def_cfa_register 7
+  66 0006 F860     		str	r0, [r7, #12]
+  67 0008 7A60     		str	r2, [r7, #4]
+  68 000a 3B60     		str	r3, [r7]
+  69 000c 0B46     		mov	r3, r1
+  70 000e FB72     		strb	r3, [r7, #11]
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     unsigned char *msg;
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     msg = data;
+  71              		.loc 1 118 0
+  72 0010 7B68     		ldr	r3, [r7, #4]
+  73 0012 3B61     		str	r3, [r7, #16]
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+  74              		.loc 1 119 0
+  75 0014 4FF0FF33 		mov	r3, #-1
+  76 0018 7B61     		str	r3, [r7, #20]
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     if(len <= cn_app_rcv_buf_len)
+  77              		.loc 1 121 0
+  78 001a 3B68     		ldr	r3, [r7]
+  79 001c 802B     		cmp	r3, #128
+  80 001e 1DDC     		bgt	.L2
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     	if (msg[0] == 0xaa && msg[1] == 0xaa)
+  81              		.loc 1 123 0
+  82 0020 3B69     		ldr	r3, [r7, #16]
+  83 0022 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  84 0024 AA2B     		cmp	r3, #170
+  85 0026 09D1     		bne	.L3
+  86              		.loc 1 123 0 is_stmt 0 discriminator 1
+  87 0028 3B69     		ldr	r3, [r7, #16]
+  88 002a 0133     		adds	r3, r3, #1
+  89 002c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  90 002e AA2B     		cmp	r3, #170
+  91 0030 04D1     		bne	.L3
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     	{
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     		printf("OC respond message received! \n\r");
+  92              		.loc 1 125 0 is_stmt 1
+  93 0032 0D48     		ldr	r0, .L5
+  94 0034 FFF7FEFF 		bl	printf
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     		return ret;
+  95              		.loc 1 126 0
+  96 0038 7B69     		ldr	r3, [r7, #20]
+  97 003a 10E0     		b	.L4
+  98              	.L3:
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     	}
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         memcpy(s_rcv_buffer,msg,len);
+  99              		.loc 1 128 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 5
+
+
+ 100 003c 3B68     		ldr	r3, [r7]
+ 101 003e 1A46     		mov	r2, r3
+ 102 0040 3969     		ldr	r1, [r7, #16]
+ 103 0042 0A48     		ldr	r0, .L5+4
+ 104 0044 FFF7FEFF 		bl	memcpy
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         s_rcv_datalen = len;
+ 105              		.loc 1 129 0
+ 106 0048 094A     		ldr	r2, .L5+8
+ 107 004a 3B68     		ldr	r3, [r7]
+ 108 004c 1360     		str	r3, [r2]
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         osal_semp_post(s_rcv_sync);
+ 109              		.loc 1 131 0
+ 110 004e 094B     		ldr	r3, .L5+12
+ 111 0050 1B68     		ldr	r3, [r3]
+ 112 0052 1846     		mov	r0, r3
+ 113 0054 FFF7FEFF 		bl	osal_semp_post
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         ret = 0;
+ 114              		.loc 1 133 0
+ 115 0058 0023     		movs	r3, #0
+ 116 005a 7B61     		str	r3, [r7, #20]
+ 117              	.L2:
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return ret;
+ 118              		.loc 1 136 0
+ 119 005c 7B69     		ldr	r3, [r7, #20]
+ 120              	.L4:
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 121              		.loc 1 137 0
+ 122 005e 1846     		mov	r0, r3
+ 123 0060 1837     		adds	r7, r7, #24
+ 124              	.LCFI3:
+ 125              		.cfi_def_cfa_offset 8
+ 126 0062 BD46     		mov	sp, r7
+ 127              	.LCFI4:
+ 128              		.cfi_def_cfa_register 13
+ 129              		@ sp needed
+ 130 0064 80BD     		pop	{r7, pc}
+ 131              	.L6:
+ 132 0066 00BF     		.align	2
+ 133              	.L5:
+ 134 0068 00000000 		.word	.LC0
+ 135 006c 00000000 		.word	s_rcv_buffer
+ 136 0070 00000000 		.word	s_rcv_datalen
+ 137 0074 00000000 		.word	s_rcv_sync
+ 138              		.cfi_endproc
+ 139              	.LFE126:
+ 141              		.section	.rodata
+ 142              		.align	2
+ 143              	.LC1:
+ 144 0020 41677269 		.ascii	"Agriculture_Control_Light:msgid:%d mid:%d\000"
+ 144      63756C74 
+ 144      7572655F 
+ 144      436F6E74 
+ 144      726F6C5F 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 6
+
+
+ 145 004a 0000     		.align	2
+ 146              	.LC2:
+ 147 004c 41677269 		.ascii	"Agriculture_Control_Motor:msgid:%d mid:%d\000"
+ 147      63756C74 
+ 147      7572655F 
+ 147      436F6E74 
+ 147      726F6C5F 
+ 148              		.section	.text.app_cmd_task_entry,"ax",%progbits
+ 149              		.align	1
+ 150              		.syntax unified
+ 151              		.thumb
+ 152              		.thumb_func
+ 153              		.fpu fpv4-sp-d16
+ 155              	app_cmd_task_entry:
+ 156              	.LFB127:
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int app_cmd_task_entry()
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 157              		.loc 1 141 0
+ 158              		.cfi_startproc
+ 159              		@ args = 0, pretend = 0, frame = 32
+ 160              		@ frame_needed = 1, uses_anonymous_args = 0
+ 161 0000 80B5     		push	{r7, lr}
+ 162              	.LCFI5:
+ 163              		.cfi_def_cfa_offset 8
+ 164              		.cfi_offset 7, -8
+ 165              		.cfi_offset 14, -4
+ 166 0002 88B0     		sub	sp, sp, #32
+ 167              	.LCFI6:
+ 168              		.cfi_def_cfa_offset 40
+ 169 0004 00AF     		add	r7, sp, #0
+ 170              	.LCFI7:
+ 171              		.cfi_def_cfa_register 7
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+ 172              		.loc 1 142 0
+ 173 0006 4FF0FF33 		mov	r3, #-1
+ 174 000a FB61     		str	r3, [r7, #28]
+ 175              	.L16:
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Response_Agriculture_Control_Light Response_Agriculture_Control_Light;
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Response_Agriculture_Control_Motor Response_Agriculture_Control_Motor;
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Agriculture_Control_Light *Agriculture_Control_Light;
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Agriculture_Control_Motor *Agriculture_Control_Motor;
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int8_t msgid;
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     while(1)
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         if(osal_semp_pend(s_rcv_sync,cn_osal_timeout_forever))
+ 176              		.loc 1 151 0
+ 177 000c 684B     		ldr	r3, .L20
+ 178 000e 1B68     		ldr	r3, [r3]
+ 179 0010 4FF0FF31 		mov	r1, #-1
+ 180 0014 1846     		mov	r0, r3
+ 181 0016 FFF7FEFF 		bl	osal_semp_pend
+ 182 001a 0346     		mov	r3, r0
+ 183 001c 002B     		cmp	r3, #0
+ 184 001e 00F0C180 		beq	.L17
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 7
+
+
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             msgid = s_rcv_buffer[0] & 0x000000FF;
+ 185              		.loc 1 153 0
+ 186 0022 644B     		ldr	r3, .L20+4
+ 187 0024 1B68     		ldr	r3, [r3]
+ 188 0026 FB76     		strb	r3, [r7, #27]
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             switch (msgid)
+ 189              		.loc 1 154 0
+ 190 0028 97F91B30 		ldrsb	r3, [r7, #27]
+ 191 002c 012B     		cmp	r3, #1
+ 192 002e 02D0     		beq	.L10
+ 193 0030 032B     		cmp	r3, #3
+ 194 0032 5DD0     		beq	.L11
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             {
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 case cn_app_Agriculture_Control_Light:
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Agriculture_Control_Light = (tag_app_Agriculture_Control_Light *)s_rcv_buffer;
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     printf("Agriculture_Control_Light:msgid:%d mid:%d", Agriculture_Control_Light->
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     /********** code area for cmd from IoT cloud  **********/
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     if (Agriculture_Control_Light->Light[0] == 'O' && Agriculture_Control_Light->Li
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         E53_IA1_Light_StatusSet(ON);				
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Light.messageId = cn_app_response_Agriculture_
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     	Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Light.errcode = 0;
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 		Response_Agriculture_Control_Light.Light_State = 1;
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         oc_lwm2m_report(context,(char *)&Response_Agriculture_Control_Light,sizeof(
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     }
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     if (Agriculture_Control_Light->Light[0] == 'O' && Agriculture_Control_Light->Li
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	                        
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         E53_IA1_Light_StatusSet(OFF);
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Light.messageId = cn_app_response_Agriculture_
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     	Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Light.errcode = 0;
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 		Response_Agriculture_Control_Light.Light_State = 0;
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         oc_lwm2m_report(context,(char *)&Response_Agriculture_Control_Light,sizeof(
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     }
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     /********** code area end  **********/
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     break;
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 case cn_app_Agriculture_Control_Motor:
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     Agriculture_Control_Motor = (tag_app_Agriculture_Control_Motor *)s_rcv_buffer;
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     printf("Agriculture_Control_Motor:msgid:%d mid:%d", Agriculture_Control_Motor->
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     /********** code area for cmd from IoT cloud  **********/
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     if (Agriculture_Control_Motor->Motor[0] == 'O' && Agriculture_Control_Motor->Mo
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         E53_IA1_Motor_StatusSet(ON); 
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Motor.messageId = cn_app_response_Agriculture_
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     	Response_Agriculture_Control_Motor.mid = Agriculture_Control_Motor->mid;
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Motor.errcode = 0;
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 		Response_Agriculture_Control_Motor.Motor_State = 1;
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         oc_lwm2m_report(context,(char *)&Response_Agriculture_Control_Motor,sizeof(
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     }
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     if (Agriculture_Control_Motor->Motor[0] == 'O' && Agriculture_Control_Motor->Mo
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         E53_IA1_Motor_StatusSet(OFF);
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Motor.messageId = cn_app_response_Agriculture_
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     	Response_Agriculture_Control_Motor.mid = Agriculture_Control_Motor->mid;
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Motor.errcode = 0;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 8
+
+
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 		Response_Agriculture_Control_Motor.Motor_State = 0;
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         oc_lwm2m_report(context,(char *)&Response_Agriculture_Control_Motor,sizeof(
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     }
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     /********** code area end  **********/
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     break;
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 default:
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     break;
+ 195              		.loc 1 205 0
+ 196 0034 BBE0     		b	.L8
+ 197              	.L10:
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     printf("Agriculture_Control_Light:msgid:%d mid:%d", Agriculture_Control_Light->
+ 198              		.loc 1 157 0
+ 199 0036 5F4B     		ldr	r3, .L20+4
+ 200 0038 3B61     		str	r3, [r7, #16]
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     /********** code area for cmd from IoT cloud  **********/
+ 201              		.loc 1 158 0
+ 202 003a 3B69     		ldr	r3, [r7, #16]
+ 203 003c 93F90030 		ldrsb	r3, [r3]
+ 204 0040 1946     		mov	r1, r3
+ 205 0042 3B69     		ldr	r3, [r7, #16]
+ 206 0044 B3F80130 		ldrh	r3, [r3, #1]	@ unaligned
+ 207 0048 9BB2     		uxth	r3, r3
+ 208 004a 1B0A     		lsrs	r3, r3, #8
+ 209 004c 9BB2     		uxth	r3, r3
+ 210 004e 1A46     		mov	r2, r3
+ 211 0050 3B69     		ldr	r3, [r7, #16]
+ 212 0052 B3F80130 		ldrh	r3, [r3, #1]	@ unaligned
+ 213 0056 9BB2     		uxth	r3, r3
+ 214 0058 1B02     		lsls	r3, r3, #8
+ 215 005a 9BB2     		uxth	r3, r3
+ 216 005c 1343     		orrs	r3, r3, r2
+ 217 005e 1A46     		mov	r2, r3
+ 218 0060 5548     		ldr	r0, .L20+8
+ 219 0062 FFF7FEFF 		bl	printf
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 220              		.loc 1 160 0
+ 221 0066 3B69     		ldr	r3, [r7, #16]
+ 222 0068 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 223 006a 4F2B     		cmp	r3, #79
+ 224 006c 1BD1     		bne	.L12
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 225              		.loc 1 160 0 is_stmt 0 discriminator 1
+ 226 006e 3B69     		ldr	r3, [r7, #16]
+ 227 0070 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 228 0072 4E2B     		cmp	r3, #78
+ 229 0074 17D1     		bne	.L12
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Light.messageId = cn_app_response_Agriculture_
+ 230              		.loc 1 162 0 is_stmt 1
+ 231 0076 0120     		movs	r0, #1
+ 232 0078 FFF7FEFF 		bl	E53_IA1_Light_StatusSet
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     	Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 233              		.loc 1 163 0
+ 234 007c 0223     		movs	r3, #2
+ 235 007e 3B72     		strb	r3, [r7, #8]
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Light.errcode = 0;
+ 236              		.loc 1 164 0
+ 237 0080 3B69     		ldr	r3, [r7, #16]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 9
+
+
+ 238 0082 B3F80130 		ldrh	r3, [r3, #1]	@ unaligned
+ 239 0086 9BB2     		uxth	r3, r3
+ 240 0088 A7F80930 		strh	r3, [r7, #9]	@ unaligned
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 		Response_Agriculture_Control_Light.Light_State = 1;
+ 241              		.loc 1 165 0
+ 242 008c 0023     		movs	r3, #0
+ 243 008e FB72     		strb	r3, [r7, #11]
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         oc_lwm2m_report(context,(char *)&Response_Agriculture_Control_Light,sizeof(
+ 244              		.loc 1 166 0
+ 245 0090 0123     		movs	r3, #1
+ 246 0092 3B73     		strb	r3, [r7, #12]
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     }
+ 247              		.loc 1 167 0
+ 248 0094 494B     		ldr	r3, .L20+12
+ 249 0096 1868     		ldr	r0, [r3]
+ 250 0098 07F10801 		add	r1, r7, #8
+ 251 009c 4FF47A73 		mov	r3, #1000
+ 252 00a0 0522     		movs	r2, #5
+ 253 00a2 FFF7FEFF 		bl	oc_lwm2m_report
+ 254              	.L12:
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	                        
+ 255              		.loc 1 169 0
+ 256 00a6 3B69     		ldr	r3, [r7, #16]
+ 257 00a8 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 258 00aa 4F2B     		cmp	r3, #79
+ 259 00ac 7CD1     		bne	.L18
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	                        
+ 260              		.loc 1 169 0 is_stmt 0 discriminator 1
+ 261 00ae 3B69     		ldr	r3, [r7, #16]
+ 262 00b0 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 263 00b2 462B     		cmp	r3, #70
+ 264 00b4 78D1     		bne	.L18
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	                        
+ 265              		.loc 1 169 0 discriminator 2
+ 266 00b6 3B69     		ldr	r3, [r7, #16]
+ 267 00b8 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 268 00ba 462B     		cmp	r3, #70
+ 269 00bc 74D1     		bne	.L18
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Light.messageId = cn_app_response_Agriculture_
+ 270              		.loc 1 171 0 is_stmt 1
+ 271 00be 0020     		movs	r0, #0
+ 272 00c0 FFF7FEFF 		bl	E53_IA1_Light_StatusSet
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     	Response_Agriculture_Control_Light.mid = Agriculture_Control_Light->mid;
+ 273              		.loc 1 172 0
+ 274 00c4 0223     		movs	r3, #2
+ 275 00c6 3B72     		strb	r3, [r7, #8]
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Light.errcode = 0;
+ 276              		.loc 1 173 0
+ 277 00c8 3B69     		ldr	r3, [r7, #16]
+ 278 00ca B3F80130 		ldrh	r3, [r3, #1]	@ unaligned
+ 279 00ce 9BB2     		uxth	r3, r3
+ 280 00d0 A7F80930 		strh	r3, [r7, #9]	@ unaligned
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 		Response_Agriculture_Control_Light.Light_State = 0;
+ 281              		.loc 1 174 0
+ 282 00d4 0023     		movs	r3, #0
+ 283 00d6 FB72     		strb	r3, [r7, #11]
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         oc_lwm2m_report(context,(char *)&Response_Agriculture_Control_Light,sizeof(
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 10
+
+
+ 284              		.loc 1 175 0
+ 285 00d8 0023     		movs	r3, #0
+ 286 00da 3B73     		strb	r3, [r7, #12]
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     }
+ 287              		.loc 1 176 0
+ 288 00dc 374B     		ldr	r3, .L20+12
+ 289 00de 1868     		ldr	r0, [r3]
+ 290 00e0 07F10801 		add	r1, r7, #8
+ 291 00e4 4FF47A73 		mov	r3, #1000
+ 292 00e8 0522     		movs	r2, #5
+ 293 00ea FFF7FEFF 		bl	oc_lwm2m_report
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 case cn_app_Agriculture_Control_Motor:
+ 294              		.loc 1 179 0
+ 295 00ee 5BE0     		b	.L18
+ 296              	.L11:
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     printf("Agriculture_Control_Motor:msgid:%d mid:%d", Agriculture_Control_Motor->
+ 297              		.loc 1 181 0
+ 298 00f0 304B     		ldr	r3, .L20+4
+ 299 00f2 7B61     		str	r3, [r7, #20]
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     /********** code area for cmd from IoT cloud  **********/
+ 300              		.loc 1 182 0
+ 301 00f4 7B69     		ldr	r3, [r7, #20]
+ 302 00f6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 303 00f8 1946     		mov	r1, r3
+ 304 00fa 7B69     		ldr	r3, [r7, #20]
+ 305 00fc B3F80130 		ldrh	r3, [r3, #1]	@ unaligned
+ 306 0100 9BB2     		uxth	r3, r3
+ 307 0102 1B0A     		lsrs	r3, r3, #8
+ 308 0104 9BB2     		uxth	r3, r3
+ 309 0106 1A46     		mov	r2, r3
+ 310 0108 7B69     		ldr	r3, [r7, #20]
+ 311 010a B3F80130 		ldrh	r3, [r3, #1]	@ unaligned
+ 312 010e 9BB2     		uxth	r3, r3
+ 313 0110 1B02     		lsls	r3, r3, #8
+ 314 0112 9BB2     		uxth	r3, r3
+ 315 0114 1343     		orrs	r3, r3, r2
+ 316 0116 1A46     		mov	r2, r3
+ 317 0118 2948     		ldr	r0, .L20+16
+ 318 011a FFF7FEFF 		bl	printf
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 319              		.loc 1 184 0
+ 320 011e 7B69     		ldr	r3, [r7, #20]
+ 321 0120 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 322 0122 4F2B     		cmp	r3, #79
+ 323 0124 1AD1     		bne	.L14
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 324              		.loc 1 184 0 is_stmt 0 discriminator 1
+ 325 0126 7B69     		ldr	r3, [r7, #20]
+ 326 0128 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 327 012a 4E2B     		cmp	r3, #78
+ 328 012c 16D1     		bne	.L14
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Motor.messageId = cn_app_response_Agriculture_
+ 329              		.loc 1 186 0 is_stmt 1
+ 330 012e 0120     		movs	r0, #1
+ 331 0130 FFF7FEFF 		bl	E53_IA1_Motor_StatusSet
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     	Response_Agriculture_Control_Motor.mid = Agriculture_Control_Motor->mid;
+ 332              		.loc 1 187 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 11
+
+
+ 333 0134 0423     		movs	r3, #4
+ 334 0136 3B70     		strb	r3, [r7]
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Motor.errcode = 0;
+ 335              		.loc 1 188 0
+ 336 0138 7B69     		ldr	r3, [r7, #20]
+ 337 013a B3F80130 		ldrh	r3, [r3, #1]	@ unaligned
+ 338 013e 9BB2     		uxth	r3, r3
+ 339 0140 A7F80130 		strh	r3, [r7, #1]	@ unaligned
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 		Response_Agriculture_Control_Motor.Motor_State = 1;
+ 340              		.loc 1 189 0
+ 341 0144 0023     		movs	r3, #0
+ 342 0146 FB70     		strb	r3, [r7, #3]
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         oc_lwm2m_report(context,(char *)&Response_Agriculture_Control_Motor,sizeof(
+ 343              		.loc 1 190 0
+ 344 0148 0123     		movs	r3, #1
+ 345 014a 3B71     		strb	r3, [r7, #4]
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     }
+ 346              		.loc 1 191 0
+ 347 014c 1B4B     		ldr	r3, .L20+12
+ 348 014e 1868     		ldr	r0, [r3]
+ 349 0150 3946     		mov	r1, r7
+ 350 0152 4FF47A73 		mov	r3, #1000
+ 351 0156 0522     		movs	r2, #5
+ 352 0158 FFF7FEFF 		bl	oc_lwm2m_report
+ 353              	.L14:
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 354              		.loc 1 193 0
+ 355 015c 7B69     		ldr	r3, [r7, #20]
+ 356 015e DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 357 0160 4F2B     		cmp	r3, #79
+ 358 0162 23D1     		bne	.L19
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 359              		.loc 1 193 0 is_stmt 0 discriminator 1
+ 360 0164 7B69     		ldr	r3, [r7, #20]
+ 361 0166 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 362 0168 462B     		cmp	r3, #70
+ 363 016a 1FD1     		bne	.L19
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     {	
+ 364              		.loc 1 193 0 discriminator 2
+ 365 016c 7B69     		ldr	r3, [r7, #20]
+ 366 016e 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 367 0170 462B     		cmp	r3, #70
+ 368 0172 1BD1     		bne	.L19
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Motor.messageId = cn_app_response_Agriculture_
+ 369              		.loc 1 195 0 is_stmt 1
+ 370 0174 0020     		movs	r0, #0
+ 371 0176 FFF7FEFF 		bl	E53_IA1_Motor_StatusSet
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     	Response_Agriculture_Control_Motor.mid = Agriculture_Control_Motor->mid;
+ 372              		.loc 1 196 0
+ 373 017a 0423     		movs	r3, #4
+ 374 017c 3B70     		strb	r3, [r7]
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         Response_Agriculture_Control_Motor.errcode = 0;
+ 375              		.loc 1 197 0
+ 376 017e 7B69     		ldr	r3, [r7, #20]
+ 377 0180 B3F80130 		ldrh	r3, [r3, #1]	@ unaligned
+ 378 0184 9BB2     		uxth	r3, r3
+ 379 0186 A7F80130 		strh	r3, [r7, #1]	@ unaligned
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 12
+
+
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 		Response_Agriculture_Control_Motor.Motor_State = 0;
+ 380              		.loc 1 198 0
+ 381 018a 0023     		movs	r3, #0
+ 382 018c FB70     		strb	r3, [r7, #3]
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                         oc_lwm2m_report(context,(char *)&Response_Agriculture_Control_Motor,sizeof(
+ 383              		.loc 1 199 0
+ 384 018e 0023     		movs	r3, #0
+ 385 0190 3B71     		strb	r3, [r7, #4]
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                     }
+ 386              		.loc 1 200 0
+ 387 0192 0A4B     		ldr	r3, .L20+12
+ 388 0194 1868     		ldr	r0, [r3]
+ 389 0196 3946     		mov	r1, r7
+ 390 0198 4FF47A73 		mov	r3, #1000
+ 391 019c 0522     		movs	r2, #5
+ 392 019e FFF7FEFF 		bl	oc_lwm2m_report
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 default:
+ 393              		.loc 1 203 0
+ 394 01a2 03E0     		b	.L19
+ 395              	.L17:
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             }
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 396              		.loc 1 207 0
+ 397 01a4 00BF     		nop
+ 398 01a6 31E7     		b	.L16
+ 399              	.L18:
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 case cn_app_Agriculture_Control_Motor:
+ 400              		.loc 1 179 0
+ 401 01a8 00BF     		nop
+ 402 01aa 2FE7     		b	.L16
+ 403              	.L19:
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****                 default:
+ 404              		.loc 1 203 0
+ 405 01ac 00BF     		nop
+ 406              	.L8:
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 407              		.loc 1 151 0
+ 408 01ae 2DE7     		b	.L16
+ 409              	.L21:
+ 410              		.align	2
+ 411              	.L20:
+ 412 01b0 00000000 		.word	s_rcv_sync
+ 413 01b4 00000000 		.word	s_rcv_buffer
+ 414 01b8 20000000 		.word	.LC1
+ 415 01bc 00000000 		.word	context
+ 416 01c0 4C000000 		.word	.LC2
+ 417              		.cfi_endproc
+ 418              	.LFE127:
+ 420              		.section	.rodata
+ 421 0076 0000     		.align	2
+ 422              	.LC3:
+ 423 0078 34392E34 		.ascii	"49.4.85.232\000"
+ 423      2E38352E 
+ 423      32333200 
+ 424              		.align	2
+ 425              	.LC4:
+ 426 0084 35363833 		.ascii	"5683\000"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 13
+
+
+ 426      00
+ 427 0089 000000   		.align	2
+ 428              	.LC5:
+ 429 008c 31323334 		.ascii	"12346789\000"
+ 429      36373839 
+ 429      00
+ 430              		.section	.text.app_report_task_entry,"ax",%progbits
+ 431              		.align	1
+ 432              		.syntax unified
+ 433              		.thumb
+ 434              		.thumb_func
+ 435              		.fpu fpv4-sp-d16
+ 437              	app_report_task_entry:
+ 438              	.LFB128:
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return ret;
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int app_report_task_entry()
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 439              		.loc 1 216 0
+ 440              		.cfi_startproc
+ 441              		@ args = 0, pretend = 0, frame = 80
+ 442              		@ frame_needed = 1, uses_anonymous_args = 0
+ 443 0000 80B5     		push	{r7, lr}
+ 444              	.LCFI8:
+ 445              		.cfi_def_cfa_offset 8
+ 446              		.cfi_offset 7, -8
+ 447              		.cfi_offset 14, -4
+ 448 0002 94B0     		sub	sp, sp, #80
+ 449              	.LCFI9:
+ 450              		.cfi_def_cfa_offset 88
+ 451 0004 00AF     		add	r7, sp, #0
+ 452              	.LCFI10:
+ 453              		.cfi_def_cfa_register 7
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     int ret = -1;
+ 454              		.loc 1 217 0
+ 455 0006 4FF0FF33 		mov	r3, #-1
+ 456 000a FB64     		str	r3, [r7, #76]
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 219:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_config_param_t      oc_param;
+ 220:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     tag_app_Agriculture Agriculture;
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 222:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     memset(&oc_param,0,sizeof(oc_param));
+ 457              		.loc 1 222 0
+ 458 000c 07F11003 		add	r3, r7, #16
+ 459 0010 3C22     		movs	r2, #60
+ 460 0012 0021     		movs	r1, #0
+ 461 0014 1846     		mov	r0, r3
+ 462 0016 FFF7FEFF 		bl	memset
+ 223:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 224:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.address = cn_app_server;
+ 463              		.loc 1 224 0
+ 464 001a 2C4B     		ldr	r3, .L26
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 14
+
+
+ 465 001c 3B63     		str	r3, [r7, #48]
+ 225:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.port = cn_app_port;
+ 466              		.loc 1 225 0
+ 467 001e 2C4B     		ldr	r3, .L26+4
+ 468 0020 7B63     		str	r3, [r7, #52]
+ 226:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.app_server.ep_id = cn_endpoint_id;
+ 469              		.loc 1 226 0
+ 470 0022 2C4B     		ldr	r3, .L26+8
+ 471 0024 FB62     		str	r3, [r7, #44]
+ 227:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.boot_mode = en_oc_boot_strap_mode_factory;
+ 472              		.loc 1 227 0
+ 473 0026 0023     		movs	r3, #0
+ 474 0028 3B74     		strb	r3, [r7, #16]
+ 228:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     oc_param.rcv_func = app_msg_deal;
+ 475              		.loc 1 228 0
+ 476 002a 2B4B     		ldr	r3, .L26+12
+ 477 002c 7B64     		str	r3, [r7, #68]
+ 229:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     context = oc_lwm2m_config(&oc_param);
+ 478              		.loc 1 230 0
+ 479 002e 07F11003 		add	r3, r7, #16
+ 480 0032 1846     		mov	r0, r3
+ 481 0034 FFF7FEFF 		bl	oc_lwm2m_config
+ 482 0038 0246     		mov	r2, r0
+ 483 003a 284B     		ldr	r3, .L26+16
+ 484 003c 1A60     		str	r2, [r3]
+ 231:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 232:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     if(NULL != context)   //success ,so we could receive and send
+ 485              		.loc 1 232 0
+ 486 003e 274B     		ldr	r3, .L26+16
+ 487 0040 1B68     		ldr	r3, [r3]
+ 488 0042 002B     		cmp	r3, #0
+ 489 0044 3DD0     		beq	.L23
+ 490              	.L24:
+ 233:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 234:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         //install a dealer for the led message received
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         while(1) //--TODO ,you could add your own code here
+ 236:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         {
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             Agriculture.messageId = cn_app_Agriculture;
+ 491              		.loc 1 237 0 discriminator 1
+ 492 0046 0023     		movs	r3, #0
+ 493 0048 3B72     		strb	r3, [r7, #8]
+ 238:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             Agriculture.Temperature = (int8_t)E53_IA1_Data.Temperature;
+ 494              		.loc 1 238 0 discriminator 1
+ 495 004a 254B     		ldr	r3, .L26+20
+ 496 004c D3ED027A 		vldr.32	s15, [r3, #8]
+ 497 0050 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 498 0054 C7ED017A 		vstr.32	s15, [r7, #4]	@ int
+ 499 0058 3B79     		ldrb	r3, [r7, #4]
+ 500 005a 5BB2     		sxtb	r3, r3
+ 501 005c 7B72     		strb	r3, [r7, #9]
+ 239:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             Agriculture.Humidity = (int8_t)E53_IA1_Data.Humidity;
+ 502              		.loc 1 239 0 discriminator 1
+ 503 005e 204B     		ldr	r3, .L26+20
+ 504 0060 D3ED017A 		vldr.32	s15, [r3, #4]
+ 505 0064 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 506 0068 C7ED017A 		vstr.32	s15, [r7, #4]	@ int
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 15
+
+
+ 507 006c 3B79     		ldrb	r3, [r7, #4]
+ 508 006e 5BB2     		sxtb	r3, r3
+ 509 0070 BB72     		strb	r3, [r7, #10]
+ 240:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             Agriculture.Luminance = htons((uint16_t)E53_IA1_Data.Lux);
+ 510              		.loc 1 240 0 discriminator 1
+ 511 0072 1B4B     		ldr	r3, .L26+20
+ 512 0074 D3ED007A 		vldr.32	s15, [r3]
+ 513 0078 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 514 007c 17EE903A 		vmov	r3, s15	@ int
+ 515 0080 9BB2     		uxth	r3, r3
+ 516 0082 1B0A     		lsrs	r3, r3, #8
+ 517 0084 9BB2     		uxth	r3, r3
+ 518 0086 1AB2     		sxth	r2, r3
+ 519 0088 154B     		ldr	r3, .L26+20
+ 520 008a D3ED007A 		vldr.32	s15, [r3]
+ 521 008e FCEEE77A 		vcvt.u32.f32	s15, s15
+ 522 0092 17EE903A 		vmov	r3, s15	@ int
+ 523 0096 9BB2     		uxth	r3, r3
+ 524 0098 1B02     		lsls	r3, r3, #8
+ 525 009a 1BB2     		sxth	r3, r3
+ 526 009c 1343     		orrs	r3, r3, r2
+ 527 009e 1BB2     		sxth	r3, r3
+ 528 00a0 9BB2     		uxth	r3, r3
+ 529 00a2 A7F80B30 		strh	r3, [r7, #11]	@ unaligned
+ 241:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             oc_lwm2m_report(context, (char *)&Agriculture, sizeof(Agriculture), 1000);
+ 530              		.loc 1 241 0 discriminator 1
+ 531 00a6 0D4B     		ldr	r3, .L26+16
+ 532 00a8 1868     		ldr	r0, [r3]
+ 533 00aa 07F10801 		add	r1, r7, #8
+ 534 00ae 4FF47A73 		mov	r3, #1000
+ 535 00b2 0522     		movs	r2, #5
+ 536 00b4 FFF7FEFF 		bl	oc_lwm2m_report
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             osal_task_sleep(2*1000);
+ 537              		.loc 1 242 0 discriminator 1
+ 538 00b8 4FF4FA60 		mov	r0, #2000
+ 539 00bc FFF7FEFF 		bl	osal_task_sleep
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****             Agriculture.Temperature = (int8_t)E53_IA1_Data.Temperature;
+ 540              		.loc 1 237 0 discriminator 1
+ 541 00c0 C1E7     		b	.L24
+ 542              	.L23:
+ 243:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         }
+ 244:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 245:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 246:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return ret;
+ 543              		.loc 1 246 0
+ 544 00c2 FB6C     		ldr	r3, [r7, #76]
+ 247:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 545              		.loc 1 247 0
+ 546 00c4 1846     		mov	r0, r3
+ 547 00c6 5037     		adds	r7, r7, #80
+ 548              	.LCFI11:
+ 549              		.cfi_def_cfa_offset 8
+ 550 00c8 BD46     		mov	sp, r7
+ 551              	.LCFI12:
+ 552              		.cfi_def_cfa_register 13
+ 553              		@ sp needed
+ 554 00ca 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 16
+
+
+ 555              	.L27:
+ 556              		.align	2
+ 557              	.L26:
+ 558 00cc 78000000 		.word	.LC3
+ 559 00d0 84000000 		.word	.LC4
+ 560 00d4 8C000000 		.word	.LC5
+ 561 00d8 00000000 		.word	app_msg_deal
+ 562 00dc 00000000 		.word	context
+ 563 00e0 00000000 		.word	E53_IA1_Data
+ 564              		.cfi_endproc
+ 565              	.LFE128:
+ 567              		.section	.rodata
+ 568 0095 000000   		.align	2
+ 569              	.LC6:
+ 570 0098 0D0A2A2A 		.ascii	"\015\012******************************Lux Value is "
+ 570      2A2A2A2A 
+ 570      2A2A2A2A 
+ 570      2A2A2A2A 
+ 570      2A2A2A2A 
+ 571 00c5 2025640D 		.ascii	" %d\015\012\000"
+ 571      0A00
+ 572 00cb 00       		.align	2
+ 573              	.LC7:
+ 574 00cc 0D0A2A2A 		.ascii	"\015\012******************************Humidity is  "
+ 574      2A2A2A2A 
+ 574      2A2A2A2A 
+ 574      2A2A2A2A 
+ 574      2A2A2A2A 
+ 575 00f9 25640D0A 		.ascii	"%d\015\012\000"
+ 575      00
+ 576 00fe 0000     		.align	2
+ 577              	.LC8:
+ 578 0100 0D0A2A2A 		.ascii	"\015\012******************************Temperature i"
+ 578      2A2A2A2A 
+ 578      2A2A2A2A 
+ 578      2A2A2A2A 
+ 578      2A2A2A2A 
+ 579 012d 73202025 		.ascii	"s  %d\015\012\000"
+ 579      640D0A00 
+ 580 0135 000000   		.align	2
+ 581              	.LC9:
+ 582 0138 49413120 		.ascii	"IA1 Lux is:\000"
+ 582      4C757820 
+ 582      69733A00 
+ 583              		.align	2
+ 584              	.LC10:
+ 585 0144 49413120 		.ascii	"IA1 Temp is:\000"
+ 585      54656D70 
+ 585      2069733A 
+ 585      00
+ 586 0151 000000   		.align	2
+ 587              	.LC11:
+ 588 0154 49413120 		.ascii	"IA1 Hum is:\000"
+ 588      48756D20 
+ 588      69733A00 
+ 589              		.section	.text.app_collect_task_entry,"ax",%progbits
+ 590              		.align	1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 17
+
+
+ 591              		.syntax unified
+ 592              		.thumb
+ 593              		.thumb_func
+ 594              		.fpu fpv4-sp-d16
+ 596              	app_collect_task_entry:
+ 597              	.LFB129:
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 249:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** static int app_collect_task_entry()
+ 250:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 598              		.loc 1 250 0
+ 599              		.cfi_startproc
+ 600              		@ args = 0, pretend = 0, frame = 0
+ 601              		@ frame_needed = 1, uses_anonymous_args = 0
+ 602 0000 80B5     		push	{r7, lr}
+ 603              	.LCFI13:
+ 604              		.cfi_def_cfa_offset 8
+ 605              		.cfi_offset 7, -8
+ 606              		.cfi_offset 14, -4
+ 607 0002 82B0     		sub	sp, sp, #8
+ 608              	.LCFI14:
+ 609              		.cfi_def_cfa_offset 16
+ 610 0004 02AF     		add	r7, sp, #8
+ 611              	.LCFI15:
+ 612              		.cfi_def_cfa 7, 8
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     Init_E53_IA1();	
+ 613              		.loc 1 251 0
+ 614 0006 FFF7FEFF 		bl	Init_E53_IA1
+ 615              	.L29:
+ 252:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     while (1)
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     {
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         E53_IA1_Read_Data();
+ 616              		.loc 1 254 0 discriminator 1
+ 617 000a FFF7FEFF 		bl	E53_IA1_Read_Data
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Lux Value is  %d\r\n", (int)E53_IA1_Data.Lux);
+ 618              		.loc 1 255 0 discriminator 1
+ 619 000e 354B     		ldr	r3, .L30
+ 620 0010 D3ED007A 		vldr.32	s15, [r3]
+ 621 0014 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 622 0018 17EE901A 		vmov	r1, s15	@ int
+ 623 001c 3248     		ldr	r0, .L30+4
+ 624 001e FFF7FEFF 		bl	printf
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 		printf("\r\n******************************Humidity is  %d\r\n", (int)E53_IA1_Data.Humidity);
+ 625              		.loc 1 256 0 discriminator 1
+ 626 0022 304B     		ldr	r3, .L30
+ 627 0024 D3ED017A 		vldr.32	s15, [r3, #4]
+ 628 0028 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 629 002c 17EE901A 		vmov	r1, s15	@ int
+ 630 0030 2E48     		ldr	r0, .L30+8
+ 631 0032 FFF7FEFF 		bl	printf
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 		printf("\r\n******************************Temperature is  %d\r\n", (int)E53_IA1_Data.Temperature)
+ 632              		.loc 1 257 0 discriminator 1
+ 633 0036 2B4B     		ldr	r3, .L30
+ 634 0038 D3ED027A 		vldr.32	s15, [r3, #8]
+ 635 003c FDEEE77A 		vcvt.s32.f32	s15, s15
+ 636 0040 17EE901A 		vmov	r1, s15	@ int
+ 637 0044 2A48     		ldr	r0, .L30+12
+ 638 0046 FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 18
+
+
+ 258:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         LCD_ShowString(20, 130, 200, 16, 16, "IA1 Lux is:");
+ 639              		.loc 1 258 0 discriminator 1
+ 640 004a 2A4B     		ldr	r3, .L30+16
+ 641 004c 0193     		str	r3, [sp, #4]
+ 642 004e 1023     		movs	r3, #16
+ 643 0050 0093     		str	r3, [sp]
+ 644 0052 1023     		movs	r3, #16
+ 645 0054 C822     		movs	r2, #200
+ 646 0056 8221     		movs	r1, #130
+ 647 0058 1420     		movs	r0, #20
+ 648 005a FFF7FEFF 		bl	LCD_ShowString
+ 259:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         LCD_ShowNum(120, 130, (int)E53_IA1_Data.Lux, 5, 16);
+ 649              		.loc 1 259 0 discriminator 1
+ 650 005e 214B     		ldr	r3, .L30
+ 651 0060 D3ED007A 		vldr.32	s15, [r3]
+ 652 0064 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 653 0068 17EE902A 		vmov	r2, s15	@ int
+ 654 006c 1023     		movs	r3, #16
+ 655 006e 0093     		str	r3, [sp]
+ 656 0070 0523     		movs	r3, #5
+ 657 0072 8221     		movs	r1, #130
+ 658 0074 7820     		movs	r0, #120
+ 659 0076 FFF7FEFF 		bl	LCD_ShowNum
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         LCD_ShowString(20, 170, 200, 16, 16, "IA1 Temp is:");
+ 660              		.loc 1 260 0 discriminator 1
+ 661 007a 1F4B     		ldr	r3, .L30+20
+ 662 007c 0193     		str	r3, [sp, #4]
+ 663 007e 1023     		movs	r3, #16
+ 664 0080 0093     		str	r3, [sp]
+ 665 0082 1023     		movs	r3, #16
+ 666 0084 C822     		movs	r2, #200
+ 667 0086 AA21     		movs	r1, #170
+ 668 0088 1420     		movs	r0, #20
+ 669 008a FFF7FEFF 		bl	LCD_ShowString
+ 261:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         LCD_ShowNum(120, 170, (int)E53_IA1_Data.Temperature, 2, 16);
+ 670              		.loc 1 261 0 discriminator 1
+ 671 008e 154B     		ldr	r3, .L30
+ 672 0090 D3ED027A 		vldr.32	s15, [r3, #8]
+ 673 0094 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 674 0098 17EE902A 		vmov	r2, s15	@ int
+ 675 009c 1023     		movs	r3, #16
+ 676 009e 0093     		str	r3, [sp]
+ 677 00a0 0223     		movs	r3, #2
+ 678 00a2 AA21     		movs	r1, #170
+ 679 00a4 7820     		movs	r0, #120
+ 680 00a6 FFF7FEFF 		bl	LCD_ShowNum
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         LCD_ShowString(20, 210, 200, 16, 16, "IA1 Hum is:");
+ 681              		.loc 1 262 0 discriminator 1
+ 682 00aa 144B     		ldr	r3, .L30+24
+ 683 00ac 0193     		str	r3, [sp, #4]
+ 684 00ae 1023     		movs	r3, #16
+ 685 00b0 0093     		str	r3, [sp]
+ 686 00b2 1023     		movs	r3, #16
+ 687 00b4 C822     		movs	r2, #200
+ 688 00b6 D221     		movs	r1, #210
+ 689 00b8 1420     		movs	r0, #20
+ 690 00ba FFF7FEFF 		bl	LCD_ShowString
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 19
+
+
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         LCD_ShowNum(120, 210, (int)E53_IA1_Data.Humidity, 2, 16);
+ 691              		.loc 1 263 0 discriminator 1
+ 692 00be 094B     		ldr	r3, .L30
+ 693 00c0 D3ED017A 		vldr.32	s15, [r3, #4]
+ 694 00c4 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 695 00c8 17EE902A 		vmov	r2, s15	@ int
+ 696 00cc 1023     		movs	r3, #16
+ 697 00ce 0093     		str	r3, [sp]
+ 698 00d0 0223     		movs	r3, #2
+ 699 00d2 D221     		movs	r1, #210
+ 700 00d4 7820     		movs	r0, #120
+ 701 00d6 FFF7FEFF 		bl	LCD_ShowNum
+ 264:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         osal_task_sleep(2*1000);
+ 702              		.loc 1 264 0 discriminator 1
+ 703 00da 4FF4FA60 		mov	r0, #2000
+ 704 00de FFF7FEFF 		bl	osal_task_sleep
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****         printf("\r\n******************************Lux Value is  %d\r\n", (int)E53_IA1_Data.Lux);
+ 705              		.loc 1 254 0 discriminator 1
+ 706 00e2 92E7     		b	.L29
+ 707              	.L31:
+ 708              		.align	2
+ 709              	.L30:
+ 710 00e4 00000000 		.word	E53_IA1_Data
+ 711 00e8 98000000 		.word	.LC6
+ 712 00ec CC000000 		.word	.LC7
+ 713 00f0 00010000 		.word	.LC8
+ 714 00f4 38010000 		.word	.LC9
+ 715 00f8 44010000 		.word	.LC10
+ 716 00fc 54010000 		.word	.LC11
+ 717              		.cfi_endproc
+ 718              	.LFE129:
+ 720              		.section	.rodata
+ 721              		.align	2
+ 722              	.LC12:
+ 723 0160 57656C63 		.ascii	"Welcome to BearPi!\000"
+ 723      6F6D6520 
+ 723      746F2042 
+ 723      65617250 
+ 723      692100
+ 724 0173 00       		.align	2
+ 725              	.LC13:
+ 726 0174 42656172 		.ascii	"BearPi IoT Develop Board\000"
+ 726      50692049 
+ 726      6F542044 
+ 726      6576656C 
+ 726      6F702042 
+ 727 018d 000000   		.align	2
+ 728              	.LC14:
+ 729 0190 506F7765 		.ascii	"Powerd by Huawei LiteOS!\000"
+ 729      72642062 
+ 729      79204875 
+ 729      61776569 
+ 729      204C6974 
+ 730              		.section	.text.HardWare_Init,"ax",%progbits
+ 731              		.align	1
+ 732              		.global	HardWare_Init
+ 733              		.syntax unified
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 20
+
+
+ 734              		.thumb
+ 735              		.thumb_func
+ 736              		.fpu fpv4-sp-d16
+ 738              	HardWare_Init:
+ 739              	.LFB130:
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     }
+ 266:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return 0;
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** void HardWare_Init(void)
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 740              		.loc 1 271 0
+ 741              		.cfi_startproc
+ 742              		@ args = 0, pretend = 0, frame = 0
+ 743              		@ frame_needed = 1, uses_anonymous_args = 0
+ 744 0000 80B5     		push	{r7, lr}
+ 745              	.LCFI16:
+ 746              		.cfi_def_cfa_offset 8
+ 747              		.cfi_offset 7, -8
+ 748              		.cfi_offset 14, -4
+ 749 0002 82B0     		sub	sp, sp, #8
+ 750              	.LCFI17:
+ 751              		.cfi_def_cfa_offset 16
+ 752 0004 02AF     		add	r7, sp, #8
+ 753              	.LCFI18:
+ 754              		.cfi_def_cfa 7, 8
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     systick_config();
+ 755              		.loc 1 272 0
+ 756 0006 FFF7FEFF 		bl	systick_config
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     LCD_Init();					
+ 757              		.loc 1 274 0
+ 758 000a FFF7FEFF 		bl	LCD_Init
+ 275:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	LCD_Clear(BLACK);		   	
+ 759              		.loc 1 275 0
+ 760 000e 0020     		movs	r0, #0
+ 761 0010 FFF7FEFF 		bl	LCD_Clear
+ 276:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	POINT_COLOR = GREEN;			
+ 762              		.loc 1 276 0
+ 763 0014 124B     		ldr	r3, .L33
+ 764 0016 4FF4FC62 		mov	r2, #2016
+ 765 001a 1A80     		strh	r2, [r3]	@ movhi
+ 277:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	LCD_ShowString(10, 10, 240, 24, 24, "Welcome to BearPi!");
+ 766              		.loc 1 277 0
+ 767 001c 114B     		ldr	r3, .L33+4
+ 768 001e 0193     		str	r3, [sp, #4]
+ 769 0020 1823     		movs	r3, #24
+ 770 0022 0093     		str	r3, [sp]
+ 771 0024 1823     		movs	r3, #24
+ 772 0026 F022     		movs	r2, #240
+ 773 0028 0A21     		movs	r1, #10
+ 774 002a 0A20     		movs	r0, #10
+ 775 002c FFF7FEFF 		bl	LCD_ShowString
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	LCD_ShowString(20, 50, 240, 16, 16, "BearPi IoT Develop Board");
+ 776              		.loc 1 278 0
+ 777 0030 0D4B     		ldr	r3, .L33+8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 21
+
+
+ 778 0032 0193     		str	r3, [sp, #4]
+ 779 0034 1023     		movs	r3, #16
+ 780 0036 0093     		str	r3, [sp]
+ 781 0038 1023     		movs	r3, #16
+ 782 003a F022     		movs	r2, #240
+ 783 003c 3221     		movs	r1, #50
+ 784 003e 1420     		movs	r0, #20
+ 785 0040 FFF7FEFF 		bl	LCD_ShowString
+ 279:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 	LCD_ShowString(20, 90, 240, 16, 16, "Powerd by Huawei LiteOS!");
+ 786              		.loc 1 279 0
+ 787 0044 094B     		ldr	r3, .L33+12
+ 788 0046 0193     		str	r3, [sp, #4]
+ 789 0048 1023     		movs	r3, #16
+ 790 004a 0093     		str	r3, [sp]
+ 791 004c 1023     		movs	r3, #16
+ 792 004e F022     		movs	r2, #240
+ 793 0050 5A21     		movs	r1, #90
+ 794 0052 1420     		movs	r0, #20
+ 795 0054 FFF7FEFF 		bl	LCD_ShowString
+ 280:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     
+ 281:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 796              		.loc 1 281 0
+ 797 0058 00BF     		nop
+ 798 005a BD46     		mov	sp, r7
+ 799              	.LCFI19:
+ 800              		.cfi_def_cfa_register 13
+ 801              		@ sp needed
+ 802 005c 80BD     		pop	{r7, pc}
+ 803              	.L34:
+ 804 005e 00BF     		.align	2
+ 805              	.L33:
+ 806 0060 00000000 		.word	POINT_COLOR
+ 807 0064 60010000 		.word	.LC12
+ 808 0068 74010000 		.word	.LC13
+ 809 006c 90010000 		.word	.LC14
+ 810              		.cfi_endproc
+ 811              	.LFE130:
+ 813              		.section	.rodata
+ 814 01a9 000000   		.align	2
+ 815              	.LC15:
+ 816 01ac 6170705F 		.ascii	"app_collect\000"
+ 816      636F6C6C 
+ 816      65637400 
+ 817              		.align	2
+ 818              	.LC16:
+ 819 01b8 6170705F 		.ascii	"app_report\000"
+ 819      7265706F 
+ 819      727400
+ 820 01c3 00       		.align	2
+ 821              	.LC17:
+ 822 01c4 6170705F 		.ascii	"app_command\000"
+ 822      636F6D6D 
+ 822      616E6400 
+ 823              		.section	.text.standard_app_demo_main,"ax",%progbits
+ 824              		.align	1
+ 825              		.global	standard_app_demo_main
+ 826              		.syntax unified
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 22
+
+
+ 827              		.thumb
+ 828              		.thumb_func
+ 829              		.fpu fpv4-sp-d16
+ 831              	standard_app_demo_main:
+ 832              	.LFB131:
+ 282:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 284:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** int standard_app_demo_main()
+ 285:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** {
+ 833              		.loc 1 285 0
+ 834              		.cfi_startproc
+ 835              		@ args = 0, pretend = 0, frame = 0
+ 836              		@ frame_needed = 1, uses_anonymous_args = 0
+ 837 0000 80B5     		push	{r7, lr}
+ 838              	.LCFI20:
+ 839              		.cfi_def_cfa_offset 8
+ 840              		.cfi_offset 7, -8
+ 841              		.cfi_offset 14, -4
+ 842 0002 82B0     		sub	sp, sp, #8
+ 843              	.LCFI21:
+ 844              		.cfi_def_cfa_offset 16
+ 845 0004 02AF     		add	r7, sp, #8
+ 846              	.LCFI22:
+ 847              		.cfi_def_cfa 7, 8
+ 286:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     HardWare_Init();
+ 848              		.loc 1 286 0
+ 849 0006 FFF7FEFF 		bl	HardWare_Init
+ 287:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 288:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_semp_create(&s_rcv_sync,1,0);
+ 850              		.loc 1 288 0
+ 851 000a 0022     		movs	r2, #0
+ 852 000c 0121     		movs	r1, #1
+ 853 000e 1448     		ldr	r0, .L37
+ 854 0010 FFF7FEFF 		bl	osal_semp_create
+ 289:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 290:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_task_create("app_collect",app_collect_task_entry,NULL,0x400,NULL,3);
+ 855              		.loc 1 290 0
+ 856 0014 0323     		movs	r3, #3
+ 857 0016 0193     		str	r3, [sp, #4]
+ 858 0018 0023     		movs	r3, #0
+ 859 001a 0093     		str	r3, [sp]
+ 860 001c 4FF48063 		mov	r3, #1024
+ 861 0020 0022     		movs	r2, #0
+ 862 0022 1049     		ldr	r1, .L37+4
+ 863 0024 1048     		ldr	r0, .L37+8
+ 864 0026 FFF7FEFF 		bl	osal_task_create
+ 291:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_task_create("app_report",app_report_task_entry,NULL,0x1000,NULL,2);
+ 865              		.loc 1 291 0
+ 866 002a 0223     		movs	r3, #2
+ 867 002c 0193     		str	r3, [sp, #4]
+ 868 002e 0023     		movs	r3, #0
+ 869 0030 0093     		str	r3, [sp]
+ 870 0032 4FF48053 		mov	r3, #4096
+ 871 0036 0022     		movs	r2, #0
+ 872 0038 0C49     		ldr	r1, .L37+12
+ 873 003a 0D48     		ldr	r0, .L37+16
+ 874 003c FFF7FEFF 		bl	osal_task_create
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 23
+
+
+ 292:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     osal_task_create("app_command",app_cmd_task_entry,NULL,0x1000,NULL,3);
+ 875              		.loc 1 292 0
+ 876 0040 0323     		movs	r3, #3
+ 877 0042 0193     		str	r3, [sp, #4]
+ 878 0044 0023     		movs	r3, #0
+ 879 0046 0093     		str	r3, [sp]
+ 880 0048 4FF48053 		mov	r3, #4096
+ 881 004c 0022     		movs	r2, #0
+ 882 004e 0949     		ldr	r1, .L37+20
+ 883 0050 0948     		ldr	r0, .L37+24
+ 884 0052 FFF7FEFF 		bl	osal_task_create
+ 293:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** 
+ 294:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c ****     return 0;
+ 885              		.loc 1 294 0
+ 886 0056 0023     		movs	r3, #0
+ 295:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Demos/oc_agriculture_template\oc_agriculture_template.c **** }
+ 887              		.loc 1 295 0
+ 888 0058 1846     		mov	r0, r3
+ 889 005a BD46     		mov	sp, r7
+ 890              	.LCFI23:
+ 891              		.cfi_def_cfa_register 13
+ 892              		@ sp needed
+ 893 005c 80BD     		pop	{r7, pc}
+ 894              	.L38:
+ 895 005e 00BF     		.align	2
+ 896              	.L37:
+ 897 0060 00000000 		.word	s_rcv_sync
+ 898 0064 00000000 		.word	app_collect_task_entry
+ 899 0068 AC010000 		.word	.LC15
+ 900 006c 00000000 		.word	app_report_task_entry
+ 901 0070 B8010000 		.word	.LC16
+ 902 0074 00000000 		.word	app_cmd_task_entry
+ 903 0078 C4010000 		.word	.LC17
+ 904              		.cfi_endproc
+ 905              	.LFE131:
+ 907              		.text
+ 908              	.Letext0:
+ 909              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 910              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 911              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 912              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 913              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 914              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 915              		.file 8 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/osal/osal
+ 916              		.file 9 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/
+ 917              		.file 10 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/a
+ 918              		.file 11 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bea
+ 919              		.file 12 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 920              		.file 13 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bea
+ 921              		.file 14 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bea
+ 922              		.file 15 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 oc_agriculture_template.c
+                            *COM*:00000004 context
+                            *COM*:0000000c E53_IA1_Data
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:20     .bss.s_rcv_buffer:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:23     .bss.s_rcv_buffer:00000000 s_rcv_buffer
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:26     .bss.s_rcv_datalen:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:29     .bss.s_rcv_datalen:00000000 s_rcv_datalen
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:32     .bss.s_rcv_sync:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:35     .bss.s_rcv_sync:00000000 s_rcv_sync
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:38     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:42     .text.app_msg_deal:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:48     .text.app_msg_deal:00000000 app_msg_deal
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:134    .text.app_msg_deal:00000068 $d
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:149    .text.app_cmd_task_entry:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:155    .text.app_cmd_task_entry:00000000 app_cmd_task_entry
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:412    .text.app_cmd_task_entry:000001b0 $d
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:431    .text.app_report_task_entry:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:437    .text.app_report_task_entry:00000000 app_report_task_entry
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:558    .text.app_report_task_entry:000000cc $d
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:590    .text.app_collect_task_entry:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:596    .text.app_collect_task_entry:00000000 app_collect_task_entry
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:710    .text.app_collect_task_entry:000000e4 $d
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:731    .text.HardWare_Init:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:738    .text.HardWare_Init:00000000 HardWare_Init
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:806    .text.HardWare_Init:00000060 $d
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:824    .text.standard_app_demo_main:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:831    .text.standard_app_demo_main:00000000 standard_app_demo_main
+C:\Users\dtjld\AppData\Local\Temp\ccNqxY9d.s:897    .text.standard_app_demo_main:00000060 $d
+
+UNDEFINED SYMBOLS
+printf
+memcpy
+osal_semp_post
+osal_semp_pend
+E53_IA1_Light_StatusSet
+oc_lwm2m_report
+E53_IA1_Motor_StatusSet
+memset
+oc_lwm2m_config
+osal_task_sleep
+Init_E53_IA1
+E53_IA1_Read_Data
+LCD_ShowString
+LCD_ShowNum
+systick_config
+LCD_Init
+LCD_Clear
+POINT_COLOR
+osal_semp_create
+osal_task_create

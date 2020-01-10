@@ -1,0 +1,924 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"queue.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.queue_create,"ax",%progbits
+  18              		.align	1
+  19              		.global	queue_create
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	queue_create:
+  26              	.LFB3:
+  27              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue/queue.
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 2
+
+
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** /**
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  *  DATE                AUTHOR      INSTRUCTION
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  *  2019-09-16 18:27  zhangqianfu  The first version
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  *
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****  */
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** #include <stddef.h>
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** #include <stdlib.h>
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** #include <stdio.h>
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** #include <stdint.h>
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** #include <string.h>
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** #include <osal.h>
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** #include "queue.h"
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** queue_t* queue_create(const char *name,int len,int syncmode)
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** {
+  28              		.loc 1 50 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 24
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 86B0     		sub	sp, sp, #24
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 32
+  40 0004 00AF     		add	r7, sp, #0
+  41              	.LCFI2:
+  42              		.cfi_def_cfa_register 7
+  43 0006 F860     		str	r0, [r7, #12]
+  44 0008 B960     		str	r1, [r7, #8]
+  45 000a 7A60     		str	r2, [r7, #4]
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     queue_t *ret;
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     ret = osal_malloc(sizeof(queue_t) + len*sizeof(void *));
+  46              		.loc 1 53 0
+  47 000c BB68     		ldr	r3, [r7, #8]
+  48 000e 0A33     		adds	r3, r3, #10
+  49 0010 9B00     		lsls	r3, r3, #2
+  50 0012 1846     		mov	r0, r3
+  51 0014 FFF7FEFF 		bl	osal_malloc
+  52 0018 7861     		str	r0, [r7, #20]
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(NULL == ret)
+  53              		.loc 1 55 0
+  54 001a 7B69     		ldr	r3, [r7, #20]
+  55 001c 002B     		cmp	r3, #0
+  56 001e 4AD0     		beq	.L13
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         goto EXIT_MEM;
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 3
+
+
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     memset(ret,0,sizeof(queue_t));
+  57              		.loc 1 60 0
+  58 0020 2822     		movs	r2, #40
+  59 0022 0021     		movs	r1, #0
+  60 0024 7869     		ldr	r0, [r7, #20]
+  61 0026 FFF7FEFF 		bl	memset
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     ret->name = name;
+  62              		.loc 1 61 0
+  63 002a 7B69     		ldr	r3, [r7, #20]
+  64 002c FA68     		ldr	r2, [r7, #12]
+  65 002e 1A60     		str	r2, [r3]
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     ret->msg_buflen = len;
+  66              		.loc 1 62 0
+  67 0030 7B69     		ldr	r3, [r7, #20]
+  68 0032 BA68     		ldr	r2, [r7, #8]
+  69 0034 5A60     		str	r2, [r3, #4]
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     ret->msg_buf = (void **)((uint8_t *)ret + sizeof(queue_t));
+  70              		.loc 1 63 0
+  71 0036 7B69     		ldr	r3, [r7, #20]
+  72 0038 03F12802 		add	r2, r3, #40
+  73 003c 7B69     		ldr	r3, [r7, #20]
+  74 003e 9A60     		str	r2, [r3, #8]
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     ret->sync_mode = syncmode;
+  75              		.loc 1 64 0
+  76 0040 7B69     		ldr	r3, [r7, #20]
+  77 0042 7A68     		ldr	r2, [r7, #4]
+  78 0044 9A61     		str	r2, [r3, #24]
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(0 == syncmode)
+  79              		.loc 1 66 0
+  80 0046 7B68     		ldr	r3, [r7, #4]
+  81 0048 002B     		cmp	r3, #0
+  82 004a 1CD0     		beq	.L14
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         goto EXIT_OK;
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(false == osal_semp_create(&ret->sync_read,len,0))
+  83              		.loc 1 71 0
+  84 004c 7B69     		ldr	r3, [r7, #20]
+  85 004e 1C33     		adds	r3, r3, #28
+  86 0050 0022     		movs	r2, #0
+  87 0052 B968     		ldr	r1, [r7, #8]
+  88 0054 1846     		mov	r0, r3
+  89 0056 FFF7FEFF 		bl	osal_semp_create
+  90 005a 0346     		mov	r3, r0
+  91 005c 002B     		cmp	r3, #0
+  92 005e 23D0     		beq	.L15
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         goto EXIT_SYNCREAD;
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(false == osal_semp_create(&ret->sync_write,len,len))
+  93              		.loc 1 76 0
+  94 0060 7B69     		ldr	r3, [r7, #20]
+  95 0062 2033     		adds	r3, r3, #32
+  96 0064 BA68     		ldr	r2, [r7, #8]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 4
+
+
+  97 0066 B968     		ldr	r1, [r7, #8]
+  98 0068 1846     		mov	r0, r3
+  99 006a FFF7FEFF 		bl	osal_semp_create
+ 100 006e 0346     		mov	r3, r0
+ 101 0070 002B     		cmp	r3, #0
+ 102 0072 12D0     		beq	.L16
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         goto EXIT_SYNCWRITE;
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(false == osal_mutex_create(&ret->lock))
+ 103              		.loc 1 81 0
+ 104 0074 7B69     		ldr	r3, [r7, #20]
+ 105 0076 2433     		adds	r3, r3, #36
+ 106 0078 1846     		mov	r0, r3
+ 107 007a FFF7FEFF 		bl	osal_mutex_create
+ 108 007e 0346     		mov	r3, r0
+ 109 0080 002B     		cmp	r3, #0
+ 110 0082 03D0     		beq	.L17
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         goto EXIT_LOCK;
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** EXIT_OK:
+ 111              		.loc 1 87 0
+ 112 0084 00E0     		b	.L5
+ 113              	.L14:
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 114              		.loc 1 68 0
+ 115 0086 00BF     		nop
+ 116              	.L5:
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     return ret;
+ 117              		.loc 1 88 0
+ 118 0088 7B69     		ldr	r3, [r7, #20]
+ 119 008a 18E0     		b	.L11
+ 120              	.L17:
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 121              		.loc 1 83 0
+ 122 008c 00BF     		nop
+ 123              	.L10:
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** EXIT_LOCK:
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     osal_semp_del(ret->sync_write);
+ 124              		.loc 1 91 0
+ 125 008e 7B69     		ldr	r3, [r7, #20]
+ 126 0090 1B6A     		ldr	r3, [r3, #32]
+ 127 0092 1846     		mov	r0, r3
+ 128 0094 FFF7FEFF 		bl	osal_semp_del
+ 129 0098 00E0     		b	.L9
+ 130              	.L16:
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 131              		.loc 1 78 0
+ 132 009a 00BF     		nop
+ 133              	.L9:
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** EXIT_SYNCWRITE:
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     osal_semp_del(ret->sync_read);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 5
+
+
+ 134              		.loc 1 93 0
+ 135 009c 7B69     		ldr	r3, [r7, #20]
+ 136 009e DB69     		ldr	r3, [r3, #28]
+ 137 00a0 1846     		mov	r0, r3
+ 138 00a2 FFF7FEFF 		bl	osal_semp_del
+ 139 00a6 00E0     		b	.L7
+ 140              	.L15:
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 141              		.loc 1 73 0
+ 142 00a8 00BF     		nop
+ 143              	.L7:
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** EXIT_SYNCREAD:
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     osal_free(ret);
+ 144              		.loc 1 95 0
+ 145 00aa 7869     		ldr	r0, [r7, #20]
+ 146 00ac FFF7FEFF 		bl	osal_free
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     ret = NULL;
+ 147              		.loc 1 96 0
+ 148 00b0 0023     		movs	r3, #0
+ 149 00b2 7B61     		str	r3, [r7, #20]
+ 150 00b4 00E0     		b	.L3
+ 151              	.L13:
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 152              		.loc 1 57 0
+ 153 00b6 00BF     		nop
+ 154              	.L3:
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** EXIT_MEM:
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     ret = NULL;
+ 155              		.loc 1 98 0
+ 156 00b8 0023     		movs	r3, #0
+ 157 00ba 7B61     		str	r3, [r7, #20]
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     return ret;
+ 158              		.loc 1 99 0
+ 159 00bc 7B69     		ldr	r3, [r7, #20]
+ 160              	.L11:
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** }
+ 161              		.loc 1 101 0
+ 162 00be 1846     		mov	r0, r3
+ 163 00c0 1837     		adds	r7, r7, #24
+ 164              	.LCFI3:
+ 165              		.cfi_def_cfa_offset 8
+ 166 00c2 BD46     		mov	sp, r7
+ 167              	.LCFI4:
+ 168              		.cfi_def_cfa_register 13
+ 169              		@ sp needed
+ 170 00c4 80BD     		pop	{r7, pc}
+ 171              		.cfi_endproc
+ 172              	.LFE3:
+ 174              		.section	.text.raw_queue_pushdata,"ax",%progbits
+ 175              		.align	1
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 179              		.fpu fpv4-sp-d16
+ 181              	raw_queue_pushdata:
+ 182              	.LFB4:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 6
+
+
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** static int raw_queue_pushdata(queue_t *queue,void *data)
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** {
+ 183              		.loc 1 105 0
+ 184              		.cfi_startproc
+ 185              		@ args = 0, pretend = 0, frame = 16
+ 186              		@ frame_needed = 1, uses_anonymous_args = 0
+ 187              		@ link register save eliminated.
+ 188 0000 80B4     		push	{r7}
+ 189              	.LCFI5:
+ 190              		.cfi_def_cfa_offset 4
+ 191              		.cfi_offset 7, -4
+ 192 0002 85B0     		sub	sp, sp, #20
+ 193              	.LCFI6:
+ 194              		.cfi_def_cfa_offset 24
+ 195 0004 00AF     		add	r7, sp, #0
+ 196              	.LCFI7:
+ 197              		.cfi_def_cfa_register 7
+ 198 0006 7860     		str	r0, [r7, #4]
+ 199 0008 3960     		str	r1, [r7]
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     int ret = -1;
+ 200              		.loc 1 106 0
+ 201 000a 4FF0FF33 		mov	r3, #-1
+ 202 000e FB60     		str	r3, [r7, #12]
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(queue->msg_num < queue->msg_buflen)
+ 203              		.loc 1 107 0
+ 204 0010 7B68     		ldr	r3, [r7, #4]
+ 205 0012 5A69     		ldr	r2, [r3, #20]
+ 206 0014 7B68     		ldr	r3, [r7, #4]
+ 207 0016 5B68     		ldr	r3, [r3, #4]
+ 208 0018 9A42     		cmp	r2, r3
+ 209 001a 1ADA     		bge	.L19
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         queue->msg_buf[queue->cur_write] = data;
+ 210              		.loc 1 109 0
+ 211 001c 7B68     		ldr	r3, [r7, #4]
+ 212 001e 9A68     		ldr	r2, [r3, #8]
+ 213 0020 7B68     		ldr	r3, [r7, #4]
+ 214 0022 DB68     		ldr	r3, [r3, #12]
+ 215 0024 9B00     		lsls	r3, r3, #2
+ 216 0026 1344     		add	r3, r3, r2
+ 217 0028 3A68     		ldr	r2, [r7]
+ 218 002a 1A60     		str	r2, [r3]
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         queue->cur_write = (queue->cur_write + 1)%queue->msg_buflen;
+ 219              		.loc 1 110 0
+ 220 002c 7B68     		ldr	r3, [r7, #4]
+ 221 002e DB68     		ldr	r3, [r3, #12]
+ 222 0030 0133     		adds	r3, r3, #1
+ 223 0032 7A68     		ldr	r2, [r7, #4]
+ 224 0034 5268     		ldr	r2, [r2, #4]
+ 225 0036 93FBF2F1 		sdiv	r1, r3, r2
+ 226 003a 02FB01F2 		mul	r2, r2, r1
+ 227 003e 9A1A     		subs	r2, r3, r2
+ 228 0040 7B68     		ldr	r3, [r7, #4]
+ 229 0042 DA60     		str	r2, [r3, #12]
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         queue->msg_num ++;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 7
+
+
+ 230              		.loc 1 111 0
+ 231 0044 7B68     		ldr	r3, [r7, #4]
+ 232 0046 5B69     		ldr	r3, [r3, #20]
+ 233 0048 5A1C     		adds	r2, r3, #1
+ 234 004a 7B68     		ldr	r3, [r7, #4]
+ 235 004c 5A61     		str	r2, [r3, #20]
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         ret = 0;
+ 236              		.loc 1 112 0
+ 237 004e 0023     		movs	r3, #0
+ 238 0050 FB60     		str	r3, [r7, #12]
+ 239              	.L19:
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     return ret;
+ 240              		.loc 1 115 0
+ 241 0052 FB68     		ldr	r3, [r7, #12]
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** }
+ 242              		.loc 1 116 0
+ 243 0054 1846     		mov	r0, r3
+ 244 0056 1437     		adds	r7, r7, #20
+ 245              	.LCFI8:
+ 246              		.cfi_def_cfa_offset 4
+ 247 0058 BD46     		mov	sp, r7
+ 248              	.LCFI9:
+ 249              		.cfi_def_cfa_register 13
+ 250              		@ sp needed
+ 251 005a 5DF8047B 		ldr	r7, [sp], #4
+ 252              	.LCFI10:
+ 253              		.cfi_restore 7
+ 254              		.cfi_def_cfa_offset 0
+ 255 005e 7047     		bx	lr
+ 256              		.cfi_endproc
+ 257              	.LFE4:
+ 259              		.section	.text.queue_push,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	queue_push
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 265              		.fpu fpv4-sp-d16
+ 267              	queue_push:
+ 268              	.LFB5:
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** ///< push a data to the queue, 0 success while -1 failed
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** int queue_push(queue_t *queue,void *data,int timeout)
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** {
+ 269              		.loc 1 120 0
+ 270              		.cfi_startproc
+ 271              		@ args = 0, pretend = 0, frame = 24
+ 272              		@ frame_needed = 1, uses_anonymous_args = 0
+ 273 0000 80B5     		push	{r7, lr}
+ 274              	.LCFI11:
+ 275              		.cfi_def_cfa_offset 8
+ 276              		.cfi_offset 7, -8
+ 277              		.cfi_offset 14, -4
+ 278 0002 86B0     		sub	sp, sp, #24
+ 279              	.LCFI12:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 8
+
+
+ 280              		.cfi_def_cfa_offset 32
+ 281 0004 00AF     		add	r7, sp, #0
+ 282              	.LCFI13:
+ 283              		.cfi_def_cfa_register 7
+ 284 0006 F860     		str	r0, [r7, #12]
+ 285 0008 B960     		str	r1, [r7, #8]
+ 286 000a 7A60     		str	r2, [r7, #4]
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     int ret = -1;
+ 287              		.loc 1 121 0
+ 288 000c 4FF0FF33 		mov	r3, #-1
+ 289 0010 7B61     		str	r3, [r7, #20]
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if((NULL == queue) || (NULL == data))
+ 290              		.loc 1 123 0
+ 291 0012 FB68     		ldr	r3, [r7, #12]
+ 292 0014 002B     		cmp	r3, #0
+ 293 0016 02D0     		beq	.L22
+ 294              		.loc 1 123 0 is_stmt 0 discriminator 1
+ 295 0018 BB68     		ldr	r3, [r7, #8]
+ 296 001a 002B     		cmp	r3, #0
+ 297 001c 01D1     		bne	.L23
+ 298              	.L22:
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         return ret;
+ 299              		.loc 1 125 0 is_stmt 1
+ 300 001e 7B69     		ldr	r3, [r7, #20]
+ 301 0020 2AE0     		b	.L24
+ 302              	.L23:
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(queue->sync_mode)
+ 303              		.loc 1 127 0
+ 304 0022 FB68     		ldr	r3, [r7, #12]
+ 305 0024 9B69     		ldr	r3, [r3, #24]
+ 306 0026 002B     		cmp	r3, #0
+ 307 0028 20D0     		beq	.L25
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         if(osal_semp_pend(queue->sync_write,timeout))
+ 308              		.loc 1 129 0
+ 309 002a FB68     		ldr	r3, [r7, #12]
+ 310 002c 1B6A     		ldr	r3, [r3, #32]
+ 311 002e 7968     		ldr	r1, [r7, #4]
+ 312 0030 1846     		mov	r0, r3
+ 313 0032 FFF7FEFF 		bl	osal_semp_pend
+ 314 0036 0346     		mov	r3, r0
+ 315 0038 002B     		cmp	r3, #0
+ 316 003a 1CD0     		beq	.L27
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         {
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             osal_mutex_lock(queue->lock);
+ 317              		.loc 1 131 0
+ 318 003c FB68     		ldr	r3, [r7, #12]
+ 319 003e 5B6A     		ldr	r3, [r3, #36]
+ 320 0040 1846     		mov	r0, r3
+ 321 0042 FFF7FEFF 		bl	osal_mutex_lock
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             ret = raw_queue_pushdata(queue,data);
+ 322              		.loc 1 132 0
+ 323 0046 B968     		ldr	r1, [r7, #8]
+ 324 0048 F868     		ldr	r0, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 9
+
+
+ 325 004a FFF7FEFF 		bl	raw_queue_pushdata
+ 326 004e 7861     		str	r0, [r7, #20]
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             osal_mutex_unlock(queue->lock);
+ 327              		.loc 1 133 0
+ 328 0050 FB68     		ldr	r3, [r7, #12]
+ 329 0052 5B6A     		ldr	r3, [r3, #36]
+ 330 0054 1846     		mov	r0, r3
+ 331 0056 FFF7FEFF 		bl	osal_mutex_unlock
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             if(0 == ret)
+ 332              		.loc 1 134 0
+ 333 005a 7B69     		ldr	r3, [r7, #20]
+ 334 005c 002B     		cmp	r3, #0
+ 335 005e 0AD1     		bne	.L27
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             {
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****                 osal_semp_post(queue->sync_read);
+ 336              		.loc 1 136 0
+ 337 0060 FB68     		ldr	r3, [r7, #12]
+ 338 0062 DB69     		ldr	r3, [r3, #28]
+ 339 0064 1846     		mov	r0, r3
+ 340 0066 FFF7FEFF 		bl	osal_semp_post
+ 341 006a 04E0     		b	.L27
+ 342              	.L25:
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             }
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         }
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     else
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         ret = raw_queue_pushdata(queue,data);
+ 343              		.loc 1 142 0
+ 344 006c B968     		ldr	r1, [r7, #8]
+ 345 006e F868     		ldr	r0, [r7, #12]
+ 346 0070 FFF7FEFF 		bl	raw_queue_pushdata
+ 347 0074 7861     		str	r0, [r7, #20]
+ 348              	.L27:
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     return ret;
+ 349              		.loc 1 144 0
+ 350 0076 7B69     		ldr	r3, [r7, #20]
+ 351              	.L24:
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** }
+ 352              		.loc 1 146 0
+ 353 0078 1846     		mov	r0, r3
+ 354 007a 1837     		adds	r7, r7, #24
+ 355              	.LCFI14:
+ 356              		.cfi_def_cfa_offset 8
+ 357 007c BD46     		mov	sp, r7
+ 358              	.LCFI15:
+ 359              		.cfi_def_cfa_register 13
+ 360              		@ sp needed
+ 361 007e 80BD     		pop	{r7, pc}
+ 362              		.cfi_endproc
+ 363              	.LFE5:
+ 365              		.section	.text.raw_queue_pop,"ax",%progbits
+ 366              		.align	1
+ 367              		.syntax unified
+ 368              		.thumb
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 10
+
+
+ 369              		.thumb_func
+ 370              		.fpu fpv4-sp-d16
+ 372              	raw_queue_pop:
+ 373              	.LFB6:
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** ///< pop a data from the queue
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** static int raw_queue_pop(queue_t *queue,void **buf)
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** {
+ 374              		.loc 1 150 0
+ 375              		.cfi_startproc
+ 376              		@ args = 0, pretend = 0, frame = 16
+ 377              		@ frame_needed = 1, uses_anonymous_args = 0
+ 378              		@ link register save eliminated.
+ 379 0000 80B4     		push	{r7}
+ 380              	.LCFI16:
+ 381              		.cfi_def_cfa_offset 4
+ 382              		.cfi_offset 7, -4
+ 383 0002 85B0     		sub	sp, sp, #20
+ 384              	.LCFI17:
+ 385              		.cfi_def_cfa_offset 24
+ 386 0004 00AF     		add	r7, sp, #0
+ 387              	.LCFI18:
+ 388              		.cfi_def_cfa_register 7
+ 389 0006 7860     		str	r0, [r7, #4]
+ 390 0008 3960     		str	r1, [r7]
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     int ret = -1;
+ 391              		.loc 1 151 0
+ 392 000a 4FF0FF33 		mov	r3, #-1
+ 393 000e FB60     		str	r3, [r7, #12]
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(queue->msg_num > 0)
+ 394              		.loc 1 152 0
+ 395 0010 7B68     		ldr	r3, [r7, #4]
+ 396 0012 5B69     		ldr	r3, [r3, #20]
+ 397 0014 002B     		cmp	r3, #0
+ 398 0016 1BDD     		ble	.L29
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         *buf = queue->msg_buf[queue->cur_read];
+ 399              		.loc 1 154 0
+ 400 0018 7B68     		ldr	r3, [r7, #4]
+ 401 001a 9A68     		ldr	r2, [r3, #8]
+ 402 001c 7B68     		ldr	r3, [r7, #4]
+ 403 001e 1B69     		ldr	r3, [r3, #16]
+ 404 0020 9B00     		lsls	r3, r3, #2
+ 405 0022 1344     		add	r3, r3, r2
+ 406 0024 1A68     		ldr	r2, [r3]
+ 407 0026 3B68     		ldr	r3, [r7]
+ 408 0028 1A60     		str	r2, [r3]
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         queue->cur_read = (queue->cur_read +1)%queue->msg_buflen;
+ 409              		.loc 1 155 0
+ 410 002a 7B68     		ldr	r3, [r7, #4]
+ 411 002c 1B69     		ldr	r3, [r3, #16]
+ 412 002e 0133     		adds	r3, r3, #1
+ 413 0030 7A68     		ldr	r2, [r7, #4]
+ 414 0032 5268     		ldr	r2, [r2, #4]
+ 415 0034 93FBF2F1 		sdiv	r1, r3, r2
+ 416 0038 02FB01F2 		mul	r2, r2, r1
+ 417 003c 9A1A     		subs	r2, r3, r2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 11
+
+
+ 418 003e 7B68     		ldr	r3, [r7, #4]
+ 419 0040 1A61     		str	r2, [r3, #16]
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         queue->msg_num--;
+ 420              		.loc 1 156 0
+ 421 0042 7B68     		ldr	r3, [r7, #4]
+ 422 0044 5B69     		ldr	r3, [r3, #20]
+ 423 0046 5A1E     		subs	r2, r3, #1
+ 424 0048 7B68     		ldr	r3, [r7, #4]
+ 425 004a 5A61     		str	r2, [r3, #20]
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         ret = 0;
+ 426              		.loc 1 157 0
+ 427 004c 0023     		movs	r3, #0
+ 428 004e FB60     		str	r3, [r7, #12]
+ 429              	.L29:
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     return ret;
+ 430              		.loc 1 159 0
+ 431 0050 FB68     		ldr	r3, [r7, #12]
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** }
+ 432              		.loc 1 160 0
+ 433 0052 1846     		mov	r0, r3
+ 434 0054 1437     		adds	r7, r7, #20
+ 435              	.LCFI19:
+ 436              		.cfi_def_cfa_offset 4
+ 437 0056 BD46     		mov	sp, r7
+ 438              	.LCFI20:
+ 439              		.cfi_def_cfa_register 13
+ 440              		@ sp needed
+ 441 0058 5DF8047B 		ldr	r7, [sp], #4
+ 442              	.LCFI21:
+ 443              		.cfi_restore 7
+ 444              		.cfi_def_cfa_offset 0
+ 445 005c 7047     		bx	lr
+ 446              		.cfi_endproc
+ 447              	.LFE6:
+ 449              		.section	.text.queue_pop,"ax",%progbits
+ 450              		.align	1
+ 451              		.global	queue_pop
+ 452              		.syntax unified
+ 453              		.thumb
+ 454              		.thumb_func
+ 455              		.fpu fpv4-sp-d16
+ 457              	queue_pop:
+ 458              	.LFB7:
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** int queue_pop(queue_t *queue,void **buf, int timeout)
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** {
+ 459              		.loc 1 164 0
+ 460              		.cfi_startproc
+ 461              		@ args = 0, pretend = 0, frame = 24
+ 462              		@ frame_needed = 1, uses_anonymous_args = 0
+ 463 0000 80B5     		push	{r7, lr}
+ 464              	.LCFI22:
+ 465              		.cfi_def_cfa_offset 8
+ 466              		.cfi_offset 7, -8
+ 467              		.cfi_offset 14, -4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 12
+
+
+ 468 0002 86B0     		sub	sp, sp, #24
+ 469              	.LCFI23:
+ 470              		.cfi_def_cfa_offset 32
+ 471 0004 00AF     		add	r7, sp, #0
+ 472              	.LCFI24:
+ 473              		.cfi_def_cfa_register 7
+ 474 0006 F860     		str	r0, [r7, #12]
+ 475 0008 B960     		str	r1, [r7, #8]
+ 476 000a 7A60     		str	r2, [r7, #4]
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     int ret = -1;
+ 477              		.loc 1 165 0
+ 478 000c 4FF0FF33 		mov	r3, #-1
+ 479 0010 7B61     		str	r3, [r7, #20]
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if((NULL == queue) || (NULL == buf))
+ 480              		.loc 1 166 0
+ 481 0012 FB68     		ldr	r3, [r7, #12]
+ 482 0014 002B     		cmp	r3, #0
+ 483 0016 02D0     		beq	.L32
+ 484              		.loc 1 166 0 is_stmt 0 discriminator 1
+ 485 0018 BB68     		ldr	r3, [r7, #8]
+ 486 001a 002B     		cmp	r3, #0
+ 487 001c 01D1     		bne	.L33
+ 488              	.L32:
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         return ret;
+ 489              		.loc 1 168 0 is_stmt 1
+ 490 001e 7B69     		ldr	r3, [r7, #20]
+ 491 0020 2AE0     		b	.L34
+ 492              	.L33:
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(queue->sync_mode)
+ 493              		.loc 1 171 0
+ 494 0022 FB68     		ldr	r3, [r7, #12]
+ 495 0024 9B69     		ldr	r3, [r3, #24]
+ 496 0026 002B     		cmp	r3, #0
+ 497 0028 20D0     		beq	.L35
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         if(osal_semp_pend(queue->sync_read,timeout))
+ 498              		.loc 1 173 0
+ 499 002a FB68     		ldr	r3, [r7, #12]
+ 500 002c DB69     		ldr	r3, [r3, #28]
+ 501 002e 7968     		ldr	r1, [r7, #4]
+ 502 0030 1846     		mov	r0, r3
+ 503 0032 FFF7FEFF 		bl	osal_semp_pend
+ 504 0036 0346     		mov	r3, r0
+ 505 0038 002B     		cmp	r3, #0
+ 506 003a 1CD0     		beq	.L37
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         {
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             osal_mutex_lock(queue->lock);
+ 507              		.loc 1 175 0
+ 508 003c FB68     		ldr	r3, [r7, #12]
+ 509 003e 5B6A     		ldr	r3, [r3, #36]
+ 510 0040 1846     		mov	r0, r3
+ 511 0042 FFF7FEFF 		bl	osal_mutex_lock
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             ret = raw_queue_pop(queue,buf);
+ 512              		.loc 1 176 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 13
+
+
+ 513 0046 B968     		ldr	r1, [r7, #8]
+ 514 0048 F868     		ldr	r0, [r7, #12]
+ 515 004a FFF7FEFF 		bl	raw_queue_pop
+ 516 004e 7861     		str	r0, [r7, #20]
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             osal_mutex_unlock(queue->lock);
+ 517              		.loc 1 177 0
+ 518 0050 FB68     		ldr	r3, [r7, #12]
+ 519 0052 5B6A     		ldr	r3, [r3, #36]
+ 520 0054 1846     		mov	r0, r3
+ 521 0056 FFF7FEFF 		bl	osal_mutex_unlock
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             if(0 == ret)
+ 522              		.loc 1 178 0
+ 523 005a 7B69     		ldr	r3, [r7, #20]
+ 524 005c 002B     		cmp	r3, #0
+ 525 005e 0AD1     		bne	.L37
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             {
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****                 osal_semp_post(queue->sync_write);
+ 526              		.loc 1 180 0
+ 527 0060 FB68     		ldr	r3, [r7, #12]
+ 528 0062 1B6A     		ldr	r3, [r3, #32]
+ 529 0064 1846     		mov	r0, r3
+ 530 0066 FFF7FEFF 		bl	osal_semp_post
+ 531 006a 04E0     		b	.L37
+ 532              	.L35:
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****             }
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         }
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     else
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         ret = raw_queue_pop(queue,buf);
+ 533              		.loc 1 186 0
+ 534 006c B968     		ldr	r1, [r7, #8]
+ 535 006e F868     		ldr	r0, [r7, #12]
+ 536 0070 FFF7FEFF 		bl	raw_queue_pop
+ 537 0074 7861     		str	r0, [r7, #20]
+ 538              	.L37:
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     return ret;
+ 539              		.loc 1 188 0
+ 540 0076 7B69     		ldr	r3, [r7, #20]
+ 541              	.L34:
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** }
+ 542              		.loc 1 189 0
+ 543 0078 1846     		mov	r0, r3
+ 544 007a 1837     		adds	r7, r7, #24
+ 545              	.LCFI25:
+ 546              		.cfi_def_cfa_offset 8
+ 547 007c BD46     		mov	sp, r7
+ 548              	.LCFI26:
+ 549              		.cfi_def_cfa_register 13
+ 550              		@ sp needed
+ 551 007e 80BD     		pop	{r7, pc}
+ 552              		.cfi_endproc
+ 553              	.LFE7:
+ 555              		.section	.text.queue_delete,"ax",%progbits
+ 556              		.align	1
+ 557              		.global	queue_delete
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 14
+
+
+ 558              		.syntax unified
+ 559              		.thumb
+ 560              		.thumb_func
+ 561              		.fpu fpv4-sp-d16
+ 563              	queue_delete:
+ 564              	.LFB8:
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** ///< delete the queue,if any data in the queue, which means could not kill it
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** int queue_delete(queue_t *queue)
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** {
+ 565              		.loc 1 193 0
+ 566              		.cfi_startproc
+ 567              		@ args = 0, pretend = 0, frame = 16
+ 568              		@ frame_needed = 1, uses_anonymous_args = 0
+ 569 0000 80B5     		push	{r7, lr}
+ 570              	.LCFI27:
+ 571              		.cfi_def_cfa_offset 8
+ 572              		.cfi_offset 7, -8
+ 573              		.cfi_offset 14, -4
+ 574 0002 84B0     		sub	sp, sp, #16
+ 575              	.LCFI28:
+ 576              		.cfi_def_cfa_offset 24
+ 577 0004 00AF     		add	r7, sp, #0
+ 578              	.LCFI29:
+ 579              		.cfi_def_cfa_register 7
+ 580 0006 7860     		str	r0, [r7, #4]
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     int ret = -1;
+ 581              		.loc 1 194 0
+ 582 0008 4FF0FF33 		mov	r3, #-1
+ 583 000c FB60     		str	r3, [r7, #12]
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if((NULL == queue))
+ 584              		.loc 1 196 0
+ 585 000e 7B68     		ldr	r3, [r7, #4]
+ 586 0010 002B     		cmp	r3, #0
+ 587 0012 01D1     		bne	.L39
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         return ret;
+ 588              		.loc 1 198 0
+ 589 0014 FB68     		ldr	r3, [r7, #12]
+ 590 0016 18E0     		b	.L40
+ 591              	.L39:
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     if(queue->sync_mode)
+ 592              		.loc 1 200 0
+ 593 0018 7B68     		ldr	r3, [r7, #4]
+ 594 001a 9B69     		ldr	r3, [r3, #24]
+ 595 001c 002B     		cmp	r3, #0
+ 596 001e 0ED0     		beq	.L41
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     {
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         osal_semp_del(queue->sync_read);
+ 597              		.loc 1 202 0
+ 598 0020 7B68     		ldr	r3, [r7, #4]
+ 599 0022 DB69     		ldr	r3, [r3, #28]
+ 600 0024 1846     		mov	r0, r3
+ 601 0026 FFF7FEFF 		bl	osal_semp_del
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         osal_semp_del(queue->sync_write);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 15
+
+
+ 602              		.loc 1 203 0
+ 603 002a 7B68     		ldr	r3, [r7, #4]
+ 604 002c 1B6A     		ldr	r3, [r3, #32]
+ 605 002e 1846     		mov	r0, r3
+ 606 0030 FFF7FEFF 		bl	osal_semp_del
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****         osal_mutex_del(queue->lock);
+ 607              		.loc 1 204 0
+ 608 0034 7B68     		ldr	r3, [r7, #4]
+ 609 0036 5B6A     		ldr	r3, [r3, #36]
+ 610 0038 1846     		mov	r0, r3
+ 611 003a FFF7FEFF 		bl	osal_mutex_del
+ 612              	.L41:
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     }
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     osal_free(queue);
+ 613              		.loc 1 206 0
+ 614 003e 7868     		ldr	r0, [r7, #4]
+ 615 0040 FFF7FEFF 		bl	osal_free
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     ret = 0;
+ 616              		.loc 1 207 0
+ 617 0044 0023     		movs	r3, #0
+ 618 0046 FB60     		str	r3, [r7, #12]
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c ****     return ret;
+ 619              		.loc 1 209 0
+ 620 0048 FB68     		ldr	r3, [r7, #12]
+ 621              	.L40:
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** 
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue\queue.c **** }
+ 622              		.loc 1 211 0
+ 623 004a 1846     		mov	r0, r3
+ 624 004c 1037     		adds	r7, r7, #16
+ 625              	.LCFI30:
+ 626              		.cfi_def_cfa_offset 8
+ 627 004e BD46     		mov	sp, r7
+ 628              	.LCFI31:
+ 629              		.cfi_def_cfa_register 13
+ 630              		@ sp needed
+ 631 0050 80BD     		pop	{r7, pc}
+ 632              		.cfi_endproc
+ 633              	.LFE8:
+ 635              		.text
+ 636              	.Letext0:
+ 637              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 638              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 639              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 640              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 641              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 642              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 643              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 644              		.file 9 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/osal/osal
+ 645              		.file 10 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/queue/queue
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 queue.c
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:18     .text.queue_create:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:25     .text.queue_create:00000000 queue_create
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:175    .text.raw_queue_pushdata:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:181    .text.raw_queue_pushdata:00000000 raw_queue_pushdata
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:260    .text.queue_push:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:267    .text.queue_push:00000000 queue_push
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:366    .text.raw_queue_pop:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:372    .text.raw_queue_pop:00000000 raw_queue_pop
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:450    .text.queue_pop:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:457    .text.queue_pop:00000000 queue_pop
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:556    .text.queue_delete:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmCGYp0.s:563    .text.queue_delete:00000000 queue_delete
+
+UNDEFINED SYMBOLS
+osal_malloc
+memset
+osal_semp_create
+osal_mutex_create
+osal_semp_del
+osal_free
+osal_semp_pend
+osal_mutex_lock
+osal_mutex_unlock
+osal_semp_post
+osal_mutex_del

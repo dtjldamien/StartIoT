@@ -1,0 +1,1028 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"BearPi-IoT_gd32f303.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.data.GPIO_PORT,"aw",%progbits
+  18              		.align	2
+  21              	GPIO_PORT:
+  22 0000 00100140 		.word	1073811456
+  23              		.section	.data.GPIO_PIN,"aw",%progbits
+  24              		.align	2
+  27              	GPIO_PIN:
+  28 0000 00200000 		.word	8192
+  29              		.section	.data.GPIO_CLK,"aw",%progbits
+  30              		.align	2
+  33              	GPIO_CLK:
+  34 0000 0406     		.short	1540
+  35              		.section	.data.COM_CLK,"aw",%progbits
+  36              		.align	2
+  39              	COM_CLK:
+  40 0000 0E06     		.short	1550
+  41 0002 1107     		.short	1809
+  42 0004 1207     		.short	1810
+  43 0006 1307     		.short	1811
+  44              		.section	.data.COM_TX_PIN,"aw",%progbits
+  45              		.align	2
+  48              	COM_TX_PIN:
+  49 0000 00020000 		.word	512
+  50 0004 04000000 		.word	4
+  51 0008 00040000 		.word	1024
+  52 000c 00040000 		.word	1024
+  53              		.section	.data.COM_RX_PIN,"aw",%progbits
+  54              		.align	2
+  57              	COM_RX_PIN:
+  58 0000 00040000 		.word	1024
+  59 0004 08000000 		.word	8
+  60 0008 00080000 		.word	2048
+  61 000c 00080000 		.word	2048
+  62              		.section	.data.COM_GPIO_PORT,"aw",%progbits
+  63              		.align	2
+  66              	COM_GPIO_PORT:
+  67 0000 00080140 		.word	1073809408
+  68 0004 00080140 		.word	1073809408
+  69 0008 000C0140 		.word	1073810432
+  70 000c 00100140 		.word	1073811456
+  71              		.section	.data.COM_GPIO_CLK,"aw",%progbits
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 2
+
+
+  72              		.align	2
+  75              	COM_GPIO_CLK:
+  76 0000 0206     		.short	1538
+  77 0002 0206     		.short	1538
+  78 0004 0306     		.short	1539
+  79 0006 0406     		.short	1540
+  80              		.section	.data.KEY_PORT,"aw",%progbits
+  81              		.align	2
+  84              	KEY_PORT:
+  85 0000 00080140 		.word	1073809408
+  86 0004 00080140 		.word	1073809408
+  87              		.section	.data.KEY_PIN,"aw",%progbits
+  88              		.align	2
+  91              	KEY_PIN:
+  92 0000 02000000 		.word	2
+  93 0004 01000000 		.word	1
+  94              		.section	.data.KEY_CLK,"aw",%progbits
+  95              		.align	2
+  98              	KEY_CLK:
+  99 0000 0206     		.short	1538
+ 100 0002 0206     		.short	1538
+ 101              		.section	.data.KEY_EXTI_LINE,"aw",%progbits
+ 102              		.align	2
+ 105              	KEY_EXTI_LINE:
+ 106 0000 02000000 		.word	2
+ 107 0004 01000000 		.word	1
+ 108              		.section	.bss.KEY_PORT_SOURCE,"aw",%nobits
+ 109              		.align	2
+ 112              	KEY_PORT_SOURCE:
+ 113 0000 0000     		.space	2
+ 114              		.section	.data.KEY_PIN_SOURCE,"aw",%progbits
+ 115              		.align	2
+ 118              	KEY_PIN_SOURCE:
+ 119 0000 01       		.byte	1
+ 120 0001 00       		.byte	0
+ 121              		.section	.data.KEY_IRQn,"aw",%progbits
+ 122              		.align	2
+ 125              	KEY_IRQn:
+ 126 0000 07       		.byte	7
+ 127 0001 06       		.byte	6
+ 128              		.section	.text.gd_eval_led_init,"ax",%progbits
+ 129              		.align	1
+ 130              		.global	gd_eval_led_init
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 134              		.fpu fpv4-sp-d16
+ 136              	gd_eval_led_init:
+ 137              	.LFB123:
+ 138              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /*!
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \file  BearPi-IoT_gd32f303.c
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \brief firmware functions to manage leds, keys, COM ports
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \version 2019-10-30, V1.0.0, demo for BearPi-IoT_GD32F30x
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** */
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 3
+
+
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /*
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     Copyright (c) 2019, BearPi LIMITED.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     All rights reserved.
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** are permitted provided that the following conditions are met:
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****        list of conditions and the following disclaimer.
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****        this list of conditions and the following disclaimer in the documentation 
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****        and/or other materials provided with the distribution.
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****        may be used to endorse or promote products derived from this software without 
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****        specific prior written permission.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** OF SUCH DAMAGE.
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** */
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** #include <gd32f30x.h>
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** #include "BearPi-IoT_gd32f303.h"
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /* private variables */
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint32_t GPIO_PORT[LEDn] = {LED_GPIO_PORT};
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint32_t GPIO_PIN[LEDn] = {LED_PIN};
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static rcu_periph_enum GPIO_CLK[LEDn] = {LED_GPIO_CLK};
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static rcu_periph_enum COM_CLK[COMn] = {EVAL_COM0_CLK, EVAL_COM1_CLK, EVAL_COM2_CLK, EVAL_COM3_CLK}
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint32_t COM_TX_PIN[COMn] = {EVAL_COM0_TX_PIN, EVAL_COM1_TX_PIN, EVAL_COM2_TX_PIN, EVAL_COM3
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint32_t COM_RX_PIN[COMn] = {EVAL_COM0_RX_PIN, EVAL_COM1_RX_PIN, EVAL_COM2_RX_PIN, EVAL_COM3
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint32_t COM_GPIO_PORT[COMn] = {EVAL_COM0_GPIO_PORT, EVAL_COM1_GPIO_PORT, EVAL_COM2_GPIO_POR
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static rcu_periph_enum COM_GPIO_CLK[COMn] = {EVAL_COM0_GPIO_CLK, EVAL_COM1_GPIO_CLK,EVAL_COM2_GPIO_
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint32_t KEY_PORT[KEYn] = {F1_KEY_GPIO_PORT, 
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****                                   F2_KEY_GPIO_PORT};
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint32_t KEY_PIN[KEYn] = {F1_KEY_PIN, F2_KEY_PIN};
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static rcu_periph_enum KEY_CLK[KEYn] = {F1_KEY_GPIO_CLK, 
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****                                         F2_KEY_GPIO_CLK};
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static exti_line_enum KEY_EXTI_LINE[KEYn] = {F1_KEY_EXTI_LINE,
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****                                              F2_KEY_EXTI_LINE};
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint8_t KEY_PORT_SOURCE[KEYn] = {F1_KEY_EXTI_PORT_SOURCE,
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****                                         F2_KEY_EXTI_PORT_SOURCE};
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint8_t KEY_PIN_SOURCE[KEYn] = {F1_KEY_EXTI_PIN_SOURCE,
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****                                        F2_KEY_EXTI_PIN_SOURCE};
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** static uint8_t KEY_IRQn[KEYn] = {F1_KEY_EXTI_IRQn, 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 4
+
+
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****                                  F2_KEY_EXTI_IRQn};
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /*!
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \brief      configure led GPIO
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[in]  lednum: specify the led to be configured
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg      LED
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[out] none
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \retval     none
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** */
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** void  gd_eval_led_init (led_typedef_enum lednum)
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** {
+ 139              		.loc 1 75 0
+ 140              		.cfi_startproc
+ 141              		@ args = 0, pretend = 0, frame = 8
+ 142              		@ frame_needed = 1, uses_anonymous_args = 0
+ 143 0000 80B5     		push	{r7, lr}
+ 144              	.LCFI0:
+ 145              		.cfi_def_cfa_offset 8
+ 146              		.cfi_offset 7, -8
+ 147              		.cfi_offset 14, -4
+ 148 0002 82B0     		sub	sp, sp, #8
+ 149              	.LCFI1:
+ 150              		.cfi_def_cfa_offset 16
+ 151 0004 00AF     		add	r7, sp, #0
+ 152              	.LCFI2:
+ 153              		.cfi_def_cfa_register 7
+ 154 0006 0346     		mov	r3, r0
+ 155 0008 FB71     		strb	r3, [r7, #7]
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     /* enable the led clock */
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     rcu_periph_clock_enable(GPIO_CLK[lednum]);
+ 156              		.loc 1 77 0
+ 157 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 158 000c 104A     		ldr	r2, .L2
+ 159 000e 32F81330 		ldrh	r3, [r2, r3, lsl #1]
+ 160 0012 1846     		mov	r0, r3
+ 161 0014 FFF7FEFF 		bl	rcu_periph_clock_enable
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     /* configure led GPIO port */ 
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     gpio_init(GPIO_PORT[lednum], GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ,GPIO_PIN[lednum]);
+ 162              		.loc 1 79 0
+ 163 0018 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 164 001a 0E4A     		ldr	r2, .L2+4
+ 165 001c 52F82300 		ldr	r0, [r2, r3, lsl #2]
+ 166 0020 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 167 0022 0D4A     		ldr	r2, .L2+8
+ 168 0024 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 169 0028 0322     		movs	r2, #3
+ 170 002a 1021     		movs	r1, #16
+ 171 002c FFF7FEFF 		bl	gpio_init
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     GPIO_BC(GPIO_PORT[lednum]) = GPIO_PIN[lednum];
+ 172              		.loc 1 81 0
+ 173 0030 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 174 0032 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 175 0034 0749     		ldr	r1, .L2+4
+ 176 0036 51F82220 		ldr	r2, [r1, r2, lsl #2]
+ 177 003a 1432     		adds	r2, r2, #20
+ 178 003c 1146     		mov	r1, r2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 5
+
+
+ 179 003e 064A     		ldr	r2, .L2+8
+ 180 0040 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 181 0044 0B60     		str	r3, [r1]
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** }
+ 182              		.loc 1 82 0
+ 183 0046 00BF     		nop
+ 184 0048 0837     		adds	r7, r7, #8
+ 185              	.LCFI3:
+ 186              		.cfi_def_cfa_offset 8
+ 187 004a BD46     		mov	sp, r7
+ 188              	.LCFI4:
+ 189              		.cfi_def_cfa_register 13
+ 190              		@ sp needed
+ 191 004c 80BD     		pop	{r7, pc}
+ 192              	.L3:
+ 193 004e 00BF     		.align	2
+ 194              	.L2:
+ 195 0050 00000000 		.word	GPIO_CLK
+ 196 0054 00000000 		.word	GPIO_PORT
+ 197 0058 00000000 		.word	GPIO_PIN
+ 198              		.cfi_endproc
+ 199              	.LFE123:
+ 201              		.section	.text.gd_eval_led_on,"ax",%progbits
+ 202              		.align	1
+ 203              		.global	gd_eval_led_on
+ 204              		.syntax unified
+ 205              		.thumb
+ 206              		.thumb_func
+ 207              		.fpu fpv4-sp-d16
+ 209              	gd_eval_led_on:
+ 210              	.LFB124:
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /*!s
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \brief      turn on selected led
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[in]  lednum: specify the led to be turned on
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        LED
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[out] none
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \retval     none
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** */
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** void gd_eval_led_on(led_typedef_enum lednum)
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** {
+ 211              		.loc 1 92 0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 8
+ 214              		@ frame_needed = 1, uses_anonymous_args = 0
+ 215              		@ link register save eliminated.
+ 216 0000 80B4     		push	{r7}
+ 217              	.LCFI5:
+ 218              		.cfi_def_cfa_offset 4
+ 219              		.cfi_offset 7, -4
+ 220 0002 83B0     		sub	sp, sp, #12
+ 221              	.LCFI6:
+ 222              		.cfi_def_cfa_offset 16
+ 223 0004 00AF     		add	r7, sp, #0
+ 224              	.LCFI7:
+ 225              		.cfi_def_cfa_register 7
+ 226 0006 0346     		mov	r3, r0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 6
+
+
+ 227 0008 FB71     		strb	r3, [r7, #7]
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     GPIO_BOP(GPIO_PORT[lednum]) = GPIO_PIN[lednum];
+ 228              		.loc 1 93 0
+ 229 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 230 000c FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 231 000e 0749     		ldr	r1, .L5
+ 232 0010 51F82220 		ldr	r2, [r1, r2, lsl #2]
+ 233 0014 1032     		adds	r2, r2, #16
+ 234 0016 1146     		mov	r1, r2
+ 235 0018 054A     		ldr	r2, .L5+4
+ 236 001a 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 237 001e 0B60     		str	r3, [r1]
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** }
+ 238              		.loc 1 94 0
+ 239 0020 00BF     		nop
+ 240 0022 0C37     		adds	r7, r7, #12
+ 241              	.LCFI8:
+ 242              		.cfi_def_cfa_offset 4
+ 243 0024 BD46     		mov	sp, r7
+ 244              	.LCFI9:
+ 245              		.cfi_def_cfa_register 13
+ 246              		@ sp needed
+ 247 0026 5DF8047B 		ldr	r7, [sp], #4
+ 248              	.LCFI10:
+ 249              		.cfi_restore 7
+ 250              		.cfi_def_cfa_offset 0
+ 251 002a 7047     		bx	lr
+ 252              	.L6:
+ 253              		.align	2
+ 254              	.L5:
+ 255 002c 00000000 		.word	GPIO_PORT
+ 256 0030 00000000 		.word	GPIO_PIN
+ 257              		.cfi_endproc
+ 258              	.LFE124:
+ 260              		.section	.text.gd_eval_led_off,"ax",%progbits
+ 261              		.align	1
+ 262              		.global	gd_eval_led_off
+ 263              		.syntax unified
+ 264              		.thumb
+ 265              		.thumb_func
+ 266              		.fpu fpv4-sp-d16
+ 268              	gd_eval_led_off:
+ 269              	.LFB125:
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /*!
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \brief      turn off selected led
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[in]  lednum: specify the led to be turned off
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        LED
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[out] none
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \retval     none
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** */
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** void gd_eval_led_off(led_typedef_enum lednum)
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** {
+ 270              		.loc 1 104 0
+ 271              		.cfi_startproc
+ 272              		@ args = 0, pretend = 0, frame = 8
+ 273              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 7
+
+
+ 274              		@ link register save eliminated.
+ 275 0000 80B4     		push	{r7}
+ 276              	.LCFI11:
+ 277              		.cfi_def_cfa_offset 4
+ 278              		.cfi_offset 7, -4
+ 279 0002 83B0     		sub	sp, sp, #12
+ 280              	.LCFI12:
+ 281              		.cfi_def_cfa_offset 16
+ 282 0004 00AF     		add	r7, sp, #0
+ 283              	.LCFI13:
+ 284              		.cfi_def_cfa_register 7
+ 285 0006 0346     		mov	r3, r0
+ 286 0008 FB71     		strb	r3, [r7, #7]
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     GPIO_BC(GPIO_PORT[lednum]) = GPIO_PIN[lednum];
+ 287              		.loc 1 105 0
+ 288 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 289 000c FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 290 000e 0749     		ldr	r1, .L8
+ 291 0010 51F82220 		ldr	r2, [r1, r2, lsl #2]
+ 292 0014 1432     		adds	r2, r2, #20
+ 293 0016 1146     		mov	r1, r2
+ 294 0018 054A     		ldr	r2, .L8+4
+ 295 001a 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 296 001e 0B60     		str	r3, [r1]
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** }
+ 297              		.loc 1 106 0
+ 298 0020 00BF     		nop
+ 299 0022 0C37     		adds	r7, r7, #12
+ 300              	.LCFI14:
+ 301              		.cfi_def_cfa_offset 4
+ 302 0024 BD46     		mov	sp, r7
+ 303              	.LCFI15:
+ 304              		.cfi_def_cfa_register 13
+ 305              		@ sp needed
+ 306 0026 5DF8047B 		ldr	r7, [sp], #4
+ 307              	.LCFI16:
+ 308              		.cfi_restore 7
+ 309              		.cfi_def_cfa_offset 0
+ 310 002a 7047     		bx	lr
+ 311              	.L9:
+ 312              		.align	2
+ 313              	.L8:
+ 314 002c 00000000 		.word	GPIO_PORT
+ 315 0030 00000000 		.word	GPIO_PIN
+ 316              		.cfi_endproc
+ 317              	.LFE125:
+ 319              		.section	.text.gd_eval_led_toggle,"ax",%progbits
+ 320              		.align	1
+ 321              		.global	gd_eval_led_toggle
+ 322              		.syntax unified
+ 323              		.thumb
+ 324              		.thumb_func
+ 325              		.fpu fpv4-sp-d16
+ 327              	gd_eval_led_toggle:
+ 328              	.LFB126:
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /*!
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 8
+
+
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \brief      toggle selected led
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[in]  lednum: specify the led to be toggled
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        LED
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[out] none
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \retval     none
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** */
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** void gd_eval_led_toggle(led_typedef_enum lednum)
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** {
+ 329              		.loc 1 116 0
+ 330              		.cfi_startproc
+ 331              		@ args = 0, pretend = 0, frame = 8
+ 332              		@ frame_needed = 1, uses_anonymous_args = 0
+ 333 0000 B0B5     		push	{r4, r5, r7, lr}
+ 334              	.LCFI17:
+ 335              		.cfi_def_cfa_offset 16
+ 336              		.cfi_offset 4, -16
+ 337              		.cfi_offset 5, -12
+ 338              		.cfi_offset 7, -8
+ 339              		.cfi_offset 14, -4
+ 340 0002 82B0     		sub	sp, sp, #8
+ 341              	.LCFI18:
+ 342              		.cfi_def_cfa_offset 24
+ 343 0004 00AF     		add	r7, sp, #0
+ 344              	.LCFI19:
+ 345              		.cfi_def_cfa_register 7
+ 346 0006 0346     		mov	r3, r0
+ 347 0008 FB71     		strb	r3, [r7, #7]
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     gpio_bit_write(GPIO_PORT[lednum], GPIO_PIN[lednum], 
+ 348              		.loc 1 117 0
+ 349 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 350 000c 0F4A     		ldr	r2, .L11
+ 351 000e 52F82340 		ldr	r4, [r2, r3, lsl #2]
+ 352 0012 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 353 0014 0E4A     		ldr	r2, .L11+4
+ 354 0016 52F82350 		ldr	r5, [r2, r3, lsl #2]
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****                     (bit_status)(1-gpio_input_bit_get(GPIO_PORT[lednum], GPIO_PIN[lednum])));
+ 355              		.loc 1 118 0
+ 356 001a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 357 001c 0B4A     		ldr	r2, .L11
+ 358 001e 52F82300 		ldr	r0, [r2, r3, lsl #2]
+ 359 0022 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 360 0024 0A4A     		ldr	r2, .L11+4
+ 361 0026 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 362 002a 1946     		mov	r1, r3
+ 363 002c FFF7FEFF 		bl	gpio_input_bit_get
+ 364 0030 0346     		mov	r3, r0
+ 365 0032 C3F10103 		rsb	r3, r3, #1
+ 366 0036 DBB2     		uxtb	r3, r3
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     gpio_bit_write(GPIO_PORT[lednum], GPIO_PIN[lednum], 
+ 367              		.loc 1 117 0
+ 368 0038 1A46     		mov	r2, r3
+ 369 003a 2946     		mov	r1, r5
+ 370 003c 2046     		mov	r0, r4
+ 371 003e FFF7FEFF 		bl	gpio_bit_write
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** }
+ 372              		.loc 1 119 0
+ 373 0042 00BF     		nop
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 9
+
+
+ 374 0044 0837     		adds	r7, r7, #8
+ 375              	.LCFI20:
+ 376              		.cfi_def_cfa_offset 16
+ 377 0046 BD46     		mov	sp, r7
+ 378              	.LCFI21:
+ 379              		.cfi_def_cfa_register 13
+ 380              		@ sp needed
+ 381 0048 B0BD     		pop	{r4, r5, r7, pc}
+ 382              	.L12:
+ 383 004a 00BF     		.align	2
+ 384              	.L11:
+ 385 004c 00000000 		.word	GPIO_PORT
+ 386 0050 00000000 		.word	GPIO_PIN
+ 387              		.cfi_endproc
+ 388              	.LFE126:
+ 390              		.section	.text.gd_eval_key_init,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	gd_eval_key_init
+ 393              		.syntax unified
+ 394              		.thumb
+ 395              		.thumb_func
+ 396              		.fpu fpv4-sp-d16
+ 398              	gd_eval_key_init:
+ 399              	.LFB127:
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /*!
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \brief      configure key
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[in]  key_num: specify the key to be configured
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        F1_KEY
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        F2_KEY
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[in]  key_mode: specify button mode
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        KEY_MODE_GPIO: key will be used as simple IO
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        KEY_MODE_EXTI: key will be connected to EXTI line with interrupt
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[out] none
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \retval     none
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** */
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** void gd_eval_key_init(key_typedef_enum key_num, keymode_typedef_enum key_mode)
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** {
+ 400              		.loc 1 133 0
+ 401              		.cfi_startproc
+ 402              		@ args = 0, pretend = 0, frame = 8
+ 403              		@ frame_needed = 1, uses_anonymous_args = 0
+ 404 0000 80B5     		push	{r7, lr}
+ 405              	.LCFI22:
+ 406              		.cfi_def_cfa_offset 8
+ 407              		.cfi_offset 7, -8
+ 408              		.cfi_offset 14, -4
+ 409 0002 82B0     		sub	sp, sp, #8
+ 410              	.LCFI23:
+ 411              		.cfi_def_cfa_offset 16
+ 412 0004 00AF     		add	r7, sp, #0
+ 413              	.LCFI24:
+ 414              		.cfi_def_cfa_register 7
+ 415 0006 0346     		mov	r3, r0
+ 416 0008 0A46     		mov	r2, r1
+ 417 000a FB71     		strb	r3, [r7, #7]
+ 418 000c 1346     		mov	r3, r2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 10
+
+
+ 419 000e BB71     		strb	r3, [r7, #6]
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     /* enable the key clock */
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     rcu_periph_clock_enable(KEY_CLK[key_num]);
+ 420              		.loc 1 135 0
+ 421 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 422 0012 1F4A     		ldr	r2, .L16
+ 423 0014 32F81330 		ldrh	r3, [r2, r3, lsl #1]
+ 424 0018 1846     		mov	r0, r3
+ 425 001a FFF7FEFF 		bl	rcu_periph_clock_enable
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     rcu_periph_clock_enable(RCU_AF);
+ 426              		.loc 1 136 0
+ 427 001e 4FF4C060 		mov	r0, #1536
+ 428 0022 FFF7FEFF 		bl	rcu_periph_clock_enable
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     /* configure button pin as input */
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     gpio_init(KEY_PORT[key_num], GPIO_MODE_IPU, GPIO_OSPEED_50MHZ, KEY_PIN[key_num]);
+ 429              		.loc 1 139 0
+ 430 0026 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 431 0028 1A4A     		ldr	r2, .L16+4
+ 432 002a 52F82300 		ldr	r0, [r2, r3, lsl #2]
+ 433 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 434 0030 194A     		ldr	r2, .L16+8
+ 435 0032 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 436 0036 0322     		movs	r2, #3
+ 437 0038 4821     		movs	r1, #72
+ 438 003a FFF7FEFF 		bl	gpio_init
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     if (key_mode == KEY_MODE_EXTI) {
+ 439              		.loc 1 141 0
+ 440 003e BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 441 0040 012B     		cmp	r3, #1
+ 442 0042 20D1     		bne	.L15
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         /* enable and set key EXTI interrupt to the lowest priority */
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         nvic_irq_enable(KEY_IRQn[key_num], 2U, 0U);
+ 443              		.loc 1 143 0
+ 444 0044 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 445 0046 154A     		ldr	r2, .L16+12
+ 446 0048 D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 447 004a 0022     		movs	r2, #0
+ 448 004c 0221     		movs	r1, #2
+ 449 004e 1846     		mov	r0, r3
+ 450 0050 FFF7FEFF 		bl	nvic_irq_enable
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         /* connect key EXTI line to key GPIO pin */
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         gpio_exti_source_select(KEY_PORT_SOURCE[key_num], KEY_PIN_SOURCE[key_num]);
+ 451              		.loc 1 146 0
+ 452 0054 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 453 0056 124A     		ldr	r2, .L16+16
+ 454 0058 D05C     		ldrb	r0, [r2, r3]	@ zero_extendqisi2
+ 455 005a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 456 005c 114A     		ldr	r2, .L16+20
+ 457 005e D35C     		ldrb	r3, [r2, r3]	@ zero_extendqisi2
+ 458 0060 1946     		mov	r1, r3
+ 459 0062 FFF7FEFF 		bl	gpio_exti_source_select
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         /* configure key EXTI line */
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         exti_init(KEY_EXTI_LINE[key_num], EXTI_INTERRUPT, EXTI_TRIG_FALLING);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 11
+
+
+ 460              		.loc 1 149 0
+ 461 0066 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 462 0068 0F4A     		ldr	r2, .L16+24
+ 463 006a 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 464 006e 0122     		movs	r2, #1
+ 465 0070 0021     		movs	r1, #0
+ 466 0072 1846     		mov	r0, r3
+ 467 0074 FFF7FEFF 		bl	exti_init
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         exti_interrupt_flag_clear(KEY_EXTI_LINE[key_num]);
+ 468              		.loc 1 150 0
+ 469 0078 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 470 007a 0B4A     		ldr	r2, .L16+24
+ 471 007c 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 472 0080 1846     		mov	r0, r3
+ 473 0082 FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 474              	.L15:
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     }
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** }
+ 475              		.loc 1 152 0
+ 476 0086 00BF     		nop
+ 477 0088 0837     		adds	r7, r7, #8
+ 478              	.LCFI25:
+ 479              		.cfi_def_cfa_offset 8
+ 480 008a BD46     		mov	sp, r7
+ 481              	.LCFI26:
+ 482              		.cfi_def_cfa_register 13
+ 483              		@ sp needed
+ 484 008c 80BD     		pop	{r7, pc}
+ 485              	.L17:
+ 486 008e 00BF     		.align	2
+ 487              	.L16:
+ 488 0090 00000000 		.word	KEY_CLK
+ 489 0094 00000000 		.word	KEY_PORT
+ 490 0098 00000000 		.word	KEY_PIN
+ 491 009c 00000000 		.word	KEY_IRQn
+ 492 00a0 00000000 		.word	KEY_PORT_SOURCE
+ 493 00a4 00000000 		.word	KEY_PIN_SOURCE
+ 494 00a8 00000000 		.word	KEY_EXTI_LINE
+ 495              		.cfi_endproc
+ 496              	.LFE127:
+ 498              		.section	.text.gd_eval_key_state_get,"ax",%progbits
+ 499              		.align	1
+ 500              		.global	gd_eval_key_state_get
+ 501              		.syntax unified
+ 502              		.thumb
+ 503              		.thumb_func
+ 504              		.fpu fpv4-sp-d16
+ 506              	gd_eval_key_state_get:
+ 507              	.LFB128:
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /*!
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \brief      return the selected key state
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[in]  key: specify the key to be checked
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        F1_KEY
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        F2_KEY
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[out] none
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \retval     the key's GPIO pin value
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 12
+
+
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** */
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** uint8_t gd_eval_key_state_get(key_typedef_enum key)
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** {
+ 508              		.loc 1 163 0
+ 509              		.cfi_startproc
+ 510              		@ args = 0, pretend = 0, frame = 8
+ 511              		@ frame_needed = 1, uses_anonymous_args = 0
+ 512 0000 80B5     		push	{r7, lr}
+ 513              	.LCFI27:
+ 514              		.cfi_def_cfa_offset 8
+ 515              		.cfi_offset 7, -8
+ 516              		.cfi_offset 14, -4
+ 517 0002 82B0     		sub	sp, sp, #8
+ 518              	.LCFI28:
+ 519              		.cfi_def_cfa_offset 16
+ 520 0004 00AF     		add	r7, sp, #0
+ 521              	.LCFI29:
+ 522              		.cfi_def_cfa_register 7
+ 523 0006 0346     		mov	r3, r0
+ 524 0008 FB71     		strb	r3, [r7, #7]
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     return gpio_input_bit_get(KEY_PORT[key], KEY_PIN[key]);
+ 525              		.loc 1 164 0
+ 526 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 527 000c 074A     		ldr	r2, .L20
+ 528 000e 52F82300 		ldr	r0, [r2, r3, lsl #2]
+ 529 0012 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 530 0014 064A     		ldr	r2, .L20+4
+ 531 0016 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 532 001a 1946     		mov	r1, r3
+ 533 001c FFF7FEFF 		bl	gpio_input_bit_get
+ 534 0020 0346     		mov	r3, r0
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** }
+ 535              		.loc 1 165 0
+ 536 0022 1846     		mov	r0, r3
+ 537 0024 0837     		adds	r7, r7, #8
+ 538              	.LCFI30:
+ 539              		.cfi_def_cfa_offset 8
+ 540 0026 BD46     		mov	sp, r7
+ 541              	.LCFI31:
+ 542              		.cfi_def_cfa_register 13
+ 543              		@ sp needed
+ 544 0028 80BD     		pop	{r7, pc}
+ 545              	.L21:
+ 546 002a 00BF     		.align	2
+ 547              	.L20:
+ 548 002c 00000000 		.word	KEY_PORT
+ 549 0030 00000000 		.word	KEY_PIN
+ 550              		.cfi_endproc
+ 551              	.LFE128:
+ 553              		.section	.text.gd_eval_com_init,"ax",%progbits
+ 554              		.align	1
+ 555              		.global	gd_eval_com_init
+ 556              		.syntax unified
+ 557              		.thumb
+ 558              		.thumb_func
+ 559              		.fpu fpv4-sp-d16
+ 561              	gd_eval_com_init:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 13
+
+
+ 562              	.LFB129:
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** /*!
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \brief      configure COM port
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[in]  com: COM on the board
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        EVAL_COM0: COM0 on the board
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****       \arg        EVAL_COM1: COM1 on the board
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \param[out] none
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     \retval     none
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** */
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** void gd_eval_com_init(uint32_t com, uint32_t baud)
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** {
+ 563              		.loc 1 176 0
+ 564              		.cfi_startproc
+ 565              		@ args = 0, pretend = 0, frame = 16
+ 566              		@ frame_needed = 1, uses_anonymous_args = 0
+ 567 0000 80B5     		push	{r7, lr}
+ 568              	.LCFI32:
+ 569              		.cfi_def_cfa_offset 8
+ 570              		.cfi_offset 7, -8
+ 571              		.cfi_offset 14, -4
+ 572 0002 84B0     		sub	sp, sp, #16
+ 573              	.LCFI33:
+ 574              		.cfi_def_cfa_offset 24
+ 575 0004 00AF     		add	r7, sp, #0
+ 576              	.LCFI34:
+ 577              		.cfi_def_cfa_register 7
+ 578 0006 7860     		str	r0, [r7, #4]
+ 579 0008 3960     		str	r1, [r7]
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     uint32_t com_id = 0U;
+ 580              		.loc 1 177 0
+ 581 000a 0023     		movs	r3, #0
+ 582 000c FB60     		str	r3, [r7, #12]
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     if(EVAL_COM0 == com){
+ 583              		.loc 1 178 0
+ 584 000e 7B68     		ldr	r3, [r7, #4]
+ 585 0010 344A     		ldr	r2, .L27
+ 586 0012 9342     		cmp	r3, r2
+ 587 0014 02D1     		bne	.L23
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         com_id = 0U;
+ 588              		.loc 1 179 0
+ 589 0016 0023     		movs	r3, #0
+ 590 0018 FB60     		str	r3, [r7, #12]
+ 591 001a 13E0     		b	.L24
+ 592              	.L23:
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     }else if(EVAL_COM1 == com){
+ 593              		.loc 1 180 0
+ 594 001c 7B68     		ldr	r3, [r7, #4]
+ 595 001e 324A     		ldr	r2, .L27+4
+ 596 0020 9342     		cmp	r3, r2
+ 597 0022 02D1     		bne	.L25
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         com_id = 1U;
+ 598              		.loc 1 181 0
+ 599 0024 0123     		movs	r3, #1
+ 600 0026 FB60     		str	r3, [r7, #12]
+ 601 0028 0CE0     		b	.L24
+ 602              	.L25:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 14
+
+
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     }else if(EVAL_COM2 == com){
+ 603              		.loc 1 182 0
+ 604 002a 7B68     		ldr	r3, [r7, #4]
+ 605 002c 2F4A     		ldr	r2, .L27+8
+ 606 002e 9342     		cmp	r3, r2
+ 607 0030 02D1     		bne	.L26
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         com_id = 2U;
+ 608              		.loc 1 183 0
+ 609 0032 0223     		movs	r3, #2
+ 610 0034 FB60     		str	r3, [r7, #12]
+ 611 0036 05E0     		b	.L24
+ 612              	.L26:
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     }else if(EVAL_COM3 == com){
+ 613              		.loc 1 184 0
+ 614 0038 7B68     		ldr	r3, [r7, #4]
+ 615 003a 2D4A     		ldr	r2, .L27+12
+ 616 003c 9342     		cmp	r3, r2
+ 617 003e 01D1     		bne	.L24
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****         com_id = 3U;
+ 618              		.loc 1 185 0
+ 619 0040 0323     		movs	r3, #3
+ 620 0042 FB60     		str	r3, [r7, #12]
+ 621              	.L24:
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     }
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     /* enable GPIO clock */
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     rcu_periph_clock_enable(COM_GPIO_CLK[com_id]);
+ 622              		.loc 1 189 0
+ 623 0044 2B4A     		ldr	r2, .L27+16
+ 624 0046 FB68     		ldr	r3, [r7, #12]
+ 625 0048 32F81330 		ldrh	r3, [r2, r3, lsl #1]
+ 626 004c 1846     		mov	r0, r3
+ 627 004e FFF7FEFF 		bl	rcu_periph_clock_enable
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     /* enable USART clock */
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     rcu_periph_clock_enable(COM_CLK[com_id]);
+ 628              		.loc 1 192 0
+ 629 0052 294A     		ldr	r2, .L27+20
+ 630 0054 FB68     		ldr	r3, [r7, #12]
+ 631 0056 32F81330 		ldrh	r3, [r2, r3, lsl #1]
+ 632 005a 1846     		mov	r0, r3
+ 633 005c FFF7FEFF 		bl	rcu_periph_clock_enable
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     /* connect port to USARTx_Tx */
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     gpio_init(COM_GPIO_PORT[com_id], GPIO_MODE_AF_PP, GPIO_OSPEED_50MHZ, COM_TX_PIN[com_id]);
+ 634              		.loc 1 195 0
+ 635 0060 264A     		ldr	r2, .L27+24
+ 636 0062 FB68     		ldr	r3, [r7, #12]
+ 637 0064 52F82300 		ldr	r0, [r2, r3, lsl #2]
+ 638 0068 254A     		ldr	r2, .L27+28
+ 639 006a FB68     		ldr	r3, [r7, #12]
+ 640 006c 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 641 0070 0322     		movs	r2, #3
+ 642 0072 1821     		movs	r1, #24
+ 643 0074 FFF7FEFF 		bl	gpio_init
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     /* connect port to USARTx_Rx */
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 15
+
+
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     gpio_init(COM_GPIO_PORT[com_id], GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ, COM_RX_PIN[com_id]);
+ 644              		.loc 1 198 0
+ 645 0078 204A     		ldr	r2, .L27+24
+ 646 007a FB68     		ldr	r3, [r7, #12]
+ 647 007c 52F82300 		ldr	r0, [r2, r3, lsl #2]
+ 648 0080 204A     		ldr	r2, .L27+32
+ 649 0082 FB68     		ldr	r3, [r7, #12]
+ 650 0084 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 651 0088 0322     		movs	r2, #3
+ 652 008a 0421     		movs	r1, #4
+ 653 008c FFF7FEFF 		bl	gpio_init
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** 
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     /* USART configure */
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_deinit(com);
+ 654              		.loc 1 201 0
+ 655 0090 7868     		ldr	r0, [r7, #4]
+ 656 0092 FFF7FEFF 		bl	usart_deinit
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_baudrate_set(com, baud);
+ 657              		.loc 1 202 0
+ 658 0096 3968     		ldr	r1, [r7]
+ 659 0098 7868     		ldr	r0, [r7, #4]
+ 660 009a FFF7FEFF 		bl	usart_baudrate_set
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_word_length_set(com, USART_WL_8BIT);
+ 661              		.loc 1 203 0
+ 662 009e 0021     		movs	r1, #0
+ 663 00a0 7868     		ldr	r0, [r7, #4]
+ 664 00a2 FFF7FEFF 		bl	usart_word_length_set
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_stop_bit_set(com, USART_STB_1BIT);
+ 665              		.loc 1 204 0
+ 666 00a6 0021     		movs	r1, #0
+ 667 00a8 7868     		ldr	r0, [r7, #4]
+ 668 00aa FFF7FEFF 		bl	usart_stop_bit_set
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_parity_config(com, USART_PM_NONE);
+ 669              		.loc 1 205 0
+ 670 00ae 0021     		movs	r1, #0
+ 671 00b0 7868     		ldr	r0, [r7, #4]
+ 672 00b2 FFF7FEFF 		bl	usart_parity_config
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_hardware_flow_rts_config(com, USART_RTS_DISABLE);
+ 673              		.loc 1 206 0
+ 674 00b6 0021     		movs	r1, #0
+ 675 00b8 7868     		ldr	r0, [r7, #4]
+ 676 00ba FFF7FEFF 		bl	usart_hardware_flow_rts_config
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_hardware_flow_cts_config(com, USART_CTS_DISABLE);
+ 677              		.loc 1 207 0
+ 678 00be 0021     		movs	r1, #0
+ 679 00c0 7868     		ldr	r0, [r7, #4]
+ 680 00c2 FFF7FEFF 		bl	usart_hardware_flow_cts_config
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_receive_config(com, USART_RECEIVE_ENABLE);
+ 681              		.loc 1 208 0
+ 682 00c6 0421     		movs	r1, #4
+ 683 00c8 7868     		ldr	r0, [r7, #4]
+ 684 00ca FFF7FEFF 		bl	usart_receive_config
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_transmit_config(com, USART_TRANSMIT_ENABLE);
+ 685              		.loc 1 209 0
+ 686 00ce 0821     		movs	r1, #8
+ 687 00d0 7868     		ldr	r0, [r7, #4]
+ 688 00d2 FFF7FEFF 		bl	usart_transmit_config
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 16
+
+
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c ****     usart_enable(com);
+ 689              		.loc 1 210 0
+ 690 00d6 7868     		ldr	r0, [r7, #4]
+ 691 00d8 FFF7FEFF 		bl	usart_enable
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\BearPi-IoT_gd32f303.c **** }
+ 692              		.loc 1 211 0
+ 693 00dc 00BF     		nop
+ 694 00de 1037     		adds	r7, r7, #16
+ 695              	.LCFI35:
+ 696              		.cfi_def_cfa_offset 8
+ 697 00e0 BD46     		mov	sp, r7
+ 698              	.LCFI36:
+ 699              		.cfi_def_cfa_register 13
+ 700              		@ sp needed
+ 701 00e2 80BD     		pop	{r7, pc}
+ 702              	.L28:
+ 703              		.align	2
+ 704              	.L27:
+ 705 00e4 00380140 		.word	1073821696
+ 706 00e8 00440040 		.word	1073759232
+ 707 00ec 00480040 		.word	1073760256
+ 708 00f0 004C0040 		.word	1073761280
+ 709 00f4 00000000 		.word	COM_GPIO_CLK
+ 710 00f8 00000000 		.word	COM_CLK
+ 711 00fc 00000000 		.word	COM_GPIO_PORT
+ 712 0100 00000000 		.word	COM_TX_PIN
+ 713 0104 00000000 		.word	COM_RX_PIN
+ 714              		.cfi_endproc
+ 715              	.LFE129:
+ 717              		.text
+ 718              	.Letext0:
+ 719              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 720              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 721              		.file 4 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/ar
+ 722              		.file 5 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+ 723              		.file 6 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+ 724              		.file 7 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/G
+ 725              		.file 8 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/G
+ 726              		.file 9 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/G
+ 727              		.file 10 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/
+ 728              		.file 11 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 729              		.file 12 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 730              		.file 13 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 731              		.file 14 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 732              		.file 15 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 733              		.file 16 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bea
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 BearPi-IoT_gd32f303.c
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:18     .data.GPIO_PORT:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:21     .data.GPIO_PORT:00000000 GPIO_PORT
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:24     .data.GPIO_PIN:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:27     .data.GPIO_PIN:00000000 GPIO_PIN
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:30     .data.GPIO_CLK:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:33     .data.GPIO_CLK:00000000 GPIO_CLK
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:36     .data.COM_CLK:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:39     .data.COM_CLK:00000000 COM_CLK
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:45     .data.COM_TX_PIN:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:48     .data.COM_TX_PIN:00000000 COM_TX_PIN
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:54     .data.COM_RX_PIN:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:57     .data.COM_RX_PIN:00000000 COM_RX_PIN
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:63     .data.COM_GPIO_PORT:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:66     .data.COM_GPIO_PORT:00000000 COM_GPIO_PORT
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:72     .data.COM_GPIO_CLK:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:75     .data.COM_GPIO_CLK:00000000 COM_GPIO_CLK
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:81     .data.KEY_PORT:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:84     .data.KEY_PORT:00000000 KEY_PORT
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:88     .data.KEY_PIN:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:91     .data.KEY_PIN:00000000 KEY_PIN
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:95     .data.KEY_CLK:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:98     .data.KEY_CLK:00000000 KEY_CLK
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:102    .data.KEY_EXTI_LINE:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:105    .data.KEY_EXTI_LINE:00000000 KEY_EXTI_LINE
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:109    .bss.KEY_PORT_SOURCE:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:112    .bss.KEY_PORT_SOURCE:00000000 KEY_PORT_SOURCE
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:115    .data.KEY_PIN_SOURCE:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:118    .data.KEY_PIN_SOURCE:00000000 KEY_PIN_SOURCE
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:122    .data.KEY_IRQn:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:125    .data.KEY_IRQn:00000000 KEY_IRQn
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:129    .text.gd_eval_led_init:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:136    .text.gd_eval_led_init:00000000 gd_eval_led_init
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:195    .text.gd_eval_led_init:00000050 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:202    .text.gd_eval_led_on:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:209    .text.gd_eval_led_on:00000000 gd_eval_led_on
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:255    .text.gd_eval_led_on:0000002c $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:261    .text.gd_eval_led_off:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:268    .text.gd_eval_led_off:00000000 gd_eval_led_off
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:314    .text.gd_eval_led_off:0000002c $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:320    .text.gd_eval_led_toggle:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:327    .text.gd_eval_led_toggle:00000000 gd_eval_led_toggle
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:385    .text.gd_eval_led_toggle:0000004c $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:391    .text.gd_eval_key_init:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:398    .text.gd_eval_key_init:00000000 gd_eval_key_init
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:488    .text.gd_eval_key_init:00000090 $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:499    .text.gd_eval_key_state_get:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:506    .text.gd_eval_key_state_get:00000000 gd_eval_key_state_get
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:548    .text.gd_eval_key_state_get:0000002c $d
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:554    .text.gd_eval_com_init:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:561    .text.gd_eval_com_init:00000000 gd_eval_com_init
+C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s:705    .text.gd_eval_com_init:000000e4 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_clock_enable
+gpio_init
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc7SJfRh.s 			page 18
+
+
+gpio_input_bit_get
+gpio_bit_write
+nvic_irq_enable
+gpio_exti_source_select
+exti_init
+exti_interrupt_flag_clear
+usart_deinit
+usart_baudrate_set
+usart_word_length_set
+usart_stop_bit_set
+usart_parity_config
+usart_hardware_flow_rts_config
+usart_hardware_flow_cts_config
+usart_receive_config
+usart_transmit_config
+usart_enable

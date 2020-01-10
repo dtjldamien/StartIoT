@@ -1,0 +1,231 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"i2c.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.gpio_config,"ax",%progbits
+  18              		.align	1
+  19              		.global	gpio_config
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	gpio_config:
+  26              	.LFB126:
+  27              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** /*!
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \file  i2c.c
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \brief I2C configuration file
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \version 2019-10-30, V1.0.0, demo for BearPi-IoT_GD32F30x
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** */
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** 
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** /*
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     Copyright (c) 2019, BearPi LIMITED.
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** 
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     All rights reserved.
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** 
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** are permitted provided that the following conditions are met:
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** 
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****        list of conditions and the following disclaimer.
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****        this list of conditions and the following disclaimer in the documentation 
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****        and/or other materials provided with the distribution.
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****        may be used to endorse or promote products derived from this software without 
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****        specific prior written permission.
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** 
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s 			page 2
+
+
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** OF SUCH DAMAGE.
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** */
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** 
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** #include "gd32f30x.h"
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** #include "i2c.h"
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** #include <stdio.h>
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** 
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** /*!
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \brief      configure the GPIO ports
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \param[in]  none
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \param[out] none
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \retval     none
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** */
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** void gpio_config(void)
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** {
+  28              		.loc 1 48 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 00AF     		add	r7, sp, #0
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_register 7
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     /* enable GPIOC clock */
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     rcu_periph_clock_enable(RCU_GPIOB);
+  40              		.loc 1 50 0
+  41 0004 40F20360 		movw	r0, #1539
+  42 0008 FFF7FEFF 		bl	rcu_periph_clock_enable
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     /* enable I2C0 clock */
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     rcu_periph_clock_enable(RCU_I2C0);
+  43              		.loc 1 52 0
+  44 000c 40F21570 		movw	r0, #1813
+  45 0010 FFF7FEFF 		bl	rcu_periph_clock_enable
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** 
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     /* connect PB6 to I2C0_SCL */
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     /* connect PB7 to I2C0_SDA */
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     gpio_init(GPIOB, GPIO_MODE_AF_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_6 | GPIO_PIN_7);
+  46              		.loc 1 56 0
+  47 0014 C023     		movs	r3, #192
+  48 0016 0322     		movs	r2, #3
+  49 0018 1C21     		movs	r1, #28
+  50 001a 0248     		ldr	r0, .L2
+  51 001c FFF7FEFF 		bl	gpio_init
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** }
+  52              		.loc 1 57 0
+  53 0020 00BF     		nop
+  54 0022 80BD     		pop	{r7, pc}
+  55              	.L3:
+  56              		.align	2
+  57              	.L2:
+  58 0024 000C0140 		.word	1073810432
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s 			page 3
+
+
+  59              		.cfi_endproc
+  60              	.LFE126:
+  62              		.section	.text.i2c_config,"ax",%progbits
+  63              		.align	1
+  64              		.global	i2c_config
+  65              		.syntax unified
+  66              		.thumb
+  67              		.thumb_func
+  68              		.fpu fpv4-sp-d16
+  70              	i2c_config:
+  71              	.LFB127:
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** 
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** /*!
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \brief      configure the I2C0 interfaces
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \param[in]  none
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \param[out] none
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     \retval     none
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** */
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** void i2c_config(void)
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** {
+  72              		.loc 1 66 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 1, uses_anonymous_args = 0
+  76 0000 80B5     		push	{r7, lr}
+  77              	.LCFI2:
+  78              		.cfi_def_cfa_offset 8
+  79              		.cfi_offset 7, -8
+  80              		.cfi_offset 14, -4
+  81 0002 00AF     		add	r7, sp, #0
+  82              	.LCFI3:
+  83              		.cfi_def_cfa_register 7
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     /* enable I2C clock */
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     rcu_periph_clock_enable(RCU_I2C0);
+  84              		.loc 1 68 0
+  85 0004 40F21570 		movw	r0, #1813
+  86 0008 FFF7FEFF 		bl	rcu_periph_clock_enable
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     /* configure I2C clock */
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     i2c_clock_config(I2C0,I2C0_SPEED,I2C_DTCY_2);
+  87              		.loc 1 70 0
+  88 000c 0022     		movs	r2, #0
+  89 000e 0949     		ldr	r1, .L5
+  90 0010 0948     		ldr	r0, .L5+4
+  91 0012 FFF7FEFF 		bl	i2c_clock_config
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     /* configure I2C address */
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     i2c_mode_addr_config(I2C0,I2C_I2CMODE_ENABLE,I2C_ADDFORMAT_7BITS,I2C0_SLAVE_ADDRESS7);
+  92              		.loc 1 72 0
+  93 0016 A023     		movs	r3, #160
+  94 0018 0022     		movs	r2, #0
+  95 001a 0021     		movs	r1, #0
+  96 001c 0648     		ldr	r0, .L5+4
+  97 001e FFF7FEFF 		bl	i2c_mode_addr_config
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     /* enable I2C0 */
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     i2c_enable(I2C0);
+  98              		.loc 1 74 0
+  99 0022 0548     		ldr	r0, .L5+4
+ 100 0024 FFF7FEFF 		bl	i2c_enable
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s 			page 4
+
+
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     /* enable acknowledge */
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c ****     i2c_ack_config(I2C0,I2C_ACK_ENABLE);
+ 101              		.loc 1 76 0
+ 102 0028 0121     		movs	r1, #1
+ 103 002a 0348     		ldr	r0, .L5+4
+ 104 002c FFF7FEFF 		bl	i2c_ack_config
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\i2c.c **** }
+ 105              		.loc 1 77 0
+ 106 0030 00BF     		nop
+ 107 0032 80BD     		pop	{r7, pc}
+ 108              	.L6:
+ 109              		.align	2
+ 110              	.L5:
+ 111 0034 801A0600 		.word	400000
+ 112 0038 00540040 		.word	1073763328
+ 113              		.cfi_endproc
+ 114              	.LFE127:
+ 116              		.text
+ 117              	.Letext0:
+ 118              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 119              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 120              		.file 4 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/ar
+ 121              		.file 5 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+ 122              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 123              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 124              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 125              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 126              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 127              		.file 11 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 i2c.c
+C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s:18     .text.gpio_config:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s:25     .text.gpio_config:00000000 gpio_config
+C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s:58     .text.gpio_config:00000024 $d
+C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s:63     .text.i2c_config:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s:70     .text.i2c_config:00000000 i2c_config
+C:\Users\dtjld\AppData\Local\Temp\ccxKXySc.s:111    .text.i2c_config:00000034 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_clock_enable
+gpio_init
+i2c_clock_config
+i2c_mode_addr_config
+i2c_enable
+i2c_ack_config

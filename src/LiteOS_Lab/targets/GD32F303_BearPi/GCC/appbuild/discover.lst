@@ -1,0 +1,2802 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"discover.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.prv_findAttributes,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	prv_findAttributes:
+  25              	.LFB4:
+  26              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** /*******************************************************************************
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** *
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** * Copyright (c) 2015 Intel Corporation and others.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** * All rights reserved. This program and the accompanying materials
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** * are made available under the terms of the Eclipse Public License v1.0
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** * and Eclipse Distribution License v1.0 which accompany this distribution.
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** *
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** * The Eclipse Public License is available at
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** *    http://www.eclipse.org/legal/epl-v10.html
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** * The Eclipse Distribution License is available at
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** *    http://www.eclipse.org/org/documents/edl-v10.php.
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** *
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** * Contributors:
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** *    David Navarro, Intel Corporation - initial API and implementation
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** *
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** *******************************************************************************/
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** #include "internals.h"
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** #define PRV_LINK_BUFFER_SIZE  1024
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** #define PRV_CONCAT_STR(buf, len, index, str, str_len)    \
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {                                                    \
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if ((len)-(index) < (str_len)) return -1;        \
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         memcpy((buf)+(index), (str), (str_len));         \
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         (index) += (str_len);                            \
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     }
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** #ifdef LWM2M_CLIENT_MODE
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 2
+
+
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** static lwm2m_attributes_t *prv_findAttributes(lwm2m_context_t *contextP,
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         lwm2m_uri_t *uriP,
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         lwm2m_server_t *serverP)
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** {
+  27              		.loc 1 37 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 32
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31 0000 80B5     		push	{r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 7, -8
+  35              		.cfi_offset 14, -4
+  36 0002 88B0     		sub	sp, sp, #32
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 40
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 F860     		str	r0, [r7, #12]
+  43 0008 B960     		str	r1, [r7, #8]
+  44 000a 7A60     		str	r2, [r7, #4]
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     lwm2m_observed_t *observedP;
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     lwm2m_watcher_t *watcherP;
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     lwm2m_attributes_t *paramP;
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     paramP = NULL;
+  45              		.loc 1 42 0
+  46 000c 0023     		movs	r3, #0
+  47 000e BB61     		str	r3, [r7, #24]
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     if (contextP == NULL) return NULL;
+  48              		.loc 1 44 0
+  49 0010 FB68     		ldr	r3, [r7, #12]
+  50 0012 002B     		cmp	r3, #0
+  51 0014 01D1     		bne	.L2
+  52              		.loc 1 44 0 is_stmt 0 discriminator 1
+  53 0016 0023     		movs	r3, #0
+  54 0018 25E0     		b	.L3
+  55              	.L2:
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     if (serverP == NULL) return NULL;
+  56              		.loc 1 45 0 is_stmt 1
+  57 001a 7B68     		ldr	r3, [r7, #4]
+  58 001c 002B     		cmp	r3, #0
+  59 001e 01D1     		bne	.L4
+  60              		.loc 1 45 0 is_stmt 0 discriminator 1
+  61 0020 0023     		movs	r3, #0
+  62 0022 20E0     		b	.L3
+  63              	.L4:
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     observedP = observe_findByUri(contextP, uriP);
+  64              		.loc 1 47 0 is_stmt 1
+  65 0024 B968     		ldr	r1, [r7, #8]
+  66 0026 F868     		ldr	r0, [r7, #12]
+  67 0028 FFF7FEFF 		bl	observe_findByUri
+  68 002c 7861     		str	r0, [r7, #20]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 3
+
+
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     if (observedP == NULL || observedP->watcherList == NULL) return NULL;
+  69              		.loc 1 48 0
+  70 002e 7B69     		ldr	r3, [r7, #20]
+  71 0030 002B     		cmp	r3, #0
+  72 0032 03D0     		beq	.L5
+  73              		.loc 1 48 0 is_stmt 0 discriminator 2
+  74 0034 7B69     		ldr	r3, [r7, #20]
+  75 0036 DB68     		ldr	r3, [r3, #12]
+  76 0038 002B     		cmp	r3, #0
+  77 003a 01D1     		bne	.L6
+  78              	.L5:
+  79              		.loc 1 48 0 discriminator 3
+  80 003c 0023     		movs	r3, #0
+  81 003e 12E0     		b	.L3
+  82              	.L6:
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     for (watcherP = observedP->watcherList; watcherP != NULL; watcherP = watcherP->next)
+  83              		.loc 1 50 0 is_stmt 1
+  84 0040 7B69     		ldr	r3, [r7, #20]
+  85 0042 DB68     		ldr	r3, [r3, #12]
+  86 0044 FB61     		str	r3, [r7, #28]
+  87 0046 0AE0     		b	.L7
+  88              	.L9:
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (watcherP->server == serverP)
+  89              		.loc 1 52 0
+  90 0048 FB69     		ldr	r3, [r7, #28]
+  91 004a 9B68     		ldr	r3, [r3, #8]
+  92 004c 7A68     		ldr	r2, [r7, #4]
+  93 004e 9A42     		cmp	r2, r3
+  94 0050 02D1     		bne	.L8
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             paramP = watcherP->parameters;
+  95              		.loc 1 54 0
+  96 0052 FB69     		ldr	r3, [r7, #28]
+  97 0054 DB68     		ldr	r3, [r3, #12]
+  98 0056 BB61     		str	r3, [r7, #24]
+  99              	.L8:
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 100              		.loc 1 50 0 discriminator 2
+ 101 0058 FB69     		ldr	r3, [r7, #28]
+ 102 005a 1B68     		ldr	r3, [r3]
+ 103 005c FB61     		str	r3, [r7, #28]
+ 104              	.L7:
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 105              		.loc 1 50 0 is_stmt 0 discriminator 1
+ 106 005e FB69     		ldr	r3, [r7, #28]
+ 107 0060 002B     		cmp	r3, #0
+ 108 0062 F1D1     		bne	.L9
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     }
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     return paramP;
+ 109              		.loc 1 58 0 is_stmt 1
+ 110 0064 BB69     		ldr	r3, [r7, #24]
+ 111              	.L3:
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** }
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 4
+
+
+ 112              		.loc 1 59 0
+ 113 0066 1846     		mov	r0, r3
+ 114 0068 2037     		adds	r7, r7, #32
+ 115              	.LCFI3:
+ 116              		.cfi_def_cfa_offset 8
+ 117 006a BD46     		mov	sp, r7
+ 118              	.LCFI4:
+ 119              		.cfi_def_cfa_register 13
+ 120              		@ sp needed
+ 121 006c 80BD     		pop	{r7, pc}
+ 122              		.cfi_endproc
+ 123              	.LFE4:
+ 125              		.section	.rodata
+ 126              		.align	2
+ 127              	.LC0:
+ 128 0000 3B00     		.ascii	";\000"
+ 129 0002 0000     		.align	2
+ 130              	.LC1:
+ 131 0004 706D696E 		.ascii	"pmin=\000"
+ 131      3D00
+ 132 000a 0000     		.align	2
+ 133              	.LC2:
+ 134 000c 706D6178 		.ascii	"pmax=\000"
+ 134      3D00
+ 135 0012 0000     		.align	2
+ 136              	.LC3:
+ 137 0014 67743D00 		.ascii	"gt=\000"
+ 138              		.align	2
+ 139              	.LC4:
+ 140 0018 6C743D00 		.ascii	"lt=\000"
+ 141              		.align	2
+ 142              	.LC5:
+ 143 001c 73743D00 		.ascii	"st=\000"
+ 144              		.align	2
+ 145              	.LC6:
+ 146 0020 2C00     		.ascii	",\000"
+ 147              		.section	.text.prv_serializeAttributes,"ax",%progbits
+ 148              		.align	1
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.fpu fpv4-sp-d16
+ 154              	prv_serializeAttributes:
+ 155              	.LFB5:
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** static int prv_serializeAttributes(lwm2m_context_t *contextP,
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                    lwm2m_uri_t *uriP,
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                    lwm2m_server_t *serverP,
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                    lwm2m_attributes_t *objectParamP,
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                    uint8_t *buffer,
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                    size_t uriLen,
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                    size_t bufferLen)
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** {
+ 156              		.loc 1 68 0
+ 157              		.cfi_startproc
+ 158              		@ args = 12, pretend = 0, frame = 32
+ 159              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 5
+
+
+ 160 0000 90B5     		push	{r4, r7, lr}
+ 161              	.LCFI5:
+ 162              		.cfi_def_cfa_offset 12
+ 163              		.cfi_offset 4, -12
+ 164              		.cfi_offset 7, -8
+ 165              		.cfi_offset 14, -4
+ 166 0002 89B0     		sub	sp, sp, #36
+ 167              	.LCFI6:
+ 168              		.cfi_def_cfa_offset 48
+ 169 0004 00AF     		add	r7, sp, #0
+ 170              	.LCFI7:
+ 171              		.cfi_def_cfa_register 7
+ 172 0006 F860     		str	r0, [r7, #12]
+ 173 0008 B960     		str	r1, [r7, #8]
+ 174 000a 7A60     		str	r2, [r7, #4]
+ 175 000c 3B60     		str	r3, [r7]
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     int head;
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     int res;
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     lwm2m_attributes_t *paramP;
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     head = 0;
+ 176              		.loc 1 73 0
+ 177 000e 0023     		movs	r3, #0
+ 178 0010 FB61     		str	r3, [r7, #28]
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     paramP = prv_findAttributes(contextP, uriP, serverP);
+ 179              		.loc 1 75 0
+ 180 0012 7A68     		ldr	r2, [r7, #4]
+ 181 0014 B968     		ldr	r1, [r7, #8]
+ 182 0016 F868     		ldr	r0, [r7, #12]
+ 183 0018 FFF7FEFF 		bl	prv_findAttributes
+ 184 001c B861     		str	r0, [r7, #24]
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     if (paramP == NULL) paramP = objectParamP;
+ 185              		.loc 1 76 0
+ 186 001e BB69     		ldr	r3, [r7, #24]
+ 187 0020 002B     		cmp	r3, #0
+ 188 0022 01D1     		bne	.L11
+ 189              		.loc 1 76 0 is_stmt 0 discriminator 1
+ 190 0024 3B68     		ldr	r3, [r7]
+ 191 0026 BB61     		str	r3, [r7, #24]
+ 192              	.L11:
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     if (paramP != NULL)
+ 193              		.loc 1 78 0 is_stmt 1
+ 194 0028 BB69     		ldr	r3, [r7, #24]
+ 195 002a 002B     		cmp	r3, #0
+ 196 002c 00F00882 		beq	.L12
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         head = uriLen;
+ 197              		.loc 1 80 0
+ 198 0030 7B6B     		ldr	r3, [r7, #52]
+ 199 0032 FB61     		str	r3, [r7, #28]
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (paramP->toSet & LWM2M_ATTR_FLAG_MIN_PERIOD)
+ 200              		.loc 1 82 0
+ 201 0034 BB69     		ldr	r3, [r7, #24]
+ 202 0036 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 6
+
+
+ 203 0038 03F00103 		and	r3, r3, #1
+ 204 003c 002B     		cmp	r3, #0
+ 205 003e 3FD0     		beq	.L13
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ATTR_SEPARATOR, LINK_ATTR_SEPARATOR_SIZE);
+ 206              		.loc 1 84 0
+ 207 0040 FB69     		ldr	r3, [r7, #28]
+ 208 0042 BA6B     		ldr	r2, [r7, #56]
+ 209 0044 9A42     		cmp	r2, r3
+ 210 0046 02D1     		bne	.L14
+ 211              		.loc 1 84 0 is_stmt 0 discriminator 1
+ 212 0048 4FF0FF33 		mov	r3, #-1
+ 213 004c 01E2     		b	.L15
+ 214              	.L14:
+ 215              		.loc 1 84 0 discriminator 2
+ 216 004e FB69     		ldr	r3, [r7, #28]
+ 217 0050 3A6B     		ldr	r2, [r7, #48]
+ 218 0052 1344     		add	r3, r3, r2
+ 219 0054 0122     		movs	r2, #1
+ 220 0056 A449     		ldr	r1, .L44
+ 221 0058 1846     		mov	r0, r3
+ 222 005a FFF7FEFF 		bl	memcpy
+ 223 005e FB69     		ldr	r3, [r7, #28]
+ 224 0060 0133     		adds	r3, r3, #1
+ 225 0062 FB61     		str	r3, [r7, #28]
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, ATTR_MIN_PERIOD_STR, ATTR_MIN_PERIOD_LEN);
+ 226              		.loc 1 85 0 is_stmt 1 discriminator 2
+ 227 0064 FB69     		ldr	r3, [r7, #28]
+ 228 0066 BA6B     		ldr	r2, [r7, #56]
+ 229 0068 D31A     		subs	r3, r2, r3
+ 230 006a 042B     		cmp	r3, #4
+ 231 006c 02D8     		bhi	.L16
+ 232              		.loc 1 85 0 is_stmt 0 discriminator 1
+ 233 006e 4FF0FF33 		mov	r3, #-1
+ 234 0072 EEE1     		b	.L15
+ 235              	.L16:
+ 236              		.loc 1 85 0 discriminator 2
+ 237 0074 FB69     		ldr	r3, [r7, #28]
+ 238 0076 3A6B     		ldr	r2, [r7, #48]
+ 239 0078 1344     		add	r3, r3, r2
+ 240 007a 0522     		movs	r2, #5
+ 241 007c 9B49     		ldr	r1, .L44+4
+ 242 007e 1846     		mov	r0, r3
+ 243 0080 FFF7FEFF 		bl	memcpy
+ 244 0084 FB69     		ldr	r3, [r7, #28]
+ 245 0086 0533     		adds	r3, r3, #5
+ 246 0088 FB61     		str	r3, [r7, #28]
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_intToText(paramP->minPeriod, buffer + head, bufferLen - head);
+ 247              		.loc 1 87 0 is_stmt 1 discriminator 2
+ 248 008a BB69     		ldr	r3, [r7, #24]
+ 249 008c 5B68     		ldr	r3, [r3, #4]
+ 250 008e 1846     		mov	r0, r3
+ 251 0090 4FF00001 		mov	r1, #0
+ 252 0094 FB69     		ldr	r3, [r7, #28]
+ 253 0096 3A6B     		ldr	r2, [r7, #48]
+ 254 0098 D418     		adds	r4, r2, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 7
+
+
+ 255 009a FB69     		ldr	r3, [r7, #28]
+ 256 009c BA6B     		ldr	r2, [r7, #56]
+ 257 009e D31A     		subs	r3, r2, r3
+ 258 00a0 2246     		mov	r2, r4
+ 259 00a2 FFF7FEFF 		bl	utils_intToText
+ 260 00a6 0346     		mov	r3, r0
+ 261 00a8 7B61     		str	r3, [r7, #20]
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 262              		.loc 1 88 0 discriminator 2
+ 263 00aa 7B69     		ldr	r3, [r7, #20]
+ 264 00ac 002B     		cmp	r3, #0
+ 265 00ae 02DC     		bgt	.L17
+ 266              		.loc 1 88 0 is_stmt 0 discriminator 1
+ 267 00b0 4FF0FF33 		mov	r3, #-1
+ 268 00b4 CDE1     		b	.L15
+ 269              	.L17:
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 270              		.loc 1 89 0 is_stmt 1
+ 271 00b6 FA69     		ldr	r2, [r7, #28]
+ 272 00b8 7B69     		ldr	r3, [r7, #20]
+ 273 00ba 1344     		add	r3, r3, r2
+ 274 00bc FB61     		str	r3, [r7, #28]
+ 275 00be 44E0     		b	.L18
+ 276              	.L13:
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         else if (objectParamP->toSet & LWM2M_ATTR_FLAG_MIN_PERIOD)
+ 277              		.loc 1 91 0
+ 278 00c0 3B68     		ldr	r3, [r7]
+ 279 00c2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 280 00c4 03F00103 		and	r3, r3, #1
+ 281 00c8 002B     		cmp	r3, #0
+ 282 00ca 3ED0     		beq	.L18
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ATTR_SEPARATOR, LINK_ATTR_SEPARATOR_SIZE);
+ 283              		.loc 1 93 0
+ 284 00cc FB69     		ldr	r3, [r7, #28]
+ 285 00ce BA6B     		ldr	r2, [r7, #56]
+ 286 00d0 9A42     		cmp	r2, r3
+ 287 00d2 02D1     		bne	.L19
+ 288              		.loc 1 93 0 is_stmt 0 discriminator 1
+ 289 00d4 4FF0FF33 		mov	r3, #-1
+ 290 00d8 BBE1     		b	.L15
+ 291              	.L19:
+ 292              		.loc 1 93 0 discriminator 2
+ 293 00da FB69     		ldr	r3, [r7, #28]
+ 294 00dc 3A6B     		ldr	r2, [r7, #48]
+ 295 00de 1344     		add	r3, r3, r2
+ 296 00e0 0122     		movs	r2, #1
+ 297 00e2 8149     		ldr	r1, .L44
+ 298 00e4 1846     		mov	r0, r3
+ 299 00e6 FFF7FEFF 		bl	memcpy
+ 300 00ea FB69     		ldr	r3, [r7, #28]
+ 301 00ec 0133     		adds	r3, r3, #1
+ 302 00ee FB61     		str	r3, [r7, #28]
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, ATTR_MIN_PERIOD_STR, ATTR_MIN_PERIOD_LEN);
+ 303              		.loc 1 94 0 is_stmt 1 discriminator 2
+ 304 00f0 FB69     		ldr	r3, [r7, #28]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 8
+
+
+ 305 00f2 BA6B     		ldr	r2, [r7, #56]
+ 306 00f4 D31A     		subs	r3, r2, r3
+ 307 00f6 042B     		cmp	r3, #4
+ 308 00f8 02D8     		bhi	.L20
+ 309              		.loc 1 94 0 is_stmt 0 discriminator 1
+ 310 00fa 4FF0FF33 		mov	r3, #-1
+ 311 00fe A8E1     		b	.L15
+ 312              	.L20:
+ 313              		.loc 1 94 0 discriminator 2
+ 314 0100 FB69     		ldr	r3, [r7, #28]
+ 315 0102 3A6B     		ldr	r2, [r7, #48]
+ 316 0104 1344     		add	r3, r3, r2
+ 317 0106 0522     		movs	r2, #5
+ 318 0108 7849     		ldr	r1, .L44+4
+ 319 010a 1846     		mov	r0, r3
+ 320 010c FFF7FEFF 		bl	memcpy
+ 321 0110 FB69     		ldr	r3, [r7, #28]
+ 322 0112 0533     		adds	r3, r3, #5
+ 323 0114 FB61     		str	r3, [r7, #28]
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_intToText(objectParamP->minPeriod, buffer + head, bufferLen - head);
+ 324              		.loc 1 96 0 is_stmt 1 discriminator 2
+ 325 0116 3B68     		ldr	r3, [r7]
+ 326 0118 5B68     		ldr	r3, [r3, #4]
+ 327 011a 1846     		mov	r0, r3
+ 328 011c 4FF00001 		mov	r1, #0
+ 329 0120 FB69     		ldr	r3, [r7, #28]
+ 330 0122 3A6B     		ldr	r2, [r7, #48]
+ 331 0124 D418     		adds	r4, r2, r3
+ 332 0126 FB69     		ldr	r3, [r7, #28]
+ 333 0128 BA6B     		ldr	r2, [r7, #56]
+ 334 012a D31A     		subs	r3, r2, r3
+ 335 012c 2246     		mov	r2, r4
+ 336 012e FFF7FEFF 		bl	utils_intToText
+ 337 0132 0346     		mov	r3, r0
+ 338 0134 7B61     		str	r3, [r7, #20]
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 339              		.loc 1 97 0 discriminator 2
+ 340 0136 7B69     		ldr	r3, [r7, #20]
+ 341 0138 002B     		cmp	r3, #0
+ 342 013a 02DC     		bgt	.L21
+ 343              		.loc 1 97 0 is_stmt 0 discriminator 1
+ 344 013c 4FF0FF33 		mov	r3, #-1
+ 345 0140 87E1     		b	.L15
+ 346              	.L21:
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 347              		.loc 1 98 0 is_stmt 1
+ 348 0142 FA69     		ldr	r2, [r7, #28]
+ 349 0144 7B69     		ldr	r3, [r7, #20]
+ 350 0146 1344     		add	r3, r3, r2
+ 351 0148 FB61     		str	r3, [r7, #28]
+ 352              	.L18:
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (paramP->toSet & LWM2M_ATTR_FLAG_MAX_PERIOD)
+ 353              		.loc 1 101 0
+ 354 014a BB69     		ldr	r3, [r7, #24]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 9
+
+
+ 355 014c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 356 014e 03F00203 		and	r3, r3, #2
+ 357 0152 002B     		cmp	r3, #0
+ 358 0154 3FD0     		beq	.L22
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ATTR_SEPARATOR, LINK_ATTR_SEPARATOR_SIZE);
+ 359              		.loc 1 103 0
+ 360 0156 FB69     		ldr	r3, [r7, #28]
+ 361 0158 BA6B     		ldr	r2, [r7, #56]
+ 362 015a 9A42     		cmp	r2, r3
+ 363 015c 02D1     		bne	.L23
+ 364              		.loc 1 103 0 is_stmt 0 discriminator 1
+ 365 015e 4FF0FF33 		mov	r3, #-1
+ 366 0162 76E1     		b	.L15
+ 367              	.L23:
+ 368              		.loc 1 103 0 discriminator 2
+ 369 0164 FB69     		ldr	r3, [r7, #28]
+ 370 0166 3A6B     		ldr	r2, [r7, #48]
+ 371 0168 1344     		add	r3, r3, r2
+ 372 016a 0122     		movs	r2, #1
+ 373 016c 5E49     		ldr	r1, .L44
+ 374 016e 1846     		mov	r0, r3
+ 375 0170 FFF7FEFF 		bl	memcpy
+ 376 0174 FB69     		ldr	r3, [r7, #28]
+ 377 0176 0133     		adds	r3, r3, #1
+ 378 0178 FB61     		str	r3, [r7, #28]
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, ATTR_MAX_PERIOD_STR, ATTR_MAX_PERIOD_LEN);
+ 379              		.loc 1 104 0 is_stmt 1 discriminator 2
+ 380 017a FB69     		ldr	r3, [r7, #28]
+ 381 017c BA6B     		ldr	r2, [r7, #56]
+ 382 017e D31A     		subs	r3, r2, r3
+ 383 0180 042B     		cmp	r3, #4
+ 384 0182 02D8     		bhi	.L24
+ 385              		.loc 1 104 0 is_stmt 0 discriminator 1
+ 386 0184 4FF0FF33 		mov	r3, #-1
+ 387 0188 63E1     		b	.L15
+ 388              	.L24:
+ 389              		.loc 1 104 0 discriminator 2
+ 390 018a FB69     		ldr	r3, [r7, #28]
+ 391 018c 3A6B     		ldr	r2, [r7, #48]
+ 392 018e 1344     		add	r3, r3, r2
+ 393 0190 0522     		movs	r2, #5
+ 394 0192 5749     		ldr	r1, .L44+8
+ 395 0194 1846     		mov	r0, r3
+ 396 0196 FFF7FEFF 		bl	memcpy
+ 397 019a FB69     		ldr	r3, [r7, #28]
+ 398 019c 0533     		adds	r3, r3, #5
+ 399 019e FB61     		str	r3, [r7, #28]
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_intToText(paramP->maxPeriod, buffer + head, bufferLen - head);
+ 400              		.loc 1 106 0 is_stmt 1 discriminator 2
+ 401 01a0 BB69     		ldr	r3, [r7, #24]
+ 402 01a2 9B68     		ldr	r3, [r3, #8]
+ 403 01a4 1846     		mov	r0, r3
+ 404 01a6 4FF00001 		mov	r1, #0
+ 405 01aa FB69     		ldr	r3, [r7, #28]
+ 406 01ac 3A6B     		ldr	r2, [r7, #48]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 10
+
+
+ 407 01ae D418     		adds	r4, r2, r3
+ 408 01b0 FB69     		ldr	r3, [r7, #28]
+ 409 01b2 BA6B     		ldr	r2, [r7, #56]
+ 410 01b4 D31A     		subs	r3, r2, r3
+ 411 01b6 2246     		mov	r2, r4
+ 412 01b8 FFF7FEFF 		bl	utils_intToText
+ 413 01bc 0346     		mov	r3, r0
+ 414 01be 7B61     		str	r3, [r7, #20]
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 415              		.loc 1 107 0 discriminator 2
+ 416 01c0 7B69     		ldr	r3, [r7, #20]
+ 417 01c2 002B     		cmp	r3, #0
+ 418 01c4 02DC     		bgt	.L25
+ 419              		.loc 1 107 0 is_stmt 0 discriminator 1
+ 420 01c6 4FF0FF33 		mov	r3, #-1
+ 421 01ca 42E1     		b	.L15
+ 422              	.L25:
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 423              		.loc 1 108 0 is_stmt 1
+ 424 01cc FA69     		ldr	r2, [r7, #28]
+ 425 01ce 7B69     		ldr	r3, [r7, #20]
+ 426 01d0 1344     		add	r3, r3, r2
+ 427 01d2 FB61     		str	r3, [r7, #28]
+ 428 01d4 44E0     		b	.L26
+ 429              	.L22:
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         else if (objectParamP->toSet & LWM2M_ATTR_FLAG_MAX_PERIOD)
+ 430              		.loc 1 110 0
+ 431 01d6 3B68     		ldr	r3, [r7]
+ 432 01d8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 433 01da 03F00203 		and	r3, r3, #2
+ 434 01de 002B     		cmp	r3, #0
+ 435 01e0 3ED0     		beq	.L26
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ATTR_SEPARATOR, LINK_ATTR_SEPARATOR_SIZE);
+ 436              		.loc 1 112 0
+ 437 01e2 FB69     		ldr	r3, [r7, #28]
+ 438 01e4 BA6B     		ldr	r2, [r7, #56]
+ 439 01e6 9A42     		cmp	r2, r3
+ 440 01e8 02D1     		bne	.L27
+ 441              		.loc 1 112 0 is_stmt 0 discriminator 1
+ 442 01ea 4FF0FF33 		mov	r3, #-1
+ 443 01ee 30E1     		b	.L15
+ 444              	.L27:
+ 445              		.loc 1 112 0 discriminator 2
+ 446 01f0 FB69     		ldr	r3, [r7, #28]
+ 447 01f2 3A6B     		ldr	r2, [r7, #48]
+ 448 01f4 1344     		add	r3, r3, r2
+ 449 01f6 0122     		movs	r2, #1
+ 450 01f8 3B49     		ldr	r1, .L44
+ 451 01fa 1846     		mov	r0, r3
+ 452 01fc FFF7FEFF 		bl	memcpy
+ 453 0200 FB69     		ldr	r3, [r7, #28]
+ 454 0202 0133     		adds	r3, r3, #1
+ 455 0204 FB61     		str	r3, [r7, #28]
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, ATTR_MAX_PERIOD_STR, ATTR_MAX_PERIOD_LEN);
+ 456              		.loc 1 113 0 is_stmt 1 discriminator 2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 11
+
+
+ 457 0206 FB69     		ldr	r3, [r7, #28]
+ 458 0208 BA6B     		ldr	r2, [r7, #56]
+ 459 020a D31A     		subs	r3, r2, r3
+ 460 020c 042B     		cmp	r3, #4
+ 461 020e 02D8     		bhi	.L28
+ 462              		.loc 1 113 0 is_stmt 0 discriminator 1
+ 463 0210 4FF0FF33 		mov	r3, #-1
+ 464 0214 1DE1     		b	.L15
+ 465              	.L28:
+ 466              		.loc 1 113 0 discriminator 2
+ 467 0216 FB69     		ldr	r3, [r7, #28]
+ 468 0218 3A6B     		ldr	r2, [r7, #48]
+ 469 021a 1344     		add	r3, r3, r2
+ 470 021c 0522     		movs	r2, #5
+ 471 021e 3449     		ldr	r1, .L44+8
+ 472 0220 1846     		mov	r0, r3
+ 473 0222 FFF7FEFF 		bl	memcpy
+ 474 0226 FB69     		ldr	r3, [r7, #28]
+ 475 0228 0533     		adds	r3, r3, #5
+ 476 022a FB61     		str	r3, [r7, #28]
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_intToText(objectParamP->maxPeriod, buffer + head, bufferLen - head);
+ 477              		.loc 1 115 0 is_stmt 1 discriminator 2
+ 478 022c 3B68     		ldr	r3, [r7]
+ 479 022e 9B68     		ldr	r3, [r3, #8]
+ 480 0230 1846     		mov	r0, r3
+ 481 0232 4FF00001 		mov	r1, #0
+ 482 0236 FB69     		ldr	r3, [r7, #28]
+ 483 0238 3A6B     		ldr	r2, [r7, #48]
+ 484 023a D418     		adds	r4, r2, r3
+ 485 023c FB69     		ldr	r3, [r7, #28]
+ 486 023e BA6B     		ldr	r2, [r7, #56]
+ 487 0240 D31A     		subs	r3, r2, r3
+ 488 0242 2246     		mov	r2, r4
+ 489 0244 FFF7FEFF 		bl	utils_intToText
+ 490 0248 0346     		mov	r3, r0
+ 491 024a 7B61     		str	r3, [r7, #20]
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 492              		.loc 1 116 0 discriminator 2
+ 493 024c 7B69     		ldr	r3, [r7, #20]
+ 494 024e 002B     		cmp	r3, #0
+ 495 0250 02DC     		bgt	.L29
+ 496              		.loc 1 116 0 is_stmt 0 discriminator 1
+ 497 0252 4FF0FF33 		mov	r3, #-1
+ 498 0256 FCE0     		b	.L15
+ 499              	.L29:
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 500              		.loc 1 117 0 is_stmt 1
+ 501 0258 FA69     		ldr	r2, [r7, #28]
+ 502 025a 7B69     		ldr	r3, [r7, #20]
+ 503 025c 1344     		add	r3, r3, r2
+ 504 025e FB61     		str	r3, [r7, #28]
+ 505              	.L26:
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (paramP->toSet & LWM2M_ATTR_FLAG_GREATER_THAN)
+ 506              		.loc 1 120 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 12
+
+
+ 507 0260 BB69     		ldr	r3, [r7, #24]
+ 508 0262 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 509 0264 03F00403 		and	r3, r3, #4
+ 510 0268 002B     		cmp	r3, #0
+ 511 026a 49D0     		beq	.L30
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ATTR_SEPARATOR, LINK_ATTR_SEPARATOR_SIZE);
+ 512              		.loc 1 122 0
+ 513 026c FB69     		ldr	r3, [r7, #28]
+ 514 026e BA6B     		ldr	r2, [r7, #56]
+ 515 0270 9A42     		cmp	r2, r3
+ 516 0272 02D1     		bne	.L31
+ 517              		.loc 1 122 0 is_stmt 0 discriminator 1
+ 518 0274 4FF0FF33 		mov	r3, #-1
+ 519 0278 EBE0     		b	.L15
+ 520              	.L31:
+ 521              		.loc 1 122 0 discriminator 2
+ 522 027a FB69     		ldr	r3, [r7, #28]
+ 523 027c 3A6B     		ldr	r2, [r7, #48]
+ 524 027e 1344     		add	r3, r3, r2
+ 525 0280 0122     		movs	r2, #1
+ 526 0282 1949     		ldr	r1, .L44
+ 527 0284 1846     		mov	r0, r3
+ 528 0286 FFF7FEFF 		bl	memcpy
+ 529 028a FB69     		ldr	r3, [r7, #28]
+ 530 028c 0133     		adds	r3, r3, #1
+ 531 028e FB61     		str	r3, [r7, #28]
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, ATTR_GREATER_THAN_STR, ATTR_GREATER_THAN_LEN);
+ 532              		.loc 1 123 0 is_stmt 1 discriminator 2
+ 533 0290 FB69     		ldr	r3, [r7, #28]
+ 534 0292 BA6B     		ldr	r2, [r7, #56]
+ 535 0294 D31A     		subs	r3, r2, r3
+ 536 0296 022B     		cmp	r3, #2
+ 537 0298 02D8     		bhi	.L32
+ 538              		.loc 1 123 0 is_stmt 0 discriminator 1
+ 539 029a 4FF0FF33 		mov	r3, #-1
+ 540 029e D8E0     		b	.L15
+ 541              	.L32:
+ 542              		.loc 1 123 0 discriminator 2
+ 543 02a0 FB69     		ldr	r3, [r7, #28]
+ 544 02a2 3A6B     		ldr	r2, [r7, #48]
+ 545 02a4 1344     		add	r3, r3, r2
+ 546 02a6 0322     		movs	r2, #3
+ 547 02a8 1249     		ldr	r1, .L44+12
+ 548 02aa 1846     		mov	r0, r3
+ 549 02ac FFF7FEFF 		bl	memcpy
+ 550 02b0 FB69     		ldr	r3, [r7, #28]
+ 551 02b2 0333     		adds	r3, r3, #3
+ 552 02b4 FB61     		str	r3, [r7, #28]
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_floatToText(paramP->greaterThan, buffer + head, bufferLen - head);
+ 553              		.loc 1 125 0 is_stmt 1 discriminator 2
+ 554 02b6 BB69     		ldr	r3, [r7, #24]
+ 555 02b8 93ED047B 		vldr.64	d7, [r3, #16]
+ 556 02bc FB69     		ldr	r3, [r7, #28]
+ 557 02be 3A6B     		ldr	r2, [r7, #48]
+ 558 02c0 D018     		adds	r0, r2, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 13
+
+
+ 559 02c2 FB69     		ldr	r3, [r7, #28]
+ 560 02c4 BA6B     		ldr	r2, [r7, #56]
+ 561 02c6 D31A     		subs	r3, r2, r3
+ 562 02c8 1946     		mov	r1, r3
+ 563 02ca B0EE470A 		vmov.f32	s0, s14
+ 564 02ce F0EE670A 		vmov.f32	s1, s15
+ 565 02d2 FFF7FEFF 		bl	utils_floatToText
+ 566 02d6 0346     		mov	r3, r0
+ 567 02d8 7B61     		str	r3, [r7, #20]
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 568              		.loc 1 126 0 discriminator 2
+ 569 02da 7B69     		ldr	r3, [r7, #20]
+ 570 02dc 002B     		cmp	r3, #0
+ 571 02de 0BDC     		bgt	.L33
+ 572              		.loc 1 126 0 is_stmt 0 discriminator 1
+ 573 02e0 4FF0FF33 		mov	r3, #-1
+ 574 02e4 B5E0     		b	.L15
+ 575              	.L45:
+ 576 02e6 00BF     		.align	2
+ 577              	.L44:
+ 578 02e8 00000000 		.word	.LC0
+ 579 02ec 04000000 		.word	.LC1
+ 580 02f0 0C000000 		.word	.LC2
+ 581 02f4 14000000 		.word	.LC3
+ 582              	.L33:
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 583              		.loc 1 127 0 is_stmt 1
+ 584 02f8 FA69     		ldr	r2, [r7, #28]
+ 585 02fa 7B69     		ldr	r3, [r7, #20]
+ 586 02fc 1344     		add	r3, r3, r2
+ 587 02fe FB61     		str	r3, [r7, #28]
+ 588              	.L30:
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (paramP->toSet & LWM2M_ATTR_FLAG_LESS_THAN)
+ 589              		.loc 1 129 0
+ 590 0300 BB69     		ldr	r3, [r7, #24]
+ 591 0302 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 592 0304 03F00803 		and	r3, r3, #8
+ 593 0308 002B     		cmp	r3, #0
+ 594 030a 40D0     		beq	.L34
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ATTR_SEPARATOR, LINK_ATTR_SEPARATOR_SIZE);
+ 595              		.loc 1 131 0
+ 596 030c FB69     		ldr	r3, [r7, #28]
+ 597 030e BA6B     		ldr	r2, [r7, #56]
+ 598 0310 9A42     		cmp	r2, r3
+ 599 0312 02D1     		bne	.L35
+ 600              		.loc 1 131 0 is_stmt 0 discriminator 1
+ 601 0314 4FF0FF33 		mov	r3, #-1
+ 602 0318 9BE0     		b	.L15
+ 603              	.L35:
+ 604              		.loc 1 131 0 discriminator 2
+ 605 031a FB69     		ldr	r3, [r7, #28]
+ 606 031c 3A6B     		ldr	r2, [r7, #48]
+ 607 031e 1344     		add	r3, r3, r2
+ 608 0320 0122     		movs	r2, #1
+ 609 0322 4E49     		ldr	r1, .L46
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 14
+
+
+ 610 0324 1846     		mov	r0, r3
+ 611 0326 FFF7FEFF 		bl	memcpy
+ 612 032a FB69     		ldr	r3, [r7, #28]
+ 613 032c 0133     		adds	r3, r3, #1
+ 614 032e FB61     		str	r3, [r7, #28]
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, ATTR_LESS_THAN_STR, ATTR_LESS_THAN_LEN);
+ 615              		.loc 1 132 0 is_stmt 1 discriminator 2
+ 616 0330 FB69     		ldr	r3, [r7, #28]
+ 617 0332 BA6B     		ldr	r2, [r7, #56]
+ 618 0334 D31A     		subs	r3, r2, r3
+ 619 0336 022B     		cmp	r3, #2
+ 620 0338 02D8     		bhi	.L36
+ 621              		.loc 1 132 0 is_stmt 0 discriminator 1
+ 622 033a 4FF0FF33 		mov	r3, #-1
+ 623 033e 88E0     		b	.L15
+ 624              	.L36:
+ 625              		.loc 1 132 0 discriminator 2
+ 626 0340 FB69     		ldr	r3, [r7, #28]
+ 627 0342 3A6B     		ldr	r2, [r7, #48]
+ 628 0344 1344     		add	r3, r3, r2
+ 629 0346 0322     		movs	r2, #3
+ 630 0348 4549     		ldr	r1, .L46+4
+ 631 034a 1846     		mov	r0, r3
+ 632 034c FFF7FEFF 		bl	memcpy
+ 633 0350 FB69     		ldr	r3, [r7, #28]
+ 634 0352 0333     		adds	r3, r3, #3
+ 635 0354 FB61     		str	r3, [r7, #28]
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_floatToText(paramP->lessThan, buffer + head, bufferLen - head);
+ 636              		.loc 1 134 0 is_stmt 1 discriminator 2
+ 637 0356 BB69     		ldr	r3, [r7, #24]
+ 638 0358 93ED067B 		vldr.64	d7, [r3, #24]
+ 639 035c FB69     		ldr	r3, [r7, #28]
+ 640 035e 3A6B     		ldr	r2, [r7, #48]
+ 641 0360 D018     		adds	r0, r2, r3
+ 642 0362 FB69     		ldr	r3, [r7, #28]
+ 643 0364 BA6B     		ldr	r2, [r7, #56]
+ 644 0366 D31A     		subs	r3, r2, r3
+ 645 0368 1946     		mov	r1, r3
+ 646 036a B0EE470A 		vmov.f32	s0, s14
+ 647 036e F0EE670A 		vmov.f32	s1, s15
+ 648 0372 FFF7FEFF 		bl	utils_floatToText
+ 649 0376 0346     		mov	r3, r0
+ 650 0378 7B61     		str	r3, [r7, #20]
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 651              		.loc 1 135 0 discriminator 2
+ 652 037a 7B69     		ldr	r3, [r7, #20]
+ 653 037c 002B     		cmp	r3, #0
+ 654 037e 02DC     		bgt	.L37
+ 655              		.loc 1 135 0 is_stmt 0 discriminator 1
+ 656 0380 4FF0FF33 		mov	r3, #-1
+ 657 0384 65E0     		b	.L15
+ 658              	.L37:
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 659              		.loc 1 136 0 is_stmt 1
+ 660 0386 FA69     		ldr	r2, [r7, #28]
+ 661 0388 7B69     		ldr	r3, [r7, #20]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 15
+
+
+ 662 038a 1344     		add	r3, r3, r2
+ 663 038c FB61     		str	r3, [r7, #28]
+ 664              	.L34:
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (paramP->toSet & LWM2M_ATTR_FLAG_STEP)
+ 665              		.loc 1 138 0
+ 666 038e BB69     		ldr	r3, [r7, #24]
+ 667 0390 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 668 0392 03F01003 		and	r3, r3, #16
+ 669 0396 002B     		cmp	r3, #0
+ 670 0398 40D0     		beq	.L38
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ATTR_SEPARATOR, LINK_ATTR_SEPARATOR_SIZE);
+ 671              		.loc 1 140 0
+ 672 039a FB69     		ldr	r3, [r7, #28]
+ 673 039c BA6B     		ldr	r2, [r7, #56]
+ 674 039e 9A42     		cmp	r2, r3
+ 675 03a0 02D1     		bne	.L39
+ 676              		.loc 1 140 0 is_stmt 0 discriminator 1
+ 677 03a2 4FF0FF33 		mov	r3, #-1
+ 678 03a6 54E0     		b	.L15
+ 679              	.L39:
+ 680              		.loc 1 140 0 discriminator 2
+ 681 03a8 FB69     		ldr	r3, [r7, #28]
+ 682 03aa 3A6B     		ldr	r2, [r7, #48]
+ 683 03ac 1344     		add	r3, r3, r2
+ 684 03ae 0122     		movs	r2, #1
+ 685 03b0 2A49     		ldr	r1, .L46
+ 686 03b2 1846     		mov	r0, r3
+ 687 03b4 FFF7FEFF 		bl	memcpy
+ 688 03b8 FB69     		ldr	r3, [r7, #28]
+ 689 03ba 0133     		adds	r3, r3, #1
+ 690 03bc FB61     		str	r3, [r7, #28]
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(buffer, bufferLen, head, ATTR_STEP_STR, ATTR_STEP_LEN);
+ 691              		.loc 1 141 0 is_stmt 1 discriminator 2
+ 692 03be FB69     		ldr	r3, [r7, #28]
+ 693 03c0 BA6B     		ldr	r2, [r7, #56]
+ 694 03c2 D31A     		subs	r3, r2, r3
+ 695 03c4 022B     		cmp	r3, #2
+ 696 03c6 02D8     		bhi	.L40
+ 697              		.loc 1 141 0 is_stmt 0 discriminator 1
+ 698 03c8 4FF0FF33 		mov	r3, #-1
+ 699 03cc 41E0     		b	.L15
+ 700              	.L40:
+ 701              		.loc 1 141 0 discriminator 2
+ 702 03ce FB69     		ldr	r3, [r7, #28]
+ 703 03d0 3A6B     		ldr	r2, [r7, #48]
+ 704 03d2 1344     		add	r3, r3, r2
+ 705 03d4 0322     		movs	r2, #3
+ 706 03d6 2349     		ldr	r1, .L46+8
+ 707 03d8 1846     		mov	r0, r3
+ 708 03da FFF7FEFF 		bl	memcpy
+ 709 03de FB69     		ldr	r3, [r7, #28]
+ 710 03e0 0333     		adds	r3, r3, #3
+ 711 03e2 FB61     		str	r3, [r7, #28]
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_floatToText(paramP->step, buffer + head, bufferLen - head);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 16
+
+
+ 712              		.loc 1 143 0 is_stmt 1 discriminator 2
+ 713 03e4 BB69     		ldr	r3, [r7, #24]
+ 714 03e6 93ED087B 		vldr.64	d7, [r3, #32]
+ 715 03ea FB69     		ldr	r3, [r7, #28]
+ 716 03ec 3A6B     		ldr	r2, [r7, #48]
+ 717 03ee D018     		adds	r0, r2, r3
+ 718 03f0 FB69     		ldr	r3, [r7, #28]
+ 719 03f2 BA6B     		ldr	r2, [r7, #56]
+ 720 03f4 D31A     		subs	r3, r2, r3
+ 721 03f6 1946     		mov	r1, r3
+ 722 03f8 B0EE470A 		vmov.f32	s0, s14
+ 723 03fc F0EE670A 		vmov.f32	s1, s15
+ 724 0400 FFF7FEFF 		bl	utils_floatToText
+ 725 0404 0346     		mov	r3, r0
+ 726 0406 7B61     		str	r3, [r7, #20]
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 727              		.loc 1 144 0 discriminator 2
+ 728 0408 7B69     		ldr	r3, [r7, #20]
+ 729 040a 002B     		cmp	r3, #0
+ 730 040c 02DC     		bgt	.L41
+ 731              		.loc 1 144 0 is_stmt 0 discriminator 1
+ 732 040e 4FF0FF33 		mov	r3, #-1
+ 733 0412 1EE0     		b	.L15
+ 734              	.L41:
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 735              		.loc 1 145 0 is_stmt 1
+ 736 0414 FA69     		ldr	r2, [r7, #28]
+ 737 0416 7B69     		ldr	r3, [r7, #20]
+ 738 0418 1344     		add	r3, r3, r2
+ 739 041a FB61     		str	r3, [r7, #28]
+ 740              	.L38:
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ITEM_ATTR_END, LINK_ITEM_ATTR_END_SIZE);
+ 741              		.loc 1 147 0
+ 742 041c FB69     		ldr	r3, [r7, #28]
+ 743 041e BA6B     		ldr	r2, [r7, #56]
+ 744 0420 9A42     		cmp	r2, r3
+ 745 0422 02D1     		bne	.L42
+ 746              		.loc 1 147 0 is_stmt 0 discriminator 1
+ 747 0424 4FF0FF33 		mov	r3, #-1
+ 748 0428 13E0     		b	.L15
+ 749              	.L42:
+ 750              		.loc 1 147 0 discriminator 2
+ 751 042a FB69     		ldr	r3, [r7, #28]
+ 752 042c 3A6B     		ldr	r2, [r7, #48]
+ 753 042e 1344     		add	r3, r3, r2
+ 754 0430 0122     		movs	r2, #1
+ 755 0432 0D49     		ldr	r1, .L46+12
+ 756 0434 1846     		mov	r0, r3
+ 757 0436 FFF7FEFF 		bl	memcpy
+ 758 043a FB69     		ldr	r3, [r7, #28]
+ 759 043c 0133     		adds	r3, r3, #1
+ 760 043e FB61     		str	r3, [r7, #28]
+ 761              	.L12:
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     }
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     if (head > 0) head -= uriLen + 1;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 17
+
+
+ 762              		.loc 1 150 0 is_stmt 1
+ 763 0440 FB69     		ldr	r3, [r7, #28]
+ 764 0442 002B     		cmp	r3, #0
+ 765 0444 04DD     		ble	.L43
+ 766              		.loc 1 150 0 is_stmt 0 discriminator 1
+ 767 0446 FA69     		ldr	r2, [r7, #28]
+ 768 0448 7B6B     		ldr	r3, [r7, #52]
+ 769 044a D31A     		subs	r3, r2, r3
+ 770 044c 013B     		subs	r3, r3, #1
+ 771 044e FB61     		str	r3, [r7, #28]
+ 772              	.L43:
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     return head;
+ 773              		.loc 1 152 0 is_stmt 1
+ 774 0450 FB69     		ldr	r3, [r7, #28]
+ 775              	.L15:
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** }
+ 776              		.loc 1 153 0
+ 777 0452 1846     		mov	r0, r3
+ 778 0454 2437     		adds	r7, r7, #36
+ 779              	.LCFI8:
+ 780              		.cfi_def_cfa_offset 12
+ 781 0456 BD46     		mov	sp, r7
+ 782              	.LCFI9:
+ 783              		.cfi_def_cfa_register 13
+ 784              		@ sp needed
+ 785 0458 90BD     		pop	{r4, r7, pc}
+ 786              	.L47:
+ 787 045a 00BF     		.align	2
+ 788              	.L46:
+ 789 045c 00000000 		.word	.LC0
+ 790 0460 18000000 		.word	.LC4
+ 791 0464 1C000000 		.word	.LC5
+ 792 0468 20000000 		.word	.LC6
+ 793              		.cfi_endproc
+ 794              	.LFE5:
+ 796              		.section	.rodata
+ 797 0022 0000     		.align	2
+ 798              	.LC7:
+ 799 0024 3C00     		.ascii	"<\000"
+ 800 0026 0000     		.align	2
+ 801              	.LC8:
+ 802 0028 2F00     		.ascii	"/\000"
+ 803 002a 0000     		.align	2
+ 804              	.LC9:
+ 805 002c 3E3B6469 		.ascii	">;dim=\000"
+ 805      6D3D00
+ 806 0033 00       		.align	2
+ 807              	.LC10:
+ 808 0034 3E2C00   		.ascii	">,\000"
+ 809              		.section	.text.prv_serializeLinkData,"ax",%progbits
+ 810              		.align	1
+ 811              		.syntax unified
+ 812              		.thumb
+ 813              		.thumb_func
+ 814              		.fpu fpv4-sp-d16
+ 816              	prv_serializeLinkData:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 18
+
+
+ 817              	.LFB6:
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** static int prv_serializeLinkData(lwm2m_context_t *contextP,
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                  lwm2m_data_t *tlvP,
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                  lwm2m_server_t *serverP,
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                  lwm2m_attributes_t *objectParamP,
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                  lwm2m_uri_t *parentUriP,
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                  uint8_t *parentUriStr,
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                  size_t parentUriLen,
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                  uint8_t *buffer,
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                                  size_t bufferLen)
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** {
+ 818              		.loc 1 164 0
+ 819              		.cfi_startproc
+ 820              		@ args = 20, pretend = 0, frame = 64
+ 821              		@ frame_needed = 1, uses_anonymous_args = 0
+ 822 0000 90B5     		push	{r4, r7, lr}
+ 823              	.LCFI10:
+ 824              		.cfi_def_cfa_offset 12
+ 825              		.cfi_offset 4, -12
+ 826              		.cfi_offset 7, -8
+ 827              		.cfi_offset 14, -4
+ 828 0002 97B0     		sub	sp, sp, #92
+ 829              	.LCFI11:
+ 830              		.cfi_def_cfa_offset 104
+ 831 0004 06AF     		add	r7, sp, #24
+ 832              	.LCFI12:
+ 833              		.cfi_def_cfa 7, 80
+ 834 0006 F860     		str	r0, [r7, #12]
+ 835 0008 B960     		str	r1, [r7, #8]
+ 836 000a 7A60     		str	r2, [r7, #4]
+ 837 000c 3B60     		str	r3, [r7]
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     int head;
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     int res;
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     lwm2m_uri_t uri;
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     head = 0;
+ 838              		.loc 1 169 0
+ 839 000e 0023     		movs	r3, #0
+ 840 0010 FB63     		str	r3, [r7, #60]
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     switch (tlvP->type)
+ 841              		.loc 1 171 0
+ 842 0012 BB68     		ldr	r3, [r7, #8]
+ 843 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 844 0016 092B     		cmp	r3, #9
+ 845 0018 00F2E581 		bhi	.L49
+ 846 001c 01A2     		adr	r2, .L51
+ 847 001e 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 848 0022 00BF     		.p2align 2
+ 849              	.L51:
+ 850 0024 4D000000 		.word	.L50+1
+ 851 0028 E7030000 		.word	.L49+1
+ 852 002c 0B020000 		.word	.L52+1
+ 853 0030 4D000000 		.word	.L50+1
+ 854 0034 4D000000 		.word	.L50+1
+ 855 0038 4D000000 		.word	.L50+1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 19
+
+
+ 856 003c 4D000000 		.word	.L50+1
+ 857 0040 4D000000 		.word	.L50+1
+ 858 0044 4D000000 		.word	.L50+1
+ 859 0048 4D000000 		.word	.L50+1
+ 860              		.p2align 1
+ 861              	.L50:
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_UNDEFINED:
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_STRING:
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_OPAQUE:
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_INTEGER:
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_FLOAT:
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_BOOLEAN:
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_OBJECT_LINK:
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_MULTIPLE_RESOURCE:
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (bufferLen < LINK_ITEM_START_SIZE) return -1;
+ 862              		.loc 1 181 0
+ 863 004c 3B6E     		ldr	r3, [r7, #96]
+ 864 004e 002B     		cmp	r3, #0
+ 865 0050 02D1     		bne	.L53
+ 866              		.loc 1 181 0 is_stmt 0 discriminator 1
+ 867 0052 4FF0FF33 		mov	r3, #-1
+ 868 0056 CBE1     		b	.L83
+ 869              	.L53:
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         memcpy(buffer + head, LINK_ITEM_START, LINK_ITEM_START_SIZE);
+ 870              		.loc 1 182 0 is_stmt 1
+ 871 0058 FB6B     		ldr	r3, [r7, #60]
+ 872 005a FA6D     		ldr	r2, [r7, #92]
+ 873 005c 1344     		add	r3, r3, r2
+ 874 005e 0122     		movs	r2, #1
+ 875 0060 A149     		ldr	r1, .L85
+ 876 0062 1846     		mov	r0, r3
+ 877 0064 FFF7FEFF 		bl	memcpy
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         head = LINK_ITEM_START_SIZE;
+ 878              		.loc 1 183 0
+ 879 0068 0123     		movs	r3, #1
+ 880 006a FB63     		str	r3, [r7, #60]
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (parentUriLen > 0)
+ 881              		.loc 1 185 0
+ 882 006c BB6D     		ldr	r3, [r7, #88]
+ 883 006e 002B     		cmp	r3, #0
+ 884 0070 14D0     		beq	.L55
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (bufferLen - head < parentUriLen) return -1;
+ 885              		.loc 1 187 0
+ 886 0072 FB6B     		ldr	r3, [r7, #60]
+ 887 0074 3A6E     		ldr	r2, [r7, #96]
+ 888 0076 D31A     		subs	r3, r2, r3
+ 889 0078 BA6D     		ldr	r2, [r7, #88]
+ 890 007a 9A42     		cmp	r2, r3
+ 891 007c 02D9     		bls	.L56
+ 892              		.loc 1 187 0 is_stmt 0 discriminator 1
+ 893 007e 4FF0FF33 		mov	r3, #-1
+ 894 0082 B5E1     		b	.L83
+ 895              	.L56:
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             memcpy(buffer + head, parentUriStr, parentUriLen);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 20
+
+
+ 896              		.loc 1 188 0 is_stmt 1
+ 897 0084 FB6B     		ldr	r3, [r7, #60]
+ 898 0086 FA6D     		ldr	r2, [r7, #92]
+ 899 0088 1344     		add	r3, r3, r2
+ 900 008a BA6D     		ldr	r2, [r7, #88]
+ 901 008c 796D     		ldr	r1, [r7, #84]
+ 902 008e 1846     		mov	r0, r3
+ 903 0090 FFF7FEFF 		bl	memcpy
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += parentUriLen;
+ 904              		.loc 1 189 0
+ 905 0094 FA6B     		ldr	r2, [r7, #60]
+ 906 0096 BB6D     		ldr	r3, [r7, #88]
+ 907 0098 1344     		add	r3, r3, r2
+ 908 009a FB63     		str	r3, [r7, #60]
+ 909              	.L55:
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (bufferLen - head < LINK_URI_SEPARATOR_SIZE) return -1;
+ 910              		.loc 1 192 0
+ 911 009c FB6B     		ldr	r3, [r7, #60]
+ 912 009e 3A6E     		ldr	r2, [r7, #96]
+ 913 00a0 9A42     		cmp	r2, r3
+ 914 00a2 02D1     		bne	.L57
+ 915              		.loc 1 192 0 is_stmt 0 discriminator 1
+ 916 00a4 4FF0FF33 		mov	r3, #-1
+ 917 00a8 A2E1     		b	.L83
+ 918              	.L57:
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         memcpy(buffer + head, LINK_URI_SEPARATOR, LINK_URI_SEPARATOR_SIZE);
+ 919              		.loc 1 193 0 is_stmt 1
+ 920 00aa FB6B     		ldr	r3, [r7, #60]
+ 921 00ac FA6D     		ldr	r2, [r7, #92]
+ 922 00ae 1344     		add	r3, r3, r2
+ 923 00b0 0122     		movs	r2, #1
+ 924 00b2 8E49     		ldr	r1, .L85+4
+ 925 00b4 1846     		mov	r0, r3
+ 926 00b6 FFF7FEFF 		bl	memcpy
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         head += LINK_URI_SEPARATOR_SIZE;
+ 927              		.loc 1 194 0
+ 928 00ba FB6B     		ldr	r3, [r7, #60]
+ 929 00bc 0133     		adds	r3, r3, #1
+ 930 00be FB63     		str	r3, [r7, #60]
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         res = utils_intToText(tlvP->id, buffer + head, bufferLen - head);
+ 931              		.loc 1 196 0
+ 932 00c0 BB68     		ldr	r3, [r7, #8]
+ 933 00c2 5B88     		ldrh	r3, [r3, #2]
+ 934 00c4 98B2     		uxth	r0, r3
+ 935 00c6 4FF00001 		mov	r1, #0
+ 936 00ca FB6B     		ldr	r3, [r7, #60]
+ 937 00cc FA6D     		ldr	r2, [r7, #92]
+ 938 00ce D418     		adds	r4, r2, r3
+ 939 00d0 FB6B     		ldr	r3, [r7, #60]
+ 940 00d2 3A6E     		ldr	r2, [r7, #96]
+ 941 00d4 D31A     		subs	r3, r2, r3
+ 942 00d6 2246     		mov	r2, r4
+ 943 00d8 FFF7FEFF 		bl	utils_intToText
+ 944 00dc 0346     		mov	r3, r0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 21
+
+
+ 945 00de 3B63     		str	r3, [r7, #48]
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (res <= 0) return -1;
+ 946              		.loc 1 197 0
+ 947 00e0 3B6B     		ldr	r3, [r7, #48]
+ 948 00e2 002B     		cmp	r3, #0
+ 949 00e4 02DC     		bgt	.L58
+ 950              		.loc 1 197 0 is_stmt 0 discriminator 1
+ 951 00e6 4FF0FF33 		mov	r3, #-1
+ 952 00ea 81E1     		b	.L83
+ 953              	.L58:
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         head += res;
+ 954              		.loc 1 198 0 is_stmt 1
+ 955 00ec FA6B     		ldr	r2, [r7, #60]
+ 956 00ee 3B6B     		ldr	r3, [r7, #48]
+ 957 00f0 1344     		add	r3, r3, r2
+ 958 00f2 FB63     		str	r3, [r7, #60]
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (tlvP->type == LWM2M_TYPE_MULTIPLE_RESOURCE)
+ 959              		.loc 1 200 0
+ 960 00f4 BB68     		ldr	r3, [r7, #8]
+ 961 00f6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 962 00f8 032B     		cmp	r3, #3
+ 963 00fa 3FD1     		bne	.L59
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (bufferLen - head < LINK_ITEM_DIM_START_SIZE) return -1;
+ 964              		.loc 1 202 0
+ 965 00fc FB6B     		ldr	r3, [r7, #60]
+ 966 00fe 3A6E     		ldr	r2, [r7, #96]
+ 967 0100 D31A     		subs	r3, r2, r3
+ 968 0102 052B     		cmp	r3, #5
+ 969 0104 02D8     		bhi	.L60
+ 970              		.loc 1 202 0 is_stmt 0 discriminator 1
+ 971 0106 4FF0FF33 		mov	r3, #-1
+ 972 010a 71E1     		b	.L83
+ 973              	.L60:
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             memcpy(buffer + head, LINK_ITEM_DIM_START, LINK_ITEM_DIM_START_SIZE);
+ 974              		.loc 1 203 0 is_stmt 1
+ 975 010c FB6B     		ldr	r3, [r7, #60]
+ 976 010e FA6D     		ldr	r2, [r7, #92]
+ 977 0110 1344     		add	r3, r3, r2
+ 978 0112 0622     		movs	r2, #6
+ 979 0114 7649     		ldr	r1, .L85+8
+ 980 0116 1846     		mov	r0, r3
+ 981 0118 FFF7FEFF 		bl	memcpy
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += LINK_ITEM_DIM_START_SIZE;
+ 982              		.loc 1 204 0
+ 983 011c FB6B     		ldr	r3, [r7, #60]
+ 984 011e 0633     		adds	r3, r3, #6
+ 985 0120 FB63     		str	r3, [r7, #60]
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_intToText(tlvP->value.asChildren.count, buffer + head, bufferLen - head);
+ 986              		.loc 1 206 0
+ 987 0122 BB68     		ldr	r3, [r7, #8]
+ 988 0124 9B68     		ldr	r3, [r3, #8]
+ 989 0126 1846     		mov	r0, r3
+ 990 0128 4FF00001 		mov	r1, #0
+ 991 012c FB6B     		ldr	r3, [r7, #60]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 22
+
+
+ 992 012e FA6D     		ldr	r2, [r7, #92]
+ 993 0130 D418     		adds	r4, r2, r3
+ 994 0132 FB6B     		ldr	r3, [r7, #60]
+ 995 0134 3A6E     		ldr	r2, [r7, #96]
+ 996 0136 D31A     		subs	r3, r2, r3
+ 997 0138 2246     		mov	r2, r4
+ 998 013a FFF7FEFF 		bl	utils_intToText
+ 999 013e 0346     		mov	r3, r0
+ 1000 0140 3B63     		str	r3, [r7, #48]
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 1001              		.loc 1 207 0
+ 1002 0142 3B6B     		ldr	r3, [r7, #48]
+ 1003 0144 002B     		cmp	r3, #0
+ 1004 0146 02DC     		bgt	.L61
+ 1005              		.loc 1 207 0 is_stmt 0 discriminator 1
+ 1006 0148 4FF0FF33 		mov	r3, #-1
+ 1007 014c 50E1     		b	.L83
+ 1008              	.L61:
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 1009              		.loc 1 208 0 is_stmt 1
+ 1010 014e FA6B     		ldr	r2, [r7, #60]
+ 1011 0150 3B6B     		ldr	r3, [r7, #48]
+ 1012 0152 1344     		add	r3, r3, r2
+ 1013 0154 FB63     		str	r3, [r7, #60]
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (bufferLen - head < LINK_ITEM_ATTR_END_SIZE) return -1;
+ 1014              		.loc 1 210 0
+ 1015 0156 FB6B     		ldr	r3, [r7, #60]
+ 1016 0158 3A6E     		ldr	r2, [r7, #96]
+ 1017 015a 9A42     		cmp	r2, r3
+ 1018 015c 02D1     		bne	.L62
+ 1019              		.loc 1 210 0 is_stmt 0 discriminator 1
+ 1020 015e 4FF0FF33 		mov	r3, #-1
+ 1021 0162 45E1     		b	.L83
+ 1022              	.L62:
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             memcpy(buffer + head, LINK_ITEM_ATTR_END, LINK_ITEM_ATTR_END_SIZE);
+ 1023              		.loc 1 211 0 is_stmt 1
+ 1024 0164 FB6B     		ldr	r3, [r7, #60]
+ 1025 0166 FA6D     		ldr	r2, [r7, #92]
+ 1026 0168 1344     		add	r3, r3, r2
+ 1027 016a 0122     		movs	r2, #1
+ 1028 016c 6149     		ldr	r1, .L85+12
+ 1029 016e 1846     		mov	r0, r3
+ 1030 0170 FFF7FEFF 		bl	memcpy
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += LINK_ITEM_ATTR_END_SIZE;
+ 1031              		.loc 1 212 0
+ 1032 0174 FB6B     		ldr	r3, [r7, #60]
+ 1033 0176 0133     		adds	r3, r3, #1
+ 1034 0178 FB63     		str	r3, [r7, #60]
+ 1035 017a 12E0     		b	.L63
+ 1036              	.L59:
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         else
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (bufferLen - head < LINK_ITEM_END_SIZE) return -1;
+ 1037              		.loc 1 216 0
+ 1038 017c FB6B     		ldr	r3, [r7, #60]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 23
+
+
+ 1039 017e 3A6E     		ldr	r2, [r7, #96]
+ 1040 0180 D31A     		subs	r3, r2, r3
+ 1041 0182 012B     		cmp	r3, #1
+ 1042 0184 02D8     		bhi	.L64
+ 1043              		.loc 1 216 0 is_stmt 0 discriminator 1
+ 1044 0186 4FF0FF33 		mov	r3, #-1
+ 1045 018a 31E1     		b	.L83
+ 1046              	.L64:
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             memcpy(buffer + head, LINK_ITEM_END, LINK_ITEM_END_SIZE);
+ 1047              		.loc 1 217 0 is_stmt 1
+ 1048 018c FB6B     		ldr	r3, [r7, #60]
+ 1049 018e FA6D     		ldr	r2, [r7, #92]
+ 1050 0190 1344     		add	r3, r3, r2
+ 1051 0192 0222     		movs	r2, #2
+ 1052 0194 5849     		ldr	r1, .L85+16
+ 1053 0196 1846     		mov	r0, r3
+ 1054 0198 FFF7FEFF 		bl	memcpy
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += LINK_ITEM_END_SIZE;
+ 1055              		.loc 1 218 0
+ 1056 019c FB6B     		ldr	r3, [r7, #60]
+ 1057 019e 0233     		adds	r3, r3, #2
+ 1058 01a0 FB63     		str	r3, [r7, #60]
+ 1059              	.L63:
+ 219:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 220:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (serverP != NULL)
+ 1060              		.loc 1 221 0
+ 1061 01a2 7B68     		ldr	r3, [r7, #4]
+ 1062 01a4 002B     		cmp	r3, #0
+ 1063 01a6 00F02181 		beq	.L84
+ 222:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 223:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             memcpy(&uri, parentUriP, sizeof(lwm2m_uri_t));
+ 1064              		.loc 1 223 0
+ 1065 01aa 07F12803 		add	r3, r7, #40
+ 1066 01ae 0822     		movs	r2, #8
+ 1067 01b0 396D     		ldr	r1, [r7, #80]
+ 1068 01b2 1846     		mov	r0, r3
+ 1069 01b4 FFF7FEFF 		bl	memcpy
+ 224:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             uri.resourceId = tlvP->id;
+ 1070              		.loc 1 224 0
+ 1071 01b8 BB68     		ldr	r3, [r7, #8]
+ 1072 01ba 5B88     		ldrh	r3, [r3, #2]
+ 1073 01bc FB85     		strh	r3, [r7, #46]	@ movhi
+ 225:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             uri.flag |= LWM2M_URI_FLAG_RESOURCE_ID;
+ 1074              		.loc 1 225 0
+ 1075 01be 97F82830 		ldrb	r3, [r7, #40]	@ zero_extendqisi2
+ 1076 01c2 43F00103 		orr	r3, r3, #1
+ 1077 01c6 DBB2     		uxtb	r3, r3
+ 1078 01c8 87F82830 		strb	r3, [r7, #40]
+ 226:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = prv_serializeAttributes(contextP, &uri, serverP, objectParamP, buffer, head - 1, 
+ 1079              		.loc 1 226 0
+ 1080 01cc FB6B     		ldr	r3, [r7, #60]
+ 1081 01ce 013B     		subs	r3, r3, #1
+ 1082 01d0 1A46     		mov	r2, r3
+ 1083 01d2 07F12801 		add	r1, r7, #40
+ 1084 01d6 3B6E     		ldr	r3, [r7, #96]
+ 1085 01d8 0293     		str	r3, [sp, #8]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 24
+
+
+ 1086 01da 0192     		str	r2, [sp, #4]
+ 1087 01dc FB6D     		ldr	r3, [r7, #92]
+ 1088 01de 0093     		str	r3, [sp]
+ 1089 01e0 3B68     		ldr	r3, [r7]
+ 1090 01e2 7A68     		ldr	r2, [r7, #4]
+ 1091 01e4 F868     		ldr	r0, [r7, #12]
+ 1092 01e6 FFF7FEFF 		bl	prv_serializeAttributes
+ 1093 01ea 3863     		str	r0, [r7, #48]
+ 227:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res < 0) return -1;    // careful, 0 is valid
+ 1094              		.loc 1 227 0
+ 1095 01ec 3B6B     		ldr	r3, [r7, #48]
+ 1096 01ee 002B     		cmp	r3, #0
+ 1097 01f0 02DA     		bge	.L66
+ 1098              		.loc 1 227 0 is_stmt 0 discriminator 1
+ 1099 01f2 4FF0FF33 		mov	r3, #-1
+ 1100 01f6 FBE0     		b	.L83
+ 1101              	.L66:
+ 228:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res > 0) head += res;
+ 1102              		.loc 1 228 0 is_stmt 1
+ 1103 01f8 3B6B     		ldr	r3, [r7, #48]
+ 1104 01fa 002B     		cmp	r3, #0
+ 1105 01fc 40F3F680 		ble	.L84
+ 1106              		.loc 1 228 0 is_stmt 0 discriminator 1
+ 1107 0200 FA6B     		ldr	r2, [r7, #60]
+ 1108 0202 3B6B     		ldr	r3, [r7, #48]
+ 1109 0204 1344     		add	r3, r3, r2
+ 1110 0206 FB63     		str	r3, [r7, #60]
+ 229:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         break;
+ 1111              		.loc 1 230 0 is_stmt 1 discriminator 1
+ 1112 0208 F0E0     		b	.L84
+ 1113              	.L52:
+ 1114              	.LBB2:
+ 231:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 232:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_OBJECT_INSTANCE:
+ 233:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 234:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         uint8_t uriStr[URI_MAX_STRING_LEN];
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         size_t uriLen;
+ 236:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         size_t index;
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 238:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (parentUriLen > 0)
+ 1115              		.loc 1 238 0
+ 1116 020a BB6D     		ldr	r3, [r7, #88]
+ 1117 020c 002B     		cmp	r3, #0
+ 1118 020e 0FD0     		beq	.L68
+ 239:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 240:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (URI_MAX_STRING_LEN < parentUriLen) return -1;
+ 1119              		.loc 1 240 0
+ 1120 0210 BB6D     		ldr	r3, [r7, #88]
+ 1121 0212 122B     		cmp	r3, #18
+ 1122 0214 02D9     		bls	.L69
+ 1123              		.loc 1 240 0 is_stmt 0 discriminator 1
+ 1124 0216 4FF0FF33 		mov	r3, #-1
+ 1125 021a E9E0     		b	.L83
+ 1126              	.L69:
+ 241:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             memcpy(uriStr, parentUriStr, parentUriLen);
+ 1127              		.loc 1 241 0 is_stmt 1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 25
+
+
+ 1128 021c 07F11403 		add	r3, r7, #20
+ 1129 0220 BA6D     		ldr	r2, [r7, #88]
+ 1130 0222 796D     		ldr	r1, [r7, #84]
+ 1131 0224 1846     		mov	r0, r3
+ 1132 0226 FFF7FEFF 		bl	memcpy
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             uriLen = parentUriLen;
+ 1133              		.loc 1 242 0
+ 1134 022a BB6D     		ldr	r3, [r7, #88]
+ 1135 022c BB63     		str	r3, [r7, #56]
+ 1136 022e 01E0     		b	.L71
+ 1137              	.L68:
+ 243:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 244:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         else
+ 245:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 246:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             uriLen = 0;
+ 1138              		.loc 1 246 0
+ 1139 0230 0023     		movs	r3, #0
+ 1140 0232 BB63     		str	r3, [r7, #56]
+ 1141              	.L71:
+ 247:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 249:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (URI_MAX_STRING_LEN - uriLen < LINK_URI_SEPARATOR_SIZE) return -1;
+ 1142              		.loc 1 249 0
+ 1143 0234 BB6B     		ldr	r3, [r7, #56]
+ 1144 0236 122B     		cmp	r3, #18
+ 1145 0238 02D1     		bne	.L72
+ 1146              		.loc 1 249 0 is_stmt 0 discriminator 1
+ 1147 023a 4FF0FF33 		mov	r3, #-1
+ 1148 023e D7E0     		b	.L83
+ 1149              	.L72:
+ 250:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         memcpy(uriStr + uriLen, LINK_URI_SEPARATOR, LINK_URI_SEPARATOR_SIZE);
+ 1150              		.loc 1 250 0 is_stmt 1
+ 1151 0240 07F11402 		add	r2, r7, #20
+ 1152 0244 BB6B     		ldr	r3, [r7, #56]
+ 1153 0246 1344     		add	r3, r3, r2
+ 1154 0248 0122     		movs	r2, #1
+ 1155 024a 2849     		ldr	r1, .L85+4
+ 1156 024c 1846     		mov	r0, r3
+ 1157 024e FFF7FEFF 		bl	memcpy
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         uriLen += LINK_URI_SEPARATOR_SIZE;
+ 1158              		.loc 1 251 0
+ 1159 0252 BB6B     		ldr	r3, [r7, #56]
+ 1160 0254 0133     		adds	r3, r3, #1
+ 1161 0256 BB63     		str	r3, [r7, #56]
+ 252:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         res = utils_intToText(tlvP->id, uriStr + uriLen, URI_MAX_STRING_LEN - uriLen);
+ 1162              		.loc 1 253 0
+ 1163 0258 BB68     		ldr	r3, [r7, #8]
+ 1164 025a 5B88     		ldrh	r3, [r3, #2]
+ 1165 025c 98B2     		uxth	r0, r3
+ 1166 025e 4FF00001 		mov	r1, #0
+ 1167 0262 07F11402 		add	r2, r7, #20
+ 1168 0266 BB6B     		ldr	r3, [r7, #56]
+ 1169 0268 1A44     		add	r2, r2, r3
+ 1170 026a BB6B     		ldr	r3, [r7, #56]
+ 1171 026c C3F11203 		rsb	r3, r3, #18
+ 1172 0270 FFF7FEFF 		bl	utils_intToText
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 26
+
+
+ 1173 0274 0346     		mov	r3, r0
+ 1174 0276 3B63     		str	r3, [r7, #48]
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (res <= 0) return -1;
+ 1175              		.loc 1 254 0
+ 1176 0278 3B6B     		ldr	r3, [r7, #48]
+ 1177 027a 002B     		cmp	r3, #0
+ 1178 027c 02DC     		bgt	.L73
+ 1179              		.loc 1 254 0 is_stmt 0 discriminator 1
+ 1180 027e 4FF0FF33 		mov	r3, #-1
+ 1181 0282 B5E0     		b	.L83
+ 1182              	.L73:
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         uriLen += res;
+ 1183              		.loc 1 255 0 is_stmt 1
+ 1184 0284 3B6B     		ldr	r3, [r7, #48]
+ 1185 0286 BA6B     		ldr	r2, [r7, #56]
+ 1186 0288 1344     		add	r3, r3, r2
+ 1187 028a BB63     		str	r3, [r7, #56]
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         memcpy(&uri, parentUriP, sizeof(lwm2m_uri_t));
+ 1188              		.loc 1 257 0
+ 1189 028c 07F12803 		add	r3, r7, #40
+ 1190 0290 0822     		movs	r2, #8
+ 1191 0292 396D     		ldr	r1, [r7, #80]
+ 1192 0294 1846     		mov	r0, r3
+ 1193 0296 FFF7FEFF 		bl	memcpy
+ 258:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         uri.instanceId = tlvP->id;
+ 1194              		.loc 1 258 0
+ 1195 029a BB68     		ldr	r3, [r7, #8]
+ 1196 029c 5B88     		ldrh	r3, [r3, #2]
+ 1197 029e BB85     		strh	r3, [r7, #44]	@ movhi
+ 259:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         uri.flag |= LWM2M_URI_FLAG_INSTANCE_ID;
+ 1198              		.loc 1 259 0
+ 1199 02a0 97F82830 		ldrb	r3, [r7, #40]	@ zero_extendqisi2
+ 1200 02a4 43F00203 		orr	r3, r3, #2
+ 1201 02a8 DBB2     		uxtb	r3, r3
+ 1202 02aa 87F82830 		strb	r3, [r7, #40]
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 261:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         head = 0;
+ 1203              		.loc 1 261 0
+ 1204 02ae 0023     		movs	r3, #0
+ 1205 02b0 FB63     		str	r3, [r7, #60]
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ITEM_START, LINK_ITEM_START_SIZE);
+ 1206              		.loc 1 262 0
+ 1207 02b2 FB6B     		ldr	r3, [r7, #60]
+ 1208 02b4 3A6E     		ldr	r2, [r7, #96]
+ 1209 02b6 9A42     		cmp	r2, r3
+ 1210 02b8 02D1     		bne	.L74
+ 1211              		.loc 1 262 0 is_stmt 0 discriminator 1
+ 1212 02ba 4FF0FF33 		mov	r3, #-1
+ 1213 02be 97E0     		b	.L83
+ 1214              	.L74:
+ 1215              		.loc 1 262 0 discriminator 2
+ 1216 02c0 FB6B     		ldr	r3, [r7, #60]
+ 1217 02c2 FA6D     		ldr	r2, [r7, #92]
+ 1218 02c4 1344     		add	r3, r3, r2
+ 1219 02c6 0122     		movs	r2, #1
+ 1220 02c8 0749     		ldr	r1, .L85
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 27
+
+
+ 1221 02ca 1846     		mov	r0, r3
+ 1222 02cc FFF7FEFF 		bl	memcpy
+ 1223 02d0 FB6B     		ldr	r3, [r7, #60]
+ 1224 02d2 0133     		adds	r3, r3, #1
+ 1225 02d4 FB63     		str	r3, [r7, #60]
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         PRV_CONCAT_STR(buffer, bufferLen, head, uriStr, uriLen);
+ 1226              		.loc 1 263 0 is_stmt 1 discriminator 2
+ 1227 02d6 FB6B     		ldr	r3, [r7, #60]
+ 1228 02d8 3A6E     		ldr	r2, [r7, #96]
+ 1229 02da D31A     		subs	r3, r2, r3
+ 1230 02dc BA6B     		ldr	r2, [r7, #56]
+ 1231 02de 9A42     		cmp	r2, r3
+ 1232 02e0 0CD9     		bls	.L75
+ 1233              		.loc 1 263 0 is_stmt 0 discriminator 1
+ 1234 02e2 4FF0FF33 		mov	r3, #-1
+ 1235 02e6 83E0     		b	.L83
+ 1236              	.L86:
+ 1237              		.align	2
+ 1238              	.L85:
+ 1239 02e8 24000000 		.word	.LC7
+ 1240 02ec 28000000 		.word	.LC8
+ 1241 02f0 2C000000 		.word	.LC9
+ 1242 02f4 20000000 		.word	.LC6
+ 1243 02f8 34000000 		.word	.LC10
+ 1244              	.L75:
+ 1245              		.loc 1 263 0 discriminator 2
+ 1246 02fc FB6B     		ldr	r3, [r7, #60]
+ 1247 02fe FA6D     		ldr	r2, [r7, #92]
+ 1248 0300 1344     		add	r3, r3, r2
+ 1249 0302 07F11401 		add	r1, r7, #20
+ 1250 0306 BA6B     		ldr	r2, [r7, #56]
+ 1251 0308 1846     		mov	r0, r3
+ 1252 030a FFF7FEFF 		bl	memcpy
+ 1253 030e FA6B     		ldr	r2, [r7, #60]
+ 1254 0310 BB6B     		ldr	r3, [r7, #56]
+ 1255 0312 1344     		add	r3, r3, r2
+ 1256 0314 FB63     		str	r3, [r7, #60]
+ 264:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         PRV_CONCAT_STR(buffer, bufferLen, head, LINK_ITEM_END, LINK_ITEM_END_SIZE);
+ 1257              		.loc 1 264 0 is_stmt 1 discriminator 2
+ 1258 0316 FB6B     		ldr	r3, [r7, #60]
+ 1259 0318 3A6E     		ldr	r2, [r7, #96]
+ 1260 031a D31A     		subs	r3, r2, r3
+ 1261 031c 012B     		cmp	r3, #1
+ 1262 031e 02D8     		bhi	.L76
+ 1263              		.loc 1 264 0 is_stmt 0 discriminator 1
+ 1264 0320 4FF0FF33 		mov	r3, #-1
+ 1265 0324 64E0     		b	.L83
+ 1266              	.L76:
+ 1267              		.loc 1 264 0 discriminator 2
+ 1268 0326 FB6B     		ldr	r3, [r7, #60]
+ 1269 0328 FA6D     		ldr	r2, [r7, #92]
+ 1270 032a 1344     		add	r3, r3, r2
+ 1271 032c 0222     		movs	r2, #2
+ 1272 032e 3249     		ldr	r1, .L87
+ 1273 0330 1846     		mov	r0, r3
+ 1274 0332 FFF7FEFF 		bl	memcpy
+ 1275 0336 FB6B     		ldr	r3, [r7, #60]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 28
+
+
+ 1276 0338 0233     		adds	r3, r3, #2
+ 1277 033a FB63     		str	r3, [r7, #60]
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (serverP != NULL)
+ 1278              		.loc 1 265 0 is_stmt 1 discriminator 2
+ 1279 033c 7B68     		ldr	r3, [r7, #4]
+ 1280 033e 002B     		cmp	r3, #0
+ 1281 0340 1FD0     		beq	.L77
+ 266:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = prv_serializeAttributes(contextP, &uri, serverP, NULL, buffer, head - 1, bufferLe
+ 1282              		.loc 1 267 0
+ 1283 0342 FB6B     		ldr	r3, [r7, #60]
+ 1284 0344 013B     		subs	r3, r3, #1
+ 1285 0346 1A46     		mov	r2, r3
+ 1286 0348 07F12801 		add	r1, r7, #40
+ 1287 034c 3B6E     		ldr	r3, [r7, #96]
+ 1288 034e 0293     		str	r3, [sp, #8]
+ 1289 0350 0192     		str	r2, [sp, #4]
+ 1290 0352 FB6D     		ldr	r3, [r7, #92]
+ 1291 0354 0093     		str	r3, [sp]
+ 1292 0356 0023     		movs	r3, #0
+ 1293 0358 7A68     		ldr	r2, [r7, #4]
+ 1294 035a F868     		ldr	r0, [r7, #12]
+ 1295 035c FFF7FEFF 		bl	prv_serializeAttributes
+ 1296 0360 3863     		str	r0, [r7, #48]
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res < 0) return -1;    // careful, 0 is valid
+ 1297              		.loc 1 268 0
+ 1298 0362 3B6B     		ldr	r3, [r7, #48]
+ 1299 0364 002B     		cmp	r3, #0
+ 1300 0366 02DA     		bge	.L78
+ 1301              		.loc 1 268 0 is_stmt 0 discriminator 1
+ 1302 0368 4FF0FF33 		mov	r3, #-1
+ 1303 036c 40E0     		b	.L83
+ 1304              	.L78:
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res == 0) head = 0;    // rewind
+ 1305              		.loc 1 269 0 is_stmt 1
+ 1306 036e 3B6B     		ldr	r3, [r7, #48]
+ 1307 0370 002B     		cmp	r3, #0
+ 1308 0372 02D1     		bne	.L79
+ 1309              		.loc 1 269 0 is_stmt 0 discriminator 1
+ 1310 0374 0023     		movs	r3, #0
+ 1311 0376 FB63     		str	r3, [r7, #60]
+ 1312 0378 03E0     		b	.L77
+ 1313              	.L79:
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             else head += res;
+ 1314              		.loc 1 270 0 is_stmt 1
+ 1315 037a FA6B     		ldr	r2, [r7, #60]
+ 1316 037c 3B6B     		ldr	r3, [r7, #48]
+ 1317 037e 1344     		add	r3, r3, r2
+ 1318 0380 FB63     		str	r3, [r7, #60]
+ 1319              	.L77:
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         for (index = 0; index < tlvP->value.asChildren.count; index++)
+ 1320              		.loc 1 272 0
+ 1321 0382 0023     		movs	r3, #0
+ 1322 0384 7B63     		str	r3, [r7, #52]
+ 1323 0386 28E0     		b	.L80
+ 1324              	.L82:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 29
+
+
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = prv_serializeLinkData(contextP, tlvP->value.asChildren.array + index, serverP, ob
+ 1325              		.loc 1 274 0
+ 1326 0388 BB68     		ldr	r3, [r7, #8]
+ 1327 038a DA68     		ldr	r2, [r3, #12]
+ 1328 038c 7B6B     		ldr	r3, [r7, #52]
+ 1329 038e 1B01     		lsls	r3, r3, #4
+ 1330 0390 D018     		adds	r0, r2, r3
+ 1331 0392 FB6B     		ldr	r3, [r7, #60]
+ 1332 0394 FA6D     		ldr	r2, [r7, #92]
+ 1333 0396 1344     		add	r3, r3, r2
+ 1334 0398 FA6B     		ldr	r2, [r7, #60]
+ 1335 039a 396E     		ldr	r1, [r7, #96]
+ 1336 039c 8A1A     		subs	r2, r1, r2
+ 1337 039e 0492     		str	r2, [sp, #16]
+ 1338 03a0 0393     		str	r3, [sp, #12]
+ 1339 03a2 BB6B     		ldr	r3, [r7, #56]
+ 1340 03a4 0293     		str	r3, [sp, #8]
+ 1341 03a6 07F11403 		add	r3, r7, #20
+ 1342 03aa 0193     		str	r3, [sp, #4]
+ 1343 03ac 07F12803 		add	r3, r7, #40
+ 1344 03b0 0093     		str	r3, [sp]
+ 1345 03b2 3B68     		ldr	r3, [r7]
+ 1346 03b4 7A68     		ldr	r2, [r7, #4]
+ 1347 03b6 0146     		mov	r1, r0
+ 1348 03b8 F868     		ldr	r0, [r7, #12]
+ 1349 03ba FFF721FE 		bl	prv_serializeLinkData
+ 1350 03be 3863     		str	r0, [r7, #48]
+ 275:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res < 0) return -1;
+ 1351              		.loc 1 275 0
+ 1352 03c0 3B6B     		ldr	r3, [r7, #48]
+ 1353 03c2 002B     		cmp	r3, #0
+ 1354 03c4 02DA     		bge	.L81
+ 1355              		.loc 1 275 0 is_stmt 0 discriminator 1
+ 1356 03c6 4FF0FF33 		mov	r3, #-1
+ 1357 03ca 11E0     		b	.L83
+ 1358              	.L81:
+ 276:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 1359              		.loc 1 276 0 is_stmt 1 discriminator 2
+ 1360 03cc FA6B     		ldr	r2, [r7, #60]
+ 1361 03ce 3B6B     		ldr	r3, [r7, #48]
+ 1362 03d0 1344     		add	r3, r3, r2
+ 1363 03d2 FB63     		str	r3, [r7, #60]
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 1364              		.loc 1 272 0 discriminator 2
+ 1365 03d4 7B6B     		ldr	r3, [r7, #52]
+ 1366 03d6 0133     		adds	r3, r3, #1
+ 1367 03d8 7B63     		str	r3, [r7, #52]
+ 1368              	.L80:
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 1369              		.loc 1 272 0 is_stmt 0 discriminator 1
+ 1370 03da BB68     		ldr	r3, [r7, #8]
+ 1371 03dc 9B68     		ldr	r3, [r3, #8]
+ 1372 03de 7A6B     		ldr	r2, [r7, #52]
+ 1373 03e0 9A42     		cmp	r2, r3
+ 1374 03e2 D1D3     		bcc	.L82
+ 1375              	.LBE2:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 30
+
+
+ 277:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     }
+ 279:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     break;
+ 1376              		.loc 1 279 0 is_stmt 1
+ 1377 03e4 03E0     		b	.L67
+ 1378              	.L49:
+ 280:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 281:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     case LWM2M_TYPE_OBJECT:
+ 282:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     default:
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         return -1;
+ 1379              		.loc 1 283 0
+ 1380 03e6 4FF0FF33 		mov	r3, #-1
+ 1381 03ea 01E0     		b	.L83
+ 1382              	.L84:
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 1383              		.loc 1 230 0
+ 1384 03ec 00BF     		nop
+ 1385              	.L67:
+ 284:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     }
+ 285:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 286:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     return head;
+ 1386              		.loc 1 286 0
+ 1387 03ee FB6B     		ldr	r3, [r7, #60]
+ 1388              	.L83:
+ 287:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** }
+ 1389              		.loc 1 287 0 discriminator 2
+ 1390 03f0 1846     		mov	r0, r3
+ 1391 03f2 4437     		adds	r7, r7, #68
+ 1392              	.LCFI13:
+ 1393              		.cfi_def_cfa_offset 12
+ 1394 03f4 BD46     		mov	sp, r7
+ 1395              	.LCFI14:
+ 1396              		.cfi_def_cfa_register 13
+ 1397              		@ sp needed
+ 1398 03f6 90BD     		pop	{r4, r7, pc}
+ 1399              	.L88:
+ 1400              		.align	2
+ 1401              	.L87:
+ 1402 03f8 34000000 		.word	.LC10
+ 1403              		.cfi_endproc
+ 1404              	.LFE6:
+ 1406              		.section	.rodata
+ 1407 0037 00       		.align	2
+ 1408              	.LC11:
+ 1409 0038 5B25645D 		.ascii	"[%d][%s:%d] size: %d\015\012\000"
+ 1409      5B25733A 
+ 1409      25645D20 
+ 1409      73697A65 
+ 1409      3A202564 
+ 1410 004f 00       		.align	2
+ 1411              	.LC12:
+ 1412 0050 5B25733A 		.ascii	"[%s:%d] NULL\015\012\000"
+ 1412      25645D20 
+ 1412      4E554C4C 
+ 1412      0D0A00
+ 1413 005f 00       		.align	2
+ 1414              	.LC13:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 31
+
+
+ 1415 0060 5B25733A 		.ascii	"[%s:%d] /%d\000"
+ 1415      25645D20 
+ 1415      2F256400 
+ 1416              		.align	2
+ 1417              	.LC14:
+ 1418 006c 2F256400 		.ascii	"/%d\000"
+ 1419              		.align	2
+ 1420              	.LC15:
+ 1421 0070 0D0A00   		.ascii	"\015\012\000"
+ 1422              		.section	.text.discover_serialize,"ax",%progbits
+ 1423              		.align	1
+ 1424              		.global	discover_serialize
+ 1425              		.syntax unified
+ 1426              		.thumb
+ 1427              		.thumb_func
+ 1428              		.fpu fpv4-sp-d16
+ 1430              	discover_serialize:
+ 1431              	.LFB7:
+ 288:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 289:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** int discover_serialize(lwm2m_context_t *contextP,
+ 290:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                        lwm2m_uri_t *uriP,
+ 291:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                        lwm2m_server_t *serverP,
+ 292:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                        int size,
+ 293:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                        lwm2m_data_t *dataP,
+ 294:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                        uint8_t **bufferP)
+ 295:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** {
+ 1432              		.loc 1 295 0
+ 1433              		.cfi_startproc
+ 1434              		@ args = 8, pretend = 0, frame = 1144
+ 1435              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1436 0000 B0B5     		push	{r4, r5, r7, lr}
+ 1437              	.LCFI15:
+ 1438              		.cfi_def_cfa_offset 16
+ 1439              		.cfi_offset 4, -16
+ 1440              		.cfi_offset 5, -12
+ 1441              		.cfi_offset 7, -8
+ 1442              		.cfi_offset 14, -4
+ 1443 0002 ADF5926D 		sub	sp, sp, #1168
+ 1444              	.LCFI16:
+ 1445              		.cfi_def_cfa_offset 1184
+ 1446 0006 06AF     		add	r7, sp, #24
+ 1447              	.LCFI17:
+ 1448              		.cfi_def_cfa 7, 1160
+ 1449 0008 07F10C04 		add	r4, r7, #12
+ 1450 000c 2060     		str	r0, [r4]
+ 1451 000e 07F10800 		add	r0, r7, #8
+ 1452 0012 0160     		str	r1, [r0]
+ 1453 0014 391D     		adds	r1, r7, #4
+ 1454 0016 0A60     		str	r2, [r1]
+ 1455 0018 3A46     		mov	r2, r7
+ 1456 001a 1360     		str	r3, [r2]
+ 296:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     uint8_t bufferLink[PRV_LINK_BUFFER_SIZE];
+ 297:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     uint8_t baseUriStr[URI_MAX_STRING_LEN];
+ 298:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     int baseUriLen;
+ 299:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     int index;
+ 300:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     size_t head;
+ 301:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     int res;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 32
+
+
+ 302:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     lwm2m_uri_t parentUri;
+ 303:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     lwm2m_attributes_t *paramP;
+ 304:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     lwm2m_attributes_t mergedParam;
+ 305:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 306:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     LOG_ARG("size: %d", size);
+ 1457              		.loc 1 306 0
+ 1458 001c FFF7FEFF 		bl	lwm2m_gettime
+ 1459 0020 0346     		mov	r3, r0
+ 1460 0022 0C46     		mov	r4, r1
+ 1461 0024 1946     		mov	r1, r3
+ 1462 0026 3B46     		mov	r3, r7
+ 1463 0028 1B68     		ldr	r3, [r3]
+ 1464 002a 0093     		str	r3, [sp]
+ 1465 002c 4FF49973 		mov	r3, #306
+ 1466 0030 CB4A     		ldr	r2, .L127
+ 1467 0032 CC48     		ldr	r0, .L127+4
+ 1468 0034 FFF7FEFF 		bl	atiny_printf
+ 307:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     LOG_URI(uriP);
+ 1469              		.loc 1 307 0
+ 1470 0038 07F10803 		add	r3, r7, #8
+ 1471 003c 1B68     		ldr	r3, [r3]
+ 1472 003e 002B     		cmp	r3, #0
+ 1473 0040 06D1     		bne	.L90
+ 1474              		.loc 1 307 0 is_stmt 0 discriminator 1
+ 1475 0042 40F23312 		movw	r2, #307
+ 1476 0046 C649     		ldr	r1, .L127
+ 1477 0048 C748     		ldr	r0, .L127+8
+ 1478 004a FFF7FEFF 		bl	atiny_printf
+ 1479 004e 2CE0     		b	.L91
+ 1480              	.L90:
+ 1481              		.loc 1 307 0 discriminator 2
+ 1482 0050 07F10803 		add	r3, r7, #8
+ 1483 0054 1B68     		ldr	r3, [r3]
+ 1484 0056 5B88     		ldrh	r3, [r3, #2]
+ 1485 0058 40F23312 		movw	r2, #307
+ 1486 005c C049     		ldr	r1, .L127
+ 1487 005e C348     		ldr	r0, .L127+12
+ 1488 0060 FFF7FEFF 		bl	atiny_printf
+ 1489 0064 07F10803 		add	r3, r7, #8
+ 1490 0068 1B68     		ldr	r3, [r3]
+ 1491 006a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1492 006c 03F00203 		and	r3, r3, #2
+ 1493 0070 002B     		cmp	r3, #0
+ 1494 0072 07D0     		beq	.L92
+ 1495              		.loc 1 307 0 discriminator 3
+ 1496 0074 07F10803 		add	r3, r7, #8
+ 1497 0078 1B68     		ldr	r3, [r3]
+ 1498 007a 9B88     		ldrh	r3, [r3, #4]
+ 1499 007c 1946     		mov	r1, r3
+ 1500 007e BC48     		ldr	r0, .L127+16
+ 1501 0080 FFF7FEFF 		bl	atiny_printf
+ 1502              	.L92:
+ 1503              		.loc 1 307 0 discriminator 5
+ 1504 0084 07F10803 		add	r3, r7, #8
+ 1505 0088 1B68     		ldr	r3, [r3]
+ 1506 008a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1507 008c 03F00103 		and	r3, r3, #1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 33
+
+
+ 1508 0090 002B     		cmp	r3, #0
+ 1509 0092 07D0     		beq	.L93
+ 1510              		.loc 1 307 0 discriminator 6
+ 1511 0094 07F10803 		add	r3, r7, #8
+ 1512 0098 1B68     		ldr	r3, [r3]
+ 1513 009a DB88     		ldrh	r3, [r3, #6]
+ 1514 009c 1946     		mov	r1, r3
+ 1515 009e B448     		ldr	r0, .L127+16
+ 1516 00a0 FFF7FEFF 		bl	atiny_printf
+ 1517              	.L93:
+ 1518              		.loc 1 307 0 discriminator 8
+ 1519 00a4 B348     		ldr	r0, .L127+20
+ 1520 00a6 FFF7FEFF 		bl	atiny_printf
+ 1521              	.L91:
+ 308:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 309:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     head = 0;
+ 1522              		.loc 1 309 0 is_stmt 1
+ 1523 00aa 0023     		movs	r3, #0
+ 1524 00ac C7F87034 		str	r3, [r7, #1136]
+ 310:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     memset(&parentUri, 0, sizeof(lwm2m_uri_t));
+ 1525              		.loc 1 310 0
+ 1526 00b0 07F14003 		add	r3, r7, #64
+ 1527 00b4 0822     		movs	r2, #8
+ 1528 00b6 0021     		movs	r1, #0
+ 1529 00b8 1846     		mov	r0, r3
+ 1530 00ba FFF7FEFF 		bl	memset
+ 311:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     parentUri.objectId = uriP->objectId;
+ 1531              		.loc 1 311 0
+ 1532 00be 07F10803 		add	r3, r7, #8
+ 1533 00c2 1B68     		ldr	r3, [r3]
+ 1534 00c4 5A88     		ldrh	r2, [r3, #2]
+ 1535 00c6 07F14003 		add	r3, r7, #64
+ 1536 00ca 5A80     		strh	r2, [r3, #2]	@ movhi
+ 312:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     parentUri.flag = LWM2M_URI_FLAG_OBJECT_ID;
+ 1537              		.loc 1 312 0
+ 1538 00cc 07F14003 		add	r3, r7, #64
+ 1539 00d0 0422     		movs	r2, #4
+ 1540 00d2 1A70     		strb	r2, [r3]
+ 313:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 314:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     if (LWM2M_URI_IS_SET_RESOURCE(uriP))
+ 1541              		.loc 1 314 0
+ 1542 00d4 07F10803 		add	r3, r7, #8
+ 1543 00d8 1B68     		ldr	r3, [r3]
+ 1544 00da 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1545 00dc 03F00103 		and	r3, r3, #1
+ 1546 00e0 002B     		cmp	r3, #0
+ 1547 00e2 00F09D80 		beq	.L94
+ 1548              	.LBB3:
+ 315:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 316:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         lwm2m_uri_t tempUri;
+ 317:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         lwm2m_attributes_t *objParamP;
+ 318:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         lwm2m_attributes_t *instParamP;
+ 319:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 320:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         memset(&parentUri, 0, sizeof(lwm2m_uri_t));
+ 1549              		.loc 1 320 0
+ 1550 00e6 07F14003 		add	r3, r7, #64
+ 1551 00ea 0822     		movs	r2, #8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 34
+
+
+ 1552 00ec 0021     		movs	r1, #0
+ 1553 00ee 1846     		mov	r0, r3
+ 1554 00f0 FFF7FEFF 		bl	memset
+ 321:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         tempUri.objectId = uriP->objectId;
+ 1555              		.loc 1 321 0
+ 1556 00f4 07F10803 		add	r3, r7, #8
+ 1557 00f8 1B68     		ldr	r3, [r3]
+ 1558 00fa 5A88     		ldrh	r2, [r3, #2]
+ 1559 00fc 07F11003 		add	r3, r7, #16
+ 1560 0100 5A80     		strh	r2, [r3, #2]	@ movhi
+ 322:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         tempUri.flag = LWM2M_URI_FLAG_OBJECT_ID;
+ 1561              		.loc 1 322 0
+ 1562 0102 07F11003 		add	r3, r7, #16
+ 1563 0106 0422     		movs	r2, #4
+ 1564 0108 1A70     		strb	r2, [r3]
+ 323:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 324:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         // get object level attributes
+ 325:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         objParamP = prv_findAttributes(contextP, &tempUri, serverP);
+ 1565              		.loc 1 325 0
+ 1566 010a 3A1D     		adds	r2, r7, #4
+ 1567 010c 07F11001 		add	r1, r7, #16
+ 1568 0110 07F10C03 		add	r3, r7, #12
+ 1569 0114 1268     		ldr	r2, [r2]
+ 1570 0116 1868     		ldr	r0, [r3]
+ 1571 0118 FFF7FEFF 		bl	prv_findAttributes
+ 1572 011c C7F86404 		str	r0, [r7, #1124]
+ 326:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 327:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         // get object instance level attributes
+ 328:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         tempUri.instanceId = uriP->instanceId;
+ 1573              		.loc 1 328 0
+ 1574 0120 07F10803 		add	r3, r7, #8
+ 1575 0124 1B68     		ldr	r3, [r3]
+ 1576 0126 9A88     		ldrh	r2, [r3, #4]
+ 1577 0128 07F11003 		add	r3, r7, #16
+ 1578 012c 9A80     		strh	r2, [r3, #4]	@ movhi
+ 329:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         tempUri.flag = LWM2M_URI_FLAG_INSTANCE_ID;
+ 1579              		.loc 1 329 0
+ 1580 012e 07F11003 		add	r3, r7, #16
+ 1581 0132 0222     		movs	r2, #2
+ 1582 0134 1A70     		strb	r2, [r3]
+ 330:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         instParamP = prv_findAttributes(contextP, &tempUri, serverP);
+ 1583              		.loc 1 330 0
+ 1584 0136 3A1D     		adds	r2, r7, #4
+ 1585 0138 07F11001 		add	r1, r7, #16
+ 1586 013c 07F10C03 		add	r3, r7, #12
+ 1587 0140 1268     		ldr	r2, [r2]
+ 1588 0142 1868     		ldr	r0, [r3]
+ 1589 0144 FFF7FEFF 		bl	prv_findAttributes
+ 1590 0148 C7F86004 		str	r0, [r7, #1120]
+ 331:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 332:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (objParamP != NULL)
+ 1591              		.loc 1 332 0
+ 1592 014c D7F86434 		ldr	r3, [r7, #1124]
+ 1593 0150 002B     		cmp	r3, #0
+ 1594 0152 55D0     		beq	.L95
+ 333:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 334:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (instParamP != NULL)
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 35
+
+
+ 1595              		.loc 1 334 0
+ 1596 0154 D7F86034 		ldr	r3, [r7, #1120]
+ 1597 0158 002B     		cmp	r3, #0
+ 1598 015a 4CD0     		beq	.L96
+ 335:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             {
+ 336:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 memset(&mergedParam, 0, sizeof(lwm2m_attributes_t));
+ 1599              		.loc 1 336 0
+ 1600 015c 07F11803 		add	r3, r7, #24
+ 1601 0160 2822     		movs	r2, #40
+ 1602 0162 0021     		movs	r1, #0
+ 1603 0164 1846     		mov	r0, r3
+ 1604 0166 FFF7FEFF 		bl	memset
+ 337:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 mergedParam.toSet = objParamP->toSet | instParamP->toSet;
+ 1605              		.loc 1 337 0
+ 1606 016a D7F86434 		ldr	r3, [r7, #1124]
+ 1607 016e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1608 0170 D7F86034 		ldr	r3, [r7, #1120]
+ 1609 0174 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1610 0176 1343     		orrs	r3, r3, r2
+ 1611 0178 DAB2     		uxtb	r2, r3
+ 1612 017a 07F11803 		add	r3, r7, #24
+ 1613 017e 1A70     		strb	r2, [r3]
+ 338:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 if (mergedParam.toSet & LWM2M_ATTR_FLAG_MIN_PERIOD)
+ 1614              		.loc 1 338 0
+ 1615 0180 07F11803 		add	r3, r7, #24
+ 1616 0184 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1617 0186 03F00103 		and	r3, r3, #1
+ 1618 018a 002B     		cmp	r3, #0
+ 1619 018c 13D0     		beq	.L97
+ 339:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 {
+ 340:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     if (instParamP->toSet & LWM2M_ATTR_FLAG_MIN_PERIOD)
+ 1620              		.loc 1 340 0
+ 1621 018e D7F86034 		ldr	r3, [r7, #1120]
+ 1622 0192 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1623 0194 03F00103 		and	r3, r3, #1
+ 1624 0198 002B     		cmp	r3, #0
+ 1625 019a 06D0     		beq	.L98
+ 341:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     {
+ 342:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                         mergedParam.minPeriod = instParamP->minPeriod;
+ 1626              		.loc 1 342 0
+ 1627 019c D7F86034 		ldr	r3, [r7, #1120]
+ 1628 01a0 5A68     		ldr	r2, [r3, #4]
+ 1629 01a2 07F11803 		add	r3, r7, #24
+ 1630 01a6 5A60     		str	r2, [r3, #4]
+ 1631 01a8 05E0     		b	.L97
+ 1632              	.L98:
+ 343:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     }
+ 344:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     else
+ 345:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     {
+ 346:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                         mergedParam.minPeriod = objParamP->minPeriod;
+ 1633              		.loc 1 346 0
+ 1634 01aa D7F86434 		ldr	r3, [r7, #1124]
+ 1635 01ae 5A68     		ldr	r2, [r3, #4]
+ 1636 01b0 07F11803 		add	r3, r7, #24
+ 1637 01b4 5A60     		str	r2, [r3, #4]
+ 1638              	.L97:
+ 347:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     }
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 36
+
+
+ 348:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 }
+ 349:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 if (mergedParam.toSet & LWM2M_ATTR_FLAG_MAX_PERIOD)
+ 1639              		.loc 1 349 0
+ 1640 01b6 07F11803 		add	r3, r7, #24
+ 1641 01ba 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1642 01bc 03F00203 		and	r3, r3, #2
+ 1643 01c0 002B     		cmp	r3, #0
+ 1644 01c2 13D0     		beq	.L99
+ 350:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 {
+ 351:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     if (instParamP->toSet & LWM2M_ATTR_FLAG_MAX_PERIOD)
+ 1645              		.loc 1 351 0
+ 1646 01c4 D7F86034 		ldr	r3, [r7, #1120]
+ 1647 01c8 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1648 01ca 03F00203 		and	r3, r3, #2
+ 1649 01ce 002B     		cmp	r3, #0
+ 1650 01d0 06D0     		beq	.L100
+ 352:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     {
+ 353:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                         mergedParam.maxPeriod = instParamP->maxPeriod;
+ 1651              		.loc 1 353 0
+ 1652 01d2 D7F86034 		ldr	r3, [r7, #1120]
+ 1653 01d6 9A68     		ldr	r2, [r3, #8]
+ 1654 01d8 07F11803 		add	r3, r7, #24
+ 1655 01dc 9A60     		str	r2, [r3, #8]
+ 1656 01de 05E0     		b	.L99
+ 1657              	.L100:
+ 354:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     }
+ 355:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     else
+ 356:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     {
+ 357:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                         mergedParam.maxPeriod = objParamP->maxPeriod;
+ 1658              		.loc 1 357 0
+ 1659 01e0 D7F86434 		ldr	r3, [r7, #1124]
+ 1660 01e4 9A68     		ldr	r2, [r3, #8]
+ 1661 01e6 07F11803 		add	r3, r7, #24
+ 1662 01ea 9A60     		str	r2, [r3, #8]
+ 1663              	.L99:
+ 358:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                     }
+ 359:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 }
+ 360:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 paramP = &mergedParam;
+ 1664              		.loc 1 360 0
+ 1665 01ec 07F11803 		add	r3, r7, #24
+ 1666 01f0 C7F86834 		str	r3, [r7, #1128]
+ 1667 01f4 08E0     		b	.L102
+ 1668              	.L96:
+ 361:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             }
+ 362:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             else
+ 363:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             {
+ 364:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 paramP = objParamP;
+ 1669              		.loc 1 364 0
+ 1670 01f6 D7F86434 		ldr	r3, [r7, #1124]
+ 1671 01fa C7F86834 		str	r3, [r7, #1128]
+ 1672 01fe 03E0     		b	.L102
+ 1673              	.L95:
+ 365:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             }
+ 366:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 367:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         else
+ 368:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 369:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             paramP = instParamP;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 37
+
+
+ 1674              		.loc 1 369 0
+ 1675 0200 D7F86034 		ldr	r3, [r7, #1120]
+ 1676 0204 C7F86834 		str	r3, [r7, #1128]
+ 1677              	.L102:
+ 370:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 371:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         uriP->flag &= ~LWM2M_URI_FLAG_RESOURCE_ID;
+ 1678              		.loc 1 371 0 discriminator 1
+ 1679 0208 07F10803 		add	r3, r7, #8
+ 1680 020c 1B68     		ldr	r3, [r3]
+ 1681 020e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1682 0210 23F00103 		bic	r3, r3, #1
+ 1683 0214 DAB2     		uxtb	r2, r3
+ 1684 0216 07F10803 		add	r3, r7, #8
+ 1685 021a 1B68     		ldr	r3, [r3]
+ 1686 021c 1A70     		strb	r2, [r3]
+ 1687              	.LBE3:
+ 1688 021e 88E1     		b	.L103
+ 1689              	.L94:
+ 372:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     }
+ 373:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     else
+ 374:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 375:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         paramP = NULL;
+ 1690              		.loc 1 375 0
+ 1691 0220 0023     		movs	r3, #0
+ 1692 0222 C7F86834 		str	r3, [r7, #1128]
+ 376:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 377:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (LWM2M_URI_IS_SET_INSTANCE(uriP))
+ 1693              		.loc 1 377 0
+ 1694 0226 07F10803 		add	r3, r7, #8
+ 1695 022a 1B68     		ldr	r3, [r3]
+ 1696 022c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1697 022e 03F00203 		and	r3, r3, #2
+ 1698 0232 002B     		cmp	r3, #0
+ 1699 0234 00F0EB80 		beq	.L104
+ 378:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 379:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(bufferLink, PRV_LINK_BUFFER_SIZE, head, LINK_ITEM_START, LINK_ITEM_START
+ 1700              		.loc 1 379 0
+ 1701 0238 D7F87034 		ldr	r3, [r7, #1136]
+ 1702 023c B3F5806F 		cmp	r3, #1024
+ 1703 0240 02D1     		bne	.L105
+ 1704              		.loc 1 379 0 is_stmt 0 discriminator 1
+ 1705 0242 4FF0FF33 		mov	r3, #-1
+ 1706 0246 F8E1     		b	.L126
+ 1707              	.L105:
+ 1708              		.loc 1 379 0 discriminator 2
+ 1709 0248 07F15C02 		add	r2, r7, #92
+ 1710 024c D7F87034 		ldr	r3, [r7, #1136]
+ 1711 0250 1344     		add	r3, r3, r2
+ 1712 0252 0122     		movs	r2, #1
+ 1713 0254 4849     		ldr	r1, .L127+24
+ 1714 0256 1846     		mov	r0, r3
+ 1715 0258 FFF7FEFF 		bl	memcpy
+ 1716 025c D7F87034 		ldr	r3, [r7, #1136]
+ 1717 0260 0133     		adds	r3, r3, #1
+ 1718 0262 C7F87034 		str	r3, [r7, #1136]
+ 380:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(bufferLink, PRV_LINK_BUFFER_SIZE, head, LINK_URI_SEPARATOR, LINK_URI_SEP
+ 1719              		.loc 1 380 0 is_stmt 1 discriminator 2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 38
+
+
+ 1720 0266 D7F87034 		ldr	r3, [r7, #1136]
+ 1721 026a B3F5806F 		cmp	r3, #1024
+ 1722 026e 02D1     		bne	.L107
+ 1723              		.loc 1 380 0 is_stmt 0 discriminator 1
+ 1724 0270 4FF0FF33 		mov	r3, #-1
+ 1725 0274 E1E1     		b	.L126
+ 1726              	.L107:
+ 1727              		.loc 1 380 0 discriminator 2
+ 1728 0276 07F15C02 		add	r2, r7, #92
+ 1729 027a D7F87034 		ldr	r3, [r7, #1136]
+ 1730 027e 1344     		add	r3, r3, r2
+ 1731 0280 0122     		movs	r2, #1
+ 1732 0282 3E49     		ldr	r1, .L127+28
+ 1733 0284 1846     		mov	r0, r3
+ 1734 0286 FFF7FEFF 		bl	memcpy
+ 1735 028a D7F87034 		ldr	r3, [r7, #1136]
+ 1736 028e 0133     		adds	r3, r3, #1
+ 1737 0290 C7F87034 		str	r3, [r7, #1136]
+ 381:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_intToText(uriP->objectId, bufferLink + head, PRV_LINK_BUFFER_SIZE - head);
+ 1738              		.loc 1 381 0 is_stmt 1 discriminator 2
+ 1739 0294 07F10803 		add	r3, r7, #8
+ 1740 0298 1B68     		ldr	r3, [r3]
+ 1741 029a 5B88     		ldrh	r3, [r3, #2]
+ 1742 029c 98B2     		uxth	r0, r3
+ 1743 029e 4FF00001 		mov	r1, #0
+ 1744 02a2 07F15C02 		add	r2, r7, #92
+ 1745 02a6 D7F87034 		ldr	r3, [r7, #1136]
+ 1746 02aa 1A44     		add	r2, r2, r3
+ 1747 02ac D7F87034 		ldr	r3, [r7, #1136]
+ 1748 02b0 C3F58063 		rsb	r3, r3, #1024
+ 1749 02b4 FFF7FEFF 		bl	utils_intToText
+ 1750 02b8 0346     		mov	r3, r0
+ 1751 02ba C7F86C34 		str	r3, [r7, #1132]
+ 382:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 1752              		.loc 1 382 0 discriminator 2
+ 1753 02be D7F86C34 		ldr	r3, [r7, #1132]
+ 1754 02c2 002B     		cmp	r3, #0
+ 1755 02c4 02DC     		bgt	.L108
+ 1756              		.loc 1 382 0 is_stmt 0 discriminator 1
+ 1757 02c6 4FF0FF33 		mov	r3, #-1
+ 1758 02ca B6E1     		b	.L126
+ 1759              	.L108:
+ 383:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 1760              		.loc 1 383 0 is_stmt 1
+ 1761 02cc D7F86C34 		ldr	r3, [r7, #1132]
+ 1762 02d0 D7F87024 		ldr	r2, [r7, #1136]
+ 1763 02d4 1344     		add	r3, r3, r2
+ 1764 02d6 C7F87034 		str	r3, [r7, #1136]
+ 384:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(bufferLink, PRV_LINK_BUFFER_SIZE, head, LINK_URI_SEPARATOR, LINK_URI_SEP
+ 1765              		.loc 1 384 0
+ 1766 02da D7F87034 		ldr	r3, [r7, #1136]
+ 1767 02de B3F5806F 		cmp	r3, #1024
+ 1768 02e2 02D1     		bne	.L109
+ 1769              		.loc 1 384 0 is_stmt 0 discriminator 1
+ 1770 02e4 4FF0FF33 		mov	r3, #-1
+ 1771 02e8 A7E1     		b	.L126
+ 1772              	.L109:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 39
+
+
+ 1773              		.loc 1 384 0 discriminator 2
+ 1774 02ea 07F15C02 		add	r2, r7, #92
+ 1775 02ee D7F87034 		ldr	r3, [r7, #1136]
+ 1776 02f2 1344     		add	r3, r3, r2
+ 1777 02f4 0122     		movs	r2, #1
+ 1778 02f6 2149     		ldr	r1, .L127+28
+ 1779 02f8 1846     		mov	r0, r3
+ 1780 02fa FFF7FEFF 		bl	memcpy
+ 1781 02fe D7F87034 		ldr	r3, [r7, #1136]
+ 1782 0302 0133     		adds	r3, r3, #1
+ 1783 0304 C7F87034 		str	r3, [r7, #1136]
+ 385:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_intToText(uriP->instanceId, bufferLink + head, PRV_LINK_BUFFER_SIZE - head)
+ 1784              		.loc 1 385 0 is_stmt 1 discriminator 2
+ 1785 0308 07F10803 		add	r3, r7, #8
+ 1786 030c 1B68     		ldr	r3, [r3]
+ 1787 030e 9B88     		ldrh	r3, [r3, #4]
+ 1788 0310 98B2     		uxth	r0, r3
+ 1789 0312 4FF00001 		mov	r1, #0
+ 1790 0316 07F15C02 		add	r2, r7, #92
+ 1791 031a D7F87034 		ldr	r3, [r7, #1136]
+ 1792 031e 1A44     		add	r2, r2, r3
+ 1793 0320 D7F87034 		ldr	r3, [r7, #1136]
+ 1794 0324 C3F58063 		rsb	r3, r3, #1024
+ 1795 0328 FFF7FEFF 		bl	utils_intToText
+ 1796 032c 0346     		mov	r3, r0
+ 1797 032e C7F86C34 		str	r3, [r7, #1132]
+ 386:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 1798              		.loc 1 386 0 discriminator 2
+ 1799 0332 D7F86C34 		ldr	r3, [r7, #1132]
+ 1800 0336 002B     		cmp	r3, #0
+ 1801 0338 02DC     		bgt	.L110
+ 1802              		.loc 1 386 0 is_stmt 0 discriminator 1
+ 1803 033a 4FF0FF33 		mov	r3, #-1
+ 1804 033e 7CE1     		b	.L126
+ 1805              	.L110:
+ 387:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 1806              		.loc 1 387 0 is_stmt 1
+ 1807 0340 D7F86C34 		ldr	r3, [r7, #1132]
+ 1808 0344 D7F87024 		ldr	r2, [r7, #1136]
+ 1809 0348 1344     		add	r3, r3, r2
+ 1810 034a C7F87034 		str	r3, [r7, #1136]
+ 388:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(bufferLink, PRV_LINK_BUFFER_SIZE, head, LINK_ITEM_END, LINK_ITEM_END_SIZ
+ 1811              		.loc 1 388 0
+ 1812 034e D7F87034 		ldr	r3, [r7, #1136]
+ 1813 0352 C3F58063 		rsb	r3, r3, #1024
+ 1814 0356 012B     		cmp	r3, #1
+ 1815 0358 12D8     		bhi	.L111
+ 1816              		.loc 1 388 0 is_stmt 0 discriminator 1
+ 1817 035a 4FF0FF33 		mov	r3, #-1
+ 1818 035e 6CE1     		b	.L126
+ 1819              	.L128:
+ 1820              		.align	2
+ 1821              	.L127:
+ 1822 0360 00000000 		.word	__func__.8575
+ 1823 0364 38000000 		.word	.LC11
+ 1824 0368 50000000 		.word	.LC12
+ 1825 036c 60000000 		.word	.LC13
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 40
+
+
+ 1826 0370 6C000000 		.word	.LC14
+ 1827 0374 70000000 		.word	.LC15
+ 1828 0378 24000000 		.word	.LC7
+ 1829 037c 28000000 		.word	.LC8
+ 1830              	.L111:
+ 1831              		.loc 1 388 0 discriminator 2
+ 1832 0380 07F15C02 		add	r2, r7, #92
+ 1833 0384 D7F87034 		ldr	r3, [r7, #1136]
+ 1834 0388 1344     		add	r3, r3, r2
+ 1835 038a 0222     		movs	r2, #2
+ 1836 038c AD49     		ldr	r1, .L129
+ 1837 038e 1846     		mov	r0, r3
+ 1838 0390 FFF7FEFF 		bl	memcpy
+ 1839 0394 D7F87034 		ldr	r3, [r7, #1136]
+ 1840 0398 0233     		adds	r3, r3, #2
+ 1841 039a C7F87034 		str	r3, [r7, #1136]
+ 389:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             parentUri.instanceId = uriP->instanceId;
+ 1842              		.loc 1 389 0 is_stmt 1 discriminator 2
+ 1843 039e 07F10803 		add	r3, r7, #8
+ 1844 03a2 1B68     		ldr	r3, [r3]
+ 1845 03a4 9A88     		ldrh	r2, [r3, #4]
+ 1846 03a6 07F14003 		add	r3, r7, #64
+ 1847 03aa 9A80     		strh	r2, [r3, #4]	@ movhi
+ 390:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             parentUri.flag = LWM2M_URI_FLAG_INSTANCE_ID;
+ 1848              		.loc 1 390 0 discriminator 2
+ 1849 03ac 07F14003 		add	r3, r7, #64
+ 1850 03b0 0222     		movs	r2, #2
+ 1851 03b2 1A70     		strb	r2, [r3]
+ 391:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (serverP != NULL)
+ 1852              		.loc 1 391 0 discriminator 2
+ 1853 03b4 3B1D     		adds	r3, r7, #4
+ 1854 03b6 1B68     		ldr	r3, [r3]
+ 1855 03b8 002B     		cmp	r3, #0
+ 1856 03ba 1DD0     		beq	.L112
+ 392:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             {
+ 393:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 res = prv_serializeAttributes(contextP, &parentUri, serverP, NULL, bufferLink, head
+ 1857              		.loc 1 393 0
+ 1858 03bc D7F87034 		ldr	r3, [r7, #1136]
+ 1859 03c0 013B     		subs	r3, r3, #1
+ 1860 03c2 3A1D     		adds	r2, r7, #4
+ 1861 03c4 07F14004 		add	r4, r7, #64
+ 1862 03c8 07F10C00 		add	r0, r7, #12
+ 1863 03cc 4FF48061 		mov	r1, #1024
+ 1864 03d0 0291     		str	r1, [sp, #8]
+ 1865 03d2 0193     		str	r3, [sp, #4]
+ 1866 03d4 07F15C03 		add	r3, r7, #92
+ 1867 03d8 0093     		str	r3, [sp]
+ 1868 03da 0023     		movs	r3, #0
+ 1869 03dc 1268     		ldr	r2, [r2]
+ 1870 03de 2146     		mov	r1, r4
+ 1871 03e0 0068     		ldr	r0, [r0]
+ 1872 03e2 FFF7FEFF 		bl	prv_serializeAttributes
+ 1873 03e6 C7F86C04 		str	r0, [r7, #1132]
+ 394:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 if (res < 0) return -1;    // careful, 0 is valid
+ 1874              		.loc 1 394 0
+ 1875 03ea D7F86C34 		ldr	r3, [r7, #1132]
+ 1876 03ee 002B     		cmp	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 41
+
+
+ 1877 03f0 05DA     		bge	.L113
+ 1878              		.loc 1 394 0 is_stmt 0 discriminator 1
+ 1879 03f2 4FF0FF33 		mov	r3, #-1
+ 1880 03f6 20E1     		b	.L126
+ 1881              	.L112:
+ 395:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             }
+ 396:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             else
+ 397:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             {
+ 398:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 res = 0;
+ 1882              		.loc 1 398 0 is_stmt 1
+ 1883 03f8 0023     		movs	r3, #0
+ 1884 03fa C7F86C34 		str	r3, [r7, #1132]
+ 1885              	.L113:
+ 399:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             }
+ 400:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 1886              		.loc 1 400 0
+ 1887 03fe D7F86C34 		ldr	r3, [r7, #1132]
+ 1888 0402 D7F87024 		ldr	r2, [r7, #1136]
+ 1889 0406 1344     		add	r3, r3, r2
+ 1890 0408 C7F87034 		str	r3, [r7, #1136]
+ 1891 040c 91E0     		b	.L103
+ 1892              	.L104:
+ 401:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 402:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         else
+ 403:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         {
+ 404:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(bufferLink, PRV_LINK_BUFFER_SIZE, head, LINK_ITEM_START, LINK_ITEM_START
+ 1893              		.loc 1 404 0
+ 1894 040e D7F87034 		ldr	r3, [r7, #1136]
+ 1895 0412 B3F5806F 		cmp	r3, #1024
+ 1896 0416 02D1     		bne	.L114
+ 1897              		.loc 1 404 0 is_stmt 0 discriminator 1
+ 1898 0418 4FF0FF33 		mov	r3, #-1
+ 1899 041c 0DE1     		b	.L126
+ 1900              	.L114:
+ 1901              		.loc 1 404 0 discriminator 2
+ 1902 041e 07F15C02 		add	r2, r7, #92
+ 1903 0422 D7F87034 		ldr	r3, [r7, #1136]
+ 1904 0426 1344     		add	r3, r3, r2
+ 1905 0428 0122     		movs	r2, #1
+ 1906 042a 8749     		ldr	r1, .L129+4
+ 1907 042c 1846     		mov	r0, r3
+ 1908 042e FFF7FEFF 		bl	memcpy
+ 1909 0432 D7F87034 		ldr	r3, [r7, #1136]
+ 1910 0436 0133     		adds	r3, r3, #1
+ 1911 0438 C7F87034 		str	r3, [r7, #1136]
+ 405:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(bufferLink, PRV_LINK_BUFFER_SIZE, head, LINK_URI_SEPARATOR, LINK_URI_SEP
+ 1912              		.loc 1 405 0 is_stmt 1 discriminator 2
+ 1913 043c D7F87034 		ldr	r3, [r7, #1136]
+ 1914 0440 B3F5806F 		cmp	r3, #1024
+ 1915 0444 02D1     		bne	.L115
+ 1916              		.loc 1 405 0 is_stmt 0 discriminator 1
+ 1917 0446 4FF0FF33 		mov	r3, #-1
+ 1918 044a F6E0     		b	.L126
+ 1919              	.L115:
+ 1920              		.loc 1 405 0 discriminator 2
+ 1921 044c 07F15C02 		add	r2, r7, #92
+ 1922 0450 D7F87034 		ldr	r3, [r7, #1136]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 42
+
+
+ 1923 0454 1344     		add	r3, r3, r2
+ 1924 0456 0122     		movs	r2, #1
+ 1925 0458 7C49     		ldr	r1, .L129+8
+ 1926 045a 1846     		mov	r0, r3
+ 1927 045c FFF7FEFF 		bl	memcpy
+ 1928 0460 D7F87034 		ldr	r3, [r7, #1136]
+ 1929 0464 0133     		adds	r3, r3, #1
+ 1930 0466 C7F87034 		str	r3, [r7, #1136]
+ 406:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             res = utils_intToText(uriP->objectId, bufferLink + head, PRV_LINK_BUFFER_SIZE - head);
+ 1931              		.loc 1 406 0 is_stmt 1 discriminator 2
+ 1932 046a 07F10803 		add	r3, r7, #8
+ 1933 046e 1B68     		ldr	r3, [r3]
+ 1934 0470 5B88     		ldrh	r3, [r3, #2]
+ 1935 0472 98B2     		uxth	r0, r3
+ 1936 0474 4FF00001 		mov	r1, #0
+ 1937 0478 07F15C02 		add	r2, r7, #92
+ 1938 047c D7F87034 		ldr	r3, [r7, #1136]
+ 1939 0480 1A44     		add	r2, r2, r3
+ 1940 0482 D7F87034 		ldr	r3, [r7, #1136]
+ 1941 0486 C3F58063 		rsb	r3, r3, #1024
+ 1942 048a FFF7FEFF 		bl	utils_intToText
+ 1943 048e 0346     		mov	r3, r0
+ 1944 0490 C7F86C34 		str	r3, [r7, #1132]
+ 407:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (res <= 0) return -1;
+ 1945              		.loc 1 407 0 discriminator 2
+ 1946 0494 D7F86C34 		ldr	r3, [r7, #1132]
+ 1947 0498 002B     		cmp	r3, #0
+ 1948 049a 02DC     		bgt	.L116
+ 1949              		.loc 1 407 0 is_stmt 0 discriminator 1
+ 1950 049c 4FF0FF33 		mov	r3, #-1
+ 1951 04a0 CBE0     		b	.L126
+ 1952              	.L116:
+ 408:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             head += res;
+ 1953              		.loc 1 408 0 is_stmt 1
+ 1954 04a2 D7F86C34 		ldr	r3, [r7, #1132]
+ 1955 04a6 D7F87024 		ldr	r2, [r7, #1136]
+ 1956 04aa 1344     		add	r3, r3, r2
+ 1957 04ac C7F87034 		str	r3, [r7, #1136]
+ 409:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             PRV_CONCAT_STR(bufferLink, PRV_LINK_BUFFER_SIZE, head, LINK_ITEM_END, LINK_ITEM_END_SIZ
+ 1958              		.loc 1 409 0
+ 1959 04b0 D7F87034 		ldr	r3, [r7, #1136]
+ 1960 04b4 C3F58063 		rsb	r3, r3, #1024
+ 1961 04b8 012B     		cmp	r3, #1
+ 1962 04ba 02D8     		bhi	.L117
+ 1963              		.loc 1 409 0 is_stmt 0 discriminator 1
+ 1964 04bc 4FF0FF33 		mov	r3, #-1
+ 1965 04c0 BBE0     		b	.L126
+ 1966              	.L117:
+ 1967              		.loc 1 409 0 discriminator 2
+ 1968 04c2 07F15C02 		add	r2, r7, #92
+ 1969 04c6 D7F87034 		ldr	r3, [r7, #1136]
+ 1970 04ca 1344     		add	r3, r3, r2
+ 1971 04cc 0222     		movs	r2, #2
+ 1972 04ce 5D49     		ldr	r1, .L129
+ 1973 04d0 1846     		mov	r0, r3
+ 1974 04d2 FFF7FEFF 		bl	memcpy
+ 1975 04d6 D7F87034 		ldr	r3, [r7, #1136]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 43
+
+
+ 1976 04da 0233     		adds	r3, r3, #2
+ 1977 04dc C7F87034 		str	r3, [r7, #1136]
+ 410:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 411:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             if (serverP != NULL)
+ 1978              		.loc 1 411 0 is_stmt 1 discriminator 2
+ 1979 04e0 3B1D     		adds	r3, r7, #4
+ 1980 04e2 1B68     		ldr	r3, [r3]
+ 1981 04e4 002B     		cmp	r3, #0
+ 1982 04e6 24D0     		beq	.L103
+ 412:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             {
+ 413:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 res = prv_serializeAttributes(contextP, &parentUri, serverP, NULL, bufferLink, head
+ 1983              		.loc 1 413 0
+ 1984 04e8 D7F87034 		ldr	r3, [r7, #1136]
+ 1985 04ec 013B     		subs	r3, r3, #1
+ 1986 04ee 3A1D     		adds	r2, r7, #4
+ 1987 04f0 07F14004 		add	r4, r7, #64
+ 1988 04f4 07F10C00 		add	r0, r7, #12
+ 1989 04f8 4FF48061 		mov	r1, #1024
+ 1990 04fc 0291     		str	r1, [sp, #8]
+ 1991 04fe 0193     		str	r3, [sp, #4]
+ 1992 0500 07F15C03 		add	r3, r7, #92
+ 1993 0504 0093     		str	r3, [sp]
+ 1994 0506 0023     		movs	r3, #0
+ 1995 0508 1268     		ldr	r2, [r2]
+ 1996 050a 2146     		mov	r1, r4
+ 1997 050c 0068     		ldr	r0, [r0]
+ 1998 050e FFF7FEFF 		bl	prv_serializeAttributes
+ 1999 0512 C7F86C04 		str	r0, [r7, #1132]
+ 414:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 if (res < 0) return -1;    // careful, 0 is valid
+ 2000              		.loc 1 414 0
+ 2001 0516 D7F86C34 		ldr	r3, [r7, #1132]
+ 2002 051a 002B     		cmp	r3, #0
+ 2003 051c 02DA     		bge	.L118
+ 2004              		.loc 1 414 0 is_stmt 0 discriminator 1
+ 2005 051e 4FF0FF33 		mov	r3, #-1
+ 2006 0522 8AE0     		b	.L126
+ 2007              	.L118:
+ 415:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****                 head += res;
+ 2008              		.loc 1 415 0 is_stmt 1
+ 2009 0524 D7F86C34 		ldr	r3, [r7, #1132]
+ 2010 0528 D7F87024 		ldr	r2, [r7, #1136]
+ 2011 052c 1344     		add	r3, r3, r2
+ 2012 052e C7F87034 		str	r3, [r7, #1136]
+ 2013              	.L103:
+ 416:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****             }
+ 417:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         }
+ 418:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     }
+ 419:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 420:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     baseUriLen = uri_toString(uriP, baseUriStr, URI_MAX_STRING_LEN, NULL);
+ 2014              		.loc 1 420 0
+ 2015 0532 07F14801 		add	r1, r7, #72
+ 2016 0536 07F10800 		add	r0, r7, #8
+ 2017 053a 0023     		movs	r3, #0
+ 2018 053c 1222     		movs	r2, #18
+ 2019 053e 0068     		ldr	r0, [r0]
+ 2020 0540 FFF7FEFF 		bl	uri_toString
+ 2021 0544 C7F85C04 		str	r0, [r7, #1116]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 44
+
+
+ 421:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     if (baseUriLen < 0) return -1;
+ 2022              		.loc 1 421 0
+ 2023 0548 D7F85C34 		ldr	r3, [r7, #1116]
+ 2024 054c 002B     		cmp	r3, #0
+ 2025 054e 02DA     		bge	.L119
+ 2026              		.loc 1 421 0 is_stmt 0 discriminator 1
+ 2027 0550 4FF0FF33 		mov	r3, #-1
+ 2028 0554 71E0     		b	.L126
+ 2029              	.L119:
+ 422:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     baseUriLen -= 1;
+ 2030              		.loc 1 422 0 is_stmt 1
+ 2031 0556 D7F85C34 		ldr	r3, [r7, #1116]
+ 2032 055a 013B     		subs	r3, r3, #1
+ 2033 055c C7F85C34 		str	r3, [r7, #1116]
+ 423:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 424:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     for (index = 0; index < size && head < PRV_LINK_BUFFER_SIZE; index++)
+ 2034              		.loc 1 424 0
+ 2035 0560 0023     		movs	r3, #0
+ 2036 0562 C7F87434 		str	r3, [r7, #1140]
+ 2037 0566 39E0     		b	.L120
+ 2038              	.L123:
+ 425:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 426:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         res = prv_serializeLinkData(contextP, dataP + index, serverP, paramP, uriP, baseUriStr, bas
+ 2039              		.loc 1 426 0
+ 2040 0568 D7F87434 		ldr	r3, [r7, #1140]
+ 2041 056c 1B01     		lsls	r3, r3, #4
+ 2042 056e D7F88824 		ldr	r2, [r7, #1160]
+ 2043 0572 D518     		adds	r5, r2, r3
+ 2044 0574 D7F85C34 		ldr	r3, [r7, #1116]
+ 2045 0578 07F15C01 		add	r1, r7, #92
+ 2046 057c D7F87024 		ldr	r2, [r7, #1136]
+ 2047 0580 1144     		add	r1, r1, r2
+ 2048 0582 D7F87024 		ldr	r2, [r7, #1136]
+ 2049 0586 C2F58064 		rsb	r4, r2, #1024
+ 2050 058a 3A1D     		adds	r2, r7, #4
+ 2051 058c 07F10C00 		add	r0, r7, #12
+ 2052 0590 0494     		str	r4, [sp, #16]
+ 2053 0592 0391     		str	r1, [sp, #12]
+ 2054 0594 0293     		str	r3, [sp, #8]
+ 2055 0596 07F14803 		add	r3, r7, #72
+ 2056 059a 0193     		str	r3, [sp, #4]
+ 2057 059c 07F10803 		add	r3, r7, #8
+ 2058 05a0 1B68     		ldr	r3, [r3]
+ 2059 05a2 0093     		str	r3, [sp]
+ 2060 05a4 D7F86834 		ldr	r3, [r7, #1128]
+ 2061 05a8 1268     		ldr	r2, [r2]
+ 2062 05aa 2946     		mov	r1, r5
+ 2063 05ac 0068     		ldr	r0, [r0]
+ 2064 05ae FFF7FEFF 		bl	prv_serializeLinkData
+ 2065 05b2 C7F86C04 		str	r0, [r7, #1132]
+ 427:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (res < 0) return -1;
+ 2066              		.loc 1 427 0
+ 2067 05b6 D7F86C34 		ldr	r3, [r7, #1132]
+ 2068 05ba 002B     		cmp	r3, #0
+ 2069 05bc 02DA     		bge	.L121
+ 2070              		.loc 1 427 0 is_stmt 0 discriminator 1
+ 2071 05be 4FF0FF33 		mov	r3, #-1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 45
+
+
+ 2072 05c2 3AE0     		b	.L126
+ 2073              	.L121:
+ 428:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         head += res;
+ 2074              		.loc 1 428 0 is_stmt 1 discriminator 2
+ 2075 05c4 D7F86C34 		ldr	r3, [r7, #1132]
+ 2076 05c8 D7F87024 		ldr	r2, [r7, #1136]
+ 2077 05cc 1344     		add	r3, r3, r2
+ 2078 05ce C7F87034 		str	r3, [r7, #1136]
+ 424:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 2079              		.loc 1 424 0 discriminator 2
+ 2080 05d2 D7F87434 		ldr	r3, [r7, #1140]
+ 2081 05d6 0133     		adds	r3, r3, #1
+ 2082 05d8 C7F87434 		str	r3, [r7, #1140]
+ 2083              	.L120:
+ 424:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 2084              		.loc 1 424 0 is_stmt 0 discriminator 1
+ 2085 05dc 3B46     		mov	r3, r7
+ 2086 05de D7F87424 		ldr	r2, [r7, #1140]
+ 2087 05e2 1B68     		ldr	r3, [r3]
+ 2088 05e4 9A42     		cmp	r2, r3
+ 2089 05e6 04DA     		bge	.L122
+ 424:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 2090              		.loc 1 424 0 discriminator 3
+ 2091 05e8 D7F87034 		ldr	r3, [r7, #1136]
+ 2092 05ec B3F5806F 		cmp	r3, #1024
+ 2093 05f0 BAD3     		bcc	.L123
+ 2094              	.L122:
+ 429:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     }
+ 430:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 431:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     if (head > 0)
+ 2095              		.loc 1 431 0 is_stmt 1
+ 2096 05f2 D7F87034 		ldr	r3, [r7, #1136]
+ 2097 05f6 002B     		cmp	r3, #0
+ 2098 05f8 1DD0     		beq	.L124
+ 432:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     {
+ 433:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         head -= 1;
+ 2099              		.loc 1 433 0
+ 2100 05fa D7F87034 		ldr	r3, [r7, #1136]
+ 2101 05fe 013B     		subs	r3, r3, #1
+ 2102 0600 C7F87034 		str	r3, [r7, #1136]
+ 434:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 435:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         *bufferP = (uint8_t *)lwm2m_malloc(head);
+ 2103              		.loc 1 435 0
+ 2104 0604 D7F87004 		ldr	r0, [r7, #1136]
+ 2105 0608 FFF7FEFF 		bl	lwm2m_malloc
+ 2106 060c 0246     		mov	r2, r0
+ 2107 060e D7F88C34 		ldr	r3, [r7, #1164]
+ 2108 0612 1A60     		str	r2, [r3]
+ 436:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         if (*bufferP == NULL) return 0;
+ 2109              		.loc 1 436 0
+ 2110 0614 D7F88C34 		ldr	r3, [r7, #1164]
+ 2111 0618 1B68     		ldr	r3, [r3]
+ 2112 061a 002B     		cmp	r3, #0
+ 2113 061c 01D1     		bne	.L125
+ 2114              		.loc 1 436 0 is_stmt 0 discriminator 1
+ 2115 061e 0023     		movs	r3, #0
+ 2116 0620 0BE0     		b	.L126
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 46
+
+
+ 2117              	.L125:
+ 437:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****         memcpy(*bufferP, bufferLink, head);
+ 2118              		.loc 1 437 0 is_stmt 1
+ 2119 0622 D7F88C34 		ldr	r3, [r7, #1164]
+ 2120 0626 1B68     		ldr	r3, [r3]
+ 2121 0628 07F15C01 		add	r1, r7, #92
+ 2122 062c D7F87024 		ldr	r2, [r7, #1136]
+ 2123 0630 1846     		mov	r0, r3
+ 2124 0632 FFF7FEFF 		bl	memcpy
+ 2125              	.L124:
+ 438:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     }
+ 439:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** 
+ 440:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c ****     return (int)head;
+ 2126              		.loc 1 440 0
+ 2127 0636 D7F87034 		ldr	r3, [r7, #1136]
+ 2128              	.L126:
+ 441:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\discover.c **** }
+ 2129              		.loc 1 441 0 discriminator 2
+ 2130 063a 1846     		mov	r0, r3
+ 2131 063c 07F58F67 		add	r7, r7, #1144
+ 2132              	.LCFI18:
+ 2133              		.cfi_def_cfa_offset 16
+ 2134 0640 BD46     		mov	sp, r7
+ 2135              	.LCFI19:
+ 2136              		.cfi_def_cfa_register 13
+ 2137              		@ sp needed
+ 2138 0642 B0BD     		pop	{r4, r5, r7, pc}
+ 2139              	.L130:
+ 2140              		.align	2
+ 2141              	.L129:
+ 2142 0644 34000000 		.word	.LC10
+ 2143 0648 24000000 		.word	.LC7
+ 2144 064c 28000000 		.word	.LC8
+ 2145              		.cfi_endproc
+ 2146              	.LFE7:
+ 2148              		.section	.rodata.__func__.8575,"a",%progbits
+ 2149              		.align	2
+ 2152              	__func__.8575:
+ 2153 0000 64697363 		.ascii	"discover_serialize\000"
+ 2153      6F766572 
+ 2153      5F736572 
+ 2153      69616C69 
+ 2153      7A6500
+ 2154              		.text
+ 2155              	.Letext0:
+ 2156              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2157              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2158              		.file 4 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2
+ 2159              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2160              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2161              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2162              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2163              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2164              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 2165              		.file 11 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 2166              		.file 12 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 2167              		.file 13 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 47
+
+
+ 2168              		.file 14 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s 			page 48
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 discover.c
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:18     .text.prv_findAttributes:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:24     .text.prv_findAttributes:00000000 prv_findAttributes
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:126    .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:148    .text.prv_serializeAttributes:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:154    .text.prv_serializeAttributes:00000000 prv_serializeAttributes
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:578    .text.prv_serializeAttributes:000002e8 $d
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:584    .text.prv_serializeAttributes:000002f8 $t
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:789    .text.prv_serializeAttributes:0000045c $d
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:810    .text.prv_serializeLinkData:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:816    .text.prv_serializeLinkData:00000000 prv_serializeLinkData
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:850    .text.prv_serializeLinkData:00000024 $d
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:860    .text.prv_serializeLinkData:0000004c $t
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:1239   .text.prv_serializeLinkData:000002e8 $d
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:1246   .text.prv_serializeLinkData:000002fc $t
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:1402   .text.prv_serializeLinkData:000003f8 $d
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:1423   .text.discover_serialize:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:1430   .text.discover_serialize:00000000 discover_serialize
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:1822   .text.discover_serialize:00000360 $d
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:2152   .rodata.__func__.8575:00000000 __func__.8575
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:1832   .text.discover_serialize:00000380 $t
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:2142   .text.discover_serialize:00000644 $d
+C:\Users\dtjld\AppData\Local\Temp\ccWEcxTO.s:2149   .rodata.__func__.8575:00000000 $d
+
+UNDEFINED SYMBOLS
+observe_findByUri
+memcpy
+utils_intToText
+utils_floatToText
+lwm2m_gettime
+atiny_printf
+memset
+uri_toString
+lwm2m_malloc

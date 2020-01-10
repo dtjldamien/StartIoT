@@ -1,0 +1,2857 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"connection.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.bss.g_connection_err_notify,"aw",%nobits
+  18              		.align	2
+  21              	g_connection_err_notify:
+  22 0000 00000000 		.space	4
+  23              		.section	.text.inc_connection_stat,"ax",%progbits
+  24              		.align	1
+  25              		.syntax unified
+  26              		.thumb
+  27              		.thumb_func
+  28              		.fpu fpv4-sp-d16
+  30              	inc_connection_stat:
+  31              	.LFB12:
+  32              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * ===============================================
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 2
+
+
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** /*******************************************************************************
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * Copyright (c) 2015 Intel Corporation and others.
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * The Eclipse Public License is available at
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  * Contributors:
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *    Christian Renz - Please refer to git log
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****  *******************************************************************************/
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #include <ctype.h>
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #include "connection.h"
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #include <sal.h>
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #include <osal.h>
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #if defined (WITH_DTLS)
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #include "dtls_interface.h"
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** //#include "sal/atiny_socket.h"
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #include <atiny_log.h>
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #include "object_comm.h"
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #define COAP_PORT "5683"
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #define COAPS_PORT "5684"
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** static lwm2m_connection_err_notify_t g_connection_err_notify = NULL;
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** static inline void inc_connection_stat(connection_t *connection, connection_err_e type)
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+  33              		.loc 1 71 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 8
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  42 0002 82B0     		sub	sp, sp, #8
+  43              	.LCFI1:
+  44              		.cfi_def_cfa_offset 16
+  45 0004 00AF     		add	r7, sp, #0
+  46              	.LCFI2:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 3
+
+
+  47              		.cfi_def_cfa_register 7
+  48 0006 7860     		str	r0, [r7, #4]
+  49 0008 0B46     		mov	r3, r1
+  50 000a FB70     		strb	r3, [r7, #3]
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     static const uint16_t max_num[CONNECTION_ERR_MAX] = {MAX_SEND_ERR_NUM,
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                                                          MAX_RECV_ERR_NUM
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                                                         };
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connection->errs[type]++;
+  51              		.loc 1 76 0
+  52 000c FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  53 000e 7A68     		ldr	r2, [r7, #4]
+  54 0010 03F10C01 		add	r1, r3, #12
+  55 0014 32F81120 		ldrh	r2, [r2, r1, lsl #1]
+  56 0018 0132     		adds	r2, r2, #1
+  57 001a 91B2     		uxth	r1, r2
+  58 001c 7A68     		ldr	r2, [r7, #4]
+  59 001e 0C33     		adds	r3, r3, #12
+  60 0020 22F81310 		strh	r1, [r2, r3, lsl #1]	@ movhi
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if(connection->errs[type] >= max_num[type])
+  61              		.loc 1 77 0
+  62 0024 FA78     		ldrb	r2, [r7, #3]	@ zero_extendqisi2
+  63 0026 7B68     		ldr	r3, [r7, #4]
+  64 0028 0C32     		adds	r2, r2, #12
+  65 002a 33F81220 		ldrh	r2, [r3, r2, lsl #1]
+  66 002e FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+  67 0030 0F49     		ldr	r1, .L4
+  68 0032 31F81330 		ldrh	r3, [r1, r3, lsl #1]
+  69 0036 9A42     		cmp	r2, r3
+  70 0038 16D3     		bcc	.L3
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         connection->errs[type] = 0;
+  71              		.loc 1 79 0
+  72 003a FA78     		ldrb	r2, [r7, #3]	@ zero_extendqisi2
+  73 003c 7B68     		ldr	r3, [r7, #4]
+  74 003e 0C32     		adds	r2, r2, #12
+  75 0040 0021     		movs	r1, #0
+  76 0042 23F81210 		strh	r1, [r3, r2, lsl #1]	@ movhi
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if(g_connection_err_notify)
+  77              		.loc 1 80 0
+  78 0046 0B4B     		ldr	r3, .L4+4
+  79 0048 1B68     		ldr	r3, [r3]
+  80 004a 002B     		cmp	r3, #0
+  81 004c 0CD0     		beq	.L3
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             g_connection_err_notify(connection->lwm2mH, type, connection->bootstrap_flag);
+  82              		.loc 1 82 0
+  83 004e 094B     		ldr	r3, .L4+4
+  84 0050 1B68     		ldr	r3, [r3]
+  85 0052 7A68     		ldr	r2, [r7, #4]
+  86 0054 5069     		ldr	r0, [r2, #20]
+  87 0056 7A68     		ldr	r2, [r7, #4]
+  88 0058 528A     		ldrh	r2, [r2, #18]
+  89 005a 002A     		cmp	r2, #0
+  90 005c 14BF     		ite	ne
+  91 005e 0122     		movne	r2, #1
+  92 0060 0022     		moveq	r2, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 4
+
+
+  93 0062 D2B2     		uxtb	r2, r2
+  94 0064 F978     		ldrb	r1, [r7, #3]	@ zero_extendqisi2
+  95 0066 9847     		blx	r3
+  96              	.LVL0:
+  97              	.L3:
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+  98              		.loc 1 85 0
+  99 0068 00BF     		nop
+ 100 006a 0837     		adds	r7, r7, #8
+ 101              	.LCFI3:
+ 102              		.cfi_def_cfa_offset 8
+ 103 006c BD46     		mov	sp, r7
+ 104              	.LCFI4:
+ 105              		.cfi_def_cfa_register 13
+ 106              		@ sp needed
+ 107 006e 80BD     		pop	{r7, pc}
+ 108              	.L5:
+ 109              		.align	2
+ 110              	.L4:
+ 111 0070 00000000 		.word	max_num.8937
+ 112 0074 00000000 		.word	g_connection_err_notify
+ 113              		.cfi_endproc
+ 114              	.LFE12:
+ 116              		.section	.rodata
+ 117              		.align	2
+ 118              	.LC0:
+ 119 0000 5B25735D 		.ascii	"[%s][%u][%s:%d] uri is NULL!!!\015\012\000"
+ 119      5B25755D 
+ 119      5B25733A 
+ 119      25645D20 
+ 119      75726920 
+ 120 0021 000000   		.align	2
+ 121              	.LC1:
+ 122 0024 636F6170 		.ascii	"coaps://\000"
+ 122      733A2F2F 
+ 122      00
+ 123 002d 000000   		.align	2
+ 124              	.LC2:
+ 125 0030 35363834 		.ascii	"5684\000"
+ 125      00
+ 126 0035 000000   		.align	2
+ 127              	.LC3:
+ 128 0038 636F6170 		.ascii	"coap://\000"
+ 128      3A2F2F00 
+ 129              		.align	2
+ 130              	.LC4:
+ 131 0040 35363833 		.ascii	"5683\000"
+ 131      00
+ 132 0045 000000   		.align	2
+ 133              	.LC5:
+ 134 0048 5B25735D 		.ascii	"[%s][%u][%s:%d] come here1!!!\015\012\000"
+ 134      5B25755D 
+ 134      5B25733A 
+ 134      25645D20 
+ 134      636F6D65 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 5
+
+
+ 135              		.align	2
+ 136              	.LC6:
+ 137 0068 5B25735D 		.ascii	"[%s][%u][%s:%d] come here2!!!\015\012\000"
+ 137      5B25755D 
+ 137      5B25733A 
+ 137      25645D20 
+ 137      636F6D65 
+ 138              		.section	.text.connection_parse_host_ip,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	connection_parse_host_ip
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 144              		.fpu fpv4-sp-d16
+ 146              	connection_parse_host_ip:
+ 147              	.LFB13:
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** int connection_parse_host_ip(char *uri, char **parsed_host, char **parsed_port)
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 148              		.loc 1 89 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 32
+ 151              		@ frame_needed = 1, uses_anonymous_args = 0
+ 152 0000 B0B5     		push	{r4, r5, r7, lr}
+ 153              	.LCFI5:
+ 154              		.cfi_def_cfa_offset 16
+ 155              		.cfi_offset 4, -16
+ 156              		.cfi_offset 5, -12
+ 157              		.cfi_offset 7, -8
+ 158              		.cfi_offset 14, -4
+ 159 0002 8AB0     		sub	sp, sp, #40
+ 160              	.LCFI6:
+ 161              		.cfi_def_cfa_offset 56
+ 162 0004 02AF     		add	r7, sp, #8
+ 163              	.LCFI7:
+ 164              		.cfi_def_cfa 7, 48
+ 165 0006 F860     		str	r0, [r7, #12]
+ 166 0008 B960     		str	r1, [r7, #8]
+ 167 000a 7A60     		str	r2, [r7, #4]
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     char *host;
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     char *port;
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     char *defaultport;
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (uri == NULL)
+ 168              		.loc 1 93 0
+ 169 000c FB68     		ldr	r3, [r7, #12]
+ 170 000e 002B     		cmp	r3, #0
+ 171 0010 16D1     		bne	.L7
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ATINY_LOG(LOG_INFO, "uri is NULL!!!");
+ 172              		.loc 1 95 0
+ 173 0012 FFF7FEFF 		bl	atiny_get_log_level
+ 174 0016 0346     		mov	r3, r0
+ 175 0018 012B     		cmp	r3, #1
+ 176 001a 0FD8     		bhi	.L8
+ 177              		.loc 1 95 0 is_stmt 0 discriminator 1
+ 178 001c 0120     		movs	r0, #1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 6
+
+
+ 179 001e FFF7FEFF 		bl	atiny_get_log_level_name
+ 180 0022 0546     		mov	r5, r0
+ 181 0024 FFF7FEFF 		bl	osal_sys_time
+ 182 0028 0346     		mov	r3, r0
+ 183 002a 0C46     		mov	r4, r1
+ 184 002c 1A46     		mov	r2, r3
+ 185 002e 5F23     		movs	r3, #95
+ 186 0030 0093     		str	r3, [sp]
+ 187 0032 3F4B     		ldr	r3, .L19
+ 188 0034 2946     		mov	r1, r5
+ 189 0036 3F48     		ldr	r0, .L19+4
+ 190 0038 FFF7FEFF 		bl	atiny_printf
+ 191              	.L8:
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return COAP_500_INTERNAL_SERVER_ERROR;
+ 192              		.loc 1 96 0 is_stmt 1
+ 193 003c A023     		movs	r3, #160
+ 194 003e 72E0     		b	.L9
+ 195              	.L7:
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     //ATINY_LOG(LOG_INFO, "uri is %s\n", uri);
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     // parse uri in the form "coaps://[host]:[port]"
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (0 == strncmp(uri, "coaps://", strlen("coaps://")))
+ 196              		.loc 1 103 0
+ 197 0040 0822     		movs	r2, #8
+ 198 0042 3D49     		ldr	r1, .L19+8
+ 199 0044 F868     		ldr	r0, [r7, #12]
+ 200 0046 FFF7FEFF 		bl	strncmp
+ 201 004a 0346     		mov	r3, r0
+ 202 004c 002B     		cmp	r3, #0
+ 203 004e 05D1     		bne	.L10
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         host = uri + strlen("coaps://");
+ 204              		.loc 1 105 0
+ 205 0050 FB68     		ldr	r3, [r7, #12]
+ 206 0052 0833     		adds	r3, r3, #8
+ 207 0054 FB61     		str	r3, [r7, #28]
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         defaultport = COAPS_PORT;
+ 208              		.loc 1 106 0
+ 209 0056 394B     		ldr	r3, .L19+12
+ 210 0058 7B61     		str	r3, [r7, #20]
+ 211 005a 24E0     		b	.L11
+ 212              	.L10:
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else if (0 == strncmp(uri, "coap://", strlen("coap://")))
+ 213              		.loc 1 108 0
+ 214 005c 0722     		movs	r2, #7
+ 215 005e 3849     		ldr	r1, .L19+16
+ 216 0060 F868     		ldr	r0, [r7, #12]
+ 217 0062 FFF7FEFF 		bl	strncmp
+ 218 0066 0346     		mov	r3, r0
+ 219 0068 002B     		cmp	r3, #0
+ 220 006a 05D1     		bne	.L12
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         host = uri + strlen("coap://");
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 7
+
+
+ 221              		.loc 1 110 0
+ 222 006c FB68     		ldr	r3, [r7, #12]
+ 223 006e 0733     		adds	r3, r3, #7
+ 224 0070 FB61     		str	r3, [r7, #28]
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         defaultport = COAP_PORT;
+ 225              		.loc 1 111 0
+ 226 0072 344B     		ldr	r3, .L19+20
+ 227 0074 7B61     		str	r3, [r7, #20]
+ 228 0076 16E0     		b	.L11
+ 229              	.L12:
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ATINY_LOG(LOG_INFO, "come here1!!!");
+ 230              		.loc 1 115 0
+ 231 0078 FFF7FEFF 		bl	atiny_get_log_level
+ 232 007c 0346     		mov	r3, r0
+ 233 007e 012B     		cmp	r3, #1
+ 234 0080 0FD8     		bhi	.L13
+ 235              		.loc 1 115 0 is_stmt 0 discriminator 1
+ 236 0082 0120     		movs	r0, #1
+ 237 0084 FFF7FEFF 		bl	atiny_get_log_level_name
+ 238 0088 0546     		mov	r5, r0
+ 239 008a FFF7FEFF 		bl	osal_sys_time
+ 240 008e 0346     		mov	r3, r0
+ 241 0090 0C46     		mov	r4, r1
+ 242 0092 1A46     		mov	r2, r3
+ 243 0094 7323     		movs	r3, #115
+ 244 0096 0093     		str	r3, [sp]
+ 245 0098 254B     		ldr	r3, .L19
+ 246 009a 2946     		mov	r1, r5
+ 247 009c 2A48     		ldr	r0, .L19+24
+ 248 009e FFF7FEFF 		bl	atiny_printf
+ 249              	.L13:
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return COAP_500_INTERNAL_SERVER_ERROR;
+ 250              		.loc 1 116 0 is_stmt 1
+ 251 00a2 A023     		movs	r3, #160
+ 252 00a4 3FE0     		b	.L9
+ 253              	.L11:
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     port = strrchr(host, ':');
+ 254              		.loc 1 119 0
+ 255 00a6 3A21     		movs	r1, #58
+ 256 00a8 F869     		ldr	r0, [r7, #28]
+ 257 00aa FFF7FEFF 		bl	strrchr
+ 258 00ae B861     		str	r0, [r7, #24]
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (port == NULL)
+ 259              		.loc 1 120 0
+ 260 00b0 BB69     		ldr	r3, [r7, #24]
+ 261 00b2 002B     		cmp	r3, #0
+ 262 00b4 02D1     		bne	.L14
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         port = defaultport;
+ 263              		.loc 1 122 0
+ 264 00b6 7B69     		ldr	r3, [r7, #20]
+ 265 00b8 BB61     		str	r3, [r7, #24]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 8
+
+
+ 266 00ba 2DE0     		b	.L15
+ 267              	.L14:
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         // remove brackets
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if (host[0] == '[')
+ 268              		.loc 1 127 0
+ 269 00bc FB69     		ldr	r3, [r7, #28]
+ 270 00be 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 271 00c0 5B2B     		cmp	r3, #91
+ 272 00c2 23D1     		bne	.L16
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             host++;
+ 273              		.loc 1 129 0
+ 274 00c4 FB69     		ldr	r3, [r7, #28]
+ 275 00c6 0133     		adds	r3, r3, #1
+ 276 00c8 FB61     		str	r3, [r7, #28]
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             if (*(port - 1) == ']')
+ 277              		.loc 1 131 0
+ 278 00ca BB69     		ldr	r3, [r7, #24]
+ 279 00cc 013B     		subs	r3, r3, #1
+ 280 00ce 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 281 00d0 5D2B     		cmp	r3, #93
+ 282 00d2 04D1     		bne	.L17
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             {
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                 *(port - 1) = 0;
+ 283              		.loc 1 133 0
+ 284 00d4 BB69     		ldr	r3, [r7, #24]
+ 285 00d6 013B     		subs	r3, r3, #1
+ 286 00d8 0022     		movs	r2, #0
+ 287 00da 1A70     		strb	r2, [r3]
+ 288 00dc 16E0     		b	.L16
+ 289              	.L17:
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             }
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             else
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             {
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                 ATINY_LOG(LOG_INFO, "come here2!!!");
+ 290              		.loc 1 137 0
+ 291 00de FFF7FEFF 		bl	atiny_get_log_level
+ 292 00e2 0346     		mov	r3, r0
+ 293 00e4 012B     		cmp	r3, #1
+ 294 00e6 0FD8     		bhi	.L18
+ 295              		.loc 1 137 0 is_stmt 0 discriminator 1
+ 296 00e8 0120     		movs	r0, #1
+ 297 00ea FFF7FEFF 		bl	atiny_get_log_level_name
+ 298 00ee 0546     		mov	r5, r0
+ 299 00f0 FFF7FEFF 		bl	osal_sys_time
+ 300 00f4 0346     		mov	r3, r0
+ 301 00f6 0C46     		mov	r4, r1
+ 302 00f8 1A46     		mov	r2, r3
+ 303 00fa 8923     		movs	r3, #137
+ 304 00fc 0093     		str	r3, [sp]
+ 305 00fe 0C4B     		ldr	r3, .L19
+ 306 0100 2946     		mov	r1, r5
+ 307 0102 1248     		ldr	r0, .L19+28
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 9
+
+
+ 308 0104 FFF7FEFF 		bl	atiny_printf
+ 309              	.L18:
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                 return COAP_500_INTERNAL_SERVER_ERROR;
+ 310              		.loc 1 138 0 is_stmt 1
+ 311 0108 A023     		movs	r3, #160
+ 312 010a 0CE0     		b	.L9
+ 313              	.L16:
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             }
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         // split strings
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         *port = 0;
+ 314              		.loc 1 143 0
+ 315 010c BB69     		ldr	r3, [r7, #24]
+ 316 010e 0022     		movs	r2, #0
+ 317 0110 1A70     		strb	r2, [r3]
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         port++;
+ 318              		.loc 1 144 0
+ 319 0112 BB69     		ldr	r3, [r7, #24]
+ 320 0114 0133     		adds	r3, r3, #1
+ 321 0116 BB61     		str	r3, [r7, #24]
+ 322              	.L15:
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     *parsed_host = host;
+ 323              		.loc 1 147 0
+ 324 0118 BB68     		ldr	r3, [r7, #8]
+ 325 011a FA69     		ldr	r2, [r7, #28]
+ 326 011c 1A60     		str	r2, [r3]
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     *parsed_port = port;
+ 327              		.loc 1 148 0
+ 328 011e 7B68     		ldr	r3, [r7, #4]
+ 329 0120 BA69     		ldr	r2, [r7, #24]
+ 330 0122 1A60     		str	r2, [r3]
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return COAP_NO_ERROR;
+ 331              		.loc 1 150 0
+ 332 0124 0023     		movs	r3, #0
+ 333              	.L9:
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 334              		.loc 1 151 0
+ 335 0126 1846     		mov	r0, r3
+ 336 0128 2037     		adds	r7, r7, #32
+ 337              	.LCFI8:
+ 338              		.cfi_def_cfa_offset 16
+ 339 012a BD46     		mov	sp, r7
+ 340              	.LCFI9:
+ 341              		.cfi_def_cfa_register 13
+ 342              		@ sp needed
+ 343 012c B0BD     		pop	{r4, r5, r7, pc}
+ 344              	.L20:
+ 345 012e 00BF     		.align	2
+ 346              	.L19:
+ 347 0130 00000000 		.word	__FUNCTION__.8946
+ 348 0134 00000000 		.word	.LC0
+ 349 0138 24000000 		.word	.LC1
+ 350 013c 30000000 		.word	.LC2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 10
+
+
+ 351 0140 38000000 		.word	.LC3
+ 352 0144 40000000 		.word	.LC4
+ 353 0148 48000000 		.word	.LC5
+ 354 014c 68000000 		.word	.LC6
+ 355              		.cfi_endproc
+ 356              	.LFE13:
+ 358              		.section	.text.__socket_connect,"ax",%progbits
+ 359              		.align	1
+ 360              		.syntax unified
+ 361              		.thumb
+ 362              		.thumb_func
+ 363              		.fpu fpv4-sp-d16
+ 365              	__socket_connect:
+ 366              	.LFB14:
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef LWM2M_BOOTSTRAP
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** void connection_striger_server_initiated_bs(connection_t * sessionH)
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     (void)sessionH;
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     (void)atiny_cmd_ioctl(ATINY_TRIGER_SERVER_INITIATED_BS, NULL, 0);
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef WITH_DTLS
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** int connection_connect_dtls(connection_t *connP, security_instance_t *targetP, const char *host, co
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     int ret;
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     dtls_shakehand_info_s info;
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     dtls_establish_info_s establish_info;
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     establish_info.psk_or_cert = VERIFY_WITH_PSK;
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     establish_info.udp_or_tcp = MBEDTLS_NET_PROTO_UDP;
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     establish_info.v.p.psk = (const unsigned char *)targetP->secretKey;
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     establish_info.v.p.psk_len = targetP->secretKeyLen;
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     establish_info.v.p.psk_identity = (const unsigned char *)targetP->publicIdentity;
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connP->net_context = (void *)dtls_ssl_new(&establish_info, client_or_server);
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (NULL == connP->net_context)
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ATINY_LOG(LOG_INFO, "connP->ssl is NULL in connection_create");
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return COAP_500_INTERNAL_SERVER_ERROR;
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     memset(&info, 0, sizeof(info));
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     info.client_or_server = client_or_server;
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     info.finish_notify = NULL;
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     info.step_notify   = NULL;
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     info.udp_or_tcp = MBEDTLS_NET_PROTO_UDP;
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     info.psk_or_cert = VERIFY_WITH_PSK;
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef LWM2M_BOOTSTRAP
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     info.step_notify = (void(*)(void *))lwm2m_step_striger_server_initiated_bs;
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     info.param = (void(*)(void *))connP;
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (MBEDTLS_SSL_IS_CLIENT == client_or_server)
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 11
+
+
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         info.u.c.host = host;
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         info.u.c.port = port;
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         info.timeout = DTLS_UDP_CLIENT_SHAKEHAND_TIMEOUT;
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef LWM2M_BOOTSTRAP
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         info.timeout = targetP->clientHoldOffTime;
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         info.u.s.local_port = port;
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         timer_init(&connP->server_triger_timer, LWM2M_TRIGER_SERVER_MODE_INITIATED_TIME, (void(*)(v
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         timer_start(&connP->server_triger_timer);
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ret = dtls_shakehand(connP->net_context, &info);
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef LWM2M_BOOTSTRAP
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     timer_stop(&connP->server_triger_timer);
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (ret != 0)
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ATINY_LOG(LOG_INFO, "ret is %d in connection_create", ret);
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         dtls_ssl_destroy((mbedtls_ssl_context *)connP->net_context);
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         connP->net_context = NULL;
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return COAP_500_INTERNAL_SERVER_ERROR;
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 219:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 220:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connP->dtls_flag = true;
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 222:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return COAP_NO_ERROR;
+ 223:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 224:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 225:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 226:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 227:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 228:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** typedef struct
+ 229:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     int fd;
+ 231:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }con_net_conext_t;
+ 232:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 233:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** static void *__socket_connect(char *host, char *port,int is_server)
+ 234:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 367              		.loc 1 234 0
+ 368              		.cfi_startproc
+ 369              		@ args = 0, pretend = 0, frame = 48
+ 370              		@ frame_needed = 1, uses_anonymous_args = 0
+ 371 0000 90B5     		push	{r4, r7, lr}
+ 372              	.LCFI10:
+ 373              		.cfi_def_cfa_offset 12
+ 374              		.cfi_offset 4, -12
+ 375              		.cfi_offset 7, -8
+ 376              		.cfi_offset 14, -4
+ 377 0002 8DB0     		sub	sp, sp, #52
+ 378              	.LCFI11:
+ 379              		.cfi_def_cfa_offset 64
+ 380 0004 00AF     		add	r7, sp, #0
+ 381              	.LCFI12:
+ 382              		.cfi_def_cfa_register 7
+ 383 0006 F860     		str	r0, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 12
+
+
+ 384 0008 B960     		str	r1, [r7, #8]
+ 385 000a 7A60     		str	r2, [r7, #4]
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     con_net_conext_t *ret =  NULL;
+ 386              		.loc 1 235 0
+ 387 000c 0023     		movs	r3, #0
+ 388 000e FB62     		str	r3, [r7, #44]
+ 236:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     int fd = -1;
+ 389              		.loc 1 236 0
+ 390 0010 4FF0FF33 		mov	r3, #-1
+ 391 0014 BB62     		str	r3, [r7, #40]
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     struct sockaddr_in addr;
+ 238:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     struct hostent* entry = NULL;
+ 392              		.loc 1 238 0
+ 393 0016 0023     		movs	r3, #0
+ 394 0018 7B62     		str	r3, [r7, #36]
+ 239:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     entry = sal_gethostbyname(host);
+ 395              		.loc 1 239 0
+ 396 001a F868     		ldr	r0, [r7, #12]
+ 397 001c FFF7FEFF 		bl	sal_gethostbyname
+ 398 0020 7862     		str	r0, [r7, #36]
+ 240:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if( !(entry && entry->h_addr_list[0] && (entry->h_addrtype == AF_INET)))
+ 399              		.loc 1 240 0
+ 400 0022 7B6A     		ldr	r3, [r7, #36]
+ 401 0024 002B     		cmp	r3, #0
+ 402 0026 67D0     		beq	.L33
+ 403              		.loc 1 240 0 is_stmt 0 discriminator 1
+ 404 0028 7B6A     		ldr	r3, [r7, #36]
+ 405 002a 1B69     		ldr	r3, [r3, #16]
+ 406 002c 1B68     		ldr	r3, [r3]
+ 407 002e 002B     		cmp	r3, #0
+ 408 0030 62D0     		beq	.L33
+ 409              		.loc 1 240 0 discriminator 2
+ 410 0032 7B6A     		ldr	r3, [r7, #36]
+ 411 0034 9B68     		ldr	r3, [r3, #8]
+ 412 0036 022B     		cmp	r3, #2
+ 413 0038 5ED1     		bne	.L33
+ 241:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****        goto EXIT_GETIP;
+ 243:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 244:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 245:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ret = osal_malloc(sizeof(con_net_conext_t));
+ 414              		.loc 1 245 0 is_stmt 1
+ 415 003a 0420     		movs	r0, #4
+ 416 003c FFF7FEFF 		bl	osal_malloc
+ 417 0040 F862     		str	r0, [r7, #44]
+ 246:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if(NULL == ret)
+ 418              		.loc 1 246 0
+ 419 0042 FB6A     		ldr	r3, [r7, #44]
+ 420 0044 002B     		cmp	r3, #0
+ 421 0046 59D0     		beq	.L34
+ 247:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         goto EXIT_MEM;
+ 249:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 250:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     fd = sal_socket(AF_INET,SOCK_DGRAM,0);
+ 422              		.loc 1 251 0
+ 423 0048 0022     		movs	r2, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 13
+
+
+ 424 004a 0221     		movs	r1, #2
+ 425 004c 0220     		movs	r0, #2
+ 426 004e FFF7FEFF 		bl	sal_socket
+ 427 0052 B862     		str	r0, [r7, #40]
+ 252:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if(fd == -1)
+ 428              		.loc 1 252 0
+ 429 0054 BB6A     		ldr	r3, [r7, #40]
+ 430 0056 B3F1FF3F 		cmp	r3, #-1
+ 431 005a 46D0     		beq	.L35
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         goto EXIT_SOCKET;
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     memset(&addr,0,sizeof(addr));
+ 432              		.loc 1 257 0
+ 433 005c 07F11403 		add	r3, r7, #20
+ 434 0060 1022     		movs	r2, #16
+ 435 0062 0021     		movs	r1, #0
+ 436 0064 1846     		mov	r0, r3
+ 437 0066 FFF7FEFF 		bl	memset
+ 258:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     addr.sin_family = AF_INET;
+ 438              		.loc 1 258 0
+ 439 006a 0223     		movs	r3, #2
+ 440 006c BB82     		strh	r3, [r7, #20]	@ movhi
+ 259:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     memcpy(&addr.sin_addr.s_addr,entry->h_addr_list[0],sizeof(addr.sin_addr.s_addr));
+ 441              		.loc 1 259 0
+ 442 006e 7B6A     		ldr	r3, [r7, #36]
+ 443 0070 1B69     		ldr	r3, [r3, #16]
+ 444 0072 1B68     		ldr	r3, [r3]
+ 445 0074 1B68     		ldr	r3, [r3]	@ unaligned
+ 446 0076 BB61     		str	r3, [r7, #24]
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     addr.sin_port = htons(atoi(port));
+ 447              		.loc 1 260 0
+ 448 0078 B868     		ldr	r0, [r7, #8]
+ 449 007a FFF7FEFF 		bl	atoi
+ 450 007e 0346     		mov	r3, r0
+ 451 0080 1B12     		asrs	r3, r3, #8
+ 452 0082 1BB2     		sxth	r3, r3
+ 453 0084 DBB2     		uxtb	r3, r3
+ 454 0086 1CB2     		sxth	r4, r3
+ 455 0088 B868     		ldr	r0, [r7, #8]
+ 456 008a FFF7FEFF 		bl	atoi
+ 457 008e 0346     		mov	r3, r0
+ 458 0090 1B02     		lsls	r3, r3, #8
+ 459 0092 1BB2     		sxth	r3, r3
+ 460 0094 23F0FF03 		bic	r3, r3, #255
+ 461 0098 1BB2     		sxth	r3, r3
+ 462 009a 2343     		orrs	r3, r3, r4
+ 463 009c 1BB2     		sxth	r3, r3
+ 464 009e 9BB2     		uxth	r3, r3
+ 465 00a0 FB82     		strh	r3, [r7, #22]	@ movhi
+ 261:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if(is_server)
+ 466              		.loc 1 262 0
+ 467 00a2 7B68     		ldr	r3, [r7, #4]
+ 468 00a4 002B     		cmp	r3, #0
+ 469 00a6 0BD0     		beq	.L26
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 14
+
+
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 264:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if(-1 == sal_bind(fd,(struct sockaddr *)&addr,sizeof(addr)))
+ 470              		.loc 1 264 0
+ 471 00a8 07F11403 		add	r3, r7, #20
+ 472 00ac 1022     		movs	r2, #16
+ 473 00ae 1946     		mov	r1, r3
+ 474 00b0 B86A     		ldr	r0, [r7, #40]
+ 475 00b2 FFF7FEFF 		bl	sal_bind
+ 476 00b6 0346     		mov	r3, r0
+ 477 00b8 B3F1FF3F 		cmp	r3, #-1
+ 478 00bc 0BD1     		bne	.L27
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 266:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             goto EXIT_BIND;
+ 479              		.loc 1 266 0
+ 480 00be 10E0     		b	.L30
+ 481              	.L26:
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if(-1 == sal_connect(fd,(struct sockaddr *)&addr,sizeof(addr)))
+ 482              		.loc 1 271 0
+ 483 00c0 07F11403 		add	r3, r7, #20
+ 484 00c4 1022     		movs	r2, #16
+ 485 00c6 1946     		mov	r1, r3
+ 486 00c8 B86A     		ldr	r0, [r7, #40]
+ 487 00ca FFF7FEFF 		bl	sal_connect
+ 488 00ce 0346     		mov	r3, r0
+ 489 00d0 B3F1FF3F 		cmp	r3, #-1
+ 490 00d4 04D0     		beq	.L36
+ 491              	.L27:
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             goto EXIT_CONNECT;
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 275:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 276:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 277:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ret->fd = fd;
+ 492              		.loc 1 277 0
+ 493 00d6 FB6A     		ldr	r3, [r7, #44]
+ 494 00d8 BA6A     		ldr	r2, [r7, #40]
+ 495 00da 1A60     		str	r2, [r3]
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return ret;
+ 496              		.loc 1 278 0
+ 497 00dc FB6A     		ldr	r3, [r7, #44]
+ 498 00de 0FE0     		b	.L32
+ 499              	.L28:
+ 500              	.L36:
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 501              		.loc 1 273 0
+ 502 00e0 00BF     		nop
+ 503              	.L30:
+ 279:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 280:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** EXIT_CONNECT:
+ 281:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** EXIT_BIND:
+ 282:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     sal_closesocket(fd);
+ 504              		.loc 1 282 0
+ 505 00e2 B86A     		ldr	r0, [r7, #40]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 15
+
+
+ 506 00e4 FFF7FEFF 		bl	sal_closesocket
+ 507 00e8 00E0     		b	.L25
+ 508              	.L35:
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 509              		.loc 1 254 0
+ 510 00ea 00BF     		nop
+ 511              	.L25:
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** EXIT_SOCKET:
+ 284:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     osal_free(ret);
+ 512              		.loc 1 284 0
+ 513 00ec F86A     		ldr	r0, [r7, #44]
+ 514 00ee FFF7FEFF 		bl	osal_free
+ 285:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ret = NULL;
+ 515              		.loc 1 285 0
+ 516 00f2 0023     		movs	r3, #0
+ 517 00f4 FB62     		str	r3, [r7, #44]
+ 518 00f6 02E0     		b	.L31
+ 519              	.L22:
+ 520              	.L33:
+ 286:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** EXIT_MEM:
+ 521              		.loc 1 286 0
+ 522 00f8 00BF     		nop
+ 523 00fa 00E0     		b	.L31
+ 524              	.L34:
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 525              		.loc 1 248 0
+ 526 00fc 00BF     		nop
+ 527              	.L31:
+ 287:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** EXIT_GETIP:
+ 288:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return ret;
+ 528              		.loc 1 288 0
+ 529 00fe FB6A     		ldr	r3, [r7, #44]
+ 530              	.L32:
+ 289:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 531              		.loc 1 289 0 discriminator 1
+ 532 0100 1846     		mov	r0, r3
+ 533 0102 3437     		adds	r7, r7, #52
+ 534              	.LCFI13:
+ 535              		.cfi_def_cfa_offset 12
+ 536 0104 BD46     		mov	sp, r7
+ 537              	.LCFI14:
+ 538              		.cfi_def_cfa_register 13
+ 539              		@ sp needed
+ 540 0106 90BD     		pop	{r4, r7, pc}
+ 541              		.cfi_endproc
+ 542              	.LFE14:
+ 544              		.section	.text.__socket_free,"ax",%progbits
+ 545              		.align	1
+ 546              		.syntax unified
+ 547              		.thumb
+ 548              		.thumb_func
+ 549              		.fpu fpv4-sp-d16
+ 551              	__socket_free:
+ 552              	.LFB15:
+ 290:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 291:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** static void __socket_free(con_net_conext_t  *context)
+ 292:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 16
+
+
+ 553              		.loc 1 292 0
+ 554              		.cfi_startproc
+ 555              		@ args = 0, pretend = 0, frame = 8
+ 556              		@ frame_needed = 1, uses_anonymous_args = 0
+ 557 0000 80B5     		push	{r7, lr}
+ 558              	.LCFI15:
+ 559              		.cfi_def_cfa_offset 8
+ 560              		.cfi_offset 7, -8
+ 561              		.cfi_offset 14, -4
+ 562 0002 82B0     		sub	sp, sp, #8
+ 563              	.LCFI16:
+ 564              		.cfi_def_cfa_offset 16
+ 565 0004 00AF     		add	r7, sp, #0
+ 566              	.LCFI17:
+ 567              		.cfi_def_cfa_register 7
+ 568 0006 7860     		str	r0, [r7, #4]
+ 293:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if(NULL != context)
+ 569              		.loc 1 293 0
+ 570 0008 7B68     		ldr	r3, [r7, #4]
+ 571 000a 002B     		cmp	r3, #0
+ 572 000c 07D0     		beq	.L39
+ 294:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 295:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         sal_closesocket(context->fd);
+ 573              		.loc 1 295 0
+ 574 000e 7B68     		ldr	r3, [r7, #4]
+ 575 0010 1B68     		ldr	r3, [r3]
+ 576 0012 1846     		mov	r0, r3
+ 577 0014 FFF7FEFF 		bl	sal_closesocket
+ 296:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 297:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         osal_free(context);
+ 578              		.loc 1 297 0
+ 579 0018 7868     		ldr	r0, [r7, #4]
+ 580 001a FFF7FEFF 		bl	osal_free
+ 581              	.L39:
+ 298:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 299:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 300:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 582              		.loc 1 300 0
+ 583 001e 00BF     		nop
+ 584 0020 0837     		adds	r7, r7, #8
+ 585              	.LCFI18:
+ 586              		.cfi_def_cfa_offset 8
+ 587 0022 BD46     		mov	sp, r7
+ 588              	.LCFI19:
+ 589              		.cfi_def_cfa_register 13
+ 590              		@ sp needed
+ 591 0024 80BD     		pop	{r7, pc}
+ 592              		.cfi_endproc
+ 593              	.LFE15:
+ 595              		.section	.text.__socket_recv_timeout,"ax",%progbits
+ 596              		.align	1
+ 597              		.syntax unified
+ 598              		.thumb
+ 599              		.thumb_func
+ 600              		.fpu fpv4-sp-d16
+ 602              	__socket_recv_timeout:
+ 603              	.LFB16:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 17
+
+
+ 301:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #include <time.h>
+ 302:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 303:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** static int __socket_recv_timeout(con_net_conext_t *ctx, unsigned char *buf, size_t len,int timeout)
+ 304:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 604              		.loc 1 304 0
+ 605              		.cfi_startproc
+ 606              		@ args = 0, pretend = 0, frame = 40
+ 607              		@ frame_needed = 1, uses_anonymous_args = 0
+ 608 0000 90B5     		push	{r4, r7, lr}
+ 609              	.LCFI20:
+ 610              		.cfi_def_cfa_offset 12
+ 611              		.cfi_offset 4, -12
+ 612              		.cfi_offset 7, -8
+ 613              		.cfi_offset 14, -4
+ 614 0002 8DB0     		sub	sp, sp, #52
+ 615              	.LCFI21:
+ 616              		.cfi_def_cfa_offset 64
+ 617 0004 02AF     		add	r7, sp, #8
+ 618              	.LCFI22:
+ 619              		.cfi_def_cfa 7, 56
+ 620 0006 F860     		str	r0, [r7, #12]
+ 621 0008 B960     		str	r1, [r7, #8]
+ 622 000a 7A60     		str	r2, [r7, #4]
+ 623 000c 3B60     		str	r3, [r7]
+ 305:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     int fd;
+ 306:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     int ret = -1;
+ 624              		.loc 1 306 0
+ 625 000e 4FF0FF33 		mov	r3, #-1
+ 626 0012 7B62     		str	r3, [r7, #36]
+ 307:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     struct timeval timedelay;
+ 308:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 309:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if(NULL == ctx)
+ 627              		.loc 1 309 0
+ 628 0014 FB68     		ldr	r3, [r7, #12]
+ 629 0016 002B     		cmp	r3, #0
+ 630 0018 01D1     		bne	.L41
+ 310:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 311:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return ret;
+ 631              		.loc 1 311 0
+ 632 001a 7B6A     		ldr	r3, [r7, #36]
+ 633 001c 37E0     		b	.L44
+ 634              	.L41:
+ 312:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 313:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 314:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     fd = ctx->fd;
+ 635              		.loc 1 314 0
+ 636 001e FB68     		ldr	r3, [r7, #12]
+ 637 0020 1B68     		ldr	r3, [r3]
+ 638 0022 3B62     		str	r3, [r7, #32]
+ 315:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 316:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     timedelay.tv_sec = timeout/1000;
+ 639              		.loc 1 316 0
+ 640 0024 3B68     		ldr	r3, [r7]
+ 641 0026 1C4A     		ldr	r2, .L45
+ 642 0028 82FB0312 		smull	r1, r2, r2, r3
+ 643 002c 9211     		asrs	r2, r2, #6
+ 644 002e DB17     		asrs	r3, r3, #31
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 18
+
+
+ 645 0030 D31A     		subs	r3, r2, r3
+ 646 0032 4FEAE374 		asr	r4, r3, #31
+ 647 0036 C7E90434 		strd	r3, [r7, #16]
+ 317:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     timedelay.tv_usec = (timeout%1000)*1000;
+ 648              		.loc 1 317 0
+ 649 003a 3A68     		ldr	r2, [r7]
+ 650 003c 164B     		ldr	r3, .L45
+ 651 003e 83FB0213 		smull	r1, r3, r3, r2
+ 652 0042 9911     		asrs	r1, r3, #6
+ 653 0044 D317     		asrs	r3, r2, #31
+ 654 0046 CB1A     		subs	r3, r1, r3
+ 655 0048 4FF47A71 		mov	r1, #1000
+ 656 004c 01FB03F3 		mul	r3, r1, r3
+ 657 0050 D31A     		subs	r3, r2, r3
+ 658 0052 4FF47A72 		mov	r2, #1000
+ 659 0056 02FB03F3 		mul	r3, r2, r3
+ 660 005a BB61     		str	r3, [r7, #24]
+ 318:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 319:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ///< set the recv timeout
+ 320:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if(0 != sal_setsockopt(fd,SOL_SOCKET,SO_RCVTIMEO,&timedelay,sizeof(timedelay)))
+ 661              		.loc 1 320 0
+ 662 005c 07F11002 		add	r2, r7, #16
+ 663 0060 1023     		movs	r3, #16
+ 664 0062 0093     		str	r3, [sp]
+ 665 0064 1346     		mov	r3, r2
+ 666 0066 41F20602 		movw	r2, #4102
+ 667 006a 4FF6FF71 		movw	r1, #65535
+ 668 006e 386A     		ldr	r0, [r7, #32]
+ 669 0070 FFF7FEFF 		bl	sal_setsockopt
+ 670 0074 0346     		mov	r3, r0
+ 671 0076 002B     		cmp	r3, #0
+ 672 0078 01D0     		beq	.L43
+ 321:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 322:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return ret;  //could not support the rcv timeout
+ 673              		.loc 1 322 0
+ 674 007a 7B6A     		ldr	r3, [r7, #36]
+ 675 007c 07E0     		b	.L44
+ 676              	.L43:
+ 323:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 324:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 325:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ret = sal_recv(fd,buf,len,0);
+ 677              		.loc 1 325 0
+ 678 007e 0023     		movs	r3, #0
+ 679 0080 7A68     		ldr	r2, [r7, #4]
+ 680 0082 B968     		ldr	r1, [r7, #8]
+ 681 0084 386A     		ldr	r0, [r7, #32]
+ 682 0086 FFF7FEFF 		bl	sal_recv
+ 683 008a 7862     		str	r0, [r7, #36]
+ 326:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 327:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return ret;
+ 684              		.loc 1 327 0
+ 685 008c 7B6A     		ldr	r3, [r7, #36]
+ 686              	.L44:
+ 328:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 687              		.loc 1 328 0 discriminator 1
+ 688 008e 1846     		mov	r0, r3
+ 689 0090 2C37     		adds	r7, r7, #44
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 19
+
+
+ 690              	.LCFI23:
+ 691              		.cfi_def_cfa_offset 12
+ 692 0092 BD46     		mov	sp, r7
+ 693              	.LCFI24:
+ 694              		.cfi_def_cfa_register 13
+ 695              		@ sp needed
+ 696 0094 90BD     		pop	{r4, r7, pc}
+ 697              	.L46:
+ 698 0096 00BF     		.align	2
+ 699              	.L45:
+ 700 0098 D34D6210 		.word	274877907
+ 701              		.cfi_endproc
+ 702              	.LFE16:
+ 704              		.section	.text.__socket_send,"ax",%progbits
+ 705              		.align	1
+ 706              		.syntax unified
+ 707              		.thumb
+ 708              		.thumb_func
+ 709              		.fpu fpv4-sp-d16
+ 711              	__socket_send:
+ 712              	.LFB17:
+ 329:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 330:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** static int __socket_send(con_net_conext_t *ctx, const unsigned char *buf, size_t len)
+ 331:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 713              		.loc 1 331 0
+ 714              		.cfi_startproc
+ 715              		@ args = 0, pretend = 0, frame = 24
+ 716              		@ frame_needed = 1, uses_anonymous_args = 0
+ 717 0000 80B5     		push	{r7, lr}
+ 718              	.LCFI25:
+ 719              		.cfi_def_cfa_offset 8
+ 720              		.cfi_offset 7, -8
+ 721              		.cfi_offset 14, -4
+ 722 0002 86B0     		sub	sp, sp, #24
+ 723              	.LCFI26:
+ 724              		.cfi_def_cfa_offset 32
+ 725 0004 00AF     		add	r7, sp, #0
+ 726              	.LCFI27:
+ 727              		.cfi_def_cfa_register 7
+ 728 0006 F860     		str	r0, [r7, #12]
+ 729 0008 B960     		str	r1, [r7, #8]
+ 730 000a 7A60     		str	r2, [r7, #4]
+ 332:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     int fd;
+ 333:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     int ret = -1;
+ 731              		.loc 1 333 0
+ 732 000c 4FF0FF33 		mov	r3, #-1
+ 733 0010 7B61     		str	r3, [r7, #20]
+ 334:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 335:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if(NULL == ctx)
+ 734              		.loc 1 335 0
+ 735 0012 FB68     		ldr	r3, [r7, #12]
+ 736 0014 002B     		cmp	r3, #0
+ 737 0016 01D1     		bne	.L48
+ 336:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 337:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return ret;
+ 738              		.loc 1 337 0
+ 739 0018 7B69     		ldr	r3, [r7, #20]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 20
+
+
+ 740 001a 0AE0     		b	.L49
+ 741              	.L48:
+ 338:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 339:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 340:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     fd = ctx->fd;
+ 742              		.loc 1 340 0
+ 743 001c FB68     		ldr	r3, [r7, #12]
+ 744 001e 1B68     		ldr	r3, [r3]
+ 745 0020 3B61     		str	r3, [r7, #16]
+ 341:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 342:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ret = sal_send(fd,buf,len,0);
+ 746              		.loc 1 342 0
+ 747 0022 0023     		movs	r3, #0
+ 748 0024 7A68     		ldr	r2, [r7, #4]
+ 749 0026 B968     		ldr	r1, [r7, #8]
+ 750 0028 3869     		ldr	r0, [r7, #16]
+ 751 002a FFF7FEFF 		bl	sal_send
+ 752 002e 7861     		str	r0, [r7, #20]
+ 343:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 344:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return ret;
+ 753              		.loc 1 344 0
+ 754 0030 7B69     		ldr	r3, [r7, #20]
+ 755              	.L49:
+ 345:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 756              		.loc 1 345 0
+ 757 0032 1846     		mov	r0, r3
+ 758 0034 1837     		adds	r7, r7, #24
+ 759              	.LCFI28:
+ 760              		.cfi_def_cfa_offset 8
+ 761 0036 BD46     		mov	sp, r7
+ 762              	.LCFI29:
+ 763              		.cfi_def_cfa_register 13
+ 764              		@ sp needed
+ 765 0038 80BD     		pop	{r7, pc}
+ 766              		.cfi_endproc
+ 767              	.LFE17:
+ 769              		.section	.rodata
+ 770              		.align	2
+ 771              	.LC7:
+ 772 0088 5B25735D 		.ascii	"[%s][%u][%s:%d] now come into connection_create!!!\015"
+ 772      5B25755D 
+ 772      5B25733A 
+ 772      25645D20 
+ 772      6E6F7720 
+ 773 00bb 0A00     		.ascii	"\012\000"
+ 774 00bd 000000   		.align	2
+ 775              	.LC8:
+ 776 00c0 5B25735D 		.ascii	"[%s][%u][%s:%d] atiny_strdup null!!!\015\012\000"
+ 776      5B25755D 
+ 776      5B25733A 
+ 776      25645D20 
+ 776      6174696E 
+ 777 00e7 00       		.align	2
+ 778              	.LC9:
+ 779 00e8 5B25735D 		.ascii	"[%s][%u][%s:%d] connP is NULL!!!\015\012\000"
+ 779      5B25755D 
+ 779      5B25733A 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 21
+
+
+ 779      25645D20 
+ 779      636F6E6E 
+ 780 010b 00       		.align	2
+ 781              	.LC10:
+ 782 010c 5B25735D 		.ascii	"[%s][%u][%s:%d] net_context is NULL in connection_c"
+ 782      5B25755D 
+ 782      5B25733A 
+ 782      25645D20 
+ 782      6E65745F 
+ 783 013f 72656174 		.ascii	"reate\015\012\000"
+ 783      650D0A00 
+ 784              		.section	.text.connection_create,"ax",%progbits
+ 785              		.align	1
+ 786              		.global	connection_create
+ 787              		.syntax unified
+ 788              		.thumb
+ 789              		.thumb_func
+ 790              		.fpu fpv4-sp-d16
+ 792              	connection_create:
+ 793              	.LFB18:
+ 346:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 347:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 348:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** connection_t *connection_create(connection_t *connList,
+ 349:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                                 lwm2m_object_t *securityObj,
+ 350:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                                 int instanceId,
+ 351:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                                 lwm2m_context_t *lwm2mH,
+ 352:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                                 int client_or_server)
+ 353:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 794              		.loc 1 353 0
+ 795              		.cfi_startproc
+ 796              		@ args = 4, pretend = 0, frame = 40
+ 797              		@ frame_needed = 1, uses_anonymous_args = 0
+ 798 0000 B0B5     		push	{r4, r5, r7, lr}
+ 799              	.LCFI30:
+ 800              		.cfi_def_cfa_offset 16
+ 801              		.cfi_offset 4, -16
+ 802              		.cfi_offset 5, -12
+ 803              		.cfi_offset 7, -8
+ 804              		.cfi_offset 14, -4
+ 805 0002 8CB0     		sub	sp, sp, #48
+ 806              	.LCFI31:
+ 807              		.cfi_def_cfa_offset 64
+ 808 0004 02AF     		add	r7, sp, #8
+ 809              	.LCFI32:
+ 810              		.cfi_def_cfa 7, 56
+ 811 0006 F860     		str	r0, [r7, #12]
+ 812 0008 B960     		str	r1, [r7, #8]
+ 813 000a 7A60     		str	r2, [r7, #4]
+ 814 000c 3B60     		str	r3, [r7]
+ 354:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connection_t *connP = NULL;
+ 815              		.loc 1 354 0
+ 816 000e 0023     		movs	r3, #0
+ 817 0010 7B62     		str	r3, [r7, #36]
+ 355:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     char *host;
+ 356:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     char *port;
+ 357:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     security_instance_t *targetP;
+ 358:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     char *uri = NULL;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 22
+
+
+ 818              		.loc 1 358 0
+ 819 0012 0023     		movs	r3, #0
+ 820 0014 3B62     		str	r3, [r7, #32]
+ 359:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connection_t * ret = NULL;
+ 821              		.loc 1 359 0
+ 822 0016 0023     		movs	r3, #0
+ 823 0018 FB61     		str	r3, [r7, #28]
+ 360:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 361:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ATINY_LOG(LOG_INFO, "now come into connection_create!!!");
+ 824              		.loc 1 361 0
+ 825 001a FFF7FEFF 		bl	atiny_get_log_level
+ 826 001e 0346     		mov	r3, r0
+ 827 0020 012B     		cmp	r3, #1
+ 828 0022 10D8     		bhi	.L51
+ 829              		.loc 1 361 0 is_stmt 0 discriminator 1
+ 830 0024 0120     		movs	r0, #1
+ 831 0026 FFF7FEFF 		bl	atiny_get_log_level_name
+ 832 002a 0546     		mov	r5, r0
+ 833 002c FFF7FEFF 		bl	osal_sys_time
+ 834 0030 0346     		mov	r3, r0
+ 835 0032 0C46     		mov	r4, r1
+ 836 0034 1A46     		mov	r2, r3
+ 837 0036 40F26913 		movw	r3, #361
+ 838 003a 0093     		str	r3, [sp]
+ 839 003c 634B     		ldr	r3, .L72
+ 840 003e 2946     		mov	r1, r5
+ 841 0040 6348     		ldr	r0, .L72+4
+ 842 0042 FFF7FEFF 		bl	atiny_printf
+ 843              	.L51:
+ 362:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 363:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     targetP = (security_instance_t *)LWM2M_LIST_FIND(securityObj->instanceList, instanceId);
+ 844              		.loc 1 363 0 is_stmt 1
+ 845 0046 BB68     		ldr	r3, [r7, #8]
+ 846 0048 9B68     		ldr	r3, [r3, #8]
+ 847 004a 7A68     		ldr	r2, [r7, #4]
+ 848 004c 92B2     		uxth	r2, r2
+ 849 004e 1146     		mov	r1, r2
+ 850 0050 1846     		mov	r0, r3
+ 851 0052 FFF7FEFF 		bl	lwm2m_list_find
+ 852 0056 B861     		str	r0, [r7, #24]
+ 364:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (NULL == targetP || targetP->uri == NULL)
+ 853              		.loc 1 364 0
+ 854 0058 BB69     		ldr	r3, [r7, #24]
+ 855 005a 002B     		cmp	r3, #0
+ 856 005c 03D0     		beq	.L52
+ 857              		.loc 1 364 0 is_stmt 0 discriminator 1
+ 858 005e BB69     		ldr	r3, [r7, #24]
+ 859 0060 9B68     		ldr	r3, [r3, #8]
+ 860 0062 002B     		cmp	r3, #0
+ 861 0064 01D1     		bne	.L53
+ 862              	.L52:
+ 365:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 366:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return NULL;
+ 863              		.loc 1 366 0 is_stmt 1
+ 864 0066 0023     		movs	r3, #0
+ 865 0068 ACE0     		b	.L68
+ 866              	.L53:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 23
+
+
+ 367:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 368:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 369:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 370:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (LWM2M_IS_CLIENT == client_or_server)
+ 867              		.loc 1 370 0
+ 868 006a BB6B     		ldr	r3, [r7, #56]
+ 869 006c 002B     		cmp	r3, #0
+ 870 006e 2CD1     		bne	.L55
+ 371:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 372:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         uri = osal_strdup(targetP->uri);
+ 871              		.loc 1 372 0
+ 872 0070 BB69     		ldr	r3, [r7, #24]
+ 873 0072 9B68     		ldr	r3, [r3, #8]
+ 874 0074 1846     		mov	r0, r3
+ 875 0076 FFF7FEFF 		bl	osal_strdup
+ 876 007a 3862     		str	r0, [r7, #32]
+ 373:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if (uri == NULL)
+ 877              		.loc 1 373 0
+ 878 007c 3B6A     		ldr	r3, [r7, #32]
+ 879 007e 002B     		cmp	r3, #0
+ 880 0080 17D1     		bne	.L56
+ 374:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 375:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             ATINY_LOG(LOG_INFO, "atiny_strdup null!!!");
+ 881              		.loc 1 375 0
+ 882 0082 FFF7FEFF 		bl	atiny_get_log_level
+ 883 0086 0346     		mov	r3, r0
+ 884 0088 012B     		cmp	r3, #1
+ 885 008a 00F28680 		bhi	.L69
+ 886              		.loc 1 375 0 is_stmt 0 discriminator 1
+ 887 008e 0120     		movs	r0, #1
+ 888 0090 FFF7FEFF 		bl	atiny_get_log_level_name
+ 889 0094 0546     		mov	r5, r0
+ 890 0096 FFF7FEFF 		bl	osal_sys_time
+ 891 009a 0346     		mov	r3, r0
+ 892 009c 0C46     		mov	r4, r1
+ 893 009e 1A46     		mov	r2, r3
+ 894 00a0 40F27713 		movw	r3, #375
+ 895 00a4 0093     		str	r3, [sp]
+ 896 00a6 494B     		ldr	r3, .L72
+ 897 00a8 2946     		mov	r1, r5
+ 898 00aa 4A48     		ldr	r0, .L72+8
+ 899 00ac FFF7FEFF 		bl	atiny_printf
+ 376:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             goto fail;
+ 900              		.loc 1 376 0 is_stmt 1 discriminator 1
+ 901 00b0 73E0     		b	.L69
+ 902              	.L56:
+ 377:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 378:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if (connection_parse_host_ip(uri, &host, &port) != COAP_NO_ERROR)
+ 903              		.loc 1 378 0
+ 904 00b2 07F11002 		add	r2, r7, #16
+ 905 00b6 07F11403 		add	r3, r7, #20
+ 906 00ba 1946     		mov	r1, r3
+ 907 00bc 386A     		ldr	r0, [r7, #32]
+ 908 00be FFF7FEFF 		bl	connection_parse_host_ip
+ 909 00c2 0346     		mov	r3, r0
+ 910 00c4 002B     		cmp	r3, #0
+ 911 00c6 0AD0     		beq	.L59
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 24
+
+
+ 379:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 380:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             goto fail;
+ 912              		.loc 1 380 0
+ 913 00c8 6CE0     		b	.L58
+ 914              	.L55:
+ 381:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 382:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 383:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 384:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 385:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         host = NULL;
+ 915              		.loc 1 385 0
+ 916 00ca 0023     		movs	r3, #0
+ 917 00cc 7B61     		str	r3, [r7, #20]
+ 386:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         port = (char *)((targetP->securityMode != LWM2M_SECURITY_MODE_NONE) ? COAPS_PORT : COAP_POR
+ 918              		.loc 1 386 0
+ 919 00ce BB69     		ldr	r3, [r7, #24]
+ 920 00d0 5B7B     		ldrb	r3, [r3, #13]	@ zero_extendqisi2
+ 921 00d2 032B     		cmp	r3, #3
+ 922 00d4 01D0     		beq	.L60
+ 923              		.loc 1 386 0 is_stmt 0 discriminator 1
+ 924 00d6 404B     		ldr	r3, .L72+12
+ 925 00d8 00E0     		b	.L61
+ 926              	.L60:
+ 927              		.loc 1 386 0 discriminator 2
+ 928 00da 404B     		ldr	r3, .L72+16
+ 929              	.L61:
+ 930              		.loc 1 386 0 discriminator 4
+ 931 00dc 3B61     		str	r3, [r7, #16]
+ 932              	.L59:
+ 387:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 388:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 389:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connP = (connection_t *)lwm2m_malloc(sizeof(connection_t));
+ 933              		.loc 1 389 0 is_stmt 1
+ 934 00de 1C20     		movs	r0, #28
+ 935 00e0 FFF7FEFF 		bl	lwm2m_malloc
+ 936 00e4 7862     		str	r0, [r7, #36]
+ 390:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (connP == NULL)
+ 937              		.loc 1 390 0
+ 938 00e6 7B6A     		ldr	r3, [r7, #36]
+ 939 00e8 002B     		cmp	r3, #0
+ 940 00ea 16D1     		bne	.L62
+ 391:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 392:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ATINY_LOG(LOG_INFO, "connP is NULL!!!");
+ 941              		.loc 1 392 0
+ 942 00ec FFF7FEFF 		bl	atiny_get_log_level
+ 943 00f0 0346     		mov	r3, r0
+ 944 00f2 012B     		cmp	r3, #1
+ 945 00f4 53D8     		bhi	.L70
+ 946              		.loc 1 392 0 is_stmt 0 discriminator 1
+ 947 00f6 0120     		movs	r0, #1
+ 948 00f8 FFF7FEFF 		bl	atiny_get_log_level_name
+ 949 00fc 0546     		mov	r5, r0
+ 950 00fe FFF7FEFF 		bl	osal_sys_time
+ 951 0102 0346     		mov	r3, r0
+ 952 0104 0C46     		mov	r4, r1
+ 953 0106 1A46     		mov	r2, r3
+ 954 0108 4FF4C473 		mov	r3, #392
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 25
+
+
+ 955 010c 0093     		str	r3, [sp]
+ 956 010e 2F4B     		ldr	r3, .L72
+ 957 0110 2946     		mov	r1, r5
+ 958 0112 3348     		ldr	r0, .L72+20
+ 959 0114 FFF7FEFF 		bl	atiny_printf
+ 393:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****          goto fail;
+ 960              		.loc 1 393 0 is_stmt 1 discriminator 1
+ 961 0118 41E0     		b	.L70
+ 962              	.L62:
+ 394:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 395:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 396:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     memset(connP, 0, sizeof(connection_t));
+ 963              		.loc 1 396 0
+ 964 011a 1C22     		movs	r2, #28
+ 965 011c 0021     		movs	r1, #0
+ 966 011e 786A     		ldr	r0, [r7, #36]
+ 967 0120 FFF7FEFF 		bl	memset
+ 397:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 398:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef WITH_DTLS
+ 399:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 400:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (targetP->securityMode != LWM2M_SECURITY_MODE_NONE)
+ 401:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 402:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if (connection_connect_dtls(connP, targetP, host, port, client_or_server) != COAP_NO_ERROR)
+ 403:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 404:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             goto fail;
+ 405:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 406:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 407:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 408:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 409:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 410:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         // no dtls session
+ 411:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         connP->net_context = __socket_connect(host, port,client_or_server);
+ 968              		.loc 1 411 0
+ 969 0124 7B69     		ldr	r3, [r7, #20]
+ 970 0126 3969     		ldr	r1, [r7, #16]
+ 971 0128 BA6B     		ldr	r2, [r7, #56]
+ 972 012a 1846     		mov	r0, r3
+ 973 012c FFF7FEFF 		bl	__socket_connect
+ 974 0130 0246     		mov	r2, r0
+ 975 0132 7B6A     		ldr	r3, [r7, #36]
+ 976 0134 5A60     		str	r2, [r3, #4]
+ 412:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if(LWM2M_IS_SERVER   == client_or_server)
+ 413:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 414:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             #ifdef LWM2M_BOOTSTRAP
+ 415:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             if (connP->net_context)
+ 416:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             {
+ 417:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                 connection_striger_server_initiated_bs(connP);
+ 418:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                 timer_init(&connP->server_triger_timer, LWM2M_TRIGER_SERVER_MODE_INITIATED_TIME, (v
+ 419:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                 timer_start(&connP->server_triger_timer);
+ 420:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             }
+ 421:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             #endif
+ 422:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 423:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 424:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if (NULL == connP->net_context)
+ 977              		.loc 1 424 0
+ 978 0136 7B6A     		ldr	r3, [r7, #36]
+ 979 0138 5B68     		ldr	r3, [r3, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 26
+
+
+ 980 013a 002B     		cmp	r3, #0
+ 981 013c 16D1     		bne	.L64
+ 425:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 426:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             ATINY_LOG(LOG_INFO, "net_context is NULL in connection_create");
+ 982              		.loc 1 426 0
+ 983 013e FFF7FEFF 		bl	atiny_get_log_level
+ 984 0142 0346     		mov	r3, r0
+ 985 0144 012B     		cmp	r3, #1
+ 986 0146 2CD8     		bhi	.L71
+ 987              		.loc 1 426 0 is_stmt 0 discriminator 1
+ 988 0148 0120     		movs	r0, #1
+ 989 014a FFF7FEFF 		bl	atiny_get_log_level_name
+ 990 014e 0546     		mov	r5, r0
+ 991 0150 FFF7FEFF 		bl	osal_sys_time
+ 992 0154 0346     		mov	r3, r0
+ 993 0156 0C46     		mov	r4, r1
+ 994 0158 1A46     		mov	r2, r3
+ 995 015a 4FF4D573 		mov	r3, #426
+ 996 015e 0093     		str	r3, [sp]
+ 997 0160 1A4B     		ldr	r3, .L72
+ 998 0162 2946     		mov	r1, r5
+ 999 0164 1F48     		ldr	r0, .L72+24
+ 1000 0166 FFF7FEFF 		bl	atiny_printf
+ 427:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             goto fail;
+ 1001              		.loc 1 427 0 is_stmt 1 discriminator 1
+ 1002 016a 1AE0     		b	.L71
+ 1003              	.L64:
+ 428:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 429:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         connP->dtls_flag = false;
+ 1004              		.loc 1 429 0
+ 1005 016c 7B6A     		ldr	r3, [r7, #36]
+ 1006 016e 0022     		movs	r2, #0
+ 1007 0170 1A82     		strh	r2, [r3, #16]	@ movhi
+ 430:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 431:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 432:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connP->next = connList;
+ 1008              		.loc 1 432 0
+ 1009 0172 7B6A     		ldr	r3, [r7, #36]
+ 1010 0174 FA68     		ldr	r2, [r7, #12]
+ 1011 0176 1A60     		str	r2, [r3]
+ 433:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connP->securityObj = securityObj;
+ 1012              		.loc 1 433 0
+ 1013 0178 7B6A     		ldr	r3, [r7, #36]
+ 1014 017a BA68     		ldr	r2, [r7, #8]
+ 1015 017c 9A60     		str	r2, [r3, #8]
+ 434:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connP->securityInstId = instanceId;
+ 1016              		.loc 1 434 0
+ 1017 017e 7B6A     		ldr	r3, [r7, #36]
+ 1018 0180 7A68     		ldr	r2, [r7, #4]
+ 1019 0182 DA60     		str	r2, [r3, #12]
+ 435:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connP->lwm2mH = lwm2mH;
+ 1020              		.loc 1 435 0
+ 1021 0184 7B6A     		ldr	r3, [r7, #36]
+ 1022 0186 3A68     		ldr	r2, [r7]
+ 1023 0188 5A61     		str	r2, [r3, #20]
+ 436:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connP->bootstrap_flag = targetP->isBootstrap;
+ 1024              		.loc 1 436 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 27
+
+
+ 1025 018a BB69     		ldr	r3, [r7, #24]
+ 1026 018c 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 1027 018e 9AB2     		uxth	r2, r3
+ 1028 0190 7B6A     		ldr	r3, [r7, #36]
+ 1029 0192 5A82     		strh	r2, [r3, #18]	@ movhi
+ 437:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 438:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ret = connP;
+ 1030              		.loc 1 438 0
+ 1031 0194 7B6A     		ldr	r3, [r7, #36]
+ 1032 0196 FB61     		str	r3, [r7, #28]
+ 1033 0198 04E0     		b	.L58
+ 1034              	.L69:
+ 376:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 1035              		.loc 1 376 0
+ 1036 019a 00BF     		nop
+ 1037 019c 02E0     		b	.L58
+ 1038              	.L70:
+ 393:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 1039              		.loc 1 393 0
+ 1040 019e 00BF     		nop
+ 1041 01a0 00E0     		b	.L58
+ 1042              	.L71:
+ 427:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 1043              		.loc 1 427 0
+ 1044 01a2 00BF     		nop
+ 1045              	.L58:
+ 439:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** fail:
+ 440:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (uri)
+ 1046              		.loc 1 440 0
+ 1047 01a4 3B6A     		ldr	r3, [r7, #32]
+ 1048 01a6 002B     		cmp	r3, #0
+ 1049 01a8 02D0     		beq	.L66
+ 441:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 442:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         lwm2m_free(uri);
+ 1050              		.loc 1 442 0
+ 1051 01aa 386A     		ldr	r0, [r7, #32]
+ 1052 01ac FFF7FEFF 		bl	lwm2m_free
+ 1053              	.L66:
+ 443:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 444:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (ret == NULL && connP)
+ 1054              		.loc 1 444 0
+ 1055 01b0 FB69     		ldr	r3, [r7, #28]
+ 1056 01b2 002B     		cmp	r3, #0
+ 1057 01b4 05D1     		bne	.L67
+ 1058              		.loc 1 444 0 is_stmt 0 discriminator 1
+ 1059 01b6 7B6A     		ldr	r3, [r7, #36]
+ 1060 01b8 002B     		cmp	r3, #0
+ 1061 01ba 02D0     		beq	.L67
+ 445:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 446:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         lwm2m_free(connP);
+ 1062              		.loc 1 446 0 is_stmt 1
+ 1063 01bc 786A     		ldr	r0, [r7, #36]
+ 1064 01be FFF7FEFF 		bl	lwm2m_free
+ 1065              	.L67:
+ 447:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 448:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 449:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return ret;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 28
+
+
+ 1066              		.loc 1 449 0
+ 1067 01c2 FB69     		ldr	r3, [r7, #28]
+ 1068              	.L68:
+ 450:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 1069              		.loc 1 450 0 discriminator 1
+ 1070 01c4 1846     		mov	r0, r3
+ 1071 01c6 2837     		adds	r7, r7, #40
+ 1072              	.LCFI33:
+ 1073              		.cfi_def_cfa_offset 16
+ 1074 01c8 BD46     		mov	sp, r7
+ 1075              	.LCFI34:
+ 1076              		.cfi_def_cfa_register 13
+ 1077              		@ sp needed
+ 1078 01ca B0BD     		pop	{r4, r5, r7, pc}
+ 1079              	.L73:
+ 1080              		.align	2
+ 1081              	.L72:
+ 1082 01cc 00000000 		.word	__FUNCTION__.8996
+ 1083 01d0 88000000 		.word	.LC7
+ 1084 01d4 C0000000 		.word	.LC8
+ 1085 01d8 30000000 		.word	.LC2
+ 1086 01dc 40000000 		.word	.LC4
+ 1087 01e0 E8000000 		.word	.LC9
+ 1088 01e4 0C010000 		.word	.LC10
+ 1089              		.cfi_endproc
+ 1090              	.LFE18:
+ 1092              		.section	.text.connection_free,"ax",%progbits
+ 1093              		.align	1
+ 1094              		.global	connection_free
+ 1095              		.syntax unified
+ 1096              		.thumb
+ 1097              		.thumb_func
+ 1098              		.fpu fpv4-sp-d16
+ 1100              	connection_free:
+ 1101              	.LFB19:
+ 451:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 452:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** void connection_free(connection_t *connP)
+ 453:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 1102              		.loc 1 453 0
+ 1103              		.cfi_startproc
+ 1104              		@ args = 0, pretend = 0, frame = 8
+ 1105              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1106 0000 80B5     		push	{r7, lr}
+ 1107              	.LCFI35:
+ 1108              		.cfi_def_cfa_offset 8
+ 1109              		.cfi_offset 7, -8
+ 1110              		.cfi_offset 14, -4
+ 1111 0002 82B0     		sub	sp, sp, #8
+ 1112              	.LCFI36:
+ 1113              		.cfi_def_cfa_offset 16
+ 1114 0004 00AF     		add	r7, sp, #0
+ 1115              	.LCFI37:
+ 1116              		.cfi_def_cfa_register 7
+ 1117 0006 7860     		str	r0, [r7, #4]
+ 454:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if(connP == NULL)
+ 1118              		.loc 1 454 0
+ 1119 0008 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 29
+
+
+ 1120 000a 002B     		cmp	r3, #0
+ 1121 000c 06D0     		beq	.L77
+ 455:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 456:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return;
+ 457:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 458:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef WITH_DTLS
+ 459:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 460:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (connP->dtls_flag == true)
+ 461:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 462:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         dtls_ssl_destroy(connP->net_context);
+ 463:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 464:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 465:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 466:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 467:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         __socket_free(connP->net_context);
+ 1122              		.loc 1 467 0
+ 1123 000e 7B68     		ldr	r3, [r7, #4]
+ 1124 0010 5B68     		ldr	r3, [r3, #4]
+ 1125 0012 1846     		mov	r0, r3
+ 1126 0014 FFF7FEFF 		bl	__socket_free
+ 468:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 469:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 470:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return;
+ 1127              		.loc 1 470 0
+ 1128 0018 00BF     		nop
+ 1129 001a 00E0     		b	.L74
+ 1130              	.L77:
+ 456:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 1131              		.loc 1 456 0
+ 1132 001c 00BF     		nop
+ 1133              	.L74:
+ 471:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 1134              		.loc 1 471 0
+ 1135 001e 0837     		adds	r7, r7, #8
+ 1136              	.LCFI38:
+ 1137              		.cfi_def_cfa_offset 8
+ 1138 0020 BD46     		mov	sp, r7
+ 1139              	.LCFI39:
+ 1140              		.cfi_def_cfa_register 13
+ 1141              		@ sp needed
+ 1142 0022 80BD     		pop	{r7, pc}
+ 1143              		.cfi_endproc
+ 1144              	.LFE19:
+ 1146              		.section	.rodata
+ 1147 0147 00       		.align	2
+ 1148              	.LC11:
+ 1149 0148 5B25735D 		.ascii	"[%s][%u][%s:%d] Now come into Connection creation i"
+ 1149      5B25755D 
+ 1149      5B25733A 
+ 1149      25645D20 
+ 1149      4E6F7720 
+ 1150 017b 6E206C77 		.ascii	"n lwm2m_connect_server %d.\012\015\012\000"
+ 1150      6D326D5F 
+ 1150      636F6E6E 
+ 1150      6563745F 
+ 1150      73657276 
+ 1151 0199 000000   		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 30
+
+
+ 1152              	.LC12:
+ 1153 019c 5B25735D 		.ascii	"[%s][%u][%s:%d] Connection creation failed.\012\015"
+ 1153      5B25755D 
+ 1153      5B25733A 
+ 1153      25645D20 
+ 1153      436F6E6E 
+ 1154 01c9 0A00     		.ascii	"\012\000"
+ 1155 01cb 00       		.align	2
+ 1156              	.LC13:
+ 1157 01cc 5B25735D 		.ascii	"[%s][%u][%s:%d] Connection creation successfully in"
+ 1157      5B25755D 
+ 1157      5B25733A 
+ 1157      25645D20 
+ 1157      436F6E6E 
+ 1158 01ff 206C776D 		.ascii	" lwm2m_connect_server.\012\015\012\000"
+ 1158      326D5F63 
+ 1158      6F6E6E65 
+ 1158      63745F73 
+ 1158      65727665 
+ 1159              		.section	.text.lwm2m_connect_server,"ax",%progbits
+ 1160              		.align	1
+ 1161              		.global	lwm2m_connect_server
+ 1162              		.syntax unified
+ 1163              		.thumb
+ 1164              		.thumb_func
+ 1165              		.fpu fpv4-sp-d16
+ 1167              	lwm2m_connect_server:
+ 1168              	.LFB20:
+ 472:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 473:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 474:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** void *lwm2m_connect_server(uint16_t secObjInstID, void *userData, bool isServer)
+ 475:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 1169              		.loc 1 475 0
+ 1170              		.cfi_startproc
+ 1171              		@ args = 0, pretend = 0, frame = 24
+ 1172              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1173 0000 B0B5     		push	{r4, r5, r7, lr}
+ 1174              	.LCFI40:
+ 1175              		.cfi_def_cfa_offset 16
+ 1176              		.cfi_offset 4, -16
+ 1177              		.cfi_offset 5, -12
+ 1178              		.cfi_offset 7, -8
+ 1179              		.cfi_offset 14, -4
+ 1180 0002 88B0     		sub	sp, sp, #32
+ 1181              	.LCFI41:
+ 1182              		.cfi_def_cfa_offset 48
+ 1183 0004 02AF     		add	r7, sp, #8
+ 1184              	.LCFI42:
+ 1185              		.cfi_def_cfa 7, 40
+ 1186 0006 0346     		mov	r3, r0
+ 1187 0008 3960     		str	r1, [r7]
+ 1188 000a FB80     		strh	r3, [r7, #6]	@ movhi
+ 1189 000c 1346     		mov	r3, r2
+ 1190 000e 7B71     		strb	r3, [r7, #5]
+ 476:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     client_data_t *dataP;
+ 477:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     lwm2m_list_t *instance;
+ 478:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connection_t *newConnP = NULL;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 31
+
+
+ 1191              		.loc 1 478 0
+ 1192 0010 0023     		movs	r3, #0
+ 1193 0012 7B61     		str	r3, [r7, #20]
+ 479:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     lwm2m_object_t   *securityObj;
+ 480:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 481:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     dataP = (client_data_t *)userData;
+ 1194              		.loc 1 481 0
+ 1195 0014 3B68     		ldr	r3, [r7]
+ 1196 0016 3B61     		str	r3, [r7, #16]
+ 482:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     securityObj = dataP->securityObjP;
+ 1197              		.loc 1 482 0
+ 1198 0018 3B69     		ldr	r3, [r7, #16]
+ 1199 001a 1B68     		ldr	r3, [r3]
+ 1200 001c FB60     		str	r3, [r7, #12]
+ 483:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 484:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ATINY_LOG(LOG_INFO, "Now come into Connection creation in lwm2m_connect_server %d.\n", isServer
+ 1201              		.loc 1 484 0
+ 1202 001e FFF7FEFF 		bl	atiny_get_log_level
+ 1203 0022 0346     		mov	r3, r0
+ 1204 0024 012B     		cmp	r3, #1
+ 1205 0026 12D8     		bhi	.L79
+ 1206              		.loc 1 484 0 is_stmt 0 discriminator 1
+ 1207 0028 0120     		movs	r0, #1
+ 1208 002a FFF7FEFF 		bl	atiny_get_log_level_name
+ 1209 002e 0546     		mov	r5, r0
+ 1210 0030 FFF7FEFF 		bl	osal_sys_time
+ 1211 0034 0346     		mov	r3, r0
+ 1212 0036 0C46     		mov	r4, r1
+ 1213 0038 1A46     		mov	r2, r3
+ 1214 003a 7B79     		ldrb	r3, [r7, #5]	@ zero_extendqisi2
+ 1215 003c 0193     		str	r3, [sp, #4]
+ 1216 003e 4FF4F273 		mov	r3, #484
+ 1217 0042 0093     		str	r3, [sp]
+ 1218 0044 2C4B     		ldr	r3, .L85
+ 1219 0046 2946     		mov	r1, r5
+ 1220 0048 2C48     		ldr	r0, .L85+4
+ 1221 004a FFF7FEFF 		bl	atiny_printf
+ 1222              	.L79:
+ 485:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 486:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     instance = LWM2M_LIST_FIND(dataP->securityObjP->instanceList, secObjInstID);
+ 1223              		.loc 1 486 0 is_stmt 1
+ 1224 004e 3B69     		ldr	r3, [r7, #16]
+ 1225 0050 1B68     		ldr	r3, [r3]
+ 1226 0052 9B68     		ldr	r3, [r3, #8]
+ 1227 0054 FA88     		ldrh	r2, [r7, #6]
+ 1228 0056 1146     		mov	r1, r2
+ 1229 0058 1846     		mov	r0, r3
+ 1230 005a FFF7FEFF 		bl	lwm2m_list_find
+ 1231 005e B860     		str	r0, [r7, #8]
+ 487:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 488:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (instance == NULL)
+ 1232              		.loc 1 488 0
+ 1233 0060 BB68     		ldr	r3, [r7, #8]
+ 1234 0062 002B     		cmp	r3, #0
+ 1235 0064 01D1     		bne	.L80
+ 489:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 490:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return NULL;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 32
+
+
+ 1236              		.loc 1 490 0
+ 1237 0066 0023     		movs	r3, #0
+ 1238 0068 42E0     		b	.L81
+ 1239              	.L80:
+ 491:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 492:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 493:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     newConnP = connection_create(dataP->connList, securityObj, instance->id, dataP->lwm2mH,
+ 1240              		.loc 1 493 0
+ 1241 006a 3B69     		ldr	r3, [r7, #16]
+ 1242 006c 9868     		ldr	r0, [r3, #8]
+ 1243 006e BB68     		ldr	r3, [r7, #8]
+ 1244 0070 9B88     		ldrh	r3, [r3, #4]
+ 1245 0072 1946     		mov	r1, r3
+ 1246 0074 3B69     		ldr	r3, [r7, #16]
+ 1247 0076 DB68     		ldr	r3, [r3, #12]
+ 1248 0078 7A79     		ldrb	r2, [r7, #5]	@ zero_extendqisi2
+ 1249 007a 0092     		str	r2, [sp]
+ 1250 007c 0A46     		mov	r2, r1
+ 1251 007e F968     		ldr	r1, [r7, #12]
+ 1252 0080 FFF7FEFF 		bl	connection_create
+ 1253 0084 7861     		str	r0, [r7, #20]
+ 494:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                                 isServer ? LWM2M_IS_SERVER : LWM2M_IS_CLIENT);
+ 495:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 496:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (newConnP == NULL)
+ 1254              		.loc 1 496 0
+ 1255 0086 7B69     		ldr	r3, [r7, #20]
+ 1256 0088 002B     		cmp	r3, #0
+ 1257 008a 17D1     		bne	.L82
+ 497:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 498:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ATINY_LOG(LOG_INFO, "Connection creation failed.\n");
+ 1258              		.loc 1 498 0
+ 1259 008c FFF7FEFF 		bl	atiny_get_log_level
+ 1260 0090 0346     		mov	r3, r0
+ 1261 0092 012B     		cmp	r3, #1
+ 1262 0094 10D8     		bhi	.L83
+ 1263              		.loc 1 498 0 is_stmt 0 discriminator 1
+ 1264 0096 0120     		movs	r0, #1
+ 1265 0098 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1266 009c 0546     		mov	r5, r0
+ 1267 009e FFF7FEFF 		bl	osal_sys_time
+ 1268 00a2 0346     		mov	r3, r0
+ 1269 00a4 0C46     		mov	r4, r1
+ 1270 00a6 1A46     		mov	r2, r3
+ 1271 00a8 4FF4F973 		mov	r3, #498
+ 1272 00ac 0093     		str	r3, [sp]
+ 1273 00ae 124B     		ldr	r3, .L85
+ 1274 00b0 2946     		mov	r1, r5
+ 1275 00b2 1348     		ldr	r0, .L85+8
+ 1276 00b4 FFF7FEFF 		bl	atiny_printf
+ 1277              	.L83:
+ 499:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return NULL;
+ 1278              		.loc 1 499 0 is_stmt 1
+ 1279 00b8 0023     		movs	r3, #0
+ 1280 00ba 19E0     		b	.L81
+ 1281              	.L82:
+ 500:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 501:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ATINY_LOG(LOG_INFO, "Connection creation successfully in lwm2m_connect_server.\n");
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 33
+
+
+ 1282              		.loc 1 501 0
+ 1283 00bc FFF7FEFF 		bl	atiny_get_log_level
+ 1284 00c0 0346     		mov	r3, r0
+ 1285 00c2 012B     		cmp	r3, #1
+ 1286 00c4 10D8     		bhi	.L84
+ 1287              		.loc 1 501 0 is_stmt 0 discriminator 1
+ 1288 00c6 0120     		movs	r0, #1
+ 1289 00c8 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1290 00cc 0546     		mov	r5, r0
+ 1291 00ce FFF7FEFF 		bl	osal_sys_time
+ 1292 00d2 0346     		mov	r3, r0
+ 1293 00d4 0C46     		mov	r4, r1
+ 1294 00d6 1A46     		mov	r2, r3
+ 1295 00d8 40F2F513 		movw	r3, #501
+ 1296 00dc 0093     		str	r3, [sp]
+ 1297 00de 064B     		ldr	r3, .L85
+ 1298 00e0 2946     		mov	r1, r5
+ 1299 00e2 0848     		ldr	r0, .L85+12
+ 1300 00e4 FFF7FEFF 		bl	atiny_printf
+ 1301              	.L84:
+ 502:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     dataP->connList = newConnP;
+ 1302              		.loc 1 502 0 is_stmt 1
+ 1303 00e8 3B69     		ldr	r3, [r7, #16]
+ 1304 00ea 7A69     		ldr	r2, [r7, #20]
+ 1305 00ec 9A60     		str	r2, [r3, #8]
+ 503:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 504:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return (void *)newConnP;
+ 1306              		.loc 1 504 0
+ 1307 00ee 7B69     		ldr	r3, [r7, #20]
+ 1308              	.L81:
+ 505:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 1309              		.loc 1 505 0
+ 1310 00f0 1846     		mov	r0, r3
+ 1311 00f2 1837     		adds	r7, r7, #24
+ 1312              	.LCFI43:
+ 1313              		.cfi_def_cfa_offset 16
+ 1314 00f4 BD46     		mov	sp, r7
+ 1315              	.LCFI44:
+ 1316              		.cfi_def_cfa_register 13
+ 1317              		@ sp needed
+ 1318 00f6 B0BD     		pop	{r4, r5, r7, pc}
+ 1319              	.L86:
+ 1320              		.align	2
+ 1321              	.L85:
+ 1322 00f8 00000000 		.word	__FUNCTION__.9010
+ 1323 00fc 48010000 		.word	.LC11
+ 1324 0100 9C010000 		.word	.LC12
+ 1325 0104 CC010000 		.word	.LC13
+ 1326              		.cfi_endproc
+ 1327              	.LFE20:
+ 1329              		.section	.text.lwm2m_close_connection,"ax",%progbits
+ 1330              		.align	1
+ 1331              		.global	lwm2m_close_connection
+ 1332              		.syntax unified
+ 1333              		.thumb
+ 1334              		.thumb_func
+ 1335              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 34
+
+
+ 1337              	lwm2m_close_connection:
+ 1338              	.LFB21:
+ 506:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 507:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** void lwm2m_close_connection(void *sessionH, void *userData)
+ 508:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 1339              		.loc 1 508 0
+ 1340              		.cfi_startproc
+ 1341              		@ args = 0, pretend = 0, frame = 24
+ 1342              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1343 0000 80B5     		push	{r7, lr}
+ 1344              	.LCFI45:
+ 1345              		.cfi_def_cfa_offset 8
+ 1346              		.cfi_offset 7, -8
+ 1347              		.cfi_offset 14, -4
+ 1348 0002 86B0     		sub	sp, sp, #24
+ 1349              	.LCFI46:
+ 1350              		.cfi_def_cfa_offset 32
+ 1351 0004 00AF     		add	r7, sp, #0
+ 1352              	.LCFI47:
+ 1353              		.cfi_def_cfa_register 7
+ 1354 0006 7860     		str	r0, [r7, #4]
+ 1355 0008 3960     		str	r1, [r7]
+ 509:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     client_data_t *app_data;
+ 510:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connection_t *targetP;
+ 511:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 512:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     app_data = (client_data_t *)userData;
+ 1356              		.loc 1 512 0
+ 1357 000a 3B68     		ldr	r3, [r7]
+ 1358 000c 3B61     		str	r3, [r7, #16]
+ 513:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     targetP = (connection_t *)sessionH;
+ 1359              		.loc 1 513 0
+ 1360 000e 7B68     		ldr	r3, [r7, #4]
+ 1361 0010 FB60     		str	r3, [r7, #12]
+ 514:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef LWM2M_BOOTSTRAP
+ 515:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     timer_stop(&targetP->server_triger_timer);
+ 516:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 517:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (targetP == app_data->connList)
+ 1362              		.loc 1 517 0
+ 1363 0012 3B69     		ldr	r3, [r7, #16]
+ 1364 0014 9B68     		ldr	r3, [r3, #8]
+ 1365 0016 FA68     		ldr	r2, [r7, #12]
+ 1366 0018 9A42     		cmp	r2, r3
+ 1367 001a 0AD1     		bne	.L88
+ 518:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 519:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         app_data->connList = targetP->next;
+ 1368              		.loc 1 519 0
+ 1369 001c FB68     		ldr	r3, [r7, #12]
+ 1370 001e 1A68     		ldr	r2, [r3]
+ 1371 0020 3B69     		ldr	r3, [r7, #16]
+ 1372 0022 9A60     		str	r2, [r3, #8]
+ 520:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         connection_free(targetP);
+ 1373              		.loc 1 520 0
+ 1374 0024 F868     		ldr	r0, [r7, #12]
+ 1375 0026 FFF7FEFF 		bl	connection_free
+ 521:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         lwm2m_free(targetP);
+ 1376              		.loc 1 521 0
+ 1377 002a F868     		ldr	r0, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 35
+
+
+ 1378 002c FFF7FEFF 		bl	lwm2m_free
+ 522:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 523:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 524:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 525:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         connection_t *parentP;
+ 526:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 527:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         parentP = app_data->connList;
+ 528:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 529:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         while (parentP != NULL && parentP->next != targetP)
+ 530:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 531:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             parentP = parentP->next;
+ 532:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 533:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 534:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if (parentP != NULL)
+ 535:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 536:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             parentP->next = targetP->next;
+ 537:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             connection_free(targetP);
+ 538:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             lwm2m_free(targetP);
+ 539:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 540:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 541:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 542:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return;
+ 1379              		.loc 1 542 0
+ 1380 0030 1CE0     		b	.L94
+ 1381              	.L88:
+ 1382              	.LBB2:
+ 527:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 1383              		.loc 1 527 0
+ 1384 0032 3B69     		ldr	r3, [r7, #16]
+ 1385 0034 9B68     		ldr	r3, [r3, #8]
+ 1386 0036 7B61     		str	r3, [r7, #20]
+ 529:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 1387              		.loc 1 529 0
+ 1388 0038 02E0     		b	.L90
+ 1389              	.L92:
+ 531:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 1390              		.loc 1 531 0
+ 1391 003a 7B69     		ldr	r3, [r7, #20]
+ 1392 003c 1B68     		ldr	r3, [r3]
+ 1393 003e 7B61     		str	r3, [r7, #20]
+ 1394              	.L90:
+ 529:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 1395              		.loc 1 529 0
+ 1396 0040 7B69     		ldr	r3, [r7, #20]
+ 1397 0042 002B     		cmp	r3, #0
+ 1398 0044 04D0     		beq	.L91
+ 529:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 1399              		.loc 1 529 0 is_stmt 0 discriminator 1
+ 1400 0046 7B69     		ldr	r3, [r7, #20]
+ 1401 0048 1B68     		ldr	r3, [r3]
+ 1402 004a FA68     		ldr	r2, [r7, #12]
+ 1403 004c 9A42     		cmp	r2, r3
+ 1404 004e F4D1     		bne	.L92
+ 1405              	.L91:
+ 534:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 1406              		.loc 1 534 0 is_stmt 1
+ 1407 0050 7B69     		ldr	r3, [r7, #20]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 36
+
+
+ 1408 0052 002B     		cmp	r3, #0
+ 1409 0054 0AD0     		beq	.L94
+ 536:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             connection_free(targetP);
+ 1410              		.loc 1 536 0
+ 1411 0056 FB68     		ldr	r3, [r7, #12]
+ 1412 0058 1A68     		ldr	r2, [r3]
+ 1413 005a 7B69     		ldr	r3, [r7, #20]
+ 1414 005c 1A60     		str	r2, [r3]
+ 537:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             lwm2m_free(targetP);
+ 1415              		.loc 1 537 0
+ 1416 005e F868     		ldr	r0, [r7, #12]
+ 1417 0060 FFF7FEFF 		bl	connection_free
+ 538:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 1418              		.loc 1 538 0
+ 1419 0064 F868     		ldr	r0, [r7, #12]
+ 1420 0066 FFF7FEFF 		bl	lwm2m_free
+ 1421              	.LBE2:
+ 1422              		.loc 1 542 0
+ 1423 006a 00BF     		nop
+ 1424              	.L94:
+ 1425 006c 00BF     		nop
+ 543:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 1426              		.loc 1 543 0
+ 1427 006e 1837     		adds	r7, r7, #24
+ 1428              	.LCFI48:
+ 1429              		.cfi_def_cfa_offset 8
+ 1430 0070 BD46     		mov	sp, r7
+ 1431              	.LCFI49:
+ 1432              		.cfi_def_cfa_register 13
+ 1433              		@ sp needed
+ 1434 0072 80BD     		pop	{r7, pc}
+ 1435              		.cfi_endproc
+ 1436              	.LFE21:
+ 1438              		.section	.text.lwm2m_buffer_recv,"ax",%progbits
+ 1439              		.align	1
+ 1440              		.global	lwm2m_buffer_recv
+ 1441              		.syntax unified
+ 1442              		.thumb
+ 1443              		.thumb_func
+ 1444              		.fpu fpv4-sp-d16
+ 1446              	lwm2m_buffer_recv:
+ 1447              	.LFB22:
+ 544:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 545:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 546:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** int lwm2m_buffer_recv(void *sessionH, uint8_t *buffer, size_t length, uint32_t timeout)
+ 547:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 1448              		.loc 1 547 0
+ 1449              		.cfi_startproc
+ 1450              		@ args = 0, pretend = 0, frame = 24
+ 1451              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1452 0000 80B5     		push	{r7, lr}
+ 1453              	.LCFI50:
+ 1454              		.cfi_def_cfa_offset 8
+ 1455              		.cfi_offset 7, -8
+ 1456              		.cfi_offset 14, -4
+ 1457 0002 86B0     		sub	sp, sp, #24
+ 1458              	.LCFI51:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 37
+
+
+ 1459              		.cfi_def_cfa_offset 32
+ 1460 0004 00AF     		add	r7, sp, #0
+ 1461              	.LCFI52:
+ 1462              		.cfi_def_cfa_register 7
+ 1463 0006 F860     		str	r0, [r7, #12]
+ 1464 0008 B960     		str	r1, [r7, #8]
+ 1465 000a 7A60     		str	r2, [r7, #4]
+ 1466 000c 3B60     		str	r3, [r7]
+ 548:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connection_t *connP = (connection_t *) sessionH;
+ 1467              		.loc 1 548 0
+ 1468 000e FB68     		ldr	r3, [r7, #12]
+ 1469 0010 7B61     		str	r3, [r7, #20]
+ 549:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     int ret = -1;
+ 1470              		.loc 1 549 0
+ 1471 0012 4FF0FF33 		mov	r3, #-1
+ 1472 0016 3B61     		str	r3, [r7, #16]
+ 550:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     timeout *= 1000;
+ 1473              		.loc 1 550 0
+ 1474 0018 3B68     		ldr	r3, [r7]
+ 1475 001a 4FF47A72 		mov	r2, #1000
+ 1476 001e 02FB03F3 		mul	r3, r2, r3
+ 1477 0022 3B60     		str	r3, [r7]
+ 551:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef WITH_DTLS
+ 552:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 553:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (connP->dtls_flag == true)
+ 554:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 555:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         // security
+ 556:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ret = dtls_read(connP->net_context, buffer, length, timeout);
+ 557:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if(0 == ret)
+ 558:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 559:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             inc_connection_stat(connP, CONNECTION_RECV_ERR);
+ 560:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 561:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         else
+ 562:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 563:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             connP->errs[CONNECTION_RECV_ERR] = 0;
+ 564:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 565:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 566:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 567:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 568:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 569:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ret = __socket_recv_timeout(connP->net_context, buffer, length, timeout);
+ 1478              		.loc 1 569 0
+ 1479 0024 7B69     		ldr	r3, [r7, #20]
+ 1480 0026 5868     		ldr	r0, [r3, #4]
+ 1481 0028 3B68     		ldr	r3, [r7]
+ 1482 002a 7A68     		ldr	r2, [r7, #4]
+ 1483 002c B968     		ldr	r1, [r7, #8]
+ 1484 002e FFF7FEFF 		bl	__socket_recv_timeout
+ 1485 0032 3861     		str	r0, [r7, #16]
+ 570:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if(ret == 0)
+ 1486              		.loc 1 570 0
+ 1487 0034 3B69     		ldr	r3, [r7, #16]
+ 1488 0036 002B     		cmp	r3, #0
+ 1489 0038 04D1     		bne	.L96
+ 571:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 572:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             inc_connection_stat(connP, CONNECTION_RECV_ERR);
+ 1490              		.loc 1 572 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 38
+
+
+ 1491 003a 0121     		movs	r1, #1
+ 1492 003c 7869     		ldr	r0, [r7, #20]
+ 1493 003e FFF7FEFF 		bl	inc_connection_stat
+ 1494 0042 02E0     		b	.L97
+ 1495              	.L96:
+ 573:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 574:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         else
+ 575:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 576:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             connP->errs[CONNECTION_RECV_ERR] = 0;
+ 1496              		.loc 1 576 0
+ 1497 0044 7B69     		ldr	r3, [r7, #20]
+ 1498 0046 0022     		movs	r2, #0
+ 1499 0048 5A83     		strh	r2, [r3, #26]	@ movhi
+ 1500              	.L97:
+ 577:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 578:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 579:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 580:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return ret;
+ 1501              		.loc 1 580 0
+ 1502 004a 3B69     		ldr	r3, [r7, #16]
+ 581:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 1503              		.loc 1 581 0
+ 1504 004c 1846     		mov	r0, r3
+ 1505 004e 1837     		adds	r7, r7, #24
+ 1506              	.LCFI53:
+ 1507              		.cfi_def_cfa_offset 8
+ 1508 0050 BD46     		mov	sp, r7
+ 1509              	.LCFI54:
+ 1510              		.cfi_def_cfa_register 13
+ 1511              		@ sp needed
+ 1512 0052 80BD     		pop	{r7, pc}
+ 1513              		.cfi_endproc
+ 1514              	.LFE22:
+ 1516              		.section	.text.connection_is_valid,"ax",%progbits
+ 1517              		.align	1
+ 1518              		.syntax unified
+ 1519              		.thumb
+ 1520              		.thumb_func
+ 1521              		.fpu fpv4-sp-d16
+ 1523              	connection_is_valid:
+ 1524              	.LFB23:
+ 582:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 583:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** static bool connection_is_valid(void *user_data, void *session)
+ 584:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 1525              		.loc 1 584 0
+ 1526              		.cfi_startproc
+ 1527              		@ args = 0, pretend = 0, frame = 16
+ 1528              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1529              		@ link register save eliminated.
+ 1530 0000 80B4     		push	{r7}
+ 1531              	.LCFI55:
+ 1532              		.cfi_def_cfa_offset 4
+ 1533              		.cfi_offset 7, -4
+ 1534 0002 85B0     		sub	sp, sp, #20
+ 1535              	.LCFI56:
+ 1536              		.cfi_def_cfa_offset 24
+ 1537 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 39
+
+
+ 1538              	.LCFI57:
+ 1539              		.cfi_def_cfa_register 7
+ 1540 0006 7860     		str	r0, [r7, #4]
+ 1541 0008 3960     		str	r1, [r7]
+ 585:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     client_data_t *data = (client_data_t *)user_data;
+ 1542              		.loc 1 585 0
+ 1543 000a 7B68     		ldr	r3, [r7, #4]
+ 1544 000c BB60     		str	r3, [r7, #8]
+ 586:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connection_t *conn;
+ 587:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (data == NULL || data->connList == NULL)
+ 1545              		.loc 1 587 0
+ 1546 000e BB68     		ldr	r3, [r7, #8]
+ 1547 0010 002B     		cmp	r3, #0
+ 1548 0012 03D0     		beq	.L100
+ 1549              		.loc 1 587 0 is_stmt 0 discriminator 1
+ 1550 0014 BB68     		ldr	r3, [r7, #8]
+ 1551 0016 9B68     		ldr	r3, [r3, #8]
+ 1552 0018 002B     		cmp	r3, #0
+ 1553 001a 01D1     		bne	.L101
+ 1554              	.L100:
+ 588:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 589:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return false;
+ 1555              		.loc 1 589 0 is_stmt 1
+ 1556 001c 0023     		movs	r3, #0
+ 1557 001e 10E0     		b	.L102
+ 1558              	.L101:
+ 590:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 591:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 592:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     conn = data->connList;
+ 1559              		.loc 1 592 0
+ 1560 0020 BB68     		ldr	r3, [r7, #8]
+ 1561 0022 9B68     		ldr	r3, [r3, #8]
+ 1562 0024 FB60     		str	r3, [r7, #12]
+ 593:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     while(conn != NULL)
+ 1563              		.loc 1 593 0
+ 1564 0026 08E0     		b	.L103
+ 1565              	.L105:
+ 594:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 595:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if (conn == session)
+ 1566              		.loc 1 595 0
+ 1567 0028 FA68     		ldr	r2, [r7, #12]
+ 1568 002a 3B68     		ldr	r3, [r7]
+ 1569 002c 9A42     		cmp	r2, r3
+ 1570 002e 01D1     		bne	.L104
+ 596:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 597:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             return true;
+ 1571              		.loc 1 597 0
+ 1572 0030 0123     		movs	r3, #1
+ 1573 0032 06E0     		b	.L102
+ 1574              	.L104:
+ 598:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 599:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         conn = conn->next;
+ 1575              		.loc 1 599 0
+ 1576 0034 FB68     		ldr	r3, [r7, #12]
+ 1577 0036 1B68     		ldr	r3, [r3]
+ 1578 0038 FB60     		str	r3, [r7, #12]
+ 1579              	.L103:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 40
+
+
+ 593:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 1580              		.loc 1 593 0
+ 1581 003a FB68     		ldr	r3, [r7, #12]
+ 1582 003c 002B     		cmp	r3, #0
+ 1583 003e F3D1     		bne	.L105
+ 600:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 601:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 602:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return false;
+ 1584              		.loc 1 602 0
+ 1585 0040 0023     		movs	r3, #0
+ 1586              	.L102:
+ 603:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 1587              		.loc 1 603 0
+ 1588 0042 1846     		mov	r0, r3
+ 1589 0044 1437     		adds	r7, r7, #20
+ 1590              	.LCFI58:
+ 1591              		.cfi_def_cfa_offset 4
+ 1592 0046 BD46     		mov	sp, r7
+ 1593              	.LCFI59:
+ 1594              		.cfi_def_cfa_register 13
+ 1595              		@ sp needed
+ 1596 0048 5DF8047B 		ldr	r7, [sp], #4
+ 1597              	.LCFI60:
+ 1598              		.cfi_restore 7
+ 1599              		.cfi_def_cfa_offset 0
+ 1600 004c 7047     		bx	lr
+ 1601              		.cfi_endproc
+ 1602              	.LFE23:
+ 1604              		.section	.rodata
+ 1605 0219 000000   		.align	2
+ 1606              	.LC14:
+ 1607 021c 5B25735D 		.ascii	"[%s][%u][%s:%d] #> failed sending %lu bytes, missin"
+ 1607      5B25755D 
+ 1607      5B25733A 
+ 1607      25645D20 
+ 1607      233E2066 
+ 1608 024f 6720636F 		.ascii	"g connection\015\012\015\012\000"
+ 1608      6E6E6563 
+ 1608      74696F6E 
+ 1608      0D0A0D0A 
+ 1608      00
+ 1609              		.align	2
+ 1610              	.LC15:
+ 1611 0260 5B25735D 		.ascii	"[%s][%u][%s:%d] call connection_send in lwm2m_buffe"
+ 1611      5B25755D 
+ 1611      5B25733A 
+ 1611      25645D20 
+ 1611      63616C6C 
+ 1612 0293 725F7365 		.ascii	"r_send, length is %d\012\015\012\000"
+ 1612      6E642C20 
+ 1612      6C656E67 
+ 1612      74682069 
+ 1612      73202564 
+ 1613              		.section	.text.lwm2m_buffer_send,"ax",%progbits
+ 1614              		.align	1
+ 1615              		.global	lwm2m_buffer_send
+ 1616              		.syntax unified
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 41
+
+
+ 1617              		.thumb
+ 1618              		.thumb_func
+ 1619              		.fpu fpv4-sp-d16
+ 1621              	lwm2m_buffer_send:
+ 1622              	.LFB24:
+ 604:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 605:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** uint8_t lwm2m_buffer_send(void *sessionH,
+ 606:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                           uint8_t *buffer,
+ 607:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                           size_t length,
+ 608:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****                           void *userdata)
+ 609:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 1623              		.loc 1 609 0
+ 1624              		.cfi_startproc
+ 1625              		@ args = 0, pretend = 0, frame = 24
+ 1626              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1627 0000 B0B5     		push	{r4, r5, r7, lr}
+ 1628              	.LCFI61:
+ 1629              		.cfi_def_cfa_offset 16
+ 1630              		.cfi_offset 4, -16
+ 1631              		.cfi_offset 5, -12
+ 1632              		.cfi_offset 7, -8
+ 1633              		.cfi_offset 14, -4
+ 1634 0002 88B0     		sub	sp, sp, #32
+ 1635              	.LCFI62:
+ 1636              		.cfi_def_cfa_offset 48
+ 1637 0004 02AF     		add	r7, sp, #8
+ 1638              	.LCFI63:
+ 1639              		.cfi_def_cfa 7, 40
+ 1640 0006 F860     		str	r0, [r7, #12]
+ 1641 0008 B960     		str	r1, [r7, #8]
+ 1642 000a 7A60     		str	r2, [r7, #4]
+ 1643 000c 3B60     		str	r3, [r7]
+ 610:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     connection_t *connP = (connection_t *) sessionH;
+ 1644              		.loc 1 610 0
+ 1645 000e FB68     		ldr	r3, [r7, #12]
+ 1646 0010 7B61     		str	r3, [r7, #20]
+ 611:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     int ret;
+ 612:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     /* should check the valid of the connection,because coap tranctions does not update the session
+ 613:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (connP == NULL || (!connection_is_valid(userdata, sessionH)))
+ 1647              		.loc 1 613 0
+ 1648 0012 7B69     		ldr	r3, [r7, #20]
+ 1649 0014 002B     		cmp	r3, #0
+ 1650 0016 09D0     		beq	.L107
+ 1651              		.loc 1 613 0 is_stmt 0 discriminator 1
+ 1652 0018 F968     		ldr	r1, [r7, #12]
+ 1653 001a 3868     		ldr	r0, [r7]
+ 1654 001c FFF7FEFF 		bl	connection_is_valid
+ 1655 0020 0346     		mov	r3, r0
+ 1656 0022 83F00103 		eor	r3, r3, #1
+ 1657 0026 DBB2     		uxtb	r3, r3
+ 1658 0028 002B     		cmp	r3, #0
+ 1659 002a 19D0     		beq	.L108
+ 1660              	.L107:
+ 614:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 615:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ATINY_LOG(LOG_INFO, "#> failed sending %lu bytes, missing connection\r\n", (unsigned long)l
+ 1661              		.loc 1 615 0 is_stmt 1
+ 1662 002c FFF7FEFF 		bl	atiny_get_log_level
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 42
+
+
+ 1663 0030 0346     		mov	r3, r0
+ 1664 0032 012B     		cmp	r3, #1
+ 1665 0034 12D8     		bhi	.L109
+ 1666              		.loc 1 615 0 is_stmt 0 discriminator 1
+ 1667 0036 0120     		movs	r0, #1
+ 1668 0038 FFF7FEFF 		bl	atiny_get_log_level_name
+ 1669 003c 0546     		mov	r5, r0
+ 1670 003e FFF7FEFF 		bl	osal_sys_time
+ 1671 0042 0346     		mov	r3, r0
+ 1672 0044 0C46     		mov	r4, r1
+ 1673 0046 1A46     		mov	r2, r3
+ 1674 0048 7B68     		ldr	r3, [r7, #4]
+ 1675 004a 0193     		str	r3, [sp, #4]
+ 1676 004c 40F26723 		movw	r3, #615
+ 1677 0050 0093     		str	r3, [sp]
+ 1678 0052 1C4B     		ldr	r3, .L113
+ 1679 0054 2946     		mov	r1, r5
+ 1680 0056 1C48     		ldr	r0, .L113+4
+ 1681 0058 FFF7FEFF 		bl	atiny_printf
+ 1682              	.L109:
+ 616:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         return COAP_500_INTERNAL_SERVER_ERROR ;
+ 1683              		.loc 1 616 0 is_stmt 1
+ 1684 005c A023     		movs	r3, #160
+ 1685 005e 2CE0     		b	.L110
+ 1686              	.L108:
+ 617:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 618:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 619:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     ATINY_LOG(LOG_INFO, "call connection_send in lwm2m_buffer_send, length is %d\n", length);
+ 1687              		.loc 1 619 0
+ 1688 0060 FFF7FEFF 		bl	atiny_get_log_level
+ 1689 0064 0346     		mov	r3, r0
+ 1690 0066 012B     		cmp	r3, #1
+ 1691 0068 12D8     		bhi	.L111
+ 1692              		.loc 1 619 0 is_stmt 0 discriminator 1
+ 1693 006a 0120     		movs	r0, #1
+ 1694 006c FFF7FEFF 		bl	atiny_get_log_level_name
+ 1695 0070 0546     		mov	r5, r0
+ 1696 0072 FFF7FEFF 		bl	osal_sys_time
+ 1697 0076 0346     		mov	r3, r0
+ 1698 0078 0C46     		mov	r4, r1
+ 1699 007a 1A46     		mov	r2, r3
+ 1700 007c 7B68     		ldr	r3, [r7, #4]
+ 1701 007e 0193     		str	r3, [sp, #4]
+ 1702 0080 40F26B23 		movw	r3, #619
+ 1703 0084 0093     		str	r3, [sp]
+ 1704 0086 0F4B     		ldr	r3, .L113
+ 1705 0088 2946     		mov	r1, r5
+ 1706 008a 1048     		ldr	r0, .L113+8
+ 1707 008c FFF7FEFF 		bl	atiny_printf
+ 1708              	.L111:
+ 620:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 621:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #ifdef WITH_DTLS
+ 622:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 623:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     if (connP->dtls_flag == true)
+ 624:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 625:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         // security
+ 626:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ret = dtls_write(connP->net_context, buffer, length);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 43
+
+
+ 627:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if(0 == ret)
+ 628:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 629:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             inc_connection_stat(connP, CONNECTION_SEND_ERR);
+ 630:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 631:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 632:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         else
+ 633:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 634:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             connP->errs[CONNECTION_SEND_ERR] = 0;
+ 635:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             return COAP_NO_ERROR;
+ 636:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 637:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 638:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     else
+ 639:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** #endif
+ 640:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     {
+ 641:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         ret = __socket_send(connP->net_context, buffer, length);
+ 1709              		.loc 1 641 0 is_stmt 1
+ 1710 0090 7B69     		ldr	r3, [r7, #20]
+ 1711 0092 5B68     		ldr	r3, [r3, #4]
+ 1712 0094 7A68     		ldr	r2, [r7, #4]
+ 1713 0096 B968     		ldr	r1, [r7, #8]
+ 1714 0098 1846     		mov	r0, r3
+ 1715 009a FFF7FEFF 		bl	__socket_send
+ 1716 009e 3861     		str	r0, [r7, #16]
+ 642:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         if(ret > 0)
+ 1717              		.loc 1 642 0
+ 1718 00a0 3B69     		ldr	r3, [r7, #16]
+ 1719 00a2 002B     		cmp	r3, #0
+ 1720 00a4 04DD     		ble	.L112
+ 643:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 644:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             connP->errs[CONNECTION_SEND_ERR] = 0;
+ 1721              		.loc 1 644 0
+ 1722 00a6 7B69     		ldr	r3, [r7, #20]
+ 1723 00a8 0022     		movs	r2, #0
+ 1724 00aa 1A83     		strh	r2, [r3, #24]	@ movhi
+ 645:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             return COAP_NO_ERROR;
+ 1725              		.loc 1 645 0
+ 1726 00ac 0023     		movs	r3, #0
+ 1727 00ae 04E0     		b	.L110
+ 1728              	.L112:
+ 646:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 647:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         else
+ 648:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         {
+ 649:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             inc_connection_stat(connP, CONNECTION_SEND_ERR);
+ 1729              		.loc 1 649 0
+ 1730 00b0 0021     		movs	r1, #0
+ 1731 00b2 7869     		ldr	r0, [r7, #20]
+ 1732 00b4 FFF7FEFF 		bl	inc_connection_stat
+ 650:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 1733              		.loc 1 650 0
+ 1734 00b8 A023     		movs	r3, #160
+ 1735              	.L110:
+ 651:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****         }
+ 652:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     }
+ 653:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 654:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 655:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 1736              		.loc 1 655 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 44
+
+
+ 1737 00ba 1846     		mov	r0, r3
+ 1738 00bc 1837     		adds	r7, r7, #24
+ 1739              	.LCFI64:
+ 1740              		.cfi_def_cfa_offset 16
+ 1741 00be BD46     		mov	sp, r7
+ 1742              	.LCFI65:
+ 1743              		.cfi_def_cfa_register 13
+ 1744              		@ sp needed
+ 1745 00c0 B0BD     		pop	{r4, r5, r7, pc}
+ 1746              	.L114:
+ 1747 00c2 00BF     		.align	2
+ 1748              	.L113:
+ 1749 00c4 00000000 		.word	__FUNCTION__.9046
+ 1750 00c8 1C020000 		.word	.LC14
+ 1751 00cc 60020000 		.word	.LC15
+ 1752              		.cfi_endproc
+ 1753              	.LFE24:
+ 1755              		.section	.text.lwm2m_session_is_equal,"ax",%progbits
+ 1756              		.align	1
+ 1757              		.global	lwm2m_session_is_equal
+ 1758              		.syntax unified
+ 1759              		.thumb
+ 1760              		.thumb_func
+ 1761              		.fpu fpv4-sp-d16
+ 1763              	lwm2m_session_is_equal:
+ 1764              	.LFB25:
+ 656:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 657:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** bool lwm2m_session_is_equal(void *session1, void *session2, void *userData)
+ 658:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 1765              		.loc 1 658 0
+ 1766              		.cfi_startproc
+ 1767              		@ args = 0, pretend = 0, frame = 16
+ 1768              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1769              		@ link register save eliminated.
+ 1770 0000 80B4     		push	{r7}
+ 1771              	.LCFI66:
+ 1772              		.cfi_def_cfa_offset 4
+ 1773              		.cfi_offset 7, -4
+ 1774 0002 85B0     		sub	sp, sp, #20
+ 1775              	.LCFI67:
+ 1776              		.cfi_def_cfa_offset 24
+ 1777 0004 00AF     		add	r7, sp, #0
+ 1778              	.LCFI68:
+ 1779              		.cfi_def_cfa_register 7
+ 1780 0006 F860     		str	r0, [r7, #12]
+ 1781 0008 B960     		str	r1, [r7, #8]
+ 1782 000a 7A60     		str	r2, [r7, #4]
+ 659:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     return (session1 == session2);
+ 1783              		.loc 1 659 0
+ 1784 000c FA68     		ldr	r2, [r7, #12]
+ 1785 000e BB68     		ldr	r3, [r7, #8]
+ 1786 0010 9A42     		cmp	r2, r3
+ 1787 0012 0CBF     		ite	eq
+ 1788 0014 0123     		moveq	r3, #1
+ 1789 0016 0023     		movne	r3, #0
+ 1790 0018 DBB2     		uxtb	r3, r3
+ 660:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 45
+
+
+ 1791              		.loc 1 660 0
+ 1792 001a 1846     		mov	r0, r3
+ 1793 001c 1437     		adds	r7, r7, #20
+ 1794              	.LCFI69:
+ 1795              		.cfi_def_cfa_offset 4
+ 1796 001e BD46     		mov	sp, r7
+ 1797              	.LCFI70:
+ 1798              		.cfi_def_cfa_register 13
+ 1799              		@ sp needed
+ 1800 0020 5DF8047B 		ldr	r7, [sp], #4
+ 1801              	.LCFI71:
+ 1802              		.cfi_restore 7
+ 1803              		.cfi_def_cfa_offset 0
+ 1804 0024 7047     		bx	lr
+ 1805              		.cfi_endproc
+ 1806              	.LFE25:
+ 1808              		.section	.text.lwm2m_register_connection_err_notify,"ax",%progbits
+ 1809              		.align	1
+ 1810              		.global	lwm2m_register_connection_err_notify
+ 1811              		.syntax unified
+ 1812              		.thumb
+ 1813              		.thumb_func
+ 1814              		.fpu fpv4-sp-d16
+ 1816              	lwm2m_register_connection_err_notify:
+ 1817              	.LFB26:
+ 661:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** 
+ 662:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** void lwm2m_register_connection_err_notify(lwm2m_connection_err_notify_t nofiy)
+ 663:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** {
+ 1818              		.loc 1 663 0
+ 1819              		.cfi_startproc
+ 1820              		@ args = 0, pretend = 0, frame = 8
+ 1821              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1822              		@ link register save eliminated.
+ 1823 0000 80B4     		push	{r7}
+ 1824              	.LCFI72:
+ 1825              		.cfi_def_cfa_offset 4
+ 1826              		.cfi_offset 7, -4
+ 1827 0002 83B0     		sub	sp, sp, #12
+ 1828              	.LCFI73:
+ 1829              		.cfi_def_cfa_offset 16
+ 1830 0004 00AF     		add	r7, sp, #0
+ 1831              	.LCFI74:
+ 1832              		.cfi_def_cfa_register 7
+ 1833 0006 7860     		str	r0, [r7, #4]
+ 664:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c ****     g_connection_err_notify = nofiy;
+ 1834              		.loc 1 664 0
+ 1835 0008 044A     		ldr	r2, .L118
+ 1836 000a 7B68     		ldr	r3, [r7, #4]
+ 1837 000c 1360     		str	r3, [r2]
+ 665:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m/atiny_lwm2m\connection.c **** }
+ 1838              		.loc 1 665 0
+ 1839 000e 00BF     		nop
+ 1840 0010 0C37     		adds	r7, r7, #12
+ 1841              	.LCFI75:
+ 1842              		.cfi_def_cfa_offset 4
+ 1843 0012 BD46     		mov	sp, r7
+ 1844              	.LCFI76:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 46
+
+
+ 1845              		.cfi_def_cfa_register 13
+ 1846              		@ sp needed
+ 1847 0014 5DF8047B 		ldr	r7, [sp], #4
+ 1848              	.LCFI77:
+ 1849              		.cfi_restore 7
+ 1850              		.cfi_def_cfa_offset 0
+ 1851 0018 7047     		bx	lr
+ 1852              	.L119:
+ 1853 001a 00BF     		.align	2
+ 1854              	.L118:
+ 1855 001c 00000000 		.word	g_connection_err_notify
+ 1856              		.cfi_endproc
+ 1857              	.LFE26:
+ 1859              		.section	.rodata.__FUNCTION__.8946,"a",%progbits
+ 1860              		.align	2
+ 1863              	__FUNCTION__.8946:
+ 1864 0000 636F6E6E 		.ascii	"connection_parse_host_ip\000"
+ 1864      65637469 
+ 1864      6F6E5F70 
+ 1864      61727365 
+ 1864      5F686F73 
+ 1865              		.section	.rodata.__FUNCTION__.8996,"a",%progbits
+ 1866              		.align	2
+ 1869              	__FUNCTION__.8996:
+ 1870 0000 636F6E6E 		.ascii	"connection_create\000"
+ 1870      65637469 
+ 1870      6F6E5F63 
+ 1870      72656174 
+ 1870      6500
+ 1871              		.section	.rodata.__FUNCTION__.9010,"a",%progbits
+ 1872              		.align	2
+ 1875              	__FUNCTION__.9010:
+ 1876 0000 6C776D32 		.ascii	"lwm2m_connect_server\000"
+ 1876      6D5F636F 
+ 1876      6E6E6563 
+ 1876      745F7365 
+ 1876      72766572 
+ 1877              		.section	.rodata.max_num.8937,"a",%progbits
+ 1878              		.align	2
+ 1881              	max_num.8937:
+ 1882 0000 0A00     		.short	10
+ 1883 0002 0A00     		.short	10
+ 1884              		.section	.rodata.__FUNCTION__.9046,"a",%progbits
+ 1885              		.align	2
+ 1888              	__FUNCTION__.9046:
+ 1889 0000 6C776D32 		.ascii	"lwm2m_buffer_send\000"
+ 1889      6D5F6275 
+ 1889      66666572 
+ 1889      5F73656E 
+ 1889      6400
+ 1890              		.text
+ 1891              	.Letext0:
+ 1892              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1893              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1894              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1895              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1896              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 47
+
+
+ 1897              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1898              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1899              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1900              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1901              		.file 11 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 1902              		.file 12 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 1903              		.file 13 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log/at
+ 1904              		.file 14 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 1905              		.file 15 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m
+ 1906              		.file 16 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/inc/sal_typ
+ 1907              		.file 17 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1908              		.file 18 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/oc/oc_lwm2m
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 48
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 connection.c
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:18     .bss.g_connection_err_notify:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:21     .bss.g_connection_err_notify:00000000 g_connection_err_notify
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:24     .text.inc_connection_stat:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:30     .text.inc_connection_stat:00000000 inc_connection_stat
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:111    .text.inc_connection_stat:00000070 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1881   .rodata.max_num.8937:00000000 max_num.8937
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:117    .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:139    .text.connection_parse_host_ip:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:146    .text.connection_parse_host_ip:00000000 connection_parse_host_ip
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:347    .text.connection_parse_host_ip:00000130 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1863   .rodata.__FUNCTION__.8946:00000000 __FUNCTION__.8946
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:359    .text.__socket_connect:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:365    .text.__socket_connect:00000000 __socket_connect
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:545    .text.__socket_free:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:551    .text.__socket_free:00000000 __socket_free
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:596    .text.__socket_recv_timeout:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:602    .text.__socket_recv_timeout:00000000 __socket_recv_timeout
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:700    .text.__socket_recv_timeout:00000098 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:705    .text.__socket_send:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:711    .text.__socket_send:00000000 __socket_send
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:785    .text.connection_create:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:792    .text.connection_create:00000000 connection_create
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1082   .text.connection_create:000001cc $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1869   .rodata.__FUNCTION__.8996:00000000 __FUNCTION__.8996
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1093   .text.connection_free:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1100   .text.connection_free:00000000 connection_free
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1160   .text.lwm2m_connect_server:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1167   .text.lwm2m_connect_server:00000000 lwm2m_connect_server
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1322   .text.lwm2m_connect_server:000000f8 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1875   .rodata.__FUNCTION__.9010:00000000 __FUNCTION__.9010
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1330   .text.lwm2m_close_connection:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1337   .text.lwm2m_close_connection:00000000 lwm2m_close_connection
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1439   .text.lwm2m_buffer_recv:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1446   .text.lwm2m_buffer_recv:00000000 lwm2m_buffer_recv
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1517   .text.connection_is_valid:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1523   .text.connection_is_valid:00000000 connection_is_valid
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1614   .text.lwm2m_buffer_send:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1621   .text.lwm2m_buffer_send:00000000 lwm2m_buffer_send
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1749   .text.lwm2m_buffer_send:000000c4 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1888   .rodata.__FUNCTION__.9046:00000000 __FUNCTION__.9046
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1756   .text.lwm2m_session_is_equal:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1763   .text.lwm2m_session_is_equal:00000000 lwm2m_session_is_equal
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1809   .text.lwm2m_register_connection_err_notify:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1816   .text.lwm2m_register_connection_err_notify:00000000 lwm2m_register_connection_err_notify
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1855   .text.lwm2m_register_connection_err_notify:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1860   .rodata.__FUNCTION__.8946:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1866   .rodata.__FUNCTION__.8996:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1872   .rodata.__FUNCTION__.9010:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1878   .rodata.max_num.8937:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s:1885   .rodata.__FUNCTION__.9046:00000000 $d
+
+UNDEFINED SYMBOLS
+atiny_get_log_level
+atiny_get_log_level_name
+osal_sys_time
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccP68ytA.s 			page 49
+
+
+atiny_printf
+strncmp
+strrchr
+sal_gethostbyname
+osal_malloc
+sal_socket
+memset
+atoi
+sal_bind
+sal_connect
+sal_closesocket
+osal_free
+sal_setsockopt
+sal_recv
+sal_send
+lwm2m_list_find
+osal_strdup
+lwm2m_malloc
+lwm2m_free

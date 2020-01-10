@@ -1,0 +1,2734 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"transaction.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC0:
+  20 0000 5B25645D 		.ascii	"[%d][%s:%d] transactionMessage->token_len is %d, le"
+  20      5B25733A 
+  20      25645D20 
+  20      7472616E 
+  20      73616374 
+  21 0033 6E206973 		.ascii	"n is %d\012\015\012\000"
+  21      2025640A 
+  21      0D0A00
+  22 003e 0000     		.align	2
+  23              	.LC1:
+  24 0040 5B25645D 		.ascii	"[%d][%s:%d] %d\012\015\012\000"
+  24      5B25733A 
+  24      25645D20 
+  24      25640A0D 
+  24      0A00
+  25 0052 0000     		.align	2
+  26              	.LC2:
+  27 0054 5B25645D 		.ascii	"[%d][%s:%d] \012\012\015\012\000"
+  27      5B25733A 
+  27      25645D20 
+  27      0A0A0D0A 
+  27      00
+  28 0065 000000   		.align	2
+  29              	.LC3:
+  30 0068 5B25645D 		.ascii	"[%d][%s:%d] prv_checkFinished not finish!!!\012\015"
+  30      5B25733A 
+  30      25645D20 
+  30      7072765F 
+  30      63686563 
+  31 0095 0A00     		.ascii	"\012\000"
+  32              		.section	.text.prv_checkFinished,"ax",%progbits
+  33              		.align	1
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  37              		.fpu fpv4-sp-d16
+  39              	prv_checkFinished:
+  40              	.LFB4:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 2
+
+
+  41              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** /*******************************************************************************
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Copyright (c) 2013, 2014 Intel Corporation and others.
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * All rights reserved. This program and the accompanying materials
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * are made available under the terms of the Eclipse Public License v1.0
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * The Eclipse Public License is available at
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * The Eclipse Distribution License is available at
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    http://www.eclipse.org/org/documents/edl-v10.php.
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Contributors:
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    David Navarro, Intel Corporation - initial API and implementation
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    Simon Bernard - Please refer to git log
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    Toby Jaffey - Please refer to git log
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    Pascal Rieux - Please refer to git log
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    Bosch Software Innovations GmbH - Please refer to git log
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *******************************************************************************/
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** /*
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 3
+
+
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  Copyright (c) 2013, 2014 Intel Corporation
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  Redistribution and use in source and binary forms, with or without modification,
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  are permitted provided that the following conditions are met:
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****      * Redistributions of source code must retain the above copyright notice,
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****        this list of conditions and the following disclaimer.
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****      * Redistributions in binary form must reproduce the above copyright notice,
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****        this list of conditions and the following disclaimer in the documentation
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****        and/or other materials provided with the distribution.
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****      * Neither the name of Intel Corporation nor the names of its contributors
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****        may be used to endorse or promote products derived from this software
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****        without specific prior written permission.
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  THE POSSIBILITY OF SUCH DAMAGE.
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  David Navarro <david.navarro@intel.com>
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** */
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** /*
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** Contains code snippets which are:
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Copyright (c) 2013, Institute for Pervasive Computing, ETH Zurich
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * All rights reserved.
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Redistribution and use in source and binary forms, with or without
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * modification, are permitted provided that the following conditions
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * are met:
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * 1. Redistributions of source code must retain the above copyright
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    notice, this list of conditions and the following disclaimer.
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * 2. Redistributions in binary form must reproduce the above copyright
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    notice, this list of conditions and the following disclaimer in the
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    documentation and/or other materials provided with the distribution.
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * 3. Neither the name of the Institute nor the names of its contributors
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    may be used to endorse or promote products derived from this software
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *    without specific prior written permission.
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * ARE DISCLAIMED.  IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 4
+
+
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * SUCH DAMAGE.
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** */
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** /************************************************************************
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  Function for communications transactions.
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  Basic specification: rfc7252
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  Transaction implements processing of piggybacked and separate response communication
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  dialogs specified in section 2.2 of the above specification.
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  The caller registers a callback function, which is called, when either the result is
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  received or a timeout occurs.
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  Supported dialogs:
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  Requests (GET - DELETE):
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  - CON with mid, without token => regular finished with corresponding ACK.MID
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  - CON with mid, with token => regular finished with corresponding ACK.MID and response containi
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *                  the token. Supports both versions, with piggybacked ACK and separate ACK/respon
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *                  Though the ACK.MID may be lost in the separate version, a matching response may
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *                  finish the transaction even without the ACK.MID.
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  - NON without token => no transaction, no result expected!
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  - NON with token => regular finished with response containing the token.
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  Responses (COAP_201_CREATED - ?):
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  *  - CON with mid => regular finished with corresponding ACK.MID
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  */
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** #include "internals.h"
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** //#include "pdu.h"
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** #include "commandline.h"
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** /*
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * Modulo mask (+1 and +0.5 for rounding) for a random number to get the tick number for the random
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  * retransmission time between COAP_RESPONSE_TIMEOUT and COAP_RESPONSE_TIMEOUT*COAP_RESPONSE_RANDOM
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****  */
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** #define COAP_RESPONSE_TIMEOUT_TICKS         (CLOCK_SECOND * COAP_RESPONSE_TIMEOUT)
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** #define COAP_RESPONSE_TIMEOUT_BACKOFF_MASK  ((CLOCK_SECOND * COAP_RESPONSE_TIMEOUT * (COAP_RESPONSE
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** static int prv_checkFinished(lwm2m_transaction_t *transacP,
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                              coap_packet_t *receivedMessage)
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** {
+  42              		.loc 1 155 0
+  43              		.cfi_startproc
+  44              		@ args = 0, pretend = 0, frame = 24
+  45              		@ frame_needed = 1, uses_anonymous_args = 0
+  46 0000 90B5     		push	{r4, r7, lr}
+  47              	.LCFI0:
+  48              		.cfi_def_cfa_offset 12
+  49              		.cfi_offset 4, -12
+  50              		.cfi_offset 7, -8
+  51              		.cfi_offset 14, -4
+  52 0002 89B0     		sub	sp, sp, #36
+  53              	.LCFI1:
+  54              		.cfi_def_cfa_offset 48
+  55 0004 02AF     		add	r7, sp, #8
+  56              	.LCFI2:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 5
+
+
+  57              		.cfi_def_cfa 7, 40
+  58 0006 7860     		str	r0, [r7, #4]
+  59 0008 3960     		str	r1, [r7]
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     int len;
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     const uint8_t *token;
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     coap_packet_t *transactionMessage = transacP->message;
+  60              		.loc 1 158 0
+  61 000a 7B68     		ldr	r3, [r7, #4]
+  62 000c 9B6A     		ldr	r3, [r3, #40]
+  63 000e 3B61     		str	r3, [r7, #16]
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (COAP_DELETE < transactionMessage->code)
+  64              		.loc 1 160 0
+  65 0010 3B69     		ldr	r3, [r7, #16]
+  66 0012 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+  67 0014 042B     		cmp	r3, #4
+  68 0016 07D9     		bls	.L2
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         // response
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         return transacP->ack_received ? 1 : 0;
+  69              		.loc 1 163 0
+  70 0018 7B68     		ldr	r3, [r7, #4]
+  71 001a 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+  72 001c 002B     		cmp	r3, #0
+  73 001e 14BF     		ite	ne
+  74 0020 0123     		movne	r3, #1
+  75 0022 0023     		moveq	r3, #0
+  76 0024 DBB2     		uxtb	r3, r3
+  77 0026 85E0     		b	.L10
+  78              	.L2:
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (!IS_OPTION(transactionMessage, COAP_OPTION_TOKEN))
+  79              		.loc 1 165 0
+  80 0028 3B69     		ldr	r3, [r7, #16]
+  81 002a 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+  82 002c 03F00803 		and	r3, r3, #8
+  83 0030 002B     		cmp	r3, #0
+  84 0032 07D1     		bne	.L4
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         // request without token
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         return transacP->ack_received ? 1 : 0;
+  85              		.loc 1 168 0
+  86 0034 7B68     		ldr	r3, [r7, #4]
+  87 0036 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+  88 0038 002B     		cmp	r3, #0
+  89 003a 14BF     		ite	ne
+  90 003c 0123     		movne	r3, #1
+  91 003e 0023     		moveq	r3, #0
+  92 0040 DBB2     		uxtb	r3, r3
+  93 0042 77E0     		b	.L10
+  94              	.L4:
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     len = coap_get_header_token(receivedMessage, &token);
+  95              		.loc 1 171 0
+  96 0044 07F10803 		add	r3, r7, #8
+  97 0048 1946     		mov	r1, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 6
+
+
+  98 004a 3868     		ldr	r0, [r7]
+  99 004c FFF7FEFF 		bl	coap_get_header_token
+ 100 0050 F860     		str	r0, [r7, #12]
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (transactionMessage->token_len == len)
+ 101              		.loc 1 172 0
+ 102 0052 3B69     		ldr	r3, [r7, #16]
+ 103 0054 93F84C30 		ldrb	r3, [r3, #76]	@ zero_extendqisi2
+ 104 0058 1A46     		mov	r2, r3
+ 105 005a FB68     		ldr	r3, [r7, #12]
+ 106 005c 9342     		cmp	r3, r2
+ 107 005e 0BD1     		bne	.L5
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (memcmp(transactionMessage->token, token, len) == 0) return 1;
+ 108              		.loc 1 174 0
+ 109 0060 3B69     		ldr	r3, [r7, #16]
+ 110 0062 4D33     		adds	r3, r3, #77
+ 111 0064 B968     		ldr	r1, [r7, #8]
+ 112 0066 FA68     		ldr	r2, [r7, #12]
+ 113 0068 1846     		mov	r0, r3
+ 114 006a FFF7FEFF 		bl	memcmp
+ 115 006e 0346     		mov	r3, r0
+ 116 0070 002B     		cmp	r3, #0
+ 117 0072 01D1     		bne	.L5
+ 118              		.loc 1 174 0 is_stmt 0 discriminator 1
+ 119 0074 0123     		movs	r3, #1
+ 120 0076 5DE0     		b	.L10
+ 121              	.L5:
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG_ARG("transactionMessage->token_len is %d, len is %d\n", transactionMessage->token_len, len)
+ 122              		.loc 1 176 0 is_stmt 1
+ 123 0078 FFF7FEFF 		bl	lwm2m_gettime
+ 124 007c 0346     		mov	r3, r0
+ 125 007e 0C46     		mov	r4, r1
+ 126 0080 1946     		mov	r1, r3
+ 127 0082 3B69     		ldr	r3, [r7, #16]
+ 128 0084 93F84C30 		ldrb	r3, [r3, #76]	@ zero_extendqisi2
+ 129 0088 1A46     		mov	r2, r3
+ 130 008a FB68     		ldr	r3, [r7, #12]
+ 131 008c 0193     		str	r3, [sp, #4]
+ 132 008e 0092     		str	r2, [sp]
+ 133 0090 B023     		movs	r3, #176
+ 134 0092 2A4A     		ldr	r2, .L11
+ 135 0094 2A48     		ldr	r0, .L11+4
+ 136 0096 FFF7FEFF 		bl	atiny_printf
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     int i = 0;
+ 137              		.loc 1 177 0
+ 138 009a 0023     		movs	r3, #0
+ 139 009c 7B61     		str	r3, [r7, #20]
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     for(i = 0; i < transactionMessage->token_len; i++ )
+ 140              		.loc 1 178 0
+ 141 009e 0023     		movs	r3, #0
+ 142 00a0 7B61     		str	r3, [r7, #20]
+ 143 00a2 12E0     		b	.L6
+ 144              	.L7:
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         LOG_ARG("%d\n", transactionMessage->token[i]);
+ 145              		.loc 1 179 0 discriminator 3
+ 146 00a4 FFF7FEFF 		bl	lwm2m_gettime
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 7
+
+
+ 147 00a8 0346     		mov	r3, r0
+ 148 00aa 0C46     		mov	r4, r1
+ 149 00ac 1946     		mov	r1, r3
+ 150 00ae 3A69     		ldr	r2, [r7, #16]
+ 151 00b0 7B69     		ldr	r3, [r7, #20]
+ 152 00b2 1344     		add	r3, r3, r2
+ 153 00b4 4D33     		adds	r3, r3, #77
+ 154 00b6 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 155 00b8 0093     		str	r3, [sp]
+ 156 00ba B323     		movs	r3, #179
+ 157 00bc 1F4A     		ldr	r2, .L11
+ 158 00be 2148     		ldr	r0, .L11+8
+ 159 00c0 FFF7FEFF 		bl	atiny_printf
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     for(i = 0; i < transactionMessage->token_len; i++ )
+ 160              		.loc 1 178 0 discriminator 3
+ 161 00c4 7B69     		ldr	r3, [r7, #20]
+ 162 00c6 0133     		adds	r3, r3, #1
+ 163 00c8 7B61     		str	r3, [r7, #20]
+ 164              	.L6:
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     for(i = 0; i < transactionMessage->token_len; i++ )
+ 165              		.loc 1 178 0 is_stmt 0 discriminator 1
+ 166 00ca 3B69     		ldr	r3, [r7, #16]
+ 167 00cc 93F84C30 		ldrb	r3, [r3, #76]	@ zero_extendqisi2
+ 168 00d0 1A46     		mov	r2, r3
+ 169 00d2 7B69     		ldr	r3, [r7, #20]
+ 170 00d4 9342     		cmp	r3, r2
+ 171 00d6 E5DB     		blt	.L7
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG("\n\n");
+ 172              		.loc 1 180 0 is_stmt 1
+ 173 00d8 FFF7FEFF 		bl	lwm2m_gettime
+ 174 00dc 0346     		mov	r3, r0
+ 175 00de 0C46     		mov	r4, r1
+ 176 00e0 1946     		mov	r1, r3
+ 177 00e2 B423     		movs	r3, #180
+ 178 00e4 154A     		ldr	r2, .L11
+ 179 00e6 1848     		ldr	r0, .L11+12
+ 180 00e8 FFF7FEFF 		bl	atiny_printf
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     for(i = 0; i < len; i++)
+ 181              		.loc 1 181 0
+ 182 00ec 0023     		movs	r3, #0
+ 183 00ee 7B61     		str	r3, [r7, #20]
+ 184 00f0 11E0     		b	.L8
+ 185              	.L9:
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         LOG_ARG("%d\n", token[i]);
+ 186              		.loc 1 182 0 discriminator 3
+ 187 00f2 FFF7FEFF 		bl	lwm2m_gettime
+ 188 00f6 0346     		mov	r3, r0
+ 189 00f8 0C46     		mov	r4, r1
+ 190 00fa 1946     		mov	r1, r3
+ 191 00fc BA68     		ldr	r2, [r7, #8]
+ 192 00fe 7B69     		ldr	r3, [r7, #20]
+ 193 0100 1344     		add	r3, r3, r2
+ 194 0102 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 195 0104 0093     		str	r3, [sp]
+ 196 0106 B623     		movs	r3, #182
+ 197 0108 0C4A     		ldr	r2, .L11
+ 198 010a 0E48     		ldr	r0, .L11+8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 8
+
+
+ 199 010c FFF7FEFF 		bl	atiny_printf
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     for(i = 0; i < len; i++)
+ 200              		.loc 1 181 0 discriminator 3
+ 201 0110 7B69     		ldr	r3, [r7, #20]
+ 202 0112 0133     		adds	r3, r3, #1
+ 203 0114 7B61     		str	r3, [r7, #20]
+ 204              	.L8:
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     for(i = 0; i < len; i++)
+ 205              		.loc 1 181 0 is_stmt 0 discriminator 1
+ 206 0116 7A69     		ldr	r2, [r7, #20]
+ 207 0118 FB68     		ldr	r3, [r7, #12]
+ 208 011a 9A42     		cmp	r2, r3
+ 209 011c E9DB     		blt	.L9
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG("prv_checkFinished not finish!!!\n");
+ 210              		.loc 1 183 0 is_stmt 1
+ 211 011e FFF7FEFF 		bl	lwm2m_gettime
+ 212 0122 0346     		mov	r3, r0
+ 213 0124 0C46     		mov	r4, r1
+ 214 0126 1946     		mov	r1, r3
+ 215 0128 B723     		movs	r3, #183
+ 216 012a 044A     		ldr	r2, .L11
+ 217 012c 0748     		ldr	r0, .L11+16
+ 218 012e FFF7FEFF 		bl	atiny_printf
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     return 0;
+ 219              		.loc 1 184 0
+ 220 0132 0023     		movs	r3, #0
+ 221              	.L10:
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** }
+ 222              		.loc 1 185 0 discriminator 1
+ 223 0134 1846     		mov	r0, r3
+ 224 0136 1C37     		adds	r7, r7, #28
+ 225              	.LCFI3:
+ 226              		.cfi_def_cfa_offset 12
+ 227 0138 BD46     		mov	sp, r7
+ 228              	.LCFI4:
+ 229              		.cfi_def_cfa_register 13
+ 230              		@ sp needed
+ 231 013a 90BD     		pop	{r4, r7, pc}
+ 232              	.L12:
+ 233              		.align	2
+ 234              	.L11:
+ 235 013c 00000000 		.word	__func__.8558
+ 236 0140 00000000 		.word	.LC0
+ 237 0144 40000000 		.word	.LC1
+ 238 0148 54000000 		.word	.LC2
+ 239 014c 68000000 		.word	.LC3
+ 240              		.cfi_endproc
+ 241              	.LFE4:
+ 243              		.section	.rodata
+ 244 0097 00       		.align	2
+ 245              	.LC4:
+ 246 0098 5B25645D 		.ascii	"[%d][%s:%d] method: %d, altPath: \"%s\", mID: %d, t"
+ 246      5B25733A 
+ 246      25645D20 
+ 246      6D657468 
+ 246      6F643A20 
+ 247 00c9 6F6B656E 		.ascii	"oken_len: %d\015\012\000"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 9
+
+
+ 247      5F6C656E 
+ 247      3A202564 
+ 247      0D0A00
+ 248              		.align	2
+ 249              	.LC5:
+ 250 00d8 5B25645D 		.ascii	"[%d][%s:%d] method: %d, altPath: NULL, mID: %d, tok"
+ 250      5B25733A 
+ 250      25645D20 
+ 250      6D657468 
+ 250      6F643A20 
+ 251 010b 656E5F6C 		.ascii	"en_len: %d\015\012\000"
+ 251      656E3A20 
+ 251      25640D0A 
+ 251      00
+ 252              		.align	2
+ 253              	.LC6:
+ 254 0118 5B25733A 		.ascii	"[%s:%d] NULL\015\012\000"
+ 254      25645D20 
+ 254      4E554C4C 
+ 254      0D0A00
+ 255 0127 00       		.align	2
+ 256              	.LC7:
+ 257 0128 5B25733A 		.ascii	"[%s:%d] /%d\000"
+ 257      25645D20 
+ 257      2F256400 
+ 258              		.align	2
+ 259              	.LC8:
+ 260 0134 2F256400 		.ascii	"/%d\000"
+ 261              		.align	2
+ 262              	.LC9:
+ 263 0138 0D0A00   		.ascii	"\015\012\000"
+ 264 013b 00       		.align	2
+ 265              	.LC10:
+ 266 013c 5B25645D 		.ascii	"[%d][%s:%d] send token is %d\012\015\012\000"
+ 266      5B25733A 
+ 266      25645D20 
+ 266      73656E64 
+ 266      20746F6B 
+ 267              		.align	2
+ 268              	.LC11:
+ 269 015c 5B25645D 		.ascii	"[%d][%s:%d] Exiting on success\015\012\000"
+ 269      5B25733A 
+ 269      25645D20 
+ 269      45786974 
+ 269      696E6720 
+ 270 017d 000000   		.align	2
+ 271              	.LC12:
+ 272 0180 5B25645D 		.ascii	"[%d][%s:%d] Exiting on failure\015\012\000"
+ 272      5B25733A 
+ 272      25645D20 
+ 272      45786974 
+ 272      696E6720 
+ 273              		.section	.text.transaction_new,"ax",%progbits
+ 274              		.align	1
+ 275              		.global	transaction_new
+ 276              		.syntax unified
+ 277              		.thumb
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 10
+
+
+ 278              		.thumb_func
+ 279              		.fpu fpv4-sp-d16
+ 281              	transaction_new:
+ 282              	.LFB5:
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** //transaction_new(server->sessionH, COAP_POST, NULL, NULL, contextP->nextMID++, 4, NULL)
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** lwm2m_transaction_t *transaction_new(void *sessionH,
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                                      unsigned char method,
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                                      char *altPath,
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                                      lwm2m_uri_t *uriP,
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                                      uint16_t mID,
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                                      uint8_t token_len,
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                                      uint8_t *token)
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** {
+ 283              		.loc 1 194 0
+ 284              		.cfi_startproc
+ 285              		@ args = 12, pretend = 0, frame = 56
+ 286              		@ frame_needed = 1, uses_anonymous_args = 0
+ 287 0000 90B5     		push	{r4, r7, lr}
+ 288              	.LCFI5:
+ 289              		.cfi_def_cfa_offset 12
+ 290              		.cfi_offset 4, -12
+ 291              		.cfi_offset 7, -8
+ 292              		.cfi_offset 14, -4
+ 293 0002 93B0     		sub	sp, sp, #76
+ 294              	.LCFI6:
+ 295              		.cfi_def_cfa_offset 88
+ 296 0004 04AF     		add	r7, sp, #16
+ 297              	.LCFI7:
+ 298              		.cfi_def_cfa 7, 72
+ 299 0006 F860     		str	r0, [r7, #12]
+ 300 0008 7A60     		str	r2, [r7, #4]
+ 301 000a 3B60     		str	r3, [r7]
+ 302 000c 0B46     		mov	r3, r1
+ 303 000e FB72     		strb	r3, [r7, #11]
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     lwm2m_transaction_t *transacP;
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     int result;
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if(altPath != NULL){
+ 304              		.loc 1 197 0
+ 305 0010 7B68     		ldr	r3, [r7, #4]
+ 306 0012 002B     		cmp	r3, #0
+ 307 0014 15D0     		beq	.L14
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         LOG_ARG("method: %d, altPath: \"%s\", mID: %d, token_len: %d",
+ 308              		.loc 1 198 0
+ 309 0016 FFF7FEFF 		bl	lwm2m_gettime
+ 310 001a 0346     		mov	r3, r0
+ 311 001c 0C46     		mov	r4, r1
+ 312 001e 1846     		mov	r0, r3
+ 313 0020 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 314 0022 B7F84820 		ldrh	r2, [r7, #72]
+ 315 0026 97F84C10 		ldrb	r1, [r7, #76]	@ zero_extendqisi2
+ 316 002a 0391     		str	r1, [sp, #12]
+ 317 002c 0292     		str	r2, [sp, #8]
+ 318 002e 7A68     		ldr	r2, [r7, #4]
+ 319 0030 0192     		str	r2, [sp, #4]
+ 320 0032 0093     		str	r3, [sp]
+ 321 0034 C723     		movs	r3, #199
+ 322 0036 B74A     		ldr	r2, .L42
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 11
+
+
+ 323 0038 0146     		mov	r1, r0
+ 324 003a B748     		ldr	r0, .L42+4
+ 325 003c FFF7FEFF 		bl	atiny_printf
+ 326 0040 12E0     		b	.L15
+ 327              	.L14:
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             method, altPath, mID, token_len);
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     else
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         LOG_ARG("method: %d, altPath: NULL, mID: %d, token_len: %d",
+ 328              		.loc 1 203 0
+ 329 0042 FFF7FEFF 		bl	lwm2m_gettime
+ 330 0046 0346     		mov	r3, r0
+ 331 0048 0C46     		mov	r4, r1
+ 332 004a 1846     		mov	r0, r3
+ 333 004c FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 334 004e B7F84820 		ldrh	r2, [r7, #72]
+ 335 0052 97F84C10 		ldrb	r1, [r7, #76]	@ zero_extendqisi2
+ 336 0056 0291     		str	r1, [sp, #8]
+ 337 0058 0192     		str	r2, [sp, #4]
+ 338 005a 0093     		str	r3, [sp]
+ 339 005c CC23     		movs	r3, #204
+ 340 005e AD4A     		ldr	r2, .L42
+ 341 0060 0146     		mov	r1, r0
+ 342 0062 AE48     		ldr	r0, .L42+8
+ 343 0064 FFF7FEFF 		bl	atiny_printf
+ 344              	.L15:
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             method, mID, token_len);  
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG_URI(uriP);
+ 345              		.loc 1 206 0
+ 346 0068 3B68     		ldr	r3, [r7]
+ 347 006a 002B     		cmp	r3, #0
+ 348 006c 05D1     		bne	.L16
+ 349              		.loc 1 206 0 is_stmt 0 discriminator 1
+ 350 006e CE22     		movs	r2, #206
+ 351 0070 A849     		ldr	r1, .L42
+ 352 0072 AB48     		ldr	r0, .L42+12
+ 353 0074 FFF7FEFF 		bl	atiny_printf
+ 354 0078 21E0     		b	.L17
+ 355              	.L16:
+ 356              		.loc 1 206 0 discriminator 2
+ 357 007a 3B68     		ldr	r3, [r7]
+ 358 007c 5B88     		ldrh	r3, [r3, #2]
+ 359 007e CE22     		movs	r2, #206
+ 360 0080 A449     		ldr	r1, .L42
+ 361 0082 A848     		ldr	r0, .L42+16
+ 362 0084 FFF7FEFF 		bl	atiny_printf
+ 363 0088 3B68     		ldr	r3, [r7]
+ 364 008a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 365 008c 03F00203 		and	r3, r3, #2
+ 366 0090 002B     		cmp	r3, #0
+ 367 0092 05D0     		beq	.L18
+ 368              		.loc 1 206 0 discriminator 3
+ 369 0094 3B68     		ldr	r3, [r7]
+ 370 0096 9B88     		ldrh	r3, [r3, #4]
+ 371 0098 1946     		mov	r1, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 12
+
+
+ 372 009a A348     		ldr	r0, .L42+20
+ 373 009c FFF7FEFF 		bl	atiny_printf
+ 374              	.L18:
+ 375              		.loc 1 206 0 discriminator 5
+ 376 00a0 3B68     		ldr	r3, [r7]
+ 377 00a2 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 378 00a4 03F00103 		and	r3, r3, #1
+ 379 00a8 002B     		cmp	r3, #0
+ 380 00aa 05D0     		beq	.L19
+ 381              		.loc 1 206 0 discriminator 6
+ 382 00ac 3B68     		ldr	r3, [r7]
+ 383 00ae DB88     		ldrh	r3, [r3, #6]
+ 384 00b0 1946     		mov	r1, r3
+ 385 00b2 9D48     		ldr	r0, .L42+20
+ 386 00b4 FFF7FEFF 		bl	atiny_printf
+ 387              	.L19:
+ 388              		.loc 1 206 0 discriminator 8
+ 389 00b8 9C48     		ldr	r0, .L42+24
+ 390 00ba FFF7FEFF 		bl	atiny_printf
+ 391              	.L17:
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     // no transactions without peer
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (NULL == sessionH) return NULL;
+ 392              		.loc 1 209 0 is_stmt 1
+ 393 00be FB68     		ldr	r3, [r7, #12]
+ 394 00c0 002B     		cmp	r3, #0
+ 395 00c2 01D1     		bne	.L20
+ 396              		.loc 1 209 0 is_stmt 0 discriminator 1
+ 397 00c4 0023     		movs	r3, #0
+ 398 00c6 47E1     		b	.L21
+ 399              	.L20:
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     transacP = (lwm2m_transaction_t *)lwm2m_malloc(sizeof(lwm2m_transaction_t));
+ 400              		.loc 1 211 0 is_stmt 1
+ 401 00c8 4820     		movs	r0, #72
+ 402 00ca FFF7FEFF 		bl	lwm2m_malloc
+ 403 00ce 3863     		str	r0, [r7, #48]
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (NULL == transacP) return NULL;
+ 404              		.loc 1 213 0
+ 405 00d0 3B6B     		ldr	r3, [r7, #48]
+ 406 00d2 002B     		cmp	r3, #0
+ 407 00d4 01D1     		bne	.L22
+ 408              		.loc 1 213 0 is_stmt 0 discriminator 1
+ 409 00d6 0023     		movs	r3, #0
+ 410 00d8 3EE1     		b	.L21
+ 411              	.L22:
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     memset(transacP, 0, sizeof(lwm2m_transaction_t));
+ 412              		.loc 1 214 0 is_stmt 1
+ 413 00da 4822     		movs	r2, #72
+ 414 00dc 0021     		movs	r1, #0
+ 415 00de 386B     		ldr	r0, [r7, #48]
+ 416 00e0 FFF7FEFF 		bl	memset
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     transacP->message = lwm2m_malloc(sizeof(coap_packet_t));
+ 417              		.loc 1 216 0
+ 418 00e4 8C20     		movs	r0, #140
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 13
+
+
+ 419 00e6 FFF7FEFF 		bl	lwm2m_malloc
+ 420 00ea 0246     		mov	r2, r0
+ 421 00ec 3B6B     		ldr	r3, [r7, #48]
+ 422 00ee 9A62     		str	r2, [r3, #40]
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (NULL == transacP->message) goto error;
+ 423              		.loc 1 217 0
+ 424 00f0 3B6B     		ldr	r3, [r7, #48]
+ 425 00f2 9B6A     		ldr	r3, [r3, #40]
+ 426 00f4 002B     		cmp	r3, #0
+ 427 00f6 00F00781 		beq	.L38
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 219:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     coap_init_message(transacP->message, COAP_TYPE_CON, method, mID);
+ 428              		.loc 1 219 0
+ 429 00fa 3B6B     		ldr	r3, [r7, #48]
+ 430 00fc 986A     		ldr	r0, [r3, #40]
+ 431 00fe B7F84830 		ldrh	r3, [r7, #72]
+ 432 0102 FA7A     		ldrb	r2, [r7, #11]	@ zero_extendqisi2
+ 433 0104 0021     		movs	r1, #0
+ 434 0106 FFF7FEFF 		bl	coap_init_message
+ 220:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     transacP->peerH = sessionH;
+ 435              		.loc 1 221 0
+ 436 010a 3B6B     		ldr	r3, [r7, #48]
+ 437 010c FA68     		ldr	r2, [r7, #12]
+ 438 010e 9A60     		str	r2, [r3, #8]
+ 222:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 223:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     transacP->mID = mID;
+ 439              		.loc 1 223 0
+ 440 0110 3B6B     		ldr	r3, [r7, #48]
+ 441 0112 B7F84820 		ldrh	r2, [r7, #72]	@ movhi
+ 442 0116 9A80     		strh	r2, [r3, #4]	@ movhi
+ 224:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 225:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (altPath != NULL)
+ 443              		.loc 1 225 0
+ 444 0118 7B68     		ldr	r3, [r7, #4]
+ 445 011a 002B     		cmp	r3, #0
+ 446 011c 07D0     		beq	.L25
+ 226:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 227:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         // TODO: Support multi-segment alternative path
+ 228:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         coap_set_header_uri_path_segment(transacP->message, altPath + 1);
+ 447              		.loc 1 228 0
+ 448 011e 3B6B     		ldr	r3, [r7, #48]
+ 449 0120 9A6A     		ldr	r2, [r3, #40]
+ 450 0122 7B68     		ldr	r3, [r7, #4]
+ 451 0124 0133     		adds	r3, r3, #1
+ 452 0126 1946     		mov	r1, r3
+ 453 0128 1046     		mov	r0, r2
+ 454 012a FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 455              	.L25:
+ 229:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (NULL != uriP)
+ 456              		.loc 1 230 0
+ 457 012e 3B68     		ldr	r3, [r7]
+ 458 0130 002B     		cmp	r3, #0
+ 459 0132 72D0     		beq	.L26
+ 460              	.LBB2:
+ 231:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 14
+
+
+ 232:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         char stringID[LWM2M_STRING_ID_MAX_LEN];
+ 233:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 234:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         result = utils_intToText(uriP->objectId, (uint8_t *)stringID, LWM2M_STRING_ID_MAX_LEN);
+ 461              		.loc 1 234 0
+ 462 0134 3B68     		ldr	r3, [r7]
+ 463 0136 5B88     		ldrh	r3, [r3, #2]
+ 464 0138 98B2     		uxth	r0, r3
+ 465 013a 4FF00001 		mov	r1, #0
+ 466 013e 07F11802 		add	r2, r7, #24
+ 467 0142 0623     		movs	r3, #6
+ 468 0144 FFF7FEFF 		bl	utils_intToText
+ 469 0148 0346     		mov	r3, r0
+ 470 014a FB62     		str	r3, [r7, #44]
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (result == 0) goto error;
+ 471              		.loc 1 235 0
+ 472 014c FB6A     		ldr	r3, [r7, #44]
+ 473 014e 002B     		cmp	r3, #0
+ 474 0150 00F0DC80 		beq	.L39
+ 236:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         stringID[result] = 0;
+ 475              		.loc 1 236 0
+ 476 0154 07F11802 		add	r2, r7, #24
+ 477 0158 FB6A     		ldr	r3, [r7, #44]
+ 478 015a 1344     		add	r3, r3, r2
+ 479 015c 0022     		movs	r2, #0
+ 480 015e 1A70     		strb	r2, [r3]
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         coap_set_header_uri_path_segment(transacP->message, stringID);
+ 481              		.loc 1 237 0
+ 482 0160 3B6B     		ldr	r3, [r7, #48]
+ 483 0162 9B6A     		ldr	r3, [r3, #40]
+ 484 0164 07F11802 		add	r2, r7, #24
+ 485 0168 1146     		mov	r1, r2
+ 486 016a 1846     		mov	r0, r3
+ 487 016c FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 238:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 239:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (LWM2M_URI_IS_SET_INSTANCE(uriP))
+ 488              		.loc 1 239 0
+ 489 0170 3B68     		ldr	r3, [r7]
+ 490 0172 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 491 0174 03F00203 		and	r3, r3, #2
+ 492 0178 002B     		cmp	r3, #0
+ 493 017a 1ED0     		beq	.L29
+ 240:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 241:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             result = utils_intToText(uriP->instanceId, (uint8_t *)stringID, LWM2M_STRING_ID_MAX_LEN
+ 494              		.loc 1 241 0
+ 495 017c 3B68     		ldr	r3, [r7]
+ 496 017e 9B88     		ldrh	r3, [r3, #4]
+ 497 0180 98B2     		uxth	r0, r3
+ 498 0182 4FF00001 		mov	r1, #0
+ 499 0186 07F11802 		add	r2, r7, #24
+ 500 018a 0623     		movs	r3, #6
+ 501 018c FFF7FEFF 		bl	utils_intToText
+ 502 0190 0346     		mov	r3, r0
+ 503 0192 FB62     		str	r3, [r7, #44]
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if (result == 0) goto error;
+ 504              		.loc 1 242 0
+ 505 0194 FB6A     		ldr	r3, [r7, #44]
+ 506 0196 002B     		cmp	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 15
+
+
+ 507 0198 00F0BA80 		beq	.L40
+ 243:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             stringID[result] = 0;
+ 508              		.loc 1 243 0
+ 509 019c 07F11802 		add	r2, r7, #24
+ 510 01a0 FB6A     		ldr	r3, [r7, #44]
+ 511 01a2 1344     		add	r3, r3, r2
+ 512 01a4 0022     		movs	r2, #0
+ 513 01a6 1A70     		strb	r2, [r3]
+ 244:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             coap_set_header_uri_path_segment(transacP->message, stringID);
+ 514              		.loc 1 244 0
+ 515 01a8 3B6B     		ldr	r3, [r7, #48]
+ 516 01aa 9B6A     		ldr	r3, [r3, #40]
+ 517 01ac 07F11802 		add	r2, r7, #24
+ 518 01b0 1146     		mov	r1, r2
+ 519 01b2 1846     		mov	r0, r3
+ 520 01b4 FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 521 01b8 0BE0     		b	.L31
+ 522              	.L29:
+ 245:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 246:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         else
+ 247:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if (LWM2M_URI_IS_SET_RESOURCE(uriP))
+ 523              		.loc 1 248 0
+ 524 01ba 3B68     		ldr	r3, [r7]
+ 525 01bc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 526 01be 03F00103 		and	r3, r3, #1
+ 527 01c2 002B     		cmp	r3, #0
+ 528 01c4 05D0     		beq	.L31
+ 249:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             {
+ 250:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 coap_set_header_uri_path_segment(transacP->message, NULL);
+ 529              		.loc 1 250 0
+ 530 01c6 3B6B     		ldr	r3, [r7, #48]
+ 531 01c8 9B6A     		ldr	r3, [r3, #40]
+ 532 01ca 0021     		movs	r1, #0
+ 533 01cc 1846     		mov	r0, r3
+ 534 01ce FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 535              	.L31:
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             }
+ 252:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (LWM2M_URI_IS_SET_RESOURCE(uriP))
+ 536              		.loc 1 253 0
+ 537 01d2 3B68     		ldr	r3, [r7]
+ 538 01d4 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 539 01d6 03F00103 		and	r3, r3, #1
+ 540 01da 002B     		cmp	r3, #0
+ 541 01dc 1DD0     		beq	.L26
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             result = utils_intToText(uriP->resourceId, (uint8_t *)stringID, LWM2M_STRING_ID_MAX_LEN
+ 542              		.loc 1 255 0
+ 543 01de 3B68     		ldr	r3, [r7]
+ 544 01e0 DB88     		ldrh	r3, [r3, #6]
+ 545 01e2 98B2     		uxth	r0, r3
+ 546 01e4 4FF00001 		mov	r1, #0
+ 547 01e8 07F11802 		add	r2, r7, #24
+ 548 01ec 0623     		movs	r3, #6
+ 549 01ee FFF7FEFF 		bl	utils_intToText
+ 550 01f2 0346     		mov	r3, r0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 16
+
+
+ 551 01f4 FB62     		str	r3, [r7, #44]
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if (result == 0) goto error;
+ 552              		.loc 1 256 0
+ 553 01f6 FB6A     		ldr	r3, [r7, #44]
+ 554 01f8 002B     		cmp	r3, #0
+ 555 01fa 00F09D80 		beq	.L41
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             stringID[result] = 0;
+ 556              		.loc 1 257 0
+ 557 01fe 07F11802 		add	r2, r7, #24
+ 558 0202 FB6A     		ldr	r3, [r7, #44]
+ 559 0204 1344     		add	r3, r3, r2
+ 560 0206 0022     		movs	r2, #0
+ 561 0208 1A70     		strb	r2, [r3]
+ 258:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             coap_set_header_uri_path_segment(transacP->message, stringID);
+ 562              		.loc 1 258 0
+ 563 020a 3B6B     		ldr	r3, [r7, #48]
+ 564 020c 9B6A     		ldr	r3, [r3, #40]
+ 565 020e 07F11802 		add	r2, r7, #24
+ 566 0212 1146     		mov	r1, r2
+ 567 0214 1846     		mov	r0, r3
+ 568 0216 FFF7FEFF 		bl	coap_set_header_uri_path_segment
+ 569              	.L26:
+ 570              	.LBE2:
+ 259:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 261:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (0 < token_len)
+ 571              		.loc 1 261 0
+ 572 021a 97F84C30 		ldrb	r3, [r7, #76]	@ zero_extendqisi2
+ 573 021e 002B     		cmp	r3, #0
+ 574 0220 65D0     		beq	.L34
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (NULL != token)
+ 575              		.loc 1 263 0
+ 576 0222 3B6D     		ldr	r3, [r7, #80]
+ 577 0224 002B     		cmp	r3, #0
+ 578 0226 08D0     		beq	.L35
+ 264:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             coap_set_header_token(transacP->message, token, token_len);
+ 579              		.loc 1 265 0
+ 580 0228 3B6B     		ldr	r3, [r7, #48]
+ 581 022a 9B6A     		ldr	r3, [r3, #40]
+ 582 022c 97F84C20 		ldrb	r2, [r7, #76]	@ zero_extendqisi2
+ 583 0230 396D     		ldr	r1, [r7, #80]
+ 584 0232 1846     		mov	r0, r3
+ 585 0234 FFF7FEFF 		bl	coap_set_header_token
+ 586 0238 59E0     		b	.L34
+ 587              	.L35:
+ 588              	.LBB3:
+ 266:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         else
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             // generate a token
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             uint8_t temp_token[COAP_TOKEN_LEN];
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             time_t tv_sec = lwm2m_gettime();
+ 589              		.loc 1 271 0
+ 590 023a FFF7FEFF 		bl	lwm2m_gettime
+ 591 023e C7E90801 		strd	r0, [r7, #32]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 17
+
+
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             // initialize first 6 bytes, leave the last 2 random
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             temp_token[0] = mID;
+ 592              		.loc 1 274 0
+ 593 0242 B7F84830 		ldrh	r3, [r7, #72]	@ movhi
+ 594 0246 DBB2     		uxtb	r3, r3
+ 595 0248 3B74     		strb	r3, [r7, #16]
+ 275:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             temp_token[1] = mID >> 8;
+ 596              		.loc 1 275 0
+ 597 024a B7F84830 		ldrh	r3, [r7, #72]
+ 598 024e 1B0A     		lsrs	r3, r3, #8
+ 599 0250 9BB2     		uxth	r3, r3
+ 600 0252 DBB2     		uxtb	r3, r3
+ 601 0254 7B74     		strb	r3, [r7, #17]
+ 276:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             temp_token[2] = tv_sec;
+ 602              		.loc 1 276 0
+ 603 0256 97F82030 		ldrb	r3, [r7, #32]	@ zero_extendqisi2
+ 604 025a BB74     		strb	r3, [r7, #18]
+ 277:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             temp_token[3] = tv_sec >> 8;
+ 605              		.loc 1 277 0
+ 606 025c D7E90812 		ldrd	r1, [r7, #32]
+ 607 0260 4FF00003 		mov	r3, #0
+ 608 0264 4FF00004 		mov	r4, #0
+ 609 0268 0B0A     		lsrs	r3, r1, #8
+ 610 026a 43EA0263 		orr	r3, r3, r2, lsl #24
+ 611 026e 1412     		asrs	r4, r2, #8
+ 612 0270 DBB2     		uxtb	r3, r3
+ 613 0272 FB74     		strb	r3, [r7, #19]
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             temp_token[4] = tv_sec >> 16;
+ 614              		.loc 1 278 0
+ 615 0274 D7E90812 		ldrd	r1, [r7, #32]
+ 616 0278 4FF00003 		mov	r3, #0
+ 617 027c 4FF00004 		mov	r4, #0
+ 618 0280 0B0C     		lsrs	r3, r1, #16
+ 619 0282 43EA0243 		orr	r3, r3, r2, lsl #16
+ 620 0286 1414     		asrs	r4, r2, #16
+ 621 0288 DBB2     		uxtb	r3, r3
+ 622 028a 3B75     		strb	r3, [r7, #20]
+ 279:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             temp_token[5] = tv_sec >> 24;
+ 623              		.loc 1 279 0
+ 624 028c D7E90812 		ldrd	r1, [r7, #32]
+ 625 0290 4FF00003 		mov	r3, #0
+ 626 0294 4FF00004 		mov	r4, #0
+ 627 0298 0B0E     		lsrs	r3, r1, #24
+ 628 029a 43EA0223 		orr	r3, r3, r2, lsl #8
+ 629 029e 1416     		asrs	r4, r2, #24
+ 630 02a0 DBB2     		uxtb	r3, r3
+ 631 02a2 7B75     		strb	r3, [r7, #21]
+ 280:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             // use just the provided amount of bytes
+ 281:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             coap_set_header_token(transacP->message, temp_token, token_len);
+ 632              		.loc 1 281 0
+ 633 02a4 3B6B     		ldr	r3, [r7, #48]
+ 634 02a6 9B6A     		ldr	r3, [r3, #40]
+ 635 02a8 97F84C20 		ldrb	r2, [r7, #76]	@ zero_extendqisi2
+ 636 02ac 07F11001 		add	r1, r7, #16
+ 637 02b0 1846     		mov	r0, r3
+ 638 02b2 FFF7FEFF 		bl	coap_set_header_token
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 18
+
+
+ 282:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             int i;
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             for(i = 0; i < token_len; i++)
+ 639              		.loc 1 283 0
+ 640 02b6 0023     		movs	r3, #0
+ 641 02b8 7B63     		str	r3, [r7, #52]
+ 642 02ba 13E0     		b	.L36
+ 643              	.L37:
+ 284:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 LOG_ARG("send token is %d\n", temp_token[i]);
+ 644              		.loc 1 284 0 discriminator 3
+ 645 02bc FFF7FEFF 		bl	lwm2m_gettime
+ 646 02c0 0346     		mov	r3, r0
+ 647 02c2 0C46     		mov	r4, r1
+ 648 02c4 1946     		mov	r1, r3
+ 649 02c6 07F11002 		add	r2, r7, #16
+ 650 02ca 7B6B     		ldr	r3, [r7, #52]
+ 651 02cc 1344     		add	r3, r3, r2
+ 652 02ce 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 653 02d0 0093     		str	r3, [sp]
+ 654 02d2 4FF48E73 		mov	r3, #284
+ 655 02d6 0F4A     		ldr	r2, .L42
+ 656 02d8 1548     		ldr	r0, .L42+28
+ 657 02da FFF7FEFF 		bl	atiny_printf
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 LOG_ARG("send token is %d\n", temp_token[i]);
+ 658              		.loc 1 283 0 discriminator 3
+ 659 02de 7B6B     		ldr	r3, [r7, #52]
+ 660 02e0 0133     		adds	r3, r3, #1
+ 661 02e2 7B63     		str	r3, [r7, #52]
+ 662              	.L36:
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 LOG_ARG("send token is %d\n", temp_token[i]);
+ 663              		.loc 1 283 0 is_stmt 0 discriminator 1
+ 664 02e4 97F84C30 		ldrb	r3, [r7, #76]	@ zero_extendqisi2
+ 665 02e8 7A6B     		ldr	r2, [r7, #52]
+ 666 02ea 9A42     		cmp	r2, r3
+ 667 02ec E6DB     		blt	.L37
+ 668              	.L34:
+ 669              	.LBE3:
+ 285:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 286:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 287:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 288:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG("Exiting on success");
+ 670              		.loc 1 288 0 is_stmt 1
+ 671 02ee FFF7FEFF 		bl	lwm2m_gettime
+ 672 02f2 0346     		mov	r3, r0
+ 673 02f4 0C46     		mov	r4, r1
+ 674 02f6 1946     		mov	r1, r3
+ 675 02f8 4FF49073 		mov	r3, #288
+ 676 02fc 054A     		ldr	r2, .L42
+ 677 02fe 0D48     		ldr	r0, .L42+32
+ 678 0300 FFF7FEFF 		bl	atiny_printf
+ 289:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     return transacP;
+ 679              		.loc 1 289 0
+ 680 0304 3B6B     		ldr	r3, [r7, #48]
+ 681 0306 27E0     		b	.L21
+ 682              	.L38:
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 683              		.loc 1 217 0
+ 684 0308 00BF     		nop
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 19
+
+
+ 685 030a 16E0     		b	.L24
+ 686              	.L39:
+ 687              	.LBB4:
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         stringID[result] = 0;
+ 688              		.loc 1 235 0
+ 689 030c 00BF     		nop
+ 690 030e 14E0     		b	.L24
+ 691              	.L40:
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             stringID[result] = 0;
+ 692              		.loc 1 242 0
+ 693 0310 00BF     		nop
+ 694 0312 12E0     		b	.L24
+ 695              	.L43:
+ 696              		.align	2
+ 697              	.L42:
+ 698 0314 00000000 		.word	__func__.8577
+ 699 0318 98000000 		.word	.LC4
+ 700 031c D8000000 		.word	.LC5
+ 701 0320 18010000 		.word	.LC6
+ 702 0324 28010000 		.word	.LC7
+ 703 0328 34010000 		.word	.LC8
+ 704 032c 38010000 		.word	.LC9
+ 705 0330 3C010000 		.word	.LC10
+ 706 0334 5C010000 		.word	.LC11
+ 707              	.L41:
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             stringID[result] = 0;
+ 708              		.loc 1 256 0
+ 709 0338 00BF     		nop
+ 710              	.L24:
+ 711              	.LBE4:
+ 290:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 291:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** error:
+ 292:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG("Exiting on failure");
+ 712              		.loc 1 292 0
+ 713 033a FFF7FEFF 		bl	lwm2m_gettime
+ 714 033e 0346     		mov	r3, r0
+ 715 0340 0C46     		mov	r4, r1
+ 716 0342 1946     		mov	r1, r3
+ 717 0344 4FF49273 		mov	r3, #292
+ 718 0348 054A     		ldr	r2, .L44
+ 719 034a 0648     		ldr	r0, .L44+4
+ 720 034c FFF7FEFF 		bl	atiny_printf
+ 293:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     lwm2m_free(transacP);
+ 721              		.loc 1 293 0
+ 722 0350 386B     		ldr	r0, [r7, #48]
+ 723 0352 FFF7FEFF 		bl	lwm2m_free
+ 294:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     return NULL;
+ 724              		.loc 1 294 0
+ 725 0356 0023     		movs	r3, #0
+ 726              	.L21:
+ 295:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** }
+ 727              		.loc 1 295 0
+ 728 0358 1846     		mov	r0, r3
+ 729 035a 3C37     		adds	r7, r7, #60
+ 730              	.LCFI8:
+ 731              		.cfi_def_cfa_offset 12
+ 732 035c BD46     		mov	sp, r7
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 20
+
+
+ 733              	.LCFI9:
+ 734              		.cfi_def_cfa_register 13
+ 735              		@ sp needed
+ 736 035e 90BD     		pop	{r4, r7, pc}
+ 737              	.L45:
+ 738              		.align	2
+ 739              	.L44:
+ 740 0360 00000000 		.word	__func__.8577
+ 741 0364 80010000 		.word	.LC12
+ 742              		.cfi_endproc
+ 743              	.LFE5:
+ 745              		.section	.rodata
+ 746 01a1 000000   		.align	2
+ 747              	.LC13:
+ 748 01a4 5B25645D 		.ascii	"[%d][%s:%d] Entering\015\012\000"
+ 748      5B25733A 
+ 748      25645D20 
+ 748      456E7465 
+ 748      72696E67 
+ 749              		.section	.text.transaction_free,"ax",%progbits
+ 750              		.align	1
+ 751              		.global	transaction_free
+ 752              		.syntax unified
+ 753              		.thumb
+ 754              		.thumb_func
+ 755              		.fpu fpv4-sp-d16
+ 757              	transaction_free:
+ 758              	.LFB6:
+ 296:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 297:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** void transaction_free(lwm2m_transaction_t *transacP)
+ 298:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** {
+ 759              		.loc 1 298 0
+ 760              		.cfi_startproc
+ 761              		@ args = 0, pretend = 0, frame = 8
+ 762              		@ frame_needed = 1, uses_anonymous_args = 0
+ 763 0000 90B5     		push	{r4, r7, lr}
+ 764              	.LCFI10:
+ 765              		.cfi_def_cfa_offset 12
+ 766              		.cfi_offset 4, -12
+ 767              		.cfi_offset 7, -8
+ 768              		.cfi_offset 14, -4
+ 769 0002 83B0     		sub	sp, sp, #12
+ 770              	.LCFI11:
+ 771              		.cfi_def_cfa_offset 24
+ 772 0004 00AF     		add	r7, sp, #0
+ 773              	.LCFI12:
+ 774              		.cfi_def_cfa_register 7
+ 775 0006 7860     		str	r0, [r7, #4]
+ 299:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG("Entering");
+ 776              		.loc 1 299 0
+ 777 0008 FFF7FEFF 		bl	lwm2m_gettime
+ 778 000c 0346     		mov	r3, r0
+ 779 000e 0C46     		mov	r4, r1
+ 780 0010 1946     		mov	r1, r3
+ 781 0012 40F22B13 		movw	r3, #299
+ 782 0016 114A     		ldr	r2, .L49
+ 783 0018 1148     		ldr	r0, .L49+4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 21
+
+
+ 784 001a FFF7FEFF 		bl	atiny_printf
+ 300:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (transacP->message)
+ 785              		.loc 1 300 0
+ 786 001e 7B68     		ldr	r3, [r7, #4]
+ 787 0020 9B6A     		ldr	r3, [r3, #40]
+ 788 0022 002B     		cmp	r3, #0
+ 789 0024 09D0     		beq	.L47
+ 301:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 302:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         coap_free_header(transacP->message);
+ 790              		.loc 1 302 0
+ 791 0026 7B68     		ldr	r3, [r7, #4]
+ 792 0028 9B6A     		ldr	r3, [r3, #40]
+ 793 002a 1846     		mov	r0, r3
+ 794 002c FFF7FEFF 		bl	coap_free_header
+ 303:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         lwm2m_free(transacP->message);
+ 795              		.loc 1 303 0
+ 796 0030 7B68     		ldr	r3, [r7, #4]
+ 797 0032 9B6A     		ldr	r3, [r3, #40]
+ 798 0034 1846     		mov	r0, r3
+ 799 0036 FFF7FEFF 		bl	lwm2m_free
+ 800              	.L47:
+ 304:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 305:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 306:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (transacP->buffer) lwm2m_free(transacP->buffer);
+ 801              		.loc 1 306 0
+ 802 003a 7B68     		ldr	r3, [r7, #4]
+ 803 003c 1B6B     		ldr	r3, [r3, #48]
+ 804 003e 002B     		cmp	r3, #0
+ 805 0040 04D0     		beq	.L48
+ 806              		.loc 1 306 0 is_stmt 0 discriminator 1
+ 807 0042 7B68     		ldr	r3, [r7, #4]
+ 808 0044 1B6B     		ldr	r3, [r3, #48]
+ 809 0046 1846     		mov	r0, r3
+ 810 0048 FFF7FEFF 		bl	lwm2m_free
+ 811              	.L48:
+ 307:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     lwm2m_free(transacP);
+ 812              		.loc 1 307 0 is_stmt 1
+ 813 004c 7868     		ldr	r0, [r7, #4]
+ 814 004e FFF7FEFF 		bl	lwm2m_free
+ 308:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** }
+ 815              		.loc 1 308 0
+ 816 0052 00BF     		nop
+ 817 0054 0C37     		adds	r7, r7, #12
+ 818              	.LCFI13:
+ 819              		.cfi_def_cfa_offset 12
+ 820 0056 BD46     		mov	sp, r7
+ 821              	.LCFI14:
+ 822              		.cfi_def_cfa_register 13
+ 823              		@ sp needed
+ 824 0058 90BD     		pop	{r4, r7, pc}
+ 825              	.L50:
+ 826 005a 00BF     		.align	2
+ 827              	.L49:
+ 828 005c 00000000 		.word	__func__.8589
+ 829 0060 A4010000 		.word	.LC13
+ 830              		.cfi_endproc
+ 831              	.LFE6:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 22
+
+
+ 833              		.section	.text.transaction_remove,"ax",%progbits
+ 834              		.align	1
+ 835              		.global	transaction_remove
+ 836              		.syntax unified
+ 837              		.thumb
+ 838              		.thumb_func
+ 839              		.fpu fpv4-sp-d16
+ 841              	transaction_remove:
+ 842              	.LFB7:
+ 309:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 310:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** void transaction_remove(lwm2m_context_t *contextP,
+ 311:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         lwm2m_transaction_t *transacP)
+ 312:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** {
+ 843              		.loc 1 312 0
+ 844              		.cfi_startproc
+ 845              		@ args = 0, pretend = 0, frame = 8
+ 846              		@ frame_needed = 1, uses_anonymous_args = 0
+ 847 0000 90B5     		push	{r4, r7, lr}
+ 848              	.LCFI15:
+ 849              		.cfi_def_cfa_offset 12
+ 850              		.cfi_offset 4, -12
+ 851              		.cfi_offset 7, -8
+ 852              		.cfi_offset 14, -4
+ 853 0002 83B0     		sub	sp, sp, #12
+ 854              	.LCFI16:
+ 855              		.cfi_def_cfa_offset 24
+ 856 0004 00AF     		add	r7, sp, #0
+ 857              	.LCFI17:
+ 858              		.cfi_def_cfa_register 7
+ 859 0006 7860     		str	r0, [r7, #4]
+ 860 0008 3960     		str	r1, [r7]
+ 313:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG("Entering");
+ 861              		.loc 1 313 0
+ 862 000a FFF7FEFF 		bl	lwm2m_gettime
+ 863 000e 0346     		mov	r3, r0
+ 864 0010 0C46     		mov	r4, r1
+ 865 0012 1946     		mov	r1, r3
+ 866 0014 40F23913 		movw	r3, #313
+ 867 0018 0A4A     		ldr	r2, .L52
+ 868 001a 0B48     		ldr	r0, .L52+4
+ 869 001c FFF7FEFF 		bl	atiny_printf
+ 314:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     contextP->transactionList = (lwm2m_transaction_t *) LWM2M_LIST_RM(contextP->transactionList, tr
+ 870              		.loc 1 314 0
+ 871 0020 7B68     		ldr	r3, [r7, #4]
+ 872 0022 186B     		ldr	r0, [r3, #48]
+ 873 0024 3B68     		ldr	r3, [r7]
+ 874 0026 9B88     		ldrh	r3, [r3, #4]
+ 875 0028 0022     		movs	r2, #0
+ 876 002a 1946     		mov	r1, r3
+ 877 002c FFF7FEFF 		bl	lwm2m_list_remove
+ 878 0030 0246     		mov	r2, r0
+ 879 0032 7B68     		ldr	r3, [r7, #4]
+ 880 0034 1A63     		str	r2, [r3, #48]
+ 315:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     transaction_free(transacP);
+ 881              		.loc 1 315 0
+ 882 0036 3868     		ldr	r0, [r7]
+ 883 0038 FFF7FEFF 		bl	transaction_free
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 23
+
+
+ 316:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** }
+ 884              		.loc 1 316 0
+ 885 003c 00BF     		nop
+ 886 003e 0C37     		adds	r7, r7, #12
+ 887              	.LCFI18:
+ 888              		.cfi_def_cfa_offset 12
+ 889 0040 BD46     		mov	sp, r7
+ 890              	.LCFI19:
+ 891              		.cfi_def_cfa_register 13
+ 892              		@ sp needed
+ 893 0042 90BD     		pop	{r4, r7, pc}
+ 894              	.L53:
+ 895              		.align	2
+ 896              	.L52:
+ 897 0044 00000000 		.word	__func__.8594
+ 898 0048 A4010000 		.word	.LC13
+ 899              		.cfi_endproc
+ 900              	.LFE7:
+ 902              		.section	.rodata
+ 903 01bb 00       		.align	2
+ 904              	.LC14:
+ 905 01bc 5B25645D 		.ascii	"[%d][%s:%d] Entering,message->code: %d\015\012\000"
+ 905      5B25733A 
+ 905      25645D20 
+ 905      456E7465 
+ 905      72696E67 
+ 906 01e5 000000   		.align	2
+ 907              	.LC15:
+ 908 01e8 5B25645D 		.ascii	"[%d][%s:%d] timeout in transaction_handleResponse\012"
+ 908      5B25733A 
+ 908      25645D20 
+ 908      74696D65 
+ 908      6F757420 
+ 909 021a 0D0A00   		.ascii	"\015\012\000"
+ 910 021d 000000   		.align	2
+ 911              	.LC16:
+ 912 0220 5B25645D 		.ascii	"[%d][%s:%d] only true25,fromSessionH is %p, transac"
+ 912      5B25733A 
+ 912      25645D20 
+ 912      6F6E6C79 
+ 912      20747275 
+ 913 0253 502D3E70 		.ascii	"P->peerH is %p\012\015\012\000"
+ 913      65657248 
+ 913      20697320 
+ 913      25700A0D 
+ 913      0A00
+ 914 0265 000000   		.align	2
+ 915              	.LC17:
+ 916 0268 5B25645D 		.ascii	"[%d][%s:%d] error25,fromSessionH is %p, transacP->p"
+ 916      5B25733A 
+ 916      25645D20 
+ 916      6572726F 
+ 916      7232352C 
+ 917 029b 65657248 		.ascii	"eerH is %p\012\015\012\000"
+ 917      20697320 
+ 917      25700A0D 
+ 917      0A00
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 24
+
+
+ 918 02a9 000000   		.align	2
+ 919              	.LC18:
+ 920 02ac 5B25645D 		.ascii	"[%d][%s:%d] error25,return false in transaction_han"
+ 920      5B25733A 
+ 920      25645D20 
+ 920      6572726F 
+ 920      7232352C 
+ 921 02df 646C6552 		.ascii	"dleResponse\012\015\012\000"
+ 921      6573706F 
+ 921      6E73650A 
+ 921      0D0A00
+ 922              		.section	.text.transaction_handleResponse,"ax",%progbits
+ 923              		.align	1
+ 924              		.global	transaction_handleResponse
+ 925              		.syntax unified
+ 926              		.thumb
+ 927              		.thumb_func
+ 928              		.fpu fpv4-sp-d16
+ 930              	transaction_handleResponse:
+ 931              	.LFB8:
+ 317:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 318:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** bool transaction_handleResponse(lwm2m_context_t *contextP,
+ 319:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                                 void *fromSessionH,
+ 320:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                                 coap_packet_t *message,
+ 321:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                                 coap_packet_t *response)
+ 322:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** {
+ 932              		.loc 1 322 0
+ 933              		.cfi_startproc
+ 934              		@ args = 0, pretend = 0, frame = 32
+ 935              		@ frame_needed = 1, uses_anonymous_args = 0
+ 936 0000 2DE99048 		push	{r4, r7, fp, lr}
+ 937              	.LCFI20:
+ 938              		.cfi_def_cfa_offset 16
+ 939              		.cfi_offset 4, -16
+ 940              		.cfi_offset 7, -12
+ 941              		.cfi_offset 11, -8
+ 942              		.cfi_offset 14, -4
+ 943 0004 8AB0     		sub	sp, sp, #40
+ 944              	.LCFI21:
+ 945              		.cfi_def_cfa_offset 56
+ 946 0006 02AF     		add	r7, sp, #8
+ 947              	.LCFI22:
+ 948              		.cfi_def_cfa 7, 48
+ 949 0008 F860     		str	r0, [r7, #12]
+ 950 000a B960     		str	r1, [r7, #8]
+ 951 000c 7A60     		str	r2, [r7, #4]
+ 952 000e 3B60     		str	r3, [r7]
+ 323:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     bool found = false;
+ 953              		.loc 1 323 0
+ 954 0010 0023     		movs	r3, #0
+ 955 0012 FB77     		strb	r3, [r7, #31]
+ 324:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     bool reset = false;
+ 956              		.loc 1 324 0
+ 957 0014 0023     		movs	r3, #0
+ 958 0016 BB77     		strb	r3, [r7, #30]
+ 325:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     lwm2m_transaction_t *transacP;
+ 326:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 25
+
+
+ 327:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG_ARG("Entering,message->code: %d", message->code);
+ 959              		.loc 1 327 0
+ 960 0018 FFF7FEFF 		bl	lwm2m_gettime
+ 961 001c 0346     		mov	r3, r0
+ 962 001e 0C46     		mov	r4, r1
+ 963 0020 1946     		mov	r1, r3
+ 964 0022 7B68     		ldr	r3, [r7, #4]
+ 965 0024 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 966 0026 0093     		str	r3, [sp]
+ 967 0028 40F24713 		movw	r3, #327
+ 968 002c 784A     		ldr	r2, .L70
+ 969 002e 7948     		ldr	r0, .L70+4
+ 970 0030 FFF7FEFF 		bl	atiny_printf
+ 328:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     transacP = contextP->transactionList;
+ 971              		.loc 1 328 0
+ 972 0034 FB68     		ldr	r3, [r7, #12]
+ 973 0036 1B6B     		ldr	r3, [r3, #48]
+ 974 0038 BB61     		str	r3, [r7, #24]
+ 329:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 330:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     while (NULL != transacP)
+ 975              		.loc 1 330 0
+ 976 003a D4E0     		b	.L55
+ 977              	.L69:
+ 331:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 332:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (lwm2m_session_is_equal(fromSessionH, transacP->peerH, contextP->userData) == true)
+ 978              		.loc 1 332 0
+ 979 003c BB69     		ldr	r3, [r7, #24]
+ 980 003e 9968     		ldr	r1, [r3, #8]
+ 981 0040 FB68     		ldr	r3, [r7, #12]
+ 982 0042 5B6B     		ldr	r3, [r3, #52]
+ 983 0044 1A46     		mov	r2, r3
+ 984 0046 B868     		ldr	r0, [r7, #8]
+ 985 0048 FFF7FEFF 		bl	lwm2m_session_is_equal
+ 986 004c 0346     		mov	r3, r0
+ 987 004e 002B     		cmp	r3, #0
+ 988 0050 00F0B680 		beq	.L56
+ 333:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 334:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if (!transacP->ack_received)
+ 989              		.loc 1 334 0
+ 990 0054 BB69     		ldr	r3, [r7, #24]
+ 991 0056 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 992 0058 002B     		cmp	r3, #0
+ 993 005a 19D1     		bne	.L57
+ 335:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             {
+ 336:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 if ((COAP_TYPE_ACK == message->type) || (COAP_TYPE_RST == message->type))
+ 994              		.loc 1 336 0
+ 995 005c 7B68     		ldr	r3, [r7, #4]
+ 996 005e 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 997 0060 022B     		cmp	r3, #2
+ 998 0062 03D0     		beq	.L58
+ 999              		.loc 1 336 0 is_stmt 0 discriminator 1
+ 1000 0064 7B68     		ldr	r3, [r7, #4]
+ 1001 0066 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 1002 0068 032B     		cmp	r3, #3
+ 1003 006a 11D1     		bne	.L57
+ 1004              	.L58:
+ 337:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 26
+
+
+ 338:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     if (transacP->mID == message->mid)
+ 1005              		.loc 1 338 0 is_stmt 1
+ 1006 006c BB69     		ldr	r3, [r7, #24]
+ 1007 006e 9A88     		ldrh	r2, [r3, #4]
+ 1008 0070 7B68     		ldr	r3, [r7, #4]
+ 1009 0072 1B89     		ldrh	r3, [r3, #8]
+ 1010 0074 9A42     		cmp	r2, r3
+ 1011 0076 0BD1     		bne	.L57
+ 339:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     {
+ 340:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         found = true;
+ 1012              		.loc 1 340 0
+ 1013 0078 0123     		movs	r3, #1
+ 1014 007a FB77     		strb	r3, [r7, #31]
+ 341:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         transacP->ack_received = true;
+ 1015              		.loc 1 341 0
+ 1016 007c BB69     		ldr	r3, [r7, #24]
+ 1017 007e 0122     		movs	r2, #1
+ 1018 0080 1A73     		strb	r2, [r3, #12]
+ 342:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         reset = COAP_TYPE_RST == message->type;
+ 1019              		.loc 1 342 0
+ 1020 0082 7B68     		ldr	r3, [r7, #4]
+ 1021 0084 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 1022 0086 032B     		cmp	r3, #3
+ 1023 0088 0CBF     		ite	eq
+ 1024 008a 0123     		moveq	r3, #1
+ 1025 008c 0023     		movne	r3, #0
+ 1026 008e BB77     		strb	r3, [r7, #30]
+ 1027              	.L57:
+ 343:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     }
+ 344:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 }
+ 345:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             }
+ 346:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 347:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if (reset || prv_checkFinished(transacP, message))
+ 1028              		.loc 1 347 0
+ 1029 0090 BB7F     		ldrb	r3, [r7, #30]	@ zero_extendqisi2
+ 1030 0092 002B     		cmp	r3, #0
+ 1031 0094 06D1     		bne	.L59
+ 1032              		.loc 1 347 0 is_stmt 0 discriminator 1
+ 1033 0096 7968     		ldr	r1, [r7, #4]
+ 1034 0098 B869     		ldr	r0, [r7, #24]
+ 1035 009a FFF7FEFF 		bl	prv_checkFinished
+ 1036 009e 0346     		mov	r3, r0
+ 1037 00a0 002B     		cmp	r3, #0
+ 1038 00a2 48D0     		beq	.L60
+ 1039              	.L59:
+ 348:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             {
+ 349:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 // HACK: If a message is sent from the monitor callback,
+ 350:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 // it will arrive before the registration ACK.
+ 351:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 // So we resend transaction that were denied for authentication reason.
+ 352:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 if (!reset)
+ 1040              		.loc 1 352 0 is_stmt 1
+ 1041 00a4 BB7F     		ldrb	r3, [r7, #30]
+ 1042 00a6 83F00103 		eor	r3, r3, #1
+ 1043 00aa DBB2     		uxtb	r3, r3
+ 1044 00ac 002B     		cmp	r3, #0
+ 1045 00ae 33D0     		beq	.L61
+ 353:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 27
+
+
+ 354:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     if (COAP_TYPE_CON == message->type && NULL != response)
+ 1046              		.loc 1 354 0
+ 1047 00b0 7B68     		ldr	r3, [r7, #4]
+ 1048 00b2 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 1049 00b4 002B     		cmp	r3, #0
+ 1050 00b6 0ED1     		bne	.L62
+ 1051              		.loc 1 354 0 is_stmt 0 discriminator 1
+ 1052 00b8 3B68     		ldr	r3, [r7]
+ 1053 00ba 002B     		cmp	r3, #0
+ 1054 00bc 0BD0     		beq	.L62
+ 355:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     {
+ 356:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         coap_init_message(response, COAP_TYPE_ACK, 0, message->mid);
+ 1055              		.loc 1 356 0 is_stmt 1
+ 1056 00be 7B68     		ldr	r3, [r7, #4]
+ 1057 00c0 1B89     		ldrh	r3, [r3, #8]
+ 1058 00c2 0022     		movs	r2, #0
+ 1059 00c4 0221     		movs	r1, #2
+ 1060 00c6 3868     		ldr	r0, [r7]
+ 1061 00c8 FFF7FEFF 		bl	coap_init_message
+ 357:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         message_send(contextP, response, fromSessionH);
+ 1062              		.loc 1 357 0
+ 1063 00cc BA68     		ldr	r2, [r7, #8]
+ 1064 00ce 3968     		ldr	r1, [r7]
+ 1065 00d0 F868     		ldr	r0, [r7, #12]
+ 1066 00d2 FFF7FEFF 		bl	message_send
+ 1067              	.L62:
+ 358:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     }
+ 359:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 360:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     if ((COAP_401_UNAUTHORIZED == message->code) && (COAP_MAX_RETRANSMIT > transacP
+ 1068              		.loc 1 360 0
+ 1069 00d6 7B68     		ldr	r3, [r7, #4]
+ 1070 00d8 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 1071 00da 812B     		cmp	r3, #129
+ 1072 00dc 1CD1     		bne	.L61
+ 1073              		.loc 1 360 0 is_stmt 0 discriminator 1
+ 1074 00de BB69     		ldr	r3, [r7, #24]
+ 1075 00e0 1B7E     		ldrb	r3, [r3, #24]	@ zero_extendqisi2
+ 1076 00e2 032B     		cmp	r3, #3
+ 1077 00e4 18D8     		bhi	.L61
+ 361:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     {
+ 362:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         transacP->ack_received = false;
+ 1078              		.loc 1 362 0 is_stmt 1
+ 1079 00e6 BB69     		ldr	r3, [r7, #24]
+ 1080 00e8 0022     		movs	r2, #0
+ 1081 00ea 1A73     		strb	r2, [r3, #12]
+ 363:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         transacP->retrans_time += COAP_RESPONSE_TIMEOUT;
+ 1082              		.loc 1 363 0
+ 1083 00ec BB69     		ldr	r3, [r7, #24]
+ 1084 00ee D3E90812 		ldrd	r1, [r3, #32]
+ 1085 00f2 0B1D     		adds	r3, r1, #4
+ 1086 00f4 42F10004 		adc	r4, r2, #0
+ 1087 00f8 BA69     		ldr	r2, [r7, #24]
+ 1088 00fa C2E90834 		strd	r3, [r2, #32]
+ 364:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         LOG("timeout in transaction_handleResponse\n");
+ 1089              		.loc 1 364 0
+ 1090 00fe FFF7FEFF 		bl	lwm2m_gettime
+ 1091 0102 0346     		mov	r3, r0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 28
+
+
+ 1092 0104 0C46     		mov	r4, r1
+ 1093 0106 1946     		mov	r1, r3
+ 1094 0108 4FF4B673 		mov	r3, #364
+ 1095 010c 404A     		ldr	r2, .L70
+ 1096 010e 4248     		ldr	r0, .L70+8
+ 1097 0110 FFF7FEFF 		bl	atiny_printf
+ 365:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                         return true;
+ 1098              		.loc 1 365 0
+ 1099 0114 0123     		movs	r3, #1
+ 1100 0116 76E0     		b	.L63
+ 1101              	.L61:
+ 366:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     }
+ 367:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 }
+ 368:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 if (transacP->callback != NULL)
+ 1102              		.loc 1 368 0
+ 1103 0118 BB69     		ldr	r3, [r7, #24]
+ 1104 011a 1B6C     		ldr	r3, [r3, #64]
+ 1105 011c 002B     		cmp	r3, #0
+ 1106 011e 04D0     		beq	.L64
+ 369:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 {
+ 370:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     transacP->callback(transacP, message);
+ 1107              		.loc 1 370 0
+ 1108 0120 BB69     		ldr	r3, [r7, #24]
+ 1109 0122 1B6C     		ldr	r3, [r3, #64]
+ 1110 0124 7968     		ldr	r1, [r7, #4]
+ 1111 0126 B869     		ldr	r0, [r7, #24]
+ 1112 0128 9847     		blx	r3
+ 1113              	.LVL0:
+ 1114              	.L64:
+ 371:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 }
+ 372:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 transaction_remove(contextP, transacP);
+ 1115              		.loc 1 372 0
+ 1116 012a B969     		ldr	r1, [r7, #24]
+ 1117 012c F868     		ldr	r0, [r7, #12]
+ 1118 012e FFF7FEFF 		bl	transaction_remove
+ 373:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 return true;
+ 1119              		.loc 1 373 0
+ 1120 0132 0123     		movs	r3, #1
+ 1121 0134 67E0     		b	.L63
+ 1122              	.L60:
+ 374:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             }
+ 375:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             // if we found our guy, exit
+ 376:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if (found)
+ 1123              		.loc 1 376 0
+ 1124 0136 FB7F     		ldrb	r3, [r7, #31]	@ zero_extendqisi2
+ 1125 0138 002B     		cmp	r3, #0
+ 1126 013a 51D0     		beq	.L65
+ 1127              	.LBB5:
+ 377:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             {
+ 378:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 time_t tv_sec = lwm2m_gettime();
+ 1128              		.loc 1 378 0
+ 1129 013c FFF7FEFF 		bl	lwm2m_gettime
+ 1130 0140 C7E90401 		strd	r0, [r7, #16]
+ 379:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 if (tv_sec)
+ 1131              		.loc 1 379 0
+ 1132 0144 D7E90434 		ldrd	r3, [r7, #16]
+ 1133 0148 2343     		orrs	r3, r3, r4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 29
+
+
+ 1134 014a 04D0     		beq	.L66
+ 380:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 {
+ 381:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     transacP->retrans_time = tv_sec;
+ 1135              		.loc 1 381 0
+ 1136 014c BA69     		ldr	r2, [r7, #24]
+ 1137 014e D7E90434 		ldrd	r3, [r7, #16]
+ 1138 0152 C2E90834 		strd	r3, [r2, #32]
+ 1139              	.L66:
+ 382:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 }
+ 383:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 if (transacP->response_timeout)
+ 1140              		.loc 1 383 0
+ 1141 0156 BB69     		ldr	r3, [r7, #24]
+ 1142 0158 D3E90434 		ldrd	r3, [r3, #16]
+ 1143 015c 2343     		orrs	r3, r3, r4
+ 1144 015e 0DD0     		beq	.L67
+ 384:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 {
+ 385:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     transacP->retrans_time += transacP->response_timeout;
+ 1145              		.loc 1 385 0
+ 1146 0160 BB69     		ldr	r3, [r7, #24]
+ 1147 0162 D3E90812 		ldrd	r1, [r3, #32]
+ 1148 0166 BB69     		ldr	r3, [r7, #24]
+ 1149 0168 D3E904BC 		ldrd	fp, [r3, #16]
+ 1150 016c 1BEB0103 		adds	r3, fp, r1
+ 1151 0170 4CEB0204 		adc	r4, ip, r2
+ 1152 0174 BA69     		ldr	r2, [r7, #24]
+ 1153 0176 C2E90834 		strd	r3, [r2, #32]
+ 1154 017a 0FE0     		b	.L68
+ 1155              	.L67:
+ 386:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 }
+ 387:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 else
+ 388:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 {
+ 389:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                     transacP->retrans_time += COAP_RESPONSE_TIMEOUT * transacP->retrans_counter;
+ 1156              		.loc 1 389 0
+ 1157 017c BB69     		ldr	r3, [r7, #24]
+ 1158 017e D3E90812 		ldrd	r1, [r3, #32]
+ 1159 0182 BB69     		ldr	r3, [r7, #24]
+ 1160 0184 1B7E     		ldrb	r3, [r3, #24]	@ zero_extendqisi2
+ 1161 0186 9B00     		lsls	r3, r3, #2
+ 1162 0188 9B46     		mov	fp, r3
+ 1163 018a 4FEAEB7C 		asr	ip, fp, #31
+ 1164 018e 1BEB0103 		adds	r3, fp, r1
+ 1165 0192 4CEB0204 		adc	r4, ip, r2
+ 1166 0196 BA69     		ldr	r2, [r7, #24]
+ 1167 0198 C2E90834 		strd	r3, [r2, #32]
+ 1168              	.L68:
+ 390:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 }
+ 391:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 LOG_ARG("only true25,fromSessionH is %p, transacP->peerH is %p\n", fromSessionH, tr
+ 1169              		.loc 1 391 0
+ 1170 019c FFF7FEFF 		bl	lwm2m_gettime
+ 1171 01a0 0346     		mov	r3, r0
+ 1172 01a2 0C46     		mov	r4, r1
+ 1173 01a4 1946     		mov	r1, r3
+ 1174 01a6 BB69     		ldr	r3, [r7, #24]
+ 1175 01a8 9B68     		ldr	r3, [r3, #8]
+ 1176 01aa 0193     		str	r3, [sp, #4]
+ 1177 01ac BB68     		ldr	r3, [r7, #8]
+ 1178 01ae 0093     		str	r3, [sp]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 30
+
+
+ 1179 01b0 40F28713 		movw	r3, #391
+ 1180 01b4 164A     		ldr	r2, .L70
+ 1181 01b6 1948     		ldr	r0, .L70+12
+ 1182 01b8 FFF7FEFF 		bl	atiny_printf
+ 392:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 return true;
+ 1183              		.loc 1 392 0
+ 1184 01bc 0123     		movs	r3, #1
+ 1185 01be 22E0     		b	.L63
+ 1186              	.L56:
+ 1187              	.LBE5:
+ 393:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             }
+ 394:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 395:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         else
+ 396:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 397:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             LOG_ARG("error25,fromSessionH is %p, transacP->peerH is %p\n", fromSessionH, transacP->
+ 1188              		.loc 1 397 0
+ 1189 01c0 FFF7FEFF 		bl	lwm2m_gettime
+ 1190 01c4 0346     		mov	r3, r0
+ 1191 01c6 0C46     		mov	r4, r1
+ 1192 01c8 1946     		mov	r1, r3
+ 1193 01ca BB69     		ldr	r3, [r7, #24]
+ 1194 01cc 9B68     		ldr	r3, [r3, #8]
+ 1195 01ce 0193     		str	r3, [sp, #4]
+ 1196 01d0 BB68     		ldr	r3, [r7, #8]
+ 1197 01d2 0093     		str	r3, [sp]
+ 1198 01d4 40F28D13 		movw	r3, #397
+ 1199 01d8 0D4A     		ldr	r2, .L70
+ 1200 01da 1148     		ldr	r0, .L70+16
+ 1201 01dc FFF7FEFF 		bl	atiny_printf
+ 1202              	.L65:
+ 398:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 399:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         transacP = transacP->next;
+ 1203              		.loc 1 399 0
+ 1204 01e0 BB69     		ldr	r3, [r7, #24]
+ 1205 01e2 1B68     		ldr	r3, [r3]
+ 1206 01e4 BB61     		str	r3, [r7, #24]
+ 1207              	.L55:
+ 330:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 1208              		.loc 1 330 0
+ 1209 01e6 BB69     		ldr	r3, [r7, #24]
+ 1210 01e8 002B     		cmp	r3, #0
+ 1211 01ea 7FF427AF 		bne	.L69
+ 400:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 401:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG("error25,return false in transaction_handleResponse\n");
+ 1212              		.loc 1 401 0
+ 1213 01ee FFF7FEFF 		bl	lwm2m_gettime
+ 1214 01f2 0346     		mov	r3, r0
+ 1215 01f4 0C46     		mov	r4, r1
+ 1216 01f6 1946     		mov	r1, r3
+ 1217 01f8 40F29113 		movw	r3, #401
+ 1218 01fc 044A     		ldr	r2, .L70
+ 1219 01fe 0948     		ldr	r0, .L70+20
+ 1220 0200 FFF7FEFF 		bl	atiny_printf
+ 402:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     return false;
+ 1221              		.loc 1 402 0
+ 1222 0204 0023     		movs	r3, #0
+ 1223              	.L63:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 31
+
+
+ 403:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** }
+ 1224              		.loc 1 403 0
+ 1225 0206 1846     		mov	r0, r3
+ 1226 0208 2037     		adds	r7, r7, #32
+ 1227              	.LCFI23:
+ 1228              		.cfi_def_cfa_offset 16
+ 1229 020a BD46     		mov	sp, r7
+ 1230              	.LCFI24:
+ 1231              		.cfi_def_cfa_register 13
+ 1232              		@ sp needed
+ 1233 020c BDE89088 		pop	{r4, r7, fp, pc}
+ 1234              	.L71:
+ 1235              		.align	2
+ 1236              	.L70:
+ 1237 0210 00000000 		.word	__func__.8604
+ 1238 0214 BC010000 		.word	.LC14
+ 1239 0218 E8010000 		.word	.LC15
+ 1240 021c 20020000 		.word	.LC16
+ 1241 0220 68020000 		.word	.LC17
+ 1242 0224 AC020000 		.word	.LC18
+ 1243              		.cfi_endproc
+ 1244              	.LFE8:
+ 1246              		.section	.rodata
+ 1247 02ee 0000     		.align	2
+ 1248              	.LC19:
+ 1249 02f0 5B25645D 		.ascii	"[%d][%s:%d] transaction_send: ver %u, type %u, tkl "
+ 1249      5B25733A 
+ 1249      25645D20 
+ 1249      7472616E 
+ 1249      73616374 
+ 1250 0323 25752C20 		.ascii	"%u, code %u.%.2u, mid %u, Content type: %d\015\012\000"
+ 1250      636F6465 
+ 1250      2025752E 
+ 1250      252E3275 
+ 1250      2C206D69 
+ 1251              		.align	2
+ 1252              	.LC20:
+ 1253 0350 5B25645D 		.ascii	"[%d][%s:%d] time:%llu\015\012\000"
+ 1253      5B25733A 
+ 1253      25645D20 
+ 1253      74696D65 
+ 1253      3A256C6C 
+ 1254              		.align	2
+ 1255              	.LC21:
+ 1256 0368 5B25645D 		.ascii	"[%d][%s:%d] remove\015\012\000"
+ 1256      5B25733A 
+ 1256      25645D20 
+ 1256      72656D6F 
+ 1256      76650D0A 
+ 1257 037d 000000   		.align	2
+ 1258              	.LC22:
+ 1259 0380 5B25645D 		.ascii	"[%d][%s:%d] send result is %d, retrans_counter:%d\015"
+ 1259      5B25733A 
+ 1259      25645D20 
+ 1259      73656E64 
+ 1259      20726573 
+ 1260 03b2 0A00     		.ascii	"\012\000"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 32
+
+
+ 1261              		.align	2
+ 1262              	.LC23:
+ 1263 03b4 5B25645D 		.ascii	"[%d][%s:%d] remove, ACK:%d, timeout: %d\015\012\000"
+ 1263      5B25733A 
+ 1263      25645D20 
+ 1263      72656D6F 
+ 1263      76652C20 
+ 1264              		.section	.text.transaction_send,"ax",%progbits
+ 1265              		.align	1
+ 1266              		.global	transaction_send
+ 1267              		.syntax unified
+ 1268              		.thumb
+ 1269              		.thumb_func
+ 1270              		.fpu fpv4-sp-d16
+ 1272              	transaction_send:
+ 1273              	.LFB9:
+ 404:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** //transacP中对象，除buffer外已经赋值
+ 405:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** int transaction_send(lwm2m_context_t *contextP,
+ 406:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                      lwm2m_transaction_t *transacP)
+ 407:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** {
+ 1274              		.loc 1 407 0
+ 1275              		.cfi_startproc
+ 1276              		@ args = 0, pretend = 0, frame = 40
+ 1277              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1278 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1279              	.LCFI25:
+ 1280              		.cfi_def_cfa_offset 20
+ 1281              		.cfi_offset 4, -20
+ 1282              		.cfi_offset 5, -16
+ 1283              		.cfi_offset 6, -12
+ 1284              		.cfi_offset 7, -8
+ 1285              		.cfi_offset 14, -4
+ 1286 0002 93B0     		sub	sp, sp, #76
+ 1287              	.LCFI26:
+ 1288              		.cfi_def_cfa_offset 96
+ 1289 0004 08AF     		add	r7, sp, #32
+ 1290              	.LCFI27:
+ 1291              		.cfi_def_cfa 7, 64
+ 1292 0006 7860     		str	r0, [r7, #4]
+ 1293 0008 3960     		str	r1, [r7]
+ 408:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     bool maxRetriesReached = false;
+ 1294              		.loc 1 408 0
+ 1295 000a 0023     		movs	r3, #0
+ 1296 000c 87F82730 		strb	r3, [r7, #39]
+ 409:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     coap_packet_t *message = transacP->message;
+ 1297              		.loc 1 409 0
+ 1298 0010 3B68     		ldr	r3, [r7]
+ 1299 0012 9B6A     		ldr	r3, [r3, #40]
+ 1300 0014 FB61     		str	r3, [r7, #28]
+ 410:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     int ret;
+ 411:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 412:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG("Entering");
+ 1301              		.loc 1 412 0
+ 1302 0016 FFF7FEFF 		bl	lwm2m_gettime
+ 1303 001a 0346     		mov	r3, r0
+ 1304 001c 0C46     		mov	r4, r1
+ 1305 001e 1946     		mov	r1, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 33
+
+
+ 1306 0020 4FF4CE73 		mov	r3, #412
+ 1307 0024 A44A     		ldr	r2, .L87
+ 1308 0026 A548     		ldr	r0, .L87+4
+ 1309 0028 FFF7FEFF 		bl	atiny_printf
+ 413:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 414:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG_ARG("transaction_send: ver %u, type %u, tkl %u, code %u.%.2u, mid %u, Content type: %d",
+ 1310              		.loc 1 414 0
+ 1311 002c FFF7FEFF 		bl	lwm2m_gettime
+ 1312 0030 0346     		mov	r3, r0
+ 1313 0032 0C46     		mov	r4, r1
+ 1314 0034 9C46     		mov	ip, r3
+ 1315 0036 FB69     		ldr	r3, [r7, #28]
+ 1316 0038 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 1317 003a 1946     		mov	r1, r3
+ 1318 003c FB69     		ldr	r3, [r7, #28]
+ 1319 003e 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 1320 0040 1846     		mov	r0, r3
+ 1321 0042 FB69     		ldr	r3, [r7, #28]
+ 1322 0044 93F84C30 		ldrb	r3, [r3, #76]	@ zero_extendqisi2
+ 1323 0048 1C46     		mov	r4, r3
+ 1324 004a FB69     		ldr	r3, [r7, #28]
+ 1325 004c 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 1326 004e 5B09     		lsrs	r3, r3, #5
+ 1327 0050 DBB2     		uxtb	r3, r3
+ 1328 0052 1D46     		mov	r5, r3
+ 1329 0054 FB69     		ldr	r3, [r7, #28]
+ 1330 0056 9B79     		ldrb	r3, [r3, #6]	@ zero_extendqisi2
+ 1331 0058 03F01F03 		and	r3, r3, #31
+ 1332 005c FA69     		ldr	r2, [r7, #28]
+ 1333 005e 1289     		ldrh	r2, [r2, #8]
+ 1334 0060 1646     		mov	r6, r2
+ 1335 0062 FA69     		ldr	r2, [r7, #28]
+ 1336 0064 128A     		ldrh	r2, [r2, #16]
+ 1337 0066 0692     		str	r2, [sp, #24]
+ 1338 0068 0596     		str	r6, [sp, #20]
+ 1339 006a 0493     		str	r3, [sp, #16]
+ 1340 006c 0395     		str	r5, [sp, #12]
+ 1341 006e 0294     		str	r4, [sp, #8]
+ 1342 0070 0190     		str	r0, [sp, #4]
+ 1343 0072 0091     		str	r1, [sp]
+ 1344 0074 40F29F13 		movw	r3, #415
+ 1345 0078 8F4A     		ldr	r2, .L87
+ 1346 007a 6146     		mov	r1, ip
+ 1347 007c 9048     		ldr	r0, .L87+8
+ 1348 007e FFF7FEFF 		bl	atiny_printf
+ 415:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             message->version, message->type, message->token_len, message->code >> 5, message->code 
+ 416:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG_ARG("time:%llu", osal_sys_time());
+ 1349              		.loc 1 416 0
+ 1350 0082 FFF7FEFF 		bl	lwm2m_gettime
+ 1351 0086 0346     		mov	r3, r0
+ 1352 0088 0C46     		mov	r4, r1
+ 1353 008a 1D46     		mov	r5, r3
+ 1354 008c FFF7FEFF 		bl	osal_sys_time
+ 1355 0090 0346     		mov	r3, r0
+ 1356 0092 0C46     		mov	r4, r1
+ 1357 0094 CDE90034 		strd	r3, [sp]
+ 1358 0098 4FF4D073 		mov	r3, #416
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 34
+
+
+ 1359 009c 864A     		ldr	r2, .L87
+ 1360 009e 2946     		mov	r1, r5
+ 1361 00a0 8848     		ldr	r0, .L87+12
+ 1362 00a2 FFF7FEFF 		bl	atiny_printf
+ 417:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (transacP->buffer == NULL)
+ 1363              		.loc 1 417 0
+ 1364 00a6 3B68     		ldr	r3, [r7]
+ 1365 00a8 1B6B     		ldr	r3, [r3, #48]
+ 1366 00aa 002B     		cmp	r3, #0
+ 1367 00ac 5FD1     		bne	.L73
+ 418:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 419:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         transacP->buffer_len = coap_serialize_get_size(message);
+ 1368              		.loc 1 419 0
+ 1369 00ae F869     		ldr	r0, [r7, #28]
+ 1370 00b0 FFF7FEFF 		bl	coap_serialize_get_size
+ 1371 00b4 0346     		mov	r3, r0
+ 1372 00b6 9AB2     		uxth	r2, r3
+ 1373 00b8 3B68     		ldr	r3, [r7]
+ 1374 00ba 9A85     		strh	r2, [r3, #44]	@ movhi
+ 420:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (transacP->buffer_len == 0)
+ 1375              		.loc 1 420 0
+ 1376 00bc 3B68     		ldr	r3, [r7]
+ 1377 00be 9B8D     		ldrh	r3, [r3, #44]
+ 1378 00c0 002B     		cmp	r3, #0
+ 1379 00c2 10D1     		bne	.L74
+ 421:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 422:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             transaction_remove(contextP, transacP);
+ 1380              		.loc 1 422 0
+ 1381 00c4 3968     		ldr	r1, [r7]
+ 1382 00c6 7868     		ldr	r0, [r7, #4]
+ 1383 00c8 FFF7FEFF 		bl	transaction_remove
+ 423:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             LOG("remove");
+ 1384              		.loc 1 423 0
+ 1385 00cc FFF7FEFF 		bl	lwm2m_gettime
+ 1386 00d0 0346     		mov	r3, r0
+ 1387 00d2 0C46     		mov	r4, r1
+ 1388 00d4 1946     		mov	r1, r3
+ 1389 00d6 40F2A713 		movw	r3, #423
+ 1390 00da 774A     		ldr	r2, .L87
+ 1391 00dc 7A48     		ldr	r0, .L87+16
+ 1392 00de FFF7FEFF 		bl	atiny_printf
+ 424:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 1393              		.loc 1 424 0
+ 1394 00e2 A023     		movs	r3, #160
+ 1395 00e4 E3E0     		b	.L75
+ 1396              	.L74:
+ 425:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 426:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 427:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         transacP->buffer = (uint8_t *)lwm2m_malloc(transacP->buffer_len);
+ 1397              		.loc 1 427 0
+ 1398 00e6 3B68     		ldr	r3, [r7]
+ 1399 00e8 9B8D     		ldrh	r3, [r3, #44]
+ 1400 00ea 1846     		mov	r0, r3
+ 1401 00ec FFF7FEFF 		bl	lwm2m_malloc
+ 1402 00f0 0246     		mov	r2, r0
+ 1403 00f2 3B68     		ldr	r3, [r7]
+ 1404 00f4 1A63     		str	r2, [r3, #48]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 35
+
+
+ 428:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (transacP->buffer == NULL)
+ 1405              		.loc 1 428 0
+ 1406 00f6 3B68     		ldr	r3, [r7]
+ 1407 00f8 1B6B     		ldr	r3, [r3, #48]
+ 1408 00fa 002B     		cmp	r3, #0
+ 1409 00fc 10D1     		bne	.L76
+ 429:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 430:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             transaction_remove(contextP, transacP);
+ 1410              		.loc 1 430 0
+ 1411 00fe 3968     		ldr	r1, [r7]
+ 1412 0100 7868     		ldr	r0, [r7, #4]
+ 1413 0102 FFF7FEFF 		bl	transaction_remove
+ 431:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             LOG("remove");
+ 1414              		.loc 1 431 0
+ 1415 0106 FFF7FEFF 		bl	lwm2m_gettime
+ 1416 010a 0346     		mov	r3, r0
+ 1417 010c 0C46     		mov	r4, r1
+ 1418 010e 1946     		mov	r1, r3
+ 1419 0110 40F2AF13 		movw	r3, #431
+ 1420 0114 684A     		ldr	r2, .L87
+ 1421 0116 6C48     		ldr	r0, .L87+16
+ 1422 0118 FFF7FEFF 		bl	atiny_printf
+ 432:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 1423              		.loc 1 432 0
+ 1424 011c A023     		movs	r3, #160
+ 1425 011e C6E0     		b	.L75
+ 1426              	.L76:
+ 433:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 434:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 435:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         transacP->buffer_len = coap_serialize_message(message, transacP->buffer);
+ 1427              		.loc 1 435 0
+ 1428 0120 3B68     		ldr	r3, [r7]
+ 1429 0122 1B6B     		ldr	r3, [r3, #48]
+ 1430 0124 1946     		mov	r1, r3
+ 1431 0126 F869     		ldr	r0, [r7, #28]
+ 1432 0128 FFF7FEFF 		bl	coap_serialize_message
+ 1433 012c 0346     		mov	r3, r0
+ 1434 012e 9AB2     		uxth	r2, r3
+ 1435 0130 3B68     		ldr	r3, [r7]
+ 1436 0132 9A85     		strh	r2, [r3, #44]	@ movhi
+ 436:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (transacP->buffer_len == 0)
+ 1437              		.loc 1 436 0
+ 1438 0134 3B68     		ldr	r3, [r7]
+ 1439 0136 9B8D     		ldrh	r3, [r3, #44]
+ 1440 0138 002B     		cmp	r3, #0
+ 1441 013a 18D1     		bne	.L73
+ 437:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 438:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             lwm2m_free(transacP->buffer);
+ 1442              		.loc 1 438 0
+ 1443 013c 3B68     		ldr	r3, [r7]
+ 1444 013e 1B6B     		ldr	r3, [r3, #48]
+ 1445 0140 1846     		mov	r0, r3
+ 1446 0142 FFF7FEFF 		bl	lwm2m_free
+ 439:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             transacP->buffer = NULL;
+ 1447              		.loc 1 439 0
+ 1448 0146 3B68     		ldr	r3, [r7]
+ 1449 0148 0022     		movs	r2, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 36
+
+
+ 1450 014a 1A63     		str	r2, [r3, #48]
+ 440:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             transaction_remove(contextP, transacP);
+ 1451              		.loc 1 440 0
+ 1452 014c 3968     		ldr	r1, [r7]
+ 1453 014e 7868     		ldr	r0, [r7, #4]
+ 1454 0150 FFF7FEFF 		bl	transaction_remove
+ 441:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             LOG("remove");
+ 1455              		.loc 1 441 0
+ 1456 0154 FFF7FEFF 		bl	lwm2m_gettime
+ 1457 0158 0346     		mov	r3, r0
+ 1458 015a 0C46     		mov	r4, r1
+ 1459 015c 1946     		mov	r1, r3
+ 1460 015e 40F2B913 		movw	r3, #441
+ 1461 0162 554A     		ldr	r2, .L87
+ 1462 0164 5848     		ldr	r0, .L87+16
+ 1463 0166 FFF7FEFF 		bl	atiny_printf
+ 442:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             return COAP_500_INTERNAL_SERVER_ERROR;
+ 1464              		.loc 1 442 0
+ 1465 016a A023     		movs	r3, #160
+ 1466 016c 9FE0     		b	.L75
+ 1467              	.L73:
+ 443:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 444:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 445:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 446:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (!transacP->ack_received)
+ 1468              		.loc 1 446 0
+ 1469 016e 3B68     		ldr	r3, [r7]
+ 1470 0170 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 1471 0172 002B     		cmp	r3, #0
+ 1472 0174 70D1     		bne	.L77
+ 1473              	.LBB6:
+ 447:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 448:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         long unsigned timeout = 0;
+ 1474              		.loc 1 448 0
+ 1475 0176 0023     		movs	r3, #0
+ 1476 0178 3B62     		str	r3, [r7, #32]
+ 449:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 450:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (0 == transacP->retrans_counter)
+ 1477              		.loc 1 450 0
+ 1478 017a 3B68     		ldr	r3, [r7]
+ 1479 017c 1B7E     		ldrb	r3, [r3, #24]	@ zero_extendqisi2
+ 1480 017e 002B     		cmp	r3, #0
+ 1481 0180 19D1     		bne	.L78
+ 1482              	.LBB7:
+ 451:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 452:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             time_t tv_sec = lwm2m_gettime();
+ 1483              		.loc 1 452 0
+ 1484 0182 FFF7FEFF 		bl	lwm2m_gettime
+ 1485 0186 C7E90401 		strd	r0, [r7, #16]
+ 453:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if (tv_sec)
+ 1486              		.loc 1 453 0
+ 1487 018a D7E90434 		ldrd	r3, [r7, #16]
+ 1488 018e 2343     		orrs	r3, r3, r4
+ 1489 0190 0DD0     		beq	.L79
+ 454:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             {
+ 455:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 transacP->retrans_time = tv_sec + COAP_RESPONSE_TIMEOUT;
+ 1490              		.loc 1 455 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 37
+
+
+ 1491 0192 D7E90434 		ldrd	r3, [r7, #16]
+ 1492 0196 181D     		adds	r0, r3, #4
+ 1493 0198 44F10001 		adc	r1, r4, #0
+ 1494 019c 3A68     		ldr	r2, [r7]
+ 1495 019e C2E90801 		strd	r0, [r2, #32]
+ 456:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 transacP->retrans_counter = 1;
+ 1496              		.loc 1 456 0
+ 1497 01a2 3B68     		ldr	r3, [r7]
+ 1498 01a4 0122     		movs	r2, #1
+ 1499 01a6 1A76     		strb	r2, [r3, #24]
+ 457:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 timeout = 0;
+ 1500              		.loc 1 457 0
+ 1501 01a8 0023     		movs	r3, #0
+ 1502 01aa 3B62     		str	r3, [r7, #32]
+ 1503 01ac 11E0     		b	.L81
+ 1504              	.L79:
+ 458:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             }
+ 459:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             else
+ 460:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             {
+ 461:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 maxRetriesReached = true;
+ 1505              		.loc 1 461 0
+ 1506 01ae 0123     		movs	r3, #1
+ 1507 01b0 87F82730 		strb	r3, [r7, #39]
+ 1508 01b4 0DE0     		b	.L81
+ 1509              	.L78:
+ 1510              	.LBE7:
+ 462:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             }
+ 463:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 464:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         else
+ 465:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 466:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if(transacP->retrans_counter <= 4 )
+ 1511              		.loc 1 466 0
+ 1512 01b6 3B68     		ldr	r3, [r7]
+ 1513 01b8 1B7E     		ldrb	r3, [r3, #24]	@ zero_extendqisi2
+ 1514 01ba 042B     		cmp	r3, #4
+ 1515 01bc 07D8     		bhi	.L82
+ 467:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 timeout = COAP_RESPONSE_TIMEOUT << (transacP->retrans_counter - 1);
+ 1516              		.loc 1 467 0
+ 1517 01be 3B68     		ldr	r3, [r7]
+ 1518 01c0 1B7E     		ldrb	r3, [r3, #24]	@ zero_extendqisi2
+ 1519 01c2 013B     		subs	r3, r3, #1
+ 1520 01c4 0422     		movs	r2, #4
+ 1521 01c6 02FA03F3 		lsl	r3, r2, r3
+ 1522 01ca 3B62     		str	r3, [r7, #32]
+ 1523 01cc 01E0     		b	.L81
+ 1524              	.L82:
+ 468:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             else
+ 469:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 timeout = COAP_RESPONSE_TIMEOUT << (4 - 1);
+ 1525              		.loc 1 469 0
+ 1526 01ce 2023     		movs	r3, #32
+ 1527 01d0 3B62     		str	r3, [r7, #32]
+ 1528              	.L81:
+ 470:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 471:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 472:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (COAP_MAX_RETRANSMIT + 1 >= transacP->retrans_counter)
+ 1529              		.loc 1 472 0
+ 1530 01d2 3B68     		ldr	r3, [r7]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 38
+
+
+ 1531 01d4 1B7E     		ldrb	r3, [r3, #24]	@ zero_extendqisi2
+ 1532 01d6 052B     		cmp	r3, #5
+ 1533 01d8 3BD8     		bhi	.L83
+ 473:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 474:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             ret = lwm2m_buffer_send(transacP->peerH, transacP->buffer, transacP->buffer_len, contex
+ 1534              		.loc 1 474 0
+ 1535 01da 3B68     		ldr	r3, [r7]
+ 1536 01dc 9868     		ldr	r0, [r3, #8]
+ 1537 01de 3B68     		ldr	r3, [r7]
+ 1538 01e0 196B     		ldr	r1, [r3, #48]
+ 1539 01e2 3B68     		ldr	r3, [r7]
+ 1540 01e4 9B8D     		ldrh	r3, [r3, #44]
+ 1541 01e6 1A46     		mov	r2, r3
+ 1542 01e8 7B68     		ldr	r3, [r7, #4]
+ 1543 01ea 5B6B     		ldr	r3, [r3, #52]
+ 1544 01ec FFF7FEFF 		bl	lwm2m_buffer_send
+ 1545 01f0 0346     		mov	r3, r0
+ 1546 01f2 FB60     		str	r3, [r7, #12]
+ 475:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             output_buffer(stderr, (uint8_t *)(transacP->buffer), transacP->buffer_len, 0);
+ 1547              		.loc 1 475 0
+ 1548 01f4 354B     		ldr	r3, .L87+20
+ 1549 01f6 1B68     		ldr	r3, [r3]
+ 1550 01f8 D868     		ldr	r0, [r3, #12]
+ 1551 01fa 3B68     		ldr	r3, [r7]
+ 1552 01fc 196B     		ldr	r1, [r3, #48]
+ 1553 01fe 3B68     		ldr	r3, [r7]
+ 1554 0200 9B8D     		ldrh	r3, [r3, #44]
+ 1555 0202 1A46     		mov	r2, r3
+ 1556 0204 0023     		movs	r3, #0
+ 1557 0206 FFF7FEFF 		bl	output_buffer
+ 476:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             transacP->retrans_time += timeout;
+ 1558              		.loc 1 476 0
+ 1559 020a 3B68     		ldr	r3, [r7]
+ 1560 020c D3E90812 		ldrd	r1, [r3, #32]
+ 1561 0210 3B6A     		ldr	r3, [r7, #32]
+ 1562 0212 1D46     		mov	r5, r3
+ 1563 0214 4FF00006 		mov	r6, #0
+ 1564 0218 6B18     		adds	r3, r5, r1
+ 1565 021a 46EB0204 		adc	r4, r6, r2
+ 1566 021e 3A68     		ldr	r2, [r7]
+ 1567 0220 C2E90834 		strd	r3, [r2, #32]
+ 477:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             LOG_ARG("send result is %d, retrans_counter:%d", ret, transacP->retrans_counter);
+ 1568              		.loc 1 477 0
+ 1569 0224 FFF7FEFF 		bl	lwm2m_gettime
+ 1570 0228 0346     		mov	r3, r0
+ 1571 022a 0C46     		mov	r4, r1
+ 1572 022c 1946     		mov	r1, r3
+ 1573 022e 3B68     		ldr	r3, [r7]
+ 1574 0230 1B7E     		ldrb	r3, [r3, #24]	@ zero_extendqisi2
+ 1575 0232 0193     		str	r3, [sp, #4]
+ 1576 0234 FB68     		ldr	r3, [r7, #12]
+ 1577 0236 0093     		str	r3, [sp]
+ 1578 0238 40F2DD13 		movw	r3, #477
+ 1579 023c 1E4A     		ldr	r2, .L87
+ 1580 023e 2448     		ldr	r0, .L87+24
+ 1581 0240 FFF7FEFF 		bl	atiny_printf
+ 478:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             transacP->retrans_counter += 1;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 39
+
+
+ 1582              		.loc 1 478 0
+ 1583 0244 3B68     		ldr	r3, [r7]
+ 1584 0246 1B7E     		ldrb	r3, [r3, #24]	@ zero_extendqisi2
+ 1585 0248 0133     		adds	r3, r3, #1
+ 1586 024a DAB2     		uxtb	r2, r3
+ 1587 024c 3B68     		ldr	r3, [r7]
+ 1588 024e 1A76     		strb	r2, [r3, #24]
+ 1589 0250 02E0     		b	.L77
+ 1590              	.L83:
+ 479:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 480:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             UNUSEX(ret);
+ 481:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 482:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         else
+ 483:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 484:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             maxRetriesReached = true;
+ 1591              		.loc 1 484 0
+ 1592 0252 0123     		movs	r3, #1
+ 1593 0254 87F82730 		strb	r3, [r7, #39]
+ 1594              	.L77:
+ 1595              	.LBE6:
+ 485:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 486:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 487:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 488:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     if (transacP->ack_received || maxRetriesReached)
+ 1596              		.loc 1 488 0
+ 1597 0258 3B68     		ldr	r3, [r7]
+ 1598 025a 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 1599 025c 002B     		cmp	r3, #0
+ 1600 025e 03D1     		bne	.L84
+ 1601              		.loc 1 488 0 is_stmt 0 discriminator 1
+ 1602 0260 97F82730 		ldrb	r3, [r7, #39]	@ zero_extendqisi2
+ 1603 0264 002B     		cmp	r3, #0
+ 1604 0266 21D0     		beq	.L85
+ 1605              	.L84:
+ 489:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 490:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (transacP->callback)
+ 1606              		.loc 1 490 0 is_stmt 1
+ 1607 0268 3B68     		ldr	r3, [r7]
+ 1608 026a 1B6C     		ldr	r3, [r3, #64]
+ 1609 026c 002B     		cmp	r3, #0
+ 1610 026e 04D0     		beq	.L86
+ 491:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 492:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             transacP->callback(transacP, NULL);
+ 1611              		.loc 1 492 0
+ 1612 0270 3B68     		ldr	r3, [r7]
+ 1613 0272 1B6C     		ldr	r3, [r3, #64]
+ 1614 0274 0021     		movs	r1, #0
+ 1615 0276 3868     		ldr	r0, [r7]
+ 1616 0278 9847     		blx	r3
+ 1617              	.LVL1:
+ 1618              	.L86:
+ 493:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 494:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         transaction_remove(contextP, transacP);
+ 1619              		.loc 1 494 0
+ 1620 027a 3968     		ldr	r1, [r7]
+ 1621 027c 7868     		ldr	r0, [r7, #4]
+ 1622 027e FFF7FEFF 		bl	transaction_remove
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 40
+
+
+ 495:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         LOG_ARG("remove, ACK:%d, timeout: %d", transacP->ack_received, maxRetriesReached);
+ 1623              		.loc 1 495 0
+ 1624 0282 FFF7FEFF 		bl	lwm2m_gettime
+ 1625 0286 0346     		mov	r3, r0
+ 1626 0288 0C46     		mov	r4, r1
+ 1627 028a 1946     		mov	r1, r3
+ 1628 028c 3B68     		ldr	r3, [r7]
+ 1629 028e 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 1630 0290 1A46     		mov	r2, r3
+ 1631 0292 97F82730 		ldrb	r3, [r7, #39]	@ zero_extendqisi2
+ 1632 0296 0193     		str	r3, [sp, #4]
+ 1633 0298 0092     		str	r2, [sp]
+ 1634 029a 40F2EF13 		movw	r3, #495
+ 1635 029e 064A     		ldr	r2, .L87
+ 1636 02a0 0C48     		ldr	r0, .L87+28
+ 1637 02a2 FFF7FEFF 		bl	atiny_printf
+ 496:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         return -1;
+ 1638              		.loc 1 496 0
+ 1639 02a6 4FF0FF33 		mov	r3, #-1
+ 1640 02aa 00E0     		b	.L75
+ 1641              	.L85:
+ 497:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 498:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 499:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     return 0;
+ 1642              		.loc 1 499 0
+ 1643 02ac 0023     		movs	r3, #0
+ 1644              	.L75:
+ 500:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** }
+ 1645              		.loc 1 500 0
+ 1646 02ae 1846     		mov	r0, r3
+ 1647 02b0 2C37     		adds	r7, r7, #44
+ 1648              	.LCFI28:
+ 1649              		.cfi_def_cfa_offset 20
+ 1650 02b2 BD46     		mov	sp, r7
+ 1651              	.LCFI29:
+ 1652              		.cfi_def_cfa_register 13
+ 1653              		@ sp needed
+ 1654 02b4 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1655              	.L88:
+ 1656 02b6 00BF     		.align	2
+ 1657              	.L87:
+ 1658 02b8 00000000 		.word	__func__.8616
+ 1659 02bc A4010000 		.word	.LC13
+ 1660 02c0 F0020000 		.word	.LC19
+ 1661 02c4 50030000 		.word	.LC20
+ 1662 02c8 68030000 		.word	.LC21
+ 1663 02cc 00000000 		.word	_impure_ptr
+ 1664 02d0 80030000 		.word	.LC22
+ 1665 02d4 B4030000 		.word	.LC23
+ 1666              		.cfi_endproc
+ 1667              	.LFE9:
+ 1669              		.section	.text.transaction_step,"ax",%progbits
+ 1670              		.align	1
+ 1671              		.global	transaction_step
+ 1672              		.syntax unified
+ 1673              		.thumb
+ 1674              		.thumb_func
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 41
+
+
+ 1675              		.fpu fpv4-sp-d16
+ 1677              	transaction_step:
+ 1678              	.LFB10:
+ 501:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 502:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** void transaction_step(lwm2m_context_t *contextP,
+ 503:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                       time_t currentTime,
+ 504:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                       time_t *timeoutP)
+ 505:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** {
+ 1679              		.loc 1 505 0
+ 1680              		.cfi_startproc
+ 1681              		@ args = 4, pretend = 0, frame = 40
+ 1682              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1683 0000 2DE99048 		push	{r4, r7, fp, lr}
+ 1684              	.LCFI30:
+ 1685              		.cfi_def_cfa_offset 16
+ 1686              		.cfi_offset 4, -16
+ 1687              		.cfi_offset 7, -12
+ 1688              		.cfi_offset 11, -8
+ 1689              		.cfi_offset 14, -4
+ 1690 0004 8AB0     		sub	sp, sp, #40
+ 1691              	.LCFI31:
+ 1692              		.cfi_def_cfa_offset 56
+ 1693 0006 00AF     		add	r7, sp, #0
+ 1694              	.LCFI32:
+ 1695              		.cfi_def_cfa_register 7
+ 1696 0008 F860     		str	r0, [r7, #12]
+ 1697 000a C7E90023 		strd	r2, [r7]
+ 506:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     lwm2m_transaction_t *transacP;
+ 507:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 508:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     LOG("Entering");
+ 1698              		.loc 1 508 0
+ 1699 000e FFF7FEFF 		bl	lwm2m_gettime
+ 1700 0012 0346     		mov	r3, r0
+ 1701 0014 0C46     		mov	r4, r1
+ 1702 0016 1946     		mov	r1, r3
+ 1703 0018 4FF4FE73 		mov	r3, #508
+ 1704 001c 2C4A     		ldr	r2, .L98
+ 1705 001e 2D48     		ldr	r0, .L98+4
+ 1706 0020 FFF7FEFF 		bl	atiny_printf
+ 509:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     transacP = contextP->transactionList;
+ 1707              		.loc 1 509 0
+ 1708 0024 FB68     		ldr	r3, [r7, #12]
+ 1709 0026 1B6B     		ldr	r3, [r3, #48]
+ 1710 0028 7B62     		str	r3, [r7, #36]
+ 510:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     while (transacP != NULL)
+ 1711              		.loc 1 510 0
+ 1712 002a 49E0     		b	.L90
+ 1713              	.L97:
+ 1714              	.LBB8:
+ 511:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 512:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         // transaction_send() may remove transaction from the linked list
+ 513:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         lwm2m_transaction_t *nextP = transacP->next;
+ 1715              		.loc 1 513 0
+ 1716 002c 7B6A     		ldr	r3, [r7, #36]
+ 1717 002e 1B68     		ldr	r3, [r3]
+ 1718 0030 7B61     		str	r3, [r7, #20]
+ 514:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         int removed = 0;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 42
+
+
+ 1719              		.loc 1 514 0
+ 1720 0032 0023     		movs	r3, #0
+ 1721 0034 3B62     		str	r3, [r7, #32]
+ 515:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 516:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (transacP->retrans_time <= currentTime)
+ 1722              		.loc 1 516 0
+ 1723 0036 7B6A     		ldr	r3, [r7, #36]
+ 1724 0038 D3E90834 		ldrd	r3, [r3, #32]
+ 1725 003c D7E90012 		ldrd	r1, [r7]
+ 1726 0040 9942     		cmp	r1, r3
+ 1727 0042 72EB0403 		sbcs	r3, r2, r4
+ 1728 0046 04DB     		blt	.L91
+ 517:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 518:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             removed = transaction_send(contextP, transacP);
+ 1729              		.loc 1 518 0
+ 1730 0048 796A     		ldr	r1, [r7, #36]
+ 1731 004a F868     		ldr	r0, [r7, #12]
+ 1732 004c FFF7FEFF 		bl	transaction_send
+ 1733 0050 3862     		str	r0, [r7, #32]
+ 1734              	.L91:
+ 519:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 520:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 521:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         if (0 == removed)
+ 1735              		.loc 1 521 0
+ 1736 0052 3B6A     		ldr	r3, [r7, #32]
+ 1737 0054 002B     		cmp	r3, #0
+ 1738 0056 2AD1     		bne	.L92
+ 1739              	.LBB9:
+ 522:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 523:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             time_t interval;
+ 524:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 525:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if (transacP->retrans_time > currentTime)
+ 1740              		.loc 1 525 0
+ 1741 0058 7B6A     		ldr	r3, [r7, #36]
+ 1742 005a D3E90834 		ldrd	r3, [r3, #32]
+ 1743 005e D7E90012 		ldrd	r1, [r7]
+ 1744 0062 9942     		cmp	r1, r3
+ 1745 0064 72EB0403 		sbcs	r3, r2, r4
+ 1746 0068 0CDA     		bge	.L93
+ 526:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             {
+ 527:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 interval = transacP->retrans_time - currentTime;
+ 1747              		.loc 1 527 0
+ 1748 006a 7B6A     		ldr	r3, [r7, #36]
+ 1749 006c D3E90812 		ldrd	r1, [r3, #32]
+ 1750 0070 D7E90034 		ldrd	r3, [r7]
+ 1751 0074 C91A     		subs	r1, r1, r3
+ 1752 0076 62EB0402 		sbc	r2, r2, r4
+ 1753 007a 8B46     		mov	fp, r1
+ 1754 007c 9446     		mov	ip, r2
+ 1755 007e C7E906BC 		strd	fp, [r7, #24]
+ 1756 0082 05E0     		b	.L94
+ 1757              	.L93:
+ 528:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             }
+ 529:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             else
+ 530:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             {
+ 531:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 interval = 1;
+ 1758              		.loc 1 531 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 43
+
+
+ 1759 0084 4FF00103 		mov	r3, #1
+ 1760 0088 4FF00004 		mov	r4, #0
+ 1761 008c C7E90634 		strd	r3, [r7, #24]
+ 1762              	.L94:
+ 532:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             }
+ 533:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 534:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             if (*timeoutP > interval)
+ 1763              		.loc 1 534 0
+ 1764 0090 BB6B     		ldr	r3, [r7, #56]
+ 1765 0092 D3E90034 		ldrd	r3, [r3]
+ 1766 0096 D7E90612 		ldrd	r1, [r7, #24]
+ 1767 009a 9942     		cmp	r1, r3
+ 1768 009c 72EB0403 		sbcs	r3, r2, r4
+ 1769 00a0 0CDA     		bge	.L96
+ 535:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             {
+ 536:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****                 *timeoutP = interval;
+ 1770              		.loc 1 536 0
+ 1771 00a2 BA6B     		ldr	r2, [r7, #56]
+ 1772 00a4 D7E90634 		ldrd	r3, [r7, #24]
+ 1773 00a8 C2E90034 		strd	r3, [r2]
+ 1774 00ac 06E0     		b	.L96
+ 1775              	.L92:
+ 1776              	.LBE9:
+ 537:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             }
+ 538:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 539:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         else
+ 540:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         {
+ 541:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****             *timeoutP = 1;
+ 1777              		.loc 1 541 0
+ 1778 00ae BA6B     		ldr	r2, [r7, #56]
+ 1779 00b0 4FF00103 		mov	r3, #1
+ 1780 00b4 4FF00004 		mov	r4, #0
+ 1781 00b8 C2E90034 		strd	r3, [r2]
+ 1782              	.L96:
+ 542:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         }
+ 543:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** 
+ 544:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****         transacP = nextP;
+ 1783              		.loc 1 544 0
+ 1784 00bc 7B69     		ldr	r3, [r7, #20]
+ 1785 00be 7B62     		str	r3, [r7, #36]
+ 1786              	.L90:
+ 1787              	.LBE8:
+ 510:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     {
+ 1788              		.loc 1 510 0
+ 1789 00c0 7B6A     		ldr	r3, [r7, #36]
+ 1790 00c2 002B     		cmp	r3, #0
+ 1791 00c4 B2D1     		bne	.L97
+ 545:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c ****     }
+ 546:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2m/wakaama_lwm2m/core\transaction.c **** }
+ 1792              		.loc 1 546 0
+ 1793 00c6 00BF     		nop
+ 1794 00c8 2837     		adds	r7, r7, #40
+ 1795              	.LCFI33:
+ 1796              		.cfi_def_cfa_offset 16
+ 1797 00ca BD46     		mov	sp, r7
+ 1798              	.LCFI34:
+ 1799              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 44
+
+
+ 1800              		@ sp needed
+ 1801 00cc BDE89088 		pop	{r4, r7, fp, pc}
+ 1802              	.L99:
+ 1803              		.align	2
+ 1804              	.L98:
+ 1805 00d0 00000000 		.word	__func__.8625
+ 1806 00d4 A4010000 		.word	.LC13
+ 1807              		.cfi_endproc
+ 1808              	.LFE10:
+ 1810              		.section	.rodata.__func__.8558,"a",%progbits
+ 1811              		.align	2
+ 1814              	__func__.8558:
+ 1815 0000 7072765F 		.ascii	"prv_checkFinished\000"
+ 1815      63686563 
+ 1815      6B46696E 
+ 1815      69736865 
+ 1815      6400
+ 1816              		.section	.rodata.__func__.8577,"a",%progbits
+ 1817              		.align	2
+ 1820              	__func__.8577:
+ 1821 0000 7472616E 		.ascii	"transaction_new\000"
+ 1821      73616374 
+ 1821      696F6E5F 
+ 1821      6E657700 
+ 1822              		.section	.rodata.__func__.8589,"a",%progbits
+ 1823              		.align	2
+ 1826              	__func__.8589:
+ 1827 0000 7472616E 		.ascii	"transaction_free\000"
+ 1827      73616374 
+ 1827      696F6E5F 
+ 1827      66726565 
+ 1827      00
+ 1828              		.section	.rodata.__func__.8594,"a",%progbits
+ 1829              		.align	2
+ 1832              	__func__.8594:
+ 1833 0000 7472616E 		.ascii	"transaction_remove\000"
+ 1833      73616374 
+ 1833      696F6E5F 
+ 1833      72656D6F 
+ 1833      766500
+ 1834              		.section	.rodata.__func__.8604,"a",%progbits
+ 1835              		.align	2
+ 1838              	__func__.8604:
+ 1839 0000 7472616E 		.ascii	"transaction_handleResponse\000"
+ 1839      73616374 
+ 1839      696F6E5F 
+ 1839      68616E64 
+ 1839      6C655265 
+ 1840              		.section	.rodata.__func__.8616,"a",%progbits
+ 1841              		.align	2
+ 1844              	__func__.8616:
+ 1845 0000 7472616E 		.ascii	"transaction_send\000"
+ 1845      73616374 
+ 1845      696F6E5F 
+ 1845      73656E64 
+ 1845      00
+ 1846              		.section	.rodata.__func__.8625,"a",%progbits
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 45
+
+
+ 1847              		.align	2
+ 1850              	__func__.8625:
+ 1851 0000 7472616E 		.ascii	"transaction_step\000"
+ 1851      73616374 
+ 1851      696F6E5F 
+ 1851      73746570 
+ 1851      00
+ 1852              		.text
+ 1853              	.Letext0:
+ 1854              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1855              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1856              		.file 4 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm2
+ 1857              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1858              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1859              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1860              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1861              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1862              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1863              		.file 11 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 1864              		.file 12 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/network/lwm
+ 1865              		.file 13 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1866              		.file 14 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 46
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 transaction.c
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:18     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:33     .text.prv_checkFinished:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:39     .text.prv_checkFinished:00000000 prv_checkFinished
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:235    .text.prv_checkFinished:0000013c $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1814   .rodata.__func__.8558:00000000 __func__.8558
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:274    .text.transaction_new:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:281    .text.transaction_new:00000000 transaction_new
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:698    .text.transaction_new:00000314 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1820   .rodata.__func__.8577:00000000 __func__.8577
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:709    .text.transaction_new:00000338 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:740    .text.transaction_new:00000360 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:750    .text.transaction_free:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:757    .text.transaction_free:00000000 transaction_free
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:828    .text.transaction_free:0000005c $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1826   .rodata.__func__.8589:00000000 __func__.8589
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:834    .text.transaction_remove:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:841    .text.transaction_remove:00000000 transaction_remove
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:897    .text.transaction_remove:00000044 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1832   .rodata.__func__.8594:00000000 __func__.8594
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:923    .text.transaction_handleResponse:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:930    .text.transaction_handleResponse:00000000 transaction_handleResponse
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1237   .text.transaction_handleResponse:00000210 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1838   .rodata.__func__.8604:00000000 __func__.8604
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1265   .text.transaction_send:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1272   .text.transaction_send:00000000 transaction_send
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1658   .text.transaction_send:000002b8 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1844   .rodata.__func__.8616:00000000 __func__.8616
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1670   .text.transaction_step:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1677   .text.transaction_step:00000000 transaction_step
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1805   .text.transaction_step:000000d0 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1850   .rodata.__func__.8625:00000000 __func__.8625
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1811   .rodata.__func__.8558:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1817   .rodata.__func__.8577:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1823   .rodata.__func__.8589:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1829   .rodata.__func__.8594:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1835   .rodata.__func__.8604:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1841   .rodata.__func__.8616:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s:1847   .rodata.__func__.8625:00000000 $d
+
+UNDEFINED SYMBOLS
+coap_get_header_token
+memcmp
+lwm2m_gettime
+atiny_printf
+lwm2m_malloc
+memset
+coap_init_message
+coap_set_header_uri_path_segment
+utils_intToText
+coap_set_header_token
+lwm2m_free
+coap_free_header
+lwm2m_list_remove
+lwm2m_session_is_equal
+message_send
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDh9gXu.s 			page 47
+
+
+osal_sys_time
+coap_serialize_get_size
+coap_serialize_message
+lwm2m_buffer_send
+output_buffer
+_impure_ptr

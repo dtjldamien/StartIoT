@@ -1,0 +1,444 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"atiny_log.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.data.g_atiny_log_level,"aw",%progbits
+  20              	g_atiny_log_level:
+  21 0000 03       		.byte	3
+  22              		.section	.rodata
+  23              		.align	2
+  24              	.LC0:
+  25 0000 44454255 		.ascii	"DEBUG\000"
+  25      4700
+  26 0006 0000     		.align	2
+  27              	.LC1:
+  28 0008 494E464F 		.ascii	"INFO\000"
+  28      00
+  29 000d 000000   		.align	2
+  30              	.LC2:
+  31 0010 5741524E 		.ascii	"WARNING\000"
+  31      494E4700 
+  32              		.align	2
+  33              	.LC3:
+  34 0018 45525200 		.ascii	"ERR\000"
+  35              		.align	2
+  36              	.LC4:
+  37 001c 46415441 		.ascii	"FATAL\000"
+  37      4C00
+  38              		.section	.data.g_log_names,"aw",%progbits
+  39              		.align	2
+  42              	g_log_names:
+  43 0000 00000000 		.word	.LC0
+  44 0004 08000000 		.word	.LC1
+  45 0008 10000000 		.word	.LC2
+  46 000c 18000000 		.word	.LC3
+  47 0010 1C000000 		.word	.LC4
+  48              		.section	.rodata
+  49 0022 0000     		.align	2
+  50              	.LC5:
+  51 0024 257300   		.ascii	"%s\000"
+  52              		.section	.text.atiny_printf,"ax",%progbits
+  53              		.align	1
+  54              		.global	atiny_printf
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s 			page 2
+
+
+  58              		.fpu fpv4-sp-d16
+  60              	atiny_printf:
+  61              	.LFB3:
+  62              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log/ati
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** #include <string.h>
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** #include <atiny_log.h>
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** static atiny_log_e g_atiny_log_level = LOG_ERR;
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** static const char *g_log_names[] =
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** {
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     "DEBUG",
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     "INFO",
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     "WARNING",
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     "ERR",
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     "FATAL",
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** };
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** #include <stdarg.h>
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** #define LOG_BUF_SIZE  256  ///< you could modify it
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** int atiny_printf(const char *format, ...)
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s 			page 3
+
+
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** {
+  63              		.loc 1 54 0
+  64              		.cfi_startproc
+  65              		@ args = 4, pretend = 16, frame = 264
+  66              		@ frame_needed = 1, uses_anonymous_args = 1
+  67 0000 0FB4     		push	{r0, r1, r2, r3}
+  68              	.LCFI0:
+  69              		.cfi_def_cfa_offset 16
+  70              		.cfi_offset 0, -16
+  71              		.cfi_offset 1, -12
+  72              		.cfi_offset 2, -8
+  73              		.cfi_offset 3, -4
+  74 0002 80B5     		push	{r7, lr}
+  75              	.LCFI1:
+  76              		.cfi_def_cfa_offset 24
+  77              		.cfi_offset 7, -24
+  78              		.cfi_offset 14, -20
+  79 0004 C2B0     		sub	sp, sp, #264
+  80              	.LCFI2:
+  81              		.cfi_def_cfa_offset 288
+  82 0006 00AF     		add	r7, sp, #0
+  83              	.LCFI3:
+  84              		.cfi_def_cfa_register 7
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     int ret;
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     char str_buf[LOG_BUF_SIZE] = {0};
+  85              		.loc 1 56 0
+  86 0008 3B1D     		adds	r3, r7, #4
+  87 000a 1846     		mov	r0, r3
+  88 000c 4FF48073 		mov	r3, #256
+  89 0010 1A46     		mov	r2, r3
+  90 0012 0021     		movs	r1, #0
+  91 0014 FFF7FEFF 		bl	memset
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     va_list list;
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     memset(str_buf, 0, LOG_BUF_SIZE);
+  92              		.loc 1 59 0
+  93 0018 3B1D     		adds	r3, r7, #4
+  94 001a 4FF48072 		mov	r2, #256
+  95 001e 0021     		movs	r1, #0
+  96 0020 1846     		mov	r0, r3
+  97 0022 FFF7FEFF 		bl	memset
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     va_start(list, format);
+  98              		.loc 1 60 0
+  99 0026 07F58A72 		add	r2, r7, #276
+ 100 002a 3B46     		mov	r3, r7
+ 101 002c 1A60     		str	r2, [r3]
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     ret = vsnprintf(str_buf, LOG_BUF_SIZE, format, list);
+ 102              		.loc 1 61 0
+ 103 002e 3B46     		mov	r3, r7
+ 104 0030 381D     		adds	r0, r7, #4
+ 105 0032 1B68     		ldr	r3, [r3]
+ 106 0034 D7F81021 		ldr	r2, [r7, #272]
+ 107 0038 4FF48071 		mov	r1, #256
+ 108 003c FFF7FEFF 		bl	vsnprintf
+ 109 0040 C7F80401 		str	r0, [r7, #260]
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     va_end(list);
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s 			page 4
+
+
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     printf("%s", str_buf);
+ 110              		.loc 1 64 0
+ 111 0044 3B1D     		adds	r3, r7, #4
+ 112 0046 1946     		mov	r1, r3
+ 113 0048 0648     		ldr	r0, .L3
+ 114 004a FFF7FEFF 		bl	printf
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     return ret;
+ 115              		.loc 1 66 0
+ 116 004e D7F80431 		ldr	r3, [r7, #260]
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** }
+ 117              		.loc 1 68 0
+ 118 0052 1846     		mov	r0, r3
+ 119 0054 07F58477 		add	r7, r7, #264
+ 120              	.LCFI4:
+ 121              		.cfi_def_cfa_offset 24
+ 122 0058 BD46     		mov	sp, r7
+ 123              	.LCFI5:
+ 124              		.cfi_def_cfa_register 13
+ 125              		@ sp needed
+ 126 005a BDE88040 		pop	{r7, lr}
+ 127              	.LCFI6:
+ 128              		.cfi_restore 14
+ 129              		.cfi_restore 7
+ 130              		.cfi_def_cfa_offset 16
+ 131 005e 04B0     		add	sp, sp, #16
+ 132              	.LCFI7:
+ 133              		.cfi_restore 3
+ 134              		.cfi_restore 2
+ 135              		.cfi_restore 1
+ 136              		.cfi_restore 0
+ 137              		.cfi_def_cfa_offset 0
+ 138 0060 7047     		bx	lr
+ 139              	.L4:
+ 140 0062 00BF     		.align	2
+ 141              	.L3:
+ 142 0064 24000000 		.word	.LC5
+ 143              		.cfi_endproc
+ 144              	.LFE3:
+ 146              		.section	.text.atiny_set_log_level,"ax",%progbits
+ 147              		.align	1
+ 148              		.global	atiny_set_log_level
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.fpu fpv4-sp-d16
+ 154              	atiny_set_log_level:
+ 155              	.LFB4:
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** void atiny_set_log_level(atiny_log_e level)
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** {
+ 156              		.loc 1 71 0
+ 157              		.cfi_startproc
+ 158              		@ args = 0, pretend = 0, frame = 8
+ 159              		@ frame_needed = 1, uses_anonymous_args = 0
+ 160              		@ link register save eliminated.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s 			page 5
+
+
+ 161 0000 80B4     		push	{r7}
+ 162              	.LCFI8:
+ 163              		.cfi_def_cfa_offset 4
+ 164              		.cfi_offset 7, -4
+ 165 0002 83B0     		sub	sp, sp, #12
+ 166              	.LCFI9:
+ 167              		.cfi_def_cfa_offset 16
+ 168 0004 00AF     		add	r7, sp, #0
+ 169              	.LCFI10:
+ 170              		.cfi_def_cfa_register 7
+ 171 0006 0346     		mov	r3, r0
+ 172 0008 FB71     		strb	r3, [r7, #7]
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     g_atiny_log_level = level;
+ 173              		.loc 1 72 0
+ 174 000a 044A     		ldr	r2, .L6
+ 175 000c FB79     		ldrb	r3, [r7, #7]
+ 176 000e 1370     		strb	r3, [r2]
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** }
+ 177              		.loc 1 73 0
+ 178 0010 00BF     		nop
+ 179 0012 0C37     		adds	r7, r7, #12
+ 180              	.LCFI11:
+ 181              		.cfi_def_cfa_offset 4
+ 182 0014 BD46     		mov	sp, r7
+ 183              	.LCFI12:
+ 184              		.cfi_def_cfa_register 13
+ 185              		@ sp needed
+ 186 0016 5DF8047B 		ldr	r7, [sp], #4
+ 187              	.LCFI13:
+ 188              		.cfi_restore 7
+ 189              		.cfi_def_cfa_offset 0
+ 190 001a 7047     		bx	lr
+ 191              	.L7:
+ 192              		.align	2
+ 193              	.L6:
+ 194 001c 00000000 		.word	g_atiny_log_level
+ 195              		.cfi_endproc
+ 196              	.LFE4:
+ 198              		.section	.text.atiny_get_log_level,"ax",%progbits
+ 199              		.align	1
+ 200              		.global	atiny_get_log_level
+ 201              		.syntax unified
+ 202              		.thumb
+ 203              		.thumb_func
+ 204              		.fpu fpv4-sp-d16
+ 206              	atiny_get_log_level:
+ 207              	.LFB5:
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** atiny_log_e atiny_get_log_level(void)
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** {
+ 208              		.loc 1 76 0
+ 209              		.cfi_startproc
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 1, uses_anonymous_args = 0
+ 212              		@ link register save eliminated.
+ 213 0000 80B4     		push	{r7}
+ 214              	.LCFI14:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s 			page 6
+
+
+ 215              		.cfi_def_cfa_offset 4
+ 216              		.cfi_offset 7, -4
+ 217 0002 00AF     		add	r7, sp, #0
+ 218              	.LCFI15:
+ 219              		.cfi_def_cfa_register 7
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     return g_atiny_log_level;
+ 220              		.loc 1 77 0
+ 221 0004 034B     		ldr	r3, .L10
+ 222 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** }
+ 223              		.loc 1 78 0
+ 224 0008 1846     		mov	r0, r3
+ 225 000a BD46     		mov	sp, r7
+ 226              	.LCFI16:
+ 227              		.cfi_def_cfa_register 13
+ 228              		@ sp needed
+ 229 000c 5DF8047B 		ldr	r7, [sp], #4
+ 230              	.LCFI17:
+ 231              		.cfi_restore 7
+ 232              		.cfi_def_cfa_offset 0
+ 233 0010 7047     		bx	lr
+ 234              	.L11:
+ 235 0012 00BF     		.align	2
+ 236              	.L10:
+ 237 0014 00000000 		.word	g_atiny_log_level
+ 238              		.cfi_endproc
+ 239              	.LFE5:
+ 241              		.section	.rodata
+ 242 0027 00       		.align	2
+ 243              	.LC6:
+ 244 0028 554E4B4F 		.ascii	"UNKOWN\000"
+ 244      574E00
+ 245              		.section	.text.atiny_get_log_level_name,"ax",%progbits
+ 246              		.align	1
+ 247              		.global	atiny_get_log_level_name
+ 248              		.syntax unified
+ 249              		.thumb
+ 250              		.thumb_func
+ 251              		.fpu fpv4-sp-d16
+ 253              	atiny_get_log_level_name:
+ 254              	.LFB6:
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** const char *atiny_get_log_level_name(atiny_log_e log_level)
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** {
+ 255              		.loc 1 81 0
+ 256              		.cfi_startproc
+ 257              		@ args = 0, pretend = 0, frame = 8
+ 258              		@ frame_needed = 1, uses_anonymous_args = 0
+ 259              		@ link register save eliminated.
+ 260 0000 80B4     		push	{r7}
+ 261              	.LCFI18:
+ 262              		.cfi_def_cfa_offset 4
+ 263              		.cfi_offset 7, -4
+ 264 0002 83B0     		sub	sp, sp, #12
+ 265              	.LCFI19:
+ 266              		.cfi_def_cfa_offset 16
+ 267 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s 			page 7
+
+
+ 268              	.LCFI20:
+ 269              		.cfi_def_cfa_register 7
+ 270 0006 0346     		mov	r3, r0
+ 271 0008 FB71     		strb	r3, [r7, #7]
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     if (log_level >= LOG_MAX)
+ 272              		.loc 1 82 0
+ 273 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 274 000c 042B     		cmp	r3, #4
+ 275 000e 01D9     		bls	.L13
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     {
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****         return "UNKOWN";
+ 276              		.loc 1 84 0
+ 277 0010 054B     		ldr	r3, .L15
+ 278 0012 03E0     		b	.L14
+ 279              	.L13:
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     }
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** 
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c ****     return g_log_names[log_level];
+ 280              		.loc 1 87 0
+ 281 0014 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 282 0016 054A     		ldr	r2, .L15+4
+ 283 0018 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 284              	.L14:
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log\atiny_log.c **** }
+ 285              		.loc 1 88 0
+ 286 001c 1846     		mov	r0, r3
+ 287 001e 0C37     		adds	r7, r7, #12
+ 288              	.LCFI21:
+ 289              		.cfi_def_cfa_offset 4
+ 290 0020 BD46     		mov	sp, r7
+ 291              	.LCFI22:
+ 292              		.cfi_def_cfa_register 13
+ 293              		@ sp needed
+ 294 0022 5DF8047B 		ldr	r7, [sp], #4
+ 295              	.LCFI23:
+ 296              		.cfi_restore 7
+ 297              		.cfi_def_cfa_offset 0
+ 298 0026 7047     		bx	lr
+ 299              	.L16:
+ 300              		.align	2
+ 301              	.L15:
+ 302 0028 28000000 		.word	.LC6
+ 303 002c 00000000 		.word	g_log_names
+ 304              		.cfi_endproc
+ 305              	.LFE6:
+ 307              		.text
+ 308              	.Letext0:
+ 309              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 310              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 311              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 312              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 313              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 314              		.file 7 "<built-in>"
+ 315              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 316              		.file 9 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/link_log/ati
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 atiny_log.c
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:20     .data.g_atiny_log_level:00000000 g_atiny_log_level
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:23     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:39     .data.g_log_names:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:42     .data.g_log_names:00000000 g_log_names
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:53     .text.atiny_printf:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:60     .text.atiny_printf:00000000 atiny_printf
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:142    .text.atiny_printf:00000064 $d
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:147    .text.atiny_set_log_level:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:154    .text.atiny_set_log_level:00000000 atiny_set_log_level
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:194    .text.atiny_set_log_level:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:199    .text.atiny_get_log_level:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:206    .text.atiny_get_log_level:00000000 atiny_get_log_level
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:237    .text.atiny_get_log_level:00000014 $d
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:246    .text.atiny_get_log_level_name:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:253    .text.atiny_get_log_level_name:00000000 atiny_get_log_level_name
+C:\Users\dtjld\AppData\Local\Temp\ccSIYLn3.s:302    .text.atiny_get_log_level_name:00000028 $d
+
+UNDEFINED SYMBOLS
+memset
+vsnprintf
+printf

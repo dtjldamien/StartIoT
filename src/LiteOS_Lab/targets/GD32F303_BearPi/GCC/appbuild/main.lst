@@ -1,0 +1,358 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.comm	g_TskHandle,4,4
+  18              		.global	system_phys_mem
+  19              		.section	.rodata.system_phys_mem,"a",%progbits
+  20              		.align	2
+  23              	system_phys_mem:
+  24 0000 00000000 		.word	__los_heap_addr_start__
+  25 0004 00000000 		.word	__los_heap_addr_end__
+  26 0008 00000000 		.word	0
+  27 000c 00000000 		.word	0
+  28              		.section	.rodata
+  29              		.align	2
+  30              	.LC0:
+  31 0000 6C696E6B 		.ascii	"link_main\000"
+  31      5F6D6169 
+  31      6E00
+  32              		.section	.text.link_test,"ax",%progbits
+  33              		.align	1
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  37              		.fpu fpv4-sp-d16
+  39              	link_test:
+  40              	.LFB160:
+  41              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * Copyright (c) <2016-2019>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s 			page 2
+
+
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #include "gd32f30x.h"
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #include "systick.h"
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #include <stdio.h>
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #include "los_base.h"
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #include "los_task.ph"
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #include "los_typedef.h"
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #include "los_sys.h"
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #include "los_memory.h"
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #include "mem.h"
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** UINT32  g_TskHandle;
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #if defined (__CC_ARM)
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** extern char Image$$RW_IRAM1$$ZI$$Limit [];
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** extern char Image$$ARM_LIB_STACKHEAP$$Base [];
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #elif defined (__GNUC__)
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** extern char __los_heap_addr_start__ [];
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** extern char __los_heap_addr_end__ [];
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #else
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #error "fix me"
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #endif
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** const struct phys_mem system_phys_mem [] =
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     {
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #if defined (__CC_ARM)
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****         { Image$$RW_IRAM1$$ZI$$Limit, Image$$ARM_LIB_STACKHEAP$$Base },
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #elif defined (__GNUC__)
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****         {(unsigned long) __los_heap_addr_start__,(unsigned long) __los_heap_addr_end__ },
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #else
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #error "fix me"
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** #endif
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****         { 0, 0 }
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     };
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** extern int link_main(void *args);
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** static int link_test()
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** {
+  42              		.loc 1 72 0
+  43              		.cfi_startproc
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s 			page 3
+
+
+  44              		@ args = 0, pretend = 0, frame = 40
+  45              		@ frame_needed = 1, uses_anonymous_args = 0
+  46 0000 80B5     		push	{r7, lr}
+  47              	.LCFI0:
+  48              		.cfi_def_cfa_offset 8
+  49              		.cfi_offset 7, -8
+  50              		.cfi_offset 14, -4
+  51 0002 8AB0     		sub	sp, sp, #40
+  52              	.LCFI1:
+  53              		.cfi_def_cfa_offset 48
+  54 0004 00AF     		add	r7, sp, #0
+  55              	.LCFI2:
+  56              		.cfi_def_cfa_register 7
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     int ret = -1;
+  57              		.loc 1 73 0
+  58 0006 4FF0FF33 		mov	r3, #-1
+  59 000a 7B62     		str	r3, [r7, #36]
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     UINT32 uwRet = LOS_OK;
+  60              		.loc 1 74 0
+  61 000c 0023     		movs	r3, #0
+  62 000e 3B62     		str	r3, [r7, #32]
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     UINT32  handle;
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     TSK_INIT_PARAM_S task_init_param;
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     memset (&task_init_param, 0, sizeof (TSK_INIT_PARAM_S));
+  63              		.loc 1 78 0
+  64 0010 3B1D     		adds	r3, r7, #4
+  65 0012 1822     		movs	r2, #24
+  66 0014 0021     		movs	r1, #0
+  67 0016 1846     		mov	r0, r3
+  68 0018 FFF7FEFF 		bl	memset
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     task_init_param.uwArg = (unsigned int)NULL;
+  69              		.loc 1 79 0
+  70 001c 0023     		movs	r3, #0
+  71 001e FB60     		str	r3, [r7, #12]
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     task_init_param.usTaskPrio = 2;
+  72              		.loc 1 80 0
+  73 0020 0223     		movs	r3, #2
+  74 0022 3B81     		strh	r3, [r7, #8]	@ movhi
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     task_init_param.pcName =(char *) "link_main";
+  75              		.loc 1 81 0
+  76 0024 0C4B     		ldr	r3, .L4
+  77 0026 7B61     		str	r3, [r7, #20]
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     task_init_param.pfnTaskEntry = (TSK_ENTRY_FUNC)link_main;
+  78              		.loc 1 82 0
+  79 0028 0C4B     		ldr	r3, .L4+4
+  80 002a 7B60     		str	r3, [r7, #4]
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     task_init_param.uwStackSize = 0x1000;
+  81              		.loc 1 83 0
+  82 002c 4FF48053 		mov	r3, #4096
+  83 0030 3B61     		str	r3, [r7, #16]
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     uwRet = LOS_TaskCreate(&handle, &task_init_param);
+  84              		.loc 1 84 0
+  85 0032 3A1D     		adds	r2, r7, #4
+  86 0034 07F11C03 		add	r3, r7, #28
+  87 0038 1146     		mov	r1, r2
+  88 003a 1846     		mov	r0, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s 			page 4
+
+
+  89 003c FFF7FEFF 		bl	LOS_TaskCreate
+  90 0040 3862     		str	r0, [r7, #32]
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     if(LOS_OK == uwRet){
+  91              		.loc 1 85 0
+  92 0042 3B6A     		ldr	r3, [r7, #32]
+  93 0044 002B     		cmp	r3, #0
+  94 0046 01D1     		bne	.L2
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****         ret = 0;
+  95              		.loc 1 86 0
+  96 0048 0023     		movs	r3, #0
+  97 004a 7B62     		str	r3, [r7, #36]
+  98              	.L2:
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     }
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     return ret;
+  99              		.loc 1 88 0
+ 100 004c 7B6A     		ldr	r3, [r7, #36]
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** }
+ 101              		.loc 1 89 0
+ 102 004e 1846     		mov	r0, r3
+ 103 0050 2837     		adds	r7, r7, #40
+ 104              	.LCFI3:
+ 105              		.cfi_def_cfa_offset 8
+ 106 0052 BD46     		mov	sp, r7
+ 107              	.LCFI4:
+ 108              		.cfi_def_cfa_register 13
+ 109              		@ sp needed
+ 110 0054 80BD     		pop	{r7, pc}
+ 111              	.L5:
+ 112 0056 00BF     		.align	2
+ 113              	.L4:
+ 114 0058 00000000 		.word	.LC0
+ 115 005c 00000000 		.word	link_main
+ 116              		.cfi_endproc
+ 117              	.LFE160:
+ 119              		.section	.text.main,"ax",%progbits
+ 120              		.align	1
+ 121              		.global	main
+ 122              		.syntax unified
+ 123              		.thumb
+ 124              		.thumb_func
+ 125              		.fpu fpv4-sp-d16
+ 127              	main:
+ 128              	.LFB161:
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** int main(void)
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** {
+ 129              		.loc 1 92 0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 8
+ 132              		@ frame_needed = 1, uses_anonymous_args = 0
+ 133 0000 80B5     		push	{r7, lr}
+ 134              	.LCFI5:
+ 135              		.cfi_def_cfa_offset 8
+ 136              		.cfi_offset 7, -8
+ 137              		.cfi_offset 14, -4
+ 138 0002 82B0     		sub	sp, sp, #8
+ 139              	.LCFI6:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s 			page 5
+
+
+ 140              		.cfi_def_cfa_offset 16
+ 141 0004 00AF     		add	r7, sp, #0
+ 142              	.LCFI7:
+ 143              		.cfi_def_cfa_register 7
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     UINT32 uwRet = LOS_OK;
+ 144              		.loc 1 93 0
+ 145 0006 0023     		movs	r3, #0
+ 146 0008 7B60     		str	r3, [r7, #4]
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     systick_config();
+ 147              		.loc 1 95 0
+ 148 000a FFF7FEFF 		bl	systick_config
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c ****     uwRet = LOS_KernelInit();
+ 149              		.loc 1 97 0
+ 150 000e FFF7FEFF 		bl	LOS_KernelInit
+ 151 0012 7860     		str	r0, [r7, #4]
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 	if (uwRet != LOS_OK)
+ 152              		.loc 1 98 0
+ 153 0014 7B68     		ldr	r3, [r7, #4]
+ 154 0016 002B     		cmp	r3, #0
+ 155 0018 01D0     		beq	.L7
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 	{
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 		 return LOS_NOK;
+ 156              		.loc 1 100 0
+ 157 001a 0123     		movs	r3, #1
+ 158 001c 08E0     		b	.L8
+ 159              	.L7:
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 	}
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 	extern void shell_uart_init(int baud);
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 	shell_uart_init(115200);
+ 160              		.loc 1 104 0
+ 161 001e 4FF4E130 		mov	r0, #115200
+ 162 0022 FFF7FEFF 		bl	shell_uart_init
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 	link_test();
+ 163              		.loc 1 106 0
+ 164 0026 FFF7FEFF 		bl	link_test
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 	LOS_Start();
+ 165              		.loc 1 108 0
+ 166 002a FFF7FEFF 		bl	LOS_Start
+ 167 002e 0023     		movs	r3, #0
+ 168              	.L8:
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** 
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_BearPi/Src\main.c **** }
+ 169              		.loc 1 110 0
+ 170 0030 1846     		mov	r0, r3
+ 171 0032 0837     		adds	r7, r7, #8
+ 172              	.LCFI8:
+ 173              		.cfi_def_cfa_offset 8
+ 174 0034 BD46     		mov	sp, r7
+ 175              	.LCFI9:
+ 176              		.cfi_def_cfa_register 13
+ 177              		@ sp needed
+ 178 0036 80BD     		pop	{r7, pc}
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s 			page 6
+
+
+ 179              		.cfi_endproc
+ 180              	.LFE161:
+ 182              		.text
+ 183              	.Letext0:
+ 184              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 185              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 186              		.file 4 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/ar
+ 187              		.file 5 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+ 188              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 189              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 190              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 191              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 192              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 193              		.file 11 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 194              		.file 12 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 195              		.file 13 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 196              		.file 14 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 197              		.file 15 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/a
+ 198              		.file 16 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 199              		.file 17 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 200              		.file 18 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 201              		.file 19 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/b
+ 202              		.file 20 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/b
+ 203              		.file 21 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 204              		.file 22 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 205              		.file 23 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/b
+ 206              		.file 24 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/b
+ 207              		.file 25 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/b
+ 208              		.file 26 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/b
+ 209              		.file 27 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+                            *COM*:00000004 g_TskHandle
+C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s:23     .rodata.system_phys_mem:00000000 system_phys_mem
+C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s:20     .rodata.system_phys_mem:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s:29     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s:33     .text.link_test:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s:39     .text.link_test:00000000 link_test
+C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s:114    .text.link_test:00000058 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s:120    .text.main:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJFyS5x.s:127    .text.main:00000000 main
+
+UNDEFINED SYMBOLS
+__los_heap_addr_start__
+__los_heap_addr_end__
+memset
+LOS_TaskCreate
+link_main
+systick_config
+LOS_KernelInit
+shell_uart_init
+LOS_Start

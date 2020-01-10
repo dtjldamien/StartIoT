@@ -1,0 +1,1900 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"los_mux.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LOS_ListInit,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	LOS_ListInit:
+  25              	.LFB123:
+  26              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/in
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * applicable export control laws and regulations.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 2
+
+
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  /** @defgroup los_list Doubly linked list
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  * @ingroup kernel
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  */
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** #ifndef _LOS_LIST_H
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** #define _LOS_LIST_H
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** #include "los_typedef.h"
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** #ifdef __cplusplus
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** #if __cplusplus
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** extern "C" {
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** #endif /* __cplusplus */
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** #endif /* __cplusplus */
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** /**
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@ingroup los_list
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *Structure of a node in a doubly linked list.
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  */
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** typedef struct LOS_DL_LIST
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** {
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     struct LOS_DL_LIST *pstPrev;            /**< Current node's pointer to the previous node*/
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     struct LOS_DL_LIST *pstNext;            /**< Current node's pointer to the next node*/
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** } LOS_DL_LIST;
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** /**
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@ingroup los_list
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@brief Initialize a doubly linked list.
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Description:
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *This API is used to initialize a doubly linked list.
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@attention
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul>
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *</ul>
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@param pstList    [IN] Node in a doubly linked list.
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@retval None.
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Dependency:
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@see
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  */
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListInit(LOS_DL_LIST *pstList)
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** {
+  27              		.loc 1 81 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 3
+
+
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 7860     		str	r0, [r7, #4]
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstList->pstNext = pstList;
+  43              		.loc 1 82 0
+  44 0008 7B68     		ldr	r3, [r7, #4]
+  45 000a 7A68     		ldr	r2, [r7, #4]
+  46 000c 5A60     		str	r2, [r3, #4]
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstList->pstPrev = pstList;
+  47              		.loc 1 83 0
+  48 000e 7B68     		ldr	r3, [r7, #4]
+  49 0010 7A68     		ldr	r2, [r7, #4]
+  50 0012 1A60     		str	r2, [r3]
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** }
+  51              		.loc 1 84 0
+  52 0014 00BF     		nop
+  53 0016 0C37     		adds	r7, r7, #12
+  54              	.LCFI3:
+  55              		.cfi_def_cfa_offset 4
+  56 0018 BD46     		mov	sp, r7
+  57              	.LCFI4:
+  58              		.cfi_def_cfa_register 13
+  59              		@ sp needed
+  60 001a 5DF8047B 		ldr	r7, [sp], #4
+  61              	.LCFI5:
+  62              		.cfi_restore 7
+  63              		.cfi_def_cfa_offset 0
+  64 001e 7047     		bx	lr
+  65              		.cfi_endproc
+  66              	.LFE123:
+  68              		.section	.text.LOS_ListAdd,"ax",%progbits
+  69              		.align	1
+  70              		.syntax unified
+  71              		.thumb
+  72              		.thumb_func
+  73              		.fpu fpv4-sp-d16
+  75              	LOS_ListAdd:
+  76              	.LFB124:
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** /**
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@ingroup los_list
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@brief Point to the next node pointed to by the current node.
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Description:
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul>
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<li>This API is used to point to the next node pointed to by the current node.</li>
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *</ul>
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@attention
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul>
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<li>None.</li>
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *</ul>
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 4
+
+
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@param pstObject  [IN] Node in the doubly linked list.
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@retval None.
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Dependency:
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@see
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  */
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** #define LOS_DL_LIST_FIRST(pstObject) ((pstObject)->pstNext)
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** /**
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@ingroup los_list
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@brief Insert a new node to a doubly linked list.
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Description:
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *This API is used to insert a new node to a doubly linked list.
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@attention
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul>
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<li>The parameters passed in should be ensured to be legal pointers.</li>
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *</ul>
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@param pstList    [IN]   Doubly linked list where the new node is inserted.
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@param pstNode    [IN]   New node to be inserted.
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@retval None
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Dependency:
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@see LOS_ListDelete
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  */
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListAdd(LOS_DL_LIST *pstList, LOS_DL_LIST *pstNode)
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** {
+  77              		.loc 1 130 0
+  78              		.cfi_startproc
+  79              		@ args = 0, pretend = 0, frame = 8
+  80              		@ frame_needed = 1, uses_anonymous_args = 0
+  81              		@ link register save eliminated.
+  82 0000 80B4     		push	{r7}
+  83              	.LCFI6:
+  84              		.cfi_def_cfa_offset 4
+  85              		.cfi_offset 7, -4
+  86 0002 83B0     		sub	sp, sp, #12
+  87              	.LCFI7:
+  88              		.cfi_def_cfa_offset 16
+  89 0004 00AF     		add	r7, sp, #0
+  90              	.LCFI8:
+  91              		.cfi_def_cfa_register 7
+  92 0006 7860     		str	r0, [r7, #4]
+  93 0008 3960     		str	r1, [r7]
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstNode->pstNext = pstList->pstNext;
+  94              		.loc 1 131 0
+  95 000a 7B68     		ldr	r3, [r7, #4]
+  96 000c 5A68     		ldr	r2, [r3, #4]
+  97 000e 3B68     		ldr	r3, [r7]
+  98 0010 5A60     		str	r2, [r3, #4]
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstNode->pstPrev = pstList;
+  99              		.loc 1 132 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 5
+
+
+ 100 0012 3B68     		ldr	r3, [r7]
+ 101 0014 7A68     		ldr	r2, [r7, #4]
+ 102 0016 1A60     		str	r2, [r3]
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstList->pstNext->pstPrev = pstNode;
+ 103              		.loc 1 133 0
+ 104 0018 7B68     		ldr	r3, [r7, #4]
+ 105 001a 5B68     		ldr	r3, [r3, #4]
+ 106 001c 3A68     		ldr	r2, [r7]
+ 107 001e 1A60     		str	r2, [r3]
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstList->pstNext = pstNode;
+ 108              		.loc 1 134 0
+ 109 0020 7B68     		ldr	r3, [r7, #4]
+ 110 0022 3A68     		ldr	r2, [r7]
+ 111 0024 5A60     		str	r2, [r3, #4]
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** }
+ 112              		.loc 1 135 0
+ 113 0026 00BF     		nop
+ 114 0028 0C37     		adds	r7, r7, #12
+ 115              	.LCFI9:
+ 116              		.cfi_def_cfa_offset 4
+ 117 002a BD46     		mov	sp, r7
+ 118              	.LCFI10:
+ 119              		.cfi_def_cfa_register 13
+ 120              		@ sp needed
+ 121 002c 5DF8047B 		ldr	r7, [sp], #4
+ 122              	.LCFI11:
+ 123              		.cfi_restore 7
+ 124              		.cfi_def_cfa_offset 0
+ 125 0030 7047     		bx	lr
+ 126              		.cfi_endproc
+ 127              	.LFE124:
+ 129              		.section	.text.LOS_ListTailInsert,"ax",%progbits
+ 130              		.align	1
+ 131              		.syntax unified
+ 132              		.thumb
+ 133              		.thumb_func
+ 134              		.fpu fpv4-sp-d16
+ 136              	LOS_ListTailInsert:
+ 137              	.LFB125:
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** /**
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@ingroup los_list
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@brief Insert a node to the tail of a doubly linked list.
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Description:
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *This API is used to insert a new node to the tail of a doubly linked list.
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@attention
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul>
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<li>The parameters passed in should be ensured to be legal pointers.</li>
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *</ul>
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@param pstList     [IN] Doubly linked list where the new node is inserted.
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@param pstNode     [IN] New node to be inserted.
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@retval None.
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Dependency:
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 6
+
+
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@see LOS_ListAdd | LOS_ListHeadInsert
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  */
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListTailInsert(LOS_DL_LIST *pstList, LOS_DL_LIST *pst
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** {
+ 138              		.loc 1 158 0
+ 139              		.cfi_startproc
+ 140              		@ args = 0, pretend = 0, frame = 8
+ 141              		@ frame_needed = 1, uses_anonymous_args = 0
+ 142 0000 80B5     		push	{r7, lr}
+ 143              	.LCFI12:
+ 144              		.cfi_def_cfa_offset 8
+ 145              		.cfi_offset 7, -8
+ 146              		.cfi_offset 14, -4
+ 147 0002 82B0     		sub	sp, sp, #8
+ 148              	.LCFI13:
+ 149              		.cfi_def_cfa_offset 16
+ 150 0004 00AF     		add	r7, sp, #0
+ 151              	.LCFI14:
+ 152              		.cfi_def_cfa_register 7
+ 153 0006 7860     		str	r0, [r7, #4]
+ 154 0008 3960     		str	r1, [r7]
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     LOS_ListAdd(pstList->pstPrev, pstNode);
+ 155              		.loc 1 159 0
+ 156 000a 7B68     		ldr	r3, [r7, #4]
+ 157 000c 1B68     		ldr	r3, [r3]
+ 158 000e 3968     		ldr	r1, [r7]
+ 159 0010 1846     		mov	r0, r3
+ 160 0012 FFF7FEFF 		bl	LOS_ListAdd
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** }
+ 161              		.loc 1 160 0
+ 162 0016 00BF     		nop
+ 163 0018 0837     		adds	r7, r7, #8
+ 164              	.LCFI15:
+ 165              		.cfi_def_cfa_offset 8
+ 166 001a BD46     		mov	sp, r7
+ 167              	.LCFI16:
+ 168              		.cfi_def_cfa_register 13
+ 169              		@ sp needed
+ 170 001c 80BD     		pop	{r7, pc}
+ 171              		.cfi_endproc
+ 172              	.LFE125:
+ 174              		.section	.text.LOS_ListDelete,"ax",%progbits
+ 175              		.align	1
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 179              		.fpu fpv4-sp-d16
+ 181              	LOS_ListDelete:
+ 182              	.LFB126:
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** /**
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@ingroup los_list
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@brief Delete a specified node from a doubly linked list.
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Description:
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul>
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 7
+
+
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<li>This API is used to delete a specified node from a doubly linked list.</li>
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *</ul>
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@attention
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul>
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *</ul>
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@param pstNode    [IN] Node to be deleted.
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@retval None.
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Dependency:
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@see LOS_ListAdd
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  */
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE VOID LOS_ListDelete(LOS_DL_LIST *pstNode)
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** {
+ 183              		.loc 1 184 0
+ 184              		.cfi_startproc
+ 185              		@ args = 0, pretend = 0, frame = 8
+ 186              		@ frame_needed = 1, uses_anonymous_args = 0
+ 187              		@ link register save eliminated.
+ 188 0000 80B4     		push	{r7}
+ 189              	.LCFI17:
+ 190              		.cfi_def_cfa_offset 4
+ 191              		.cfi_offset 7, -4
+ 192 0002 83B0     		sub	sp, sp, #12
+ 193              	.LCFI18:
+ 194              		.cfi_def_cfa_offset 16
+ 195 0004 00AF     		add	r7, sp, #0
+ 196              	.LCFI19:
+ 197              		.cfi_def_cfa_register 7
+ 198 0006 7860     		str	r0, [r7, #4]
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstNode->pstNext->pstPrev = pstNode->pstPrev;
+ 199              		.loc 1 185 0
+ 200 0008 7B68     		ldr	r3, [r7, #4]
+ 201 000a 5B68     		ldr	r3, [r3, #4]
+ 202 000c 7A68     		ldr	r2, [r7, #4]
+ 203 000e 1268     		ldr	r2, [r2]
+ 204 0010 1A60     		str	r2, [r3]
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstNode->pstPrev->pstNext = pstNode->pstNext;
+ 205              		.loc 1 186 0
+ 206 0012 7B68     		ldr	r3, [r7, #4]
+ 207 0014 1B68     		ldr	r3, [r3]
+ 208 0016 7A68     		ldr	r2, [r7, #4]
+ 209 0018 5268     		ldr	r2, [r2, #4]
+ 210 001a 5A60     		str	r2, [r3, #4]
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstNode->pstNext = (LOS_DL_LIST *)NULL;
+ 211              		.loc 1 187 0
+ 212 001c 7B68     		ldr	r3, [r7, #4]
+ 213 001e 0022     		movs	r2, #0
+ 214 0020 5A60     		str	r2, [r3, #4]
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     pstNode->pstPrev = (LOS_DL_LIST *)NULL;
+ 215              		.loc 1 188 0
+ 216 0022 7B68     		ldr	r3, [r7, #4]
+ 217 0024 0022     		movs	r2, #0
+ 218 0026 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 8
+
+
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** }
+ 219              		.loc 1 189 0
+ 220 0028 00BF     		nop
+ 221 002a 0C37     		adds	r7, r7, #12
+ 222              	.LCFI20:
+ 223              		.cfi_def_cfa_offset 4
+ 224 002c BD46     		mov	sp, r7
+ 225              	.LCFI21:
+ 226              		.cfi_def_cfa_register 13
+ 227              		@ sp needed
+ 228 002e 5DF8047B 		ldr	r7, [sp], #4
+ 229              	.LCFI22:
+ 230              		.cfi_restore 7
+ 231              		.cfi_def_cfa_offset 0
+ 232 0032 7047     		bx	lr
+ 233              		.cfi_endproc
+ 234              	.LFE126:
+ 236              		.section	.text.LOS_ListEmpty,"ax",%progbits
+ 237              		.align	1
+ 238              		.syntax unified
+ 239              		.thumb
+ 240              		.thumb_func
+ 241              		.fpu fpv4-sp-d16
+ 243              	LOS_ListEmpty:
+ 244              	.LFB127:
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** 
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** /**
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@ingroup los_list
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@brief Identify whether a specified doubly linked list is empty.
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Description:
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul>
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<li>This API is used to return whether a doubly linked list is empty.</li>
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *</ul>
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@attention
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul>
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<li>The parameter passed in should be ensured to be a legal pointer.</li>
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *</ul>
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@param pstList  [IN] Doubly linked list.
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@retval TRUE The doubly linked list is empty.
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@retval FALSE The doubly linked list is not empty.
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@par Dependency:
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *<ul><li>los_list.h: the header file that contains the API declaration.</li></ul>
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@see
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  *@since Huawei LiteOS V100R001C00
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****  */
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** LITE_OS_SEC_ALW_INLINE STATIC_INLINE BOOL LOS_ListEmpty(LOS_DL_LIST *pstNode)
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** {
+ 245              		.loc 1 214 0
+ 246              		.cfi_startproc
+ 247              		@ args = 0, pretend = 0, frame = 8
+ 248              		@ frame_needed = 1, uses_anonymous_args = 0
+ 249              		@ link register save eliminated.
+ 250 0000 80B4     		push	{r7}
+ 251              	.LCFI23:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 9
+
+
+ 252              		.cfi_def_cfa_offset 4
+ 253              		.cfi_offset 7, -4
+ 254 0002 83B0     		sub	sp, sp, #12
+ 255              	.LCFI24:
+ 256              		.cfi_def_cfa_offset 16
+ 257 0004 00AF     		add	r7, sp, #0
+ 258              	.LCFI25:
+ 259              		.cfi_def_cfa_register 7
+ 260 0006 7860     		str	r0, [r7, #4]
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h ****     return (BOOL)(pstNode->pstNext == pstNode);
+ 261              		.loc 1 215 0
+ 262 0008 7B68     		ldr	r3, [r7, #4]
+ 263 000a 5B68     		ldr	r3, [r3, #4]
+ 264 000c 7A68     		ldr	r2, [r7, #4]
+ 265 000e 9A42     		cmp	r2, r3
+ 266 0010 0CBF     		ite	eq
+ 267 0012 0123     		moveq	r3, #1
+ 268 0014 0023     		movne	r3, #0
+ 269 0016 DBB2     		uxtb	r3, r3
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/include\los_list.h **** }
+ 270              		.loc 1 216 0
+ 271 0018 1846     		mov	r0, r3
+ 272 001a 0C37     		adds	r7, r7, #12
+ 273              	.LCFI26:
+ 274              		.cfi_def_cfa_offset 4
+ 275 001c BD46     		mov	sp, r7
+ 276              	.LCFI27:
+ 277              		.cfi_def_cfa_register 13
+ 278              		@ sp needed
+ 279 001e 5DF8047B 		ldr	r7, [sp], #4
+ 280              	.LCFI28:
+ 281              		.cfi_restore 7
+ 282              		.cfi_def_cfa_offset 0
+ 283 0022 7047     		bx	lr
+ 284              		.cfi_endproc
+ 285              	.LFE127:
+ 287              		.global	g_pstAllMux
+ 288              		.section	.bss.g_pstAllMux,"aw",%nobits
+ 289              		.align	2
+ 292              	g_pstAllMux:
+ 293 0000 00000000 		.space	4
+ 294              		.comm	g_stUnusedMuxList,8,4
+ 295              		.section	.text.osMuxInit,"ax",%progbits
+ 296              		.align	1
+ 297              		.global	osMuxInit
+ 298              		.syntax unified
+ 299              		.thumb
+ 300              		.thumb_func
+ 301              		.fpu fpv4-sp-d16
+ 303              	osMuxInit:
+ 304              	.LFB130:
+ 305              		.file 2 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/ba
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * Copyright (c) <2013-2015>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * All rights reserved.
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * are permitted provided that the following conditions are met:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 10
+
+
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * permission.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * ===============================================
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #include "los_mux.inc"
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #include "los_err.ph"
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #include "los_memory.ph"
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #include "los_priqueue.ph"
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #include "los_task.ph"
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #include "los_exc.h"
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #endif
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #include "los_hw.h"
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #ifdef __cplusplus
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #if __cplusplus
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** extern "C"{
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #endif
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #endif /* __cplusplus */
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #if (LOSCFG_BASE_IPC_MUX == YES)
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** LITE_OS_SEC_BSS MUX_CB_S             *g_pstAllMux = NULL;
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** LITE_OS_SEC_BSS LOS_DL_LIST          g_stUnusedMuxList;
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** /*****************************************************************************
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Funtion         : osMuxInit,
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Description  : Initializes the mutex,
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Input        : None
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Output       : None
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 11
+
+
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Return       : LOS_OK on success ,or error code on failure
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  *****************************************************************************/
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** LITE_OS_SEC_TEXT_INIT UINT32 osMuxInit(VOID)
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** {
+ 306              		.loc 2 66 0
+ 307              		.cfi_startproc
+ 308              		@ args = 0, pretend = 0, frame = 8
+ 309              		@ frame_needed = 1, uses_anonymous_args = 0
+ 310 0000 80B5     		push	{r7, lr}
+ 311              	.LCFI29:
+ 312              		.cfi_def_cfa_offset 8
+ 313              		.cfi_offset 7, -8
+ 314              		.cfi_offset 14, -4
+ 315 0002 82B0     		sub	sp, sp, #8
+ 316              	.LCFI30:
+ 317              		.cfi_def_cfa_offset 16
+ 318 0004 00AF     		add	r7, sp, #0
+ 319              	.LCFI31:
+ 320              		.cfi_def_cfa_register 7
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     MUX_CB_S *pstMuxNode;
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32   uwIndex;
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     static MUX_CB_S s_astAllMux [LOSCFG_BASE_IPC_MUX_LIMIT];
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (g_pstAllMux != NULL)
+ 321              		.loc 2 72 0
+ 322 0006 174B     		ldr	r3, .L12
+ 323 0008 1B68     		ldr	r3, [r3]
+ 324 000a 002B     		cmp	r3, #0
+ 325 000c 01D0     		beq	.L8
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         {
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         return LOS_OK;
+ 326              		.loc 2 74 0
+ 327 000e 0023     		movs	r3, #0
+ 328 0010 24E0     		b	.L9
+ 329              	.L8:
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         }
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     g_pstAllMux = s_astAllMux;
+ 330              		.loc 2 77 0
+ 331 0012 144B     		ldr	r3, .L12
+ 332 0014 144A     		ldr	r2, .L12+4
+ 333 0016 1A60     		str	r2, [r3]
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_ListInit(&g_stUnusedMuxList);
+ 334              		.loc 2 79 0
+ 335 0018 1448     		ldr	r0, .L12+8
+ 336 001a FFF7FEFF 		bl	LOS_ListInit
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (LOSCFG_BASE_IPC_MUX_LIMIT == 0)   /*lint !e506*/
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         return LOS_ERRNO_MUX_MAXNUM_ZERO;
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     for (uwIndex = 0; uwIndex < LOSCFG_BASE_IPC_MUX_LIMIT; uwIndex++)
+ 337              		.loc 2 86 0
+ 338 001e 0023     		movs	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 12
+
+
+ 339 0020 7B60     		str	r3, [r7, #4]
+ 340 0022 17E0     		b	.L10
+ 341              	.L11:
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxNode              = ((MUX_CB_S *)g_pstAllMux) + uwIndex;
+ 342              		.loc 2 88 0 discriminator 3
+ 343 0024 0F4B     		ldr	r3, .L12
+ 344 0026 1968     		ldr	r1, [r3]
+ 345 0028 7A68     		ldr	r2, [r7, #4]
+ 346 002a 1346     		mov	r3, r2
+ 347 002c 5B00     		lsls	r3, r3, #1
+ 348 002e 1344     		add	r3, r3, r2
+ 349 0030 DB00     		lsls	r3, r3, #3
+ 350 0032 0B44     		add	r3, r3, r1
+ 351 0034 3B60     		str	r3, [r7]
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxNode->ucMuxID     = uwIndex;
+ 352              		.loc 2 89 0 discriminator 3
+ 353 0036 3B68     		ldr	r3, [r7]
+ 354 0038 7A68     		ldr	r2, [r7, #4]
+ 355 003a 5A60     		str	r2, [r3, #4]
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxNode->ucMuxStat   = OS_MUX_UNUSED;
+ 356              		.loc 2 90 0 discriminator 3
+ 357 003c 3B68     		ldr	r3, [r7]
+ 358 003e 0022     		movs	r2, #0
+ 359 0040 1A70     		strb	r2, [r3]
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_ListTailInsert(&g_stUnusedMuxList, &pstMuxNode->stMuxList);
+ 360              		.loc 2 91 0 discriminator 3
+ 361 0042 3B68     		ldr	r3, [r7]
+ 362 0044 0833     		adds	r3, r3, #8
+ 363 0046 1946     		mov	r1, r3
+ 364 0048 0848     		ldr	r0, .L12+8
+ 365 004a FFF7FEFF 		bl	LOS_ListTailInsert
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 366              		.loc 2 86 0 discriminator 3
+ 367 004e 7B68     		ldr	r3, [r7, #4]
+ 368 0050 0133     		adds	r3, r3, #1
+ 369 0052 7B60     		str	r3, [r7, #4]
+ 370              	.L10:
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 371              		.loc 2 86 0 is_stmt 0 discriminator 1
+ 372 0054 7B68     		ldr	r3, [r7, #4]
+ 373 0056 132B     		cmp	r3, #19
+ 374 0058 E4D9     		bls	.L11
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     return LOS_OK;
+ 375              		.loc 2 93 0 is_stmt 1
+ 376 005a 0023     		movs	r3, #0
+ 377              	.L9:
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** }
+ 378              		.loc 2 94 0
+ 379 005c 1846     		mov	r0, r3
+ 380 005e 0837     		adds	r7, r7, #8
+ 381              	.LCFI32:
+ 382              		.cfi_def_cfa_offset 8
+ 383 0060 BD46     		mov	sp, r7
+ 384              	.LCFI33:
+ 385              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 13
+
+
+ 386              		@ sp needed
+ 387 0062 80BD     		pop	{r7, pc}
+ 388              	.L13:
+ 389              		.align	2
+ 390              	.L12:
+ 391 0064 00000000 		.word	g_pstAllMux
+ 392 0068 00000000 		.word	s_astAllMux.10289
+ 393 006c 00000000 		.word	g_stUnusedMuxList
+ 394              		.cfi_endproc
+ 395              	.LFE130:
+ 397              		.section	.rodata
+ 398              		.align	2
+ 399              	.LC0:
+ 400 0000 6F735F75 		.ascii	"os_unspecific_file\000"
+ 400      6E737065 
+ 400      63696669 
+ 400      635F6669 
+ 400      6C6500
+ 401              		.section	.text.LOS_MuxCreate,"ax",%progbits
+ 402              		.align	1
+ 403              		.global	LOS_MuxCreate
+ 404              		.syntax unified
+ 405              		.thumb
+ 406              		.thumb_func
+ 407              		.fpu fpv4-sp-d16
+ 409              	LOS_MuxCreate:
+ 410              	.LFB131:
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** /*****************************************************************************
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Function     : LOS_MuxCreate
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Description  : Create a mutex,
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Input        : None
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Output       : puwMuxHandle ------ Mutex operation handle
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Return       : LOS_OK on success ,or error code on failure
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  *****************************************************************************/
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** LITE_OS_SEC_TEXT_INIT  UINT32  LOS_MuxCreate (UINT32 *puwMuxHandle)
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** {
+ 411              		.loc 2 104 0
+ 412              		.cfi_startproc
+ 413              		@ args = 0, pretend = 0, frame = 32
+ 414              		@ frame_needed = 1, uses_anonymous_args = 0
+ 415 0000 80B5     		push	{r7, lr}
+ 416              	.LCFI34:
+ 417              		.cfi_def_cfa_offset 8
+ 418              		.cfi_offset 7, -8
+ 419              		.cfi_offset 14, -4
+ 420 0002 8AB0     		sub	sp, sp, #40
+ 421              	.LCFI35:
+ 422              		.cfi_def_cfa_offset 48
+ 423 0004 02AF     		add	r7, sp, #8
+ 424              	.LCFI36:
+ 425              		.cfi_def_cfa 7, 40
+ 426 0006 7860     		str	r0, [r7, #4]
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32      uwIntSave;
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     MUX_CB_S    *pstMuxCreated;
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_DL_LIST *pstUnusedMux;
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32      uwErrNo;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 14
+
+
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32      uwErrLine;
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (g_pstAllMux == NULL)
+ 427              		.loc 2 111 0
+ 428 0008 254B     		ldr	r3, .L20
+ 429 000a 1B68     		ldr	r3, [r3]
+ 430 000c 002B     		cmp	r3, #0
+ 431 000e 01D1     		bne	.L15
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         {
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         osMuxInit ();
+ 432              		.loc 2 113 0
+ 433 0010 FFF7FEFF 		bl	osMuxInit
+ 434              	.L15:
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         }
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (NULL == puwMuxHandle)
+ 435              		.loc 2 116 0
+ 436 0014 7B68     		ldr	r3, [r7, #4]
+ 437 0016 002B     		cmp	r3, #0
+ 438 0018 01D1     		bne	.L16
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         return LOS_ERRNO_MUX_PTR_NULL;
+ 439              		.loc 2 118 0
+ 440 001a 224B     		ldr	r3, .L20+4
+ 441 001c 3CE0     		b	.L17
+ 442              	.L16:
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     uwIntSave = LOS_IntLock();
+ 443              		.loc 2 121 0
+ 444 001e FFF7FEFF 		bl	LOS_IntLock
+ 445 0022 F861     		str	r0, [r7, #28]
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (LOS_ListEmpty(&g_stUnusedMuxList))
+ 446              		.loc 2 122 0
+ 447 0024 2048     		ldr	r0, .L20+8
+ 448 0026 FFF7FEFF 		bl	LOS_ListEmpty
+ 449 002a 0346     		mov	r3, r0
+ 450 002c 002B     		cmp	r3, #0
+ 451 002e 11D0     		beq	.L18
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 452              		.loc 2 124 0
+ 453 0030 F869     		ldr	r0, [r7, #28]
+ 454 0032 FFF7FEFF 		bl	LOS_IntRestore
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_MUX_ALL_BUSY);
+ 455              		.loc 2 125 0
+ 456 0036 1D4B     		ldr	r3, .L20+12
+ 457 0038 3B61     		str	r3, [r7, #16]
+ 458 003a 1D4B     		ldr	r3, .L20+16
+ 459 003c FB60     		str	r3, [r7, #12]
+ 460 003e 00BF     		nop
+ 461              	.L19:
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstUnusedMux                = LOS_DL_LIST_FIRST(&(g_stUnusedMuxList));
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_ListDelete(pstUnusedMux);
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated               = (GET_MUX_LIST(pstUnusedMux)); /*lint !e413*/
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 15
+
+
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated->usMuxCount   = 0;
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated->ucMuxStat    = OS_MUX_USED;
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated->usPriority   = 0;
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated->pstOwner     = (LOS_TASK_CB *)NULL;
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_ListInit(&pstMuxCreated->stMuxList);
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     *puwMuxHandle               = (UINT32)pstMuxCreated->ucMuxID;
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_IntRestore(uwIntSave);
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     return LOS_OK;
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** ErrHandler:
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     OS_RETURN_ERROR_P2(uwErrLine, uwErrNo);
+ 462              		.loc 2 140 0
+ 463 0040 0023     		movs	r3, #0
+ 464 0042 0093     		str	r3, [sp]
+ 465 0044 0023     		movs	r3, #0
+ 466 0046 3A69     		ldr	r2, [r7, #16]
+ 467 0048 F968     		ldr	r1, [r7, #12]
+ 468 004a 1A48     		ldr	r0, .L20+20
+ 469 004c FFF7FEFF 		bl	LOS_ErrHandle
+ 470 0050 3B69     		ldr	r3, [r7, #16]
+ 471 0052 21E0     		b	.L17
+ 472              	.L18:
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_ListDelete(pstUnusedMux);
+ 473              		.loc 2 128 0
+ 474 0054 144B     		ldr	r3, .L20+8
+ 475 0056 5B68     		ldr	r3, [r3, #4]
+ 476 0058 BB61     		str	r3, [r7, #24]
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated               = (GET_MUX_LIST(pstUnusedMux)); /*lint !e413*/
+ 477              		.loc 2 129 0
+ 478 005a B869     		ldr	r0, [r7, #24]
+ 479 005c FFF7FEFF 		bl	LOS_ListDelete
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated->usMuxCount   = 0;
+ 480              		.loc 2 130 0
+ 481 0060 BB69     		ldr	r3, [r7, #24]
+ 482 0062 083B     		subs	r3, r3, #8
+ 483 0064 7B61     		str	r3, [r7, #20]
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated->ucMuxStat    = OS_MUX_USED;
+ 484              		.loc 2 131 0
+ 485 0066 7B69     		ldr	r3, [r7, #20]
+ 486 0068 0022     		movs	r2, #0
+ 487 006a 5A80     		strh	r2, [r3, #2]	@ movhi
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated->usPriority   = 0;
+ 488              		.loc 2 132 0
+ 489 006c 7B69     		ldr	r3, [r7, #20]
+ 490 006e 0122     		movs	r2, #1
+ 491 0070 1A70     		strb	r2, [r3]
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxCreated->pstOwner     = (LOS_TASK_CB *)NULL;
+ 492              		.loc 2 133 0
+ 493 0072 7B69     		ldr	r3, [r7, #20]
+ 494 0074 0022     		movs	r2, #0
+ 495 0076 9A82     		strh	r2, [r3, #20]	@ movhi
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_ListInit(&pstMuxCreated->stMuxList);
+ 496              		.loc 2 134 0
+ 497 0078 7B69     		ldr	r3, [r7, #20]
+ 498 007a 0022     		movs	r2, #0
+ 499 007c 1A61     		str	r2, [r3, #16]
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     *puwMuxHandle               = (UINT32)pstMuxCreated->ucMuxID;
+ 500              		.loc 2 135 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 16
+
+
+ 501 007e 7B69     		ldr	r3, [r7, #20]
+ 502 0080 0833     		adds	r3, r3, #8
+ 503 0082 1846     		mov	r0, r3
+ 504 0084 FFF7FEFF 		bl	LOS_ListInit
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_IntRestore(uwIntSave);
+ 505              		.loc 2 136 0
+ 506 0088 7B69     		ldr	r3, [r7, #20]
+ 507 008a 5A68     		ldr	r2, [r3, #4]
+ 508 008c 7B68     		ldr	r3, [r7, #4]
+ 509 008e 1A60     		str	r2, [r3]
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     return LOS_OK;
+ 510              		.loc 2 137 0
+ 511 0090 F869     		ldr	r0, [r7, #28]
+ 512 0092 FFF7FEFF 		bl	LOS_IntRestore
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** ErrHandler:
+ 513              		.loc 2 138 0
+ 514 0096 0023     		movs	r3, #0
+ 515              	.L17:
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** }
+ 516              		.loc 2 141 0
+ 517 0098 1846     		mov	r0, r3
+ 518 009a 2037     		adds	r7, r7, #32
+ 519              	.LCFI37:
+ 520              		.cfi_def_cfa_offset 8
+ 521 009c BD46     		mov	sp, r7
+ 522              	.LCFI38:
+ 523              		.cfi_def_cfa_register 13
+ 524              		@ sp needed
+ 525 009e 80BD     		pop	{r7, pc}
+ 526              	.L21:
+ 527              		.align	2
+ 528              	.L20:
+ 529 00a0 00000000 		.word	g_pstAllMux
+ 530 00a4 021D0002 		.word	33561858
+ 531 00a8 00000000 		.word	g_stUnusedMuxList
+ 532 00ac 031D0002 		.word	33561859
+ 533 00b0 F8C3B2A1 		.word	-1582119944
+ 534 00b4 00000000 		.word	.LC0
+ 535              		.cfi_endproc
+ 536              	.LFE131:
+ 538              		.section	.text.LOS_MuxDelete,"ax",%progbits
+ 539              		.align	1
+ 540              		.global	LOS_MuxDelete
+ 541              		.syntax unified
+ 542              		.thumb
+ 543              		.thumb_func
+ 544              		.fpu fpv4-sp-d16
+ 546              	LOS_MuxDelete:
+ 547              	.LFB132:
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** /*****************************************************************************
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Function     : LOS_MuxDelete
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Description  : Delete a mutex,
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Input        : uwMuxHandle------Mutex operation handle
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Output       : None
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Return       : LOS_OK on success ,or error code on failure
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  *****************************************************************************/
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 17
+
+
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** LITE_OS_SEC_TEXT_INIT UINT32 LOS_MuxDelete(UINT32 uwMuxHandle)
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** {
+ 548              		.loc 2 151 0
+ 549              		.cfi_startproc
+ 550              		@ args = 0, pretend = 0, frame = 24
+ 551              		@ frame_needed = 1, uses_anonymous_args = 0
+ 552 0000 80B5     		push	{r7, lr}
+ 553              	.LCFI39:
+ 554              		.cfi_def_cfa_offset 8
+ 555              		.cfi_offset 7, -8
+ 556              		.cfi_offset 14, -4
+ 557 0002 88B0     		sub	sp, sp, #32
+ 558              	.LCFI40:
+ 559              		.cfi_def_cfa_offset 40
+ 560 0004 02AF     		add	r7, sp, #8
+ 561              	.LCFI41:
+ 562              		.cfi_def_cfa 7, 32
+ 563 0006 7860     		str	r0, [r7, #4]
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32    uwIntSave;
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     MUX_CB_S *pstMuxDeleted;
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32   uwErrNo;
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32   uwErrLine;
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (uwMuxHandle >= (UINT32)LOSCFG_BASE_IPC_MUX_LIMIT)
+ 564              		.loc 2 157 0
+ 565 0008 7B68     		ldr	r3, [r7, #4]
+ 566 000a 132B     		cmp	r3, #19
+ 567 000c 04D9     		bls	.L23
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_MUX_INVALID);
+ 568              		.loc 2 159 0
+ 569 000e 264B     		ldr	r3, .L29
+ 570 0010 7B61     		str	r3, [r7, #20]
+ 571 0012 264B     		ldr	r3, .L29+4
+ 572 0014 3B61     		str	r3, [r7, #16]
+ 573 0016 39E0     		b	.L24
+ 574              	.L23:
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxDeleted = GET_MUX(uwMuxHandle);
+ 575              		.loc 2 162 0
+ 576 0018 254B     		ldr	r3, .L29+8
+ 577 001a 1968     		ldr	r1, [r3]
+ 578 001c 7A68     		ldr	r2, [r7, #4]
+ 579 001e 1346     		mov	r3, r2
+ 580 0020 5B00     		lsls	r3, r3, #1
+ 581 0022 1344     		add	r3, r3, r2
+ 582 0024 DB00     		lsls	r3, r3, #3
+ 583 0026 0B44     		add	r3, r3, r1
+ 584 0028 FB60     		str	r3, [r7, #12]
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     uwIntSave = LOS_IntLock();
+ 585              		.loc 2 163 0
+ 586 002a FFF7FEFF 		bl	LOS_IntLock
+ 587 002e B860     		str	r0, [r7, #8]
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (OS_MUX_UNUSED == pstMuxDeleted->ucMuxStat)
+ 588              		.loc 2 164 0
+ 589 0030 FB68     		ldr	r3, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 18
+
+
+ 590 0032 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 591 0034 002B     		cmp	r3, #0
+ 592 0036 07D1     		bne	.L25
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 593              		.loc 2 166 0
+ 594 0038 B868     		ldr	r0, [r7, #8]
+ 595 003a FFF7FEFF 		bl	LOS_IntRestore
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_MUX_INVALID);
+ 596              		.loc 2 167 0
+ 597 003e 1A4B     		ldr	r3, .L29
+ 598 0040 7B61     		str	r3, [r7, #20]
+ 599 0042 1A4B     		ldr	r3, .L29+4
+ 600 0044 3B61     		str	r3, [r7, #16]
+ 601 0046 21E0     		b	.L24
+ 602              	.L25:
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (!LOS_ListEmpty(&pstMuxDeleted->stMuxList) || pstMuxDeleted->usMuxCount)
+ 603              		.loc 2 170 0
+ 604 0048 FB68     		ldr	r3, [r7, #12]
+ 605 004a 0833     		adds	r3, r3, #8
+ 606 004c 1846     		mov	r0, r3
+ 607 004e FFF7FEFF 		bl	LOS_ListEmpty
+ 608 0052 0346     		mov	r3, r0
+ 609 0054 002B     		cmp	r3, #0
+ 610 0056 03D0     		beq	.L26
+ 611              		.loc 2 170 0 is_stmt 0 discriminator 1
+ 612 0058 FB68     		ldr	r3, [r7, #12]
+ 613 005a 5B88     		ldrh	r3, [r3, #2]
+ 614 005c 002B     		cmp	r3, #0
+ 615 005e 07D0     		beq	.L27
+ 616              	.L26:
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 617              		.loc 2 172 0 is_stmt 1
+ 618 0060 B868     		ldr	r0, [r7, #8]
+ 619 0062 FFF7FEFF 		bl	LOS_IntRestore
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         OS_GOTO_ERR_HANDLER(LOS_ERRNO_MUX_PENDED);
+ 620              		.loc 2 173 0
+ 621 0066 134B     		ldr	r3, .L29+12
+ 622 0068 7B61     		str	r3, [r7, #20]
+ 623 006a 104B     		ldr	r3, .L29+4
+ 624 006c 3B61     		str	r3, [r7, #16]
+ 625 006e 0DE0     		b	.L24
+ 626              	.L27:
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_ListAdd(&g_stUnusedMuxList, &pstMuxDeleted->stMuxList);
+ 627              		.loc 2 176 0
+ 628 0070 FB68     		ldr	r3, [r7, #12]
+ 629 0072 0833     		adds	r3, r3, #8
+ 630 0074 1946     		mov	r1, r3
+ 631 0076 1048     		ldr	r0, .L29+16
+ 632 0078 FFF7FEFF 		bl	LOS_ListAdd
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxDeleted->ucMuxStat = OS_MUX_UNUSED;
+ 633              		.loc 2 177 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 19
+
+
+ 634 007c FB68     		ldr	r3, [r7, #12]
+ 635 007e 0022     		movs	r2, #0
+ 636 0080 1A70     		strb	r2, [r3]
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_IntRestore(uwIntSave);
+ 637              		.loc 2 179 0
+ 638 0082 B868     		ldr	r0, [r7, #8]
+ 639 0084 FFF7FEFF 		bl	LOS_IntRestore
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     return LOS_OK;
+ 640              		.loc 2 181 0
+ 641 0088 0023     		movs	r3, #0
+ 642 008a 08E0     		b	.L28
+ 643              	.L24:
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** ErrHandler:
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     OS_RETURN_ERROR_P2(uwErrLine, uwErrNo);
+ 644              		.loc 2 183 0
+ 645 008c 0023     		movs	r3, #0
+ 646 008e 0093     		str	r3, [sp]
+ 647 0090 0023     		movs	r3, #0
+ 648 0092 7A69     		ldr	r2, [r7, #20]
+ 649 0094 3969     		ldr	r1, [r7, #16]
+ 650 0096 0948     		ldr	r0, .L29+20
+ 651 0098 FFF7FEFF 		bl	LOS_ErrHandle
+ 652 009c 7B69     		ldr	r3, [r7, #20]
+ 653              	.L28:
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** }
+ 654              		.loc 2 184 0
+ 655 009e 1846     		mov	r0, r3
+ 656 00a0 1837     		adds	r7, r7, #24
+ 657              	.LCFI42:
+ 658              		.cfi_def_cfa_offset 8
+ 659 00a2 BD46     		mov	sp, r7
+ 660              	.LCFI43:
+ 661              		.cfi_def_cfa_register 13
+ 662              		@ sp needed
+ 663 00a4 80BD     		pop	{r7, pc}
+ 664              	.L30:
+ 665 00a6 00BF     		.align	2
+ 666              	.L29:
+ 667 00a8 011D0002 		.word	33561857
+ 668 00ac F8C3B2A1 		.word	-1582119944
+ 669 00b0 00000000 		.word	g_pstAllMux
+ 670 00b4 091D0002 		.word	33561865
+ 671 00b8 00000000 		.word	g_stUnusedMuxList
+ 672 00bc 00000000 		.word	.LC0
+ 673              		.cfi_endproc
+ 674              	.LFE132:
+ 676              		.section	.rodata
+ 677 0013 00       		.align	2
+ 678              	.LC1:
+ 679 0014 5B455252 		.ascii	"[ERR] \000"
+ 679      5D2000
+ 680 001b 00       		.align	2
+ 681              	.LC2:
+ 682 001c 2121214C 		.ascii	"!!!LOS_ERRNO_MUX_PEND_IN_LOCK!!!\000"
+ 682      4F535F45 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 20
+
+
+ 682      52524E4F 
+ 682      5F4D5558 
+ 682      5F50454E 
+ 683              		.section	.text.LOS_MuxPend,"ax",%progbits
+ 684              		.align	1
+ 685              		.global	LOS_MuxPend
+ 686              		.syntax unified
+ 687              		.thumb
+ 688              		.thumb_func
+ 689              		.fpu fpv4-sp-d16
+ 691              	LOS_MuxPend:
+ 692              	.LFB133:
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** /*****************************************************************************
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Function     : LOS_MuxPend
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Description  : Specify the mutex P operation,
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Input        : uwMuxHandle ------ Mutex operation handleone,
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****                 uwTimeOut  ------- waiting time,
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Output       : None
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Return       : LOS_OK on success ,or error code on failure
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  *****************************************************************************/
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** LITE_OS_SEC_TEXT UINT32 LOS_MuxPend(UINT32 uwMuxHandle, UINT32 uwTimeout)
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** {
+ 693              		.loc 2 195 0
+ 694              		.cfi_startproc
+ 695              		@ args = 0, pretend = 0, frame = 24
+ 696              		@ frame_needed = 1, uses_anonymous_args = 0
+ 697 0000 80B5     		push	{r7, lr}
+ 698              	.LCFI44:
+ 699              		.cfi_def_cfa_offset 8
+ 700              		.cfi_offset 7, -8
+ 701              		.cfi_offset 14, -4
+ 702 0002 88B0     		sub	sp, sp, #32
+ 703              	.LCFI45:
+ 704              		.cfi_def_cfa_offset 40
+ 705 0004 02AF     		add	r7, sp, #8
+ 706              	.LCFI46:
+ 707              		.cfi_def_cfa 7, 32
+ 708 0006 7860     		str	r0, [r7, #4]
+ 709 0008 3960     		str	r1, [r7]
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32     uwIntSave;
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     MUX_CB_S  *pstMuxPended;
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32     uwRetErr;
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_TASK_CB  *pstRunTsk;
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (uwMuxHandle >= (UINT32)LOSCFG_BASE_IPC_MUX_LIMIT)
+ 710              		.loc 2 201 0
+ 711 000a 7B68     		ldr	r3, [r7, #4]
+ 712 000c 132B     		cmp	r3, #19
+ 713 000e 09D9     		bls	.L32
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         OS_RETURN_ERROR(LOS_ERRNO_MUX_INVALID);
+ 714              		.loc 2 203 0
+ 715 0010 0023     		movs	r3, #0
+ 716 0012 0093     		str	r3, [sp]
+ 717 0014 0023     		movs	r3, #0
+ 718 0016 594A     		ldr	r2, .L44
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 21
+
+
+ 719 0018 5949     		ldr	r1, .L44+4
+ 720 001a 5A48     		ldr	r0, .L44+8
+ 721 001c FFF7FEFF 		bl	LOS_ErrHandle
+ 722 0020 564B     		ldr	r3, .L44
+ 723 0022 A6E0     		b	.L33
+ 724              	.L32:
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstMuxPended = GET_MUX(uwMuxHandle);
+ 725              		.loc 2 206 0
+ 726 0024 584B     		ldr	r3, .L44+12
+ 727 0026 1968     		ldr	r1, [r3]
+ 728 0028 7A68     		ldr	r2, [r7, #4]
+ 729 002a 1346     		mov	r3, r2
+ 730 002c 5B00     		lsls	r3, r3, #1
+ 731 002e 1344     		add	r3, r3, r2
+ 732 0030 DB00     		lsls	r3, r3, #3
+ 733 0032 0B44     		add	r3, r3, r1
+ 734 0034 3B61     		str	r3, [r7, #16]
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     uwIntSave = LOS_IntLock();
+ 735              		.loc 2 207 0
+ 736 0036 FFF7FEFF 		bl	LOS_IntLock
+ 737 003a F860     		str	r0, [r7, #12]
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (OS_MUX_UNUSED == pstMuxPended->ucMuxStat)
+ 738              		.loc 2 208 0
+ 739 003c 3B69     		ldr	r3, [r7, #16]
+ 740 003e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 741 0040 002B     		cmp	r3, #0
+ 742 0042 0CD1     		bne	.L34
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 743              		.loc 2 210 0
+ 744 0044 F868     		ldr	r0, [r7, #12]
+ 745 0046 FFF7FEFF 		bl	LOS_IntRestore
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         OS_RETURN_ERROR(LOS_ERRNO_MUX_INVALID);
+ 746              		.loc 2 211 0
+ 747 004a 0023     		movs	r3, #0
+ 748 004c 0093     		str	r3, [sp]
+ 749 004e 0023     		movs	r3, #0
+ 750 0050 4A4A     		ldr	r2, .L44
+ 751 0052 4B49     		ldr	r1, .L44+4
+ 752 0054 4B48     		ldr	r0, .L44+8
+ 753 0056 FFF7FEFF 		bl	LOS_ErrHandle
+ 754 005a 484B     		ldr	r3, .L44
+ 755 005c 89E0     		b	.L33
+ 756              	.L34:
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (OS_INT_ACTIVE)
+ 757              		.loc 2 214 0
+ 758 005e 4B4B     		ldr	r3, .L44+16
+ 759 0060 1B68     		ldr	r3, [r3]
+ 760 0062 002B     		cmp	r3, #0
+ 761 0064 04D0     		beq	.L35
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 762              		.loc 2 216 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 22
+
+
+ 763 0066 F868     		ldr	r0, [r7, #12]
+ 764 0068 FFF7FEFF 		bl	LOS_IntRestore
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         return LOS_ERRNO_MUX_PEND_INTERR;
+ 765              		.loc 2 217 0
+ 766 006c 484B     		ldr	r3, .L44+20
+ 767 006e 80E0     		b	.L33
+ 768              	.L35:
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 219:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 220:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstRunTsk = (LOS_TASK_CB *)g_stLosTask.pstRunTask;
+ 769              		.loc 2 220 0
+ 770 0070 484B     		ldr	r3, .L44+24
+ 771 0072 1B68     		ldr	r3, [r3]
+ 772 0074 BB60     		str	r3, [r7, #8]
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (pstMuxPended->usMuxCount == 0)
+ 773              		.loc 2 221 0
+ 774 0076 3B69     		ldr	r3, [r7, #16]
+ 775 0078 5B88     		ldrh	r3, [r3, #2]
+ 776 007a 002B     		cmp	r3, #0
+ 777 007c 11D1     		bne	.L36
+ 222:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 223:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxPended->usMuxCount++;
+ 778              		.loc 2 223 0
+ 779 007e 3B69     		ldr	r3, [r7, #16]
+ 780 0080 5B88     		ldrh	r3, [r3, #2]
+ 781 0082 0133     		adds	r3, r3, #1
+ 782 0084 9AB2     		uxth	r2, r3
+ 783 0086 3B69     		ldr	r3, [r7, #16]
+ 784 0088 5A80     		strh	r2, [r3, #2]	@ movhi
+ 224:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxPended->pstOwner = pstRunTsk;
+ 785              		.loc 2 224 0
+ 786 008a 3B69     		ldr	r3, [r7, #16]
+ 787 008c BA68     		ldr	r2, [r7, #8]
+ 788 008e 1A61     		str	r2, [r3, #16]
+ 225:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxPended->usPriority = pstRunTsk->usPriority;
+ 789              		.loc 2 225 0
+ 790 0090 BB68     		ldr	r3, [r7, #8]
+ 791 0092 DA88     		ldrh	r2, [r3, #6]
+ 792 0094 3B69     		ldr	r3, [r7, #16]
+ 793 0096 9A82     		strh	r2, [r3, #20]	@ movhi
+ 226:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 794              		.loc 2 226 0
+ 795 0098 F868     		ldr	r0, [r7, #12]
+ 796 009a FFF7FEFF 		bl	LOS_IntRestore
+ 227:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         return LOS_OK;
+ 797              		.loc 2 227 0
+ 798 009e 0023     		movs	r3, #0
+ 799 00a0 67E0     		b	.L33
+ 800              	.L36:
+ 228:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 229:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (pstMuxPended->pstOwner == pstRunTsk)
+ 801              		.loc 2 230 0
+ 802 00a2 3B69     		ldr	r3, [r7, #16]
+ 803 00a4 1B69     		ldr	r3, [r3, #16]
+ 804 00a6 BA68     		ldr	r2, [r7, #8]
+ 805 00a8 9A42     		cmp	r2, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 23
+
+
+ 806 00aa 0AD1     		bne	.L37
+ 231:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 232:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxPended->usMuxCount++;
+ 807              		.loc 2 232 0
+ 808 00ac 3B69     		ldr	r3, [r7, #16]
+ 809 00ae 5B88     		ldrh	r3, [r3, #2]
+ 810 00b0 0133     		adds	r3, r3, #1
+ 811 00b2 9AB2     		uxth	r2, r3
+ 812 00b4 3B69     		ldr	r3, [r7, #16]
+ 813 00b6 5A80     		strh	r2, [r3, #2]	@ movhi
+ 233:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 814              		.loc 2 233 0
+ 815 00b8 F868     		ldr	r0, [r7, #12]
+ 816 00ba FFF7FEFF 		bl	LOS_IntRestore
+ 234:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         return LOS_OK;
+ 817              		.loc 2 234 0
+ 818 00be 0023     		movs	r3, #0
+ 819 00c0 57E0     		b	.L33
+ 820              	.L37:
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 236:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (!uwTimeout)
+ 821              		.loc 2 237 0
+ 822 00c2 3B68     		ldr	r3, [r7]
+ 823 00c4 002B     		cmp	r3, #0
+ 824 00c6 04D1     		bne	.L38
+ 238:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 239:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 825              		.loc 2 239 0
+ 826 00c8 F868     		ldr	r0, [r7, #12]
+ 827 00ca FFF7FEFF 		bl	LOS_IntRestore
+ 240:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         return LOS_ERRNO_MUX_UNAVAILABLE;
+ 828              		.loc 2 240 0
+ 829 00ce 324B     		ldr	r3, .L44+28
+ 830 00d0 4FE0     		b	.L33
+ 831              	.L38:
+ 241:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 243:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (g_usLosTaskLock)
+ 832              		.loc 2 243 0
+ 833 00d2 324B     		ldr	r3, .L44+32
+ 834 00d4 1B88     		ldrh	r3, [r3]
+ 835 00d6 002B     		cmp	r3, #0
+ 836 00d8 0CD0     		beq	.L39
+ 244:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 245:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         uwRetErr = LOS_ERRNO_MUX_PEND_IN_LOCK;
+ 837              		.loc 2 245 0
+ 838 00da 314B     		ldr	r3, .L44+36
+ 839 00dc 7B61     		str	r3, [r7, #20]
+ 840              	.LBB2:
+ 246:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         PRINT_ERR("!!!LOS_ERRNO_MUX_PEND_IN_LOCK!!!\n");
+ 841              		.loc 2 246 0
+ 842 00de 3148     		ldr	r0, .L44+40
+ 843 00e0 FFF7FEFF 		bl	printf
+ 844 00e4 3048     		ldr	r0, .L44+44
+ 845 00e6 FFF7FEFF 		bl	puts
+ 846              	.LBE2:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 24
+
+
+ 247:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #if (LOSCFG_PLATFORM_EXC == YES)
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         osBackTrace();
+ 249:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** #endif
+ 250:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         goto errre_uniMuxPend;
+ 847              		.loc 2 250 0
+ 848 00ea 00BF     		nop
+ 849              	.L40:
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 252:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstRunTsk->pTaskMux = (VOID *)pstMuxPended;
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (pstMuxPended->pstOwner->usPriority > pstRunTsk->usPriority)
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         osTaskPriModify(pstMuxPended->pstOwner, pstRunTsk->usPriority);
+ 258:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 259:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     osTaskWait(&pstMuxPended->stMuxList, OS_TASK_STATUS_PEND, uwTimeout);
+ 261:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     (VOID)LOS_IntRestore(uwIntSave);
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_Schedule();
+ 264:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (pstRunTsk->usTaskStatus & OS_TASK_STATUS_TIMEOUT)
+ 266:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         uwIntSave = LOS_IntLock();
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstRunTsk->usTaskStatus &= (~OS_TASK_STATUS_TIMEOUT);
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         (VOID)LOS_IntRestore(uwIntSave);
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         uwRetErr = LOS_ERRNO_MUX_TIMEOUT;
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         goto error_uniMuxPend;
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     return LOS_OK;
+ 275:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 276:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** errre_uniMuxPend:
+ 277:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     (VOID)LOS_IntRestore(uwIntSave);
+ 850              		.loc 2 277 0
+ 851 00ec F868     		ldr	r0, [r7, #12]
+ 852 00ee FFF7FEFF 		bl	LOS_IntRestore
+ 853 00f2 35E0     		b	.L43
+ 854              	.L39:
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 855              		.loc 2 253 0
+ 856 00f4 BB68     		ldr	r3, [r7, #8]
+ 857 00f6 3A69     		ldr	r2, [r7, #16]
+ 858 00f8 DA61     		str	r2, [r3, #28]
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 859              		.loc 2 255 0
+ 860 00fa 3B69     		ldr	r3, [r7, #16]
+ 861 00fc 1B69     		ldr	r3, [r3, #16]
+ 862 00fe DA88     		ldrh	r2, [r3, #6]
+ 863 0100 BB68     		ldr	r3, [r7, #8]
+ 864 0102 DB88     		ldrh	r3, [r3, #6]
+ 865 0104 9A42     		cmp	r2, r3
+ 866 0106 07D9     		bls	.L41
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 867              		.loc 2 257 0
+ 868 0108 3B69     		ldr	r3, [r7, #16]
+ 869 010a 1A69     		ldr	r2, [r3, #16]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 25
+
+
+ 870 010c BB68     		ldr	r3, [r7, #8]
+ 871 010e DB88     		ldrh	r3, [r3, #6]
+ 872 0110 1946     		mov	r1, r3
+ 873 0112 1046     		mov	r0, r2
+ 874 0114 FFF7FEFF 		bl	osTaskPriModify
+ 875              	.L41:
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 876              		.loc 2 260 0
+ 877 0118 3B69     		ldr	r3, [r7, #16]
+ 878 011a 0833     		adds	r3, r3, #8
+ 879 011c 3A68     		ldr	r2, [r7]
+ 880 011e 0821     		movs	r1, #8
+ 881 0120 1846     		mov	r0, r3
+ 882 0122 FFF7FEFF 		bl	osTaskWait
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_Schedule();
+ 883              		.loc 2 262 0
+ 884 0126 F868     		ldr	r0, [r7, #12]
+ 885 0128 FFF7FEFF 		bl	LOS_IntRestore
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 886              		.loc 2 263 0
+ 887 012c FFF7FEFF 		bl	LOS_Schedule
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 888              		.loc 2 265 0
+ 889 0130 BB68     		ldr	r3, [r7, #8]
+ 890 0132 9B88     		ldrh	r3, [r3, #4]
+ 891 0134 03F04003 		and	r3, r3, #64
+ 892 0138 002B     		cmp	r3, #0
+ 893 013a 0FD0     		beq	.L42
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstRunTsk->usTaskStatus &= (~OS_TASK_STATUS_TIMEOUT);
+ 894              		.loc 2 267 0
+ 895 013c FFF7FEFF 		bl	LOS_IntLock
+ 896 0140 F860     		str	r0, [r7, #12]
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         (VOID)LOS_IntRestore(uwIntSave);
+ 897              		.loc 2 268 0
+ 898 0142 BB68     		ldr	r3, [r7, #8]
+ 899 0144 9B88     		ldrh	r3, [r3, #4]
+ 900 0146 23F04003 		bic	r3, r3, #64
+ 901 014a 9AB2     		uxth	r2, r3
+ 902 014c BB68     		ldr	r3, [r7, #8]
+ 903 014e 9A80     		strh	r2, [r3, #4]	@ movhi
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         uwRetErr = LOS_ERRNO_MUX_TIMEOUT;
+ 904              		.loc 2 269 0
+ 905 0150 F868     		ldr	r0, [r7, #12]
+ 906 0152 FFF7FEFF 		bl	LOS_IntRestore
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         goto error_uniMuxPend;
+ 907              		.loc 2 270 0
+ 908 0156 154B     		ldr	r3, .L44+48
+ 909 0158 7B61     		str	r3, [r7, #20]
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 910              		.loc 2 271 0
+ 911 015a 01E0     		b	.L43
+ 912              	.L42:
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 913              		.loc 2 274 0
+ 914 015c 0023     		movs	r3, #0
+ 915 015e 08E0     		b	.L33
+ 916              	.L43:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 26
+
+
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** error_uniMuxPend:
+ 279:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     OS_RETURN_ERROR(uwRetErr);
+ 917              		.loc 2 279 0
+ 918 0160 0023     		movs	r3, #0
+ 919 0162 0093     		str	r3, [sp]
+ 920 0164 0023     		movs	r3, #0
+ 921 0166 7A69     		ldr	r2, [r7, #20]
+ 922 0168 0549     		ldr	r1, .L44+4
+ 923 016a 0648     		ldr	r0, .L44+8
+ 924 016c FFF7FEFF 		bl	LOS_ErrHandle
+ 925 0170 7B69     		ldr	r3, [r7, #20]
+ 926              	.L33:
+ 280:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** }
+ 927              		.loc 2 280 0
+ 928 0172 1846     		mov	r0, r3
+ 929 0174 1837     		adds	r7, r7, #24
+ 930              	.LCFI47:
+ 931              		.cfi_def_cfa_offset 8
+ 932 0176 BD46     		mov	sp, r7
+ 933              	.LCFI48:
+ 934              		.cfi_def_cfa_register 13
+ 935              		@ sp needed
+ 936 0178 80BD     		pop	{r7, pc}
+ 937              	.L45:
+ 938 017a 00BF     		.align	2
+ 939              	.L44:
+ 940 017c 011D0002 		.word	33561857
+ 941 0180 F8C3B2A1 		.word	-1582119944
+ 942 0184 00000000 		.word	.LC0
+ 943 0188 00000000 		.word	g_pstAllMux
+ 944 018c 00000000 		.word	g_vuwIntCount
+ 945 0190 051D0002 		.word	33561861
+ 946 0194 00000000 		.word	g_stLosTask
+ 947 0198 041D0002 		.word	33561860
+ 948 019c 00000000 		.word	g_usLosTaskLock
+ 949 01a0 061D0002 		.word	33561862
+ 950 01a4 14000000 		.word	.LC1
+ 951 01a8 1C000000 		.word	.LC2
+ 952 01ac 071D0002 		.word	33561863
+ 953              		.cfi_endproc
+ 954              	.LFE133:
+ 956              		.section	.text.LOS_MuxPost,"ax",%progbits
+ 957              		.align	1
+ 958              		.global	LOS_MuxPost
+ 959              		.syntax unified
+ 960              		.thumb
+ 961              		.thumb_func
+ 962              		.fpu fpv4-sp-d16
+ 964              	LOS_MuxPost:
+ 965              	.LFB134:
+ 281:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 282:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** /*****************************************************************************
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Function     : LOS_MuxPost
+ 284:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Description  : Specify the mutex V operation,
+ 285:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Input        : uwMuxHandle ------ Mutex operation handle,
+ 286:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Output       : None
+ 287:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  Return       : LOS_OK on success ,or error code on failure
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 27
+
+
+ 288:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****  *****************************************************************************/
+ 289:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** LITE_OS_SEC_TEXT UINT32 LOS_MuxPost(UINT32 uwMuxHandle)
+ 290:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** {
+ 966              		.loc 2 290 0
+ 967              		.cfi_startproc
+ 968              		@ args = 0, pretend = 0, frame = 24
+ 969              		@ frame_needed = 1, uses_anonymous_args = 0
+ 970 0000 80B5     		push	{r7, lr}
+ 971              	.LCFI49:
+ 972              		.cfi_def_cfa_offset 8
+ 973              		.cfi_offset 7, -8
+ 974              		.cfi_offset 14, -4
+ 975 0002 88B0     		sub	sp, sp, #32
+ 976              	.LCFI50:
+ 977              		.cfi_def_cfa_offset 40
+ 978 0004 02AF     		add	r7, sp, #8
+ 979              	.LCFI51:
+ 980              		.cfi_def_cfa 7, 32
+ 981 0006 7860     		str	r0, [r7, #4]
+ 291:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     UINT32      uwIntSave;
+ 292:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     MUX_CB_S    *pstMuxPosted = GET_MUX(uwMuxHandle);
+ 982              		.loc 2 292 0
+ 983 0008 404B     		ldr	r3, .L56
+ 984 000a 1968     		ldr	r1, [r3]
+ 985 000c 7A68     		ldr	r2, [r7, #4]
+ 986 000e 1346     		mov	r3, r2
+ 987 0010 5B00     		lsls	r3, r3, #1
+ 988 0012 1344     		add	r3, r3, r2
+ 989 0014 DB00     		lsls	r3, r3, #3
+ 990 0016 0B44     		add	r3, r3, r1
+ 991 0018 7B61     		str	r3, [r7, #20]
+ 293:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_TASK_CB *pstResumedTask;
+ 294:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     LOS_TASK_CB *pstRunTsk;
+ 295:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 296:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     uwIntSave = LOS_IntLock();
+ 992              		.loc 2 296 0
+ 993 001a FFF7FEFF 		bl	LOS_IntLock
+ 994 001e 3861     		str	r0, [r7, #16]
+ 297:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 298:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if ((uwMuxHandle >= (UINT32)LOSCFG_BASE_IPC_MUX_LIMIT) ||
+ 995              		.loc 2 298 0
+ 996 0020 7B68     		ldr	r3, [r7, #4]
+ 997 0022 132B     		cmp	r3, #19
+ 998 0024 03D8     		bhi	.L47
+ 299:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         (OS_MUX_UNUSED == pstMuxPosted->ucMuxStat))
+ 999              		.loc 2 299 0 discriminator 1
+ 1000 0026 7B69     		ldr	r3, [r7, #20]
+ 1001 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 298:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         (OS_MUX_UNUSED == pstMuxPosted->ucMuxStat))
+ 1002              		.loc 2 298 0 discriminator 1
+ 1003 002a 002B     		cmp	r3, #0
+ 1004 002c 0CD1     		bne	.L48
+ 1005              	.L47:
+ 300:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 301:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 1006              		.loc 2 301 0
+ 1007 002e 3869     		ldr	r0, [r7, #16]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 28
+
+
+ 1008 0030 FFF7FEFF 		bl	LOS_IntRestore
+ 302:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         OS_RETURN_ERROR(LOS_ERRNO_MUX_INVALID);
+ 1009              		.loc 2 302 0
+ 1010 0034 0023     		movs	r3, #0
+ 1011 0036 0093     		str	r3, [sp]
+ 1012 0038 0023     		movs	r3, #0
+ 1013 003a 354A     		ldr	r2, .L56+4
+ 1014 003c 3549     		ldr	r1, .L56+8
+ 1015 003e 3648     		ldr	r0, .L56+12
+ 1016 0040 FFF7FEFF 		bl	LOS_ErrHandle
+ 1017 0044 324B     		ldr	r3, .L56+4
+ 1018 0046 5DE0     		b	.L49
+ 1019              	.L48:
+ 303:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 304:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 305:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     pstRunTsk = (LOS_TASK_CB *)g_stLosTask.pstRunTask;
+ 1020              		.loc 2 305 0
+ 1021 0048 344B     		ldr	r3, .L56+16
+ 1022 004a 1B68     		ldr	r3, [r3]
+ 1023 004c FB60     		str	r3, [r7, #12]
+ 306:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if ((pstMuxPosted->usMuxCount == 0) || (pstMuxPosted->pstOwner != pstRunTsk))
+ 1024              		.loc 2 306 0
+ 1025 004e 7B69     		ldr	r3, [r7, #20]
+ 1026 0050 5B88     		ldrh	r3, [r3, #2]
+ 1027 0052 002B     		cmp	r3, #0
+ 1028 0054 04D0     		beq	.L50
+ 1029              		.loc 2 306 0 is_stmt 0 discriminator 1
+ 1030 0056 7B69     		ldr	r3, [r7, #20]
+ 1031 0058 1B69     		ldr	r3, [r3, #16]
+ 1032 005a FA68     		ldr	r2, [r7, #12]
+ 1033 005c 9A42     		cmp	r2, r3
+ 1034 005e 0CD0     		beq	.L51
+ 1035              	.L50:
+ 307:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 308:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 1036              		.loc 2 308 0 is_stmt 1
+ 1037 0060 3869     		ldr	r0, [r7, #16]
+ 1038 0062 FFF7FEFF 		bl	LOS_IntRestore
+ 309:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         OS_RETURN_ERROR(LOS_ERRNO_MUX_INVALID);
+ 1039              		.loc 2 309 0
+ 1040 0066 0023     		movs	r3, #0
+ 1041 0068 0093     		str	r3, [sp]
+ 1042 006a 0023     		movs	r3, #0
+ 1043 006c 284A     		ldr	r2, .L56+4
+ 1044 006e 2949     		ldr	r1, .L56+8
+ 1045 0070 2948     		ldr	r0, .L56+12
+ 1046 0072 FFF7FEFF 		bl	LOS_ErrHandle
+ 1047 0076 264B     		ldr	r3, .L56+4
+ 1048 0078 44E0     		b	.L49
+ 1049              	.L51:
+ 310:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 311:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 312:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (--(pstMuxPosted->usMuxCount) != 0)
+ 1050              		.loc 2 312 0
+ 1051 007a 7B69     		ldr	r3, [r7, #20]
+ 1052 007c 5B88     		ldrh	r3, [r3, #2]
+ 1053 007e 013B     		subs	r3, r3, #1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 29
+
+
+ 1054 0080 9AB2     		uxth	r2, r3
+ 1055 0082 7B69     		ldr	r3, [r7, #20]
+ 1056 0084 5A80     		strh	r2, [r3, #2]	@ movhi
+ 1057 0086 7B69     		ldr	r3, [r7, #20]
+ 1058 0088 5B88     		ldrh	r3, [r3, #2]
+ 1059 008a 002B     		cmp	r3, #0
+ 1060 008c 04D0     		beq	.L52
+ 313:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 314:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_IntRestore(uwIntSave);
+ 1061              		.loc 2 314 0
+ 1062 008e 3869     		ldr	r0, [r7, #16]
+ 1063 0090 FFF7FEFF 		bl	LOS_IntRestore
+ 315:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         return LOS_OK;
+ 1064              		.loc 2 315 0
+ 1065 0094 0023     		movs	r3, #0
+ 1066 0096 35E0     		b	.L49
+ 1067              	.L52:
+ 316:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 317:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 318:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if ((pstMuxPosted->pstOwner->usPriority) != pstMuxPosted->usPriority)
+ 1068              		.loc 2 318 0
+ 1069 0098 7B69     		ldr	r3, [r7, #20]
+ 1070 009a 1B69     		ldr	r3, [r3, #16]
+ 1071 009c DA88     		ldrh	r2, [r3, #6]
+ 1072 009e 7B69     		ldr	r3, [r7, #20]
+ 1073 00a0 9B8A     		ldrh	r3, [r3, #20]
+ 1074 00a2 9A42     		cmp	r2, r3
+ 1075 00a4 07D0     		beq	.L53
+ 319:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 320:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         osTaskPriModify(pstMuxPosted->pstOwner, pstMuxPosted->usPriority);
+ 1076              		.loc 2 320 0
+ 1077 00a6 7B69     		ldr	r3, [r7, #20]
+ 1078 00a8 1A69     		ldr	r2, [r3, #16]
+ 1079 00aa 7B69     		ldr	r3, [r7, #20]
+ 1080 00ac 9B8A     		ldrh	r3, [r3, #20]
+ 1081 00ae 1946     		mov	r1, r3
+ 1082 00b0 1046     		mov	r0, r2
+ 1083 00b2 FFF7FEFF 		bl	osTaskPriModify
+ 1084              	.L53:
+ 321:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 322:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 323:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     if (!LOS_ListEmpty(&pstMuxPosted->stMuxList))
+ 1085              		.loc 2 323 0
+ 1086 00b6 7B69     		ldr	r3, [r7, #20]
+ 1087 00b8 0833     		adds	r3, r3, #8
+ 1088 00ba 1846     		mov	r0, r3
+ 1089 00bc FFF7FEFF 		bl	LOS_ListEmpty
+ 1090 00c0 0346     		mov	r3, r0
+ 1091 00c2 002B     		cmp	r3, #0
+ 1092 00c4 1AD1     		bne	.L54
+ 324:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 325:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstResumedTask = OS_TCB_FROM_PENDLIST(LOS_DL_LIST_FIRST(&(pstMuxPosted->stMuxList))); /*lin
+ 1093              		.loc 2 325 0
+ 1094 00c6 7B69     		ldr	r3, [r7, #20]
+ 1095 00c8 DB68     		ldr	r3, [r3, #12]
+ 1096 00ca 283B     		subs	r3, r3, #40
+ 1097 00cc BB60     		str	r3, [r7, #8]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 30
+
+
+ 326:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 327:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxPosted->usMuxCount    = 1;
+ 1098              		.loc 2 327 0
+ 1099 00ce 7B69     		ldr	r3, [r7, #20]
+ 1100 00d0 0122     		movs	r2, #1
+ 1101 00d2 5A80     		strh	r2, [r3, #2]	@ movhi
+ 328:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxPosted->pstOwner      = pstResumedTask;
+ 1102              		.loc 2 328 0
+ 1103 00d4 7B69     		ldr	r3, [r7, #20]
+ 1104 00d6 BA68     		ldr	r2, [r7, #8]
+ 1105 00d8 1A61     		str	r2, [r3, #16]
+ 329:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstMuxPosted->usPriority    = pstResumedTask->usPriority;
+ 1106              		.loc 2 329 0
+ 1107 00da BB68     		ldr	r3, [r7, #8]
+ 1108 00dc DA88     		ldrh	r2, [r3, #6]
+ 1109 00de 7B69     		ldr	r3, [r7, #20]
+ 1110 00e0 9A82     		strh	r2, [r3, #20]	@ movhi
+ 330:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         pstResumedTask->pTaskMux    = NULL;
+ 1111              		.loc 2 330 0
+ 1112 00e2 BB68     		ldr	r3, [r7, #8]
+ 1113 00e4 0022     		movs	r2, #0
+ 1114 00e6 DA61     		str	r2, [r3, #28]
+ 331:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 332:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         osTaskWake(pstResumedTask, OS_TASK_STATUS_PEND);
+ 1115              		.loc 2 332 0
+ 1116 00e8 0821     		movs	r1, #8
+ 1117 00ea B868     		ldr	r0, [r7, #8]
+ 1118 00ec FFF7FEFF 		bl	osTaskWake
+ 333:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 334:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         (VOID)LOS_IntRestore(uwIntSave);
+ 1119              		.loc 2 334 0
+ 1120 00f0 3869     		ldr	r0, [r7, #16]
+ 1121 00f2 FFF7FEFF 		bl	LOS_IntRestore
+ 335:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         LOS_Schedule();
+ 1122              		.loc 2 335 0
+ 1123 00f6 FFF7FEFF 		bl	LOS_Schedule
+ 1124 00fa 02E0     		b	.L55
+ 1125              	.L54:
+ 336:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 337:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     else
+ 338:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     {
+ 339:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****         (VOID)LOS_IntRestore(uwIntSave);
+ 1126              		.loc 2 339 0
+ 1127 00fc 3869     		ldr	r0, [r7, #16]
+ 1128 00fe FFF7FEFF 		bl	LOS_IntRestore
+ 1129              	.L55:
+ 340:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     }
+ 341:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** 
+ 342:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c ****     return LOS_OK;
+ 1130              		.loc 2 342 0
+ 1131 0102 0023     		movs	r3, #0
+ 1132              	.L49:
+ 343:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/base/ipc\los_mux.c **** }
+ 1133              		.loc 2 343 0
+ 1134 0104 1846     		mov	r0, r3
+ 1135 0106 1837     		adds	r7, r7, #24
+ 1136              	.LCFI52:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 31
+
+
+ 1137              		.cfi_def_cfa_offset 8
+ 1138 0108 BD46     		mov	sp, r7
+ 1139              	.LCFI53:
+ 1140              		.cfi_def_cfa_register 13
+ 1141              		@ sp needed
+ 1142 010a 80BD     		pop	{r7, pc}
+ 1143              	.L57:
+ 1144              		.align	2
+ 1145              	.L56:
+ 1146 010c 00000000 		.word	g_pstAllMux
+ 1147 0110 011D0002 		.word	33561857
+ 1148 0114 F8C3B2A1 		.word	-1582119944
+ 1149 0118 00000000 		.word	.LC0
+ 1150 011c 00000000 		.word	g_stLosTask
+ 1151              		.cfi_endproc
+ 1152              	.LFE134:
+ 1154              		.section	.bss.s_astAllMux.10289,"aw",%nobits
+ 1155              		.align	2
+ 1158              	s_astAllMux.10289:
+ 1159 0000 00000000 		.space	480
+ 1159      00000000 
+ 1159      00000000 
+ 1159      00000000 
+ 1159      00000000 
+ 1160              		.text
+ 1161              	.Letext0:
+ 1162              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1163              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1164              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1165              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1166              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1167              		.file 8 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/in
+ 1168              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1169              		.file 10 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/a
+ 1170              		.file 11 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bea
+ 1171              		.file 12 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1172              		.file 13 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 1173              		.file 14 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 1174              		.file 15 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/
+ 1175              		.file 16 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/a
+ 1176              		.file 17 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 1177              		.file 18 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 1178              		.file 19 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 1179              		.file 20 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/b
+ 1180              		.file 21 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/b
+ 1181              		.file 22 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/i
+ 1182              		.file 23 "<built-in>"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s 			page 32
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 los_mux.c
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:18     .text.LOS_ListInit:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:24     .text.LOS_ListInit:00000000 LOS_ListInit
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:69     .text.LOS_ListAdd:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:75     .text.LOS_ListAdd:00000000 LOS_ListAdd
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:130    .text.LOS_ListTailInsert:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:136    .text.LOS_ListTailInsert:00000000 LOS_ListTailInsert
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:175    .text.LOS_ListDelete:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:181    .text.LOS_ListDelete:00000000 LOS_ListDelete
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:237    .text.LOS_ListEmpty:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:243    .text.LOS_ListEmpty:00000000 LOS_ListEmpty
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:292    .bss.g_pstAllMux:00000000 g_pstAllMux
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:289    .bss.g_pstAllMux:00000000 $d
+                            *COM*:00000008 g_stUnusedMuxList
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:296    .text.osMuxInit:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:303    .text.osMuxInit:00000000 osMuxInit
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:391    .text.osMuxInit:00000064 $d
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:1158   .bss.s_astAllMux.10289:00000000 s_astAllMux.10289
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:398    .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:402    .text.LOS_MuxCreate:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:409    .text.LOS_MuxCreate:00000000 LOS_MuxCreate
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:529    .text.LOS_MuxCreate:000000a0 $d
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:539    .text.LOS_MuxDelete:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:546    .text.LOS_MuxDelete:00000000 LOS_MuxDelete
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:667    .text.LOS_MuxDelete:000000a8 $d
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:684    .text.LOS_MuxPend:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:691    .text.LOS_MuxPend:00000000 LOS_MuxPend
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:940    .text.LOS_MuxPend:0000017c $d
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:957    .text.LOS_MuxPost:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:964    .text.LOS_MuxPost:00000000 LOS_MuxPost
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:1146   .text.LOS_MuxPost:0000010c $d
+C:\Users\dtjld\AppData\Local\Temp\cc6paAr3.s:1155   .bss.s_astAllMux.10289:00000000 $d
+
+UNDEFINED SYMBOLS
+LOS_IntLock
+LOS_IntRestore
+LOS_ErrHandle
+printf
+puts
+osTaskPriModify
+osTaskWait
+LOS_Schedule
+g_vuwIntCount
+g_stLosTask
+g_usLosTaskLock
+osTaskWake

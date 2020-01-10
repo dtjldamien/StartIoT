@@ -1,0 +1,1687 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gd32f30x_pmu.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.pmu_deinit,"ax",%progbits
+  18              		.align	1
+  19              		.global	pmu_deinit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	pmu_deinit:
+  26              	.LFB123:
+  27              		.file 1 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/G
+   1:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+   2:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \file  gd32f30x_pmu.c
+   3:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief PMU driver
+   4:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+   5:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****    \version 2017-02-10, V1.0.0, firmware for GD32F30x
+   6:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****    \version 2018-10-10, V1.1.0, firmware for GD32F30x
+   7:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****    \version 2018-12-25, V2.0.0, firmware for GD32F30x
+   8:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+   9:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  10:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*
+  11:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     Copyright (c) 2018, GigaDevice Semiconductor Inc.
+  12:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  13:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     All rights reserved.
+  14:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  15:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     Redistribution and use in source and binary forms, with or without modification, 
+  16:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** are permitted provided that the following conditions are met:
+  17:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  18:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     1. Redistributions of source code must retain the above copyright notice, this 
+  19:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****        list of conditions and the following disclaimer.
+  20:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     2. Redistributions in binary form must reproduce the above copyright notice, 
+  21:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****        this list of conditions and the following disclaimer in the documentation 
+  22:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****        and/or other materials provided with the distribution.
+  23:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     3. Neither the name of the copyright holder nor the names of its contributors 
+  24:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****        may be used to endorse or promote products derived from this software without 
+  25:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****        specific prior written permission.
+  26:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  27:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+  28:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  29:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. 
+  30:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, 
+  31:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 2
+
+
+  32:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+  33:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+  34:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+  35:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY 
+  36:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** OF SUCH DAMAGE.
+  37:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+  38:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  39:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  40:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** #include "gd32f30x_pmu.h"
+  41:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  42:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+  43:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      reset PMU register
+  44:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+  45:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+  46:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+  47:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+  48:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_deinit(void)
+  49:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+  28              		.loc 1 49 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 00AF     		add	r7, sp, #0
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_register 7
+  50:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* reset PMU */
+  51:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     rcu_periph_reset_enable(RCU_PMURST);
+  40              		.loc 1 51 0
+  41 0004 40F21C40 		movw	r0, #1052
+  42 0008 FFF7FEFF 		bl	rcu_periph_reset_enable
+  52:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     rcu_periph_reset_disable(RCU_PMURST);
+  43              		.loc 1 52 0
+  44 000c 40F21C40 		movw	r0, #1052
+  45 0010 FFF7FEFF 		bl	rcu_periph_reset_disable
+  53:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+  46              		.loc 1 53 0
+  47 0014 00BF     		nop
+  48 0016 80BD     		pop	{r7, pc}
+  49              		.cfi_endproc
+  50              	.LFE123:
+  52              		.section	.text.pmu_lvd_select,"ax",%progbits
+  53              		.align	1
+  54              		.global	pmu_lvd_select
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  58              		.fpu fpv4-sp-d16
+  60              	pmu_lvd_select:
+  61              	.LFB124:
+  54:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  55:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+  56:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      select low voltage detector threshold
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 3
+
+
+  57:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  lvdt_n:
+  58:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LVDT_0: voltage threshold is 2.1V
+  59:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LVDT_1: voltage threshold is 2.3V
+  60:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LVDT_2: voltage threshold is 2.4V
+  61:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LVDT_3: voltage threshold is 2.6V
+  62:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LVDT_4: voltage threshold is 2.7V
+  63:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LVDT_5: voltage threshold is 2.9V
+  64:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LVDT_6: voltage threshold is 3.0V
+  65:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LVDT_7: voltage threshold is 3.1V
+  66:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+  67:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+  68:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+  69:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_lvd_select(uint32_t lvdt_n)
+  70:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+  62              		.loc 1 70 0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 8
+  65              		@ frame_needed = 1, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67 0000 80B4     		push	{r7}
+  68              	.LCFI2:
+  69              		.cfi_def_cfa_offset 4
+  70              		.cfi_offset 7, -4
+  71 0002 83B0     		sub	sp, sp, #12
+  72              	.LCFI3:
+  73              		.cfi_def_cfa_offset 16
+  74 0004 00AF     		add	r7, sp, #0
+  75              	.LCFI4:
+  76              		.cfi_def_cfa_register 7
+  77 0006 7860     		str	r0, [r7, #4]
+  71:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* disable LVD */
+  72:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LVDEN;
+  78              		.loc 1 72 0
+  79 0008 0E4B     		ldr	r3, .L3
+  80 000a 1B68     		ldr	r3, [r3]
+  81 000c 0D4A     		ldr	r2, .L3
+  82 000e 23F01003 		bic	r3, r3, #16
+  83 0012 1360     		str	r3, [r2]
+  73:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* clear LVDT bits */
+  74:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LVDT;
+  84              		.loc 1 74 0
+  85 0014 0B4B     		ldr	r3, .L3
+  86 0016 1B68     		ldr	r3, [r3]
+  87 0018 0A4A     		ldr	r2, .L3
+  88 001a 23F0E003 		bic	r3, r3, #224
+  89 001e 1360     		str	r3, [r2]
+  75:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* set LVDT bits according to lvdt_n */
+  76:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= lvdt_n;
+  90              		.loc 1 76 0
+  91 0020 084B     		ldr	r3, .L3
+  92 0022 1A68     		ldr	r2, [r3]
+  93 0024 0749     		ldr	r1, .L3
+  94 0026 7B68     		ldr	r3, [r7, #4]
+  95 0028 1343     		orrs	r3, r3, r2
+  96 002a 0B60     		str	r3, [r1]
+  77:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* enable LVD */
+  78:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= PMU_CTL_LVDEN;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 4
+
+
+  97              		.loc 1 78 0
+  98 002c 054B     		ldr	r3, .L3
+  99 002e 1B68     		ldr	r3, [r3]
+ 100 0030 044A     		ldr	r2, .L3
+ 101 0032 43F01003 		orr	r3, r3, #16
+ 102 0036 1360     		str	r3, [r2]
+  79:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 103              		.loc 1 79 0
+ 104 0038 00BF     		nop
+ 105 003a 0C37     		adds	r7, r7, #12
+ 106              	.LCFI5:
+ 107              		.cfi_def_cfa_offset 4
+ 108 003c BD46     		mov	sp, r7
+ 109              	.LCFI6:
+ 110              		.cfi_def_cfa_register 13
+ 111              		@ sp needed
+ 112 003e 5DF8047B 		ldr	r7, [sp], #4
+ 113              	.LCFI7:
+ 114              		.cfi_restore 7
+ 115              		.cfi_def_cfa_offset 0
+ 116 0042 7047     		bx	lr
+ 117              	.L4:
+ 118              		.align	2
+ 119              	.L3:
+ 120 0044 00700040 		.word	1073770496
+ 121              		.cfi_endproc
+ 122              	.LFE124:
+ 124              		.section	.text.pmu_ldo_output_select,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	pmu_ldo_output_select
+ 127              		.syntax unified
+ 128              		.thumb
+ 129              		.thumb_func
+ 130              		.fpu fpv4-sp-d16
+ 132              	pmu_ldo_output_select:
+ 133              	.LFB125:
+  80:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  81:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+  82:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      select LDO output voltage
+  83:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****                 this bit set by software when the main PLL closed, before closing PLL, change the s
+  84:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  ldo_output:
+  85:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LDOVS_LOW: LDO output voltage low mode
+  86:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LDOVS_MID: LDO output voltage mid mode
+  87:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LDOVS_HIGH: LDO output voltage high mode
+  88:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+  89:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+  90:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+  91:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_ldo_output_select(uint32_t ldo_output)
+  92:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 134              		.loc 1 92 0
+ 135              		.cfi_startproc
+ 136              		@ args = 0, pretend = 0, frame = 8
+ 137              		@ frame_needed = 1, uses_anonymous_args = 0
+ 138              		@ link register save eliminated.
+ 139 0000 80B4     		push	{r7}
+ 140              	.LCFI8:
+ 141              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 5
+
+
+ 142              		.cfi_offset 7, -4
+ 143 0002 83B0     		sub	sp, sp, #12
+ 144              	.LCFI9:
+ 145              		.cfi_def_cfa_offset 16
+ 146 0004 00AF     		add	r7, sp, #0
+ 147              	.LCFI10:
+ 148              		.cfi_def_cfa_register 7
+ 149 0006 7860     		str	r0, [r7, #4]
+  93:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LDOVS;
+ 150              		.loc 1 93 0
+ 151 0008 084B     		ldr	r3, .L6
+ 152 000a 1B68     		ldr	r3, [r3]
+ 153 000c 074A     		ldr	r2, .L6
+ 154 000e 23F44043 		bic	r3, r3, #49152
+ 155 0012 1360     		str	r3, [r2]
+  94:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= ldo_output;
+ 156              		.loc 1 94 0
+ 157 0014 054B     		ldr	r3, .L6
+ 158 0016 1A68     		ldr	r2, [r3]
+ 159 0018 0449     		ldr	r1, .L6
+ 160 001a 7B68     		ldr	r3, [r7, #4]
+ 161 001c 1343     		orrs	r3, r3, r2
+ 162 001e 0B60     		str	r3, [r1]
+  95:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 163              		.loc 1 95 0
+ 164 0020 00BF     		nop
+ 165 0022 0C37     		adds	r7, r7, #12
+ 166              	.LCFI11:
+ 167              		.cfi_def_cfa_offset 4
+ 168 0024 BD46     		mov	sp, r7
+ 169              	.LCFI12:
+ 170              		.cfi_def_cfa_register 13
+ 171              		@ sp needed
+ 172 0026 5DF8047B 		ldr	r7, [sp], #4
+ 173              	.LCFI13:
+ 174              		.cfi_restore 7
+ 175              		.cfi_def_cfa_offset 0
+ 176 002a 7047     		bx	lr
+ 177              	.L7:
+ 178              		.align	2
+ 179              	.L6:
+ 180 002c 00700040 		.word	1073770496
+ 181              		.cfi_endproc
+ 182              	.LFE125:
+ 184              		.section	.text.pmu_lvd_disable,"ax",%progbits
+ 185              		.align	1
+ 186              		.global	pmu_lvd_disable
+ 187              		.syntax unified
+ 188              		.thumb
+ 189              		.thumb_func
+ 190              		.fpu fpv4-sp-d16
+ 192              	pmu_lvd_disable:
+ 193              	.LFB126:
+  96:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+  97:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+  98:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      disable PMU lvd
+  99:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 6
+
+
+ 100:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 101:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 102:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 103:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_lvd_disable(void)
+ 104:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 194              		.loc 1 104 0
+ 195              		.cfi_startproc
+ 196              		@ args = 0, pretend = 0, frame = 0
+ 197              		@ frame_needed = 1, uses_anonymous_args = 0
+ 198              		@ link register save eliminated.
+ 199 0000 80B4     		push	{r7}
+ 200              	.LCFI14:
+ 201              		.cfi_def_cfa_offset 4
+ 202              		.cfi_offset 7, -4
+ 203 0002 00AF     		add	r7, sp, #0
+ 204              	.LCFI15:
+ 205              		.cfi_def_cfa_register 7
+ 105:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* disable LVD */
+ 106:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LVDEN;
+ 206              		.loc 1 106 0
+ 207 0004 054B     		ldr	r3, .L9
+ 208 0006 1B68     		ldr	r3, [r3]
+ 209 0008 044A     		ldr	r2, .L9
+ 210 000a 23F01003 		bic	r3, r3, #16
+ 211 000e 1360     		str	r3, [r2]
+ 107:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 212              		.loc 1 107 0
+ 213 0010 00BF     		nop
+ 214 0012 BD46     		mov	sp, r7
+ 215              	.LCFI16:
+ 216              		.cfi_def_cfa_register 13
+ 217              		@ sp needed
+ 218 0014 5DF8047B 		ldr	r7, [sp], #4
+ 219              	.LCFI17:
+ 220              		.cfi_restore 7
+ 221              		.cfi_def_cfa_offset 0
+ 222 0018 7047     		bx	lr
+ 223              	.L10:
+ 224 001a 00BF     		.align	2
+ 225              	.L9:
+ 226 001c 00700040 		.word	1073770496
+ 227              		.cfi_endproc
+ 228              	.LFE126:
+ 230              		.section	.text.pmu_highdriver_switch_select,"ax",%progbits
+ 231              		.align	1
+ 232              		.global	pmu_highdriver_switch_select
+ 233              		.syntax unified
+ 234              		.thumb
+ 235              		.thumb_func
+ 236              		.fpu fpv4-sp-d16
+ 238              	pmu_highdriver_switch_select:
+ 239              	.LFB127:
+ 108:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 109:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 110:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      switch high-driver mode
+ 111:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****                 this bit set by software only when IRC16M or HXTAL used as system clock
+ 112:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  highdr_switch:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 7
+
+
+ 113:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_HIGHDR_SWITCH_NONE: disable high-driver mode switch
+ 114:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_HIGHDR_SWITCH_EN: enable high-driver mode switch
+ 115:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 116:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 117:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 118:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_highdriver_switch_select(uint32_t highdr_switch)
+ 119:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 240              		.loc 1 119 0
+ 241              		.cfi_startproc
+ 242              		@ args = 0, pretend = 0, frame = 8
+ 243              		@ frame_needed = 1, uses_anonymous_args = 0
+ 244 0000 80B5     		push	{r7, lr}
+ 245              	.LCFI18:
+ 246              		.cfi_def_cfa_offset 8
+ 247              		.cfi_offset 7, -8
+ 248              		.cfi_offset 14, -4
+ 249 0002 82B0     		sub	sp, sp, #8
+ 250              	.LCFI19:
+ 251              		.cfi_def_cfa_offset 16
+ 252 0004 00AF     		add	r7, sp, #0
+ 253              	.LCFI20:
+ 254              		.cfi_def_cfa_register 7
+ 255 0006 7860     		str	r0, [r7, #4]
+ 120:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* wait for HDRF flag set */
+ 121:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     while(SET != pmu_flag_get(PMU_FLAG_HDRF)){
+ 256              		.loc 1 121 0
+ 257 0008 00BF     		nop
+ 258              	.L12:
+ 259              		.loc 1 121 0 is_stmt 0 discriminator 1
+ 260 000a 4FF48030 		mov	r0, #65536
+ 261 000e FFF7FEFF 		bl	pmu_flag_get
+ 262 0012 0346     		mov	r3, r0
+ 263 0014 012B     		cmp	r3, #1
+ 264 0016 F8D1     		bne	.L12
+ 122:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }
+ 123:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_HDS;
+ 265              		.loc 1 123 0 is_stmt 1
+ 266 0018 074B     		ldr	r3, .L13
+ 267 001a 1B68     		ldr	r3, [r3]
+ 268 001c 064A     		ldr	r2, .L13
+ 269 001e 23F40033 		bic	r3, r3, #131072
+ 270 0022 1360     		str	r3, [r2]
+ 124:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= highdr_switch;
+ 271              		.loc 1 124 0
+ 272 0024 044B     		ldr	r3, .L13
+ 273 0026 1A68     		ldr	r2, [r3]
+ 274 0028 0349     		ldr	r1, .L13
+ 275 002a 7B68     		ldr	r3, [r7, #4]
+ 276 002c 1343     		orrs	r3, r3, r2
+ 277 002e 0B60     		str	r3, [r1]
+ 125:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 278              		.loc 1 125 0
+ 279 0030 00BF     		nop
+ 280 0032 0837     		adds	r7, r7, #8
+ 281              	.LCFI21:
+ 282              		.cfi_def_cfa_offset 8
+ 283 0034 BD46     		mov	sp, r7
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 8
+
+
+ 284              	.LCFI22:
+ 285              		.cfi_def_cfa_register 13
+ 286              		@ sp needed
+ 287 0036 80BD     		pop	{r7, pc}
+ 288              	.L14:
+ 289              		.align	2
+ 290              	.L13:
+ 291 0038 00700040 		.word	1073770496
+ 292              		.cfi_endproc
+ 293              	.LFE127:
+ 295              		.section	.text.pmu_highdriver_mode_enable,"ax",%progbits
+ 296              		.align	1
+ 297              		.global	pmu_highdriver_mode_enable
+ 298              		.syntax unified
+ 299              		.thumb
+ 300              		.thumb_func
+ 301              		.fpu fpv4-sp-d16
+ 303              	pmu_highdriver_mode_enable:
+ 304              	.LFB128:
+ 126:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 127:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 128:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      enable high-driver mode
+ 129:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****                 this bit set by software only when IRC16M or HXTAL used as system clock
+ 130:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+ 131:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 132:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 133:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 134:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_highdriver_mode_enable(void)
+ 135:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 305              		.loc 1 135 0
+ 306              		.cfi_startproc
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 1, uses_anonymous_args = 0
+ 309              		@ link register save eliminated.
+ 310 0000 80B4     		push	{r7}
+ 311              	.LCFI23:
+ 312              		.cfi_def_cfa_offset 4
+ 313              		.cfi_offset 7, -4
+ 314 0002 00AF     		add	r7, sp, #0
+ 315              	.LCFI24:
+ 316              		.cfi_def_cfa_register 7
+ 136:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= PMU_CTL_HDEN;
+ 317              		.loc 1 136 0
+ 318 0004 054B     		ldr	r3, .L16
+ 319 0006 1B68     		ldr	r3, [r3]
+ 320 0008 044A     		ldr	r2, .L16
+ 321 000a 43F48033 		orr	r3, r3, #65536
+ 322 000e 1360     		str	r3, [r2]
+ 137:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 323              		.loc 1 137 0
+ 324 0010 00BF     		nop
+ 325 0012 BD46     		mov	sp, r7
+ 326              	.LCFI25:
+ 327              		.cfi_def_cfa_register 13
+ 328              		@ sp needed
+ 329 0014 5DF8047B 		ldr	r7, [sp], #4
+ 330              	.LCFI26:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 9
+
+
+ 331              		.cfi_restore 7
+ 332              		.cfi_def_cfa_offset 0
+ 333 0018 7047     		bx	lr
+ 334              	.L17:
+ 335 001a 00BF     		.align	2
+ 336              	.L16:
+ 337 001c 00700040 		.word	1073770496
+ 338              		.cfi_endproc
+ 339              	.LFE128:
+ 341              		.section	.text.pmu_highdriver_mode_disable,"ax",%progbits
+ 342              		.align	1
+ 343              		.global	pmu_highdriver_mode_disable
+ 344              		.syntax unified
+ 345              		.thumb
+ 346              		.thumb_func
+ 347              		.fpu fpv4-sp-d16
+ 349              	pmu_highdriver_mode_disable:
+ 350              	.LFB129:
+ 138:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 139:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 140:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      disable high-driver mode
+ 141:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+ 142:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 143:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 144:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 145:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_highdriver_mode_disable(void)
+ 146:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 351              		.loc 1 146 0
+ 352              		.cfi_startproc
+ 353              		@ args = 0, pretend = 0, frame = 0
+ 354              		@ frame_needed = 1, uses_anonymous_args = 0
+ 355              		@ link register save eliminated.
+ 356 0000 80B4     		push	{r7}
+ 357              	.LCFI27:
+ 358              		.cfi_def_cfa_offset 4
+ 359              		.cfi_offset 7, -4
+ 360 0002 00AF     		add	r7, sp, #0
+ 361              	.LCFI28:
+ 362              		.cfi_def_cfa_register 7
+ 147:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_HDEN;
+ 363              		.loc 1 147 0
+ 364 0004 054B     		ldr	r3, .L19
+ 365 0006 1B68     		ldr	r3, [r3]
+ 366 0008 044A     		ldr	r2, .L19
+ 367 000a 23F48033 		bic	r3, r3, #65536
+ 368 000e 1360     		str	r3, [r2]
+ 148:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 369              		.loc 1 148 0
+ 370 0010 00BF     		nop
+ 371 0012 BD46     		mov	sp, r7
+ 372              	.LCFI29:
+ 373              		.cfi_def_cfa_register 13
+ 374              		@ sp needed
+ 375 0014 5DF8047B 		ldr	r7, [sp], #4
+ 376              	.LCFI30:
+ 377              		.cfi_restore 7
+ 378              		.cfi_def_cfa_offset 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 10
+
+
+ 379 0018 7047     		bx	lr
+ 380              	.L20:
+ 381 001a 00BF     		.align	2
+ 382              	.L19:
+ 383 001c 00700040 		.word	1073770496
+ 384              		.cfi_endproc
+ 385              	.LFE129:
+ 387              		.section	.text.pmu_lowdriver_mode_enable,"ax",%progbits
+ 388              		.align	1
+ 389              		.global	pmu_lowdriver_mode_enable
+ 390              		.syntax unified
+ 391              		.thumb
+ 392              		.thumb_func
+ 393              		.fpu fpv4-sp-d16
+ 395              	pmu_lowdriver_mode_enable:
+ 396              	.LFB130:
+ 149:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 150:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 151:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      enable low-driver mode in deep-sleep mode
+ 152:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+ 153:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 154:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 155:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 156:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_lowdriver_mode_enable(void)
+ 157:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 397              		.loc 1 157 0
+ 398              		.cfi_startproc
+ 399              		@ args = 0, pretend = 0, frame = 0
+ 400              		@ frame_needed = 1, uses_anonymous_args = 0
+ 401              		@ link register save eliminated.
+ 402 0000 80B4     		push	{r7}
+ 403              	.LCFI31:
+ 404              		.cfi_def_cfa_offset 4
+ 405              		.cfi_offset 7, -4
+ 406 0002 00AF     		add	r7, sp, #0
+ 407              	.LCFI32:
+ 408              		.cfi_def_cfa_register 7
+ 158:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= PMU_CTL_LDEN;
+ 409              		.loc 1 158 0
+ 410 0004 054B     		ldr	r3, .L22
+ 411 0006 1B68     		ldr	r3, [r3]
+ 412 0008 044A     		ldr	r2, .L22
+ 413 000a 43F44023 		orr	r3, r3, #786432
+ 414 000e 1360     		str	r3, [r2]
+ 159:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 415              		.loc 1 159 0
+ 416 0010 00BF     		nop
+ 417 0012 BD46     		mov	sp, r7
+ 418              	.LCFI33:
+ 419              		.cfi_def_cfa_register 13
+ 420              		@ sp needed
+ 421 0014 5DF8047B 		ldr	r7, [sp], #4
+ 422              	.LCFI34:
+ 423              		.cfi_restore 7
+ 424              		.cfi_def_cfa_offset 0
+ 425 0018 7047     		bx	lr
+ 426              	.L23:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 11
+
+
+ 427 001a 00BF     		.align	2
+ 428              	.L22:
+ 429 001c 00700040 		.word	1073770496
+ 430              		.cfi_endproc
+ 431              	.LFE130:
+ 433              		.section	.text.pmu_lowdriver_mode_disable,"ax",%progbits
+ 434              		.align	1
+ 435              		.global	pmu_lowdriver_mode_disable
+ 436              		.syntax unified
+ 437              		.thumb
+ 438              		.thumb_func
+ 439              		.fpu fpv4-sp-d16
+ 441              	pmu_lowdriver_mode_disable:
+ 442              	.LFB131:
+ 160:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 161:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 162:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      disable low-driver mode in deep-sleep mode
+ 163:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+ 164:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 165:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 166:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 167:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_lowdriver_mode_disable(void)
+ 168:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 443              		.loc 1 168 0
+ 444              		.cfi_startproc
+ 445              		@ args = 0, pretend = 0, frame = 0
+ 446              		@ frame_needed = 1, uses_anonymous_args = 0
+ 447              		@ link register save eliminated.
+ 448 0000 80B4     		push	{r7}
+ 449              	.LCFI35:
+ 450              		.cfi_def_cfa_offset 4
+ 451              		.cfi_offset 7, -4
+ 452 0002 00AF     		add	r7, sp, #0
+ 453              	.LCFI36:
+ 454              		.cfi_def_cfa_register 7
+ 169:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LDEN;
+ 455              		.loc 1 169 0
+ 456 0004 054B     		ldr	r3, .L25
+ 457 0006 1B68     		ldr	r3, [r3]
+ 458 0008 044A     		ldr	r2, .L25
+ 459 000a 23F44023 		bic	r3, r3, #786432
+ 460 000e 1360     		str	r3, [r2]
+ 170:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 461              		.loc 1 170 0
+ 462 0010 00BF     		nop
+ 463 0012 BD46     		mov	sp, r7
+ 464              	.LCFI37:
+ 465              		.cfi_def_cfa_register 13
+ 466              		@ sp needed
+ 467 0014 5DF8047B 		ldr	r7, [sp], #4
+ 468              	.LCFI38:
+ 469              		.cfi_restore 7
+ 470              		.cfi_def_cfa_offset 0
+ 471 0018 7047     		bx	lr
+ 472              	.L26:
+ 473 001a 00BF     		.align	2
+ 474              	.L25:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 12
+
+
+ 475 001c 00700040 		.word	1073770496
+ 476              		.cfi_endproc
+ 477              	.LFE131:
+ 479              		.section	.text.pmu_lowpower_driver_config,"ax",%progbits
+ 480              		.align	1
+ 481              		.global	pmu_lowpower_driver_config
+ 482              		.syntax unified
+ 483              		.thumb
+ 484              		.thumb_func
+ 485              		.fpu fpv4-sp-d16
+ 487              	pmu_lowpower_driver_config:
+ 488              	.LFB132:
+ 171:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 172:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 173:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      driver mode when use low power LDO
+ 174:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  mode:
+ 175:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_NORMALDR_LOWPWR:  normal driver when use low power LDO
+ 176:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LOWDR_LOWPWR:  low-driver mode enabled when LDEN is 11 and use low power LDO
+ 177:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 178:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 179:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 180:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_lowpower_driver_config(uint32_t mode)
+ 181:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 489              		.loc 1 181 0
+ 490              		.cfi_startproc
+ 491              		@ args = 0, pretend = 0, frame = 8
+ 492              		@ frame_needed = 1, uses_anonymous_args = 0
+ 493              		@ link register save eliminated.
+ 494 0000 80B4     		push	{r7}
+ 495              	.LCFI39:
+ 496              		.cfi_def_cfa_offset 4
+ 497              		.cfi_offset 7, -4
+ 498 0002 83B0     		sub	sp, sp, #12
+ 499              	.LCFI40:
+ 500              		.cfi_def_cfa_offset 16
+ 501 0004 00AF     		add	r7, sp, #0
+ 502              	.LCFI41:
+ 503              		.cfi_def_cfa_register 7
+ 504 0006 7860     		str	r0, [r7, #4]
+ 182:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LDLP;
+ 505              		.loc 1 182 0
+ 506 0008 084B     		ldr	r3, .L28
+ 507 000a 1B68     		ldr	r3, [r3]
+ 508 000c 074A     		ldr	r2, .L28
+ 509 000e 23F48063 		bic	r3, r3, #1024
+ 510 0012 1360     		str	r3, [r2]
+ 183:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= mode;
+ 511              		.loc 1 183 0
+ 512 0014 054B     		ldr	r3, .L28
+ 513 0016 1A68     		ldr	r2, [r3]
+ 514 0018 0449     		ldr	r1, .L28
+ 515 001a 7B68     		ldr	r3, [r7, #4]
+ 516 001c 1343     		orrs	r3, r3, r2
+ 517 001e 0B60     		str	r3, [r1]
+ 184:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 518              		.loc 1 184 0
+ 519 0020 00BF     		nop
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 13
+
+
+ 520 0022 0C37     		adds	r7, r7, #12
+ 521              	.LCFI42:
+ 522              		.cfi_def_cfa_offset 4
+ 523 0024 BD46     		mov	sp, r7
+ 524              	.LCFI43:
+ 525              		.cfi_def_cfa_register 13
+ 526              		@ sp needed
+ 527 0026 5DF8047B 		ldr	r7, [sp], #4
+ 528              	.LCFI44:
+ 529              		.cfi_restore 7
+ 530              		.cfi_def_cfa_offset 0
+ 531 002a 7047     		bx	lr
+ 532              	.L29:
+ 533              		.align	2
+ 534              	.L28:
+ 535 002c 00700040 		.word	1073770496
+ 536              		.cfi_endproc
+ 537              	.LFE132:
+ 539              		.section	.text.pmu_normalpower_driver_config,"ax",%progbits
+ 540              		.align	1
+ 541              		.global	pmu_normalpower_driver_config
+ 542              		.syntax unified
+ 543              		.thumb
+ 544              		.thumb_func
+ 545              		.fpu fpv4-sp-d16
+ 547              	pmu_normalpower_driver_config:
+ 548              	.LFB133:
+ 185:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 186:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 187:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      driver mode when use normal power LDO
+ 188:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  mode:
+ 189:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_NORMALDR_NORMALPWR:  normal driver when use normal power LDO
+ 190:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LOWDR_NORMALPWR:  low-driver mode enabled when LDEN is 11 and use normal powe
+ 191:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 192:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 193:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 194:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_normalpower_driver_config(uint32_t mode)
+ 195:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 549              		.loc 1 195 0
+ 550              		.cfi_startproc
+ 551              		@ args = 0, pretend = 0, frame = 8
+ 552              		@ frame_needed = 1, uses_anonymous_args = 0
+ 553              		@ link register save eliminated.
+ 554 0000 80B4     		push	{r7}
+ 555              	.LCFI45:
+ 556              		.cfi_def_cfa_offset 4
+ 557              		.cfi_offset 7, -4
+ 558 0002 83B0     		sub	sp, sp, #12
+ 559              	.LCFI46:
+ 560              		.cfi_def_cfa_offset 16
+ 561 0004 00AF     		add	r7, sp, #0
+ 562              	.LCFI47:
+ 563              		.cfi_def_cfa_register 7
+ 564 0006 7860     		str	r0, [r7, #4]
+ 196:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_LDNP;
+ 565              		.loc 1 196 0
+ 566 0008 084B     		ldr	r3, .L31
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 14
+
+
+ 567 000a 1B68     		ldr	r3, [r3]
+ 568 000c 074A     		ldr	r2, .L31
+ 569 000e 23F40063 		bic	r3, r3, #2048
+ 570 0012 1360     		str	r3, [r2]
+ 197:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= mode;
+ 571              		.loc 1 197 0
+ 572 0014 054B     		ldr	r3, .L31
+ 573 0016 1A68     		ldr	r2, [r3]
+ 574 0018 0449     		ldr	r1, .L31
+ 575 001a 7B68     		ldr	r3, [r7, #4]
+ 576 001c 1343     		orrs	r3, r3, r2
+ 577 001e 0B60     		str	r3, [r1]
+ 198:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 578              		.loc 1 198 0
+ 579 0020 00BF     		nop
+ 580 0022 0C37     		adds	r7, r7, #12
+ 581              	.LCFI48:
+ 582              		.cfi_def_cfa_offset 4
+ 583 0024 BD46     		mov	sp, r7
+ 584              	.LCFI49:
+ 585              		.cfi_def_cfa_register 13
+ 586              		@ sp needed
+ 587 0026 5DF8047B 		ldr	r7, [sp], #4
+ 588              	.LCFI50:
+ 589              		.cfi_restore 7
+ 590              		.cfi_def_cfa_offset 0
+ 591 002a 7047     		bx	lr
+ 592              	.L32:
+ 593              		.align	2
+ 594              	.L31:
+ 595 002c 00700040 		.word	1073770496
+ 596              		.cfi_endproc
+ 597              	.LFE133:
+ 599              		.section	.text.pmu_to_sleepmode,"ax",%progbits
+ 600              		.align	1
+ 601              		.global	pmu_to_sleepmode
+ 602              		.syntax unified
+ 603              		.thumb
+ 604              		.thumb_func
+ 605              		.fpu fpv4-sp-d16
+ 607              	pmu_to_sleepmode:
+ 608              	.LFB134:
+ 199:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 200:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 201:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      PMU work at sleep mode
+ 202:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  sleepmodecmd:
+ 203:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        WFI_CMD: use WFI command
+ 204:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        WFE_CMD: use WFE command
+ 205:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 206:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 207:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 208:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_to_sleepmode(uint8_t sleepmodecmd)
+ 209:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 609              		.loc 1 209 0
+ 610              		.cfi_startproc
+ 611              		@ args = 0, pretend = 0, frame = 8
+ 612              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 15
+
+
+ 613              		@ link register save eliminated.
+ 614 0000 80B4     		push	{r7}
+ 615              	.LCFI51:
+ 616              		.cfi_def_cfa_offset 4
+ 617              		.cfi_offset 7, -4
+ 618 0002 83B0     		sub	sp, sp, #12
+ 619              	.LCFI52:
+ 620              		.cfi_def_cfa_offset 16
+ 621 0004 00AF     		add	r7, sp, #0
+ 622              	.LCFI53:
+ 623              		.cfi_def_cfa_register 7
+ 624 0006 0346     		mov	r3, r0
+ 625 0008 FB71     		strb	r3, [r7, #7]
+ 210:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* clear sleepdeep bit of Cortex-M4 system control register */
+ 211:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     SCB->SCR &= ~((uint32_t)SCB_SCR_SLEEPDEEP_Msk);
+ 626              		.loc 1 211 0
+ 627 000a 094B     		ldr	r3, .L37
+ 628 000c 1B69     		ldr	r3, [r3, #16]
+ 629 000e 084A     		ldr	r2, .L37
+ 630 0010 23F00403 		bic	r3, r3, #4
+ 631 0014 1361     		str	r3, [r2, #16]
+ 212:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     
+ 213:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* select WFI or WFE command to enter sleep mode */
+ 214:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     if(WFI_CMD == sleepmodecmd){
+ 632              		.loc 1 214 0
+ 633 0016 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 634 0018 002B     		cmp	r3, #0
+ 635 001a 01D1     		bne	.L34
+ 215:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         __WFI();
+ 636              		.loc 1 215 0
+ 637              		.syntax unified
+ 638              	@ 215 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/Giga
+ 639 001c 30BF     		wfi
+ 640              	@ 0 "" 2
+ 216:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }else{
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         __WFE();
+ 218:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }
+ 219:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 641              		.loc 1 219 0
+ 642              		.thumb
+ 643              		.syntax unified
+ 644 001e 00E0     		b	.L36
+ 645              	.L34:
+ 217:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }
+ 646              		.loc 1 217 0
+ 647              		.syntax unified
+ 648              	@ 217 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/Giga
+ 649 0020 20BF     		wfe
+ 650              	@ 0 "" 2
+ 651              		.thumb
+ 652              		.syntax unified
+ 653              	.L36:
+ 654              		.loc 1 219 0
+ 655 0022 00BF     		nop
+ 656 0024 0C37     		adds	r7, r7, #12
+ 657              	.LCFI54:
+ 658              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 16
+
+
+ 659 0026 BD46     		mov	sp, r7
+ 660              	.LCFI55:
+ 661              		.cfi_def_cfa_register 13
+ 662              		@ sp needed
+ 663 0028 5DF8047B 		ldr	r7, [sp], #4
+ 664              	.LCFI56:
+ 665              		.cfi_restore 7
+ 666              		.cfi_def_cfa_offset 0
+ 667 002c 7047     		bx	lr
+ 668              	.L38:
+ 669 002e 00BF     		.align	2
+ 670              	.L37:
+ 671 0030 00ED00E0 		.word	-536810240
+ 672              		.cfi_endproc
+ 673              	.LFE134:
+ 675              		.section	.text.pmu_to_deepsleepmode,"ax",%progbits
+ 676              		.align	1
+ 677              		.global	pmu_to_deepsleepmode
+ 678              		.syntax unified
+ 679              		.thumb
+ 680              		.thumb_func
+ 681              		.fpu fpv4-sp-d16
+ 683              	pmu_to_deepsleepmode:
+ 684              	.LFB135:
+ 220:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 221:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 222:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      PMU work at deepsleep mode
+ 223:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  ldo
+ 224:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LDO_NORMAL: LDO normal work when pmu enter deepsleep mode
+ 225:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_LDO_LOWPOWER: LDO work at low power mode when pmu enter deepsleep mode
+ 226:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  deepsleepmodecmd: 
+ 227:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        WFI_CMD: use WFI command
+ 228:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        WFE_CMD: use WFE command
+ 229:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 230:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 231:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 232:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_to_deepsleepmode(uint32_t ldo,uint8_t deepsleepmodecmd)
+ 233:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 685              		.loc 1 233 0
+ 686              		.cfi_startproc
+ 687              		@ args = 0, pretend = 0, frame = 8
+ 688              		@ frame_needed = 1, uses_anonymous_args = 0
+ 689              		@ link register save eliminated.
+ 690 0000 80B4     		push	{r7}
+ 691              	.LCFI57:
+ 692              		.cfi_def_cfa_offset 4
+ 693              		.cfi_offset 7, -4
+ 694 0002 83B0     		sub	sp, sp, #12
+ 695              	.LCFI58:
+ 696              		.cfi_def_cfa_offset 16
+ 697 0004 00AF     		add	r7, sp, #0
+ 698              	.LCFI59:
+ 699              		.cfi_def_cfa_register 7
+ 700 0006 7860     		str	r0, [r7, #4]
+ 701 0008 0B46     		mov	r3, r1
+ 702 000a FB70     		strb	r3, [r7, #3]
+ 234:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* clear stbmod and ldolp bits */
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 17
+
+
+ 235:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~((uint32_t)(PMU_CTL_STBMOD | PMU_CTL_LDOLP));
+ 703              		.loc 1 235 0
+ 704 000c 124B     		ldr	r3, .L42
+ 705 000e 1B68     		ldr	r3, [r3]
+ 706 0010 114A     		ldr	r2, .L42
+ 707 0012 23F00303 		bic	r3, r3, #3
+ 708 0016 1360     		str	r3, [r2]
+ 236:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     
+ 237:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* set ldolp bit according to pmu_ldo */
+ 238:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= ldo;
+ 709              		.loc 1 238 0
+ 710 0018 0F4B     		ldr	r3, .L42
+ 711 001a 1A68     		ldr	r2, [r3]
+ 712 001c 0E49     		ldr	r1, .L42
+ 713 001e 7B68     		ldr	r3, [r7, #4]
+ 714 0020 1343     		orrs	r3, r3, r2
+ 715 0022 0B60     		str	r3, [r1]
+ 239:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     
+ 240:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* set sleepdeep bit of Cortex-M4 system control register */
+ 241:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
+ 716              		.loc 1 241 0
+ 717 0024 0D4B     		ldr	r3, .L42+4
+ 718 0026 1B69     		ldr	r3, [r3, #16]
+ 719 0028 0C4A     		ldr	r2, .L42+4
+ 720 002a 43F00403 		orr	r3, r3, #4
+ 721 002e 1361     		str	r3, [r2, #16]
+ 242:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     
+ 243:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* select WFI or WFE command to enter deepsleep mode */
+ 244:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     if(WFI_CMD == deepsleepmodecmd){
+ 722              		.loc 1 244 0
+ 723 0030 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 724 0032 002B     		cmp	r3, #0
+ 725 0034 01D1     		bne	.L40
+ 245:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         __WFI();
+ 726              		.loc 1 245 0
+ 727              		.syntax unified
+ 728              	@ 245 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/Giga
+ 729 0036 30BF     		wfi
+ 730              	@ 0 "" 2
+ 731              		.thumb
+ 732              		.syntax unified
+ 733 0038 02E0     		b	.L41
+ 734              	.L40:
+ 246:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }else{
+ 247:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         __SEV();
+ 735              		.loc 1 247 0
+ 736              		.syntax unified
+ 737              	@ 247 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/Giga
+ 738 003a 40BF     		sev
+ 739              	@ 0 "" 2
+ 248:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         __WFE();
+ 740              		.loc 1 248 0
+ 741              	@ 248 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/Giga
+ 742 003c 20BF     		wfe
+ 743              	@ 0 "" 2
+ 249:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         __WFE();
+ 744              		.loc 1 249 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 18
+
+
+ 745              	@ 249 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/Giga
+ 746 003e 20BF     		wfe
+ 747              	@ 0 "" 2
+ 748              		.thumb
+ 749              		.syntax unified
+ 750              	.L41:
+ 250:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }
+ 251:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* reset sleepdeep bit of Cortex-M4 system control register */
+ 252:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     SCB->SCR &= ~((uint32_t)SCB_SCR_SLEEPDEEP_Msk);
+ 751              		.loc 1 252 0
+ 752 0040 064B     		ldr	r3, .L42+4
+ 753 0042 1B69     		ldr	r3, [r3, #16]
+ 754 0044 054A     		ldr	r2, .L42+4
+ 755 0046 23F00403 		bic	r3, r3, #4
+ 756 004a 1361     		str	r3, [r2, #16]
+ 253:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 757              		.loc 1 253 0
+ 758 004c 00BF     		nop
+ 759 004e 0C37     		adds	r7, r7, #12
+ 760              	.LCFI60:
+ 761              		.cfi_def_cfa_offset 4
+ 762 0050 BD46     		mov	sp, r7
+ 763              	.LCFI61:
+ 764              		.cfi_def_cfa_register 13
+ 765              		@ sp needed
+ 766 0052 5DF8047B 		ldr	r7, [sp], #4
+ 767              	.LCFI62:
+ 768              		.cfi_restore 7
+ 769              		.cfi_def_cfa_offset 0
+ 770 0056 7047     		bx	lr
+ 771              	.L43:
+ 772              		.align	2
+ 773              	.L42:
+ 774 0058 00700040 		.word	1073770496
+ 775 005c 00ED00E0 		.word	-536810240
+ 776              		.cfi_endproc
+ 777              	.LFE135:
+ 779              		.section	.text.pmu_to_standbymode,"ax",%progbits
+ 780              		.align	1
+ 781              		.global	pmu_to_standbymode
+ 782              		.syntax unified
+ 783              		.thumb
+ 784              		.thumb_func
+ 785              		.fpu fpv4-sp-d16
+ 787              	pmu_to_standbymode:
+ 788              	.LFB136:
+ 254:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 255:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 256:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      pmu work at standby mode
+ 257:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  standbymodecmd:
+ 258:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        WFI_CMD: use WFI command
+ 259:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        WFE_CMD: use WFE command
+ 260:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 261:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 262:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 263:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_to_standbymode(uint8_t standbymodecmd)
+ 264:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 19
+
+
+ 789              		.loc 1 264 0
+ 790              		.cfi_startproc
+ 791              		@ args = 0, pretend = 0, frame = 8
+ 792              		@ frame_needed = 1, uses_anonymous_args = 0
+ 793              		@ link register save eliminated.
+ 794 0000 80B4     		push	{r7}
+ 795              	.LCFI63:
+ 796              		.cfi_def_cfa_offset 4
+ 797              		.cfi_offset 7, -4
+ 798 0002 83B0     		sub	sp, sp, #12
+ 799              	.LCFI64:
+ 800              		.cfi_def_cfa_offset 16
+ 801 0004 00AF     		add	r7, sp, #0
+ 802              	.LCFI65:
+ 803              		.cfi_def_cfa_register 7
+ 804 0006 0346     		mov	r3, r0
+ 805 0008 FB71     		strb	r3, [r7, #7]
+ 265:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* set sleepdeep bit of Cortex-M4 system control register */
+ 266:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     SCB->SCR |= SCB_SCR_SLEEPDEEP_Msk;
+ 806              		.loc 1 266 0
+ 807 000a 0F4B     		ldr	r3, .L48
+ 808 000c 1B69     		ldr	r3, [r3, #16]
+ 809 000e 0E4A     		ldr	r2, .L48
+ 810 0010 43F00403 		orr	r3, r3, #4
+ 811 0014 1361     		str	r3, [r2, #16]
+ 267:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 268:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* set stbmod bit */
+ 269:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= PMU_CTL_STBMOD;
+ 812              		.loc 1 269 0
+ 813 0016 0D4B     		ldr	r3, .L48+4
+ 814 0018 1B68     		ldr	r3, [r3]
+ 815 001a 0C4A     		ldr	r2, .L48+4
+ 816 001c 43F00203 		orr	r3, r3, #2
+ 817 0020 1360     		str	r3, [r2]
+ 270:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         
+ 271:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* reset wakeup flag */
+ 272:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= PMU_CTL_WURST;
+ 818              		.loc 1 272 0
+ 819 0022 0A4B     		ldr	r3, .L48+4
+ 820 0024 1B68     		ldr	r3, [r3]
+ 821 0026 094A     		ldr	r2, .L48+4
+ 822 0028 43F00403 		orr	r3, r3, #4
+ 823 002c 1360     		str	r3, [r2]
+ 273:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     
+ 274:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     /* select WFI or WFE command to enter standby mode */
+ 275:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     if(WFI_CMD == standbymodecmd){
+ 824              		.loc 1 275 0
+ 825 002e FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 826 0030 002B     		cmp	r3, #0
+ 827 0032 01D1     		bne	.L45
+ 276:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         __WFI();
+ 828              		.loc 1 276 0
+ 829              		.syntax unified
+ 830              	@ 276 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/Giga
+ 831 0034 30BF     		wfi
+ 832              	@ 0 "" 2
+ 277:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }else{
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 20
+
+
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         __WFE();
+ 279:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }
+ 280:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 833              		.loc 1 280 0
+ 834              		.thumb
+ 835              		.syntax unified
+ 836 0036 00E0     		b	.L47
+ 837              	.L45:
+ 278:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }
+ 838              		.loc 1 278 0
+ 839              		.syntax unified
+ 840              	@ 278 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/Giga
+ 841 0038 20BF     		wfe
+ 842              	@ 0 "" 2
+ 843              		.thumb
+ 844              		.syntax unified
+ 845              	.L47:
+ 846              		.loc 1 280 0
+ 847 003a 00BF     		nop
+ 848 003c 0C37     		adds	r7, r7, #12
+ 849              	.LCFI66:
+ 850              		.cfi_def_cfa_offset 4
+ 851 003e BD46     		mov	sp, r7
+ 852              	.LCFI67:
+ 853              		.cfi_def_cfa_register 13
+ 854              		@ sp needed
+ 855 0040 5DF8047B 		ldr	r7, [sp], #4
+ 856              	.LCFI68:
+ 857              		.cfi_restore 7
+ 858              		.cfi_def_cfa_offset 0
+ 859 0044 7047     		bx	lr
+ 860              	.L49:
+ 861 0046 00BF     		.align	2
+ 862              	.L48:
+ 863 0048 00ED00E0 		.word	-536810240
+ 864 004c 00700040 		.word	1073770496
+ 865              		.cfi_endproc
+ 866              	.LFE136:
+ 868              		.section	.text.pmu_backup_write_enable,"ax",%progbits
+ 869              		.align	1
+ 870              		.global	pmu_backup_write_enable
+ 871              		.syntax unified
+ 872              		.thumb
+ 873              		.thumb_func
+ 874              		.fpu fpv4-sp-d16
+ 876              	pmu_backup_write_enable:
+ 877              	.LFB137:
+ 281:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 282:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 283:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      enable backup domain write
+ 284:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+ 285:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 286:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 287:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 288:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_backup_write_enable(void)
+ 289:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 878              		.loc 1 289 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 21
+
+
+ 879              		.cfi_startproc
+ 880              		@ args = 0, pretend = 0, frame = 0
+ 881              		@ frame_needed = 1, uses_anonymous_args = 0
+ 882              		@ link register save eliminated.
+ 883 0000 80B4     		push	{r7}
+ 884              	.LCFI69:
+ 885              		.cfi_def_cfa_offset 4
+ 886              		.cfi_offset 7, -4
+ 887 0002 00AF     		add	r7, sp, #0
+ 888              	.LCFI70:
+ 889              		.cfi_def_cfa_register 7
+ 290:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL |= PMU_CTL_BKPWEN;
+ 890              		.loc 1 290 0
+ 891 0004 054B     		ldr	r3, .L51
+ 892 0006 1B68     		ldr	r3, [r3]
+ 893 0008 044A     		ldr	r2, .L51
+ 894 000a 43F48073 		orr	r3, r3, #256
+ 895 000e 1360     		str	r3, [r2]
+ 291:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 896              		.loc 1 291 0
+ 897 0010 00BF     		nop
+ 898 0012 BD46     		mov	sp, r7
+ 899              	.LCFI71:
+ 900              		.cfi_def_cfa_register 13
+ 901              		@ sp needed
+ 902 0014 5DF8047B 		ldr	r7, [sp], #4
+ 903              	.LCFI72:
+ 904              		.cfi_restore 7
+ 905              		.cfi_def_cfa_offset 0
+ 906 0018 7047     		bx	lr
+ 907              	.L52:
+ 908 001a 00BF     		.align	2
+ 909              	.L51:
+ 910 001c 00700040 		.word	1073770496
+ 911              		.cfi_endproc
+ 912              	.LFE137:
+ 914              		.section	.text.pmu_backup_write_disable,"ax",%progbits
+ 915              		.align	1
+ 916              		.global	pmu_backup_write_disable
+ 917              		.syntax unified
+ 918              		.thumb
+ 919              		.thumb_func
+ 920              		.fpu fpv4-sp-d16
+ 922              	pmu_backup_write_disable:
+ 923              	.LFB138:
+ 292:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 293:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 294:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      disable backup domain write
+ 295:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+ 296:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 297:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 298:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 299:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_backup_write_disable(void)
+ 300:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 924              		.loc 1 300 0
+ 925              		.cfi_startproc
+ 926              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 22
+
+
+ 927              		@ frame_needed = 1, uses_anonymous_args = 0
+ 928              		@ link register save eliminated.
+ 929 0000 80B4     		push	{r7}
+ 930              	.LCFI73:
+ 931              		.cfi_def_cfa_offset 4
+ 932              		.cfi_offset 7, -4
+ 933 0002 00AF     		add	r7, sp, #0
+ 934              	.LCFI74:
+ 935              		.cfi_def_cfa_register 7
+ 301:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CTL &= ~PMU_CTL_BKPWEN;
+ 936              		.loc 1 301 0
+ 937 0004 054B     		ldr	r3, .L54
+ 938 0006 1B68     		ldr	r3, [r3]
+ 939 0008 044A     		ldr	r2, .L54
+ 940 000a 23F48073 		bic	r3, r3, #256
+ 941 000e 1360     		str	r3, [r2]
+ 302:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 942              		.loc 1 302 0
+ 943 0010 00BF     		nop
+ 944 0012 BD46     		mov	sp, r7
+ 945              	.LCFI75:
+ 946              		.cfi_def_cfa_register 13
+ 947              		@ sp needed
+ 948 0014 5DF8047B 		ldr	r7, [sp], #4
+ 949              	.LCFI76:
+ 950              		.cfi_restore 7
+ 951              		.cfi_def_cfa_offset 0
+ 952 0018 7047     		bx	lr
+ 953              	.L55:
+ 954 001a 00BF     		.align	2
+ 955              	.L54:
+ 956 001c 00700040 		.word	1073770496
+ 957              		.cfi_endproc
+ 958              	.LFE138:
+ 960              		.section	.text.pmu_wakeup_pin_enable,"ax",%progbits
+ 961              		.align	1
+ 962              		.global	pmu_wakeup_pin_enable
+ 963              		.syntax unified
+ 964              		.thumb
+ 965              		.thumb_func
+ 966              		.fpu fpv4-sp-d16
+ 968              	pmu_wakeup_pin_enable:
+ 969              	.LFB139:
+ 303:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 304:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 305:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      enable wakeup pin
+ 306:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+ 307:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 308:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 309:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 310:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_wakeup_pin_enable(void)
+ 311:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 970              		.loc 1 311 0
+ 971              		.cfi_startproc
+ 972              		@ args = 0, pretend = 0, frame = 0
+ 973              		@ frame_needed = 1, uses_anonymous_args = 0
+ 974              		@ link register save eliminated.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 23
+
+
+ 975 0000 80B4     		push	{r7}
+ 976              	.LCFI77:
+ 977              		.cfi_def_cfa_offset 4
+ 978              		.cfi_offset 7, -4
+ 979 0002 00AF     		add	r7, sp, #0
+ 980              	.LCFI78:
+ 981              		.cfi_def_cfa_register 7
+ 312:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CS |= PMU_CS_WUPEN;
+ 982              		.loc 1 312 0
+ 983 0004 054B     		ldr	r3, .L57
+ 984 0006 1B68     		ldr	r3, [r3]
+ 985 0008 044A     		ldr	r2, .L57
+ 986 000a 43F48073 		orr	r3, r3, #256
+ 987 000e 1360     		str	r3, [r2]
+ 313:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 988              		.loc 1 313 0
+ 989 0010 00BF     		nop
+ 990 0012 BD46     		mov	sp, r7
+ 991              	.LCFI79:
+ 992              		.cfi_def_cfa_register 13
+ 993              		@ sp needed
+ 994 0014 5DF8047B 		ldr	r7, [sp], #4
+ 995              	.LCFI80:
+ 996              		.cfi_restore 7
+ 997              		.cfi_def_cfa_offset 0
+ 998 0018 7047     		bx	lr
+ 999              	.L58:
+ 1000 001a 00BF     		.align	2
+ 1001              	.L57:
+ 1002 001c 04700040 		.word	1073770500
+ 1003              		.cfi_endproc
+ 1004              	.LFE139:
+ 1006              		.section	.text.pmu_wakeup_pin_disable,"ax",%progbits
+ 1007              		.align	1
+ 1008              		.global	pmu_wakeup_pin_disable
+ 1009              		.syntax unified
+ 1010              		.thumb
+ 1011              		.thumb_func
+ 1012              		.fpu fpv4-sp-d16
+ 1014              	pmu_wakeup_pin_disable:
+ 1015              	.LFB140:
+ 314:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 315:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 316:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      disable wakeup pin
+ 317:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  none
+ 318:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 319:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 320:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 321:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_wakeup_pin_disable(void)
+ 322:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 1016              		.loc 1 322 0
+ 1017              		.cfi_startproc
+ 1018              		@ args = 0, pretend = 0, frame = 0
+ 1019              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1020              		@ link register save eliminated.
+ 1021 0000 80B4     		push	{r7}
+ 1022              	.LCFI81:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 24
+
+
+ 1023              		.cfi_def_cfa_offset 4
+ 1024              		.cfi_offset 7, -4
+ 1025 0002 00AF     		add	r7, sp, #0
+ 1026              	.LCFI82:
+ 1027              		.cfi_def_cfa_register 7
+ 323:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     PMU_CS &= ~PMU_CS_WUPEN;
+ 1028              		.loc 1 323 0
+ 1029 0004 054B     		ldr	r3, .L60
+ 1030 0006 1B68     		ldr	r3, [r3]
+ 1031 0008 044A     		ldr	r2, .L60
+ 1032 000a 23F48073 		bic	r3, r3, #256
+ 1033 000e 1360     		str	r3, [r2]
+ 324:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 1034              		.loc 1 324 0
+ 1035 0010 00BF     		nop
+ 1036 0012 BD46     		mov	sp, r7
+ 1037              	.LCFI83:
+ 1038              		.cfi_def_cfa_register 13
+ 1039              		@ sp needed
+ 1040 0014 5DF8047B 		ldr	r7, [sp], #4
+ 1041              	.LCFI84:
+ 1042              		.cfi_restore 7
+ 1043              		.cfi_def_cfa_offset 0
+ 1044 0018 7047     		bx	lr
+ 1045              	.L61:
+ 1046 001a 00BF     		.align	2
+ 1047              	.L60:
+ 1048 001c 04700040 		.word	1073770500
+ 1049              		.cfi_endproc
+ 1050              	.LFE140:
+ 1052              		.section	.text.pmu_flag_clear,"ax",%progbits
+ 1053              		.align	1
+ 1054              		.global	pmu_flag_clear
+ 1055              		.syntax unified
+ 1056              		.thumb
+ 1057              		.thumb_func
+ 1058              		.fpu fpv4-sp-d16
+ 1060              	pmu_flag_clear:
+ 1061              	.LFB141:
+ 325:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 326:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 327:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      clear flag bit
+ 328:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  flag_reset:
+ 329:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_FLAG_RESET_WAKEUP: reset wakeup flag
+ 330:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_FLAG_RESET_STANDBY: reset standby flag
+ 331:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 332:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     none
+ 333:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 334:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** void pmu_flag_clear(uint32_t flag_reset)
+ 335:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 1062              		.loc 1 335 0
+ 1063              		.cfi_startproc
+ 1064              		@ args = 0, pretend = 0, frame = 8
+ 1065              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1066              		@ link register save eliminated.
+ 1067 0000 80B4     		push	{r7}
+ 1068              	.LCFI85:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 25
+
+
+ 1069              		.cfi_def_cfa_offset 4
+ 1070              		.cfi_offset 7, -4
+ 1071 0002 83B0     		sub	sp, sp, #12
+ 1072              	.LCFI86:
+ 1073              		.cfi_def_cfa_offset 16
+ 1074 0004 00AF     		add	r7, sp, #0
+ 1075              	.LCFI87:
+ 1076              		.cfi_def_cfa_register 7
+ 1077 0006 7860     		str	r0, [r7, #4]
+ 336:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     switch(flag_reset){
+ 1078              		.loc 1 336 0
+ 1079 0008 7B68     		ldr	r3, [r7, #4]
+ 1080 000a 002B     		cmp	r3, #0
+ 1081 000c 02D0     		beq	.L64
+ 1082 000e 012B     		cmp	r3, #1
+ 1083 0010 07D0     		beq	.L65
+ 337:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     case PMU_FLAG_RESET_WAKEUP:
+ 338:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         /* reset wakeup flag */
+ 339:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         PMU_CTL |= PMU_CTL_WURST;
+ 340:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         break;
+ 341:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     case PMU_FLAG_RESET_STANDBY:
+ 342:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         /* reset standby flag */
+ 343:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         PMU_CTL |= PMU_CTL_STBRST;
+ 344:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         break;
+ 345:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     default :
+ 346:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         break;
+ 1084              		.loc 1 346 0
+ 1085 0012 0DE0     		b	.L66
+ 1086              	.L64:
+ 339:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         break;
+ 1087              		.loc 1 339 0
+ 1088 0014 094B     		ldr	r3, .L67
+ 1089 0016 1B68     		ldr	r3, [r3]
+ 1090 0018 084A     		ldr	r2, .L67
+ 1091 001a 43F00403 		orr	r3, r3, #4
+ 1092 001e 1360     		str	r3, [r2]
+ 340:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     case PMU_FLAG_RESET_STANDBY:
+ 1093              		.loc 1 340 0
+ 1094 0020 06E0     		b	.L66
+ 1095              	.L65:
+ 343:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         break;
+ 1096              		.loc 1 343 0
+ 1097 0022 064B     		ldr	r3, .L67
+ 1098 0024 1B68     		ldr	r3, [r3]
+ 1099 0026 054A     		ldr	r2, .L67
+ 1100 0028 43F00803 		orr	r3, r3, #8
+ 1101 002c 1360     		str	r3, [r2]
+ 344:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     default :
+ 1102              		.loc 1 344 0
+ 1103 002e 00BF     		nop
+ 1104              	.L66:
+ 347:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }
+ 348:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 1105              		.loc 1 348 0
+ 1106 0030 00BF     		nop
+ 1107 0032 0C37     		adds	r7, r7, #12
+ 1108              	.LCFI88:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 26
+
+
+ 1109              		.cfi_def_cfa_offset 4
+ 1110 0034 BD46     		mov	sp, r7
+ 1111              	.LCFI89:
+ 1112              		.cfi_def_cfa_register 13
+ 1113              		@ sp needed
+ 1114 0036 5DF8047B 		ldr	r7, [sp], #4
+ 1115              	.LCFI90:
+ 1116              		.cfi_restore 7
+ 1117              		.cfi_def_cfa_offset 0
+ 1118 003a 7047     		bx	lr
+ 1119              	.L68:
+ 1120              		.align	2
+ 1121              	.L67:
+ 1122 003c 00700040 		.word	1073770496
+ 1123              		.cfi_endproc
+ 1124              	.LFE141:
+ 1126              		.section	.text.pmu_flag_get,"ax",%progbits
+ 1127              		.align	1
+ 1128              		.global	pmu_flag_get
+ 1129              		.syntax unified
+ 1130              		.thumb
+ 1131              		.thumb_func
+ 1132              		.fpu fpv4-sp-d16
+ 1134              	pmu_flag_get:
+ 1135              	.LFB142:
+ 349:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** 
+ 350:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** /*!
+ 351:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \brief      get flag state
+ 352:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[in]  flag:
+ 353:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_FLAG_WAKEUP: wakeup flag
+ 354:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_FLAG_STANDBY: standby flag
+ 355:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_FLAG_LVD: lvd flag
+ 356:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_FLAG_LDOVSRF: LDO voltage select ready flag
+ 357:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_FLAG_HDRF: high-driver ready flag
+ 358:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_FLAG_HDSRF: high-driver switch ready flag
+ 359:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****       \arg        PMU_FLAG_LDRF: low-driver mode ready flag 
+ 360:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \param[out] none
+ 361:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     \retval     FlagStatus SET or RESET
+ 362:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** */
+ 363:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** FlagStatus pmu_flag_get(uint32_t flag)
+ 364:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** {
+ 1136              		.loc 1 364 0
+ 1137              		.cfi_startproc
+ 1138              		@ args = 0, pretend = 0, frame = 8
+ 1139              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1140              		@ link register save eliminated.
+ 1141 0000 80B4     		push	{r7}
+ 1142              	.LCFI91:
+ 1143              		.cfi_def_cfa_offset 4
+ 1144              		.cfi_offset 7, -4
+ 1145 0002 83B0     		sub	sp, sp, #12
+ 1146              	.LCFI92:
+ 1147              		.cfi_def_cfa_offset 16
+ 1148 0004 00AF     		add	r7, sp, #0
+ 1149              	.LCFI93:
+ 1150              		.cfi_def_cfa_register 7
+ 1151 0006 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 27
+
+
+ 365:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     if(PMU_CS & flag){
+ 1152              		.loc 1 365 0
+ 1153 0008 074B     		ldr	r3, .L72
+ 1154 000a 1A68     		ldr	r2, [r3]
+ 1155 000c 7B68     		ldr	r3, [r7, #4]
+ 1156 000e 1340     		ands	r3, r3, r2
+ 1157 0010 002B     		cmp	r3, #0
+ 1158 0012 01D0     		beq	.L70
+ 366:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         return  SET;
+ 1159              		.loc 1 366 0
+ 1160 0014 0123     		movs	r3, #1
+ 1161 0016 00E0     		b	.L71
+ 1162              	.L70:
+ 367:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }else{
+ 368:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****         return  RESET;
+ 1163              		.loc 1 368 0
+ 1164 0018 0023     		movs	r3, #0
+ 1165              	.L71:
+ 369:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c ****     }
+ 370:C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_standard_peripheral/Source\gd32f30x_pmu.c **** }
+ 1166              		.loc 1 370 0
+ 1167 001a 1846     		mov	r0, r3
+ 1168 001c 0C37     		adds	r7, r7, #12
+ 1169              	.LCFI94:
+ 1170              		.cfi_def_cfa_offset 4
+ 1171 001e BD46     		mov	sp, r7
+ 1172              	.LCFI95:
+ 1173              		.cfi_def_cfa_register 13
+ 1174              		@ sp needed
+ 1175 0020 5DF8047B 		ldr	r7, [sp], #4
+ 1176              	.LCFI96:
+ 1177              		.cfi_restore 7
+ 1178              		.cfi_def_cfa_offset 0
+ 1179 0024 7047     		bx	lr
+ 1180              	.L73:
+ 1181 0026 00BF     		.align	2
+ 1182              	.L72:
+ 1183 0028 04700040 		.word	1073770500
+ 1184              		.cfi_endproc
+ 1185              	.LFE142:
+ 1187              		.text
+ 1188              	.Letext0:
+ 1189              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1190              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1191              		.file 4 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/iot_link/os/liteos/ar
+ 1192              		.file 5 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+ 1193              		.file 6 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/targets/GD32F303_Bear
+ 1194              		.file 7 "C:/Users/dtjld/Desktop/AIoT_software/LiteOS_Lab_overseas/LiteOS_Lab/drivers/third_party/G
+ 1195              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1196              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1197              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1198              		.file 11 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1199              		.file 12 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 28
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gd32f30x_pmu.c
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:18     .text.pmu_deinit:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:25     .text.pmu_deinit:00000000 pmu_deinit
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:53     .text.pmu_lvd_select:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:60     .text.pmu_lvd_select:00000000 pmu_lvd_select
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:120    .text.pmu_lvd_select:00000044 $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:125    .text.pmu_ldo_output_select:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:132    .text.pmu_ldo_output_select:00000000 pmu_ldo_output_select
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:180    .text.pmu_ldo_output_select:0000002c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:185    .text.pmu_lvd_disable:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:192    .text.pmu_lvd_disable:00000000 pmu_lvd_disable
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:226    .text.pmu_lvd_disable:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:231    .text.pmu_highdriver_switch_select:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:238    .text.pmu_highdriver_switch_select:00000000 pmu_highdriver_switch_select
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1134   .text.pmu_flag_get:00000000 pmu_flag_get
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:291    .text.pmu_highdriver_switch_select:00000038 $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:296    .text.pmu_highdriver_mode_enable:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:303    .text.pmu_highdriver_mode_enable:00000000 pmu_highdriver_mode_enable
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:337    .text.pmu_highdriver_mode_enable:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:342    .text.pmu_highdriver_mode_disable:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:349    .text.pmu_highdriver_mode_disable:00000000 pmu_highdriver_mode_disable
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:383    .text.pmu_highdriver_mode_disable:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:388    .text.pmu_lowdriver_mode_enable:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:395    .text.pmu_lowdriver_mode_enable:00000000 pmu_lowdriver_mode_enable
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:429    .text.pmu_lowdriver_mode_enable:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:434    .text.pmu_lowdriver_mode_disable:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:441    .text.pmu_lowdriver_mode_disable:00000000 pmu_lowdriver_mode_disable
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:475    .text.pmu_lowdriver_mode_disable:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:480    .text.pmu_lowpower_driver_config:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:487    .text.pmu_lowpower_driver_config:00000000 pmu_lowpower_driver_config
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:535    .text.pmu_lowpower_driver_config:0000002c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:540    .text.pmu_normalpower_driver_config:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:547    .text.pmu_normalpower_driver_config:00000000 pmu_normalpower_driver_config
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:595    .text.pmu_normalpower_driver_config:0000002c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:600    .text.pmu_to_sleepmode:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:607    .text.pmu_to_sleepmode:00000000 pmu_to_sleepmode
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:671    .text.pmu_to_sleepmode:00000030 $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:676    .text.pmu_to_deepsleepmode:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:683    .text.pmu_to_deepsleepmode:00000000 pmu_to_deepsleepmode
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:774    .text.pmu_to_deepsleepmode:00000058 $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:780    .text.pmu_to_standbymode:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:787    .text.pmu_to_standbymode:00000000 pmu_to_standbymode
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:863    .text.pmu_to_standbymode:00000048 $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:869    .text.pmu_backup_write_enable:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:876    .text.pmu_backup_write_enable:00000000 pmu_backup_write_enable
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:910    .text.pmu_backup_write_enable:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:915    .text.pmu_backup_write_disable:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:922    .text.pmu_backup_write_disable:00000000 pmu_backup_write_disable
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:956    .text.pmu_backup_write_disable:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:961    .text.pmu_wakeup_pin_enable:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:968    .text.pmu_wakeup_pin_enable:00000000 pmu_wakeup_pin_enable
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1002   .text.pmu_wakeup_pin_enable:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1007   .text.pmu_wakeup_pin_disable:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1014   .text.pmu_wakeup_pin_disable:00000000 pmu_wakeup_pin_disable
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1048   .text.pmu_wakeup_pin_disable:0000001c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1053   .text.pmu_flag_clear:00000000 $t
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s 			page 29
+
+
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1060   .text.pmu_flag_clear:00000000 pmu_flag_clear
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1122   .text.pmu_flag_clear:0000003c $d
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1127   .text.pmu_flag_get:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccexGZFY.s:1183   .text.pmu_flag_get:00000028 $d
+
+UNDEFINED SYMBOLS
+rcu_periph_reset_enable
+rcu_periph_reset_disable
