@@ -1,0 +1,442 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"MQTTDeserializePublish.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MQTTDeserialize_publish,"ax",%progbits
+  18              		.align	1
+  19              		.global	MQTTDeserialize_publish
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	MQTTDeserialize_publish:
+  26              	.LFB3:
+  27              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** /*******************************************************************************
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  * Copyright (c) 2014 IBM Corp.
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  *
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  * All rights reserved. This program and the accompanying materials
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  * are made available under the terms of the Eclipse Public License v1.0
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  *
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  * The Eclipse Public License is available at
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  * and the Eclipse Distribution License is available at
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  *   http://www.eclipse.org/org/documents/edl-v10.php.
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  *
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  * Contributors:
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  *    Ian Craggs - initial API and implementation and/or initial documentation
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****  *******************************************************************************/
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** #include "StackTrace.h"
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** #include "MQTTPacket.h"
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** #include <string.h>
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** #define min(a, b) ((a < b) ? 1 : 0)
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** /**
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * Deserializes the supplied (wire) buffer into publish data
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param dup returned integer - the MQTT dup flag
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param qos returned integer - the MQTT QoS value
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param retained returned integer - the MQTT retained flag
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param packetid returned integer - the MQTT packet identifier
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param topicName returned MQTTString - the MQTT topic in the publish
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param payload returned byte buffer - the MQTT publish payload
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param payloadlen returned integer - the length of the MQTT payload
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s 			page 2
+
+
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param buf the raw buffer data, of the correct length determined by the remaining length field
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param buflen the length in bytes of the data in the supplied buffer
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @return error code.  1 is success
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   */
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** int MQTTDeserialize_publish(unsigned char* dup, int* qos, unsigned char* retained, unsigned short* 
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 		unsigned char** payload, int* payloadlen, unsigned char* buf, int buflen)
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** {
+  28              		.loc 1 38 0
+  29              		.cfi_startproc
+  30              		@ args = 20, pretend = 0, frame = 40
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 8AB0     		sub	sp, sp, #40
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 48
+  40 0004 00AF     		add	r7, sp, #0
+  41              	.LCFI2:
+  42              		.cfi_def_cfa_register 7
+  43 0006 F860     		str	r0, [r7, #12]
+  44 0008 B960     		str	r1, [r7, #8]
+  45 000a 7A60     		str	r2, [r7, #4]
+  46 000c 3B60     		str	r3, [r7]
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	MQTTHeader header = {0};
+  47              		.loc 1 39 0
+  48 000e 0023     		movs	r3, #0
+  49 0010 FB61     		str	r3, [r7, #28]
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	unsigned char* curdata = buf;
+  50              		.loc 1 40 0
+  51 0012 FB6B     		ldr	r3, [r7, #60]
+  52 0014 BB61     		str	r3, [r7, #24]
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	unsigned char* enddata = NULL;
+  53              		.loc 1 41 0
+  54 0016 0023     		movs	r3, #0
+  55 0018 3B62     		str	r3, [r7, #32]
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	int rc = 0;
+  56              		.loc 1 42 0
+  57 001a 0023     		movs	r3, #0
+  58 001c 7B62     		str	r3, [r7, #36]
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	int mylen = 0;
+  59              		.loc 1 43 0
+  60 001e 0023     		movs	r3, #0
+  61 0020 7B61     		str	r3, [r7, #20]
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	FUNC_ENTRY;
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	header.byte = readChar(&curdata);
+  62              		.loc 1 46 0
+  63 0022 07F11803 		add	r3, r7, #24
+  64 0026 1846     		mov	r0, r3
+  65 0028 FFF7FEFF 		bl	readChar
+  66 002c 0346     		mov	r3, r0
+  67 002e 3B77     		strb	r3, [r7, #28]
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	if (header.bits.type != PUBLISH)
+  68              		.loc 1 47 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s 			page 3
+
+
+  69 0030 3B7F     		ldrb	r3, [r7, #28]	@ zero_extendqisi2
+  70 0032 23F00F03 		bic	r3, r3, #15
+  71 0036 DBB2     		uxtb	r3, r3
+  72 0038 302B     		cmp	r3, #48
+  73 003a 4BD1     		bne	.L6
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 		goto exit;
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	*dup = header.bits.dup;
+  74              		.loc 1 49 0
+  75 003c 3B7F     		ldrb	r3, [r7, #28]
+  76 003e C3F3C003 		ubfx	r3, r3, #3, #1
+  77 0042 DBB2     		uxtb	r3, r3
+  78 0044 1A46     		mov	r2, r3
+  79 0046 FB68     		ldr	r3, [r7, #12]
+  80 0048 1A70     		strb	r2, [r3]
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	*qos = header.bits.qos;
+  81              		.loc 1 50 0
+  82 004a 3B7F     		ldrb	r3, [r7, #28]
+  83 004c C3F34103 		ubfx	r3, r3, #1, #2
+  84 0050 DBB2     		uxtb	r3, r3
+  85 0052 1A46     		mov	r2, r3
+  86 0054 BB68     		ldr	r3, [r7, #8]
+  87 0056 1A60     		str	r2, [r3]
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	*retained = header.bits.retain;
+  88              		.loc 1 51 0
+  89 0058 3B7F     		ldrb	r3, [r7, #28]
+  90 005a C3F30003 		ubfx	r3, r3, #0, #1
+  91 005e DBB2     		uxtb	r3, r3
+  92 0060 1A46     		mov	r2, r3
+  93 0062 7B68     		ldr	r3, [r7, #4]
+  94 0064 1A70     		strb	r2, [r3]
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	curdata += (rc = MQTTPacket_decodeBuf(curdata, &mylen)); /* read remaining length */
+  95              		.loc 1 53 0
+  96 0066 BB69     		ldr	r3, [r7, #24]
+  97 0068 07F11402 		add	r2, r7, #20
+  98 006c 1146     		mov	r1, r2
+  99 006e 1846     		mov	r0, r3
+ 100 0070 FFF7FEFF 		bl	MQTTPacket_decodeBuf
+ 101 0074 7862     		str	r0, [r7, #36]
+ 102 0076 7A6A     		ldr	r2, [r7, #36]
+ 103 0078 BB69     		ldr	r3, [r7, #24]
+ 104 007a 1344     		add	r3, r3, r2
+ 105 007c BB61     		str	r3, [r7, #24]
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	enddata = curdata + mylen;
+ 106              		.loc 1 54 0
+ 107 007e BB69     		ldr	r3, [r7, #24]
+ 108 0080 7A69     		ldr	r2, [r7, #20]
+ 109 0082 1344     		add	r3, r3, r2
+ 110 0084 3B62     		str	r3, [r7, #32]
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	if (!readMQTTLenString(topicName, &curdata, enddata) ||
+ 111              		.loc 1 56 0
+ 112 0086 07F11803 		add	r3, r7, #24
+ 113 008a 3A6A     		ldr	r2, [r7, #32]
+ 114 008c 1946     		mov	r1, r3
+ 115 008e 386B     		ldr	r0, [r7, #48]
+ 116 0090 FFF7FEFF 		bl	readMQTTLenString
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s 			page 4
+
+
+ 117 0094 0346     		mov	r3, r0
+ 118 0096 002B     		cmp	r3, #0
+ 119 0098 1ED0     		beq	.L7
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 		enddata - curdata < 0) /* do we have enough data to read the protocol version byte? */
+ 120              		.loc 1 57 0 discriminator 1
+ 121 009a 3B6A     		ldr	r3, [r7, #32]
+ 122 009c BA69     		ldr	r2, [r7, #24]
+ 123 009e 9B1A     		subs	r3, r3, r2
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 		enddata - curdata < 0) /* do we have enough data to read the protocol version byte? */
+ 124              		.loc 1 56 0 discriminator 1
+ 125 00a0 002B     		cmp	r3, #0
+ 126 00a2 19DB     		blt	.L7
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 		goto exit;
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	if (*qos > 0)
+ 127              		.loc 1 60 0
+ 128 00a4 BB68     		ldr	r3, [r7, #8]
+ 129 00a6 1B68     		ldr	r3, [r3]
+ 130 00a8 002B     		cmp	r3, #0
+ 131 00aa 08DD     		ble	.L4
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 		*packetid = readInt(&curdata);
+ 132              		.loc 1 61 0
+ 133 00ac 07F11803 		add	r3, r7, #24
+ 134 00b0 1846     		mov	r0, r3
+ 135 00b2 FFF7FEFF 		bl	readInt
+ 136 00b6 0346     		mov	r3, r0
+ 137 00b8 9AB2     		uxth	r2, r3
+ 138 00ba 3B68     		ldr	r3, [r7]
+ 139 00bc 1A80     		strh	r2, [r3]	@ movhi
+ 140              	.L4:
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	*payloadlen = enddata - curdata;
+ 141              		.loc 1 63 0
+ 142 00be 3B6A     		ldr	r3, [r7, #32]
+ 143 00c0 BA69     		ldr	r2, [r7, #24]
+ 144 00c2 9A1A     		subs	r2, r3, r2
+ 145 00c4 BB6B     		ldr	r3, [r7, #56]
+ 146 00c6 1A60     		str	r2, [r3]
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	*payload = curdata;
+ 147              		.loc 1 64 0
+ 148 00c8 BA69     		ldr	r2, [r7, #24]
+ 149 00ca 7B6B     		ldr	r3, [r7, #52]
+ 150 00cc 1A60     		str	r2, [r3]
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	rc = 1;
+ 151              		.loc 1 65 0
+ 152 00ce 0123     		movs	r3, #1
+ 153 00d0 7B62     		str	r3, [r7, #36]
+ 154 00d2 02E0     		b	.L3
+ 155              	.L6:
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	*dup = header.bits.dup;
+ 156              		.loc 1 48 0
+ 157 00d4 00BF     		nop
+ 158 00d6 00E0     		b	.L3
+ 159              	.L7:
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** exit:
+ 160              		.loc 1 66 0
+ 161 00d8 00BF     		nop
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s 			page 5
+
+
+ 162              	.L3:
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	FUNC_EXIT_RC(rc);
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	return rc;
+ 163              		.loc 1 68 0
+ 164 00da 7B6A     		ldr	r3, [r7, #36]
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** }
+ 165              		.loc 1 69 0
+ 166 00dc 1846     		mov	r0, r3
+ 167 00de 2837     		adds	r7, r7, #40
+ 168              	.LCFI3:
+ 169              		.cfi_def_cfa_offset 8
+ 170 00e0 BD46     		mov	sp, r7
+ 171              	.LCFI4:
+ 172              		.cfi_def_cfa_register 13
+ 173              		@ sp needed
+ 174 00e2 80BD     		pop	{r7, pc}
+ 175              		.cfi_endproc
+ 176              	.LFE3:
+ 178              		.section	.text.MQTTDeserialize_ack,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	MQTTDeserialize_ack
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 184              		.fpu fpv4-sp-d16
+ 186              	MQTTDeserialize_ack:
+ 187              	.LFB4:
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** /**
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * Deserializes the supplied (wire) buffer into an ack
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param packettype returned integer - the MQTT packet type
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param dup returned integer - the MQTT dup flag
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param packetid returned integer - the MQTT packet identifier
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param buf the raw buffer data, of the correct length determined by the remaining length field
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @param buflen the length in bytes of the data in the supplied buffer
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   * @return error code.  1 is success, 0 is failure
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c ****   */
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** int MQTTDeserialize_ack(unsigned char* packettype, unsigned char* dup, unsigned short* packetid, un
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** {
+ 188              		.loc 1 83 0
+ 189              		.cfi_startproc
+ 190              		@ args = 4, pretend = 0, frame = 40
+ 191              		@ frame_needed = 1, uses_anonymous_args = 0
+ 192 0000 80B5     		push	{r7, lr}
+ 193              	.LCFI5:
+ 194              		.cfi_def_cfa_offset 8
+ 195              		.cfi_offset 7, -8
+ 196              		.cfi_offset 14, -4
+ 197 0002 8AB0     		sub	sp, sp, #40
+ 198              	.LCFI6:
+ 199              		.cfi_def_cfa_offset 48
+ 200 0004 00AF     		add	r7, sp, #0
+ 201              	.LCFI7:
+ 202              		.cfi_def_cfa_register 7
+ 203 0006 F860     		str	r0, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s 			page 6
+
+
+ 204 0008 B960     		str	r1, [r7, #8]
+ 205 000a 7A60     		str	r2, [r7, #4]
+ 206 000c 3B60     		str	r3, [r7]
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	MQTTHeader header = {0};
+ 207              		.loc 1 84 0
+ 208 000e 0023     		movs	r3, #0
+ 209 0010 FB61     		str	r3, [r7, #28]
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	unsigned char* curdata = buf;
+ 210              		.loc 1 85 0
+ 211 0012 3B68     		ldr	r3, [r7]
+ 212 0014 BB61     		str	r3, [r7, #24]
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	unsigned char* enddata = NULL;
+ 213              		.loc 1 86 0
+ 214 0016 0023     		movs	r3, #0
+ 215 0018 3B62     		str	r3, [r7, #32]
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	int rc = 0;
+ 216              		.loc 1 87 0
+ 217 001a 0023     		movs	r3, #0
+ 218 001c 7B62     		str	r3, [r7, #36]
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	int mylen;
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	FUNC_ENTRY;
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	header.byte = readChar(&curdata);
+ 219              		.loc 1 91 0
+ 220 001e 07F11803 		add	r3, r7, #24
+ 221 0022 1846     		mov	r0, r3
+ 222 0024 FFF7FEFF 		bl	readChar
+ 223 0028 0346     		mov	r3, r0
+ 224 002a 3B77     		strb	r3, [r7, #28]
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	*dup = header.bits.dup;
+ 225              		.loc 1 92 0
+ 226 002c 3B7F     		ldrb	r3, [r7, #28]
+ 227 002e C3F3C003 		ubfx	r3, r3, #3, #1
+ 228 0032 DBB2     		uxtb	r3, r3
+ 229 0034 1A46     		mov	r2, r3
+ 230 0036 BB68     		ldr	r3, [r7, #8]
+ 231 0038 1A70     		strb	r2, [r3]
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	*packettype = header.bits.type;
+ 232              		.loc 1 93 0
+ 233 003a 3B7F     		ldrb	r3, [r7, #28]
+ 234 003c C3F30313 		ubfx	r3, r3, #4, #4
+ 235 0040 DBB2     		uxtb	r3, r3
+ 236 0042 1A46     		mov	r2, r3
+ 237 0044 FB68     		ldr	r3, [r7, #12]
+ 238 0046 1A70     		strb	r2, [r3]
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	curdata += (rc = MQTTPacket_decodeBuf(curdata, &mylen)); /* read remaining length */
+ 239              		.loc 1 95 0
+ 240 0048 BB69     		ldr	r3, [r7, #24]
+ 241 004a 07F11402 		add	r2, r7, #20
+ 242 004e 1146     		mov	r1, r2
+ 243 0050 1846     		mov	r0, r3
+ 244 0052 FFF7FEFF 		bl	MQTTPacket_decodeBuf
+ 245 0056 7862     		str	r0, [r7, #36]
+ 246 0058 7A6A     		ldr	r2, [r7, #36]
+ 247 005a BB69     		ldr	r3, [r7, #24]
+ 248 005c 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s 			page 7
+
+
+ 249 005e BB61     		str	r3, [r7, #24]
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	enddata = curdata + mylen;
+ 250              		.loc 1 96 0
+ 251 0060 BB69     		ldr	r3, [r7, #24]
+ 252 0062 7A69     		ldr	r2, [r7, #20]
+ 253 0064 1344     		add	r3, r3, r2
+ 254 0066 3B62     		str	r3, [r7, #32]
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	if (enddata - curdata < 2)
+ 255              		.loc 1 98 0
+ 256 0068 3B6A     		ldr	r3, [r7, #32]
+ 257 006a BA69     		ldr	r2, [r7, #24]
+ 258 006c 9B1A     		subs	r3, r3, r2
+ 259 006e 012B     		cmp	r3, #1
+ 260 0070 0BDD     		ble	.L12
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 		goto exit;
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	*packetid = readInt(&curdata);
+ 261              		.loc 1 100 0
+ 262 0072 07F11803 		add	r3, r7, #24
+ 263 0076 1846     		mov	r0, r3
+ 264 0078 FFF7FEFF 		bl	readInt
+ 265 007c 0346     		mov	r3, r0
+ 266 007e 9AB2     		uxth	r2, r3
+ 267 0080 7B68     		ldr	r3, [r7, #4]
+ 268 0082 1A80     		strh	r2, [r3]	@ movhi
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	rc = 1;
+ 269              		.loc 1 102 0
+ 270 0084 0123     		movs	r3, #1
+ 271 0086 7B62     		str	r3, [r7, #36]
+ 272 0088 00E0     		b	.L10
+ 273              	.L12:
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 		goto exit;
+ 274              		.loc 1 99 0
+ 275 008a 00BF     		nop
+ 276              	.L10:
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** exit:
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	FUNC_EXIT_RC(rc);
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** 	return rc;
+ 277              		.loc 1 105 0
+ 278 008c 7B6A     		ldr	r3, [r7, #36]
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTDeserializePublish.c **** }
+ 279              		.loc 1 106 0
+ 280 008e 1846     		mov	r0, r3
+ 281 0090 2837     		adds	r7, r7, #40
+ 282              	.LCFI8:
+ 283              		.cfi_def_cfa_offset 8
+ 284 0092 BD46     		mov	sp, r7
+ 285              	.LCFI9:
+ 286              		.cfi_def_cfa_register 13
+ 287              		@ sp needed
+ 288 0094 80BD     		pop	{r7, pc}
+ 289              		.cfi_endproc
+ 290              	.LFE4:
+ 292              		.text
+ 293              	.Letext0:
+ 294              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s 			page 8
+
+
+ 295              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 296              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 297              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 298              		.file 6 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 MQTTDeserializePublish.c
+C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s:18     .text.MQTTDeserialize_publish:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s:25     .text.MQTTDeserialize_publish:00000000 MQTTDeserialize_publish
+C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s:179    .text.MQTTDeserialize_ack:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc1YAhx0.s:186    .text.MQTTDeserialize_ack:00000000 MQTTDeserialize_ack
+
+UNDEFINED SYMBOLS
+readChar
+MQTTPacket_decodeBuf
+readMQTTLenString
+readInt

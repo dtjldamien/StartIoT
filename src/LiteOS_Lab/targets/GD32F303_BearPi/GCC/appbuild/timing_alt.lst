@@ -1,0 +1,356 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"timing_alt.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.mbedtls_timing_get_timer,"ax",%progbits
+  18              		.align	1
+  19              		.global	mbedtls_timing_get_timer
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	mbedtls_timing_get_timer:
+  26              	.LFB3:
+  27              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port/t
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * All rights reserved.
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * permission.
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * ===============================================
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s 			page 2
+
+
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** #include "mbedtls/config.h"
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** #else
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** #include MBEDTLS_CONFIG_FILE
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** #endif
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** #include <osal.h>
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** #include <timing_alt.h>
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** unsigned long mbedtls_timing_get_timer(struct mbedtls_timing_hr_time *val, int reset)
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** {
+  28              		.loc 1 47 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 16
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 90B5     		push	{r4, r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 12
+  35              		.cfi_offset 4, -12
+  36              		.cfi_offset 7, -8
+  37              		.cfi_offset 14, -4
+  38 0002 85B0     		sub	sp, sp, #20
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 32
+  41 0004 00AF     		add	r7, sp, #0
+  42              	.LCFI2:
+  43              		.cfi_def_cfa_register 7
+  44 0006 7860     		str	r0, [r7, #4]
+  45 0008 3960     		str	r1, [r7]
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     struct mbedtls_timing_hr_time now;
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     now.timer_ms = osal_sys_time();
+  46              		.loc 1 49 0
+  47 000a FFF7FEFF 		bl	osal_sys_time
+  48 000e 0346     		mov	r3, r0
+  49 0010 0C46     		mov	r4, r1
+  50 0012 C7E90234 		strd	r3, [r7, #8]
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     if (reset)
+  51              		.loc 1 51 0
+  52 0016 3B68     		ldr	r3, [r7]
+  53 0018 002B     		cmp	r3, #0
+  54 001a 04D0     		beq	.L2
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     {
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****         val->timer_ms = now.timer_ms;
+  55              		.loc 1 53 0
+  56 001c D7E90234 		ldrd	r3, [r7, #8]
+  57 0020 7A68     		ldr	r2, [r7, #4]
+  58 0022 C2E90034 		strd	r3, [r2]
+  59              	.L2:
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     }
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     return (unsigned long)(now.timer_ms - val->timer_ms);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s 			page 3
+
+
+  60              		.loc 1 56 0
+  61 0026 D7E90234 		ldrd	r3, [r7, #8]
+  62 002a 1A46     		mov	r2, r3
+  63 002c 7B68     		ldr	r3, [r7, #4]
+  64 002e D3E90034 		ldrd	r3, [r3]
+  65 0032 D31A     		subs	r3, r2, r3
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** }
+  66              		.loc 1 57 0
+  67 0034 1846     		mov	r0, r3
+  68 0036 1437     		adds	r7, r7, #20
+  69              	.LCFI3:
+  70              		.cfi_def_cfa_offset 12
+  71 0038 BD46     		mov	sp, r7
+  72              	.LCFI4:
+  73              		.cfi_def_cfa_register 13
+  74              		@ sp needed
+  75 003a 90BD     		pop	{r4, r7, pc}
+  76              		.cfi_endproc
+  77              	.LFE3:
+  79              		.section	.text.mbedtls_timing_set_delay,"ax",%progbits
+  80              		.align	1
+  81              		.global	mbedtls_timing_set_delay
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  85              		.fpu fpv4-sp-d16
+  87              	mbedtls_timing_set_delay:
+  88              	.LFB4:
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** /*
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * Set delays to watch
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  */
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** void mbedtls_timing_set_delay(void *data, uint32_t int_ms, uint32_t fin_ms)
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** {
+  89              		.loc 1 63 0
+  90              		.cfi_startproc
+  91              		@ args = 0, pretend = 0, frame = 24
+  92              		@ frame_needed = 1, uses_anonymous_args = 0
+  93 0000 80B5     		push	{r7, lr}
+  94              	.LCFI5:
+  95              		.cfi_def_cfa_offset 8
+  96              		.cfi_offset 7, -8
+  97              		.cfi_offset 14, -4
+  98 0002 86B0     		sub	sp, sp, #24
+  99              	.LCFI6:
+ 100              		.cfi_def_cfa_offset 32
+ 101 0004 00AF     		add	r7, sp, #0
+ 102              	.LCFI7:
+ 103              		.cfi_def_cfa_register 7
+ 104 0006 F860     		str	r0, [r7, #12]
+ 105 0008 B960     		str	r1, [r7, #8]
+ 106 000a 7A60     		str	r2, [r7, #4]
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     mbedtls_timing_delay_context *ctx = (mbedtls_timing_delay_context *) data;
+ 107              		.loc 1 64 0
+ 108 000c FB68     		ldr	r3, [r7, #12]
+ 109 000e 7B61     		str	r3, [r7, #20]
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s 			page 4
+
+
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     ctx->int_ms = int_ms;
+ 110              		.loc 1 66 0
+ 111 0010 7B69     		ldr	r3, [r7, #20]
+ 112 0012 BA68     		ldr	r2, [r7, #8]
+ 113 0014 9A60     		str	r2, [r3, #8]
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     ctx->fin_ms = fin_ms;
+ 114              		.loc 1 67 0
+ 115 0016 7B69     		ldr	r3, [r7, #20]
+ 116 0018 7A68     		ldr	r2, [r7, #4]
+ 117 001a DA60     		str	r2, [r3, #12]
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     if (fin_ms != 0)
+ 118              		.loc 1 69 0
+ 119 001c 7B68     		ldr	r3, [r7, #4]
+ 120 001e 002B     		cmp	r3, #0
+ 121 0020 04D0     		beq	.L6
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     {
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****         (void)mbedtls_timing_get_timer(&ctx->timer, 1);
+ 122              		.loc 1 71 0
+ 123 0022 7B69     		ldr	r3, [r7, #20]
+ 124 0024 0121     		movs	r1, #1
+ 125 0026 1846     		mov	r0, r3
+ 126 0028 FFF7FEFF 		bl	mbedtls_timing_get_timer
+ 127              	.L6:
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     }
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** }
+ 128              		.loc 1 73 0
+ 129 002c 00BF     		nop
+ 130 002e 1837     		adds	r7, r7, #24
+ 131              	.LCFI8:
+ 132              		.cfi_def_cfa_offset 8
+ 133 0030 BD46     		mov	sp, r7
+ 134              	.LCFI9:
+ 135              		.cfi_def_cfa_register 13
+ 136              		@ sp needed
+ 137 0032 80BD     		pop	{r7, pc}
+ 138              		.cfi_endproc
+ 139              	.LFE4:
+ 141              		.section	.text.mbedtls_timing_get_delay,"ax",%progbits
+ 142              		.align	1
+ 143              		.global	mbedtls_timing_get_delay
+ 144              		.syntax unified
+ 145              		.thumb
+ 146              		.thumb_func
+ 147              		.fpu fpv4-sp-d16
+ 149              	mbedtls_timing_get_delay:
+ 150              	.LFB5:
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** /*
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  * Get number of delays expired
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****  */
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** int mbedtls_timing_get_delay(void *data)
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** {
+ 151              		.loc 1 79 0
+ 152              		.cfi_startproc
+ 153              		@ args = 0, pretend = 0, frame = 16
+ 154              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s 			page 5
+
+
+ 155 0000 80B5     		push	{r7, lr}
+ 156              	.LCFI10:
+ 157              		.cfi_def_cfa_offset 8
+ 158              		.cfi_offset 7, -8
+ 159              		.cfi_offset 14, -4
+ 160 0002 84B0     		sub	sp, sp, #16
+ 161              	.LCFI11:
+ 162              		.cfi_def_cfa_offset 24
+ 163 0004 00AF     		add	r7, sp, #0
+ 164              	.LCFI12:
+ 165              		.cfi_def_cfa_register 7
+ 166 0006 7860     		str	r0, [r7, #4]
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     mbedtls_timing_delay_context *ctx = (mbedtls_timing_delay_context *)data;
+ 167              		.loc 1 80 0
+ 168 0008 7B68     		ldr	r3, [r7, #4]
+ 169 000a FB60     		str	r3, [r7, #12]
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     unsigned long elapsed_ms;
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     if (ctx->fin_ms == 0)
+ 170              		.loc 1 83 0
+ 171 000c FB68     		ldr	r3, [r7, #12]
+ 172 000e DB68     		ldr	r3, [r3, #12]
+ 173 0010 002B     		cmp	r3, #0
+ 174 0012 02D1     		bne	.L8
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     {
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****         return -1;
+ 175              		.loc 1 85 0
+ 176 0014 4FF0FF33 		mov	r3, #-1
+ 177 0018 14E0     		b	.L9
+ 178              	.L8:
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     }
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     elapsed_ms = mbedtls_timing_get_timer(&ctx->timer, 0);
+ 179              		.loc 1 88 0
+ 180 001a FB68     		ldr	r3, [r7, #12]
+ 181 001c 0021     		movs	r1, #0
+ 182 001e 1846     		mov	r0, r3
+ 183 0020 FFF7FEFF 		bl	mbedtls_timing_get_timer
+ 184 0024 B860     		str	r0, [r7, #8]
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     if (elapsed_ms >= ctx->fin_ms)
+ 185              		.loc 1 90 0
+ 186 0026 FB68     		ldr	r3, [r7, #12]
+ 187 0028 DB68     		ldr	r3, [r3, #12]
+ 188 002a BA68     		ldr	r2, [r7, #8]
+ 189 002c 9A42     		cmp	r2, r3
+ 190 002e 01D3     		bcc	.L10
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     {
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****         return 2;
+ 191              		.loc 1 92 0
+ 192 0030 0223     		movs	r3, #2
+ 193 0032 07E0     		b	.L9
+ 194              	.L10:
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     }
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     if (elapsed_ms >= ctx->int_ms)
+ 195              		.loc 1 95 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s 			page 6
+
+
+ 196 0034 FB68     		ldr	r3, [r7, #12]
+ 197 0036 9B68     		ldr	r3, [r3, #8]
+ 198 0038 BA68     		ldr	r2, [r7, #8]
+ 199 003a 9A42     		cmp	r2, r3
+ 200 003c 01D3     		bcc	.L11
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     {
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****         return 1;
+ 201              		.loc 1 97 0
+ 202 003e 0123     		movs	r3, #1
+ 203 0040 00E0     		b	.L9
+ 204              	.L11:
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     }
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** 
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c ****     return 0;
+ 205              		.loc 1 100 0
+ 206 0042 0023     		movs	r3, #0
+ 207              	.L9:
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port\timing_alt.c **** }
+ 208              		.loc 1 101 0
+ 209 0044 1846     		mov	r0, r3
+ 210 0046 1037     		adds	r7, r7, #16
+ 211              	.LCFI13:
+ 212              		.cfi_def_cfa_offset 8
+ 213 0048 BD46     		mov	sp, r7
+ 214              	.LCFI14:
+ 215              		.cfi_def_cfa_register 13
+ 216              		@ sp needed
+ 217 004a 80BD     		pop	{r7, pc}
+ 218              		.cfi_endproc
+ 219              	.LFE5:
+ 221              		.text
+ 222              	.Letext0:
+ 223              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 224              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 225              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 226              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 227              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 228              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 229              		.file 8 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls_port/t
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 timing_alt.c
+C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s:18     .text.mbedtls_timing_get_timer:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s:25     .text.mbedtls_timing_get_timer:00000000 mbedtls_timing_get_timer
+C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s:80     .text.mbedtls_timing_set_delay:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s:87     .text.mbedtls_timing_set_delay:00000000 mbedtls_timing_set_delay
+C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s:142    .text.mbedtls_timing_get_delay:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccghZMtK.s:149    .text.mbedtls_timing_get_delay:00000000 mbedtls_timing_get_delay
+
+UNDEFINED SYMBOLS
+osal_sys_time

@@ -1,0 +1,429 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"hmac.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC0:
+  20 0000 6D626564 		.ascii	"mbedtls_md_setup() returned -0x%04x\012\000"
+  20      746C735F 
+  20      6D645F73 
+  20      65747570 
+  20      28292072 
+  21              		.section	.text.mbedtls_hmac_calc,"ax",%progbits
+  22              		.align	1
+  23              		.global	mbedtls_hmac_calc
+  24              		.syntax unified
+  25              		.thumb
+  26              		.thumb_func
+  27              		.fpu fpv4-sp-d16
+  29              	mbedtls_hmac_calc:
+  30              	.LFB20:
+  31              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt/hmac.c"
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * All rights reserved.
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * permission.
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s 			page 2
+
+
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * ===============================================
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #include "hmac.h"
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #ifdef WITH_DTLS
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #include <string.h>
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #include "mbedtls/md.h"
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #include "mbedtls/ssl.h"
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #include "mbedtls/entropy.h"
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #include "mbedtls/ctr_drbg.h"
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #include "mbedtls/platform.h"
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #include "mbedtls/md_internal.h"
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** #include "dtls_interface.h"
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** typedef struct _mbedtls_hmac_t
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** {
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     const unsigned char *secret;
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     const unsigned char *input;
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     unsigned char *digest;
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     size_t secret_len;
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     size_t input_len;
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     size_t digest_len;
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     mbedtls_md_type_t hmac_type;
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** }mbedtls_hmac_t;
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** int mbedtls_hmac_calc(mbedtls_hmac_t *hmac_info)
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** {
+  32              		.loc 1 60 0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 32
+  35              		@ frame_needed = 1, uses_anonymous_args = 0
+  36 0000 80B5     		push	{r7, lr}
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 88B0     		sub	sp, sp, #32
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 40
+  44 0004 00AF     		add	r7, sp, #0
+  45              	.LCFI2:
+  46              		.cfi_def_cfa_register 7
+  47 0006 7860     		str	r0, [r7, #4]
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     int ret;
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     mbedtls_md_context_t mbedtls_md_ctx;
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     const mbedtls_md_info_t *md_info;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s 			page 3
+
+
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     if (hmac_info == NULL || hmac_info->secret == NULL || hmac_info->input == NULL
+  48              		.loc 1 66 0
+  49 0008 7B68     		ldr	r3, [r7, #4]
+  50 000a 002B     		cmp	r3, #0
+  51 000c 13D0     		beq	.L2
+  52              		.loc 1 66 0 is_stmt 0 discriminator 1
+  53 000e 7B68     		ldr	r3, [r7, #4]
+  54 0010 1B68     		ldr	r3, [r3]
+  55 0012 002B     		cmp	r3, #0
+  56 0014 0FD0     		beq	.L2
+  57              		.loc 1 66 0 discriminator 2
+  58 0016 7B68     		ldr	r3, [r7, #4]
+  59 0018 5B68     		ldr	r3, [r3, #4]
+  60 001a 002B     		cmp	r3, #0
+  61 001c 0BD0     		beq	.L2
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****         || hmac_info->secret_len <= 0 || hmac_info->input_len <= 0 || hmac_info->digest_len <= 0)
+  62              		.loc 1 67 0 is_stmt 1
+  63 001e 7B68     		ldr	r3, [r7, #4]
+  64 0020 DB68     		ldr	r3, [r3, #12]
+  65 0022 002B     		cmp	r3, #0
+  66 0024 07D0     		beq	.L2
+  67              		.loc 1 67 0 is_stmt 0 discriminator 1
+  68 0026 7B68     		ldr	r3, [r7, #4]
+  69 0028 1B69     		ldr	r3, [r3, #16]
+  70 002a 002B     		cmp	r3, #0
+  71 002c 03D0     		beq	.L2
+  72              		.loc 1 67 0 discriminator 2
+  73 002e 7B68     		ldr	r3, [r7, #4]
+  74 0030 5B69     		ldr	r3, [r3, #20]
+  75 0032 002B     		cmp	r3, #0
+  76 0034 01D1     		bne	.L3
+  77              	.L2:
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     {
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****         return MBEDTLS_ERR_MD_BAD_INPUT_DATA;
+  78              		.loc 1 69 0 is_stmt 1
+  79 0036 2B4B     		ldr	r3, .L10
+  80 0038 50E0     		b	.L9
+  81              	.L3:
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     }
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     md_info = mbedtls_md_info_from_type(hmac_info->hmac_type);
+  82              		.loc 1 72 0
+  83 003a 7B68     		ldr	r3, [r7, #4]
+  84 003c 1B7E     		ldrb	r3, [r3, #24]	@ zero_extendqisi2
+  85 003e 1846     		mov	r0, r3
+  86 0040 FFF7FEFF 		bl	mbedtls_md_info_from_type
+  87 0044 F861     		str	r0, [r7, #28]
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     if (md_info == NULL || md_info->size > hmac_info->digest_len)
+  88              		.loc 1 73 0
+  89 0046 FB69     		ldr	r3, [r7, #28]
+  90 0048 002B     		cmp	r3, #0
+  91 004a 06D0     		beq	.L5
+  92              		.loc 1 73 0 is_stmt 0 discriminator 1
+  93 004c FB69     		ldr	r3, [r7, #28]
+  94 004e 9B68     		ldr	r3, [r3, #8]
+  95 0050 1A46     		mov	r2, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s 			page 4
+
+
+  96 0052 7B68     		ldr	r3, [r7, #4]
+  97 0054 5B69     		ldr	r3, [r3, #20]
+  98 0056 9A42     		cmp	r2, r3
+  99 0058 01D9     		bls	.L6
+ 100              	.L5:
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     {
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****         return MBEDTLS_ERR_MD_BAD_INPUT_DATA;
+ 101              		.loc 1 75 0 is_stmt 1
+ 102 005a 224B     		ldr	r3, .L10
+ 103 005c 3EE0     		b	.L9
+ 104              	.L6:
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     }
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     mbedtls_md_init(&mbedtls_md_ctx);
+ 105              		.loc 1 78 0
+ 106 005e 07F10C03 		add	r3, r7, #12
+ 107 0062 1846     		mov	r0, r3
+ 108 0064 FFF7FEFF 		bl	mbedtls_md_init
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     memset(hmac_info->digest, 0x00, hmac_info->digest_len);
+ 109              		.loc 1 79 0
+ 110 0068 7B68     		ldr	r3, [r7, #4]
+ 111 006a 9868     		ldr	r0, [r3, #8]
+ 112 006c 7B68     		ldr	r3, [r7, #4]
+ 113 006e 5B69     		ldr	r3, [r3, #20]
+ 114 0070 1A46     		mov	r2, r3
+ 115 0072 0021     		movs	r1, #0
+ 116 0074 FFF7FEFF 		bl	memset
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     ret = mbedtls_md_setup(&mbedtls_md_ctx, md_info, 1);
+ 117              		.loc 1 81 0
+ 118 0078 07F10C03 		add	r3, r7, #12
+ 119 007c 0122     		movs	r2, #1
+ 120 007e F969     		ldr	r1, [r7, #28]
+ 121 0080 1846     		mov	r0, r3
+ 122 0082 FFF7FEFF 		bl	mbedtls_md_setup
+ 123 0086 B861     		str	r0, [r7, #24]
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     if (ret != 0)
+ 124              		.loc 1 82 0
+ 125 0088 BB69     		ldr	r3, [r7, #24]
+ 126 008a 002B     		cmp	r3, #0
+ 127 008c 06D0     		beq	.L7
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     {
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****         printf("mbedtls_md_setup() returned -0x%04x\n", -ret);
+ 128              		.loc 1 84 0
+ 129 008e BB69     		ldr	r3, [r7, #24]
+ 130 0090 5B42     		negs	r3, r3
+ 131 0092 1946     		mov	r1, r3
+ 132 0094 1448     		ldr	r0, .L10+4
+ 133 0096 FFF7FEFF 		bl	printf
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****         goto exit;
+ 134              		.loc 1 85 0
+ 135 009a 19E0     		b	.L8
+ 136              	.L7:
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     }
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     (void)mbedtls_md_hmac_starts(&mbedtls_md_ctx, hmac_info->secret, hmac_info->secret_len);
+ 137              		.loc 1 88 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s 			page 5
+
+
+ 138 009c 7B68     		ldr	r3, [r7, #4]
+ 139 009e 1968     		ldr	r1, [r3]
+ 140 00a0 7B68     		ldr	r3, [r7, #4]
+ 141 00a2 DA68     		ldr	r2, [r3, #12]
+ 142 00a4 07F10C03 		add	r3, r7, #12
+ 143 00a8 1846     		mov	r0, r3
+ 144 00aa FFF7FEFF 		bl	mbedtls_md_hmac_starts
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     (void)mbedtls_md_hmac_update(&mbedtls_md_ctx, hmac_info->input, hmac_info->input_len);
+ 145              		.loc 1 89 0
+ 146 00ae 7B68     		ldr	r3, [r7, #4]
+ 147 00b0 5968     		ldr	r1, [r3, #4]
+ 148 00b2 7B68     		ldr	r3, [r7, #4]
+ 149 00b4 1A69     		ldr	r2, [r3, #16]
+ 150 00b6 07F10C03 		add	r3, r7, #12
+ 151 00ba 1846     		mov	r0, r3
+ 152 00bc FFF7FEFF 		bl	mbedtls_md_hmac_update
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     (void)mbedtls_md_hmac_finish(&mbedtls_md_ctx, hmac_info->digest);
+ 153              		.loc 1 90 0
+ 154 00c0 7B68     		ldr	r3, [r7, #4]
+ 155 00c2 9A68     		ldr	r2, [r3, #8]
+ 156 00c4 07F10C03 		add	r3, r7, #12
+ 157 00c8 1146     		mov	r1, r2
+ 158 00ca 1846     		mov	r0, r3
+ 159 00cc FFF7FEFF 		bl	mbedtls_md_hmac_finish
+ 160              	.L8:
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     exit:
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     mbedtls_md_free(&mbedtls_md_ctx);
+ 161              		.loc 1 93 0
+ 162 00d0 07F10C03 		add	r3, r7, #12
+ 163 00d4 1846     		mov	r0, r3
+ 164 00d6 FFF7FEFF 		bl	mbedtls_md_free
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     return ret;
+ 165              		.loc 1 95 0
+ 166 00da BB69     		ldr	r3, [r7, #24]
+ 167              	.L9:
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** }
+ 168              		.loc 1 96 0 discriminator 1
+ 169 00dc 1846     		mov	r0, r3
+ 170 00de 2037     		adds	r7, r7, #32
+ 171              	.LCFI3:
+ 172              		.cfi_def_cfa_offset 8
+ 173 00e0 BD46     		mov	sp, r7
+ 174              	.LCFI4:
+ 175              		.cfi_def_cfa_register 13
+ 176              		@ sp needed
+ 177 00e2 80BD     		pop	{r7, pc}
+ 178              	.L11:
+ 179              		.align	2
+ 180              	.L10:
+ 181 00e4 00AFFFFF 		.word	-20736
+ 182 00e8 00000000 		.word	.LC0
+ 183              		.cfi_endproc
+ 184              	.LFE20:
+ 186              		.section	.text.hmac_generate_passwd,"ax",%progbits
+ 187              		.align	1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s 			page 6
+
+
+ 188              		.global	hmac_generate_passwd
+ 189              		.syntax unified
+ 190              		.thumb
+ 191              		.thumb_func
+ 192              		.fpu fpv4-sp-d16
+ 194              	hmac_generate_passwd:
+ 195              	.LFB21:
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** int hmac_generate_passwd(char *content, int contentlen,char *key,int keylen, unsigned char *buf,int
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** {
+ 196              		.loc 1 99 0
+ 197              		.cfi_startproc
+ 198              		@ args = 8, pretend = 0, frame = 48
+ 199              		@ frame_needed = 1, uses_anonymous_args = 0
+ 200 0000 80B5     		push	{r7, lr}
+ 201              	.LCFI5:
+ 202              		.cfi_def_cfa_offset 8
+ 203              		.cfi_offset 7, -8
+ 204              		.cfi_offset 14, -4
+ 205 0002 8CB0     		sub	sp, sp, #48
+ 206              	.LCFI6:
+ 207              		.cfi_def_cfa_offset 56
+ 208 0004 00AF     		add	r7, sp, #0
+ 209              	.LCFI7:
+ 210              		.cfi_def_cfa_register 7
+ 211 0006 F860     		str	r0, [r7, #12]
+ 212 0008 B960     		str	r1, [r7, #8]
+ 213 000a 7A60     		str	r2, [r7, #4]
+ 214 000c 3B60     		str	r3, [r7]
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     int ret = -1;
+ 215              		.loc 1 100 0
+ 216 000e 4FF0FF33 		mov	r3, #-1
+ 217 0012 FB62     		str	r3, [r7, #44]
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     mbedtls_hmac_t hmac;
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     hmac.secret = (uint8_t *)key;
+ 218              		.loc 1 102 0
+ 219 0014 7B68     		ldr	r3, [r7, #4]
+ 220 0016 3B61     		str	r3, [r7, #16]
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     hmac.secret_len = keylen;
+ 221              		.loc 1 103 0
+ 222 0018 3B68     		ldr	r3, [r7]
+ 223 001a FB61     		str	r3, [r7, #28]
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     hmac.input = (unsigned char *)content;
+ 224              		.loc 1 104 0
+ 225 001c FB68     		ldr	r3, [r7, #12]
+ 226 001e 7B61     		str	r3, [r7, #20]
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     hmac.input_len = contentlen;
+ 227              		.loc 1 105 0
+ 228 0020 BB68     		ldr	r3, [r7, #8]
+ 229 0022 3B62     		str	r3, [r7, #32]
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     hmac.digest =(unsigned char *) buf;
+ 230              		.loc 1 106 0
+ 231 0024 BB6B     		ldr	r3, [r7, #56]
+ 232 0026 BB61     		str	r3, [r7, #24]
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     hmac.digest_len = buflen;
+ 233              		.loc 1 107 0
+ 234 0028 FB6B     		ldr	r3, [r7, #60]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s 			page 7
+
+
+ 235 002a 7B62     		str	r3, [r7, #36]
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     hmac.hmac_type = MBEDTLS_MD_SHA256;
+ 236              		.loc 1 108 0
+ 237 002c 0623     		movs	r3, #6
+ 238 002e 87F82830 		strb	r3, [r7, #40]
+ 109:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+ 110:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     ret = mbedtls_hmac_calc(&hmac);
+ 239              		.loc 1 110 0
+ 240 0032 07F11003 		add	r3, r7, #16
+ 241 0036 1846     		mov	r0, r3
+ 242 0038 FFF7FEFF 		bl	mbedtls_hmac_calc
+ 243 003c F862     		str	r0, [r7, #44]
+ 111:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** 
+ 112:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c ****     return ret;
+ 244              		.loc 1 112 0
+ 245 003e FB6A     		ldr	r3, [r7, #44]
+ 113:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/atiny_mqtt\hmac.c **** }
+ 246              		.loc 1 113 0
+ 247 0040 1846     		mov	r0, r3
+ 248 0042 3037     		adds	r7, r7, #48
+ 249              	.LCFI8:
+ 250              		.cfi_def_cfa_offset 8
+ 251 0044 BD46     		mov	sp, r7
+ 252              	.LCFI9:
+ 253              		.cfi_def_cfa_register 13
+ 254              		@ sp needed
+ 255 0046 80BD     		pop	{r7, pc}
+ 256              		.cfi_endproc
+ 257              	.LFE21:
+ 259              		.text
+ 260              	.Letext0:
+ 261              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 262              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 263              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 264              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 265              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 266              		.file 7 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 267              		.file 8 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 268              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 269              		.file 10 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 270              		.file 11 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 271              		.file 12 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 272              		.file 13 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 273              		.file 14 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 hmac.c
+C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s:18     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s:22     .text.mbedtls_hmac_calc:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s:29     .text.mbedtls_hmac_calc:00000000 mbedtls_hmac_calc
+C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s:181    .text.mbedtls_hmac_calc:000000e4 $d
+C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s:187    .text.hmac_generate_passwd:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc9Vt6u4.s:194    .text.hmac_generate_passwd:00000000 hmac_generate_passwd
+
+UNDEFINED SYMBOLS
+mbedtls_md_info_from_type
+mbedtls_md_init
+memset
+mbedtls_md_setup
+printf
+mbedtls_md_hmac_starts
+mbedtls_md_hmac_update
+mbedtls_md_hmac_finish
+mbedtls_md_free

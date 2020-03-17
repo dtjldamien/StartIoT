@@ -1,0 +1,1085 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"MQTTFormat.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.global	MQTTPacket_names
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 52455345 		.ascii	"RESERVED\000"
+  21      52564544 
+  21      00
+  22 0009 000000   		.align	2
+  23              	.LC1:
+  24 000c 434F4E4E 		.ascii	"CONNECT\000"
+  24      45435400 
+  25              		.align	2
+  26              	.LC2:
+  27 0014 434F4E4E 		.ascii	"CONNACK\000"
+  27      41434B00 
+  28              		.align	2
+  29              	.LC3:
+  30 001c 5055424C 		.ascii	"PUBLISH\000"
+  30      49534800 
+  31              		.align	2
+  32              	.LC4:
+  33 0024 50554241 		.ascii	"PUBACK\000"
+  33      434B00
+  34 002b 00       		.align	2
+  35              	.LC5:
+  36 002c 50554252 		.ascii	"PUBREC\000"
+  36      454300
+  37 0033 00       		.align	2
+  38              	.LC6:
+  39 0034 50554252 		.ascii	"PUBREL\000"
+  39      454C00
+  40 003b 00       		.align	2
+  41              	.LC7:
+  42 003c 50554243 		.ascii	"PUBCOMP\000"
+  42      4F4D5000 
+  43              		.align	2
+  44              	.LC8:
+  45 0044 53554253 		.ascii	"SUBSCRIBE\000"
+  45      43524942 
+  45      4500
+  46 004e 0000     		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 2
+
+
+  47              	.LC9:
+  48 0050 53554241 		.ascii	"SUBACK\000"
+  48      434B00
+  49 0057 00       		.align	2
+  50              	.LC10:
+  51 0058 554E5355 		.ascii	"UNSUBSCRIBE\000"
+  51      42534352 
+  51      49424500 
+  52              		.align	2
+  53              	.LC11:
+  54 0064 554E5355 		.ascii	"UNSUBACK\000"
+  54      4241434B 
+  54      00
+  55 006d 000000   		.align	2
+  56              	.LC12:
+  57 0070 50494E47 		.ascii	"PINGREQ\000"
+  57      52455100 
+  58              		.align	2
+  59              	.LC13:
+  60 0078 50494E47 		.ascii	"PINGRESP\000"
+  60      52455350 
+  60      00
+  61 0081 000000   		.align	2
+  62              	.LC14:
+  63 0084 44495343 		.ascii	"DISCONNECT\000"
+  63      4F4E4E45 
+  63      435400
+  64              		.section	.data.MQTTPacket_names,"aw",%progbits
+  65              		.align	2
+  68              	MQTTPacket_names:
+  69 0000 00000000 		.word	.LC0
+  70 0004 0C000000 		.word	.LC1
+  71 0008 14000000 		.word	.LC2
+  72 000c 1C000000 		.word	.LC3
+  73 0010 24000000 		.word	.LC4
+  74 0014 2C000000 		.word	.LC5
+  75 0018 34000000 		.word	.LC6
+  76 001c 3C000000 		.word	.LC7
+  77 0020 44000000 		.word	.LC8
+  78 0024 50000000 		.word	.LC9
+  79 0028 58000000 		.word	.LC10
+  80 002c 64000000 		.word	.LC11
+  81 0030 70000000 		.word	.LC12
+  82 0034 78000000 		.word	.LC13
+  83 0038 84000000 		.word	.LC14
+  84              		.section	.text.MQTTPacket_getName,"ax",%progbits
+  85              		.align	1
+  86              		.global	MQTTPacket_getName
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  90              		.fpu fpv4-sp-d16
+  92              	MQTTPacket_getName:
+  93              	.LFB3:
+  94              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** /*******************************************************************************
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  * Copyright (c) 2014 IBM Corp.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 3
+
+
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  *
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  * All rights reserved. This program and the accompanying materials
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  * are made available under the terms of the Eclipse Public License v1.0
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  *
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  * The Eclipse Public License is available at
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  * and the Eclipse Distribution License is available at
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  *   http://www.eclipse.org/org/documents/edl-v10.php.
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  *
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  * Contributors:
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  *    Ian Craggs - initial API and implementation and/or initial documentation
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c ****  *******************************************************************************/
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** #include "StackTrace.h"
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** #include "MQTTPacket.h"
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** #include <string.h>
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** const char* MQTTPacket_names[] =
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** {
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	"RESERVED", "CONNECT", "CONNACK", "PUBLISH", "PUBACK", "PUBREC", "PUBREL",
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	"PUBCOMP", "SUBSCRIBE", "SUBACK", "UNSUBSCRIBE", "UNSUBACK",
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	"PINGREQ", "PINGRESP", "DISCONNECT"
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** };
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** const char* MQTTPacket_getName(unsigned short packetid)
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** {
+  95              		.loc 1 32 0
+  96              		.cfi_startproc
+  97              		@ args = 0, pretend = 0, frame = 8
+  98              		@ frame_needed = 1, uses_anonymous_args = 0
+  99              		@ link register save eliminated.
+ 100 0000 80B4     		push	{r7}
+ 101              	.LCFI0:
+ 102              		.cfi_def_cfa_offset 4
+ 103              		.cfi_offset 7, -4
+ 104 0002 83B0     		sub	sp, sp, #12
+ 105              	.LCFI1:
+ 106              		.cfi_def_cfa_offset 16
+ 107 0004 00AF     		add	r7, sp, #0
+ 108              	.LCFI2:
+ 109              		.cfi_def_cfa_register 7
+ 110 0006 0346     		mov	r3, r0
+ 111 0008 FB80     		strh	r3, [r7, #6]	@ movhi
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	return MQTTPacket_names[packetid];
+ 112              		.loc 1 33 0
+ 113 000a FB88     		ldrh	r3, [r7, #6]
+ 114 000c 044A     		ldr	r2, .L3
+ 115 000e 52F82330 		ldr	r3, [r2, r3, lsl #2]
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** }
+ 116              		.loc 1 34 0
+ 117 0012 1846     		mov	r0, r3
+ 118 0014 0C37     		adds	r7, r7, #12
+ 119              	.LCFI3:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 4
+
+
+ 120              		.cfi_def_cfa_offset 4
+ 121 0016 BD46     		mov	sp, r7
+ 122              	.LCFI4:
+ 123              		.cfi_def_cfa_register 13
+ 124              		@ sp needed
+ 125 0018 5DF8047B 		ldr	r7, [sp], #4
+ 126              	.LCFI5:
+ 127              		.cfi_restore 7
+ 128              		.cfi_def_cfa_offset 0
+ 129 001c 7047     		bx	lr
+ 130              	.L4:
+ 131 001e 00BF     		.align	2
+ 132              	.L3:
+ 133 0020 00000000 		.word	MQTTPacket_names
+ 134              		.cfi_endproc
+ 135              	.LFE3:
+ 137              		.section	.rodata
+ 138 008f 00       		.align	2
+ 139              	.LC15:
+ 140 0090 434F4E4E 		.ascii	"CONNECT MQTT version %d, client id %.*s, clean sess"
+ 140      45435420 
+ 140      4D515454 
+ 140      20766572 
+ 140      73696F6E 
+ 141 00c3 696F6E20 		.ascii	"ion %d, keep alive %d\000"
+ 141      25642C20 
+ 141      6B656570 
+ 141      20616C69 
+ 141      76652025 
+ 142 00d9 000000   		.align	2
+ 143              	.LC16:
+ 144 00dc 2C207769 		.ascii	", will QoS %d, will retain %d, will topic %.*s, wil"
+ 144      6C6C2051 
+ 144      6F532025 
+ 144      642C2077 
+ 144      696C6C20 
+ 145 010f 6C206D65 		.ascii	"l message %.*s\000"
+ 145      73736167 
+ 145      6520252E 
+ 145      2A7300
+ 146 011e 0000     		.align	2
+ 147              	.LC17:
+ 148 0120 2C207573 		.ascii	", user name %.*s\000"
+ 148      6572206E 
+ 148      616D6520 
+ 148      252E2A73 
+ 148      00
+ 149 0131 000000   		.align	2
+ 150              	.LC18:
+ 151 0134 2C207061 		.ascii	", password %.*s\000"
+ 151      7373776F 
+ 151      72642025 
+ 151      2E2A7300 
+ 152              		.section	.text.MQTTStringFormat_connect,"ax",%progbits
+ 153              		.align	1
+ 154              		.global	MQTTStringFormat_connect
+ 155              		.syntax unified
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 5
+
+
+ 156              		.thumb
+ 157              		.thumb_func
+ 158              		.fpu fpv4-sp-d16
+ 160              	MQTTStringFormat_connect:
+ 161              	.LFB4:
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** int MQTTStringFormat_connect(char* strbuf, int strbuflen, MQTTPacket_connectData* data)
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** {
+ 162              		.loc 1 38 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 24
+ 165              		@ frame_needed = 1, uses_anonymous_args = 0
+ 166 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 167              	.LCFI6:
+ 168              		.cfi_def_cfa_offset 20
+ 169              		.cfi_offset 4, -20
+ 170              		.cfi_offset 5, -16
+ 171              		.cfi_offset 6, -12
+ 172              		.cfi_offset 7, -8
+ 173              		.cfi_offset 14, -4
+ 174 0002 8DB0     		sub	sp, sp, #52
+ 175              	.LCFI7:
+ 176              		.cfi_def_cfa_offset 72
+ 177 0004 06AF     		add	r7, sp, #24
+ 178              	.LCFI8:
+ 179              		.cfi_def_cfa 7, 48
+ 180 0006 F860     		str	r0, [r7, #12]
+ 181 0008 B960     		str	r1, [r7, #8]
+ 182 000a 7A60     		str	r2, [r7, #4]
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	int strindex = 0;
+ 183              		.loc 1 39 0
+ 184 000c 0023     		movs	r3, #0
+ 185 000e 7B61     		str	r3, [r7, #20]
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	strindex = snprintf(strbuf, strbuflen,
+ 186              		.loc 1 41 0
+ 187 0010 B868     		ldr	r0, [r7, #8]
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 			"CONNECT MQTT version %d, client id %.*s, clean session %d, keep alive %d",
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 			(int)data->MQTTVersion, data->clientID.lenstring.len, data->clientID.lenstring.data,
+ 188              		.loc 1 43 0
+ 189 0012 7B68     		ldr	r3, [r7, #4]
+ 190 0014 1B7A     		ldrb	r3, [r3, #8]	@ zero_extendqisi2
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 			"CONNECT MQTT version %d, client id %.*s, clean session %d, keep alive %d",
+ 191              		.loc 1 41 0
+ 192 0016 1D46     		mov	r5, r3
+ 193 0018 7B68     		ldr	r3, [r7, #4]
+ 194 001a 1B69     		ldr	r3, [r3, #16]
+ 195 001c 7A68     		ldr	r2, [r7, #4]
+ 196 001e 5269     		ldr	r2, [r2, #20]
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 			(int)data->cleansession, data->keepAliveInterval);
+ 197              		.loc 1 44 0
+ 198 0020 7968     		ldr	r1, [r7, #4]
+ 199 0022 897E     		ldrb	r1, [r1, #26]	@ zero_extendqisi2
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 			"CONNECT MQTT version %d, client id %.*s, clean session %d, keep alive %d",
+ 200              		.loc 1 41 0
+ 201 0024 0C46     		mov	r4, r1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 6
+
+
+ 202              		.loc 1 44 0
+ 203 0026 7968     		ldr	r1, [r7, #4]
+ 204 0028 098B     		ldrh	r1, [r1, #24]
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 			"CONNECT MQTT version %d, client id %.*s, clean session %d, keep alive %d",
+ 205              		.loc 1 41 0
+ 206 002a 0391     		str	r1, [sp, #12]
+ 207 002c 0294     		str	r4, [sp, #8]
+ 208 002e 0192     		str	r2, [sp, #4]
+ 209 0030 0093     		str	r3, [sp]
+ 210 0032 2B46     		mov	r3, r5
+ 211 0034 364A     		ldr	r2, .L10
+ 212 0036 0146     		mov	r1, r0
+ 213 0038 F868     		ldr	r0, [r7, #12]
+ 214 003a FFF7FEFF 		bl	snprintf
+ 215 003e 7861     		str	r0, [r7, #20]
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	if (data->willFlag)
+ 216              		.loc 1 45 0
+ 217 0040 7B68     		ldr	r3, [r7, #4]
+ 218 0042 DB7E     		ldrb	r3, [r3, #27]	@ zero_extendqisi2
+ 219 0044 002B     		cmp	r3, #0
+ 220 0046 25D0     		beq	.L6
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		strindex += snprintf(&strbuf[strindex], strbuflen - strindex,
+ 221              		.loc 1 46 0
+ 222 0048 7B69     		ldr	r3, [r7, #20]
+ 223 004a FA68     		ldr	r2, [r7, #12]
+ 224 004c D418     		adds	r4, r2, r3
+ 225 004e BA68     		ldr	r2, [r7, #8]
+ 226 0050 7B69     		ldr	r3, [r7, #20]
+ 227 0052 D31A     		subs	r3, r2, r3
+ 228 0054 1E46     		mov	r6, r3
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				", will QoS %d, will retain %d, will topic %.*s, will message %.*s",
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				data->will.qos, data->will.retained,
+ 229              		.loc 1 48 0
+ 230 0056 7B68     		ldr	r3, [r7, #4]
+ 231 0058 93F83D30 		ldrb	r3, [r3, #61]	@ zero_extendqisi2
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		strindex += snprintf(&strbuf[strindex], strbuflen - strindex,
+ 232              		.loc 1 46 0
+ 233 005c 9C46     		mov	ip, r3
+ 234              		.loc 1 48 0
+ 235 005e 7B68     		ldr	r3, [r7, #4]
+ 236 0060 93F83C30 		ldrb	r3, [r3, #60]	@ zero_extendqisi2
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		strindex += snprintf(&strbuf[strindex], strbuflen - strindex,
+ 237              		.loc 1 46 0
+ 238 0064 1D46     		mov	r5, r3
+ 239 0066 7B68     		ldr	r3, [r7, #4]
+ 240 0068 9B6A     		ldr	r3, [r3, #40]
+ 241 006a 7A68     		ldr	r2, [r7, #4]
+ 242 006c D26A     		ldr	r2, [r2, #44]
+ 243 006e 7968     		ldr	r1, [r7, #4]
+ 244 0070 496B     		ldr	r1, [r1, #52]
+ 245 0072 7868     		ldr	r0, [r7, #4]
+ 246 0074 806B     		ldr	r0, [r0, #56]
+ 247 0076 0490     		str	r0, [sp, #16]
+ 248 0078 0391     		str	r1, [sp, #12]
+ 249 007a 0292     		str	r2, [sp, #8]
+ 250 007c 0193     		str	r3, [sp, #4]
+ 251 007e 0095     		str	r5, [sp]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 7
+
+
+ 252 0080 6346     		mov	r3, ip
+ 253 0082 244A     		ldr	r2, .L10+4
+ 254 0084 3146     		mov	r1, r6
+ 255 0086 2046     		mov	r0, r4
+ 256 0088 FFF7FEFF 		bl	snprintf
+ 257 008c 0246     		mov	r2, r0
+ 258 008e 7B69     		ldr	r3, [r7, #20]
+ 259 0090 1344     		add	r3, r3, r2
+ 260 0092 7B61     		str	r3, [r7, #20]
+ 261              	.L6:
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				data->will.topicName.lenstring.len, data->will.topicName.lenstring.data,
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				data->will.message.lenstring.len, data->will.message.lenstring.data);
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	if (data->username.lenstring.data && data->username.lenstring.len > 0)
+ 262              		.loc 1 51 0
+ 263 0094 7B68     		ldr	r3, [r7, #4]
+ 264 0096 9B6C     		ldr	r3, [r3, #72]
+ 265 0098 002B     		cmp	r3, #0
+ 266 009a 17D0     		beq	.L7
+ 267              		.loc 1 51 0 is_stmt 0 discriminator 1
+ 268 009c 7B68     		ldr	r3, [r7, #4]
+ 269 009e 5B6C     		ldr	r3, [r3, #68]
+ 270 00a0 002B     		cmp	r3, #0
+ 271 00a2 13DD     		ble	.L7
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		strindex += snprintf(&strbuf[strindex], strbuflen - strindex,
+ 272              		.loc 1 52 0 is_stmt 1
+ 273 00a4 7B69     		ldr	r3, [r7, #20]
+ 274 00a6 FA68     		ldr	r2, [r7, #12]
+ 275 00a8 D018     		adds	r0, r2, r3
+ 276 00aa BA68     		ldr	r2, [r7, #8]
+ 277 00ac 7B69     		ldr	r3, [r7, #20]
+ 278 00ae D31A     		subs	r3, r2, r3
+ 279 00b0 1946     		mov	r1, r3
+ 280 00b2 7B68     		ldr	r3, [r7, #4]
+ 281 00b4 5A6C     		ldr	r2, [r3, #68]
+ 282 00b6 7B68     		ldr	r3, [r7, #4]
+ 283 00b8 9B6C     		ldr	r3, [r3, #72]
+ 284 00ba 0093     		str	r3, [sp]
+ 285 00bc 1346     		mov	r3, r2
+ 286 00be 164A     		ldr	r2, .L10+8
+ 287 00c0 FFF7FEFF 		bl	snprintf
+ 288 00c4 0246     		mov	r2, r0
+ 289 00c6 7B69     		ldr	r3, [r7, #20]
+ 290 00c8 1344     		add	r3, r3, r2
+ 291 00ca 7B61     		str	r3, [r7, #20]
+ 292              	.L7:
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				", user name %.*s", data->username.lenstring.len, data->username.lenstring.data);
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	if (data->password.lenstring.data && data->password.lenstring.len > 0)
+ 293              		.loc 1 54 0
+ 294 00cc 7B68     		ldr	r3, [r7, #4]
+ 295 00ce 5B6D     		ldr	r3, [r3, #84]
+ 296 00d0 002B     		cmp	r3, #0
+ 297 00d2 17D0     		beq	.L8
+ 298              		.loc 1 54 0 is_stmt 0 discriminator 1
+ 299 00d4 7B68     		ldr	r3, [r7, #4]
+ 300 00d6 1B6D     		ldr	r3, [r3, #80]
+ 301 00d8 002B     		cmp	r3, #0
+ 302 00da 13DD     		ble	.L8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 8
+
+
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		strindex += snprintf(&strbuf[strindex], strbuflen - strindex,
+ 303              		.loc 1 55 0 is_stmt 1
+ 304 00dc 7B69     		ldr	r3, [r7, #20]
+ 305 00de FA68     		ldr	r2, [r7, #12]
+ 306 00e0 D018     		adds	r0, r2, r3
+ 307 00e2 BA68     		ldr	r2, [r7, #8]
+ 308 00e4 7B69     		ldr	r3, [r7, #20]
+ 309 00e6 D31A     		subs	r3, r2, r3
+ 310 00e8 1946     		mov	r1, r3
+ 311 00ea 7B68     		ldr	r3, [r7, #4]
+ 312 00ec 1A6D     		ldr	r2, [r3, #80]
+ 313 00ee 7B68     		ldr	r3, [r7, #4]
+ 314 00f0 5B6D     		ldr	r3, [r3, #84]
+ 315 00f2 0093     		str	r3, [sp]
+ 316 00f4 1346     		mov	r3, r2
+ 317 00f6 094A     		ldr	r2, .L10+12
+ 318 00f8 FFF7FEFF 		bl	snprintf
+ 319 00fc 0246     		mov	r2, r0
+ 320 00fe 7B69     		ldr	r3, [r7, #20]
+ 321 0100 1344     		add	r3, r3, r2
+ 322 0102 7B61     		str	r3, [r7, #20]
+ 323              	.L8:
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				", password %.*s", data->password.lenstring.len, data->password.lenstring.data);
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	return strindex;
+ 324              		.loc 1 57 0
+ 325 0104 7B69     		ldr	r3, [r7, #20]
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** }
+ 326              		.loc 1 58 0
+ 327 0106 1846     		mov	r0, r3
+ 328 0108 1C37     		adds	r7, r7, #28
+ 329              	.LCFI9:
+ 330              		.cfi_def_cfa_offset 20
+ 331 010a BD46     		mov	sp, r7
+ 332              	.LCFI10:
+ 333              		.cfi_def_cfa_register 13
+ 334              		@ sp needed
+ 335 010c F0BD     		pop	{r4, r5, r6, r7, pc}
+ 336              	.L11:
+ 337 010e 00BF     		.align	2
+ 338              	.L10:
+ 339 0110 90000000 		.word	.LC15
+ 340 0114 DC000000 		.word	.LC16
+ 341 0118 20010000 		.word	.LC17
+ 342 011c 34010000 		.word	.LC18
+ 343              		.cfi_endproc
+ 344              	.LFE4:
+ 346              		.section	.rodata
+ 347              		.align	2
+ 348              	.LC19:
+ 349 0144 434F4E4E 		.ascii	"CONNACK session present %d, rc %d\000"
+ 349      41434B20 
+ 349      73657373 
+ 349      696F6E20 
+ 349      70726573 
+ 350              		.section	.text.MQTTStringFormat_connack,"ax",%progbits
+ 351              		.align	1
+ 352              		.global	MQTTStringFormat_connack
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 9
+
+
+ 353              		.syntax unified
+ 354              		.thumb
+ 355              		.thumb_func
+ 356              		.fpu fpv4-sp-d16
+ 358              	MQTTStringFormat_connack:
+ 359              	.LFB5:
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** int MQTTStringFormat_connack(char* strbuf, int strbuflen, unsigned char connack_rc, unsigned char s
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** {
+ 360              		.loc 1 62 0
+ 361              		.cfi_startproc
+ 362              		@ args = 0, pretend = 0, frame = 24
+ 363              		@ frame_needed = 1, uses_anonymous_args = 0
+ 364 0000 80B5     		push	{r7, lr}
+ 365              	.LCFI11:
+ 366              		.cfi_def_cfa_offset 8
+ 367              		.cfi_offset 7, -8
+ 368              		.cfi_offset 14, -4
+ 369 0002 88B0     		sub	sp, sp, #32
+ 370              	.LCFI12:
+ 371              		.cfi_def_cfa_offset 40
+ 372 0004 02AF     		add	r7, sp, #8
+ 373              	.LCFI13:
+ 374              		.cfi_def_cfa 7, 32
+ 375 0006 F860     		str	r0, [r7, #12]
+ 376 0008 B960     		str	r1, [r7, #8]
+ 377 000a 1146     		mov	r1, r2
+ 378 000c 1A46     		mov	r2, r3
+ 379 000e 0B46     		mov	r3, r1
+ 380 0010 FB71     		strb	r3, [r7, #7]
+ 381 0012 1346     		mov	r3, r2
+ 382 0014 BB71     		strb	r3, [r7, #6]
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	int strindex = snprintf(strbuf, strbuflen, "CONNACK session present %d, rc %d", sessionPresent, co
+ 383              		.loc 1 63 0
+ 384 0016 B968     		ldr	r1, [r7, #8]
+ 385 0018 BA79     		ldrb	r2, [r7, #6]	@ zero_extendqisi2
+ 386 001a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 387 001c 0093     		str	r3, [sp]
+ 388 001e 1346     		mov	r3, r2
+ 389 0020 044A     		ldr	r2, .L14
+ 390 0022 F868     		ldr	r0, [r7, #12]
+ 391 0024 FFF7FEFF 		bl	snprintf
+ 392 0028 7861     		str	r0, [r7, #20]
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	return strindex;
+ 393              		.loc 1 64 0
+ 394 002a 7B69     		ldr	r3, [r7, #20]
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** }
+ 395              		.loc 1 65 0
+ 396 002c 1846     		mov	r0, r3
+ 397 002e 1837     		adds	r7, r7, #24
+ 398              	.LCFI14:
+ 399              		.cfi_def_cfa_offset 8
+ 400 0030 BD46     		mov	sp, r7
+ 401              	.LCFI15:
+ 402              		.cfi_def_cfa_register 13
+ 403              		@ sp needed
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 10
+
+
+ 404 0032 80BD     		pop	{r7, pc}
+ 405              	.L15:
+ 406              		.align	2
+ 407              	.L14:
+ 408 0034 44010000 		.word	.LC19
+ 409              		.cfi_endproc
+ 410              	.LFE5:
+ 412              		.section	.rodata
+ 413 0166 0000     		.align	2
+ 414              	.LC20:
+ 415 0168 5055424C 		.ascii	"PUBLISH dup %d, QoS %d, retained %d, packet id %d, "
+ 415      49534820 
+ 415      64757020 
+ 415      25642C20 
+ 415      516F5320 
+ 416 019b 746F7069 		.ascii	"topic %.*s, payload length %d, payload %.*s\000"
+ 416      6320252E 
+ 416      2A732C20 
+ 416      7061796C 
+ 416      6F616420 
+ 417              		.section	.text.MQTTStringFormat_publish,"ax",%progbits
+ 418              		.align	1
+ 419              		.global	MQTTStringFormat_publish
+ 420              		.syntax unified
+ 421              		.thumb
+ 422              		.thumb_func
+ 423              		.fpu fpv4-sp-d16
+ 425              	MQTTStringFormat_publish:
+ 426              	.LFB6:
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** int MQTTStringFormat_publish(char* strbuf, int strbuflen, unsigned char dup, int qos, unsigned char
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		unsigned short packetid, MQTTString topicName, unsigned char* payload, int payloadlen)
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** {
+ 427              		.loc 1 70 0
+ 428              		.cfi_startproc
+ 429              		@ args = 28, pretend = 0, frame = 24
+ 430              		@ frame_needed = 1, uses_anonymous_args = 0
+ 431 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 432              	.LCFI16:
+ 433              		.cfi_def_cfa_offset 20
+ 434              		.cfi_offset 4, -20
+ 435              		.cfi_offset 5, -16
+ 436              		.cfi_offset 6, -12
+ 437              		.cfi_offset 7, -8
+ 438              		.cfi_offset 14, -4
+ 439 0002 8FB0     		sub	sp, sp, #60
+ 440              	.LCFI17:
+ 441              		.cfi_def_cfa_offset 80
+ 442 0004 08AF     		add	r7, sp, #32
+ 443              	.LCFI18:
+ 444              		.cfi_def_cfa 7, 48
+ 445 0006 F860     		str	r0, [r7, #12]
+ 446 0008 B960     		str	r1, [r7, #8]
+ 447 000a 3B60     		str	r3, [r7]
+ 448 000c 1346     		mov	r3, r2
+ 449 000e FB71     		strb	r3, [r7, #7]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 11
+
+
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	int strindex = snprintf(strbuf, strbuflen,
+ 450              		.loc 1 71 0
+ 451 0010 BE68     		ldr	r6, [r7, #8]
+ 452 0012 97F807C0 		ldrb	ip, [r7, #7]	@ zero_extendqisi2
+ 453 0016 97F83030 		ldrb	r3, [r7, #48]	@ zero_extendqisi2
+ 454 001a BA8E     		ldrh	r2, [r7, #52]
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				"PUBLISH dup %d, QoS %d, retained %d, packet id %d, topic %.*s, payload length %d, payload %.*s
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				dup, qos, retained, packetid,
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				(topicName.lenstring.len < 20) ? topicName.lenstring.len : 20, topicName.lenstring.data,
+ 455              		.loc 1 74 0
+ 456 001c F96B     		ldr	r1, [r7, #60]
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	int strindex = snprintf(strbuf, strbuflen,
+ 457              		.loc 1 71 0
+ 458 001e 1429     		cmp	r1, #20
+ 459 0020 A8BF     		it	ge
+ 460 0022 1421     		movge	r1, #20
+ 461 0024 386C     		ldr	r0, [r7, #64]
+ 462 0026 BC6C     		ldr	r4, [r7, #72]
+ 463 0028 142C     		cmp	r4, #20
+ 464 002a A8BF     		it	ge
+ 465 002c 1424     		movge	r4, #20
+ 466 002e 7D6C     		ldr	r5, [r7, #68]
+ 467 0030 0795     		str	r5, [sp, #28]
+ 468 0032 0694     		str	r4, [sp, #24]
+ 469 0034 BC6C     		ldr	r4, [r7, #72]
+ 470 0036 0594     		str	r4, [sp, #20]
+ 471 0038 0490     		str	r0, [sp, #16]
+ 472 003a 0391     		str	r1, [sp, #12]
+ 473 003c 0292     		str	r2, [sp, #8]
+ 474 003e 0193     		str	r3, [sp, #4]
+ 475 0040 3B68     		ldr	r3, [r7]
+ 476 0042 0093     		str	r3, [sp]
+ 477 0044 6346     		mov	r3, ip
+ 478 0046 054A     		ldr	r2, .L18
+ 479 0048 3146     		mov	r1, r6
+ 480 004a F868     		ldr	r0, [r7, #12]
+ 481 004c FFF7FEFF 		bl	snprintf
+ 482 0050 7861     		str	r0, [r7, #20]
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 				payloadlen, (payloadlen < 20) ? payloadlen : 20, payload);
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	return strindex;
+ 483              		.loc 1 76 0
+ 484 0052 7B69     		ldr	r3, [r7, #20]
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** }
+ 485              		.loc 1 77 0
+ 486 0054 1846     		mov	r0, r3
+ 487 0056 1C37     		adds	r7, r7, #28
+ 488              	.LCFI19:
+ 489              		.cfi_def_cfa_offset 20
+ 490 0058 BD46     		mov	sp, r7
+ 491              	.LCFI20:
+ 492              		.cfi_def_cfa_register 13
+ 493              		@ sp needed
+ 494 005a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 495              	.L19:
+ 496              		.align	2
+ 497              	.L18:
+ 498 005c 68010000 		.word	.LC20
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 12
+
+
+ 499              		.cfi_endproc
+ 500              	.LFE6:
+ 502              		.section	.rodata
+ 503 01c7 00       		.align	2
+ 504              	.LC21:
+ 505 01c8 25732C20 		.ascii	"%s, packet id %d\000"
+ 505      7061636B 
+ 505      65742069 
+ 505      64202564 
+ 505      00
+ 506 01d9 000000   		.align	2
+ 507              	.LC22:
+ 508 01dc 2C206475 		.ascii	", dup %d\000"
+ 508      70202564 
+ 508      00
+ 509              		.section	.text.MQTTStringFormat_ack,"ax",%progbits
+ 510              		.align	1
+ 511              		.global	MQTTStringFormat_ack
+ 512              		.syntax unified
+ 513              		.thumb
+ 514              		.thumb_func
+ 515              		.fpu fpv4-sp-d16
+ 517              	MQTTStringFormat_ack:
+ 518              	.LFB7:
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** int MQTTStringFormat_ack(char* strbuf, int strbuflen, unsigned char packettype, unsigned char dup, 
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** {
+ 519              		.loc 1 81 0
+ 520              		.cfi_startproc
+ 521              		@ args = 4, pretend = 0, frame = 24
+ 522              		@ frame_needed = 1, uses_anonymous_args = 0
+ 523 0000 80B5     		push	{r7, lr}
+ 524              	.LCFI21:
+ 525              		.cfi_def_cfa_offset 8
+ 526              		.cfi_offset 7, -8
+ 527              		.cfi_offset 14, -4
+ 528 0002 88B0     		sub	sp, sp, #32
+ 529              	.LCFI22:
+ 530              		.cfi_def_cfa_offset 40
+ 531 0004 02AF     		add	r7, sp, #8
+ 532              	.LCFI23:
+ 533              		.cfi_def_cfa 7, 32
+ 534 0006 F860     		str	r0, [r7, #12]
+ 535 0008 B960     		str	r1, [r7, #8]
+ 536 000a 1146     		mov	r1, r2
+ 537 000c 1A46     		mov	r2, r3
+ 538 000e 0B46     		mov	r3, r1
+ 539 0010 FB71     		strb	r3, [r7, #7]
+ 540 0012 1346     		mov	r3, r2
+ 541 0014 BB71     		strb	r3, [r7, #6]
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	int strindex = snprintf(strbuf, strbuflen, "%s, packet id %d", MQTTPacket_names[packettype], packe
+ 542              		.loc 1 82 0
+ 543 0016 B968     		ldr	r1, [r7, #8]
+ 544 0018 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 545 001a 114A     		ldr	r2, .L23
+ 546 001c 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 13
+
+
+ 547 0020 3B8C     		ldrh	r3, [r7, #32]
+ 548 0022 0093     		str	r3, [sp]
+ 549 0024 1346     		mov	r3, r2
+ 550 0026 0F4A     		ldr	r2, .L23+4
+ 551 0028 F868     		ldr	r0, [r7, #12]
+ 552 002a FFF7FEFF 		bl	snprintf
+ 553 002e 7861     		str	r0, [r7, #20]
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	if (dup)
+ 554              		.loc 1 83 0
+ 555 0030 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 556 0032 002B     		cmp	r3, #0
+ 557 0034 0ED0     		beq	.L21
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		strindex += snprintf(strbuf + strindex, strbuflen - strindex, ", dup %d", dup);
+ 558              		.loc 1 84 0
+ 559 0036 7B69     		ldr	r3, [r7, #20]
+ 560 0038 FA68     		ldr	r2, [r7, #12]
+ 561 003a D018     		adds	r0, r2, r3
+ 562 003c BA68     		ldr	r2, [r7, #8]
+ 563 003e 7B69     		ldr	r3, [r7, #20]
+ 564 0040 D31A     		subs	r3, r2, r3
+ 565 0042 1946     		mov	r1, r3
+ 566 0044 BB79     		ldrb	r3, [r7, #6]	@ zero_extendqisi2
+ 567 0046 084A     		ldr	r2, .L23+8
+ 568 0048 FFF7FEFF 		bl	snprintf
+ 569 004c 0246     		mov	r2, r0
+ 570 004e 7B69     		ldr	r3, [r7, #20]
+ 571 0050 1344     		add	r3, r3, r2
+ 572 0052 7B61     		str	r3, [r7, #20]
+ 573              	.L21:
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	return strindex;
+ 574              		.loc 1 85 0
+ 575 0054 7B69     		ldr	r3, [r7, #20]
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** }
+ 576              		.loc 1 86 0
+ 577 0056 1846     		mov	r0, r3
+ 578 0058 1837     		adds	r7, r7, #24
+ 579              	.LCFI24:
+ 580              		.cfi_def_cfa_offset 8
+ 581 005a BD46     		mov	sp, r7
+ 582              	.LCFI25:
+ 583              		.cfi_def_cfa_register 13
+ 584              		@ sp needed
+ 585 005c 80BD     		pop	{r7, pc}
+ 586              	.L24:
+ 587 005e 00BF     		.align	2
+ 588              	.L23:
+ 589 0060 00000000 		.word	MQTTPacket_names
+ 590 0064 C8010000 		.word	.LC21
+ 591 0068 DC010000 		.word	.LC22
+ 592              		.cfi_endproc
+ 593              	.LFE7:
+ 595              		.section	.rodata
+ 596 01e5 000000   		.align	2
+ 597              	.LC23:
+ 598 01e8 53554253 		.ascii	"SUBSCRIBE dup %d, packet id %d count %d topic %.*s "
+ 598      43524942 
+ 598      45206475 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 14
+
+
+ 598      70202564 
+ 598      2C207061 
+ 599 021b 716F7320 		.ascii	"qos %d\000"
+ 599      256400
+ 600              		.section	.text.MQTTStringFormat_subscribe,"ax",%progbits
+ 601              		.align	1
+ 602              		.global	MQTTStringFormat_subscribe
+ 603              		.syntax unified
+ 604              		.thumb
+ 605              		.thumb_func
+ 606              		.fpu fpv4-sp-d16
+ 608              	MQTTStringFormat_subscribe:
+ 609              	.LFB8:
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** int MQTTStringFormat_subscribe(char* strbuf, int strbuflen, unsigned char dup, unsigned short packe
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		MQTTString topicFilters[], int requestedQoSs[])
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** {
+ 610              		.loc 1 91 0
+ 611              		.cfi_startproc
+ 612              		@ args = 12, pretend = 0, frame = 16
+ 613              		@ frame_needed = 1, uses_anonymous_args = 0
+ 614 0000 B0B5     		push	{r4, r5, r7, lr}
+ 615              	.LCFI26:
+ 616              		.cfi_def_cfa_offset 16
+ 617              		.cfi_offset 4, -16
+ 618              		.cfi_offset 5, -12
+ 619              		.cfi_offset 7, -8
+ 620              		.cfi_offset 14, -4
+ 621 0002 8AB0     		sub	sp, sp, #40
+ 622              	.LCFI27:
+ 623              		.cfi_def_cfa_offset 56
+ 624 0004 06AF     		add	r7, sp, #24
+ 625              	.LCFI28:
+ 626              		.cfi_def_cfa 7, 32
+ 627 0006 F860     		str	r0, [r7, #12]
+ 628 0008 B960     		str	r1, [r7, #8]
+ 629 000a 1146     		mov	r1, r2
+ 630 000c 1A46     		mov	r2, r3
+ 631 000e 0B46     		mov	r3, r1
+ 632 0010 FB71     		strb	r3, [r7, #7]
+ 633 0012 1346     		mov	r3, r2	@ movhi
+ 634 0014 BB80     		strh	r3, [r7, #4]	@ movhi
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	return snprintf(strbuf, strbuflen,
+ 635              		.loc 1 92 0
+ 636 0016 BC68     		ldr	r4, [r7, #8]
+ 637 0018 FD79     		ldrb	r5, [r7, #7]	@ zero_extendqisi2
+ 638 001a BB88     		ldrh	r3, [r7, #4]
+ 639 001c 7A6A     		ldr	r2, [r7, #36]
+ 640 001e 5268     		ldr	r2, [r2, #4]
+ 641 0020 796A     		ldr	r1, [r7, #36]
+ 642 0022 8968     		ldr	r1, [r1, #8]
+ 643 0024 B86A     		ldr	r0, [r7, #40]
+ 644 0026 0068     		ldr	r0, [r0]
+ 645 0028 0490     		str	r0, [sp, #16]
+ 646 002a 0391     		str	r1, [sp, #12]
+ 647 002c 0292     		str	r2, [sp, #8]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 15
+
+
+ 648 002e 3A6A     		ldr	r2, [r7, #32]
+ 649 0030 0192     		str	r2, [sp, #4]
+ 650 0032 0093     		str	r3, [sp]
+ 651 0034 2B46     		mov	r3, r5
+ 652 0036 054A     		ldr	r2, .L27
+ 653 0038 2146     		mov	r1, r4
+ 654 003a F868     		ldr	r0, [r7, #12]
+ 655 003c FFF7FEFF 		bl	snprintf
+ 656 0040 0346     		mov	r3, r0
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		"SUBSCRIBE dup %d, packet id %d count %d topic %.*s qos %d",
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		dup, packetid, count,
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		topicFilters[0].lenstring.len, topicFilters[0].lenstring.data,
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		requestedQoSs[0]);
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** }
+ 657              		.loc 1 97 0
+ 658 0042 1846     		mov	r0, r3
+ 659 0044 1037     		adds	r7, r7, #16
+ 660              	.LCFI29:
+ 661              		.cfi_def_cfa_offset 16
+ 662 0046 BD46     		mov	sp, r7
+ 663              	.LCFI30:
+ 664              		.cfi_def_cfa_register 13
+ 665              		@ sp needed
+ 666 0048 B0BD     		pop	{r4, r5, r7, pc}
+ 667              	.L28:
+ 668 004a 00BF     		.align	2
+ 669              	.L27:
+ 670 004c E8010000 		.word	.LC23
+ 671              		.cfi_endproc
+ 672              	.LFE8:
+ 674              		.section	.rodata
+ 675 0222 0000     		.align	2
+ 676              	.LC24:
+ 677 0224 53554241 		.ascii	"SUBACK packet id %d count %d granted qos %d\000"
+ 677      434B2070 
+ 677      61636B65 
+ 677      74206964 
+ 677      20256420 
+ 678              		.section	.text.MQTTStringFormat_suback,"ax",%progbits
+ 679              		.align	1
+ 680              		.global	MQTTStringFormat_suback
+ 681              		.syntax unified
+ 682              		.thumb
+ 683              		.thumb_func
+ 684              		.fpu fpv4-sp-d16
+ 686              	MQTTStringFormat_suback:
+ 687              	.LFB9:
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** int MQTTStringFormat_suback(char* strbuf, int strbuflen, unsigned short packetid, int count, int* g
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** {
+ 688              		.loc 1 101 0
+ 689              		.cfi_startproc
+ 690              		@ args = 4, pretend = 0, frame = 16
+ 691              		@ frame_needed = 1, uses_anonymous_args = 0
+ 692 0000 80B5     		push	{r7, lr}
+ 693              	.LCFI31:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 16
+
+
+ 694              		.cfi_def_cfa_offset 8
+ 695              		.cfi_offset 7, -8
+ 696              		.cfi_offset 14, -4
+ 697 0002 86B0     		sub	sp, sp, #24
+ 698              	.LCFI32:
+ 699              		.cfi_def_cfa_offset 32
+ 700 0004 02AF     		add	r7, sp, #8
+ 701              	.LCFI33:
+ 702              		.cfi_def_cfa 7, 24
+ 703 0006 F860     		str	r0, [r7, #12]
+ 704 0008 B960     		str	r1, [r7, #8]
+ 705 000a 3B60     		str	r3, [r7]
+ 706 000c 1346     		mov	r3, r2	@ movhi
+ 707 000e FB80     		strh	r3, [r7, #6]	@ movhi
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	return snprintf(strbuf, strbuflen,
+ 708              		.loc 1 102 0
+ 709 0010 B968     		ldr	r1, [r7, #8]
+ 710 0012 FA88     		ldrh	r2, [r7, #6]
+ 711 0014 BB69     		ldr	r3, [r7, #24]
+ 712 0016 1B68     		ldr	r3, [r3]
+ 713 0018 0193     		str	r3, [sp, #4]
+ 714 001a 3B68     		ldr	r3, [r7]
+ 715 001c 0093     		str	r3, [sp]
+ 716 001e 1346     		mov	r3, r2
+ 717 0020 044A     		ldr	r2, .L31
+ 718 0022 F868     		ldr	r0, [r7, #12]
+ 719 0024 FFF7FEFF 		bl	snprintf
+ 720 0028 0346     		mov	r3, r0
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		"SUBACK packet id %d count %d granted qos %d", packetid, count, grantedQoSs[0]);
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** }
+ 721              		.loc 1 104 0
+ 722 002a 1846     		mov	r0, r3
+ 723 002c 1037     		adds	r7, r7, #16
+ 724              	.LCFI34:
+ 725              		.cfi_def_cfa_offset 8
+ 726 002e BD46     		mov	sp, r7
+ 727              	.LCFI35:
+ 728              		.cfi_def_cfa_register 13
+ 729              		@ sp needed
+ 730 0030 80BD     		pop	{r7, pc}
+ 731              	.L32:
+ 732 0032 00BF     		.align	2
+ 733              	.L31:
+ 734 0034 24020000 		.word	.LC24
+ 735              		.cfi_endproc
+ 736              	.LFE9:
+ 738              		.section	.rodata
+ 739              		.align	2
+ 740              	.LC25:
+ 741 0250 554E5355 		.ascii	"UNSUBSCRIBE dup %d, packet id %d count %d topic %.*"
+ 741      42534352 
+ 741      49424520 
+ 741      64757020 
+ 741      25642C20 
+ 742 0283 7300     		.ascii	"s\000"
+ 743              		.section	.text.MQTTStringFormat_unsubscribe,"ax",%progbits
+ 744              		.align	1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 17
+
+
+ 745              		.global	MQTTStringFormat_unsubscribe
+ 746              		.syntax unified
+ 747              		.thumb
+ 748              		.thumb_func
+ 749              		.fpu fpv4-sp-d16
+ 751              	MQTTStringFormat_unsubscribe:
+ 752              	.LFB10:
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** int MQTTStringFormat_unsubscribe(char* strbuf, int strbuflen, unsigned char dup, unsigned short pac
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 		int count, MQTTString topicFilters[])
+ 109:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** {
+ 753              		.loc 1 109 0
+ 754              		.cfi_startproc
+ 755              		@ args = 8, pretend = 0, frame = 16
+ 756              		@ frame_needed = 1, uses_anonymous_args = 0
+ 757 0000 90B5     		push	{r4, r7, lr}
+ 758              	.LCFI36:
+ 759              		.cfi_def_cfa_offset 12
+ 760              		.cfi_offset 4, -12
+ 761              		.cfi_offset 7, -8
+ 762              		.cfi_offset 14, -4
+ 763 0002 89B0     		sub	sp, sp, #36
+ 764              	.LCFI37:
+ 765              		.cfi_def_cfa_offset 48
+ 766 0004 04AF     		add	r7, sp, #16
+ 767              	.LCFI38:
+ 768              		.cfi_def_cfa 7, 32
+ 769 0006 F860     		str	r0, [r7, #12]
+ 770 0008 B960     		str	r1, [r7, #8]
+ 771 000a 1146     		mov	r1, r2
+ 772 000c 1A46     		mov	r2, r3
+ 773 000e 0B46     		mov	r3, r1
+ 774 0010 FB71     		strb	r3, [r7, #7]
+ 775 0012 1346     		mov	r3, r2	@ movhi
+ 776 0014 BB80     		strh	r3, [r7, #4]	@ movhi
+ 110:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 	return snprintf(strbuf, strbuflen,
+ 777              		.loc 1 110 0
+ 778 0016 B868     		ldr	r0, [r7, #8]
+ 779 0018 FC79     		ldrb	r4, [r7, #7]	@ zero_extendqisi2
+ 780 001a BB88     		ldrh	r3, [r7, #4]
+ 781 001c 7A6A     		ldr	r2, [r7, #36]
+ 782 001e 5268     		ldr	r2, [r2, #4]
+ 783 0020 796A     		ldr	r1, [r7, #36]
+ 784 0022 8968     		ldr	r1, [r1, #8]
+ 785 0024 0391     		str	r1, [sp, #12]
+ 786 0026 0292     		str	r2, [sp, #8]
+ 787 0028 3A6A     		ldr	r2, [r7, #32]
+ 788 002a 0192     		str	r2, [sp, #4]
+ 789 002c 0093     		str	r3, [sp]
+ 790 002e 2346     		mov	r3, r4
+ 791 0030 044A     		ldr	r2, .L35
+ 792 0032 0146     		mov	r1, r0
+ 793 0034 F868     		ldr	r0, [r7, #12]
+ 794 0036 FFF7FEFF 		bl	snprintf
+ 795 003a 0346     		mov	r3, r0
+ 111:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 					"UNSUBSCRIBE dup %d, packet id %d count %d topic %.*s",
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 18
+
+
+ 112:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 					dup, packetid, count,
+ 113:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** 					topicFilters[0].lenstring.len, topicFilters[0].lenstring.data);
+ 114:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTFormat.c **** }
+ 796              		.loc 1 114 0
+ 797 003c 1846     		mov	r0, r3
+ 798 003e 1437     		adds	r7, r7, #20
+ 799              	.LCFI39:
+ 800              		.cfi_def_cfa_offset 12
+ 801 0040 BD46     		mov	sp, r7
+ 802              	.LCFI40:
+ 803              		.cfi_def_cfa_register 13
+ 804              		@ sp needed
+ 805 0042 90BD     		pop	{r4, r7, pc}
+ 806              	.L36:
+ 807              		.align	2
+ 808              	.L35:
+ 809 0044 50020000 		.word	.LC25
+ 810              		.cfi_endproc
+ 811              	.LFE10:
+ 813              		.text
+ 814              	.Letext0:
+ 815              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 816              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 817              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 818              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 819              		.file 6 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+ 820              		.file 7 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 MQTTFormat.c
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:68     .data.MQTTPacket_names:00000000 MQTTPacket_names
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:19     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:65     .data.MQTTPacket_names:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:85     .text.MQTTPacket_getName:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:92     .text.MQTTPacket_getName:00000000 MQTTPacket_getName
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:133    .text.MQTTPacket_getName:00000020 $d
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:153    .text.MQTTStringFormat_connect:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:160    .text.MQTTStringFormat_connect:00000000 MQTTStringFormat_connect
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:339    .text.MQTTStringFormat_connect:00000110 $d
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:351    .text.MQTTStringFormat_connack:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:358    .text.MQTTStringFormat_connack:00000000 MQTTStringFormat_connack
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:408    .text.MQTTStringFormat_connack:00000034 $d
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:418    .text.MQTTStringFormat_publish:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:425    .text.MQTTStringFormat_publish:00000000 MQTTStringFormat_publish
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:498    .text.MQTTStringFormat_publish:0000005c $d
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:510    .text.MQTTStringFormat_ack:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:517    .text.MQTTStringFormat_ack:00000000 MQTTStringFormat_ack
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:589    .text.MQTTStringFormat_ack:00000060 $d
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:601    .text.MQTTStringFormat_subscribe:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:608    .text.MQTTStringFormat_subscribe:00000000 MQTTStringFormat_subscribe
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:670    .text.MQTTStringFormat_subscribe:0000004c $d
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:679    .text.MQTTStringFormat_suback:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:686    .text.MQTTStringFormat_suback:00000000 MQTTStringFormat_suback
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:734    .text.MQTTStringFormat_suback:00000034 $d
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:744    .text.MQTTStringFormat_unsubscribe:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:751    .text.MQTTStringFormat_unsubscribe:00000000 MQTTStringFormat_unsubscribe
+C:\Users\dtjld\AppData\Local\Temp\ccmZburp.s:809    .text.MQTTStringFormat_unsubscribe:00000044 $d
+
+UNDEFINED SYMBOLS
+snprintf

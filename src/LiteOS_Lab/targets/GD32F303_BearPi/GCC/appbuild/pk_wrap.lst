@@ -1,0 +1,2939 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"pk_wrap.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.rsa_can_do,"ax",%progbits
+  18              		.align	1
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.fpu fpv4-sp-d16
+  24              	rsa_can_do:
+  25              	.LFB6:
+  26              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** /*
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  Public Key abstraction layer: wrapper functions
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  SPDX-License-Identifier: Apache-2.0
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  not use this file except in compliance with the License.
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  You may obtain a copy of the License at
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  http://www.apache.org/licenses/LICENSE-2.0
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  Unless required by applicable law or agreed to in writing, software
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  See the License for the specific language governing permissions and
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  limitations under the License.
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *  This file is part of mbed TLS (https://tls.mbed.org)
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  */
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include "mbedtls/config.h"
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #else
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include MBEDTLS_CONFIG_FILE
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_PK_C)
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include "mbedtls/pk_internal.h"
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** /* Even if RSA not activated, for the sake of RSA-alt */
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include "mbedtls/rsa.h"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 2
+
+
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include <string.h>
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECP_C)
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include "mbedtls/ecp.h"
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECDSA_C)
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include "mbedtls/ecdsa.h"
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_PK_RSA_ALT_SUPPORT)
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include "mbedtls/platform_util.h"
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_PLATFORM_C)
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include "mbedtls/platform.h"
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #else
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include <stdlib.h>
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #define mbedtls_calloc    calloc
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #define mbedtls_free       free
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include <limits.h>
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #include <stdint.h>
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_RSA_C)
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_can_do( mbedtls_pk_type_t type )
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+  27              		.loc 1 61 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 1, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32 0000 80B4     		push	{r7}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 7, -4
+  36 0002 83B0     		sub	sp, sp, #12
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 16
+  39 0004 00AF     		add	r7, sp, #0
+  40              	.LCFI2:
+  41              		.cfi_def_cfa_register 7
+  42 0006 0346     		mov	r3, r0
+  43 0008 FB71     		strb	r3, [r7, #7]
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( type == MBEDTLS_PK_RSA ||
+  44              		.loc 1 62 0
+  45 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  46 000c 012B     		cmp	r3, #1
+  47 000e 02D0     		beq	.L2
+  48              		.loc 1 62 0 is_stmt 0 discriminator 2
+  49 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+  50 0012 062B     		cmp	r3, #6
+  51 0014 01D1     		bne	.L3
+  52              	.L2:
+  53              		.loc 1 62 0 discriminator 3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 3
+
+
+  54 0016 0123     		movs	r3, #1
+  55 0018 00E0     		b	.L5
+  56              	.L3:
+  57              		.loc 1 62 0 discriminator 4
+  58 001a 0023     		movs	r3, #0
+  59              	.L5:
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****             type == MBEDTLS_PK_RSASSA_PSS );
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+  60              		.loc 1 64 0 is_stmt 1 discriminator 7
+  61 001c 1846     		mov	r0, r3
+  62 001e 0C37     		adds	r7, r7, #12
+  63              	.LCFI3:
+  64              		.cfi_def_cfa_offset 4
+  65 0020 BD46     		mov	sp, r7
+  66              	.LCFI4:
+  67              		.cfi_def_cfa_register 13
+  68              		@ sp needed
+  69 0022 5DF8047B 		ldr	r7, [sp], #4
+  70              	.LCFI5:
+  71              		.cfi_restore 7
+  72              		.cfi_def_cfa_offset 0
+  73 0026 7047     		bx	lr
+  74              		.cfi_endproc
+  75              	.LFE6:
+  77              		.section	.text.rsa_get_bitlen,"ax",%progbits
+  78              		.align	1
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  82              		.fpu fpv4-sp-d16
+  84              	rsa_get_bitlen:
+  85              	.LFB7:
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static size_t rsa_get_bitlen( const void *ctx )
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+  86              		.loc 1 67 0
+  87              		.cfi_startproc
+  88              		@ args = 0, pretend = 0, frame = 16
+  89              		@ frame_needed = 1, uses_anonymous_args = 0
+  90 0000 80B5     		push	{r7, lr}
+  91              	.LCFI6:
+  92              		.cfi_def_cfa_offset 8
+  93              		.cfi_offset 7, -8
+  94              		.cfi_offset 14, -4
+  95 0002 84B0     		sub	sp, sp, #16
+  96              	.LCFI7:
+  97              		.cfi_def_cfa_offset 24
+  98 0004 00AF     		add	r7, sp, #0
+  99              	.LCFI8:
+ 100              		.cfi_def_cfa_register 7
+ 101 0006 7860     		str	r0, [r7, #4]
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     const mbedtls_rsa_context * rsa = (const mbedtls_rsa_context *) ctx;
+ 102              		.loc 1 68 0
+ 103 0008 7B68     		ldr	r3, [r7, #4]
+ 104 000a FB60     		str	r3, [r7, #12]
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( 8 * mbedtls_rsa_get_len( rsa ) );
+ 105              		.loc 1 69 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 4
+
+
+ 106 000c F868     		ldr	r0, [r7, #12]
+ 107 000e FFF7FEFF 		bl	mbedtls_rsa_get_len
+ 108 0012 0346     		mov	r3, r0
+ 109 0014 DB00     		lsls	r3, r3, #3
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 110              		.loc 1 70 0
+ 111 0016 1846     		mov	r0, r3
+ 112 0018 1037     		adds	r7, r7, #16
+ 113              	.LCFI9:
+ 114              		.cfi_def_cfa_offset 8
+ 115 001a BD46     		mov	sp, r7
+ 116              	.LCFI10:
+ 117              		.cfi_def_cfa_register 13
+ 118              		@ sp needed
+ 119 001c 80BD     		pop	{r7, pc}
+ 120              		.cfi_endproc
+ 121              	.LFE7:
+ 123              		.section	.text.rsa_verify_wrap,"ax",%progbits
+ 124              		.align	1
+ 125              		.syntax unified
+ 126              		.thumb
+ 127              		.thumb_func
+ 128              		.fpu fpv4-sp-d16
+ 130              	rsa_verify_wrap:
+ 131              	.LFB8:
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_verify_wrap( void *ctx, mbedtls_md_type_t md_alg,
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *hash, size_t hash_len,
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *sig, size_t sig_len )
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 132              		.loc 1 75 0
+ 133              		.cfi_startproc
+ 134              		@ args = 8, pretend = 0, frame = 32
+ 135              		@ frame_needed = 1, uses_anonymous_args = 0
+ 136 0000 80B5     		push	{r7, lr}
+ 137              	.LCFI11:
+ 138              		.cfi_def_cfa_offset 8
+ 139              		.cfi_offset 7, -8
+ 140              		.cfi_offset 14, -4
+ 141 0002 8CB0     		sub	sp, sp, #48
+ 142              	.LCFI12:
+ 143              		.cfi_def_cfa_offset 56
+ 144 0004 04AF     		add	r7, sp, #16
+ 145              	.LCFI13:
+ 146              		.cfi_def_cfa 7, 40
+ 147 0006 F860     		str	r0, [r7, #12]
+ 148 0008 7A60     		str	r2, [r7, #4]
+ 149 000a 3B60     		str	r3, [r7]
+ 150 000c 0B46     		mov	r3, r1
+ 151 000e FB72     		strb	r3, [r7, #11]
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     int ret;
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_rsa_context * rsa = (mbedtls_rsa_context *) ctx;
+ 152              		.loc 1 77 0
+ 153 0010 FB68     		ldr	r3, [r7, #12]
+ 154 0012 FB61     		str	r3, [r7, #28]
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     size_t rsa_len = mbedtls_rsa_get_len( rsa );
+ 155              		.loc 1 78 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 5
+
+
+ 156 0014 F869     		ldr	r0, [r7, #28]
+ 157 0016 FFF7FEFF 		bl	mbedtls_rsa_get_len
+ 158 001a B861     		str	r0, [r7, #24]
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if SIZE_MAX > UINT_MAX
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( md_alg == MBEDTLS_MD_NONE && UINT_MAX < hash_len )
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* SIZE_MAX > UINT_MAX */
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( sig_len < rsa_len )
+ 159              		.loc 1 85 0
+ 160 001c FA6A     		ldr	r2, [r7, #44]
+ 161 001e BB69     		ldr	r3, [r7, #24]
+ 162 0020 9A42     		cmp	r2, r3
+ 163 0022 01D2     		bcs	.L9
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_RSA_VERIFY_FAILED );
+ 164              		.loc 1 86 0
+ 165 0024 104B     		ldr	r3, .L13
+ 166 0026 1AE0     		b	.L10
+ 167              	.L9:
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ( ret = mbedtls_rsa_pkcs1_verify( rsa, NULL, NULL,
+ 168              		.loc 1 88 0
+ 169 0028 BB6A     		ldr	r3, [r7, #40]
+ 170 002a 0393     		str	r3, [sp, #12]
+ 171 002c 7B68     		ldr	r3, [r7, #4]
+ 172 002e 0293     		str	r3, [sp, #8]
+ 173 0030 3B68     		ldr	r3, [r7]
+ 174 0032 0193     		str	r3, [sp, #4]
+ 175 0034 FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 176 0036 0093     		str	r3, [sp]
+ 177 0038 0023     		movs	r3, #0
+ 178 003a 0022     		movs	r2, #0
+ 179 003c 0021     		movs	r1, #0
+ 180 003e F869     		ldr	r0, [r7, #28]
+ 181 0040 FFF7FEFF 		bl	mbedtls_rsa_pkcs1_verify
+ 182 0044 7861     		str	r0, [r7, #20]
+ 183 0046 7B69     		ldr	r3, [r7, #20]
+ 184 0048 002B     		cmp	r3, #0
+ 185 004a 01D0     		beq	.L11
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                   MBEDTLS_RSA_PUBLIC, md_alg,
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                   (unsigned int) hash_len, hash, sig ) ) != 0 )
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( ret );
+ 186              		.loc 1 91 0
+ 187 004c 7B69     		ldr	r3, [r7, #20]
+ 188 004e 06E0     		b	.L10
+ 189              	.L11:
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     /* The buffer contains a valid signature followed by extra data.
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****      * We have a special error code for that so that so that callers can
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****      * use mbedtls_pk_verify() to check "Does the buffer start with a
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****      * valid signature?" and not just "Does the buffer contain a valid
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****      * signature?". */
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( sig_len > rsa_len )
+ 190              		.loc 1 98 0
+ 191 0050 FA6A     		ldr	r2, [r7, #44]
+ 192 0052 BB69     		ldr	r3, [r7, #24]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 6
+
+
+ 193 0054 9A42     		cmp	r2, r3
+ 194 0056 01D9     		bls	.L12
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_PK_SIG_LEN_MISMATCH );
+ 195              		.loc 1 99 0
+ 196 0058 044B     		ldr	r3, .L13+4
+ 197 005a 00E0     		b	.L10
+ 198              	.L12:
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( 0 );
+ 199              		.loc 1 101 0
+ 200 005c 0023     		movs	r3, #0
+ 201              	.L10:
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 202              		.loc 1 102 0
+ 203 005e 1846     		mov	r0, r3
+ 204 0060 2037     		adds	r7, r7, #32
+ 205              	.LCFI14:
+ 206              		.cfi_def_cfa_offset 8
+ 207 0062 BD46     		mov	sp, r7
+ 208              	.LCFI15:
+ 209              		.cfi_def_cfa_register 13
+ 210              		@ sp needed
+ 211 0064 80BD     		pop	{r7, pc}
+ 212              	.L14:
+ 213 0066 00BF     		.align	2
+ 214              	.L13:
+ 215 0068 80BCFFFF 		.word	-17280
+ 216 006c 00C7FFFF 		.word	-14592
+ 217              		.cfi_endproc
+ 218              	.LFE8:
+ 220              		.section	.text.rsa_sign_wrap,"ax",%progbits
+ 221              		.align	1
+ 222              		.syntax unified
+ 223              		.thumb
+ 224              		.thumb_func
+ 225              		.fpu fpv4-sp-d16
+ 227              	rsa_sign_wrap:
+ 228              	.LFB9:
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_sign_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *hash, size_t hash_len,
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    unsigned char *sig, size_t *sig_len,
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    int (*f_rng)(void *, unsigned char *, size_t), void *p_rng )
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 229              		.loc 1 108 0
+ 230              		.cfi_startproc
+ 231              		@ args = 16, pretend = 0, frame = 24
+ 232              		@ frame_needed = 1, uses_anonymous_args = 0
+ 233 0000 80B5     		push	{r7, lr}
+ 234              	.LCFI16:
+ 235              		.cfi_def_cfa_offset 8
+ 236              		.cfi_offset 7, -8
+ 237              		.cfi_offset 14, -4
+ 238 0002 8AB0     		sub	sp, sp, #40
+ 239              	.LCFI17:
+ 240              		.cfi_def_cfa_offset 48
+ 241 0004 04AF     		add	r7, sp, #16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 7
+
+
+ 242              	.LCFI18:
+ 243              		.cfi_def_cfa 7, 32
+ 244 0006 F860     		str	r0, [r7, #12]
+ 245 0008 7A60     		str	r2, [r7, #4]
+ 246 000a 3B60     		str	r3, [r7]
+ 247 000c 0B46     		mov	r3, r1
+ 248 000e FB72     		strb	r3, [r7, #11]
+ 109:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_rsa_context * rsa = (mbedtls_rsa_context *) ctx;
+ 249              		.loc 1 109 0
+ 250 0010 FB68     		ldr	r3, [r7, #12]
+ 251 0012 7B61     		str	r3, [r7, #20]
+ 110:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 111:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if SIZE_MAX > UINT_MAX
+ 112:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( md_alg == MBEDTLS_MD_NONE && UINT_MAX < hash_len )
+ 113:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+ 114:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* SIZE_MAX > UINT_MAX */
+ 115:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 116:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     *sig_len = mbedtls_rsa_get_len( rsa );
+ 252              		.loc 1 116 0
+ 253 0014 7869     		ldr	r0, [r7, #20]
+ 254 0016 FFF7FEFF 		bl	mbedtls_rsa_get_len
+ 255 001a 0246     		mov	r2, r0
+ 256 001c 7B6A     		ldr	r3, [r7, #36]
+ 257 001e 1A60     		str	r2, [r3]
+ 117:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 118:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( mbedtls_rsa_pkcs1_sign( rsa, f_rng, p_rng, MBEDTLS_RSA_PRIVATE,
+ 258              		.loc 1 118 0
+ 259 0020 3B6A     		ldr	r3, [r7, #32]
+ 260 0022 0393     		str	r3, [sp, #12]
+ 261 0024 7B68     		ldr	r3, [r7, #4]
+ 262 0026 0293     		str	r3, [sp, #8]
+ 263 0028 3B68     		ldr	r3, [r7]
+ 264 002a 0193     		str	r3, [sp, #4]
+ 265 002c FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 266 002e 0093     		str	r3, [sp]
+ 267 0030 0123     		movs	r3, #1
+ 268 0032 FA6A     		ldr	r2, [r7, #44]
+ 269 0034 B96A     		ldr	r1, [r7, #40]
+ 270 0036 7869     		ldr	r0, [r7, #20]
+ 271 0038 FFF7FEFF 		bl	mbedtls_rsa_pkcs1_sign
+ 272 003c 0346     		mov	r3, r0
+ 119:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                 md_alg, (unsigned int) hash_len, hash, sig ) );
+ 120:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 273              		.loc 1 120 0
+ 274 003e 1846     		mov	r0, r3
+ 275 0040 1837     		adds	r7, r7, #24
+ 276              	.LCFI19:
+ 277              		.cfi_def_cfa_offset 8
+ 278 0042 BD46     		mov	sp, r7
+ 279              	.LCFI20:
+ 280              		.cfi_def_cfa_register 13
+ 281              		@ sp needed
+ 282 0044 80BD     		pop	{r7, pc}
+ 283              		.cfi_endproc
+ 284              	.LFE9:
+ 286              		.section	.text.rsa_decrypt_wrap,"ax",%progbits
+ 287              		.align	1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 8
+
+
+ 288              		.syntax unified
+ 289              		.thumb
+ 290              		.thumb_func
+ 291              		.fpu fpv4-sp-d16
+ 293              	rsa_decrypt_wrap:
+ 294              	.LFB10:
+ 121:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 122:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_decrypt_wrap( void *ctx,
+ 123:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                     const unsigned char *input, size_t ilen,
+ 124:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                     unsigned char *output, size_t *olen, size_t osize,
+ 125:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                     int (*f_rng)(void *, unsigned char *, size_t), void *p_rng )
+ 126:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 295              		.loc 1 126 0
+ 296              		.cfi_startproc
+ 297              		@ args = 16, pretend = 0, frame = 24
+ 298              		@ frame_needed = 1, uses_anonymous_args = 0
+ 299 0000 80B5     		push	{r7, lr}
+ 300              	.LCFI21:
+ 301              		.cfi_def_cfa_offset 8
+ 302              		.cfi_offset 7, -8
+ 303              		.cfi_offset 14, -4
+ 304 0002 8AB0     		sub	sp, sp, #40
+ 305              	.LCFI22:
+ 306              		.cfi_def_cfa_offset 48
+ 307 0004 04AF     		add	r7, sp, #16
+ 308              	.LCFI23:
+ 309              		.cfi_def_cfa 7, 32
+ 310 0006 F860     		str	r0, [r7, #12]
+ 311 0008 B960     		str	r1, [r7, #8]
+ 312 000a 7A60     		str	r2, [r7, #4]
+ 313 000c 3B60     		str	r3, [r7]
+ 127:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_rsa_context * rsa = (mbedtls_rsa_context *) ctx;
+ 314              		.loc 1 127 0
+ 315 000e FB68     		ldr	r3, [r7, #12]
+ 316 0010 7B61     		str	r3, [r7, #20]
+ 128:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 129:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ilen != mbedtls_rsa_get_len( rsa ) )
+ 317              		.loc 1 129 0
+ 318 0012 7869     		ldr	r0, [r7, #20]
+ 319 0014 FFF7FEFF 		bl	mbedtls_rsa_get_len
+ 320 0018 0246     		mov	r2, r0
+ 321 001a 7B68     		ldr	r3, [r7, #4]
+ 322 001c 9342     		cmp	r3, r2
+ 323 001e 01D0     		beq	.L18
+ 130:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_RSA_BAD_INPUT_DATA );
+ 324              		.loc 1 130 0
+ 325 0020 0A4B     		ldr	r3, .L20
+ 326 0022 0EE0     		b	.L19
+ 327              	.L18:
+ 131:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 132:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( mbedtls_rsa_pkcs1_decrypt( rsa, f_rng, p_rng,
+ 328              		.loc 1 132 0
+ 329 0024 7B6A     		ldr	r3, [r7, #36]
+ 330 0026 0393     		str	r3, [sp, #12]
+ 331 0028 3B68     		ldr	r3, [r7]
+ 332 002a 0293     		str	r3, [sp, #8]
+ 333 002c BB68     		ldr	r3, [r7, #8]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 9
+
+
+ 334 002e 0193     		str	r3, [sp, #4]
+ 335 0030 3B6A     		ldr	r3, [r7, #32]
+ 336 0032 0093     		str	r3, [sp]
+ 337 0034 0123     		movs	r3, #1
+ 338 0036 FA6A     		ldr	r2, [r7, #44]
+ 339 0038 B96A     		ldr	r1, [r7, #40]
+ 340 003a 7869     		ldr	r0, [r7, #20]
+ 341 003c FFF7FEFF 		bl	mbedtls_rsa_pkcs1_decrypt
+ 342 0040 0346     		mov	r3, r0
+ 343              	.L19:
+ 133:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                 MBEDTLS_RSA_PRIVATE, olen, input, output, osize ) );
+ 134:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 344              		.loc 1 134 0
+ 345 0042 1846     		mov	r0, r3
+ 346 0044 1837     		adds	r7, r7, #24
+ 347              	.LCFI24:
+ 348              		.cfi_def_cfa_offset 8
+ 349 0046 BD46     		mov	sp, r7
+ 350              	.LCFI25:
+ 351              		.cfi_def_cfa_register 13
+ 352              		@ sp needed
+ 353 0048 80BD     		pop	{r7, pc}
+ 354              	.L21:
+ 355 004a 00BF     		.align	2
+ 356              	.L20:
+ 357 004c 80BFFFFF 		.word	-16512
+ 358              		.cfi_endproc
+ 359              	.LFE10:
+ 361              		.section	.text.rsa_encrypt_wrap,"ax",%progbits
+ 362              		.align	1
+ 363              		.syntax unified
+ 364              		.thumb
+ 365              		.thumb_func
+ 366              		.fpu fpv4-sp-d16
+ 368              	rsa_encrypt_wrap:
+ 369              	.LFB11:
+ 135:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 136:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_encrypt_wrap( void *ctx,
+ 137:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                     const unsigned char *input, size_t ilen,
+ 138:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                     unsigned char *output, size_t *olen, size_t osize,
+ 139:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                     int (*f_rng)(void *, unsigned char *, size_t), void *p_rng )
+ 140:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 370              		.loc 1 140 0
+ 371              		.cfi_startproc
+ 372              		@ args = 16, pretend = 0, frame = 24
+ 373              		@ frame_needed = 1, uses_anonymous_args = 0
+ 374 0000 80B5     		push	{r7, lr}
+ 375              	.LCFI26:
+ 376              		.cfi_def_cfa_offset 8
+ 377              		.cfi_offset 7, -8
+ 378              		.cfi_offset 14, -4
+ 379 0002 8AB0     		sub	sp, sp, #40
+ 380              	.LCFI27:
+ 381              		.cfi_def_cfa_offset 48
+ 382 0004 04AF     		add	r7, sp, #16
+ 383              	.LCFI28:
+ 384              		.cfi_def_cfa 7, 32
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 10
+
+
+ 385 0006 F860     		str	r0, [r7, #12]
+ 386 0008 B960     		str	r1, [r7, #8]
+ 387 000a 7A60     		str	r2, [r7, #4]
+ 388 000c 3B60     		str	r3, [r7]
+ 141:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_rsa_context * rsa = (mbedtls_rsa_context *) ctx;
+ 389              		.loc 1 141 0
+ 390 000e FB68     		ldr	r3, [r7, #12]
+ 391 0010 7B61     		str	r3, [r7, #20]
+ 142:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     *olen = mbedtls_rsa_get_len( rsa );
+ 392              		.loc 1 142 0
+ 393 0012 7869     		ldr	r0, [r7, #20]
+ 394 0014 FFF7FEFF 		bl	mbedtls_rsa_get_len
+ 395 0018 0246     		mov	r2, r0
+ 396 001a 3B6A     		ldr	r3, [r7, #32]
+ 397 001c 1A60     		str	r2, [r3]
+ 143:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 144:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( *olen > osize )
+ 398              		.loc 1 144 0
+ 399 001e 3B6A     		ldr	r3, [r7, #32]
+ 400 0020 1B68     		ldr	r3, [r3]
+ 401 0022 7A6A     		ldr	r2, [r7, #36]
+ 402 0024 9A42     		cmp	r2, r3
+ 403 0026 01D2     		bcs	.L23
+ 145:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_RSA_OUTPUT_TOO_LARGE );
+ 404              		.loc 1 145 0
+ 405 0028 094B     		ldr	r3, .L25
+ 406 002a 0CE0     		b	.L24
+ 407              	.L23:
+ 146:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 147:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( mbedtls_rsa_pkcs1_encrypt( rsa, f_rng, p_rng, MBEDTLS_RSA_PUBLIC,
+ 408              		.loc 1 147 0
+ 409 002c 3B68     		ldr	r3, [r7]
+ 410 002e 0293     		str	r3, [sp, #8]
+ 411 0030 BB68     		ldr	r3, [r7, #8]
+ 412 0032 0193     		str	r3, [sp, #4]
+ 413 0034 7B68     		ldr	r3, [r7, #4]
+ 414 0036 0093     		str	r3, [sp]
+ 415 0038 0023     		movs	r3, #0
+ 416 003a FA6A     		ldr	r2, [r7, #44]
+ 417 003c B96A     		ldr	r1, [r7, #40]
+ 418 003e 7869     		ldr	r0, [r7, #20]
+ 419 0040 FFF7FEFF 		bl	mbedtls_rsa_pkcs1_encrypt
+ 420 0044 0346     		mov	r3, r0
+ 421              	.L24:
+ 148:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                        ilen, input, output ) );
+ 149:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 422              		.loc 1 149 0
+ 423 0046 1846     		mov	r0, r3
+ 424 0048 1837     		adds	r7, r7, #24
+ 425              	.LCFI29:
+ 426              		.cfi_def_cfa_offset 8
+ 427 004a BD46     		mov	sp, r7
+ 428              	.LCFI30:
+ 429              		.cfi_def_cfa_register 13
+ 430              		@ sp needed
+ 431 004c 80BD     		pop	{r7, pc}
+ 432              	.L26:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 11
+
+
+ 433 004e 00BF     		.align	2
+ 434              	.L25:
+ 435 0050 00BCFFFF 		.word	-17408
+ 436              		.cfi_endproc
+ 437              	.LFE11:
+ 439              		.section	.text.rsa_check_pair_wrap,"ax",%progbits
+ 440              		.align	1
+ 441              		.syntax unified
+ 442              		.thumb
+ 443              		.thumb_func
+ 444              		.fpu fpv4-sp-d16
+ 446              	rsa_check_pair_wrap:
+ 447              	.LFB12:
+ 150:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 151:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_check_pair_wrap( const void *pub, const void *prv )
+ 152:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 448              		.loc 1 152 0
+ 449              		.cfi_startproc
+ 450              		@ args = 0, pretend = 0, frame = 8
+ 451              		@ frame_needed = 1, uses_anonymous_args = 0
+ 452 0000 80B5     		push	{r7, lr}
+ 453              	.LCFI31:
+ 454              		.cfi_def_cfa_offset 8
+ 455              		.cfi_offset 7, -8
+ 456              		.cfi_offset 14, -4
+ 457 0002 82B0     		sub	sp, sp, #8
+ 458              	.LCFI32:
+ 459              		.cfi_def_cfa_offset 16
+ 460 0004 00AF     		add	r7, sp, #0
+ 461              	.LCFI33:
+ 462              		.cfi_def_cfa_register 7
+ 463 0006 7860     		str	r0, [r7, #4]
+ 464 0008 3960     		str	r1, [r7]
+ 153:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( mbedtls_rsa_check_pub_priv( (const mbedtls_rsa_context *) pub,
+ 465              		.loc 1 153 0
+ 466 000a 3968     		ldr	r1, [r7]
+ 467 000c 7868     		ldr	r0, [r7, #4]
+ 468 000e FFF7FEFF 		bl	mbedtls_rsa_check_pub_priv
+ 469 0012 0346     		mov	r3, r0
+ 154:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                 (const mbedtls_rsa_context *) prv ) );
+ 155:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 470              		.loc 1 155 0
+ 471 0014 1846     		mov	r0, r3
+ 472 0016 0837     		adds	r7, r7, #8
+ 473              	.LCFI34:
+ 474              		.cfi_def_cfa_offset 8
+ 475 0018 BD46     		mov	sp, r7
+ 476              	.LCFI35:
+ 477              		.cfi_def_cfa_register 13
+ 478              		@ sp needed
+ 479 001a 80BD     		pop	{r7, pc}
+ 480              		.cfi_endproc
+ 481              	.LFE12:
+ 483              		.section	.text.rsa_alloc_wrap,"ax",%progbits
+ 484              		.align	1
+ 485              		.syntax unified
+ 486              		.thumb
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 12
+
+
+ 487              		.thumb_func
+ 488              		.fpu fpv4-sp-d16
+ 490              	rsa_alloc_wrap:
+ 491              	.LFB13:
+ 156:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 157:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void *rsa_alloc_wrap( void )
+ 158:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 492              		.loc 1 158 0
+ 493              		.cfi_startproc
+ 494              		@ args = 0, pretend = 0, frame = 8
+ 495              		@ frame_needed = 1, uses_anonymous_args = 0
+ 496 0000 80B5     		push	{r7, lr}
+ 497              	.LCFI36:
+ 498              		.cfi_def_cfa_offset 8
+ 499              		.cfi_offset 7, -8
+ 500              		.cfi_offset 14, -4
+ 501 0002 82B0     		sub	sp, sp, #8
+ 502              	.LCFI37:
+ 503              		.cfi_def_cfa_offset 16
+ 504 0004 00AF     		add	r7, sp, #0
+ 505              	.LCFI38:
+ 506              		.cfi_def_cfa_register 7
+ 159:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     void *ctx = mbedtls_calloc( 1, sizeof( mbedtls_rsa_context ) );
+ 507              		.loc 1 159 0
+ 508 0006 AC21     		movs	r1, #172
+ 509 0008 0120     		movs	r0, #1
+ 510 000a FFF7FEFF 		bl	mbedtls_calloc
+ 511 000e 7860     		str	r0, [r7, #4]
+ 160:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 161:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ctx != NULL )
+ 512              		.loc 1 161 0
+ 513 0010 7B68     		ldr	r3, [r7, #4]
+ 514 0012 002B     		cmp	r3, #0
+ 515 0014 04D0     		beq	.L30
+ 162:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         mbedtls_rsa_init( (mbedtls_rsa_context *) ctx, 0, 0 );
+ 516              		.loc 1 162 0
+ 517 0016 0022     		movs	r2, #0
+ 518 0018 0021     		movs	r1, #0
+ 519 001a 7868     		ldr	r0, [r7, #4]
+ 520 001c FFF7FEFF 		bl	mbedtls_rsa_init
+ 521              	.L30:
+ 163:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 164:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ctx );
+ 522              		.loc 1 164 0
+ 523 0020 7B68     		ldr	r3, [r7, #4]
+ 165:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 524              		.loc 1 165 0
+ 525 0022 1846     		mov	r0, r3
+ 526 0024 0837     		adds	r7, r7, #8
+ 527              	.LCFI39:
+ 528              		.cfi_def_cfa_offset 8
+ 529 0026 BD46     		mov	sp, r7
+ 530              	.LCFI40:
+ 531              		.cfi_def_cfa_register 13
+ 532              		@ sp needed
+ 533 0028 80BD     		pop	{r7, pc}
+ 534              		.cfi_endproc
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 13
+
+
+ 535              	.LFE13:
+ 537              		.section	.text.rsa_free_wrap,"ax",%progbits
+ 538              		.align	1
+ 539              		.syntax unified
+ 540              		.thumb
+ 541              		.thumb_func
+ 542              		.fpu fpv4-sp-d16
+ 544              	rsa_free_wrap:
+ 545              	.LFB14:
+ 166:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 167:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void rsa_free_wrap( void *ctx )
+ 168:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 546              		.loc 1 168 0
+ 547              		.cfi_startproc
+ 548              		@ args = 0, pretend = 0, frame = 8
+ 549              		@ frame_needed = 1, uses_anonymous_args = 0
+ 550 0000 80B5     		push	{r7, lr}
+ 551              	.LCFI41:
+ 552              		.cfi_def_cfa_offset 8
+ 553              		.cfi_offset 7, -8
+ 554              		.cfi_offset 14, -4
+ 555 0002 82B0     		sub	sp, sp, #8
+ 556              	.LCFI42:
+ 557              		.cfi_def_cfa_offset 16
+ 558 0004 00AF     		add	r7, sp, #0
+ 559              	.LCFI43:
+ 560              		.cfi_def_cfa_register 7
+ 561 0006 7860     		str	r0, [r7, #4]
+ 169:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_rsa_free( (mbedtls_rsa_context *) ctx );
+ 562              		.loc 1 169 0
+ 563 0008 7868     		ldr	r0, [r7, #4]
+ 564 000a FFF7FEFF 		bl	mbedtls_rsa_free
+ 170:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_free( ctx );
+ 565              		.loc 1 170 0
+ 566 000e 7868     		ldr	r0, [r7, #4]
+ 567 0010 FFF7FEFF 		bl	mbedtls_free
+ 171:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 568              		.loc 1 171 0
+ 569 0014 00BF     		nop
+ 570 0016 0837     		adds	r7, r7, #8
+ 571              	.LCFI44:
+ 572              		.cfi_def_cfa_offset 8
+ 573 0018 BD46     		mov	sp, r7
+ 574              	.LCFI45:
+ 575              		.cfi_def_cfa_register 13
+ 576              		@ sp needed
+ 577 001a 80BD     		pop	{r7, pc}
+ 578              		.cfi_endproc
+ 579              	.LFE14:
+ 581              		.section	.rodata
+ 582              		.align	2
+ 583              	.LC0:
+ 584 0000 7273612E 		.ascii	"rsa.N\000"
+ 584      4E00
+ 585 0006 0000     		.align	2
+ 586              	.LC1:
+ 587 0008 7273612E 		.ascii	"rsa.E\000"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 14
+
+
+ 587      4500
+ 588              		.section	.text.rsa_debug,"ax",%progbits
+ 589              		.align	1
+ 590              		.syntax unified
+ 591              		.thumb
+ 592              		.thumb_func
+ 593              		.fpu fpv4-sp-d16
+ 595              	rsa_debug:
+ 596              	.LFB15:
+ 172:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 173:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void rsa_debug( const void *ctx, mbedtls_pk_debug_item *items )
+ 174:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 597              		.loc 1 174 0
+ 598              		.cfi_startproc
+ 599              		@ args = 0, pretend = 0, frame = 8
+ 600              		@ frame_needed = 1, uses_anonymous_args = 0
+ 601              		@ link register save eliminated.
+ 602 0000 80B4     		push	{r7}
+ 603              	.LCFI46:
+ 604              		.cfi_def_cfa_offset 4
+ 605              		.cfi_offset 7, -4
+ 606 0002 83B0     		sub	sp, sp, #12
+ 607              	.LCFI47:
+ 608              		.cfi_def_cfa_offset 16
+ 609 0004 00AF     		add	r7, sp, #0
+ 610              	.LCFI48:
+ 611              		.cfi_def_cfa_register 7
+ 612 0006 7860     		str	r0, [r7, #4]
+ 613 0008 3960     		str	r1, [r7]
+ 175:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items->type = MBEDTLS_PK_DEBUG_MPI;
+ 614              		.loc 1 175 0
+ 615 000a 3B68     		ldr	r3, [r7]
+ 616 000c 0122     		movs	r2, #1
+ 617 000e 1A70     		strb	r2, [r3]
+ 176:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items->name = "rsa.N";
+ 618              		.loc 1 176 0
+ 619 0010 3B68     		ldr	r3, [r7]
+ 620 0012 0D4A     		ldr	r2, .L34
+ 621 0014 5A60     		str	r2, [r3, #4]
+ 177:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items->value = &( ((mbedtls_rsa_context *) ctx)->N );
+ 622              		.loc 1 177 0
+ 623 0016 7B68     		ldr	r3, [r7, #4]
+ 624 0018 03F10802 		add	r2, r3, #8
+ 625 001c 3B68     		ldr	r3, [r7]
+ 626 001e 9A60     		str	r2, [r3, #8]
+ 178:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 179:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items++;
+ 627              		.loc 1 179 0
+ 628 0020 3B68     		ldr	r3, [r7]
+ 629 0022 0C33     		adds	r3, r3, #12
+ 630 0024 3B60     		str	r3, [r7]
+ 180:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 181:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items->type = MBEDTLS_PK_DEBUG_MPI;
+ 631              		.loc 1 181 0
+ 632 0026 3B68     		ldr	r3, [r7]
+ 633 0028 0122     		movs	r2, #1
+ 634 002a 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 15
+
+
+ 182:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items->name = "rsa.E";
+ 635              		.loc 1 182 0
+ 636 002c 3B68     		ldr	r3, [r7]
+ 637 002e 074A     		ldr	r2, .L34+4
+ 638 0030 5A60     		str	r2, [r3, #4]
+ 183:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items->value = &( ((mbedtls_rsa_context *) ctx)->E );
+ 639              		.loc 1 183 0
+ 640 0032 7B68     		ldr	r3, [r7, #4]
+ 641 0034 03F11402 		add	r2, r3, #20
+ 642 0038 3B68     		ldr	r3, [r7]
+ 643 003a 9A60     		str	r2, [r3, #8]
+ 184:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 644              		.loc 1 184 0
+ 645 003c 00BF     		nop
+ 646 003e 0C37     		adds	r7, r7, #12
+ 647              	.LCFI49:
+ 648              		.cfi_def_cfa_offset 4
+ 649 0040 BD46     		mov	sp, r7
+ 650              	.LCFI50:
+ 651              		.cfi_def_cfa_register 13
+ 652              		@ sp needed
+ 653 0042 5DF8047B 		ldr	r7, [sp], #4
+ 654              	.LCFI51:
+ 655              		.cfi_restore 7
+ 656              		.cfi_def_cfa_offset 0
+ 657 0046 7047     		bx	lr
+ 658              	.L35:
+ 659              		.align	2
+ 660              	.L34:
+ 661 0048 00000000 		.word	.LC0
+ 662 004c 08000000 		.word	.LC1
+ 663              		.cfi_endproc
+ 664              	.LFE15:
+ 666              		.global	mbedtls_rsa_info
+ 667              		.section	.rodata
+ 668 000e 0000     		.align	2
+ 669              	.LC2:
+ 670 0010 52534100 		.ascii	"RSA\000"
+ 671              		.section	.rodata.mbedtls_rsa_info,"a",%progbits
+ 672              		.align	2
+ 675              	mbedtls_rsa_info:
+ 676 0000 01       		.byte	1
+ 677 0001 000000   		.space	3
+ 678 0004 10000000 		.word	.LC2
+ 679 0008 00000000 		.word	rsa_get_bitlen
+ 680 000c 00000000 		.word	rsa_can_do
+ 681 0010 00000000 		.word	rsa_verify_wrap
+ 682 0014 00000000 		.word	rsa_sign_wrap
+ 683 0018 00000000 		.word	rsa_decrypt_wrap
+ 684 001c 00000000 		.word	rsa_encrypt_wrap
+ 685 0020 00000000 		.word	rsa_check_pair_wrap
+ 686 0024 00000000 		.word	rsa_alloc_wrap
+ 687 0028 00000000 		.word	rsa_free_wrap
+ 688 002c 00000000 		.word	rsa_debug
+ 689              		.section	.text.eckey_can_do,"ax",%progbits
+ 690              		.align	1
+ 691              		.syntax unified
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 16
+
+
+ 692              		.thumb
+ 693              		.thumb_func
+ 694              		.fpu fpv4-sp-d16
+ 696              	eckey_can_do:
+ 697              	.LFB16:
+ 185:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 186:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** const mbedtls_pk_info_t mbedtls_rsa_info = {
+ 187:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     MBEDTLS_PK_RSA,
+ 188:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     "RSA",
+ 189:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_get_bitlen,
+ 190:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_can_do,
+ 191:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_verify_wrap,
+ 192:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_sign_wrap,
+ 193:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+ 194:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 195:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 196:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+ 197:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_decrypt_wrap,
+ 198:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_encrypt_wrap,
+ 199:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_check_pair_wrap,
+ 200:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_alloc_wrap,
+ 201:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_free_wrap,
+ 202:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+ 203:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 204:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 205:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+ 206:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rsa_debug,
+ 207:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** };
+ 208:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* MBEDTLS_RSA_C */
+ 209:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 210:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECP_C)
+ 211:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** /*
+ 212:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  * Generic EC key
+ 213:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  */
+ 214:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int eckey_can_do( mbedtls_pk_type_t type )
+ 215:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 698              		.loc 1 215 0
+ 699              		.cfi_startproc
+ 700              		@ args = 0, pretend = 0, frame = 8
+ 701              		@ frame_needed = 1, uses_anonymous_args = 0
+ 702              		@ link register save eliminated.
+ 703 0000 80B4     		push	{r7}
+ 704              	.LCFI52:
+ 705              		.cfi_def_cfa_offset 4
+ 706              		.cfi_offset 7, -4
+ 707 0002 83B0     		sub	sp, sp, #12
+ 708              	.LCFI53:
+ 709              		.cfi_def_cfa_offset 16
+ 710 0004 00AF     		add	r7, sp, #0
+ 711              	.LCFI54:
+ 712              		.cfi_def_cfa_register 7
+ 713 0006 0346     		mov	r3, r0
+ 714 0008 FB71     		strb	r3, [r7, #7]
+ 216:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( type == MBEDTLS_PK_ECKEY ||
+ 217:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****             type == MBEDTLS_PK_ECKEY_DH ||
+ 715              		.loc 1 217 0
+ 716 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 17
+
+
+ 717 000c 022B     		cmp	r3, #2
+ 718 000e 05D0     		beq	.L37
+ 216:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( type == MBEDTLS_PK_ECKEY ||
+ 719              		.loc 1 216 0
+ 720 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 721 0012 032B     		cmp	r3, #3
+ 722 0014 02D0     		beq	.L37
+ 723              		.loc 1 217 0 discriminator 2
+ 724 0016 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 725 0018 042B     		cmp	r3, #4
+ 726 001a 01D1     		bne	.L38
+ 727              	.L37:
+ 728              		.loc 1 217 0 is_stmt 0 discriminator 1
+ 729 001c 0123     		movs	r3, #1
+ 730 001e 00E0     		b	.L40
+ 731              	.L38:
+ 732              		.loc 1 217 0 discriminator 3
+ 733 0020 0023     		movs	r3, #0
+ 734              	.L40:
+ 218:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****             type == MBEDTLS_PK_ECDSA );
+ 219:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 735              		.loc 1 219 0 is_stmt 1 discriminator 6
+ 736 0022 1846     		mov	r0, r3
+ 737 0024 0C37     		adds	r7, r7, #12
+ 738              	.LCFI55:
+ 739              		.cfi_def_cfa_offset 4
+ 740 0026 BD46     		mov	sp, r7
+ 741              	.LCFI56:
+ 742              		.cfi_def_cfa_register 13
+ 743              		@ sp needed
+ 744 0028 5DF8047B 		ldr	r7, [sp], #4
+ 745              	.LCFI57:
+ 746              		.cfi_restore 7
+ 747              		.cfi_def_cfa_offset 0
+ 748 002c 7047     		bx	lr
+ 749              		.cfi_endproc
+ 750              	.LFE16:
+ 752              		.section	.text.eckey_get_bitlen,"ax",%progbits
+ 753              		.align	1
+ 754              		.syntax unified
+ 755              		.thumb
+ 756              		.thumb_func
+ 757              		.fpu fpv4-sp-d16
+ 759              	eckey_get_bitlen:
+ 760              	.LFB17:
+ 220:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 221:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static size_t eckey_get_bitlen( const void *ctx )
+ 222:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 761              		.loc 1 222 0
+ 762              		.cfi_startproc
+ 763              		@ args = 0, pretend = 0, frame = 8
+ 764              		@ frame_needed = 1, uses_anonymous_args = 0
+ 765              		@ link register save eliminated.
+ 766 0000 80B4     		push	{r7}
+ 767              	.LCFI58:
+ 768              		.cfi_def_cfa_offset 4
+ 769              		.cfi_offset 7, -4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 18
+
+
+ 770 0002 83B0     		sub	sp, sp, #12
+ 771              	.LCFI59:
+ 772              		.cfi_def_cfa_offset 16
+ 773 0004 00AF     		add	r7, sp, #0
+ 774              	.LCFI60:
+ 775              		.cfi_def_cfa_register 7
+ 776 0006 7860     		str	r0, [r7, #4]
+ 223:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ((mbedtls_ecp_keypair *) ctx)->grp.pbits );
+ 777              		.loc 1 223 0
+ 778 0008 7B68     		ldr	r3, [r7, #4]
+ 779 000a 9B6D     		ldr	r3, [r3, #88]
+ 224:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 780              		.loc 1 224 0
+ 781 000c 1846     		mov	r0, r3
+ 782 000e 0C37     		adds	r7, r7, #12
+ 783              	.LCFI61:
+ 784              		.cfi_def_cfa_offset 4
+ 785 0010 BD46     		mov	sp, r7
+ 786              	.LCFI62:
+ 787              		.cfi_def_cfa_register 13
+ 788              		@ sp needed
+ 789 0012 5DF8047B 		ldr	r7, [sp], #4
+ 790              	.LCFI63:
+ 791              		.cfi_restore 7
+ 792              		.cfi_def_cfa_offset 0
+ 793 0016 7047     		bx	lr
+ 794              		.cfi_endproc
+ 795              	.LFE17:
+ 797              		.section	.text.eckey_verify_wrap,"ax",%progbits
+ 798              		.align	1
+ 799              		.syntax unified
+ 800              		.thumb
+ 801              		.thumb_func
+ 802              		.fpu fpv4-sp-d16
+ 804              	eckey_verify_wrap:
+ 805              	.LFB18:
+ 225:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 226:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECDSA_C)
+ 227:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** /* Forward declarations */
+ 228:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int ecdsa_verify_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 229:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *hash, size_t hash_len,
+ 230:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *sig, size_t sig_len );
+ 231:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 232:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int ecdsa_sign_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 233:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *hash, size_t hash_len,
+ 234:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    unsigned char *sig, size_t *sig_len,
+ 235:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    int (*f_rng)(void *, unsigned char *, size_t), void *p_rng );
+ 236:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 237:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int eckey_verify_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 238:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *hash, size_t hash_len,
+ 239:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *sig, size_t sig_len )
+ 240:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 806              		.loc 1 240 0
+ 807              		.cfi_startproc
+ 808              		@ args = 8, pretend = 0, frame = 192
+ 809              		@ frame_needed = 1, uses_anonymous_args = 0
+ 810 0000 80B5     		push	{r7, lr}
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 19
+
+
+ 811              	.LCFI64:
+ 812              		.cfi_def_cfa_offset 8
+ 813              		.cfi_offset 7, -8
+ 814              		.cfi_offset 14, -4
+ 815 0002 B2B0     		sub	sp, sp, #200
+ 816              	.LCFI65:
+ 817              		.cfi_def_cfa_offset 208
+ 818 0004 02AF     		add	r7, sp, #8
+ 819              	.LCFI66:
+ 820              		.cfi_def_cfa 7, 200
+ 821 0006 F860     		str	r0, [r7, #12]
+ 822 0008 7A60     		str	r2, [r7, #4]
+ 823 000a 3B60     		str	r3, [r7]
+ 824 000c 0B46     		mov	r3, r1
+ 825 000e FB72     		strb	r3, [r7, #11]
+ 241:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     int ret;
+ 242:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_context ecdsa;
+ 243:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 244:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_init( &ecdsa );
+ 826              		.loc 1 244 0
+ 827 0010 07F11003 		add	r3, r7, #16
+ 828 0014 1846     		mov	r0, r3
+ 829 0016 FFF7FEFF 		bl	mbedtls_ecdsa_init
+ 245:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 246:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ( ret = mbedtls_ecdsa_from_keypair( &ecdsa, ctx ) ) == 0 )
+ 830              		.loc 1 246 0
+ 831 001a 07F11003 		add	r3, r7, #16
+ 832 001e F968     		ldr	r1, [r7, #12]
+ 833 0020 1846     		mov	r0, r3
+ 834 0022 FFF7FEFF 		bl	mbedtls_ecdsa_from_keypair
+ 835 0026 C7F8BC00 		str	r0, [r7, #188]
+ 836 002a D7F8BC30 		ldr	r3, [r7, #188]
+ 837 002e 002B     		cmp	r3, #0
+ 838 0030 0ED1     		bne	.L44
+ 247:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         ret = ecdsa_verify_wrap( &ecdsa, md_alg, hash, hash_len, sig, sig_len );
+ 839              		.loc 1 247 0
+ 840 0032 F97A     		ldrb	r1, [r7, #11]	@ zero_extendqisi2
+ 841 0034 07F11000 		add	r0, r7, #16
+ 842 0038 D7F8CC30 		ldr	r3, [r7, #204]
+ 843 003c 0193     		str	r3, [sp, #4]
+ 844 003e D7F8C830 		ldr	r3, [r7, #200]
+ 845 0042 0093     		str	r3, [sp]
+ 846 0044 3B68     		ldr	r3, [r7]
+ 847 0046 7A68     		ldr	r2, [r7, #4]
+ 848 0048 FFF7FEFF 		bl	ecdsa_verify_wrap
+ 849 004c C7F8BC00 		str	r0, [r7, #188]
+ 850              	.L44:
+ 248:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 249:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_free( &ecdsa );
+ 851              		.loc 1 249 0
+ 852 0050 07F11003 		add	r3, r7, #16
+ 853 0054 1846     		mov	r0, r3
+ 854 0056 FFF7FEFF 		bl	mbedtls_ecdsa_free
+ 250:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 251:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ret );
+ 855              		.loc 1 251 0
+ 856 005a D7F8BC30 		ldr	r3, [r7, #188]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 20
+
+
+ 252:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 857              		.loc 1 252 0
+ 858 005e 1846     		mov	r0, r3
+ 859 0060 C037     		adds	r7, r7, #192
+ 860              	.LCFI67:
+ 861              		.cfi_def_cfa_offset 8
+ 862 0062 BD46     		mov	sp, r7
+ 863              	.LCFI68:
+ 864              		.cfi_def_cfa_register 13
+ 865              		@ sp needed
+ 866 0064 80BD     		pop	{r7, pc}
+ 867              		.cfi_endproc
+ 868              	.LFE18:
+ 870              		.section	.text.eckey_sign_wrap,"ax",%progbits
+ 871              		.align	1
+ 872              		.syntax unified
+ 873              		.thumb
+ 874              		.thumb_func
+ 875              		.fpu fpv4-sp-d16
+ 877              	eckey_sign_wrap:
+ 878              	.LFB19:
+ 253:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 254:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int eckey_sign_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 255:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *hash, size_t hash_len,
+ 256:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    unsigned char *sig, size_t *sig_len,
+ 257:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    int (*f_rng)(void *, unsigned char *, size_t), void *p_rng )
+ 258:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 879              		.loc 1 258 0
+ 880              		.cfi_startproc
+ 881              		@ args = 16, pretend = 0, frame = 192
+ 882              		@ frame_needed = 1, uses_anonymous_args = 0
+ 883 0000 80B5     		push	{r7, lr}
+ 884              	.LCFI69:
+ 885              		.cfi_def_cfa_offset 8
+ 886              		.cfi_offset 7, -8
+ 887              		.cfi_offset 14, -4
+ 888 0002 B4B0     		sub	sp, sp, #208
+ 889              	.LCFI70:
+ 890              		.cfi_def_cfa_offset 216
+ 891 0004 04AF     		add	r7, sp, #16
+ 892              	.LCFI71:
+ 893              		.cfi_def_cfa 7, 200
+ 894 0006 F860     		str	r0, [r7, #12]
+ 895 0008 7A60     		str	r2, [r7, #4]
+ 896 000a 3B60     		str	r3, [r7]
+ 897 000c 0B46     		mov	r3, r1
+ 898 000e FB72     		strb	r3, [r7, #11]
+ 259:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     int ret;
+ 260:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_context ecdsa;
+ 261:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 262:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_init( &ecdsa );
+ 899              		.loc 1 262 0
+ 900 0010 07F11003 		add	r3, r7, #16
+ 901 0014 1846     		mov	r0, r3
+ 902 0016 FFF7FEFF 		bl	mbedtls_ecdsa_init
+ 263:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 264:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ( ret = mbedtls_ecdsa_from_keypair( &ecdsa, ctx ) ) == 0 )
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 21
+
+
+ 903              		.loc 1 264 0
+ 904 001a 07F11003 		add	r3, r7, #16
+ 905 001e F968     		ldr	r1, [r7, #12]
+ 906 0020 1846     		mov	r0, r3
+ 907 0022 FFF7FEFF 		bl	mbedtls_ecdsa_from_keypair
+ 908 0026 C7F8BC00 		str	r0, [r7, #188]
+ 909 002a D7F8BC30 		ldr	r3, [r7, #188]
+ 910 002e 002B     		cmp	r3, #0
+ 911 0030 14D1     		bne	.L47
+ 265:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         ret = ecdsa_sign_wrap( &ecdsa, md_alg, hash, hash_len, sig, sig_len,
+ 912              		.loc 1 265 0
+ 913 0032 F97A     		ldrb	r1, [r7, #11]	@ zero_extendqisi2
+ 914 0034 07F11000 		add	r0, r7, #16
+ 915 0038 D7F8D430 		ldr	r3, [r7, #212]
+ 916 003c 0393     		str	r3, [sp, #12]
+ 917 003e D7F8D030 		ldr	r3, [r7, #208]
+ 918 0042 0293     		str	r3, [sp, #8]
+ 919 0044 D7F8CC30 		ldr	r3, [r7, #204]
+ 920 0048 0193     		str	r3, [sp, #4]
+ 921 004a D7F8C830 		ldr	r3, [r7, #200]
+ 922 004e 0093     		str	r3, [sp]
+ 923 0050 3B68     		ldr	r3, [r7]
+ 924 0052 7A68     		ldr	r2, [r7, #4]
+ 925 0054 FFF7FEFF 		bl	ecdsa_sign_wrap
+ 926 0058 C7F8BC00 		str	r0, [r7, #188]
+ 927              	.L47:
+ 266:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                f_rng, p_rng );
+ 267:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 268:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_free( &ecdsa );
+ 928              		.loc 1 268 0
+ 929 005c 07F11003 		add	r3, r7, #16
+ 930 0060 1846     		mov	r0, r3
+ 931 0062 FFF7FEFF 		bl	mbedtls_ecdsa_free
+ 269:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 270:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ret );
+ 932              		.loc 1 270 0
+ 933 0066 D7F8BC30 		ldr	r3, [r7, #188]
+ 271:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 934              		.loc 1 271 0
+ 935 006a 1846     		mov	r0, r3
+ 936 006c C037     		adds	r7, r7, #192
+ 937              	.LCFI72:
+ 938              		.cfi_def_cfa_offset 8
+ 939 006e BD46     		mov	sp, r7
+ 940              	.LCFI73:
+ 941              		.cfi_def_cfa_register 13
+ 942              		@ sp needed
+ 943 0070 80BD     		pop	{r7, pc}
+ 944              		.cfi_endproc
+ 945              	.LFE19:
+ 947              		.section	.text.eckey_check_pair,"ax",%progbits
+ 948              		.align	1
+ 949              		.syntax unified
+ 950              		.thumb
+ 951              		.thumb_func
+ 952              		.fpu fpv4-sp-d16
+ 954              	eckey_check_pair:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 22
+
+
+ 955              	.LFB20:
+ 272:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 273:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECP_RESTARTABLE)
+ 274:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** /* Forward declarations */
+ 275:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int ecdsa_verify_rs_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 276:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *hash, size_t hash_len,
+ 277:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *sig, size_t sig_len,
+ 278:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        void *rs_ctx );
+ 279:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 280:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int ecdsa_sign_rs_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 281:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *hash, size_t hash_len,
+ 282:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    unsigned char *sig, size_t *sig_len,
+ 283:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    int (*f_rng)(void *, unsigned char *, size_t), void *p_rng,
+ 284:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    void *rs_ctx );
+ 285:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 286:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** /*
+ 287:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  * Restart context for ECDSA operations with ECKEY context
+ 288:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  *
+ 289:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  * We need to store an actual ECDSA context, as we need to pass the same to
+ 290:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  * the underlying ecdsa function, so we can't create it on the fly every time.
+ 291:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  */
+ 292:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** typedef struct
+ 293:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 294:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_restart_ctx ecdsa_rs;
+ 295:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_context ecdsa_ctx;
+ 296:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** } eckey_restart_ctx;
+ 297:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 298:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void *eckey_rs_alloc( void )
+ 299:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 300:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_restart_ctx *rs_ctx;
+ 301:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 302:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     void *ctx = mbedtls_calloc( 1, sizeof( eckey_restart_ctx ) );
+ 303:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 304:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ctx != NULL )
+ 305:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     {
+ 306:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         rs_ctx = ctx;
+ 307:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         mbedtls_ecdsa_restart_init( &rs_ctx->ecdsa_rs );
+ 308:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         mbedtls_ecdsa_init( &rs_ctx->ecdsa_ctx );
+ 309:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     }
+ 310:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 311:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ctx );
+ 312:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 313:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 314:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void eckey_rs_free( void *ctx )
+ 315:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 316:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_restart_ctx *rs_ctx;
+ 317:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 318:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ctx == NULL)
+ 319:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return;
+ 320:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 321:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     rs_ctx = ctx;
+ 322:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_restart_free( &rs_ctx->ecdsa_rs );
+ 323:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_free( &rs_ctx->ecdsa_ctx );
+ 324:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 325:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_free( ctx );
+ 326:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 327:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 23
+
+
+ 328:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int eckey_verify_rs_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 329:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *hash, size_t hash_len,
+ 330:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *sig, size_t sig_len,
+ 331:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        void *rs_ctx )
+ 332:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 333:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     int ret;
+ 334:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_restart_ctx *rs = rs_ctx;
+ 335:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 336:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     /* Should never happen */
+ 337:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( rs == NULL )
+ 338:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+ 339:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 340:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     /* set up our own sub-context if needed (that is, on first run) */
+ 341:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( rs->ecdsa_ctx.grp.pbits == 0 )
+ 342:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         MBEDTLS_MPI_CHK( mbedtls_ecdsa_from_keypair( &rs->ecdsa_ctx, ctx ) );
+ 343:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 344:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     MBEDTLS_MPI_CHK( ecdsa_verify_rs_wrap( &rs->ecdsa_ctx,
+ 345:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                            md_alg, hash, hash_len,
+ 346:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                            sig, sig_len, &rs->ecdsa_rs ) );
+ 347:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 348:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** cleanup:
+ 349:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ret );
+ 350:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 351:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 352:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int eckey_sign_rs_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 353:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *hash, size_t hash_len,
+ 354:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    unsigned char *sig, size_t *sig_len,
+ 355:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    int (*f_rng)(void *, unsigned char *, size_t), void *p_rng,
+ 356:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        void *rs_ctx )
+ 357:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 358:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     int ret;
+ 359:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_restart_ctx *rs = rs_ctx;
+ 360:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 361:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     /* Should never happen */
+ 362:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( rs == NULL )
+ 363:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+ 364:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 365:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     /* set up our own sub-context if needed (that is, on first run) */
+ 366:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( rs->ecdsa_ctx.grp.pbits == 0 )
+ 367:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         MBEDTLS_MPI_CHK( mbedtls_ecdsa_from_keypair( &rs->ecdsa_ctx, ctx ) );
+ 368:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 369:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     MBEDTLS_MPI_CHK( ecdsa_sign_rs_wrap( &rs->ecdsa_ctx, md_alg,
+ 370:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                          hash, hash_len, sig, sig_len,
+ 371:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                          f_rng, p_rng, &rs->ecdsa_rs ) );
+ 372:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 373:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** cleanup:
+ 374:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ret );
+ 375:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 376:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* MBEDTLS_ECP_RESTARTABLE */
+ 377:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* MBEDTLS_ECDSA_C */
+ 378:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 379:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int eckey_check_pair( const void *pub, const void *prv )
+ 380:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 956              		.loc 1 380 0
+ 957              		.cfi_startproc
+ 958              		@ args = 0, pretend = 0, frame = 8
+ 959              		@ frame_needed = 1, uses_anonymous_args = 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 24
+
+
+ 960 0000 80B5     		push	{r7, lr}
+ 961              	.LCFI74:
+ 962              		.cfi_def_cfa_offset 8
+ 963              		.cfi_offset 7, -8
+ 964              		.cfi_offset 14, -4
+ 965 0002 82B0     		sub	sp, sp, #8
+ 966              	.LCFI75:
+ 967              		.cfi_def_cfa_offset 16
+ 968 0004 00AF     		add	r7, sp, #0
+ 969              	.LCFI76:
+ 970              		.cfi_def_cfa_register 7
+ 971 0006 7860     		str	r0, [r7, #4]
+ 972 0008 3960     		str	r1, [r7]
+ 381:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( mbedtls_ecp_check_pub_priv( (const mbedtls_ecp_keypair *) pub,
+ 973              		.loc 1 381 0
+ 974 000a 3968     		ldr	r1, [r7]
+ 975 000c 7868     		ldr	r0, [r7, #4]
+ 976 000e FFF7FEFF 		bl	mbedtls_ecp_check_pub_priv
+ 977 0012 0346     		mov	r3, r0
+ 382:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                 (const mbedtls_ecp_keypair *) prv ) );
+ 383:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 978              		.loc 1 383 0
+ 979 0014 1846     		mov	r0, r3
+ 980 0016 0837     		adds	r7, r7, #8
+ 981              	.LCFI77:
+ 982              		.cfi_def_cfa_offset 8
+ 983 0018 BD46     		mov	sp, r7
+ 984              	.LCFI78:
+ 985              		.cfi_def_cfa_register 13
+ 986              		@ sp needed
+ 987 001a 80BD     		pop	{r7, pc}
+ 988              		.cfi_endproc
+ 989              	.LFE20:
+ 991              		.section	.text.eckey_alloc_wrap,"ax",%progbits
+ 992              		.align	1
+ 993              		.syntax unified
+ 994              		.thumb
+ 995              		.thumb_func
+ 996              		.fpu fpv4-sp-d16
+ 998              	eckey_alloc_wrap:
+ 999              	.LFB21:
+ 384:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 385:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void *eckey_alloc_wrap( void )
+ 386:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1000              		.loc 1 386 0
+ 1001              		.cfi_startproc
+ 1002              		@ args = 0, pretend = 0, frame = 8
+ 1003              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1004 0000 80B5     		push	{r7, lr}
+ 1005              	.LCFI79:
+ 1006              		.cfi_def_cfa_offset 8
+ 1007              		.cfi_offset 7, -8
+ 1008              		.cfi_offset 14, -4
+ 1009 0002 82B0     		sub	sp, sp, #8
+ 1010              	.LCFI80:
+ 1011              		.cfi_def_cfa_offset 16
+ 1012 0004 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 25
+
+
+ 1013              	.LCFI81:
+ 1014              		.cfi_def_cfa_register 7
+ 387:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     void *ctx = mbedtls_calloc( 1, sizeof( mbedtls_ecp_keypair ) );
+ 1015              		.loc 1 387 0
+ 1016 0006 AC21     		movs	r1, #172
+ 1017 0008 0120     		movs	r0, #1
+ 1018 000a FFF7FEFF 		bl	mbedtls_calloc
+ 1019 000e 7860     		str	r0, [r7, #4]
+ 388:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 389:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ctx != NULL )
+ 1020              		.loc 1 389 0
+ 1021 0010 7B68     		ldr	r3, [r7, #4]
+ 1022 0012 002B     		cmp	r3, #0
+ 1023 0014 02D0     		beq	.L52
+ 390:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         mbedtls_ecp_keypair_init( ctx );
+ 1024              		.loc 1 390 0
+ 1025 0016 7868     		ldr	r0, [r7, #4]
+ 1026 0018 FFF7FEFF 		bl	mbedtls_ecp_keypair_init
+ 1027              	.L52:
+ 391:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 392:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ctx );
+ 1028              		.loc 1 392 0
+ 1029 001c 7B68     		ldr	r3, [r7, #4]
+ 393:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1030              		.loc 1 393 0
+ 1031 001e 1846     		mov	r0, r3
+ 1032 0020 0837     		adds	r7, r7, #8
+ 1033              	.LCFI82:
+ 1034              		.cfi_def_cfa_offset 8
+ 1035 0022 BD46     		mov	sp, r7
+ 1036              	.LCFI83:
+ 1037              		.cfi_def_cfa_register 13
+ 1038              		@ sp needed
+ 1039 0024 80BD     		pop	{r7, pc}
+ 1040              		.cfi_endproc
+ 1041              	.LFE21:
+ 1043              		.section	.text.eckey_free_wrap,"ax",%progbits
+ 1044              		.align	1
+ 1045              		.syntax unified
+ 1046              		.thumb
+ 1047              		.thumb_func
+ 1048              		.fpu fpv4-sp-d16
+ 1050              	eckey_free_wrap:
+ 1051              	.LFB22:
+ 394:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 395:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void eckey_free_wrap( void *ctx )
+ 396:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1052              		.loc 1 396 0
+ 1053              		.cfi_startproc
+ 1054              		@ args = 0, pretend = 0, frame = 8
+ 1055              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1056 0000 80B5     		push	{r7, lr}
+ 1057              	.LCFI84:
+ 1058              		.cfi_def_cfa_offset 8
+ 1059              		.cfi_offset 7, -8
+ 1060              		.cfi_offset 14, -4
+ 1061 0002 82B0     		sub	sp, sp, #8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 26
+
+
+ 1062              	.LCFI85:
+ 1063              		.cfi_def_cfa_offset 16
+ 1064 0004 00AF     		add	r7, sp, #0
+ 1065              	.LCFI86:
+ 1066              		.cfi_def_cfa_register 7
+ 1067 0006 7860     		str	r0, [r7, #4]
+ 397:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecp_keypair_free( (mbedtls_ecp_keypair *) ctx );
+ 1068              		.loc 1 397 0
+ 1069 0008 7868     		ldr	r0, [r7, #4]
+ 1070 000a FFF7FEFF 		bl	mbedtls_ecp_keypair_free
+ 398:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_free( ctx );
+ 1071              		.loc 1 398 0
+ 1072 000e 7868     		ldr	r0, [r7, #4]
+ 1073 0010 FFF7FEFF 		bl	mbedtls_free
+ 399:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1074              		.loc 1 399 0
+ 1075 0014 00BF     		nop
+ 1076 0016 0837     		adds	r7, r7, #8
+ 1077              	.LCFI87:
+ 1078              		.cfi_def_cfa_offset 8
+ 1079 0018 BD46     		mov	sp, r7
+ 1080              	.LCFI88:
+ 1081              		.cfi_def_cfa_register 13
+ 1082              		@ sp needed
+ 1083 001a 80BD     		pop	{r7, pc}
+ 1084              		.cfi_endproc
+ 1085              	.LFE22:
+ 1087              		.section	.rodata
+ 1088              		.align	2
+ 1089              	.LC3:
+ 1090 0014 65636B65 		.ascii	"eckey.Q\000"
+ 1090      792E5100 
+ 1091              		.section	.text.eckey_debug,"ax",%progbits
+ 1092              		.align	1
+ 1093              		.syntax unified
+ 1094              		.thumb
+ 1095              		.thumb_func
+ 1096              		.fpu fpv4-sp-d16
+ 1098              	eckey_debug:
+ 1099              	.LFB23:
+ 400:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 401:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void eckey_debug( const void *ctx, mbedtls_pk_debug_item *items )
+ 402:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1100              		.loc 1 402 0
+ 1101              		.cfi_startproc
+ 1102              		@ args = 0, pretend = 0, frame = 8
+ 1103              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1104              		@ link register save eliminated.
+ 1105 0000 80B4     		push	{r7}
+ 1106              	.LCFI89:
+ 1107              		.cfi_def_cfa_offset 4
+ 1108              		.cfi_offset 7, -4
+ 1109 0002 83B0     		sub	sp, sp, #12
+ 1110              	.LCFI90:
+ 1111              		.cfi_def_cfa_offset 16
+ 1112 0004 00AF     		add	r7, sp, #0
+ 1113              	.LCFI91:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 27
+
+
+ 1114              		.cfi_def_cfa_register 7
+ 1115 0006 7860     		str	r0, [r7, #4]
+ 1116 0008 3960     		str	r1, [r7]
+ 403:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items->type = MBEDTLS_PK_DEBUG_ECP;
+ 1117              		.loc 1 403 0
+ 1118 000a 3B68     		ldr	r3, [r7]
+ 1119 000c 0222     		movs	r2, #2
+ 1120 000e 1A70     		strb	r2, [r3]
+ 404:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items->name = "eckey.Q";
+ 1121              		.loc 1 404 0
+ 1122 0010 3B68     		ldr	r3, [r7]
+ 1123 0012 064A     		ldr	r2, .L56
+ 1124 0014 5A60     		str	r2, [r3, #4]
+ 405:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     items->value = &( ((mbedtls_ecp_keypair *) ctx)->Q );
+ 1125              		.loc 1 405 0
+ 1126 0016 7B68     		ldr	r3, [r7, #4]
+ 1127 0018 03F18802 		add	r2, r3, #136
+ 1128 001c 3B68     		ldr	r3, [r7]
+ 1129 001e 9A60     		str	r2, [r3, #8]
+ 406:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1130              		.loc 1 406 0
+ 1131 0020 00BF     		nop
+ 1132 0022 0C37     		adds	r7, r7, #12
+ 1133              	.LCFI92:
+ 1134              		.cfi_def_cfa_offset 4
+ 1135 0024 BD46     		mov	sp, r7
+ 1136              	.LCFI93:
+ 1137              		.cfi_def_cfa_register 13
+ 1138              		@ sp needed
+ 1139 0026 5DF8047B 		ldr	r7, [sp], #4
+ 1140              	.LCFI94:
+ 1141              		.cfi_restore 7
+ 1142              		.cfi_def_cfa_offset 0
+ 1143 002a 7047     		bx	lr
+ 1144              	.L57:
+ 1145              		.align	2
+ 1146              	.L56:
+ 1147 002c 14000000 		.word	.LC3
+ 1148              		.cfi_endproc
+ 1149              	.LFE23:
+ 1151              		.global	mbedtls_eckey_info
+ 1152              		.section	.rodata
+ 1153              		.align	2
+ 1154              	.LC4:
+ 1155 001c 454300   		.ascii	"EC\000"
+ 1156              		.section	.rodata.mbedtls_eckey_info,"a",%progbits
+ 1157              		.align	2
+ 1160              	mbedtls_eckey_info:
+ 1161 0000 02       		.byte	2
+ 1162 0001 000000   		.space	3
+ 1163 0004 1C000000 		.word	.LC4
+ 1164 0008 00000000 		.word	eckey_get_bitlen
+ 1165 000c 00000000 		.word	eckey_can_do
+ 1166 0010 00000000 		.word	eckey_verify_wrap
+ 1167 0014 00000000 		.word	eckey_sign_wrap
+ 1168 0018 00000000 		.word	0
+ 1169 001c 00000000 		.word	0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 28
+
+
+ 1170 0020 00000000 		.word	eckey_check_pair
+ 1171 0024 00000000 		.word	eckey_alloc_wrap
+ 1172 0028 00000000 		.word	eckey_free_wrap
+ 1173 002c 00000000 		.word	eckey_debug
+ 1174              		.section	.text.eckeydh_can_do,"ax",%progbits
+ 1175              		.align	1
+ 1176              		.syntax unified
+ 1177              		.thumb
+ 1178              		.thumb_func
+ 1179              		.fpu fpv4-sp-d16
+ 1181              	eckeydh_can_do:
+ 1182              	.LFB24:
+ 407:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 408:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** const mbedtls_pk_info_t mbedtls_eckey_info = {
+ 409:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     MBEDTLS_PK_ECKEY,
+ 410:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     "EC",
+ 411:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_get_bitlen,
+ 412:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_can_do,
+ 413:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECDSA_C)
+ 414:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_verify_wrap,
+ 415:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_sign_wrap,
+ 416:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECP_RESTARTABLE)
+ 417:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_verify_rs_wrap,
+ 418:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_sign_rs_wrap,
+ 419:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+ 420:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #else /* MBEDTLS_ECDSA_C */
+ 421:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 422:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 423:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* MBEDTLS_ECDSA_C */
+ 424:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 425:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 426:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_check_pair,
+ 427:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_alloc_wrap,
+ 428:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_free_wrap,
+ 429:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+ 430:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_rs_alloc,
+ 431:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_rs_free,
+ 432:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+ 433:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_debug,
+ 434:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** };
+ 435:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 436:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** /*
+ 437:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  * EC key restricted to ECDH
+ 438:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  */
+ 439:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int eckeydh_can_do( mbedtls_pk_type_t type )
+ 440:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1183              		.loc 1 440 0
+ 1184              		.cfi_startproc
+ 1185              		@ args = 0, pretend = 0, frame = 8
+ 1186              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1187              		@ link register save eliminated.
+ 1188 0000 80B4     		push	{r7}
+ 1189              	.LCFI95:
+ 1190              		.cfi_def_cfa_offset 4
+ 1191              		.cfi_offset 7, -4
+ 1192 0002 83B0     		sub	sp, sp, #12
+ 1193              	.LCFI96:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 29
+
+
+ 1194              		.cfi_def_cfa_offset 16
+ 1195 0004 00AF     		add	r7, sp, #0
+ 1196              	.LCFI97:
+ 1197              		.cfi_def_cfa_register 7
+ 1198 0006 0346     		mov	r3, r0
+ 1199 0008 FB71     		strb	r3, [r7, #7]
+ 441:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( type == MBEDTLS_PK_ECKEY ||
+ 1200              		.loc 1 441 0
+ 1201 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1202 000c 022B     		cmp	r3, #2
+ 1203 000e 02D0     		beq	.L59
+ 1204              		.loc 1 441 0 is_stmt 0 discriminator 2
+ 1205 0010 FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1206 0012 032B     		cmp	r3, #3
+ 1207 0014 01D1     		bne	.L60
+ 1208              	.L59:
+ 1209              		.loc 1 441 0 discriminator 3
+ 1210 0016 0123     		movs	r3, #1
+ 1211 0018 00E0     		b	.L62
+ 1212              	.L60:
+ 1213              		.loc 1 441 0 discriminator 4
+ 1214 001a 0023     		movs	r3, #0
+ 1215              	.L62:
+ 442:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****             type == MBEDTLS_PK_ECKEY_DH );
+ 443:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1216              		.loc 1 443 0 is_stmt 1 discriminator 7
+ 1217 001c 1846     		mov	r0, r3
+ 1218 001e 0C37     		adds	r7, r7, #12
+ 1219              	.LCFI98:
+ 1220              		.cfi_def_cfa_offset 4
+ 1221 0020 BD46     		mov	sp, r7
+ 1222              	.LCFI99:
+ 1223              		.cfi_def_cfa_register 13
+ 1224              		@ sp needed
+ 1225 0022 5DF8047B 		ldr	r7, [sp], #4
+ 1226              	.LCFI100:
+ 1227              		.cfi_restore 7
+ 1228              		.cfi_def_cfa_offset 0
+ 1229 0026 7047     		bx	lr
+ 1230              		.cfi_endproc
+ 1231              	.LFE24:
+ 1233              		.global	mbedtls_eckeydh_info
+ 1234              		.section	.rodata
+ 1235 001f 00       		.align	2
+ 1236              	.LC5:
+ 1237 0020 45435F44 		.ascii	"EC_DH\000"
+ 1237      4800
+ 1238              		.section	.rodata.mbedtls_eckeydh_info,"a",%progbits
+ 1239              		.align	2
+ 1242              	mbedtls_eckeydh_info:
+ 1243 0000 03       		.byte	3
+ 1244 0001 000000   		.space	3
+ 1245 0004 20000000 		.word	.LC5
+ 1246 0008 00000000 		.word	eckey_get_bitlen
+ 1247 000c 00000000 		.word	eckeydh_can_do
+ 1248 0010 00000000 		.word	0
+ 1249 0014 00000000 		.word	0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 30
+
+
+ 1250 0018 00000000 		.word	0
+ 1251 001c 00000000 		.word	0
+ 1252 0020 00000000 		.word	eckey_check_pair
+ 1253 0024 00000000 		.word	eckey_alloc_wrap
+ 1254 0028 00000000 		.word	eckey_free_wrap
+ 1255 002c 00000000 		.word	eckey_debug
+ 1256              		.section	.text.ecdsa_can_do,"ax",%progbits
+ 1257              		.align	1
+ 1258              		.syntax unified
+ 1259              		.thumb
+ 1260              		.thumb_func
+ 1261              		.fpu fpv4-sp-d16
+ 1263              	ecdsa_can_do:
+ 1264              	.LFB25:
+ 444:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 445:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** const mbedtls_pk_info_t mbedtls_eckeydh_info = {
+ 446:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     MBEDTLS_PK_ECKEY_DH,
+ 447:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     "EC_DH",
+ 448:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_get_bitlen,         /* Same underlying key structure */
+ 449:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckeydh_can_do,
+ 450:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 451:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 452:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+ 453:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 454:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 455:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+ 456:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 457:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 458:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_check_pair,
+ 459:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_alloc_wrap,       /* Same underlying key structure */
+ 460:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_free_wrap,        /* Same underlying key structure */
+ 461:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECDSA_C) && defined(MBEDTLS_ECP_RESTARTABLE)
+ 462:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 463:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 464:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+ 465:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_debug,            /* Same underlying key structure */
+ 466:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** };
+ 467:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* MBEDTLS_ECP_C */
+ 468:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 469:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECDSA_C)
+ 470:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int ecdsa_can_do( mbedtls_pk_type_t type )
+ 471:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1265              		.loc 1 471 0
+ 1266              		.cfi_startproc
+ 1267              		@ args = 0, pretend = 0, frame = 8
+ 1268              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1269              		@ link register save eliminated.
+ 1270 0000 80B4     		push	{r7}
+ 1271              	.LCFI101:
+ 1272              		.cfi_def_cfa_offset 4
+ 1273              		.cfi_offset 7, -4
+ 1274 0002 83B0     		sub	sp, sp, #12
+ 1275              	.LCFI102:
+ 1276              		.cfi_def_cfa_offset 16
+ 1277 0004 00AF     		add	r7, sp, #0
+ 1278              	.LCFI103:
+ 1279              		.cfi_def_cfa_register 7
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 31
+
+
+ 1280 0006 0346     		mov	r3, r0
+ 1281 0008 FB71     		strb	r3, [r7, #7]
+ 472:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( type == MBEDTLS_PK_ECDSA );
+ 1282              		.loc 1 472 0
+ 1283 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1284 000c 042B     		cmp	r3, #4
+ 1285 000e 0CBF     		ite	eq
+ 1286 0010 0123     		moveq	r3, #1
+ 1287 0012 0023     		movne	r3, #0
+ 1288 0014 DBB2     		uxtb	r3, r3
+ 473:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1289              		.loc 1 473 0
+ 1290 0016 1846     		mov	r0, r3
+ 1291 0018 0C37     		adds	r7, r7, #12
+ 1292              	.LCFI104:
+ 1293              		.cfi_def_cfa_offset 4
+ 1294 001a BD46     		mov	sp, r7
+ 1295              	.LCFI105:
+ 1296              		.cfi_def_cfa_register 13
+ 1297              		@ sp needed
+ 1298 001c 5DF8047B 		ldr	r7, [sp], #4
+ 1299              	.LCFI106:
+ 1300              		.cfi_restore 7
+ 1301              		.cfi_def_cfa_offset 0
+ 1302 0020 7047     		bx	lr
+ 1303              		.cfi_endproc
+ 1304              	.LFE25:
+ 1306              		.section	.text.ecdsa_verify_wrap,"ax",%progbits
+ 1307              		.align	1
+ 1308              		.syntax unified
+ 1309              		.thumb
+ 1310              		.thumb_func
+ 1311              		.fpu fpv4-sp-d16
+ 1313              	ecdsa_verify_wrap:
+ 1314              	.LFB26:
+ 474:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 475:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int ecdsa_verify_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 476:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *hash, size_t hash_len,
+ 477:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *sig, size_t sig_len )
+ 478:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1315              		.loc 1 478 0
+ 1316              		.cfi_startproc
+ 1317              		@ args = 8, pretend = 0, frame = 24
+ 1318              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1319 0000 80B5     		push	{r7, lr}
+ 1320              	.LCFI107:
+ 1321              		.cfi_def_cfa_offset 8
+ 1322              		.cfi_offset 7, -8
+ 1323              		.cfi_offset 14, -4
+ 1324 0002 88B0     		sub	sp, sp, #32
+ 1325              	.LCFI108:
+ 1326              		.cfi_def_cfa_offset 40
+ 1327 0004 02AF     		add	r7, sp, #8
+ 1328              	.LCFI109:
+ 1329              		.cfi_def_cfa 7, 32
+ 1330 0006 F860     		str	r0, [r7, #12]
+ 1331 0008 7A60     		str	r2, [r7, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 32
+
+
+ 1332 000a 3B60     		str	r3, [r7]
+ 1333 000c 0B46     		mov	r3, r1
+ 1334 000e FB72     		strb	r3, [r7, #11]
+ 479:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     int ret;
+ 480:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ((void) md_alg);
+ 481:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 482:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ret = mbedtls_ecdsa_read_signature( (mbedtls_ecdsa_context *) ctx,
+ 1335              		.loc 1 482 0
+ 1336 0010 7B6A     		ldr	r3, [r7, #36]
+ 1337 0012 0093     		str	r3, [sp]
+ 1338 0014 3B6A     		ldr	r3, [r7, #32]
+ 1339 0016 3A68     		ldr	r2, [r7]
+ 1340 0018 7968     		ldr	r1, [r7, #4]
+ 1341 001a F868     		ldr	r0, [r7, #12]
+ 1342 001c FFF7FEFF 		bl	mbedtls_ecdsa_read_signature
+ 1343 0020 7861     		str	r0, [r7, #20]
+ 483:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                 hash, hash_len, sig, sig_len );
+ 484:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 485:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ret == MBEDTLS_ERR_ECP_SIG_LEN_MISMATCH )
+ 1344              		.loc 1 485 0
+ 1345 0022 7B69     		ldr	r3, [r7, #20]
+ 1346 0024 13F5984F 		cmn	r3, #19456
+ 1347 0028 01D1     		bne	.L66
+ 486:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_PK_SIG_LEN_MISMATCH );
+ 1348              		.loc 1 486 0
+ 1349 002a 034B     		ldr	r3, .L68
+ 1350 002c 00E0     		b	.L67
+ 1351              	.L66:
+ 487:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 488:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ret );
+ 1352              		.loc 1 488 0
+ 1353 002e 7B69     		ldr	r3, [r7, #20]
+ 1354              	.L67:
+ 489:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1355              		.loc 1 489 0
+ 1356 0030 1846     		mov	r0, r3
+ 1357 0032 1837     		adds	r7, r7, #24
+ 1358              	.LCFI110:
+ 1359              		.cfi_def_cfa_offset 8
+ 1360 0034 BD46     		mov	sp, r7
+ 1361              	.LCFI111:
+ 1362              		.cfi_def_cfa_register 13
+ 1363              		@ sp needed
+ 1364 0036 80BD     		pop	{r7, pc}
+ 1365              	.L69:
+ 1366              		.align	2
+ 1367              	.L68:
+ 1368 0038 00C7FFFF 		.word	-14592
+ 1369              		.cfi_endproc
+ 1370              	.LFE26:
+ 1372              		.section	.text.ecdsa_sign_wrap,"ax",%progbits
+ 1373              		.align	1
+ 1374              		.syntax unified
+ 1375              		.thumb
+ 1376              		.thumb_func
+ 1377              		.fpu fpv4-sp-d16
+ 1379              	ecdsa_sign_wrap:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 33
+
+
+ 1380              	.LFB27:
+ 490:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 491:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int ecdsa_sign_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 492:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *hash, size_t hash_len,
+ 493:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    unsigned char *sig, size_t *sig_len,
+ 494:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    int (*f_rng)(void *, unsigned char *, size_t), void *p_rng )
+ 495:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1381              		.loc 1 495 0
+ 1382              		.cfi_startproc
+ 1383              		@ args = 16, pretend = 0, frame = 16
+ 1384              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1385 0000 80B5     		push	{r7, lr}
+ 1386              	.LCFI112:
+ 1387              		.cfi_def_cfa_offset 8
+ 1388              		.cfi_offset 7, -8
+ 1389              		.cfi_offset 14, -4
+ 1390 0002 88B0     		sub	sp, sp, #32
+ 1391              	.LCFI113:
+ 1392              		.cfi_def_cfa_offset 40
+ 1393 0004 04AF     		add	r7, sp, #16
+ 1394              	.LCFI114:
+ 1395              		.cfi_def_cfa 7, 24
+ 1396 0006 F860     		str	r0, [r7, #12]
+ 1397 0008 7A60     		str	r2, [r7, #4]
+ 1398 000a 3B60     		str	r3, [r7]
+ 1399 000c 0B46     		mov	r3, r1
+ 1400 000e FB72     		strb	r3, [r7, #11]
+ 496:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( mbedtls_ecdsa_write_signature( (mbedtls_ecdsa_context *) ctx,
+ 1401              		.loc 1 496 0
+ 1402 0010 F97A     		ldrb	r1, [r7, #11]	@ zero_extendqisi2
+ 1403 0012 7B6A     		ldr	r3, [r7, #36]
+ 1404 0014 0393     		str	r3, [sp, #12]
+ 1405 0016 3B6A     		ldr	r3, [r7, #32]
+ 1406 0018 0293     		str	r3, [sp, #8]
+ 1407 001a FB69     		ldr	r3, [r7, #28]
+ 1408 001c 0193     		str	r3, [sp, #4]
+ 1409 001e BB69     		ldr	r3, [r7, #24]
+ 1410 0020 0093     		str	r3, [sp]
+ 1411 0022 3B68     		ldr	r3, [r7]
+ 1412 0024 7A68     		ldr	r2, [r7, #4]
+ 1413 0026 F868     		ldr	r0, [r7, #12]
+ 1414 0028 FFF7FEFF 		bl	mbedtls_ecdsa_write_signature
+ 1415 002c 0346     		mov	r3, r0
+ 497:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                 md_alg, hash, hash_len, sig, sig_len, f_rng, p_rng ) );
+ 498:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1416              		.loc 1 498 0
+ 1417 002e 1846     		mov	r0, r3
+ 1418 0030 1037     		adds	r7, r7, #16
+ 1419              	.LCFI115:
+ 1420              		.cfi_def_cfa_offset 8
+ 1421 0032 BD46     		mov	sp, r7
+ 1422              	.LCFI116:
+ 1423              		.cfi_def_cfa_register 13
+ 1424              		@ sp needed
+ 1425 0034 80BD     		pop	{r7, pc}
+ 1426              		.cfi_endproc
+ 1427              	.LFE27:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 34
+
+
+ 1429              		.section	.text.ecdsa_alloc_wrap,"ax",%progbits
+ 1430              		.align	1
+ 1431              		.syntax unified
+ 1432              		.thumb
+ 1433              		.thumb_func
+ 1434              		.fpu fpv4-sp-d16
+ 1436              	ecdsa_alloc_wrap:
+ 1437              	.LFB28:
+ 499:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 500:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECP_RESTARTABLE)
+ 501:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int ecdsa_verify_rs_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 502:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *hash, size_t hash_len,
+ 503:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        const unsigned char *sig, size_t sig_len,
+ 504:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                        void *rs_ctx )
+ 505:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 506:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     int ret;
+ 507:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ((void) md_alg);
+ 508:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 509:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ret = mbedtls_ecdsa_read_signature_restartable(
+ 510:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****             (mbedtls_ecdsa_context *) ctx,
+ 511:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****             hash, hash_len, sig, sig_len,
+ 512:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****             (mbedtls_ecdsa_restart_ctx *) rs_ctx );
+ 513:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 514:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ret == MBEDTLS_ERR_ECP_SIG_LEN_MISMATCH )
+ 515:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_PK_SIG_LEN_MISMATCH );
+ 516:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 517:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ret );
+ 518:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 519:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 520:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int ecdsa_sign_rs_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 521:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *hash, size_t hash_len,
+ 522:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    unsigned char *sig, size_t *sig_len,
+ 523:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    int (*f_rng)(void *, unsigned char *, size_t), void *p_rng,
+ 524:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    void *rs_ctx )
+ 525:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 526:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( mbedtls_ecdsa_write_signature_restartable(
+ 527:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                 (mbedtls_ecdsa_context *) ctx,
+ 528:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                 md_alg, hash, hash_len, sig, sig_len, f_rng, p_rng,
+ 529:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                 (mbedtls_ecdsa_restart_ctx *) rs_ctx ) );
+ 530:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 531:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 532:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* MBEDTLS_ECP_RESTARTABLE */
+ 533:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 534:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void *ecdsa_alloc_wrap( void )
+ 535:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1438              		.loc 1 535 0
+ 1439              		.cfi_startproc
+ 1440              		@ args = 0, pretend = 0, frame = 8
+ 1441              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1442 0000 80B5     		push	{r7, lr}
+ 1443              	.LCFI117:
+ 1444              		.cfi_def_cfa_offset 8
+ 1445              		.cfi_offset 7, -8
+ 1446              		.cfi_offset 14, -4
+ 1447 0002 82B0     		sub	sp, sp, #8
+ 1448              	.LCFI118:
+ 1449              		.cfi_def_cfa_offset 16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 35
+
+
+ 1450 0004 00AF     		add	r7, sp, #0
+ 1451              	.LCFI119:
+ 1452              		.cfi_def_cfa_register 7
+ 536:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     void *ctx = mbedtls_calloc( 1, sizeof( mbedtls_ecdsa_context ) );
+ 1453              		.loc 1 536 0
+ 1454 0006 AC21     		movs	r1, #172
+ 1455 0008 0120     		movs	r0, #1
+ 1456 000a FFF7FEFF 		bl	mbedtls_calloc
+ 1457 000e 7860     		str	r0, [r7, #4]
+ 537:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 538:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ctx != NULL )
+ 1458              		.loc 1 538 0
+ 1459 0010 7B68     		ldr	r3, [r7, #4]
+ 1460 0012 002B     		cmp	r3, #0
+ 1461 0014 02D0     		beq	.L73
+ 539:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         mbedtls_ecdsa_init( (mbedtls_ecdsa_context *) ctx );
+ 1462              		.loc 1 539 0
+ 1463 0016 7868     		ldr	r0, [r7, #4]
+ 1464 0018 FFF7FEFF 		bl	mbedtls_ecdsa_init
+ 1465              	.L73:
+ 540:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 541:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ctx );
+ 1466              		.loc 1 541 0
+ 1467 001c 7B68     		ldr	r3, [r7, #4]
+ 542:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1468              		.loc 1 542 0
+ 1469 001e 1846     		mov	r0, r3
+ 1470 0020 0837     		adds	r7, r7, #8
+ 1471              	.LCFI120:
+ 1472              		.cfi_def_cfa_offset 8
+ 1473 0022 BD46     		mov	sp, r7
+ 1474              	.LCFI121:
+ 1475              		.cfi_def_cfa_register 13
+ 1476              		@ sp needed
+ 1477 0024 80BD     		pop	{r7, pc}
+ 1478              		.cfi_endproc
+ 1479              	.LFE28:
+ 1481              		.section	.text.ecdsa_free_wrap,"ax",%progbits
+ 1482              		.align	1
+ 1483              		.syntax unified
+ 1484              		.thumb
+ 1485              		.thumb_func
+ 1486              		.fpu fpv4-sp-d16
+ 1488              	ecdsa_free_wrap:
+ 1489              	.LFB29:
+ 543:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 544:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void ecdsa_free_wrap( void *ctx )
+ 545:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1490              		.loc 1 545 0
+ 1491              		.cfi_startproc
+ 1492              		@ args = 0, pretend = 0, frame = 8
+ 1493              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1494 0000 80B5     		push	{r7, lr}
+ 1495              	.LCFI122:
+ 1496              		.cfi_def_cfa_offset 8
+ 1497              		.cfi_offset 7, -8
+ 1498              		.cfi_offset 14, -4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 36
+
+
+ 1499 0002 82B0     		sub	sp, sp, #8
+ 1500              	.LCFI123:
+ 1501              		.cfi_def_cfa_offset 16
+ 1502 0004 00AF     		add	r7, sp, #0
+ 1503              	.LCFI124:
+ 1504              		.cfi_def_cfa_register 7
+ 1505 0006 7860     		str	r0, [r7, #4]
+ 546:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_free( (mbedtls_ecdsa_context *) ctx );
+ 1506              		.loc 1 546 0
+ 1507 0008 7868     		ldr	r0, [r7, #4]
+ 1508 000a FFF7FEFF 		bl	mbedtls_ecdsa_free
+ 547:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_free( ctx );
+ 1509              		.loc 1 547 0
+ 1510 000e 7868     		ldr	r0, [r7, #4]
+ 1511 0010 FFF7FEFF 		bl	mbedtls_free
+ 548:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1512              		.loc 1 548 0
+ 1513 0014 00BF     		nop
+ 1514 0016 0837     		adds	r7, r7, #8
+ 1515              	.LCFI125:
+ 1516              		.cfi_def_cfa_offset 8
+ 1517 0018 BD46     		mov	sp, r7
+ 1518              	.LCFI126:
+ 1519              		.cfi_def_cfa_register 13
+ 1520              		@ sp needed
+ 1521 001a 80BD     		pop	{r7, pc}
+ 1522              		.cfi_endproc
+ 1523              	.LFE29:
+ 1525              		.global	mbedtls_ecdsa_info
+ 1526              		.section	.rodata
+ 1527 0026 0000     		.align	2
+ 1528              	.LC6:
+ 1529 0028 45434453 		.ascii	"ECDSA\000"
+ 1529      4100
+ 1530              		.section	.rodata.mbedtls_ecdsa_info,"a",%progbits
+ 1531              		.align	2
+ 1534              	mbedtls_ecdsa_info:
+ 1535 0000 04       		.byte	4
+ 1536 0001 000000   		.space	3
+ 1537 0004 28000000 		.word	.LC6
+ 1538 0008 00000000 		.word	eckey_get_bitlen
+ 1539 000c 00000000 		.word	ecdsa_can_do
+ 1540 0010 00000000 		.word	ecdsa_verify_wrap
+ 1541 0014 00000000 		.word	ecdsa_sign_wrap
+ 1542 0018 00000000 		.word	0
+ 1543 001c 00000000 		.word	0
+ 1544 0020 00000000 		.word	eckey_check_pair
+ 1545 0024 00000000 		.word	ecdsa_alloc_wrap
+ 1546 0028 00000000 		.word	ecdsa_free_wrap
+ 1547 002c 00000000 		.word	eckey_debug
+ 1548              		.section	.text.rsa_alt_can_do,"ax",%progbits
+ 1549              		.align	1
+ 1550              		.syntax unified
+ 1551              		.thumb
+ 1552              		.thumb_func
+ 1553              		.fpu fpv4-sp-d16
+ 1555              	rsa_alt_can_do:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 37
+
+
+ 1556              	.LFB30:
+ 549:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 550:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECP_RESTARTABLE)
+ 551:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void *ecdsa_rs_alloc( void )
+ 552:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 553:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     void *ctx = mbedtls_calloc( 1, sizeof( mbedtls_ecdsa_restart_ctx ) );
+ 554:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 555:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ctx != NULL )
+ 556:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         mbedtls_ecdsa_restart_init( ctx );
+ 557:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 558:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ctx );
+ 559:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 560:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 561:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void ecdsa_rs_free( void *ctx )
+ 562:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 563:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_ecdsa_restart_free( ctx );
+ 564:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_free( ctx );
+ 565:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 566:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* MBEDTLS_ECP_RESTARTABLE */
+ 567:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 568:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** const mbedtls_pk_info_t mbedtls_ecdsa_info = {
+ 569:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     MBEDTLS_PK_ECDSA,
+ 570:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     "ECDSA",
+ 571:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_get_bitlen,     /* Compatible key structures */
+ 572:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ecdsa_can_do,
+ 573:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ecdsa_verify_wrap,
+ 574:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ecdsa_sign_wrap,
+ 575:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECP_RESTARTABLE)
+ 576:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ecdsa_verify_rs_wrap,
+ 577:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ecdsa_sign_rs_wrap,
+ 578:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+ 579:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 580:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     NULL,
+ 581:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_check_pair,   /* Compatible key structures */
+ 582:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ecdsa_alloc_wrap,
+ 583:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ecdsa_free_wrap,
+ 584:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_ECP_RESTARTABLE)
+ 585:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ecdsa_rs_alloc,
+ 586:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ecdsa_rs_free,
+ 587:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif
+ 588:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     eckey_debug,        /* Compatible key structures */
+ 589:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** };
+ 590:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* MBEDTLS_ECDSA_C */
+ 591:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 592:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_PK_RSA_ALT_SUPPORT)
+ 593:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** /*
+ 594:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  * Support for alternative RSA-private implementations
+ 595:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****  */
+ 596:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 597:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_alt_can_do( mbedtls_pk_type_t type )
+ 598:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1557              		.loc 1 598 0
+ 1558              		.cfi_startproc
+ 1559              		@ args = 0, pretend = 0, frame = 8
+ 1560              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1561              		@ link register save eliminated.
+ 1562 0000 80B4     		push	{r7}
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 38
+
+
+ 1563              	.LCFI127:
+ 1564              		.cfi_def_cfa_offset 4
+ 1565              		.cfi_offset 7, -4
+ 1566 0002 83B0     		sub	sp, sp, #12
+ 1567              	.LCFI128:
+ 1568              		.cfi_def_cfa_offset 16
+ 1569 0004 00AF     		add	r7, sp, #0
+ 1570              	.LCFI129:
+ 1571              		.cfi_def_cfa_register 7
+ 1572 0006 0346     		mov	r3, r0
+ 1573 0008 FB71     		strb	r3, [r7, #7]
+ 599:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( type == MBEDTLS_PK_RSA );
+ 1574              		.loc 1 599 0
+ 1575 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 1576 000c 012B     		cmp	r3, #1
+ 1577 000e 0CBF     		ite	eq
+ 1578 0010 0123     		moveq	r3, #1
+ 1579 0012 0023     		movne	r3, #0
+ 1580 0014 DBB2     		uxtb	r3, r3
+ 600:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1581              		.loc 1 600 0
+ 1582 0016 1846     		mov	r0, r3
+ 1583 0018 0C37     		adds	r7, r7, #12
+ 1584              	.LCFI130:
+ 1585              		.cfi_def_cfa_offset 4
+ 1586 001a BD46     		mov	sp, r7
+ 1587              	.LCFI131:
+ 1588              		.cfi_def_cfa_register 13
+ 1589              		@ sp needed
+ 1590 001c 5DF8047B 		ldr	r7, [sp], #4
+ 1591              	.LCFI132:
+ 1592              		.cfi_restore 7
+ 1593              		.cfi_def_cfa_offset 0
+ 1594 0020 7047     		bx	lr
+ 1595              		.cfi_endproc
+ 1596              	.LFE30:
+ 1598              		.section	.text.rsa_alt_get_bitlen,"ax",%progbits
+ 1599              		.align	1
+ 1600              		.syntax unified
+ 1601              		.thumb
+ 1602              		.thumb_func
+ 1603              		.fpu fpv4-sp-d16
+ 1605              	rsa_alt_get_bitlen:
+ 1606              	.LFB31:
+ 601:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 602:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static size_t rsa_alt_get_bitlen( const void *ctx )
+ 603:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1607              		.loc 1 603 0
+ 1608              		.cfi_startproc
+ 1609              		@ args = 0, pretend = 0, frame = 16
+ 1610              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1611 0000 80B5     		push	{r7, lr}
+ 1612              	.LCFI133:
+ 1613              		.cfi_def_cfa_offset 8
+ 1614              		.cfi_offset 7, -8
+ 1615              		.cfi_offset 14, -4
+ 1616 0002 84B0     		sub	sp, sp, #16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 39
+
+
+ 1617              	.LCFI134:
+ 1618              		.cfi_def_cfa_offset 24
+ 1619 0004 00AF     		add	r7, sp, #0
+ 1620              	.LCFI135:
+ 1621              		.cfi_def_cfa_register 7
+ 1622 0006 7860     		str	r0, [r7, #4]
+ 604:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     const mbedtls_rsa_alt_context *rsa_alt = (const mbedtls_rsa_alt_context *) ctx;
+ 1623              		.loc 1 604 0
+ 1624 0008 7B68     		ldr	r3, [r7, #4]
+ 1625 000a FB60     		str	r3, [r7, #12]
+ 605:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 606:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( 8 * rsa_alt->key_len_func( rsa_alt->key ) );
+ 1626              		.loc 1 606 0
+ 1627 000c FB68     		ldr	r3, [r7, #12]
+ 1628 000e DB68     		ldr	r3, [r3, #12]
+ 1629 0010 FA68     		ldr	r2, [r7, #12]
+ 1630 0012 1268     		ldr	r2, [r2]
+ 1631 0014 1046     		mov	r0, r2
+ 1632 0016 9847     		blx	r3
+ 1633              	.LVL0:
+ 1634 0018 0346     		mov	r3, r0
+ 1635 001a DB00     		lsls	r3, r3, #3
+ 607:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1636              		.loc 1 607 0
+ 1637 001c 1846     		mov	r0, r3
+ 1638 001e 1037     		adds	r7, r7, #16
+ 1639              	.LCFI136:
+ 1640              		.cfi_def_cfa_offset 8
+ 1641 0020 BD46     		mov	sp, r7
+ 1642              	.LCFI137:
+ 1643              		.cfi_def_cfa_register 13
+ 1644              		@ sp needed
+ 1645 0022 80BD     		pop	{r7, pc}
+ 1646              		.cfi_endproc
+ 1647              	.LFE31:
+ 1649              		.section	.text.rsa_alt_sign_wrap,"ax",%progbits
+ 1650              		.align	1
+ 1651              		.syntax unified
+ 1652              		.thumb
+ 1653              		.thumb_func
+ 1654              		.fpu fpv4-sp-d16
+ 1656              	rsa_alt_sign_wrap:
+ 1657              	.LFB32:
+ 608:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 609:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_alt_sign_wrap( void *ctx, mbedtls_md_type_t md_alg,
+ 610:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    const unsigned char *hash, size_t hash_len,
+ 611:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    unsigned char *sig, size_t *sig_len,
+ 612:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                    int (*f_rng)(void *, unsigned char *, size_t), void *p_rng )
+ 613:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1658              		.loc 1 613 0
+ 1659              		.cfi_startproc
+ 1660              		@ args = 16, pretend = 0, frame = 24
+ 1661              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1662 0000 90B5     		push	{r4, r7, lr}
+ 1663              	.LCFI138:
+ 1664              		.cfi_def_cfa_offset 12
+ 1665              		.cfi_offset 4, -12
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 40
+
+
+ 1666              		.cfi_offset 7, -8
+ 1667              		.cfi_offset 14, -4
+ 1668 0002 8BB0     		sub	sp, sp, #44
+ 1669              	.LCFI139:
+ 1670              		.cfi_def_cfa_offset 56
+ 1671 0004 04AF     		add	r7, sp, #16
+ 1672              	.LCFI140:
+ 1673              		.cfi_def_cfa 7, 40
+ 1674 0006 F860     		str	r0, [r7, #12]
+ 1675 0008 7A60     		str	r2, [r7, #4]
+ 1676 000a 3B60     		str	r3, [r7]
+ 1677 000c 0B46     		mov	r3, r1
+ 1678 000e FB72     		strb	r3, [r7, #11]
+ 614:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_rsa_alt_context *rsa_alt = (mbedtls_rsa_alt_context *) ctx;
+ 1679              		.loc 1 614 0
+ 1680 0010 FB68     		ldr	r3, [r7, #12]
+ 1681 0012 7B61     		str	r3, [r7, #20]
+ 615:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 616:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if SIZE_MAX > UINT_MAX
+ 617:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( UINT_MAX < hash_len )
+ 618:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_PK_BAD_INPUT_DATA );
+ 619:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* SIZE_MAX > UINT_MAX */
+ 620:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 621:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     *sig_len = rsa_alt->key_len_func( rsa_alt->key );
+ 1682              		.loc 1 621 0
+ 1683 0014 7B69     		ldr	r3, [r7, #20]
+ 1684 0016 DB68     		ldr	r3, [r3, #12]
+ 1685 0018 7A69     		ldr	r2, [r7, #20]
+ 1686 001a 1268     		ldr	r2, [r2]
+ 1687 001c 1046     		mov	r0, r2
+ 1688 001e 9847     		blx	r3
+ 1689              	.LVL1:
+ 1690 0020 0246     		mov	r2, r0
+ 1691 0022 FB6A     		ldr	r3, [r7, #44]
+ 1692 0024 1A60     		str	r2, [r3]
+ 622:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 623:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( rsa_alt->sign_func( rsa_alt->key, f_rng, p_rng, MBEDTLS_RSA_PRIVATE,
+ 1693              		.loc 1 623 0
+ 1694 0026 7B69     		ldr	r3, [r7, #20]
+ 1695 0028 9C68     		ldr	r4, [r3, #8]
+ 1696 002a 7B69     		ldr	r3, [r7, #20]
+ 1697 002c 1868     		ldr	r0, [r3]
+ 1698 002e BB6A     		ldr	r3, [r7, #40]
+ 1699 0030 0393     		str	r3, [sp, #12]
+ 1700 0032 7B68     		ldr	r3, [r7, #4]
+ 1701 0034 0293     		str	r3, [sp, #8]
+ 1702 0036 3B68     		ldr	r3, [r7]
+ 1703 0038 0193     		str	r3, [sp, #4]
+ 1704 003a FB7A     		ldrb	r3, [r7, #11]	@ zero_extendqisi2
+ 1705 003c 0093     		str	r3, [sp]
+ 1706 003e 0123     		movs	r3, #1
+ 1707 0040 7A6B     		ldr	r2, [r7, #52]
+ 1708 0042 396B     		ldr	r1, [r7, #48]
+ 1709 0044 A047     		blx	r4
+ 1710              	.LVL2:
+ 1711 0046 0346     		mov	r3, r0
+ 624:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                 md_alg, (unsigned int) hash_len, hash, sig ) );
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 41
+
+
+ 625:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1712              		.loc 1 625 0
+ 1713 0048 1846     		mov	r0, r3
+ 1714 004a 1C37     		adds	r7, r7, #28
+ 1715              	.LCFI141:
+ 1716              		.cfi_def_cfa_offset 12
+ 1717 004c BD46     		mov	sp, r7
+ 1718              	.LCFI142:
+ 1719              		.cfi_def_cfa_register 13
+ 1720              		@ sp needed
+ 1721 004e 90BD     		pop	{r4, r7, pc}
+ 1722              		.cfi_endproc
+ 1723              	.LFE32:
+ 1725              		.section	.text.rsa_alt_decrypt_wrap,"ax",%progbits
+ 1726              		.align	1
+ 1727              		.syntax unified
+ 1728              		.thumb
+ 1729              		.thumb_func
+ 1730              		.fpu fpv4-sp-d16
+ 1732              	rsa_alt_decrypt_wrap:
+ 1733              	.LFB33:
+ 626:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 627:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_alt_decrypt_wrap( void *ctx,
+ 628:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                     const unsigned char *input, size_t ilen,
+ 629:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                     unsigned char *output, size_t *olen, size_t osize,
+ 630:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                     int (*f_rng)(void *, unsigned char *, size_t), void *p_rng )
+ 631:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1734              		.loc 1 631 0
+ 1735              		.cfi_startproc
+ 1736              		@ args = 16, pretend = 0, frame = 24
+ 1737              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1738 0000 90B5     		push	{r4, r7, lr}
+ 1739              	.LCFI143:
+ 1740              		.cfi_def_cfa_offset 12
+ 1741              		.cfi_offset 4, -12
+ 1742              		.cfi_offset 7, -8
+ 1743              		.cfi_offset 14, -4
+ 1744 0002 89B0     		sub	sp, sp, #36
+ 1745              	.LCFI144:
+ 1746              		.cfi_def_cfa_offset 48
+ 1747 0004 02AF     		add	r7, sp, #8
+ 1748              	.LCFI145:
+ 1749              		.cfi_def_cfa 7, 40
+ 1750 0006 F860     		str	r0, [r7, #12]
+ 1751 0008 B960     		str	r1, [r7, #8]
+ 1752 000a 7A60     		str	r2, [r7, #4]
+ 1753 000c 3B60     		str	r3, [r7]
+ 632:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_rsa_alt_context *rsa_alt = (mbedtls_rsa_alt_context *) ctx;
+ 1754              		.loc 1 632 0
+ 1755 000e FB68     		ldr	r3, [r7, #12]
+ 1756 0010 7B61     		str	r3, [r7, #20]
+ 633:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 634:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ((void) f_rng);
+ 635:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     ((void) p_rng);
+ 636:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 637:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ilen != rsa_alt->key_len_func( rsa_alt->key ) )
+ 1757              		.loc 1 637 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 42
+
+
+ 1758 0012 7B69     		ldr	r3, [r7, #20]
+ 1759 0014 DB68     		ldr	r3, [r3, #12]
+ 1760 0016 7A69     		ldr	r2, [r7, #20]
+ 1761 0018 1268     		ldr	r2, [r2]
+ 1762 001a 1046     		mov	r0, r2
+ 1763 001c 9847     		blx	r3
+ 1764              	.LVL3:
+ 1765 001e 0246     		mov	r2, r0
+ 1766 0020 7B68     		ldr	r3, [r7, #4]
+ 1767 0022 9342     		cmp	r3, r2
+ 1768 0024 01D0     		beq	.L83
+ 638:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_RSA_BAD_INPUT_DATA );
+ 1769              		.loc 1 638 0
+ 1770 0026 094B     		ldr	r3, .L85
+ 1771 0028 0CE0     		b	.L84
+ 1772              	.L83:
+ 639:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 640:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( rsa_alt->decrypt_func( rsa_alt->key,
+ 1773              		.loc 1 640 0
+ 1774 002a 7B69     		ldr	r3, [r7, #20]
+ 1775 002c 5C68     		ldr	r4, [r3, #4]
+ 1776 002e 7B69     		ldr	r3, [r7, #20]
+ 1777 0030 1868     		ldr	r0, [r3]
+ 1778 0032 FB6A     		ldr	r3, [r7, #44]
+ 1779 0034 0193     		str	r3, [sp, #4]
+ 1780 0036 3B68     		ldr	r3, [r7]
+ 1781 0038 0093     		str	r3, [sp]
+ 1782 003a BB68     		ldr	r3, [r7, #8]
+ 1783 003c BA6A     		ldr	r2, [r7, #40]
+ 1784 003e 0121     		movs	r1, #1
+ 1785 0040 A047     		blx	r4
+ 1786              	.LVL4:
+ 1787 0042 0346     		mov	r3, r0
+ 1788              	.L84:
+ 641:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                 MBEDTLS_RSA_PRIVATE, olen, input, output, osize ) );
+ 642:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1789              		.loc 1 642 0
+ 1790 0044 1846     		mov	r0, r3
+ 1791 0046 1C37     		adds	r7, r7, #28
+ 1792              	.LCFI146:
+ 1793              		.cfi_def_cfa_offset 12
+ 1794 0048 BD46     		mov	sp, r7
+ 1795              	.LCFI147:
+ 1796              		.cfi_def_cfa_register 13
+ 1797              		@ sp needed
+ 1798 004a 90BD     		pop	{r4, r7, pc}
+ 1799              	.L86:
+ 1800              		.align	2
+ 1801              	.L85:
+ 1802 004c 80BFFFFF 		.word	-16512
+ 1803              		.cfi_endproc
+ 1804              	.LFE33:
+ 1806              		.section	.text.rsa_alt_check_pair,"ax",%progbits
+ 1807              		.align	1
+ 1808              		.syntax unified
+ 1809              		.thumb
+ 1810              		.thumb_func
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 43
+
+
+ 1811              		.fpu fpv4-sp-d16
+ 1813              	rsa_alt_check_pair:
+ 1814              	.LFB34:
+ 643:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 644:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #if defined(MBEDTLS_RSA_C)
+ 645:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static int rsa_alt_check_pair( const void *pub, const void *prv )
+ 646:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1815              		.loc 1 646 0
+ 1816              		.cfi_startproc
+ 1817              		@ args = 0, pretend = 0, frame = 1072
+ 1818              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1819 0000 90B5     		push	{r4, r7, lr}
+ 1820              	.LCFI148:
+ 1821              		.cfi_def_cfa_offset 12
+ 1822              		.cfi_offset 4, -12
+ 1823              		.cfi_offset 7, -8
+ 1824              		.cfi_offset 14, -4
+ 1825 0002 ADF2444D 		subw	sp, sp, #1092
+ 1826              	.LCFI149:
+ 1827              		.cfi_def_cfa_offset 1104
+ 1828 0006 04AF     		add	r7, sp, #16
+ 1829              	.LCFI150:
+ 1830              		.cfi_def_cfa 7, 1088
+ 1831 0008 3B1D     		adds	r3, r7, #4
+ 1832 000a 1860     		str	r0, [r3]
+ 1833 000c 3B46     		mov	r3, r7
+ 1834 000e 1960     		str	r1, [r3]
+ 647:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     unsigned char sig[MBEDTLS_MPI_MAX_SIZE];
+ 648:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     unsigned char hash[32];
+ 649:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     size_t sig_len = 0;
+ 1835              		.loc 1 649 0
+ 1836 0010 07F10803 		add	r3, r7, #8
+ 1837 0014 0022     		movs	r2, #0
+ 1838 0016 1A60     		str	r2, [r3]
+ 650:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     int ret;
+ 651:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 652:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( rsa_alt_get_bitlen( prv ) != rsa_get_bitlen( pub ) )
+ 1839              		.loc 1 652 0
+ 1840 0018 3B46     		mov	r3, r7
+ 1841 001a 1868     		ldr	r0, [r3]
+ 1842 001c FFF7FEFF 		bl	rsa_alt_get_bitlen
+ 1843 0020 0446     		mov	r4, r0
+ 1844 0022 3B1D     		adds	r3, r7, #4
+ 1845 0024 1868     		ldr	r0, [r3]
+ 1846 0026 FFF7FEFF 		bl	rsa_get_bitlen
+ 1847 002a 0346     		mov	r3, r0
+ 1848 002c 9C42     		cmp	r4, r3
+ 1849 002e 01D0     		beq	.L88
+ 653:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_RSA_KEY_CHECK_FAILED );
+ 1850              		.loc 1 653 0
+ 1851 0030 1E4B     		ldr	r3, .L93
+ 1852 0032 36E0     		b	.L92
+ 1853              	.L88:
+ 654:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 655:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     memset( hash, 0x2a, sizeof( hash ) );
+ 1854              		.loc 1 655 0
+ 1855 0034 07F10C03 		add	r3, r7, #12
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 44
+
+
+ 1856 0038 2022     		movs	r2, #32
+ 1857 003a 2A21     		movs	r1, #42
+ 1858 003c 1846     		mov	r0, r3
+ 1859 003e FFF7FEFF 		bl	memset
+ 656:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 657:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ( ret = rsa_alt_sign_wrap( (void *) prv, MBEDTLS_MD_NONE,
+ 1860              		.loc 1 657 0
+ 1861 0042 07F10C02 		add	r2, r7, #12
+ 1862 0046 3846     		mov	r0, r7
+ 1863 0048 0023     		movs	r3, #0
+ 1864 004a 0393     		str	r3, [sp, #12]
+ 1865 004c 0023     		movs	r3, #0
+ 1866 004e 0293     		str	r3, [sp, #8]
+ 1867 0050 07F10803 		add	r3, r7, #8
+ 1868 0054 0193     		str	r3, [sp, #4]
+ 1869 0056 07F12C03 		add	r3, r7, #44
+ 1870 005a 0093     		str	r3, [sp]
+ 1871 005c 2023     		movs	r3, #32
+ 1872 005e 0021     		movs	r1, #0
+ 1873 0060 0068     		ldr	r0, [r0]
+ 1874 0062 FFF7FEFF 		bl	rsa_alt_sign_wrap
+ 1875 0066 C7F82C04 		str	r0, [r7, #1068]
+ 1876 006a D7F82C34 		ldr	r3, [r7, #1068]
+ 1877 006e 002B     		cmp	r3, #0
+ 1878 0070 02D0     		beq	.L90
+ 658:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                    hash, sizeof( hash ),
+ 659:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                                    sig, &sig_len, NULL, NULL ) ) != 0 )
+ 660:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     {
+ 661:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( ret );
+ 1879              		.loc 1 661 0
+ 1880 0072 D7F82C34 		ldr	r3, [r7, #1068]
+ 1881 0076 14E0     		b	.L92
+ 1882              	.L90:
+ 662:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     }
+ 663:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 664:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( rsa_verify_wrap( (void *) pub, MBEDTLS_MD_NONE,
+ 1883              		.loc 1 664 0
+ 1884 0078 07F10803 		add	r3, r7, #8
+ 1885 007c 1B68     		ldr	r3, [r3]
+ 1886 007e 07F10C02 		add	r2, r7, #12
+ 1887 0082 381D     		adds	r0, r7, #4
+ 1888 0084 0193     		str	r3, [sp, #4]
+ 1889 0086 07F12C03 		add	r3, r7, #44
+ 1890 008a 0093     		str	r3, [sp]
+ 1891 008c 2023     		movs	r3, #32
+ 1892 008e 0021     		movs	r1, #0
+ 1893 0090 0068     		ldr	r0, [r0]
+ 1894 0092 FFF7FEFF 		bl	rsa_verify_wrap
+ 1895 0096 0346     		mov	r3, r0
+ 1896 0098 002B     		cmp	r3, #0
+ 1897 009a 01D0     		beq	.L91
+ 665:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****                          hash, sizeof( hash ), sig, sig_len ) != 0 )
+ 666:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     {
+ 667:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         return( MBEDTLS_ERR_RSA_KEY_CHECK_FAILED );
+ 1898              		.loc 1 667 0
+ 1899 009c 034B     		ldr	r3, .L93
+ 1900 009e 00E0     		b	.L92
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 45
+
+
+ 1901              	.L91:
+ 668:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     }
+ 669:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 670:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( 0 );
+ 1902              		.loc 1 670 0
+ 1903 00a0 0023     		movs	r3, #0
+ 1904              	.L92:
+ 671:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1905              		.loc 1 671 0 discriminator 1
+ 1906 00a2 1846     		mov	r0, r3
+ 1907 00a4 07F23447 		addw	r7, r7, #1076
+ 1908              	.LCFI151:
+ 1909              		.cfi_def_cfa_offset 12
+ 1910 00a8 BD46     		mov	sp, r7
+ 1911              	.LCFI152:
+ 1912              		.cfi_def_cfa_register 13
+ 1913              		@ sp needed
+ 1914 00aa 90BD     		pop	{r4, r7, pc}
+ 1915              	.L94:
+ 1916              		.align	2
+ 1917              	.L93:
+ 1918 00ac 00BEFFFF 		.word	-16896
+ 1919              		.cfi_endproc
+ 1920              	.LFE34:
+ 1922              		.section	.text.rsa_alt_alloc_wrap,"ax",%progbits
+ 1923              		.align	1
+ 1924              		.syntax unified
+ 1925              		.thumb
+ 1926              		.thumb_func
+ 1927              		.fpu fpv4-sp-d16
+ 1929              	rsa_alt_alloc_wrap:
+ 1930              	.LFB35:
+ 672:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** #endif /* MBEDTLS_RSA_C */
+ 673:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 674:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void *rsa_alt_alloc_wrap( void )
+ 675:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1931              		.loc 1 675 0
+ 1932              		.cfi_startproc
+ 1933              		@ args = 0, pretend = 0, frame = 8
+ 1934              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1935 0000 80B5     		push	{r7, lr}
+ 1936              	.LCFI153:
+ 1937              		.cfi_def_cfa_offset 8
+ 1938              		.cfi_offset 7, -8
+ 1939              		.cfi_offset 14, -4
+ 1940 0002 82B0     		sub	sp, sp, #8
+ 1941              	.LCFI154:
+ 1942              		.cfi_def_cfa_offset 16
+ 1943 0004 00AF     		add	r7, sp, #0
+ 1944              	.LCFI155:
+ 1945              		.cfi_def_cfa_register 7
+ 676:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     void *ctx = mbedtls_calloc( 1, sizeof( mbedtls_rsa_alt_context ) );
+ 1946              		.loc 1 676 0
+ 1947 0006 1021     		movs	r1, #16
+ 1948 0008 0120     		movs	r0, #1
+ 1949 000a FFF7FEFF 		bl	mbedtls_calloc
+ 1950 000e 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 46
+
+
+ 677:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 678:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     if( ctx != NULL )
+ 1951              		.loc 1 678 0
+ 1952 0010 7B68     		ldr	r3, [r7, #4]
+ 1953 0012 002B     		cmp	r3, #0
+ 1954 0014 04D0     		beq	.L96
+ 679:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****         memset( ctx, 0, sizeof( mbedtls_rsa_alt_context ) );
+ 1955              		.loc 1 679 0
+ 1956 0016 1022     		movs	r2, #16
+ 1957 0018 0021     		movs	r1, #0
+ 1958 001a 7868     		ldr	r0, [r7, #4]
+ 1959 001c FFF7FEFF 		bl	memset
+ 1960              	.L96:
+ 680:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 681:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     return( ctx );
+ 1961              		.loc 1 681 0
+ 1962 0020 7B68     		ldr	r3, [r7, #4]
+ 682:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 1963              		.loc 1 682 0
+ 1964 0022 1846     		mov	r0, r3
+ 1965 0024 0837     		adds	r7, r7, #8
+ 1966              	.LCFI156:
+ 1967              		.cfi_def_cfa_offset 8
+ 1968 0026 BD46     		mov	sp, r7
+ 1969              	.LCFI157:
+ 1970              		.cfi_def_cfa_register 13
+ 1971              		@ sp needed
+ 1972 0028 80BD     		pop	{r7, pc}
+ 1973              		.cfi_endproc
+ 1974              	.LFE35:
+ 1976              		.section	.text.rsa_alt_free_wrap,"ax",%progbits
+ 1977              		.align	1
+ 1978              		.syntax unified
+ 1979              		.thumb
+ 1980              		.thumb_func
+ 1981              		.fpu fpv4-sp-d16
+ 1983              	rsa_alt_free_wrap:
+ 1984              	.LFB36:
+ 683:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** 
+ 684:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** static void rsa_alt_free_wrap( void *ctx )
+ 685:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** {
+ 1985              		.loc 1 685 0
+ 1986              		.cfi_startproc
+ 1987              		@ args = 0, pretend = 0, frame = 8
+ 1988              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1989 0000 80B5     		push	{r7, lr}
+ 1990              	.LCFI158:
+ 1991              		.cfi_def_cfa_offset 8
+ 1992              		.cfi_offset 7, -8
+ 1993              		.cfi_offset 14, -4
+ 1994 0002 82B0     		sub	sp, sp, #8
+ 1995              	.LCFI159:
+ 1996              		.cfi_def_cfa_offset 16
+ 1997 0004 00AF     		add	r7, sp, #0
+ 1998              	.LCFI160:
+ 1999              		.cfi_def_cfa_register 7
+ 2000 0006 7860     		str	r0, [r7, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 47
+
+
+ 686:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_platform_zeroize( ctx, sizeof( mbedtls_rsa_alt_context ) );
+ 2001              		.loc 1 686 0
+ 2002 0008 1021     		movs	r1, #16
+ 2003 000a 7868     		ldr	r0, [r7, #4]
+ 2004 000c FFF7FEFF 		bl	mbedtls_platform_zeroize
+ 687:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c ****     mbedtls_free( ctx );
+ 2005              		.loc 1 687 0
+ 2006 0010 7868     		ldr	r0, [r7, #4]
+ 2007 0012 FFF7FEFF 		bl	mbedtls_free
+ 688:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\pk_wrap.c **** }
+ 2008              		.loc 1 688 0
+ 2009 0016 00BF     		nop
+ 2010 0018 0837     		adds	r7, r7, #8
+ 2011              	.LCFI161:
+ 2012              		.cfi_def_cfa_offset 8
+ 2013 001a BD46     		mov	sp, r7
+ 2014              	.LCFI162:
+ 2015              		.cfi_def_cfa_register 13
+ 2016              		@ sp needed
+ 2017 001c 80BD     		pop	{r7, pc}
+ 2018              		.cfi_endproc
+ 2019              	.LFE36:
+ 2021              		.global	mbedtls_rsa_alt_info
+ 2022              		.section	.rodata
+ 2023 002e 0000     		.align	2
+ 2024              	.LC7:
+ 2025 0030 5253412D 		.ascii	"RSA-alt\000"
+ 2025      616C7400 
+ 2026              		.section	.rodata.mbedtls_rsa_alt_info,"a",%progbits
+ 2027              		.align	2
+ 2030              	mbedtls_rsa_alt_info:
+ 2031 0000 05       		.byte	5
+ 2032 0001 000000   		.space	3
+ 2033 0004 30000000 		.word	.LC7
+ 2034 0008 00000000 		.word	rsa_alt_get_bitlen
+ 2035 000c 00000000 		.word	rsa_alt_can_do
+ 2036 0010 00000000 		.word	0
+ 2037 0014 00000000 		.word	rsa_alt_sign_wrap
+ 2038 0018 00000000 		.word	rsa_alt_decrypt_wrap
+ 2039 001c 00000000 		.word	0
+ 2040 0020 00000000 		.word	rsa_alt_check_pair
+ 2041 0024 00000000 		.word	rsa_alt_alloc_wrap
+ 2042 0028 00000000 		.word	rsa_alt_free_wrap
+ 2043 002c 00000000 		.word	0
+ 2044              		.text
+ 2045              	.Letext0:
+ 2046              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2047              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2048              		.file 4 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 2049              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2050              		.file 6 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 2051              		.file 7 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 2052              		.file 8 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 2053              		.file 9 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 2054              		.file 10 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 2055              		.file 11 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 2056              		.file 12 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 48
+
+
+ 2057              		.file 13 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 2058              		.file 14 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 2059              		.file 15 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 2060              		.file 16 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 2061              		.file 17 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 49
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 pk_wrap.c
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:18     .text.rsa_can_do:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:24     .text.rsa_can_do:00000000 rsa_can_do
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:78     .text.rsa_get_bitlen:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:84     .text.rsa_get_bitlen:00000000 rsa_get_bitlen
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:124    .text.rsa_verify_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:130    .text.rsa_verify_wrap:00000000 rsa_verify_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:215    .text.rsa_verify_wrap:00000068 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:221    .text.rsa_sign_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:227    .text.rsa_sign_wrap:00000000 rsa_sign_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:287    .text.rsa_decrypt_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:293    .text.rsa_decrypt_wrap:00000000 rsa_decrypt_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:357    .text.rsa_decrypt_wrap:0000004c $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:362    .text.rsa_encrypt_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:368    .text.rsa_encrypt_wrap:00000000 rsa_encrypt_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:435    .text.rsa_encrypt_wrap:00000050 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:440    .text.rsa_check_pair_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:446    .text.rsa_check_pair_wrap:00000000 rsa_check_pair_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:484    .text.rsa_alloc_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:490    .text.rsa_alloc_wrap:00000000 rsa_alloc_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:538    .text.rsa_free_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:544    .text.rsa_free_wrap:00000000 rsa_free_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:582    .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:589    .text.rsa_debug:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:595    .text.rsa_debug:00000000 rsa_debug
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:661    .text.rsa_debug:00000048 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:675    .rodata.mbedtls_rsa_info:00000000 mbedtls_rsa_info
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:672    .rodata.mbedtls_rsa_info:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:690    .text.eckey_can_do:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:696    .text.eckey_can_do:00000000 eckey_can_do
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:753    .text.eckey_get_bitlen:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:759    .text.eckey_get_bitlen:00000000 eckey_get_bitlen
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:798    .text.eckey_verify_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:804    .text.eckey_verify_wrap:00000000 eckey_verify_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1313   .text.ecdsa_verify_wrap:00000000 ecdsa_verify_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:871    .text.eckey_sign_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:877    .text.eckey_sign_wrap:00000000 eckey_sign_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1379   .text.ecdsa_sign_wrap:00000000 ecdsa_sign_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:948    .text.eckey_check_pair:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:954    .text.eckey_check_pair:00000000 eckey_check_pair
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:992    .text.eckey_alloc_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:998    .text.eckey_alloc_wrap:00000000 eckey_alloc_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1044   .text.eckey_free_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1050   .text.eckey_free_wrap:00000000 eckey_free_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1092   .text.eckey_debug:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1098   .text.eckey_debug:00000000 eckey_debug
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1147   .text.eckey_debug:0000002c $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1160   .rodata.mbedtls_eckey_info:00000000 mbedtls_eckey_info
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1157   .rodata.mbedtls_eckey_info:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1175   .text.eckeydh_can_do:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1181   .text.eckeydh_can_do:00000000 eckeydh_can_do
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1242   .rodata.mbedtls_eckeydh_info:00000000 mbedtls_eckeydh_info
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1239   .rodata.mbedtls_eckeydh_info:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1257   .text.ecdsa_can_do:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1263   .text.ecdsa_can_do:00000000 ecdsa_can_do
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1307   .text.ecdsa_verify_wrap:00000000 $t
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s 			page 50
+
+
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1368   .text.ecdsa_verify_wrap:00000038 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1373   .text.ecdsa_sign_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1430   .text.ecdsa_alloc_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1436   .text.ecdsa_alloc_wrap:00000000 ecdsa_alloc_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1482   .text.ecdsa_free_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1488   .text.ecdsa_free_wrap:00000000 ecdsa_free_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1534   .rodata.mbedtls_ecdsa_info:00000000 mbedtls_ecdsa_info
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1531   .rodata.mbedtls_ecdsa_info:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1549   .text.rsa_alt_can_do:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1555   .text.rsa_alt_can_do:00000000 rsa_alt_can_do
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1599   .text.rsa_alt_get_bitlen:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1605   .text.rsa_alt_get_bitlen:00000000 rsa_alt_get_bitlen
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1650   .text.rsa_alt_sign_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1656   .text.rsa_alt_sign_wrap:00000000 rsa_alt_sign_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1726   .text.rsa_alt_decrypt_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1732   .text.rsa_alt_decrypt_wrap:00000000 rsa_alt_decrypt_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1802   .text.rsa_alt_decrypt_wrap:0000004c $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1807   .text.rsa_alt_check_pair:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1813   .text.rsa_alt_check_pair:00000000 rsa_alt_check_pair
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1918   .text.rsa_alt_check_pair:000000ac $d
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1923   .text.rsa_alt_alloc_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1929   .text.rsa_alt_alloc_wrap:00000000 rsa_alt_alloc_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1977   .text.rsa_alt_free_wrap:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:1983   .text.rsa_alt_free_wrap:00000000 rsa_alt_free_wrap
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:2030   .rodata.mbedtls_rsa_alt_info:00000000 mbedtls_rsa_alt_info
+C:\Users\dtjld\AppData\Local\Temp\ccdVPuDn.s:2027   .rodata.mbedtls_rsa_alt_info:00000000 $d
+
+UNDEFINED SYMBOLS
+mbedtls_rsa_get_len
+mbedtls_rsa_pkcs1_verify
+mbedtls_rsa_pkcs1_sign
+mbedtls_rsa_pkcs1_decrypt
+mbedtls_rsa_pkcs1_encrypt
+mbedtls_rsa_check_pub_priv
+mbedtls_calloc
+mbedtls_rsa_init
+mbedtls_rsa_free
+mbedtls_free
+mbedtls_ecdsa_init
+mbedtls_ecdsa_from_keypair
+mbedtls_ecdsa_free
+mbedtls_ecp_check_pub_priv
+mbedtls_ecp_keypair_init
+mbedtls_ecp_keypair_free
+mbedtls_ecdsa_read_signature
+mbedtls_ecdsa_write_signature
+memset
+mbedtls_platform_zeroize

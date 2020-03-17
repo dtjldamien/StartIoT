@@ -47,9 +47,10 @@
 #define DEFAULT_LIFETIME            60
 #define DEFAULT_SERVER_IPV4         "iot-acc.cn-north-4.myhuaweicloud.com"//"119.3.248.253"
 #define DEFAULT_SERVER_PORT         "8883"
-#define CN_MQTT_EP_NOTEID           "sinxxxxxvice"
-#define CN_MQTT_EP_DEVICEID         "1c82xxxxxxxxxxxcaeea02b3"
-#define CN_MQTT_EP_PASSWD           "c18f1xxxxxxxx8e6fef"
+#define CN_MQTT_EP_NOTEID           "12346789A"
+#define CN_MQTT_EP_DEVICEID         "5e17ddc2dd3d3905fe9e6c09_12346789A"
+#define CN_MQTT_EP_PASSWD           "c18f1123467898e6fef"
+/** password -> secret key during individual registration*/
 
 static char s_mqtt_ca_crt[] =
 "-----BEGIN CERTIFICATE-----\r\n"

@@ -1,0 +1,731 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"MQTTConnectServer.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata
+  18              		.align	2
+  19              	.LC0:
+  20 0000 4D514973 		.ascii	"MQIsdp\000"
+  20      647000
+  21 0007 00       		.align	2
+  22              	.LC1:
+  23 0008 4D515454 		.ascii	"MQTT\000"
+  23      00
+  24              		.section	.text.MQTTPacket_checkVersion,"ax",%progbits
+  25              		.align	1
+  26              		.global	MQTTPacket_checkVersion
+  27              		.syntax unified
+  28              		.thumb
+  29              		.thumb_func
+  30              		.fpu fpv4-sp-d16
+  32              	MQTTPacket_checkVersion:
+  33              	.LFB3:
+  34              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** /*******************************************************************************
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  * Copyright (c) 2014 IBM Corp.
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  *
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  * All rights reserved. This program and the accompanying materials
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  * are made available under the terms of the Eclipse Public License v1.0
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  *
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  * The Eclipse Public License is available at
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  * and the Eclipse Distribution License is available at
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  *   http://www.eclipse.org/org/documents/edl-v10.php.
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  *
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  * Contributors:
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  *    Ian Craggs - initial API and implementation and/or initial documentation
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****  *******************************************************************************/
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** #include "StackTrace.h"
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** #include "MQTTPacket.h"
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** #include <string.h>
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** #define min(a, b) ((a < b) ? a : b)
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 2
+
+
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** /**
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * Validates MQTT protocol name and version combinations
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @param protocol the MQTT protocol name as an MQTTString
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @param version the MQTT protocol version number, as in the connect packet
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @return correct MQTT combination?  1 is true, 0 is false
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   */
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** int MQTTPacket_checkVersion(MQTTString* protocol, int version)
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** {
+  35              		.loc 1 31 0
+  36              		.cfi_startproc
+  37              		@ args = 0, pretend = 0, frame = 16
+  38              		@ frame_needed = 1, uses_anonymous_args = 0
+  39 0000 80B5     		push	{r7, lr}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 8
+  42              		.cfi_offset 7, -8
+  43              		.cfi_offset 14, -4
+  44 0002 84B0     		sub	sp, sp, #16
+  45              	.LCFI1:
+  46              		.cfi_def_cfa_offset 24
+  47 0004 00AF     		add	r7, sp, #0
+  48              	.LCFI2:
+  49              		.cfi_def_cfa_register 7
+  50 0006 7860     		str	r0, [r7, #4]
+  51 0008 3960     		str	r1, [r7]
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	int rc = 0;
+  52              		.loc 1 32 0
+  53 000a 0023     		movs	r3, #0
+  54 000c FB60     		str	r3, [r7, #12]
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	if (version == 3 && memcmp(protocol->lenstring.data, "MQIsdp",
+  55              		.loc 1 34 0
+  56 000e 3B68     		ldr	r3, [r7]
+  57 0010 032B     		cmp	r3, #3
+  58 0012 10D1     		bne	.L2
+  59              		.loc 1 34 0 is_stmt 0 discriminator 1
+  60 0014 7B68     		ldr	r3, [r7, #4]
+  61 0016 9868     		ldr	r0, [r3, #8]
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			min(6, protocol->lenstring.len)) == 0)
+  62              		.loc 1 35 0 is_stmt 1 discriminator 1
+  63 0018 7B68     		ldr	r3, [r7, #4]
+  64 001a 5B68     		ldr	r3, [r3, #4]
+  65 001c 062B     		cmp	r3, #6
+  66 001e A8BF     		it	ge
+  67 0020 0623     		movge	r3, #6
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			min(6, protocol->lenstring.len)) == 0)
+  68              		.loc 1 34 0 discriminator 1
+  69 0022 1A46     		mov	r2, r3
+  70 0024 1049     		ldr	r1, .L5
+  71 0026 FFF7FEFF 		bl	memcmp
+  72 002a 0346     		mov	r3, r0
+  73 002c 002B     		cmp	r3, #0
+  74 002e 02D1     		bne	.L2
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		rc = 1;
+  75              		.loc 1 36 0
+  76 0030 0123     		movs	r3, #1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 3
+
+
+  77 0032 FB60     		str	r3, [r7, #12]
+  78 0034 12E0     		b	.L3
+  79              	.L2:
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	else if (version == 4 && memcmp(protocol->lenstring.data, "MQTT",
+  80              		.loc 1 37 0
+  81 0036 3B68     		ldr	r3, [r7]
+  82 0038 042B     		cmp	r3, #4
+  83 003a 0FD1     		bne	.L3
+  84              		.loc 1 37 0 is_stmt 0 discriminator 1
+  85 003c 7B68     		ldr	r3, [r7, #4]
+  86 003e 9868     		ldr	r0, [r3, #8]
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			min(4, protocol->lenstring.len)) == 0)
+  87              		.loc 1 38 0 is_stmt 1 discriminator 1
+  88 0040 7B68     		ldr	r3, [r7, #4]
+  89 0042 5B68     		ldr	r3, [r3, #4]
+  90 0044 042B     		cmp	r3, #4
+  91 0046 A8BF     		it	ge
+  92 0048 0423     		movge	r3, #4
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	else if (version == 4 && memcmp(protocol->lenstring.data, "MQTT",
+  93              		.loc 1 37 0 discriminator 1
+  94 004a 1A46     		mov	r2, r3
+  95 004c 0749     		ldr	r1, .L5+4
+  96 004e FFF7FEFF 		bl	memcmp
+  97 0052 0346     		mov	r3, r0
+  98 0054 002B     		cmp	r3, #0
+  99 0056 01D1     		bne	.L3
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		rc = 1;
+ 100              		.loc 1 39 0
+ 101 0058 0123     		movs	r3, #1
+ 102 005a FB60     		str	r3, [r7, #12]
+ 103              	.L3:
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	return rc;
+ 104              		.loc 1 40 0
+ 105 005c FB68     		ldr	r3, [r7, #12]
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** }
+ 106              		.loc 1 41 0
+ 107 005e 1846     		mov	r0, r3
+ 108 0060 1037     		adds	r7, r7, #16
+ 109              	.LCFI3:
+ 110              		.cfi_def_cfa_offset 8
+ 111 0062 BD46     		mov	sp, r7
+ 112              	.LCFI4:
+ 113              		.cfi_def_cfa_register 13
+ 114              		@ sp needed
+ 115 0064 80BD     		pop	{r7, pc}
+ 116              	.L6:
+ 117 0066 00BF     		.align	2
+ 118              	.L5:
+ 119 0068 00000000 		.word	.LC0
+ 120 006c 08000000 		.word	.LC1
+ 121              		.cfi_endproc
+ 122              	.LFE3:
+ 124              		.section	.text.MQTTDeserialize_connect,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	MQTTDeserialize_connect
+ 127              		.syntax unified
+ 128              		.thumb
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 4
+
+
+ 129              		.thumb_func
+ 130              		.fpu fpv4-sp-d16
+ 132              	MQTTDeserialize_connect:
+ 133              	.LFB4:
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** /**
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * Deserializes the supplied (wire) buffer into connect data structure
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @param data the connect data structure to be filled out
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @param buf the raw buffer data, of the correct length determined by the remaining length field
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @param len the length in bytes of the data in the supplied buffer
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @return error code.  1 is success, 0 is failure
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   */
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** int MQTTDeserialize_connect(MQTTPacket_connectData* data, unsigned char* buf, int len)
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** {
+ 134              		.loc 1 52 0
+ 135              		.cfi_startproc
+ 136              		@ args = 0, pretend = 0, frame = 56
+ 137              		@ frame_needed = 1, uses_anonymous_args = 0
+ 138 0000 80B5     		push	{r7, lr}
+ 139              	.LCFI5:
+ 140              		.cfi_def_cfa_offset 8
+ 141              		.cfi_offset 7, -8
+ 142              		.cfi_offset 14, -4
+ 143 0002 8EB0     		sub	sp, sp, #56
+ 144              	.LCFI6:
+ 145              		.cfi_def_cfa_offset 64
+ 146 0004 00AF     		add	r7, sp, #0
+ 147              	.LCFI7:
+ 148              		.cfi_def_cfa_register 7
+ 149 0006 F860     		str	r0, [r7, #12]
+ 150 0008 B960     		str	r1, [r7, #8]
+ 151 000a 7A60     		str	r2, [r7, #4]
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	MQTTHeader header = {0};
+ 152              		.loc 1 53 0
+ 153 000c 0023     		movs	r3, #0
+ 154 000e BB62     		str	r3, [r7, #40]
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	MQTTConnectFlags flags = {0};
+ 155              		.loc 1 54 0
+ 156 0010 0023     		movs	r3, #0
+ 157 0012 7B62     		str	r3, [r7, #36]
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	unsigned char* curdata = buf;
+ 158              		.loc 1 55 0
+ 159 0014 BB68     		ldr	r3, [r7, #8]
+ 160 0016 3B62     		str	r3, [r7, #32]
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	unsigned char* enddata = &buf[len];
+ 161              		.loc 1 56 0
+ 162 0018 7B68     		ldr	r3, [r7, #4]
+ 163 001a BA68     		ldr	r2, [r7, #8]
+ 164 001c 1344     		add	r3, r3, r2
+ 165 001e 3B63     		str	r3, [r7, #48]
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	int rc = 0;
+ 166              		.loc 1 57 0
+ 167 0020 0023     		movs	r3, #0
+ 168 0022 7B63     		str	r3, [r7, #52]
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	MQTTString Protocol;
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	int version;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 5
+
+
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	int mylen = 0;
+ 169              		.loc 1 60 0
+ 170 0024 0023     		movs	r3, #0
+ 171 0026 3B61     		str	r3, [r7, #16]
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	FUNC_ENTRY;
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	header.byte = readChar(&curdata);
+ 172              		.loc 1 63 0
+ 173 0028 07F12003 		add	r3, r7, #32
+ 174 002c 1846     		mov	r0, r3
+ 175 002e FFF7FEFF 		bl	readChar
+ 176 0032 0346     		mov	r3, r0
+ 177 0034 87F82830 		strb	r3, [r7, #40]
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	if (header.bits.type != CONNECT)
+ 178              		.loc 1 64 0
+ 179 0038 97F82830 		ldrb	r3, [r7, #40]	@ zero_extendqisi2
+ 180 003c 23F00F03 		bic	r3, r3, #15
+ 181 0040 DBB2     		uxtb	r3, r3
+ 182 0042 102B     		cmp	r3, #16
+ 183 0044 40F0C280 		bne	.L15
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		goto exit;
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	curdata += MQTTPacket_decodeBuf(curdata, &mylen); /* read remaining length */
+ 184              		.loc 1 67 0
+ 185 0048 3B6A     		ldr	r3, [r7, #32]
+ 186 004a 07F11002 		add	r2, r7, #16
+ 187 004e 1146     		mov	r1, r2
+ 188 0050 1846     		mov	r0, r3
+ 189 0052 FFF7FEFF 		bl	MQTTPacket_decodeBuf
+ 190 0056 0246     		mov	r2, r0
+ 191 0058 3B6A     		ldr	r3, [r7, #32]
+ 192 005a 1344     		add	r3, r3, r2
+ 193 005c 3B62     		str	r3, [r7, #32]
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	if (!readMQTTLenString(&Protocol, &curdata, enddata) ||
+ 194              		.loc 1 69 0
+ 195 005e 07F12001 		add	r1, r7, #32
+ 196 0062 07F11403 		add	r3, r7, #20
+ 197 0066 3A6B     		ldr	r2, [r7, #48]
+ 198 0068 1846     		mov	r0, r3
+ 199 006a FFF7FEFF 		bl	readMQTTLenString
+ 200 006e 0346     		mov	r3, r0
+ 201 0070 002B     		cmp	r3, #0
+ 202 0072 00F0AD80 		beq	.L16
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		enddata - curdata < 0) /* do we have enough data to read the protocol version byte? */
+ 203              		.loc 1 70 0 discriminator 1
+ 204 0076 3B6B     		ldr	r3, [r7, #48]
+ 205 0078 3A6A     		ldr	r2, [r7, #32]
+ 206 007a 9B1A     		subs	r3, r3, r2
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		enddata - curdata < 0) /* do we have enough data to read the protocol version byte? */
+ 207              		.loc 1 69 0 discriminator 1
+ 208 007c 002B     		cmp	r3, #0
+ 209 007e C0F2A780 		blt	.L16
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		goto exit;
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	version = (int)readChar(&curdata); /* Protocol version */
+ 210              		.loc 1 73 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 6
+
+
+ 211 0082 07F12003 		add	r3, r7, #32
+ 212 0086 1846     		mov	r0, r3
+ 213 0088 FFF7FEFF 		bl	readChar
+ 214 008c 0346     		mov	r3, r0
+ 215 008e FB62     		str	r3, [r7, #44]
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	/* If we don't recognize the protocol version, we don't parse the connect packet on the
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	 * basis that we don't know what the format will be.
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	 */
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	if (MQTTPacket_checkVersion(&Protocol, version))
+ 216              		.loc 1 77 0
+ 217 0090 07F11403 		add	r3, r7, #20
+ 218 0094 F96A     		ldr	r1, [r7, #44]
+ 219 0096 1846     		mov	r0, r3
+ 220 0098 FFF7FEFF 		bl	MQTTPacket_checkVersion
+ 221 009c 0346     		mov	r3, r0
+ 222 009e 002B     		cmp	r3, #0
+ 223 00a0 00F09680 		beq	.L16
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	{
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		flags.all = readChar(&curdata);
+ 224              		.loc 1 79 0
+ 225 00a4 07F12003 		add	r3, r7, #32
+ 226 00a8 1846     		mov	r0, r3
+ 227 00aa FFF7FEFF 		bl	readChar
+ 228 00ae 0346     		mov	r3, r0
+ 229 00b0 87F82430 		strb	r3, [r7, #36]
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		data->cleansession = flags.bits.cleansession;
+ 230              		.loc 1 80 0
+ 231 00b4 97F82430 		ldrb	r3, [r7, #36]
+ 232 00b8 C3F34003 		ubfx	r3, r3, #1, #1
+ 233 00bc DBB2     		uxtb	r3, r3
+ 234 00be 1A46     		mov	r2, r3
+ 235 00c0 FB68     		ldr	r3, [r7, #12]
+ 236 00c2 9A76     		strb	r2, [r3, #26]
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		data->keepAliveInterval = readInt(&curdata);
+ 237              		.loc 1 81 0
+ 238 00c4 07F12003 		add	r3, r7, #32
+ 239 00c8 1846     		mov	r0, r3
+ 240 00ca FFF7FEFF 		bl	readInt
+ 241 00ce 0346     		mov	r3, r0
+ 242 00d0 9AB2     		uxth	r2, r3
+ 243 00d2 FB68     		ldr	r3, [r7, #12]
+ 244 00d4 1A83     		strh	r2, [r3, #24]	@ movhi
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		if (!readMQTTLenString(&data->clientID, &curdata, enddata))
+ 245              		.loc 1 82 0
+ 246 00d6 FB68     		ldr	r3, [r7, #12]
+ 247 00d8 0C33     		adds	r3, r3, #12
+ 248 00da 07F12001 		add	r1, r7, #32
+ 249 00de 3A6B     		ldr	r2, [r7, #48]
+ 250 00e0 1846     		mov	r0, r3
+ 251 00e2 FFF7FEFF 		bl	readMQTTLenString
+ 252 00e6 0346     		mov	r3, r0
+ 253 00e8 002B     		cmp	r3, #0
+ 254 00ea 73D0     		beq	.L17
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			goto exit;
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		data->willFlag = flags.bits.will;
+ 255              		.loc 1 84 0
+ 256 00ec 97F82430 		ldrb	r3, [r7, #36]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 7
+
+
+ 257 00f0 C3F38003 		ubfx	r3, r3, #2, #1
+ 258 00f4 DBB2     		uxtb	r3, r3
+ 259 00f6 1A46     		mov	r2, r3
+ 260 00f8 FB68     		ldr	r3, [r7, #12]
+ 261 00fa DA76     		strb	r2, [r3, #27]
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		if (flags.bits.will)
+ 262              		.loc 1 85 0
+ 263 00fc 97F82430 		ldrb	r3, [r7, #36]	@ zero_extendqisi2
+ 264 0100 03F00403 		and	r3, r3, #4
+ 265 0104 DBB2     		uxtb	r3, r3
+ 266 0106 002B     		cmp	r3, #0
+ 267 0108 27D0     		beq	.L11
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		{
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			data->will.qos = flags.bits.willQoS;
+ 268              		.loc 1 87 0
+ 269 010a 97F82430 		ldrb	r3, [r7, #36]
+ 270 010e C3F3C103 		ubfx	r3, r3, #3, #2
+ 271 0112 DBB2     		uxtb	r3, r3
+ 272 0114 1A46     		mov	r2, r3
+ 273 0116 FB68     		ldr	r3, [r7, #12]
+ 274 0118 83F83D20 		strb	r2, [r3, #61]
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			data->will.retained = flags.bits.willRetain;
+ 275              		.loc 1 88 0
+ 276 011c 97F82430 		ldrb	r3, [r7, #36]
+ 277 0120 C3F34013 		ubfx	r3, r3, #5, #1
+ 278 0124 DBB2     		uxtb	r3, r3
+ 279 0126 1A46     		mov	r2, r3
+ 280 0128 FB68     		ldr	r3, [r7, #12]
+ 281 012a 83F83C20 		strb	r2, [r3, #60]
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			if (!readMQTTLenString(&data->will.topicName, &curdata, enddata) ||
+ 282              		.loc 1 89 0
+ 283 012e FB68     		ldr	r3, [r7, #12]
+ 284 0130 2433     		adds	r3, r3, #36
+ 285 0132 07F12001 		add	r1, r7, #32
+ 286 0136 3A6B     		ldr	r2, [r7, #48]
+ 287 0138 1846     		mov	r0, r3
+ 288 013a FFF7FEFF 		bl	readMQTTLenString
+ 289 013e 0346     		mov	r3, r0
+ 290 0140 002B     		cmp	r3, #0
+ 291 0142 45D0     		beq	.L16
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 				  !readMQTTLenString(&data->will.message, &curdata, enddata))
+ 292              		.loc 1 90 0 discriminator 1
+ 293 0144 FB68     		ldr	r3, [r7, #12]
+ 294 0146 3033     		adds	r3, r3, #48
+ 295 0148 07F12001 		add	r1, r7, #32
+ 296 014c 3A6B     		ldr	r2, [r7, #48]
+ 297 014e 1846     		mov	r0, r3
+ 298 0150 FFF7FEFF 		bl	readMQTTLenString
+ 299 0154 0346     		mov	r3, r0
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			if (!readMQTTLenString(&data->will.topicName, &curdata, enddata) ||
+ 300              		.loc 1 89 0 discriminator 1
+ 301 0156 002B     		cmp	r3, #0
+ 302 0158 3AD0     		beq	.L16
+ 303              	.L11:
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 				goto exit;
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		}
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		if (flags.bits.username)
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 8
+
+
+ 304              		.loc 1 93 0
+ 305 015a 97F82430 		ldrb	r3, [r7, #36]	@ zero_extendqisi2
+ 306 015e 23F07F03 		bic	r3, r3, #127
+ 307 0162 DBB2     		uxtb	r3, r3
+ 308 0164 002B     		cmp	r3, #0
+ 309 0166 27D0     		beq	.L12
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		{
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			if (enddata - curdata < 3 || !readMQTTLenString(&data->username, &curdata, enddata))
+ 310              		.loc 1 95 0
+ 311 0168 3B6B     		ldr	r3, [r7, #48]
+ 312 016a 3A6A     		ldr	r2, [r7, #32]
+ 313 016c 9B1A     		subs	r3, r3, r2
+ 314 016e 022B     		cmp	r3, #2
+ 315 0170 2EDD     		ble	.L16
+ 316              		.loc 1 95 0 is_stmt 0 discriminator 1
+ 317 0172 FB68     		ldr	r3, [r7, #12]
+ 318 0174 4033     		adds	r3, r3, #64
+ 319 0176 07F12001 		add	r1, r7, #32
+ 320 017a 3A6B     		ldr	r2, [r7, #48]
+ 321 017c 1846     		mov	r0, r3
+ 322 017e FFF7FEFF 		bl	readMQTTLenString
+ 323 0182 0346     		mov	r3, r0
+ 324 0184 002B     		cmp	r3, #0
+ 325 0186 23D0     		beq	.L16
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 				goto exit; /* username flag set, but no username supplied - invalid */
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			if (flags.bits.password &&
+ 326              		.loc 1 97 0 is_stmt 1
+ 327 0188 97F82430 		ldrb	r3, [r7, #36]	@ zero_extendqisi2
+ 328 018c 03F04003 		and	r3, r3, #64
+ 329 0190 DBB2     		uxtb	r3, r3
+ 330 0192 002B     		cmp	r3, #0
+ 331 0194 17D0     		beq	.L13
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 				(enddata - curdata < 3 || !readMQTTLenString(&data->password, &curdata, enddata)))
+ 332              		.loc 1 98 0 discriminator 1
+ 333 0196 3B6B     		ldr	r3, [r7, #48]
+ 334 0198 3A6A     		ldr	r2, [r7, #32]
+ 335 019a 9B1A     		subs	r3, r3, r2
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 				(enddata - curdata < 3 || !readMQTTLenString(&data->password, &curdata, enddata)))
+ 336              		.loc 1 97 0 discriminator 1
+ 337 019c 022B     		cmp	r3, #2
+ 338 019e 17DD     		ble	.L16
+ 339              		.loc 1 98 0
+ 340 01a0 FB68     		ldr	r3, [r7, #12]
+ 341 01a2 4C33     		adds	r3, r3, #76
+ 342 01a4 07F12001 		add	r1, r7, #32
+ 343 01a8 3A6B     		ldr	r2, [r7, #48]
+ 344 01aa 1846     		mov	r0, r3
+ 345 01ac FFF7FEFF 		bl	readMQTTLenString
+ 346 01b0 0346     		mov	r3, r0
+ 347 01b2 002B     		cmp	r3, #0
+ 348 01b4 0CD0     		beq	.L16
+ 349 01b6 06E0     		b	.L13
+ 350              	.L12:
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 				goto exit; /* password flag set, but no password supplied - invalid */
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		}
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		else if (flags.bits.password)
+ 351              		.loc 1 101 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 9
+
+
+ 352 01b8 97F82430 		ldrb	r3, [r7, #36]	@ zero_extendqisi2
+ 353 01bc 03F04003 		and	r3, r3, #64
+ 354 01c0 DBB2     		uxtb	r3, r3
+ 355 01c2 002B     		cmp	r3, #0
+ 356 01c4 08D1     		bne	.L18
+ 357              	.L13:
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 			goto exit; /* password flag set without username - invalid */
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		rc = 1;
+ 358              		.loc 1 103 0
+ 359 01c6 0123     		movs	r3, #1
+ 360 01c8 7B63     		str	r3, [r7, #52]
+ 361 01ca 06E0     		b	.L9
+ 362              	.L15:
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+ 363              		.loc 1 65 0
+ 364 01cc 00BF     		nop
+ 365 01ce 04E0     		b	.L9
+ 366              	.L16:
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	}
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** exit:
+ 367              		.loc 1 105 0
+ 368 01d0 00BF     		nop
+ 369 01d2 02E0     		b	.L9
+ 370              	.L17:
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		data->willFlag = flags.bits.will;
+ 371              		.loc 1 83 0
+ 372 01d4 00BF     		nop
+ 373 01d6 00E0     		b	.L9
+ 374              	.L18:
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		rc = 1;
+ 375              		.loc 1 102 0
+ 376 01d8 00BF     		nop
+ 377              	.L9:
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	FUNC_EXIT_RC(rc);
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	return rc;
+ 378              		.loc 1 107 0
+ 379 01da 7B6B     		ldr	r3, [r7, #52]
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** }
+ 380              		.loc 1 108 0
+ 381 01dc 1846     		mov	r0, r3
+ 382 01de 3837     		adds	r7, r7, #56
+ 383              	.LCFI8:
+ 384              		.cfi_def_cfa_offset 8
+ 385 01e0 BD46     		mov	sp, r7
+ 386              	.LCFI9:
+ 387              		.cfi_def_cfa_register 13
+ 388              		@ sp needed
+ 389 01e2 80BD     		pop	{r7, pc}
+ 390              		.cfi_endproc
+ 391              	.LFE4:
+ 393              		.section	.text.MQTTSerialize_connack,"ax",%progbits
+ 394              		.align	1
+ 395              		.global	MQTTSerialize_connack
+ 396              		.syntax unified
+ 397              		.thumb
+ 398              		.thumb_func
+ 399              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 10
+
+
+ 401              	MQTTSerialize_connack:
+ 402              	.LFB5:
+ 109:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+ 110:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+ 111:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** /**
+ 112:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * Serializes the connack packet into the supplied buffer.
+ 113:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @param buf the buffer into which the packet will be serialized
+ 114:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @param buflen the length in bytes of the supplied buffer
+ 115:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @param connack_rc the integer connack return code to be used 
+ 116:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @param sessionPresent the MQTT 3.1.1 sessionPresent flag
+ 117:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   * @return serialized length, or error if 0
+ 118:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c ****   */
+ 119:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** int MQTTSerialize_connack(unsigned char* buf, int buflen, unsigned char connack_rc, unsigned char s
+ 120:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** {
+ 403              		.loc 1 120 0
+ 404              		.cfi_startproc
+ 405              		@ args = 0, pretend = 0, frame = 32
+ 406              		@ frame_needed = 1, uses_anonymous_args = 0
+ 407 0000 80B5     		push	{r7, lr}
+ 408              	.LCFI10:
+ 409              		.cfi_def_cfa_offset 8
+ 410              		.cfi_offset 7, -8
+ 411              		.cfi_offset 14, -4
+ 412 0002 88B0     		sub	sp, sp, #32
+ 413              	.LCFI11:
+ 414              		.cfi_def_cfa_offset 40
+ 415 0004 00AF     		add	r7, sp, #0
+ 416              	.LCFI12:
+ 417              		.cfi_def_cfa_register 7
+ 418 0006 F860     		str	r0, [r7, #12]
+ 419 0008 B960     		str	r1, [r7, #8]
+ 420 000a 1146     		mov	r1, r2
+ 421 000c 1A46     		mov	r2, r3
+ 422 000e 0B46     		mov	r3, r1
+ 423 0010 FB71     		strb	r3, [r7, #7]
+ 424 0012 1346     		mov	r3, r2
+ 425 0014 BB71     		strb	r3, [r7, #6]
+ 121:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	MQTTHeader header = {0};
+ 426              		.loc 1 121 0
+ 427 0016 0023     		movs	r3, #0
+ 428 0018 BB61     		str	r3, [r7, #24]
+ 122:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	int rc = 0;
+ 429              		.loc 1 122 0
+ 430 001a 0023     		movs	r3, #0
+ 431 001c FB61     		str	r3, [r7, #28]
+ 123:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	unsigned char *ptr = buf;
+ 432              		.loc 1 123 0
+ 433 001e FB68     		ldr	r3, [r7, #12]
+ 434 0020 7B61     		str	r3, [r7, #20]
+ 124:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	MQTTConnackFlags flags = {0};
+ 435              		.loc 1 124 0
+ 436 0022 0023     		movs	r3, #0
+ 437 0024 3B61     		str	r3, [r7, #16]
+ 125:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+ 126:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	FUNC_ENTRY;
+ 127:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	if (buflen < 2)
+ 438              		.loc 1 127 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 11
+
+
+ 439 0026 BB68     		ldr	r3, [r7, #8]
+ 440 0028 012B     		cmp	r3, #1
+ 441 002a 03DC     		bgt	.L20
+ 128:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	{
+ 129:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		rc = MQTTPACKET_BUFFER_TOO_SHORT;
+ 442              		.loc 1 129 0
+ 443 002c 6FF00103 		mvn	r3, #1
+ 444 0030 FB61     		str	r3, [r7, #28]
+ 130:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 		goto exit;
+ 445              		.loc 1 130 0
+ 446 0032 33E0     		b	.L21
+ 447              	.L20:
+ 131:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	}
+ 132:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	header.byte = 0;
+ 448              		.loc 1 132 0
+ 449 0034 0023     		movs	r3, #0
+ 450 0036 3B76     		strb	r3, [r7, #24]
+ 133:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	header.bits.type = CONNACK;
+ 451              		.loc 1 133 0
+ 452 0038 3B7E     		ldrb	r3, [r7, #24]
+ 453 003a 0222     		movs	r2, #2
+ 454 003c 62F30713 		bfi	r3, r2, #4, #4
+ 455 0040 3B76     		strb	r3, [r7, #24]
+ 134:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	writeChar(&ptr, header.byte); /* write header */
+ 456              		.loc 1 134 0
+ 457 0042 3A7E     		ldrb	r2, [r7, #24]	@ zero_extendqisi2
+ 458 0044 07F11403 		add	r3, r7, #20
+ 459 0048 1146     		mov	r1, r2
+ 460 004a 1846     		mov	r0, r3
+ 461 004c FFF7FEFF 		bl	writeChar
+ 135:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+ 136:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	ptr += MQTTPacket_encode(ptr, 2); /* write remaining length */
+ 462              		.loc 1 136 0
+ 463 0050 7B69     		ldr	r3, [r7, #20]
+ 464 0052 0221     		movs	r1, #2
+ 465 0054 1846     		mov	r0, r3
+ 466 0056 FFF7FEFF 		bl	MQTTPacket_encode
+ 467 005a 0246     		mov	r2, r0
+ 468 005c 7B69     		ldr	r3, [r7, #20]
+ 469 005e 1344     		add	r3, r3, r2
+ 470 0060 7B61     		str	r3, [r7, #20]
+ 137:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+ 138:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	flags.all = 0;
+ 471              		.loc 1 138 0
+ 472 0062 0023     		movs	r3, #0
+ 473 0064 3B74     		strb	r3, [r7, #16]
+ 139:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	flags.bits.sessionpresent = sessionPresent;
+ 474              		.loc 1 139 0
+ 475 0066 BB79     		ldrb	r3, [r7, #6]
+ 476 0068 03F00103 		and	r3, r3, #1
+ 477 006c DAB2     		uxtb	r2, r3
+ 478 006e 3B7C     		ldrb	r3, [r7, #16]
+ 479 0070 62F30003 		bfi	r3, r2, #0, #1
+ 480 0074 3B74     		strb	r3, [r7, #16]
+ 140:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	writeChar(&ptr, flags.all); 
+ 481              		.loc 1 140 0
+ 482 0076 3A7C     		ldrb	r2, [r7, #16]	@ zero_extendqisi2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 12
+
+
+ 483 0078 07F11403 		add	r3, r7, #20
+ 484 007c 1146     		mov	r1, r2
+ 485 007e 1846     		mov	r0, r3
+ 486 0080 FFF7FEFF 		bl	writeChar
+ 141:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	writeChar(&ptr, connack_rc);
+ 487              		.loc 1 141 0
+ 488 0084 FA79     		ldrb	r2, [r7, #7]	@ zero_extendqisi2
+ 489 0086 07F11403 		add	r3, r7, #20
+ 490 008a 1146     		mov	r1, r2
+ 491 008c 1846     		mov	r0, r3
+ 492 008e FFF7FEFF 		bl	writeChar
+ 142:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 
+ 143:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	rc = ptr - buf;
+ 493              		.loc 1 143 0
+ 494 0092 7B69     		ldr	r3, [r7, #20]
+ 495 0094 1A46     		mov	r2, r3
+ 496 0096 FB68     		ldr	r3, [r7, #12]
+ 497 0098 D31A     		subs	r3, r2, r3
+ 498 009a FB61     		str	r3, [r7, #28]
+ 499              	.L21:
+ 144:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** exit:
+ 145:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	FUNC_EXIT_RC(rc);
+ 146:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** 	return rc;
+ 500              		.loc 1 146 0
+ 501 009c FB69     		ldr	r3, [r7, #28]
+ 147:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTConnectServer.c **** }
+ 502              		.loc 1 147 0
+ 503 009e 1846     		mov	r0, r3
+ 504 00a0 2037     		adds	r7, r7, #32
+ 505              	.LCFI13:
+ 506              		.cfi_def_cfa_offset 8
+ 507 00a2 BD46     		mov	sp, r7
+ 508              	.LCFI14:
+ 509              		.cfi_def_cfa_register 13
+ 510              		@ sp needed
+ 511 00a4 80BD     		pop	{r7, pc}
+ 512              		.cfi_endproc
+ 513              	.LFE5:
+ 515              		.text
+ 516              	.Letext0:
+ 517              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 518              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 519              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 520              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 521              		.file 6 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+ 522              		.file 7 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 MQTTConnectServer.c
+C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s:18     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s:25     .text.MQTTPacket_checkVersion:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s:32     .text.MQTTPacket_checkVersion:00000000 MQTTPacket_checkVersion
+C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s:119    .text.MQTTPacket_checkVersion:00000068 $d
+C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s:125    .text.MQTTDeserialize_connect:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s:132    .text.MQTTDeserialize_connect:00000000 MQTTDeserialize_connect
+C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s:394    .text.MQTTSerialize_connack:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccW3Bm7c.s:401    .text.MQTTSerialize_connack:00000000 MQTTSerialize_connack
+
+UNDEFINED SYMBOLS
+memcmp
+readChar
+MQTTPacket_decodeBuf
+readMQTTLenString
+readInt
+writeChar
+MQTTPacket_encode

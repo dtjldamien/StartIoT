@@ -1,0 +1,3668 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"oc_tls_mqtt_demo.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.data.s_mqtt_ca_crt,"aw",%progbits
+  18              		.align	2
+  21              	s_mqtt_ca_crt:
+  22 0000 2D2D2D2D 		.ascii	"-----BEGIN CERTIFICATE-----\015\012MIID4DCCAsigAwIB"
+  22      2D424547 
+  22      494E2043 
+  22      45525449 
+  22      46494341 
+  23 002d 4167494A 		.ascii	"AgIJAK97nNS67HRvMA0GCSqGSIb3DQEBCwUAMFMxCzAJBgNV\015"
+  23      414B3937 
+  23      6E4E5336 
+  23      37485276 
+  23      4D413047 
+  24 005e 0A424159 		.ascii	"\012BAYTAkNOMQswCQYDVQQIEwJHRDELMAkGA1UEBxMCU1oxDzA"
+  24      54416B4E 
+  24      4F4D5173 
+  24      77435159 
+  24      44565151 
+  25 008e 4E42674E 		.ascii	"NBgNVBAoTBkh1YXdl\015\012aTELMAkGA1UECxMCQ04xDDAKBg"
+  25      5642416F 
+  25      54426B68 
+  25      31595864 
+  25      6C0D0A61 
+  26 00bb 4E564241 		.ascii	"NVBAMTA0lPVDAeFw0xNjA1MDQxMjE3MjdaFw0y\015\012NjA1M"
+  26      4D544130 
+  26      6C505644 
+  26      41654677 
+  26      30784E6A 
+  27 00e8 4449784D 		.ascii	"DIxMjE3MjdaMFMxCzAJBgNVBAYTAkNOMQswCQYDVQQIEwJHRDEL"
+  27      6A45334D 
+  27      6A64614D 
+  27      464D7843 
+  27      7A414A42 
+  28 011b 4D416B47 		.ascii	"MAkGA1UE\015\012BxMCU1oxDzANBgNVBAoTBkh1YXdlaTELMAk"
+  28      41315545 
+  28      0D0A4278 
+  28      4D435531 
+  28      6F78447A 
+  29 0148 47413155 		.ascii	"GA1UECxMCQ04xDDAKBgNVBAMTA0lP\015\012VDCCASIwDQYJKo"
+  29      4543784D 
+  29      43513034 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 2
+
+
+  29      78444441 
+  29      4B42674E 
+  30 0175 5A496876 		.ascii	"ZIhvcNAQEBBQADggEPADCCAQoCggEBAJxM9fwkwvxeILpkvoAM\015"
+  30      634E4151 
+  30      45424251 
+  30      41446767 
+  30      45504144 
+  31 01a8 0A476471 		.ascii	"\012Gdqq3x0G9o445F6Shg3I0xmmzu9Of8wYuW3c4jtQ/6zscuI"
+  31      71337830 
+  31      47396F34 
+  31      34354636 
+  31      53686733 
+  32 01d8 47795766 		.ascii	"GyWf06ke1z//AVZ/o\015\012dp8LkuFbBbDXR5swjUJ6z15b6y"
+  32      30366B65 
+  32      317A2F2F 
+  32      41565A2F 
+  32      6F0D0A64 
+  33 0205 61594836 		.ascii	"aYH614Ty/d6DrCM+RaU+FWmxmOon9W/VELu2BB\015\012NXDQH"
+  33      31345479 
+  33      2F643644 
+  33      72434D2B 
+  33      5261552B 
+  34 0232 4A425362 		.ascii	"JBSbWrLNGnZA2erk4JSMp7RhHrZ0QaNtT4HhIczFYtQ2lYF+sQJ"
+  34      57724C4E 
+  34      476E5A41 
+  34      3265726B 
+  34      344A534D 
+  35 0265 70514D72 		.ascii	"pQMrjoRn\015\012dSV9WB872Ja4DgcISU1+wuWLmS/NKjIvOWW"
+  35      6A6F526E 
+  35      0D0A6453 
+  35      56395742 
+  35      3837324A 
+  36 0292 31757053 		.ascii	"1upS79yu2I4Rxos2mFy9xxz311rGC\015\012Z3X65ejFNzCUrN"
+  36      37397975 
+  36      32493452 
+  36      786F7332 
+  36      6D467939 
+  37 02bf 6766364E 		.ascii	"gf6NEP1N7wB9hUu7u50aA+/56D7EgjeI0gpFytC+a4f6JCPVWI\015"
+  37      4550314E 
+  37      37774239 
+  37      68557537 
+  37      75353061 
+  38 02f2 0A4C7230 		.ascii	"\012Lr0CAwEAAaOBtjCBszAdBgNVHQ4EFgQUcGqy59oawLEgMl2"
+  38      43417745 
+  38      4141614F 
+  38      42746A43 
+  38      42737A41 
+  39 0322 312F2F37 		.ascii	"1//7F5RyABpwwgYMG\015\012A1UdIwR8MHqAFHBqsufaGsCxID"
+  39      46355279 
+  39      41427077 
+  39      7767594D 
+  39      470D0A41 
+  40 034f 4A647466 		.ascii	"Jdtf/+xeUcgAacoVekVTBTMQswCQYDVQQGEwJD\015\012TjELM"
+  40      2F2B7865 
+  40      55636741 
+  40      61636F56 
+  40      656B5654 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 3
+
+
+  41 037c 416B4741 		.ascii	"AkGA1UECBMCR0QxCzAJBgNVBAcTAlNaMQ8wDQYDVQQKEwZIdWF3"
+  41      31554543 
+  41      424D4352 
+  41      30517843 
+  41      7A414A42 
+  42 03af 5A576B78 		.ascii	"ZWkxCzAJ\015\012BgNVBAsTAkNOMQwwCgYDVQQDEwNJT1SCCQC"
+  42      437A414A 
+  42      0D0A4267 
+  42      4E564241 
+  42      7354416B 
+  43 03dc 7665357A 		.ascii	"ve5zUuux0bzAMBgNVHRMEBTADAQH/\015\012MA0GCSqGSIb3DQ"
+  43      55757578 
+  43      30627A41 
+  43      4D42674E 
+  43      5648524D 
+  44 0409 45424377 		.ascii	"EBCwUAA4IBAQBgv2PQn66gRMbGJMSYS48GIFqpCo783TUTePNS\015"
+  44      55414134 
+  44      49424151 
+  44      42677632 
+  44      50516E36 
+  45 043c 0A745638 		.ascii	"\012tV8G1MIiQCpYNdk2wNw/iFjoLRkdx4va6jgceht5iX6Sdjp"
+  45      47314D49 
+  45      69514370 
+  45      594E646B 
+  45      32774E77 
+  46 046c 6F514637 		.ascii	"oQF7y5qVDVrScQmsP\015\012U95IFcOkZJCNtOpUXdT+a3N+Nl"
+  46      79357156 
+  46      44567253 
+  46      63516D73 
+  46      500D0A55 
+  47 0499 70786953 		.ascii	"pxiScyIOtSrQnDFixWMCJQwEfg8j74qO96UvDA\015\012FuTCo"
+  47      6379494F 
+  47      74537251 
+  47      6E444669 
+  47      78574D43 
+  48 04c6 634F6F75 		.ascii	"cOouER3ZZjQ8MEsMMquNEvMHJkMRX11L5Rxo1pc6J/EMWW5scK2"
+  48      4552335A 
+  48      5A6A5138 
+  48      4D45734D 
+  48      4D71754E 
+  49 04f9 72433048 		.ascii	"rC0Hg91a\015\012Lod6aezh2K7KleC0V5ZlIuEvFoBc7bCwcBS"
+  49      67393161 
+  49      0D0A4C6F 
+  49      64366165 
+  49      7A68324B 
+  50 0526 414B4133 		.ascii	"AKA3BnQveJ8nEu9pbuBsVAjHOroVb\015\0128/bL5retJigmAN"
+  50      426E5176 
+  50      654A386E 
+  50      45753970 
+  50      62754273 
+  51 0553 32474979 		.ascii	"2GIyFv39TFXIySw+lW0wlp+iSPxO9s9J+t\015\012-----END "
+  51      46763339 
+  51      54465849 
+  51      7953772B 
+  51      6C573077 
+  52 0580 43455254 		.ascii	"CERTIFICATE-----\015\012\000"
+  52      49464943 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 4
+
+
+  52      4154452D 
+  52      2D2D2D2D 
+  52      0D0A00
+  53              		.section	.bss.s_rcv_buffer,"aw",%nobits
+  54              		.align	2
+  57              	s_rcv_buffer:
+  58 0000 00000000 		.space	256
+  58      00000000 
+  58      00000000 
+  58      00000000 
+  58      00000000 
+  59              		.section	.bss.s_rcv_datalen,"aw",%nobits
+  60              		.align	2
+  63              	s_rcv_datalen:
+  64 0000 00000000 		.space	4
+  65              		.section	.bss.s_rcv_sync,"aw",%nobits
+  66              		.align	2
+  69              	s_rcv_sync:
+  70 0000 00000000 		.space	4
+  71              		.section	.bss.s_mqtt_handle,"aw",%nobits
+  72              		.align	2
+  75              	s_mqtt_handle:
+  76 0000 00000000 		.space	4
+  77              		.section	.data.X,"aw",%progbits
+  78              		.align	2
+  81              	X:
+  82 0000 0A000000 		.word	10
+  83 0004 78000000 		.word	120
+  84              		.section	.data.Y,"aw",%progbits
+  85              		.align	2
+  88              	Y:
+  89 0000 0A000000 		.word	10
+  90 0004 28000000 		.word	40
+  91 0008 46000000 		.word	70
+  92 000c 64000000 		.word	100
+  93 0010 82000000 		.word	130
+  94 0014 A0000000 		.word	160
+  95 0018 BE000000 		.word	190
+  96              		.section	.data.goodsOptionX,"aw",%progbits
+  97              		.align	2
+ 100              	goodsOptionX:
+ 101 0000 0A000000 		.word	10
+ 102              		.section	.data.goodsOptionY,"aw",%progbits
+ 103              		.align	2
+ 106              	goodsOptionY:
+ 107 0000 0A000000 		.word	10
+ 108              		.global	goodsView
+ 109              		.section	.rodata
+ 110              		.align	2
+ 111              	.LC0:
+ 112 0000 77617465 		.ascii	"water 1\000"
+ 112      72203100 
+ 113              		.align	2
+ 114              	.LC1:
+ 115 0008 636F6C61 		.ascii	"cola 3\000"
+ 115      203300
+ 116 000f 00       		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 5
+
+
+ 117              	.LC2:
+ 118 0010 74656120 		.ascii	"tea 3\000"
+ 118      3300
+ 119 0016 0000     		.align	2
+ 120              	.LC3:
+ 121 0018 636F6666 		.ascii	"coffee 5\000"
+ 121      65652035 
+ 121      00
+ 122 0021 000000   		.align	2
+ 123              	.LC4:
+ 124 0024 6D696C6B 		.ascii	"milk 4\000"
+ 124      203400
+ 125 002b 00       		.align	2
+ 126              	.LC5:
+ 127 002c 6A756963 		.ascii	"juice 3\000"
+ 127      65203300 
+ 128              		.align	2
+ 129              	.LC6:
+ 130 0034 796F6775 		.ascii	"yogurt 4\000"
+ 130      72742034 
+ 130      00
+ 131 003d 000000   		.align	2
+ 132              	.LC7:
+ 133 0040 62726561 		.ascii	"bread 7\000"
+ 133      64203700 
+ 134              		.align	2
+ 135              	.LC8:
+ 136 0048 73616E64 		.ascii	"sandwich 7\000"
+ 136      77696368 
+ 136      203700
+ 137 0053 00       		.align	2
+ 138              	.LC9:
+ 139 0054 73756761 		.ascii	"sugar 2\000"
+ 139      72203200 
+ 140              		.section	.data.goodsView,"aw",%progbits
+ 141              		.align	2
+ 144              	goodsView:
+ 145 0000 00000000 		.word	.LC0
+ 146 0004 08000000 		.word	.LC1
+ 147 0008 10000000 		.word	.LC2
+ 148 000c 18000000 		.word	.LC3
+ 149 0010 24000000 		.word	.LC4
+ 150 0014 2C000000 		.word	.LC5
+ 151 0018 34000000 		.word	.LC6
+ 152 001c 40000000 		.word	.LC7
+ 153 0020 48000000 		.word	.LC8
+ 154 0024 54000000 		.word	.LC9
+ 155              		.global	Submit_View
+ 156              		.section	.rodata
+ 157              		.align	2
+ 158              	.LC10:
+ 159 005c 5375626D 		.ascii	"Submit\000"
+ 159      697400
+ 160 0063 00       		.align	2
+ 161              	.LC11:
+ 162 0064 43616E63 		.ascii	"Cancel\000"
+ 162      656C00
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 6
+
+
+ 163              		.section	.data.Submit_View,"aw",%progbits
+ 164              		.align	2
+ 167              	Submit_View:
+ 168 0000 5C000000 		.word	.LC10
+ 169 0004 64000000 		.word	.LC11
+ 170              		.global	Goods_Price
+ 171              		.section	.data.Goods_Price,"aw",%progbits
+ 172              		.align	2
+ 175              	Goods_Price:
+ 176 0000 01000000 		.word	1
+ 177 0004 03000000 		.word	3
+ 178 0008 03000000 		.word	3
+ 179 000c 05000000 		.word	5
+ 180 0010 04000000 		.word	4
+ 181 0014 03000000 		.word	3
+ 182 0018 04000000 		.word	4
+ 183 001c 07000000 		.word	7
+ 184 0020 07000000 		.word	7
+ 185 0024 02000000 		.word	2
+ 186              		.global	goods_position
+ 187              		.section	.data.goods_position,"aw",%progbits
+ 188              		.align	2
+ 191              	goods_position:
+ 192 0000 00000000 		.word	0
+ 193 0004 01000000 		.word	1
+ 194 0008 02000000 		.word	2
+ 195 000c 03000000 		.word	3
+ 196 0010 04000000 		.word	4
+ 197 0014 05000000 		.word	5
+ 198 0018 06000000 		.word	6
+ 199 001c 07000000 		.word	7
+ 200 0020 08000000 		.word	8
+ 201 0024 09000000 		.word	9
+ 202              		.global	orderID
+ 203              		.section	.data.orderID,"aw",%progbits
+ 204              		.align	2
+ 207              	orderID:
+ 208 0000 81969800 		.word	10000001
+ 209              		.global	userID
+ 210              		.section	.data.userID,"aw",%progbits
+ 211              		.align	2
+ 214              	userID:
+ 215 0000 40E20100 		.word	123456
+ 216              		.global	userAge
+ 217              		.section	.data.userAge,"aw",%progbits
+ 218              		.align	2
+ 221              	userAge:
+ 222 0000 17000000 		.word	23
+ 223              		.global	deviceID
+ 224              		.section	.rodata
+ 225 006b 00       		.align	2
+ 226              	.LC12:
+ 227 006c 575A5F31 		.ascii	"WZ_1-001\000"
+ 227      2D303031 
+ 227      00
+ 228              		.section	.data.deviceID,"aw",%progbits
+ 229              		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 7
+
+
+ 232              	deviceID:
+ 233 0000 6C000000 		.word	.LC12
+ 234              		.global	area
+ 235              		.section	.rodata
+ 236 0075 000000   		.align	2
+ 237              	.LC13:
+ 238 0078 575A00   		.ascii	"WZ\000"
+ 239              		.section	.data.area,"aw",%progbits
+ 240              		.align	2
+ 243              	area:
+ 244 0000 78000000 		.word	.LC13
+ 245              		.global	Regions
+ 246              		.section	.rodata
+ 247 007b 00       		.align	2
+ 248              	.LC14:
+ 249 007c 5363686F 		.ascii	"School\000"
+ 249      6F6C00
+ 250 0083 00       		.align	2
+ 251              	.LC15:
+ 252 0084 4D616C6C 		.ascii	"Mall\000"
+ 252      00
+ 253 0089 000000   		.align	2
+ 254              	.LC16:
+ 255 008c 486F7370 		.ascii	"Hospital\000"
+ 255      6974616C 
+ 255      00
+ 256 0095 000000   		.align	2
+ 257              	.LC17:
+ 258 0098 436F6D6D 		.ascii	"Community\000"
+ 258      756E6974 
+ 258      7900
+ 259 00a2 0000     		.align	2
+ 260              	.LC18:
+ 261 00a4 496E6475 		.ascii	"Industry\000"
+ 261      73747279 
+ 261      00
+ 262 00ad 000000   		.align	2
+ 263              	.LC19:
+ 264 00b0 5061726B 		.ascii	"Park\000"
+ 264      00
+ 265 00b5 000000   		.align	2
+ 266              	.LC20:
+ 267 00b8 53746174 		.ascii	"Station\000"
+ 267      696F6E00 
+ 268              		.section	.data.Regions,"aw",%progbits
+ 269              		.align	2
+ 272              	Regions:
+ 273 0000 7C000000 		.word	.LC14
+ 274 0004 84000000 		.word	.LC15
+ 275 0008 8C000000 		.word	.LC16
+ 276 000c 98000000 		.word	.LC17
+ 277 0010 A4000000 		.word	.LC18
+ 278 0014 B0000000 		.word	.LC19
+ 279 0018 B8000000 		.word	.LC20
+ 280              		.global	Region_Random
+ 281              		.section	.bss.Region_Random,"aw",%nobits
+ 282              		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 8
+
+
+ 285              	Region_Random:
+ 286 0000 00000000 		.space	4
+ 287              		.global	longitude
+ 288              		.section	.data.longitude,"aw",%progbits
+ 289              		.align	2
+ 292              	longitude:
+ 293 0000 78000000 		.word	120
+ 294              		.global	latitude
+ 295              		.section	.data.latitude,"aw",%progbits
+ 296              		.align	2
+ 299              	latitude:
+ 300 0000 1C000000 		.word	28
+ 301              		.global	orderTime
+ 302              		.section	.data.orderTime,"aw",%progbits
+ 303              		.align	2
+ 306              	orderTime:
+ 307 0000 28748E00 		.word	9335848
+ 308              		.global	orderTime1
+ 309              		.section	.data.orderTime1,"aw",%progbits
+ 310              		.align	2
+ 313              	orderTime1:
+ 314 0000 47660200 		.word	157255
+ 315              		.global	Pay
+ 316              		.section	.rodata
+ 317              		.align	2
+ 318              	.LC21:
+ 319 00c0 43617368 		.ascii	"Cash\000"
+ 319      00
+ 320 00c5 000000   		.align	2
+ 321              	.LC22:
+ 322 00c8 57654368 		.ascii	"WeChat\000"
+ 322      617400
+ 323 00cf 00       		.align	2
+ 324              	.LC23:
+ 325 00d0 416C6970 		.ascii	"Alipay\000"
+ 325      617900
+ 326 00d7 00       		.align	2
+ 327              	.LC24:
+ 328 00d8 556E696F 		.ascii	"UnionPay\000"
+ 328      6E506179 
+ 328      00
+ 329              		.section	.data.Pay,"aw",%progbits
+ 330              		.align	2
+ 333              	Pay:
+ 334 0000 C0000000 		.word	.LC21
+ 335 0004 C8000000 		.word	.LC22
+ 336 0008 D0000000 		.word	.LC23
+ 337 000c D8000000 		.word	.LC24
+ 338              		.global	pay_Random
+ 339              		.section	.bss.pay_Random,"aw",%nobits
+ 340              		.align	2
+ 343              	pay_Random:
+ 344 0000 00000000 		.space	4
+ 345              		.global	Status
+ 346              		.section	.bss.Status,"aw",%nobits
+ 347              		.align	2
+ 350              	Status:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 9
+
+
+ 351 0000 00000000 		.space	4
+ 352              		.global	Total_Num
+ 353              		.section	.bss.Total_Num,"aw",%nobits
+ 354              		.align	2
+ 357              	Total_Num:
+ 358 0000 00000000 		.space	4
+ 359              		.global	Total_Cost
+ 360              		.section	.bss.Total_Cost,"aw",%nobits
+ 361              		.align	2
+ 364              	Total_Cost:
+ 365 0000 00000000 		.space	4
+ 366              		.global	Goods_Num
+ 367              		.section	.bss.Goods_Num,"aw",%nobits
+ 368              		.align	2
+ 371              	Goods_Num:
+ 372 0000 00000000 		.space	40
+ 372      00000000 
+ 372      00000000 
+ 372      00000000 
+ 372      00000000 
+ 373              		.global	Goods_Num_String
+ 374              		.section	.rodata
+ 375 00e1 000000   		.align	2
+ 376              	.LC25:
+ 377 00e4 77617465 		.ascii	"water_Num\000"
+ 377      725F4E75 
+ 377      6D00
+ 378 00ee 0000     		.align	2
+ 379              	.LC26:
+ 380 00f0 636F6C61 		.ascii	"cola_Num\000"
+ 380      5F4E756D 
+ 380      00
+ 381 00f9 000000   		.align	2
+ 382              	.LC27:
+ 383 00fc 7465615F 		.ascii	"tea_Num\000"
+ 383      4E756D00 
+ 384              		.align	2
+ 385              	.LC28:
+ 386 0104 636F6666 		.ascii	"coffee_Num\000"
+ 386      65655F4E 
+ 386      756D00
+ 387 010f 00       		.align	2
+ 388              	.LC29:
+ 389 0110 6D696C6B 		.ascii	"milk_Num\000"
+ 389      5F4E756D 
+ 389      00
+ 390 0119 000000   		.align	2
+ 391              	.LC30:
+ 392 011c 6A756963 		.ascii	"juice_Num\000"
+ 392      655F4E75 
+ 392      6D00
+ 393 0126 0000     		.align	2
+ 394              	.LC31:
+ 395 0128 796F6775 		.ascii	"yogurt_Num\000"
+ 395      72745F4E 
+ 395      756D00
+ 396 0133 00       		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 10
+
+
+ 397              	.LC32:
+ 398 0134 62726561 		.ascii	"bread_Num\000"
+ 398      645F4E75 
+ 398      6D00
+ 399 013e 0000     		.align	2
+ 400              	.LC33:
+ 401 0140 73616E77 		.ascii	"sanwiches_Num\000"
+ 401      69636865 
+ 401      735F4E75 
+ 401      6D00
+ 402 014e 0000     		.align	2
+ 403              	.LC34:
+ 404 0150 73756761 		.ascii	"sugar_Num\000"
+ 404      725F4E75 
+ 404      6D00
+ 405              		.section	.data.Goods_Num_String,"aw",%progbits
+ 406              		.align	2
+ 409              	Goods_Num_String:
+ 410 0000 E4000000 		.word	.LC25
+ 411 0004 F0000000 		.word	.LC26
+ 412 0008 FC000000 		.word	.LC27
+ 413 000c 04010000 		.word	.LC28
+ 414 0010 10010000 		.word	.LC29
+ 415 0014 1C010000 		.word	.LC30
+ 416 0018 28010000 		.word	.LC31
+ 417 001c 34010000 		.word	.LC32
+ 418 0020 40010000 		.word	.LC33
+ 419 0024 50010000 		.word	.LC34
+ 420              		.global	Goods_Price_String
+ 421              		.section	.rodata
+ 422 015a 0000     		.align	2
+ 423              	.LC35:
+ 424 015c 77617465 		.ascii	"water_Price\000"
+ 424      725F5072 
+ 424      69636500 
+ 425              		.align	2
+ 426              	.LC36:
+ 427 0168 636F6C61 		.ascii	"cola_Price\000"
+ 427      5F507269 
+ 427      636500
+ 428 0173 00       		.align	2
+ 429              	.LC37:
+ 430 0174 7465615F 		.ascii	"tea_Price\000"
+ 430      50726963 
+ 430      6500
+ 431 017e 0000     		.align	2
+ 432              	.LC38:
+ 433 0180 636F6666 		.ascii	"coffee_Price\000"
+ 433      65655F50 
+ 433      72696365 
+ 433      00
+ 434 018d 000000   		.align	2
+ 435              	.LC39:
+ 436 0190 6D696C6B 		.ascii	"milk_Price\000"
+ 436      5F507269 
+ 436      636500
+ 437 019b 00       		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 11
+
+
+ 438              	.LC40:
+ 439 019c 6A756963 		.ascii	"juice_Price\000"
+ 439      655F5072 
+ 439      69636500 
+ 440              		.align	2
+ 441              	.LC41:
+ 442 01a8 796F6775 		.ascii	"yogurt_Price\000"
+ 442      72745F50 
+ 442      72696365 
+ 442      00
+ 443 01b5 000000   		.align	2
+ 444              	.LC42:
+ 445 01b8 62726561 		.ascii	"bread_Price\000"
+ 445      645F5072 
+ 445      69636500 
+ 446              		.align	2
+ 447              	.LC43:
+ 448 01c4 73616E77 		.ascii	"sanwiches_Price\000"
+ 448      69636865 
+ 448      735F5072 
+ 448      69636500 
+ 449              		.align	2
+ 450              	.LC44:
+ 451 01d4 73756761 		.ascii	"sugar_Price\000"
+ 451      725F5072 
+ 451      69636500 
+ 452              		.section	.data.Goods_Price_String,"aw",%progbits
+ 453              		.align	2
+ 456              	Goods_Price_String:
+ 457 0000 5C010000 		.word	.LC35
+ 458 0004 68010000 		.word	.LC36
+ 459 0008 74010000 		.word	.LC37
+ 460 000c 80010000 		.word	.LC38
+ 461 0010 90010000 		.word	.LC39
+ 462 0014 9C010000 		.word	.LC40
+ 463 0018 A8010000 		.word	.LC41
+ 464 001c B8010000 		.word	.LC42
+ 465 0020 C4010000 		.word	.LC43
+ 466 0024 D4010000 		.word	.LC44
+ 467              		.comm	orderID_string,9,4
+ 468              		.comm	userID_string,6,4
+ 469              		.comm	orderTime_string,13,4
+ 470              		.section	.rodata
+ 471              		.align	2
+ 472              	.LC45:
+ 473 01e0 746F7069 		.ascii	"topic:%s qos:%d\012\015\000"
+ 473      633A2573 
+ 473      20716F73 
+ 473      3A25640A 
+ 473      0D00
+ 474 01f2 0000     		.align	2
+ 475              	.LC46:
+ 476 01f4 6D73673A 		.ascii	"msg:%s\012\015\000"
+ 476      25730A0D 
+ 476      00
+ 477              		.section	.text.app_msg_deal,"ax",%progbits
+ 478              		.align	1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 12
+
+
+ 479              		.syntax unified
+ 480              		.thumb
+ 481              		.thumb_func
+ 482              		.fpu fpv4-sp-d16
+ 484              	app_msg_deal:
+ 485              	.LFB126:
+ 486              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos/oc_tls_mqtt_demo.c"
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * Copyright (c) <2016-2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * All rights reserved.
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * permission.
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * Notice of Export Control Law
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * ===============================================
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #include <stdint.h>
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #include <stddef.h>
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #include <stdio.h>
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #include <string.h>
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #include <osal.h>
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #include <oc_mqtt_al.h>
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #include "gd32f30x.h"
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #include "BearPi-IoT_gd32f303.h"
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #include "lcd.h"
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** /* brief : the oceanconnect platform only support the ca_crt up tills now*/
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** /** the address product_id device_id password crt is only for the test  */
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #define DEFAULT_LIFETIME            60
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #define DEFAULT_SERVER_IPV4         "iot-acc.cn-north-4.myhuaweicloud.com"//"119.3.248.253"
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #define DEFAULT_SERVER_PORT         "8883"
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #define CN_MQTT_EP_NOTEID           "12346789A"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 13
+
+
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #define CN_MQTT_EP_DEVICEID         "5e17ddc2dd3d3905fe9e6c09_12346789A"
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #define CN_MQTT_EP_PASSWD           "c18f1123467898e6fef"
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** /** password -> secret key during individual registration*/
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static char s_mqtt_ca_crt[] =
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "-----BEGIN CERTIFICATE-----\r\n"
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "MIID4DCCAsigAwIBAgIJAK97nNS67HRvMA0GCSqGSIb3DQEBCwUAMFMxCzAJBgNV\r\n"
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "BAYTAkNOMQswCQYDVQQIEwJHRDELMAkGA1UEBxMCU1oxDzANBgNVBAoTBkh1YXdl\r\n"
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "aTELMAkGA1UECxMCQ04xDDAKBgNVBAMTA0lPVDAeFw0xNjA1MDQxMjE3MjdaFw0y\r\n"
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "NjA1MDIxMjE3MjdaMFMxCzAJBgNVBAYTAkNOMQswCQYDVQQIEwJHRDELMAkGA1UE\r\n"
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "BxMCU1oxDzANBgNVBAoTBkh1YXdlaTELMAkGA1UECxMCQ04xDDAKBgNVBAMTA0lP\r\n"
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "VDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAJxM9fwkwvxeILpkvoAM\r\n"
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "Gdqq3x0G9o445F6Shg3I0xmmzu9Of8wYuW3c4jtQ/6zscuIGyWf06ke1z//AVZ/o\r\n"
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "dp8LkuFbBbDXR5swjUJ6z15b6yaYH614Ty/d6DrCM+RaU+FWmxmOon9W/VELu2BB\r\n"
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "NXDQHJBSbWrLNGnZA2erk4JSMp7RhHrZ0QaNtT4HhIczFYtQ2lYF+sQJpQMrjoRn\r\n"
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "dSV9WB872Ja4DgcISU1+wuWLmS/NKjIvOWW1upS79yu2I4Rxos2mFy9xxz311rGC\r\n"
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "Z3X65ejFNzCUrNgf6NEP1N7wB9hUu7u50aA+/56D7EgjeI0gpFytC+a4f6JCPVWI\r\n"
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "Lr0CAwEAAaOBtjCBszAdBgNVHQ4EFgQUcGqy59oawLEgMl21//7F5RyABpwwgYMG\r\n"
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "A1UdIwR8MHqAFHBqsufaGsCxIDJdtf/+xeUcgAacoVekVTBTMQswCQYDVQQGEwJD\r\n"
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "TjELMAkGA1UECBMCR0QxCzAJBgNVBAcTAlNaMQ8wDQYDVQQKEwZIdWF3ZWkxCzAJ\r\n"
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "BgNVBAsTAkNOMQwwCgYDVQQDEwNJT1SCCQCve5zUuux0bzAMBgNVHRMEBTADAQH/\r\n"
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "MA0GCSqGSIb3DQEBCwUAA4IBAQBgv2PQn66gRMbGJMSYS48GIFqpCo783TUTePNS\r\n"
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "tV8G1MIiQCpYNdk2wNw/iFjoLRkdx4va6jgceht5iX6SdjpoQF7y5qVDVrScQmsP\r\n"
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "U95IFcOkZJCNtOpUXdT+a3N+NlpxiScyIOtSrQnDFixWMCJQwEfg8j74qO96UvDA\r\n"
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "FuTCocOouER3ZZjQ8MEsMMquNEvMHJkMRX11L5Rxo1pc6J/EMWW5scK2rC0Hg91a\r\n"
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "Lod6aezh2K7KleC0V5ZlIuEvFoBc7bCwcBSAKA3BnQveJ8nEu9pbuBsVAjHOroVb\r\n"
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "8/bL5retJigmAN2GIyFv39TFXIySw+lW0wlp+iSPxO9s9J+t\r\n"
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** "-----END CERTIFICATE-----\r\n";
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //if your command is very fast,please use a queue here--TODO
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** #define cn_app_rcv_buf_len 256
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static char            s_rcv_buffer[cn_app_rcv_buf_len];
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static int             s_rcv_datalen;
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static osal_semp_t     s_rcv_sync;
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static void           *s_mqtt_handle;
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //X[2] and Y[7] devided the lcd into 7 rows and 2 cols
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static int X[2] = {10,120};
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static int Y[7] = {10,40,70,100,130,160,190};
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //position of selected goods, (10,10) as default
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static int goodsOptionX = 10;
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static int goodsOptionY = 10;
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //content to display on lcd
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char* goodsView[10] = {"water 1","cola 3","tea 3","coffee 5","milk 4","juice 3","yogurt 4","bread 7
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char* Submit_View[2] = {"Submit","Cancel"};
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int Goods_Price[10] = {1,3,3,5,4,3,4,7,7,2};
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int goods_position[10] = {0,1,2,3,4,5,6,7,8,9};
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //some basic info to report
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int orderID = 10000001;
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int userID = 123456;
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int userAge = 23;
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char* deviceID = "WZ_1-001";
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 14
+
+
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char* area = "WZ";
+ 109:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char* Regions[] = {"School","Mall","Hospital","Community","Industry","Park","Station"};
+ 110:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int Region_Random = 0;
+ 111:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int longitude = 120.65;
+ 112:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int latitude = 28.02;
+ 113:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int orderTime = 9335848;
+ 114:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int orderTime1 = 157255;
+ 115:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char* Pay[] = {"Cash","WeChat","Alipay","UnionPay"};
+ 116:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int pay_Random = 0;
+ 117:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int Status = 0;
+ 118:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int Total_Num = 0;
+ 119:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int Total_Cost = 0;
+ 120:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int Goods_Num[10] = {0};
+ 121:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 122:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char* Goods_Num_String[10] = {"water_Num","cola_Num","tea_Num","coffee_Num","milk_Num","juice_Num",
+ 123:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char* Goods_Price_String[10] = {"water_Price","cola_Price","tea_Price","coffee_Price","milk_Price",
+ 124:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char orderID_string[9];
+ 125:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char userID_string[6];
+ 126:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** char orderTime_string[13];
+ 127:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 128:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //use this function to push all the message to the buffer
+ 129:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static int app_msg_deal(void *handle,mqtt_al_msgrcv_t *msg)
+ 130:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** {
+ 487              		.loc 1 130 0
+ 488              		.cfi_startproc
+ 489              		@ args = 0, pretend = 0, frame = 16
+ 490              		@ frame_needed = 1, uses_anonymous_args = 0
+ 491 0000 80B5     		push	{r7, lr}
+ 492              	.LCFI0:
+ 493              		.cfi_def_cfa_offset 8
+ 494              		.cfi_offset 7, -8
+ 495              		.cfi_offset 14, -4
+ 496 0002 84B0     		sub	sp, sp, #16
+ 497              	.LCFI1:
+ 498              		.cfi_def_cfa_offset 24
+ 499 0004 00AF     		add	r7, sp, #0
+ 500              	.LCFI2:
+ 501              		.cfi_def_cfa_register 7
+ 502 0006 7860     		str	r0, [r7, #4]
+ 503 0008 3960     		str	r1, [r7]
+ 131:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     int ret = -1;
+ 504              		.loc 1 131 0
+ 505 000a 4FF0FF33 		mov	r3, #-1
+ 506 000e FB60     		str	r3, [r7, #12]
+ 132:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     printf("topic:%s qos:%d\n\r",msg->topic.data,msg->qos);
+ 507              		.loc 1 132 0
+ 508 0010 3B68     		ldr	r3, [r7]
+ 509 0012 1968     		ldr	r1, [r3]
+ 510 0014 3B68     		ldr	r3, [r7]
+ 511 0016 1B7C     		ldrb	r3, [r3, #16]	@ zero_extendqisi2
+ 512 0018 1A46     		mov	r2, r3
+ 513 001a 1448     		ldr	r0, .L4
+ 514 001c FFF7FEFF 		bl	printf
+ 133:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 134:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     if(msg->msg.len < cn_app_rcv_buf_len)
+ 515              		.loc 1 134 0
+ 516 0020 3B68     		ldr	r3, [r7]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 15
+
+
+ 517 0022 DB68     		ldr	r3, [r3, #12]
+ 518 0024 FF2B     		cmp	r3, #255
+ 519 0026 1BDC     		bgt	.L2
+ 135:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     {
+ 136:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         memcpy(s_rcv_buffer,msg->msg.data,msg->msg.len );
+ 520              		.loc 1 136 0
+ 521 0028 3B68     		ldr	r3, [r7]
+ 522 002a 9968     		ldr	r1, [r3, #8]
+ 523 002c 3B68     		ldr	r3, [r7]
+ 524 002e DB68     		ldr	r3, [r3, #12]
+ 525 0030 1A46     		mov	r2, r3
+ 526 0032 0F48     		ldr	r0, .L4+4
+ 527 0034 FFF7FEFF 		bl	memcpy
+ 137:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         s_rcv_buffer[msg->msg.len] = '\0'; ///< the json need it
+ 528              		.loc 1 137 0
+ 529 0038 3B68     		ldr	r3, [r7]
+ 530 003a DB68     		ldr	r3, [r3, #12]
+ 531 003c 0C4A     		ldr	r2, .L4+4
+ 532 003e 0021     		movs	r1, #0
+ 533 0040 D154     		strb	r1, [r2, r3]
+ 138:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         s_rcv_datalen = msg->msg.len;
+ 534              		.loc 1 138 0
+ 535 0042 3B68     		ldr	r3, [r7]
+ 536 0044 DB68     		ldr	r3, [r3, #12]
+ 537 0046 0B4A     		ldr	r2, .L4+8
+ 538 0048 1360     		str	r3, [r2]
+ 139:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 140:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         printf("msg:%s\n\r",s_rcv_buffer);
+ 539              		.loc 1 140 0
+ 540 004a 0949     		ldr	r1, .L4+4
+ 541 004c 0A48     		ldr	r0, .L4+12
+ 542 004e FFF7FEFF 		bl	printf
+ 141:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 142:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         osal_semp_post(s_rcv_sync);
+ 543              		.loc 1 142 0
+ 544 0052 0A4B     		ldr	r3, .L4+16
+ 545 0054 1B68     		ldr	r3, [r3]
+ 546 0056 1846     		mov	r0, r3
+ 547 0058 FFF7FEFF 		bl	osal_semp_post
+ 143:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         ret = 0;
+ 548              		.loc 1 143 0
+ 549 005c 0023     		movs	r3, #0
+ 550 005e FB60     		str	r3, [r7, #12]
+ 551              	.L2:
+ 144:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     }
+ 145:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     return ret;
+ 552              		.loc 1 145 0
+ 553 0060 FB68     		ldr	r3, [r7, #12]
+ 146:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** }
+ 554              		.loc 1 146 0
+ 555 0062 1846     		mov	r0, r3
+ 556 0064 1037     		adds	r7, r7, #16
+ 557              	.LCFI3:
+ 558              		.cfi_def_cfa_offset 8
+ 559 0066 BD46     		mov	sp, r7
+ 560              	.LCFI4:
+ 561              		.cfi_def_cfa_register 13
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 16
+
+
+ 562              		@ sp needed
+ 563 0068 80BD     		pop	{r7, pc}
+ 564              	.L5:
+ 565 006a 00BF     		.align	2
+ 566              	.L4:
+ 567 006c E0010000 		.word	.LC45
+ 568 0070 00000000 		.word	s_rcv_buffer
+ 569 0074 00000000 		.word	s_rcv_datalen
+ 570 0078 F4010000 		.word	.LC46
+ 571 007c 00000000 		.word	s_rcv_sync
+ 572              		.cfi_endproc
+ 573              	.LFE126:
+ 575              		.section	.rodata
+ 576 01fd 000000   		.align	2
+ 577              	.LC47:
+ 578 0200 73657276 		.ascii	"serviceId\000"
+ 578      69636549 
+ 578      6400
+ 579 020a 0000     		.align	2
+ 580              	.LC48:
+ 581 020c 73657276 		.ascii	"serviceId:%s\012\015\000"
+ 581      69636549 
+ 581      643A2573 
+ 581      0A0D00
+ 582 021b 00       		.align	2
+ 583              	.LC49:
+ 584 021c 6D696400 		.ascii	"mid\000"
+ 585              		.align	2
+ 586              	.LC50:
+ 587 0220 6D69643A 		.ascii	"mid:%d\012\015\000"
+ 587      25640A0D 
+ 587      00
+ 588 0229 000000   		.align	2
+ 589              	.LC51:
+ 590 022c 6D736754 		.ascii	"msgType\000"
+ 590      79706500 
+ 591              		.align	2
+ 592              	.LC52:
+ 593 0234 6D736754 		.ascii	"msgType:%s\012\015\000"
+ 593      7970653A 
+ 593      25730A0D 
+ 593      00
+ 594 0241 000000   		.align	2
+ 595              	.LC53:
+ 596 0244 636D6400 		.ascii	"cmd\000"
+ 597              		.align	2
+ 598              	.LC54:
+ 599 0248 636D643A 		.ascii	"cmd:%s\012\015\000"
+ 599      25730A0D 
+ 599      00
+ 600 0251 000000   		.align	2
+ 601              	.LC55:
+ 602 0254 70617261 		.ascii	"paras\000"
+ 602      7300
+ 603 025a 0000     		.align	2
+ 604              	.LC56:
+ 605 025c 696F7377 		.ascii	"ioswitch\000"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 17
+
+
+ 605      69746368 
+ 605      00
+ 606 0265 000000   		.align	2
+ 607              	.LC57:
+ 608 0268 696F7377 		.ascii	"ioswitch:%s\012\015\000"
+ 608      69746368 
+ 608      3A25730A 
+ 608      0D00
+ 609 0276 0000     		.align	2
+ 610              	.LC58:
+ 611 0278 2A00     		.ascii	"*\000"
+ 612 027a 0000     		.align	2
+ 613              	.LC59:
+ 614 027c 68616E64 		.ascii	"handle the json data as your specific profile\015\000"
+ 614      6C652074 
+ 614      6865206A 
+ 614      736F6E20 
+ 614      64617461 
+ 615 02ab 00       		.align	2
+ 616              	.LC60:
+ 617 02ac 626F6479 		.ascii	"body_para\000"
+ 617      5F706172 
+ 617      6100
+ 618              		.section	.text.oc_mqtt_cmd_entry,"ax",%progbits
+ 619              		.align	1
+ 620              		.syntax unified
+ 621              		.thumb
+ 622              		.thumb_func
+ 623              		.fpu fpv4-sp-d16
+ 625              	oc_mqtt_cmd_entry:
+ 626              	.LFB127:
+ 147:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 148:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //function to handle oc cmd
+ 149:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** static int oc_mqtt_cmd_entry( void *args)
+ 150:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** {
+ 627              		.loc 1 150 0
+ 628              		.cfi_startproc
+ 629              		@ args = 0, pretend = 0, frame = 112
+ 630              		@ frame_needed = 1, uses_anonymous_args = 0
+ 631 0000 90B5     		push	{r4, r7, lr}
+ 632              	.LCFI5:
+ 633              		.cfi_def_cfa_offset 12
+ 634              		.cfi_offset 4, -12
+ 635              		.cfi_offset 7, -8
+ 636              		.cfi_offset 14, -4
+ 637 0002 9FB0     		sub	sp, sp, #124
+ 638              	.LCFI6:
+ 639              		.cfi_def_cfa_offset 136
+ 640 0004 02AF     		add	r7, sp, #8
+ 641              	.LCFI7:
+ 642              		.cfi_def_cfa 7, 128
+ 643 0006 7860     		str	r0, [r7, #4]
+ 151:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     cJSON  *msg = NULL;
+ 644              		.loc 1 151 0
+ 645 0008 0023     		movs	r3, #0
+ 646 000a FB65     		str	r3, [r7, #92]
+ 152:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     cJSON  *mid = NULL;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 18
+
+
+ 647              		.loc 1 152 0
+ 648 000c 0023     		movs	r3, #0
+ 649 000e BB65     		str	r3, [r7, #88]
+ 153:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     cJSON  *ioswitch = NULL;
+ 650              		.loc 1 153 0
+ 651 0010 0023     		movs	r3, #0
+ 652 0012 7B65     		str	r3, [r7, #84]
+ 154:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     cJSON  *msgType = NULL;
+ 653              		.loc 1 154 0
+ 654 0014 0023     		movs	r3, #0
+ 655 0016 3B65     		str	r3, [r7, #80]
+ 155:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     cJSON  *paras = NULL;
+ 656              		.loc 1 155 0
+ 657 0018 0023     		movs	r3, #0
+ 658 001a FB64     		str	r3, [r7, #76]
+ 156:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     cJSON  *serviceId = NULL;
+ 659              		.loc 1 156 0
+ 660 001c 0023     		movs	r3, #0
+ 661 001e BB64     		str	r3, [r7, #72]
+ 157:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     cJSON  *cmd = NULL;
+ 662              		.loc 1 157 0
+ 663 0020 0023     		movs	r3, #0
+ 664 0022 7B64     		str	r3, [r7, #68]
+ 158:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     char   *buf = NULL;
+ 665              		.loc 1 158 0
+ 666 0024 0023     		movs	r3, #0
+ 667 0026 3B64     		str	r3, [r7, #64]
+ 668              	.L21:
+ 159:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 160:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_oc_mqtt_response response;
+ 161:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list   list;
+ 162:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 163:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     int mid_int;
+ 164:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     int err_int;
+ 165:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     while(1)
+ 166:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     {
+ 167:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         if(osal_semp_pend(s_rcv_sync,cn_osal_timeout_forever))
+ 669              		.loc 1 167 0
+ 670 0028 A14B     		ldr	r3, .L22
+ 671 002a 1B68     		ldr	r3, [r3]
+ 672 002c 4FF0FF31 		mov	r1, #-1
+ 673 0030 1846     		mov	r0, r3
+ 674 0032 FFF7FEFF 		bl	osal_semp_pend
+ 675 0036 0346     		mov	r3, r0
+ 676 0038 002B     		cmp	r3, #0
+ 677 003a F5D0     		beq	.L21
+ 168:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         {
+ 169:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             err_int = 1;
+ 678              		.loc 1 169 0
+ 679 003c 0123     		movs	r3, #1
+ 680 003e BB66     		str	r3, [r7, #104]
+ 170:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             mid_int = 1;
+ 681              		.loc 1 170 0
+ 682 0040 0123     		movs	r3, #1
+ 683 0042 FB66     		str	r3, [r7, #108]
+ 171:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             msg = cJSON_Parse(s_rcv_buffer);
+ 684              		.loc 1 171 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 19
+
+
+ 685 0044 9B48     		ldr	r0, .L22+4
+ 686 0046 FFF7FEFF 		bl	cJSON_Parse
+ 687 004a F865     		str	r0, [r7, #92]
+ 172:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 173:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             if(NULL != msg)
+ 688              		.loc 1 173 0
+ 689 004c FB6D     		ldr	r3, [r7, #92]
+ 690 004e 002B     		cmp	r3, #0
+ 691 0050 EAD0     		beq	.L21
+ 174:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             {
+ 175:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 serviceId = cJSON_GetObjectItem(msg,"serviceId");
+ 692              		.loc 1 175 0
+ 693 0052 9949     		ldr	r1, .L22+8
+ 694 0054 F86D     		ldr	r0, [r7, #92]
+ 695 0056 FFF7FEFF 		bl	cJSON_GetObjectItem
+ 696 005a B864     		str	r0, [r7, #72]
+ 176:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 if(NULL != serviceId)
+ 697              		.loc 1 176 0
+ 698 005c BB6C     		ldr	r3, [r7, #72]
+ 699 005e 002B     		cmp	r3, #0
+ 700 0060 05D0     		beq	.L8
+ 177:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 {
+ 178:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     printf("serviceId:%s\n\r",serviceId->valuestring);
+ 701              		.loc 1 178 0
+ 702 0062 BB6C     		ldr	r3, [r7, #72]
+ 703 0064 1B69     		ldr	r3, [r3, #16]
+ 704 0066 1946     		mov	r1, r3
+ 705 0068 9448     		ldr	r0, .L22+12
+ 706 006a FFF7FEFF 		bl	printf
+ 707              	.L8:
+ 179:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 180:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 181:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 mid = cJSON_GetObjectItem(msg,"mid");
+ 708              		.loc 1 181 0
+ 709 006e 9449     		ldr	r1, .L22+16
+ 710 0070 F86D     		ldr	r0, [r7, #92]
+ 711 0072 FFF7FEFF 		bl	cJSON_GetObjectItem
+ 712 0076 B865     		str	r0, [r7, #88]
+ 182:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 if(NULL != mid)
+ 713              		.loc 1 182 0
+ 714 0078 BB6D     		ldr	r3, [r7, #88]
+ 715 007a 002B     		cmp	r3, #0
+ 716 007c 06D0     		beq	.L9
+ 183:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 {
+ 184:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     mid_int = mid->valueint;
+ 717              		.loc 1 184 0
+ 718 007e BB6D     		ldr	r3, [r7, #88]
+ 719 0080 5B69     		ldr	r3, [r3, #20]
+ 720 0082 FB66     		str	r3, [r7, #108]
+ 185:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     printf("mid:%d\n\r",mid_int);
+ 721              		.loc 1 185 0
+ 722 0084 F96E     		ldr	r1, [r7, #108]
+ 723 0086 8F48     		ldr	r0, .L22+20
+ 724 0088 FFF7FEFF 		bl	printf
+ 725              	.L9:
+ 186:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 187:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 msgType = cJSON_GetObjectItem(msg,"msgType");
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 20
+
+
+ 726              		.loc 1 187 0
+ 727 008c 8E49     		ldr	r1, .L22+24
+ 728 008e F86D     		ldr	r0, [r7, #92]
+ 729 0090 FFF7FEFF 		bl	cJSON_GetObjectItem
+ 730 0094 3865     		str	r0, [r7, #80]
+ 188:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 if(NULL != msgType)
+ 731              		.loc 1 188 0
+ 732 0096 3B6D     		ldr	r3, [r7, #80]
+ 733 0098 002B     		cmp	r3, #0
+ 734 009a 05D0     		beq	.L10
+ 189:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 {
+ 190:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     printf("msgType:%s\n\r",msgType->valuestring);
+ 735              		.loc 1 190 0
+ 736 009c 3B6D     		ldr	r3, [r7, #80]
+ 737 009e 1B69     		ldr	r3, [r3, #16]
+ 738 00a0 1946     		mov	r1, r3
+ 739 00a2 8A48     		ldr	r0, .L22+28
+ 740 00a4 FFF7FEFF 		bl	printf
+ 741              	.L10:
+ 191:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 192:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 cmd =  cJSON_GetObjectItem(msg,"cmd");
+ 742              		.loc 1 192 0
+ 743 00a8 8949     		ldr	r1, .L22+32
+ 744 00aa F86D     		ldr	r0, [r7, #92]
+ 745 00ac FFF7FEFF 		bl	cJSON_GetObjectItem
+ 746 00b0 7864     		str	r0, [r7, #68]
+ 193:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 if(NULL != cmd)
+ 747              		.loc 1 193 0
+ 748 00b2 7B6C     		ldr	r3, [r7, #68]
+ 749 00b4 002B     		cmp	r3, #0
+ 750 00b6 05D0     		beq	.L11
+ 194:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 {
+ 195:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     printf("cmd:%s\n\r",cmd->valuestring);
+ 751              		.loc 1 195 0
+ 752 00b8 7B6C     		ldr	r3, [r7, #68]
+ 753 00ba 1B69     		ldr	r3, [r3, #16]
+ 754 00bc 1946     		mov	r1, r3
+ 755 00be 8548     		ldr	r0, .L22+36
+ 756 00c0 FFF7FEFF 		bl	printf
+ 757              	.L11:
+ 196:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 197:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 198:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 paras = cJSON_GetObjectItem(msg,"paras");
+ 758              		.loc 1 198 0
+ 759 00c4 8449     		ldr	r1, .L22+40
+ 760 00c6 F86D     		ldr	r0, [r7, #92]
+ 761 00c8 FFF7FEFF 		bl	cJSON_GetObjectItem
+ 762 00cc F864     		str	r0, [r7, #76]
+ 199:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 if(NULL != paras)
+ 763              		.loc 1 199 0
+ 764 00ce FB6C     		ldr	r3, [r7, #76]
+ 765 00d0 002B     		cmp	r3, #0
+ 766 00d2 00F0B080 		beq	.L12
+ 200:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 {
+ 201:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     ioswitch = cJSON_GetObjectItem(paras,"ioswitch");
+ 767              		.loc 1 201 0
+ 768 00d6 8149     		ldr	r1, .L22+44
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 21
+
+
+ 769 00d8 F86C     		ldr	r0, [r7, #76]
+ 770 00da FFF7FEFF 		bl	cJSON_GetObjectItem
+ 771 00de 7865     		str	r0, [r7, #84]
+ 202:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     if(NULL != ioswitch)
+ 772              		.loc 1 202 0
+ 773 00e0 7B6D     		ldr	r3, [r7, #84]
+ 774 00e2 002B     		cmp	r3, #0
+ 775 00e4 00F0A280 		beq	.L13
+ 776              	.LBB2:
+ 203:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     {
+ 204:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         printf("ioswitch:%s\n\r",ioswitch->valuestring);
+ 777              		.loc 1 204 0
+ 778 00e8 7B6D     		ldr	r3, [r7, #84]
+ 779 00ea 1B69     		ldr	r3, [r3, #16]
+ 780 00ec 1946     		mov	r1, r3
+ 781 00ee 7C48     		ldr	r0, .L22+48
+ 782 00f0 FFF7FEFF 		bl	printf
+ 205:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         
+ 206:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         char temp[20];
+ 207:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         sprintf(temp,"%s",ioswitch->valuestring);
+ 783              		.loc 1 207 0
+ 784 00f4 7B6D     		ldr	r3, [r7, #84]
+ 785 00f6 1A69     		ldr	r2, [r3, #16]
+ 786 00f8 07F10C03 		add	r3, r7, #12
+ 787 00fc 1146     		mov	r1, r2
+ 788 00fe 1846     		mov	r0, r3
+ 789 0100 FFF7FEFF 		bl	strcpy
+ 790              	.LBB3:
+ 208:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         for(int i=0;i<10;i++){
+ 791              		.loc 1 208 0
+ 792 0104 0023     		movs	r3, #0
+ 793 0106 7B66     		str	r3, [r7, #100]
+ 794 0108 0DE0     		b	.L14
+ 795              	.L15:
+ 209:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             goods_position[i] = temp[i]-'0';
+ 796              		.loc 1 209 0 discriminator 3
+ 797 010a 07F10C02 		add	r2, r7, #12
+ 798 010e 7B6E     		ldr	r3, [r7, #100]
+ 799 0110 1344     		add	r3, r3, r2
+ 800 0112 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 801 0114 A3F13002 		sub	r2, r3, #48
+ 802 0118 7249     		ldr	r1, .L22+52
+ 803 011a 7B6E     		ldr	r3, [r7, #100]
+ 804 011c 41F82320 		str	r2, [r1, r3, lsl #2]
+ 208:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         for(int i=0;i<10;i++){
+ 805              		.loc 1 208 0 discriminator 3
+ 806 0120 7B6E     		ldr	r3, [r7, #100]
+ 807 0122 0133     		adds	r3, r3, #1
+ 808 0124 7B66     		str	r3, [r7, #100]
+ 809              	.L14:
+ 208:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         for(int i=0;i<10;i++){
+ 810              		.loc 1 208 0 is_stmt 0 discriminator 1
+ 811 0126 7B6E     		ldr	r3, [r7, #100]
+ 812 0128 092B     		cmp	r3, #9
+ 813 012a EEDD     		ble	.L15
+ 814              	.LBE3:
+ 210:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         }
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 22
+
+
+ 211:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         LCD_Clear(BLACK);	  	
+ 815              		.loc 1 211 0 is_stmt 1
+ 816 012c 0020     		movs	r0, #0
+ 817 012e FFF7FEFF 		bl	LCD_Clear
+ 212:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 	                    POINT_COLOR = GREEN;
+ 818              		.loc 1 212 0
+ 819 0132 6D4B     		ldr	r3, .L22+56
+ 820 0134 4FF4FC62 		mov	r2, #2016
+ 821 0138 1A80     		strh	r2, [r3]	@ movhi
+ 822              	.LBB4:
+ 213:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         for(int i=0;i<10;i++){
+ 823              		.loc 1 213 0
+ 824 013a 0023     		movs	r3, #0
+ 825 013c 3B66     		str	r3, [r7, #96]
+ 826 013e 33E0     		b	.L16
+ 827              	.L19:
+ 214:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             if(i<5){
+ 828              		.loc 1 214 0
+ 829 0140 3B6E     		ldr	r3, [r7, #96]
+ 830 0142 042B     		cmp	r3, #4
+ 831 0144 16DC     		bgt	.L17
+ 215:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                                 LCD_ShowString(X[0], Y[i], 240, 24, 24, goodsView[goods_position[i]
+ 832              		.loc 1 215 0
+ 833 0146 694B     		ldr	r3, .L22+60
+ 834 0148 1B68     		ldr	r3, [r3]
+ 835 014a 98B2     		uxth	r0, r3
+ 836 014c 684A     		ldr	r2, .L22+64
+ 837 014e 3B6E     		ldr	r3, [r7, #96]
+ 838 0150 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 839 0154 99B2     		uxth	r1, r3
+ 840 0156 634A     		ldr	r2, .L22+52
+ 841 0158 3B6E     		ldr	r3, [r7, #96]
+ 842 015a 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 843 015e 654A     		ldr	r2, .L22+68
+ 844 0160 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 845 0164 0193     		str	r3, [sp, #4]
+ 846 0166 1823     		movs	r3, #24
+ 847 0168 0093     		str	r3, [sp]
+ 848 016a 1823     		movs	r3, #24
+ 849 016c F022     		movs	r2, #240
+ 850 016e FFF7FEFF 		bl	LCD_ShowString
+ 851 0172 16E0     		b	.L18
+ 852              	.L17:
+ 216:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             }else{
+ 217:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                                 LCD_ShowString(X[1], Y[i-5], 240, 24, 24, goodsView[goods_position[
+ 853              		.loc 1 217 0
+ 854 0174 5D4B     		ldr	r3, .L22+60
+ 855 0176 5B68     		ldr	r3, [r3, #4]
+ 856 0178 98B2     		uxth	r0, r3
+ 857 017a 3B6E     		ldr	r3, [r7, #96]
+ 858 017c 053B     		subs	r3, r3, #5
+ 859 017e 5C4A     		ldr	r2, .L22+64
+ 860 0180 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 861 0184 99B2     		uxth	r1, r3
+ 862 0186 574A     		ldr	r2, .L22+52
+ 863 0188 3B6E     		ldr	r3, [r7, #96]
+ 864 018a 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 23
+
+
+ 865 018e 594A     		ldr	r2, .L22+68
+ 866 0190 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 867 0194 0193     		str	r3, [sp, #4]
+ 868 0196 1823     		movs	r3, #24
+ 869 0198 0093     		str	r3, [sp]
+ 870 019a 1823     		movs	r3, #24
+ 871 019c F022     		movs	r2, #240
+ 872 019e FFF7FEFF 		bl	LCD_ShowString
+ 873              	.L18:
+ 213:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             if(i<5){
+ 874              		.loc 1 213 0 discriminator 2
+ 875 01a2 3B6E     		ldr	r3, [r7, #96]
+ 876 01a4 0133     		adds	r3, r3, #1
+ 877 01a6 3B66     		str	r3, [r7, #96]
+ 878              	.L16:
+ 213:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             if(i<5){
+ 879              		.loc 1 213 0 is_stmt 0 discriminator 1
+ 880 01a8 3B6E     		ldr	r3, [r7, #96]
+ 881 01aa 092B     		cmp	r3, #9
+ 882 01ac C8DD     		ble	.L19
+ 883              	.LBE4:
+ 218:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             }
+ 219:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         }
+ 220:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         LCD_ShowString(X[0], Y[5], 240, 24, 24, Submit_View[0]);
+ 884              		.loc 1 220 0 is_stmt 1
+ 885 01ae 4F4B     		ldr	r3, .L22+60
+ 886 01b0 1B68     		ldr	r3, [r3]
+ 887 01b2 98B2     		uxth	r0, r3
+ 888 01b4 4E4B     		ldr	r3, .L22+64
+ 889 01b6 5B69     		ldr	r3, [r3, #20]
+ 890 01b8 99B2     		uxth	r1, r3
+ 891 01ba 4F4B     		ldr	r3, .L22+72
+ 892 01bc 1B68     		ldr	r3, [r3]
+ 893 01be 0193     		str	r3, [sp, #4]
+ 894 01c0 1823     		movs	r3, #24
+ 895 01c2 0093     		str	r3, [sp]
+ 896 01c4 1823     		movs	r3, #24
+ 897 01c6 F022     		movs	r2, #240
+ 898 01c8 FFF7FEFF 		bl	LCD_ShowString
+ 221:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         LCD_ShowString(X[1], Y[5], 240, 24, 24, Submit_View[1]);
+ 899              		.loc 1 221 0
+ 900 01cc 474B     		ldr	r3, .L22+60
+ 901 01ce 5B68     		ldr	r3, [r3, #4]
+ 902 01d0 98B2     		uxth	r0, r3
+ 903 01d2 474B     		ldr	r3, .L22+64
+ 904 01d4 5B69     		ldr	r3, [r3, #20]
+ 905 01d6 99B2     		uxth	r1, r3
+ 906 01d8 474B     		ldr	r3, .L22+72
+ 907 01da 5B68     		ldr	r3, [r3, #4]
+ 908 01dc 0193     		str	r3, [sp, #4]
+ 909 01de 1823     		movs	r3, #24
+ 910 01e0 0093     		str	r3, [sp]
+ 911 01e2 1823     		movs	r3, #24
+ 912 01e4 F022     		movs	r2, #240
+ 913 01e6 FFF7FEFF 		bl	LCD_ShowString
+ 222:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 223:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         LCD_ShowString(X[0]-10, goodsOptionY, 10, 24, 24, "*");
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 24
+
+
+ 914              		.loc 1 223 0
+ 915 01ea 404B     		ldr	r3, .L22+60
+ 916 01ec 1B68     		ldr	r3, [r3]
+ 917 01ee 9BB2     		uxth	r3, r3
+ 918 01f0 0A3B     		subs	r3, r3, #10
+ 919 01f2 98B2     		uxth	r0, r3
+ 920 01f4 414B     		ldr	r3, .L22+76
+ 921 01f6 1B68     		ldr	r3, [r3]
+ 922 01f8 99B2     		uxth	r1, r3
+ 923 01fa 414B     		ldr	r3, .L22+80
+ 924 01fc 0193     		str	r3, [sp, #4]
+ 925 01fe 1823     		movs	r3, #24
+ 926 0200 0093     		str	r3, [sp]
+ 927 0202 1823     		movs	r3, #24
+ 928 0204 0A22     		movs	r2, #10
+ 929 0206 FFF7FEFF 		bl	LCD_ShowString
+ 224:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         LCD_ShowxNum(X[1], Y[6], 0, 3, 24, 1);
+ 930              		.loc 1 224 0
+ 931 020a 384B     		ldr	r3, .L22+60
+ 932 020c 5B68     		ldr	r3, [r3, #4]
+ 933 020e 98B2     		uxth	r0, r3
+ 934 0210 374B     		ldr	r3, .L22+64
+ 935 0212 9B69     		ldr	r3, [r3, #24]
+ 936 0214 99B2     		uxth	r1, r3
+ 937 0216 0123     		movs	r3, #1
+ 938 0218 0193     		str	r3, [sp, #4]
+ 939 021a 1823     		movs	r3, #24
+ 940 021c 0093     		str	r3, [sp]
+ 941 021e 0323     		movs	r3, #3
+ 942 0220 0022     		movs	r2, #0
+ 943 0222 FFF7FEFF 		bl	LCD_ShowxNum
+ 225:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         err_int = en_oc_mqtt_err_code_ok;
+ 944              		.loc 1 225 0
+ 945 0226 0023     		movs	r3, #0
+ 946 0228 BB66     		str	r3, [r7, #104]
+ 947              	.LBE2:
+ 948 022a 04E0     		b	.L12
+ 949              	.L13:
+ 226:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     }
+ 227:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     else
+ 228:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     {
+ 229:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         printf("handle the json data as your specific profile\r\n");
+ 950              		.loc 1 229 0
+ 951 022c 3548     		ldr	r0, .L22+84
+ 952 022e FFF7FEFF 		bl	puts
+ 230:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         err_int = en_oc_mqtt_err_code_err;
+ 953              		.loc 1 230 0
+ 954 0232 0123     		movs	r3, #1
+ 955 0234 BB66     		str	r3, [r7, #104]
+ 956              	.L12:
+ 231:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     }
+ 232:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 233:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 cJSON_Delete(msg);
+ 957              		.loc 1 233 0
+ 958 0236 F86D     		ldr	r0, [r7, #92]
+ 959 0238 FFF7FEFF 		bl	cJSON_Delete
+ 234:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 25
+
+
+ 235:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 list.item.name = "body_para";
+ 960              		.loc 1 235 0
+ 961 023c 324B     		ldr	r3, .L22+88
+ 962 023e 7B62     		str	r3, [r7, #36]
+ 236:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 list.item.buf = "body_para";
+ 963              		.loc 1 236 0
+ 964 0240 314B     		ldr	r3, .L22+88
+ 965 0242 BB62     		str	r3, [r7, #40]
+ 237:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 list.item.type = en_key_value_type_string;
+ 966              		.loc 1 237 0
+ 967 0244 0123     		movs	r3, #1
+ 968 0246 87F83030 		strb	r3, [r7, #48]
+ 238:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 list.next = NULL;
+ 969              		.loc 1 238 0
+ 970 024a 0023     		movs	r3, #0
+ 971 024c 3B62     		str	r3, [r7, #32]
+ 239:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 240:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 response.hasmore = 0;
+ 972              		.loc 1 240 0
+ 973 024e 0023     		movs	r3, #0
+ 974 0250 87F83930 		strb	r3, [r7, #57]
+ 241:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 response.errcode = err_int;
+ 975              		.loc 1 241 0
+ 976 0254 BB6E     		ldr	r3, [r7, #104]
+ 977 0256 DBB2     		uxtb	r3, r3
+ 978 0258 87F83830 		strb	r3, [r7, #56]
+ 242:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 response.mid = mid_int;
+ 979              		.loc 1 242 0
+ 980 025c FB6E     		ldr	r3, [r7, #108]
+ 981 025e 7B63     		str	r3, [r7, #52]
+ 243:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 response.bodylst = &list;
+ 982              		.loc 1 243 0
+ 983 0260 07F12003 		add	r3, r7, #32
+ 984 0264 FB63     		str	r3, [r7, #60]
+ 244:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 245:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 msg = oc_mqtt_json_fmt_response(&response);
+ 985              		.loc 1 245 0
+ 986 0266 07F13403 		add	r3, r7, #52
+ 987 026a 1846     		mov	r0, r3
+ 988 026c FFF7FEFF 		bl	oc_mqtt_json_fmt_response
+ 989 0270 F865     		str	r0, [r7, #92]
+ 246:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 if(NULL != msg)
+ 990              		.loc 1 246 0
+ 991 0272 FB6D     		ldr	r3, [r7, #92]
+ 992 0274 002B     		cmp	r3, #0
+ 993 0276 3FF4D7AE 		beq	.L21
+ 247:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 {
+ 248:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     buf = cJSON_Print(msg);
+ 994              		.loc 1 248 0
+ 995 027a F86D     		ldr	r0, [r7, #92]
+ 996 027c FFF7FEFF 		bl	cJSON_Print
+ 997 0280 3864     		str	r0, [r7, #64]
+ 249:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     if(NULL != buf)
+ 998              		.loc 1 249 0
+ 999 0282 3B6C     		ldr	r3, [r7, #64]
+ 1000 0284 002B     		cmp	r3, #0
+ 1001 0286 0ED0     		beq	.L20
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 26
+
+
+ 250:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     {
+ 251:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         if(0 == oc_mqtt_report(s_mqtt_handle,buf,strlen(buf),en_mqtt_al_qos_1))
+ 1002              		.loc 1 251 0
+ 1003 0288 204B     		ldr	r3, .L22+92
+ 1004 028a 1C68     		ldr	r4, [r3]
+ 1005 028c 386C     		ldr	r0, [r7, #64]
+ 1006 028e FFF7FEFF 		bl	strlen
+ 1007 0292 0346     		mov	r3, r0
+ 1008 0294 1A46     		mov	r2, r3
+ 1009 0296 0123     		movs	r3, #1
+ 1010 0298 396C     		ldr	r1, [r7, #64]
+ 1011 029a 2046     		mov	r0, r4
+ 1012 029c FFF7FEFF 		bl	oc_mqtt_report
+ 252:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         {
+ 253:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                            // printf("SNDMSG:%s\n\r",buf);
+ 254:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         }
+ 255:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         osal_free(buf);
+ 1013              		.loc 1 255 0
+ 1014 02a0 386C     		ldr	r0, [r7, #64]
+ 1015 02a2 FFF7FEFF 		bl	osal_free
+ 1016              	.L20:
+ 256:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     }
+ 257:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     cJSON_Delete(msg);
+ 1017              		.loc 1 257 0
+ 1018 02a6 F86D     		ldr	r0, [r7, #92]
+ 1019 02a8 FFF7FEFF 		bl	cJSON_Delete
+ 167:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         {
+ 1020              		.loc 1 167 0
+ 1021 02ac BCE6     		b	.L21
+ 1022              	.L23:
+ 1023 02ae 00BF     		.align	2
+ 1024              	.L22:
+ 1025 02b0 00000000 		.word	s_rcv_sync
+ 1026 02b4 00000000 		.word	s_rcv_buffer
+ 1027 02b8 00020000 		.word	.LC47
+ 1028 02bc 0C020000 		.word	.LC48
+ 1029 02c0 1C020000 		.word	.LC49
+ 1030 02c4 20020000 		.word	.LC50
+ 1031 02c8 2C020000 		.word	.LC51
+ 1032 02cc 34020000 		.word	.LC52
+ 1033 02d0 44020000 		.word	.LC53
+ 1034 02d4 48020000 		.word	.LC54
+ 1035 02d8 54020000 		.word	.LC55
+ 1036 02dc 5C020000 		.word	.LC56
+ 1037 02e0 68020000 		.word	.LC57
+ 1038 02e4 00000000 		.word	goods_position
+ 1039 02e8 00000000 		.word	POINT_COLOR
+ 1040 02ec 00000000 		.word	X
+ 1041 02f0 00000000 		.word	Y
+ 1042 02f4 00000000 		.word	goodsView
+ 1043 02f8 00000000 		.word	Submit_View
+ 1044 02fc 00000000 		.word	goodsOptionY
+ 1045 0300 78020000 		.word	.LC58
+ 1046 0304 7C020000 		.word	.LC59
+ 1047 0308 AC020000 		.word	.LC60
+ 1048 030c 00000000 		.word	s_mqtt_handle
+ 1049              		.cfi_endproc
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 27
+
+
+ 1050              	.LFE127:
+ 1052              		.section	.rodata
+ 1053 02b6 0000     		.align	2
+ 1054              	.LC61:
+ 1055 02b8 696F742D 		.ascii	"iot-acc.cn-north-4.myhuaweicloud.com\000"
+ 1055      6163632E 
+ 1055      636E2D6E 
+ 1055      6F727468 
+ 1055      2D342E6D 
+ 1056 02dd 000000   		.align	2
+ 1057              	.LC62:
+ 1058 02e0 38383833 		.ascii	"8883\000"
+ 1058      00
+ 1059 02e5 000000   		.align	2
+ 1060              	.LC63:
+ 1061 02e8 31323334 		.ascii	"12346789A\000"
+ 1061      36373839 
+ 1061      4100
+ 1062 02f2 0000     		.align	2
+ 1063              	.LC64:
+ 1064 02f4 63313866 		.ascii	"c18f1123467898e6fef\000"
+ 1064      31313233 
+ 1064      34363738 
+ 1064      39386536 
+ 1064      66656600 
+ 1065              		.align	2
+ 1066              	.LC65:
+ 1067 0308 636F6E66 		.ascii	"config err \015\000"
+ 1067      69672065 
+ 1067      7272200D 
+ 1067      00
+ 1068 0315 000000   		.align	2
+ 1069              	.LC66:
+ 1070 0318 636F6E66 		.ascii	"config success\015\000"
+ 1070      69672073 
+ 1070      75636365 
+ 1070      73730D00 
+ 1071              		.align	2
+ 1072              	.LC67:
+ 1073 0328 25386400 		.ascii	"%8d\000"
+ 1074              		.align	2
+ 1075              	.LC68:
+ 1076 032c 6F726465 		.ascii	"orderID\000"
+ 1076      72494400 
+ 1077              		.align	2
+ 1078              	.LC69:
+ 1079 0334 25303664 		.ascii	"%06d\000"
+ 1079      00
+ 1080 0339 000000   		.align	2
+ 1081              	.LC70:
+ 1082 033c 75736572 		.ascii	"userID\000"
+ 1082      494400
+ 1083 0343 00       		.align	2
+ 1084              	.LC71:
+ 1085 0344 75736572 		.ascii	"userAge\000"
+ 1085      41676500 
+ 1086              		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 28
+
+
+ 1087              	.LC72:
+ 1088 034c 64657669 		.ascii	"deviceID\000"
+ 1088      63654944 
+ 1088      00
+ 1089 0355 000000   		.align	2
+ 1090              	.LC73:
+ 1091 0358 61726561 		.ascii	"area\000"
+ 1091      00
+ 1092 035d 000000   		.align	2
+ 1093              	.LC74:
+ 1094 0360 72656769 		.ascii	"region\000"
+ 1094      6F6E00
+ 1095 0367 00       		.align	2
+ 1096              	.LC75:
+ 1097 0368 6C6F6E67 		.ascii	"longitude\000"
+ 1097      69747564 
+ 1097      6500
+ 1098 0372 0000     		.align	2
+ 1099              	.LC76:
+ 1100 0374 6C617469 		.ascii	"latitude\000"
+ 1100      74756465 
+ 1100      00
+ 1101 037d 000000   		.align	2
+ 1102              	.LC77:
+ 1103 0380 25642564 		.ascii	"%d%d\000"
+ 1103      00
+ 1104 0385 000000   		.align	2
+ 1105              	.LC78:
+ 1106 0388 6F726465 		.ascii	"orderTime\000"
+ 1106      7254696D 
+ 1106      6500
+ 1107 0392 0000     		.align	2
+ 1108              	.LC79:
+ 1109 0394 7061796D 		.ascii	"payment\000"
+ 1109      656E7400 
+ 1110              		.align	2
+ 1111              	.LC80:
+ 1112 039c 73746174 		.ascii	"status\000"
+ 1112      757300
+ 1113 03a3 00       		.align	2
+ 1114              	.LC81:
+ 1115 03a4 746F7461 		.ascii	"totalCost\000"
+ 1115      6C436F73 
+ 1115      7400
+ 1116 03ae 0000     		.align	2
+ 1117              	.LC82:
+ 1118 03b0 6F726465 		.ascii	"order\000"
+ 1118      7200
+ 1119 03b6 0000     		.align	2
+ 1120              	.LC83:
+ 1121 03b8 4D792072 		.ascii	"My report success\000"
+ 1121      65706F72 
+ 1121      74207375 
+ 1121      63636573 
+ 1121      7300
+ 1122 03ca 0000     		.align	2
+ 1123              	.LC84:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 29
+
+
+ 1124 03cc 25730D0A 		.ascii	"%s\015\012\000"
+ 1124      00
+ 1125 03d1 000000   		.align	2
+ 1126              	.LC85:
+ 1127 03d4 2000     		.ascii	" \000"
+ 1128              		.section	.text.oc_mqtt_report_entry,"ax",%progbits
+ 1129              		.align	1
+ 1130              		.syntax unified
+ 1131              		.thumb
+ 1132              		.thumb_func
+ 1133              		.fpu fpv4-sp-d16
+ 1135              	oc_mqtt_report_entry:
+ 1136              	.LFB128:
+ 258:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 259:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             }
+ 260:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         }
+ 261:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     }
+ 262:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 263:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     return 0;
+ 264:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** }
+ 265:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 266:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //function to report data to oc
+ 267:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  static int oc_mqtt_report_entry(void *args)
+ 268:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  {
+ 1137              		.loc 1 268 0
+ 1138              		.cfi_startproc
+ 1139              		@ args = 0, pretend = 0, frame = 768
+ 1140              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1141 0000 80B5     		push	{r7, lr}
+ 1142              	.LCFI8:
+ 1143              		.cfi_def_cfa_offset 8
+ 1144              		.cfi_offset 7, -8
+ 1145              		.cfi_offset 14, -4
+ 1146 0002 ADF5427D 		sub	sp, sp, #776
+ 1147              	.LCFI9:
+ 1148              		.cfi_def_cfa_offset 784
+ 1149 0006 02AF     		add	r7, sp, #8
+ 1150              	.LCFI10:
+ 1151              		.cfi_def_cfa 7, 776
+ 1152 0008 3B1D     		adds	r3, r7, #4
+ 1153 000a 1860     		str	r0, [r3]
+ 269:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     //json data
+ 270:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list orderID_List;
+ 271:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list userID_List;
+ 272:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list userAge_List;
+ 273:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list deviceID_List;
+ 274:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list area_List; 
+ 275:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list Region_List;
+ 276:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list Longitude_List;
+ 277:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list Latitude_List;
+ 278:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list orderTime_List;
+ 279:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list Pay_List;
+ 280:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list Goods_Num_List[10];
+ 281:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list Goods_Price_List[10];
+ 282:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list Status_List;
+ 283:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_key_value_list Total_Cost_List;
+ 284:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****  
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 30
+
+
+ 285:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     cJSON *root = NULL;
+ 1154              		.loc 1 285 0
+ 1155 000c 0023     		movs	r3, #0
+ 1156 000e C7F8EC32 		str	r3, [r7, #748]
+ 286:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     char  *buf = NULL;
+ 1157              		.loc 1 286 0
+ 1158 0012 0023     		movs	r3, #0
+ 1159 0014 C7F8E832 		str	r3, [r7, #744]
+ 287:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     void *handle = NULL;
+ 1160              		.loc 1 287 0
+ 1161 0018 0023     		movs	r3, #0
+ 1162 001a C7F8E432 		str	r3, [r7, #740]
+ 288:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_oc_mqtt_report  report;
+ 289:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 290:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     tag_oc_mqtt_config config;
+ 291:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     
+ 292:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.boot_mode = en_oc_boot_strap_mode_factory;
+ 1163              		.loc 1 292 0
+ 1164 001e 07F10803 		add	r3, r7, #8
+ 1165 0022 0022     		movs	r2, #0
+ 1166 0024 1A70     		strb	r2, [r3]
+ 293:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.lifetime = DEFAULT_LIFETIME;
+ 1167              		.loc 1 293 0
+ 1168 0026 07F10803 		add	r3, r7, #8
+ 1169 002a 3C22     		movs	r2, #60
+ 1170 002c 5A80     		strh	r2, [r3, #2]	@ movhi
+ 294:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.server = DEFAULT_SERVER_IPV4;
+ 1171              		.loc 1 294 0
+ 1172 002e 07F10803 		add	r3, r7, #8
+ 1173 0032 BD4A     		ldr	r2, .L47
+ 1174 0034 5A60     		str	r2, [r3, #4]
+ 295:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.port = DEFAULT_SERVER_PORT;
+ 1175              		.loc 1 295 0
+ 1176 0036 07F10803 		add	r3, r7, #8
+ 1177 003a BC4A     		ldr	r2, .L47+4
+ 1178 003c 9A60     		str	r2, [r3, #8]
+ 296:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.msgdealer = app_msg_deal;
+ 1179              		.loc 1 296 0
+ 1180 003e 07F10803 		add	r3, r7, #8
+ 1181 0042 BB4A     		ldr	r2, .L47+8
+ 1182 0044 9A64     		str	r2, [r3, #72]
+ 297:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.code_mode = en_oc_mqtt_code_mode_json;
+ 1183              		.loc 1 297 0
+ 1184 0046 07F10803 		add	r3, r7, #8
+ 1185 004a 0122     		movs	r2, #1
+ 1186 004c 83F83020 		strb	r2, [r3, #48]
+ 298:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.sign_type = en_mqtt_sign_type_hmacsha256_check_time_no;
+ 1187              		.loc 1 298 0
+ 1188 0050 07F10803 		add	r3, r7, #8
+ 1189 0054 0022     		movs	r2, #0
+ 1190 0056 83F83120 		strb	r2, [r3, #49]
+ 299:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.device_type = en_oc_mqtt_device_type_static;
+ 1191              		.loc 1 299 0
+ 1192 005a 07F10803 		add	r3, r7, #8
+ 1193 005e 0122     		movs	r2, #1
+ 1194 0060 83F83220 		strb	r2, [r3, #50]
+ 300:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.auth_type = en_mqtt_auth_type_nodeid;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 31
+
+
+ 1195              		.loc 1 300 0
+ 1196 0064 07F10803 		add	r3, r7, #8
+ 1197 0068 0222     		movs	r2, #2
+ 1198 006a 83F83320 		strb	r2, [r3, #51]
+ 301:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.device_info.s_device.deviceid = CN_MQTT_EP_NOTEID;
+ 1199              		.loc 1 301 0
+ 1200 006e 07F10803 		add	r3, r7, #8
+ 1201 0072 B04A     		ldr	r2, .L47+12
+ 1202 0074 5A63     		str	r2, [r3, #52]
+ 302:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.device_info.s_device.devicepasswd = CN_MQTT_EP_PASSWD;
+ 1203              		.loc 1 302 0
+ 1204 0076 07F10803 		add	r3, r7, #8
+ 1205 007a AF4A     		ldr	r2, .L47+16
+ 1206 007c 9A63     		str	r2, [r3, #56]
+ 303:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 304:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.security.type = en_mqtt_al_security_cas;
+ 1207              		.loc 1 304 0
+ 1208 007e 07F10803 		add	r3, r7, #8
+ 1209 0082 0222     		movs	r2, #2
+ 1210 0084 1A73     		strb	r2, [r3, #12]
+ 305:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.security.u.cas.ca_crt.data = s_mqtt_ca_crt;
+ 1211              		.loc 1 305 0
+ 1212 0086 07F10803 		add	r3, r7, #8
+ 1213 008a AC4A     		ldr	r2, .L47+20
+ 1214 008c 1A61     		str	r2, [r3, #16]
+ 306:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     config.security.u.cas.ca_crt.len = sizeof(s_mqtt_ca_crt); ///< must including the end '\0'
+ 1215              		.loc 1 306 0
+ 1216 008e 07F10803 		add	r3, r7, #8
+ 1217 0092 40F29352 		movw	r2, #1427
+ 1218 0096 5A61     		str	r2, [r3, #20]
+ 307:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 308:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     //connect to oc according to the settings
+ 309:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     handle = oc_mqtt_config(&config);
+ 1219              		.loc 1 309 0
+ 1220 0098 07F10803 		add	r3, r7, #8
+ 1221 009c 1846     		mov	r0, r3
+ 1222 009e FFF7FEFF 		bl	oc_mqtt_config
+ 1223 00a2 C7F8E402 		str	r0, [r7, #740]
+ 310:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 311:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     if(NULL == handle)
+ 1224              		.loc 1 311 0
+ 1225 00a6 D7F8E432 		ldr	r3, [r7, #740]
+ 1226 00aa 002B     		cmp	r3, #0
+ 1227 00ac 05D1     		bne	.L25
+ 312:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     {
+ 313:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         printf("config err \r\n");
+ 1228              		.loc 1 313 0
+ 1229 00ae A448     		ldr	r0, .L47+24
+ 1230 00b0 FFF7FEFF 		bl	puts
+ 314:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         return -1;
+ 1231              		.loc 1 314 0
+ 1232 00b4 4FF0FF33 		mov	r3, #-1
+ 1233 00b8 BDE3     		b	.L46
+ 1234              	.L25:
+ 315:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     }
+ 316:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     else
+ 317:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 32
+
+
+ 318:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         printf("config success\r\n");
+ 1235              		.loc 1 318 0
+ 1236 00ba A248     		ldr	r0, .L47+28
+ 1237 00bc FFF7FEFF 		bl	puts
+ 319:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     }
+ 320:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     s_mqtt_handle = handle;
+ 1238              		.loc 1 320 0
+ 1239 00c0 A14A     		ldr	r2, .L47+32
+ 1240 00c2 D7F8E432 		ldr	r3, [r7, #740]
+ 1241 00c6 1360     		str	r3, [r2]
+ 1242              	.L45:
+ 321:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     while(1)  //do the loop here
+ 322:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     {
+ 323:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         if(RESET == gd_eval_key_state_get(F2_KEY))//if key F2 is pressed
+ 1243              		.loc 1 323 0
+ 1244 00c8 0120     		movs	r0, #1
+ 1245 00ca FFF7FEFF 		bl	gd_eval_key_state_get
+ 1246 00ce 0346     		mov	r3, r0
+ 1247 00d0 002B     		cmp	r3, #0
+ 1248 00d2 40F0AC83 		bne	.L27
+ 324:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 		{
+ 325:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         	//if cursor points to "Submit" or "Cancel"
+ 326:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             if(goodsOptionY==Y[5]){
+ 1249              		.loc 1 326 0
+ 1250 00d6 9D4B     		ldr	r3, .L47+36
+ 1251 00d8 5A69     		ldr	r2, [r3, #20]
+ 1252 00da 9D4B     		ldr	r3, .L47+40
+ 1253 00dc 1B68     		ldr	r3, [r3]
+ 1254 00de 9A42     		cmp	r2, r3
+ 1255 00e0 40F0F882 		bne	.L28
+ 327:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             	//package json data
+ 328:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 sprintf(orderID_string,"%8d",orderID);
+ 1256              		.loc 1 328 0
+ 1257 00e4 9B4B     		ldr	r3, .L47+44
+ 1258 00e6 1B68     		ldr	r3, [r3]
+ 1259 00e8 1A46     		mov	r2, r3
+ 1260 00ea 9B49     		ldr	r1, .L47+48
+ 1261 00ec 9B48     		ldr	r0, .L47+52
+ 1262 00ee FFF7FEFF 		bl	sprintf
+ 329:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderID_List.item.name = "orderID";
+ 1263              		.loc 1 329 0
+ 1264 00f2 9B4B     		ldr	r3, .L47+56
+ 1265 00f4 C7F8D432 		str	r3, [r7, #724]
+ 330:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderID_List.item.buf = (char *)orderID_string;
+ 1266              		.loc 1 330 0
+ 1267 00f8 984B     		ldr	r3, .L47+52
+ 1268 00fa C7F8D832 		str	r3, [r7, #728]
+ 331:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderID_List.item.len = sizeof(orderID_string);
+ 1269              		.loc 1 331 0
+ 1270 00fe 0923     		movs	r3, #9
+ 1271 0100 C7F8DC32 		str	r3, [r7, #732]
+ 332:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderID_List.item.type = en_key_value_type_string;
+ 1272              		.loc 1 332 0
+ 1273 0104 0123     		movs	r3, #1
+ 1274 0106 87F8E032 		strb	r3, [r7, #736]
+ 333:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderID_List.next = &userID_List;    
+ 1275              		.loc 1 333 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 33
+
+
+ 1276 010a 07F52F73 		add	r3, r7, #700
+ 1277 010e C7F8D032 		str	r3, [r7, #720]
+ 334:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 335:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 pay_Random = rand()%3;
+ 1278              		.loc 1 335 0
+ 1279 0112 FFF7FEFF 		bl	rand
+ 1280 0116 0146     		mov	r1, r0
+ 1281 0118 924B     		ldr	r3, .L47+60
+ 1282 011a 83FB0132 		smull	r3, r2, r3, r1
+ 1283 011e CB17     		asrs	r3, r1, #31
+ 1284 0120 D21A     		subs	r2, r2, r3
+ 1285 0122 1346     		mov	r3, r2
+ 1286 0124 5B00     		lsls	r3, r3, #1
+ 1287 0126 1344     		add	r3, r3, r2
+ 1288 0128 CA1A     		subs	r2, r1, r3
+ 1289 012a 8F4B     		ldr	r3, .L47+64
+ 1290 012c 1A60     		str	r2, [r3]
+ 336:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userID = rand()%1000000;
+ 1291              		.loc 1 336 0
+ 1292 012e FFF7FEFF 		bl	rand
+ 1293 0132 0246     		mov	r2, r0
+ 1294 0134 8D4B     		ldr	r3, .L47+68
+ 1295 0136 83FB0213 		smull	r1, r3, r3, r2
+ 1296 013a 9914     		asrs	r1, r3, #18
+ 1297 013c D317     		asrs	r3, r2, #31
+ 1298 013e CB1A     		subs	r3, r1, r3
+ 1299 0140 8B49     		ldr	r1, .L47+72
+ 1300 0142 01FB03F3 		mul	r3, r1, r3
+ 1301 0146 D31A     		subs	r3, r2, r3
+ 1302 0148 8A4A     		ldr	r2, .L47+76
+ 1303 014a 1360     		str	r3, [r2]
+ 337:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 sprintf(userID_string,"%06d",userID);
+ 1304              		.loc 1 337 0
+ 1305 014c 894B     		ldr	r3, .L47+76
+ 1306 014e 1B68     		ldr	r3, [r3]
+ 1307 0150 1A46     		mov	r2, r3
+ 1308 0152 8949     		ldr	r1, .L47+80
+ 1309 0154 8948     		ldr	r0, .L47+84
+ 1310 0156 FFF7FEFF 		bl	sprintf
+ 338:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userID_List.item.name = "userID";
+ 1311              		.loc 1 338 0
+ 1312 015a 894B     		ldr	r3, .L47+88
+ 1313 015c C7F8C032 		str	r3, [r7, #704]
+ 339:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userID_List.item.buf = (char *)userID_string;
+ 1314              		.loc 1 339 0
+ 1315 0160 864B     		ldr	r3, .L47+84
+ 1316 0162 C7F8C432 		str	r3, [r7, #708]
+ 340:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userID_List.item.len = sizeof(userID_string);
+ 1317              		.loc 1 340 0
+ 1318 0166 0623     		movs	r3, #6
+ 1319 0168 C7F8C832 		str	r3, [r7, #712]
+ 341:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userID_List.item.type = en_key_value_type_string;
+ 1320              		.loc 1 341 0
+ 1321 016c 0123     		movs	r3, #1
+ 1322 016e 87F8CC32 		strb	r3, [r7, #716]
+ 342:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userID_List.next = &userAge_List;
+ 1323              		.loc 1 342 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 34
+
+
+ 1324 0172 07F52A73 		add	r3, r7, #680
+ 1325 0176 C7F8BC32 		str	r3, [r7, #700]
+ 343:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 344:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userAge_List.item.name = "userAge";
+ 1326              		.loc 1 344 0
+ 1327 017a 824B     		ldr	r3, .L47+92
+ 1328 017c C7F8AC32 		str	r3, [r7, #684]
+ 345:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userAge_List.item.buf = (char *)&userAge;
+ 1329              		.loc 1 345 0
+ 1330 0180 814B     		ldr	r3, .L47+96
+ 1331 0182 C7F8B032 		str	r3, [r7, #688]
+ 346:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userAge_List.item.len = sizeof(userAge);
+ 1332              		.loc 1 346 0
+ 1333 0186 0423     		movs	r3, #4
+ 1334 0188 C7F8B432 		str	r3, [r7, #692]
+ 347:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userAge_List.item.type = en_key_value_type_int;
+ 1335              		.loc 1 347 0
+ 1336 018c 0023     		movs	r3, #0
+ 1337 018e 87F8B832 		strb	r3, [r7, #696]
+ 348:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 userAge_List.next = &deviceID_List;
+ 1338              		.loc 1 348 0
+ 1339 0192 07F52573 		add	r3, r7, #660
+ 1340 0196 C7F8A832 		str	r3, [r7, #680]
+ 349:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 350:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 deviceID_List.item.name = "deviceID";
+ 1341              		.loc 1 350 0
+ 1342 019a 7C4B     		ldr	r3, .L47+100
+ 1343 019c C7F89832 		str	r3, [r7, #664]
+ 351:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 deviceID_List.item.buf = (char *)deviceID;
+ 1344              		.loc 1 351 0
+ 1345 01a0 7B4B     		ldr	r3, .L47+104
+ 1346 01a2 1B68     		ldr	r3, [r3]
+ 1347 01a4 C7F89C32 		str	r3, [r7, #668]
+ 352:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 deviceID_List.item.len = sizeof(deviceID);
+ 1348              		.loc 1 352 0
+ 1349 01a8 0423     		movs	r3, #4
+ 1350 01aa C7F8A032 		str	r3, [r7, #672]
+ 353:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 deviceID_List.item.type = en_key_value_type_string;
+ 1351              		.loc 1 353 0
+ 1352 01ae 0123     		movs	r3, #1
+ 1353 01b0 87F8A432 		strb	r3, [r7, #676]
+ 354:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 deviceID_List.next = &area_List;
+ 1354              		.loc 1 354 0
+ 1355 01b4 07F52073 		add	r3, r7, #640
+ 1356 01b8 C7F89432 		str	r3, [r7, #660]
+ 355:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 356:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 area_List.item.name = "area";
+ 1357              		.loc 1 356 0
+ 1358 01bc 754B     		ldr	r3, .L47+108
+ 1359 01be C7F88432 		str	r3, [r7, #644]
+ 357:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 area_List.item.buf = (char *)area;
+ 1360              		.loc 1 357 0
+ 1361 01c2 754B     		ldr	r3, .L47+112
+ 1362 01c4 1B68     		ldr	r3, [r3]
+ 1363 01c6 C7F88832 		str	r3, [r7, #648]
+ 358:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 area_List.item.len = sizeof(area);
+ 1364              		.loc 1 358 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 35
+
+
+ 1365 01ca 0423     		movs	r3, #4
+ 1366 01cc C7F88C32 		str	r3, [r7, #652]
+ 359:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 area_List.item.type = en_key_value_type_string;
+ 1367              		.loc 1 359 0
+ 1368 01d0 0123     		movs	r3, #1
+ 1369 01d2 87F89032 		strb	r3, [r7, #656]
+ 360:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 area_List.next = &Region_List;
+ 1370              		.loc 1 360 0
+ 1371 01d6 07F51B73 		add	r3, r7, #620
+ 1372 01da C7F88032 		str	r3, [r7, #640]
+ 361:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 362:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Region_Random = rand()%6;
+ 1373              		.loc 1 362 0
+ 1374 01de FFF7FEFF 		bl	rand
+ 1375 01e2 0146     		mov	r1, r0
+ 1376 01e4 6D4B     		ldr	r3, .L47+116
+ 1377 01e6 83FB0132 		smull	r3, r2, r3, r1
+ 1378 01ea CB17     		asrs	r3, r1, #31
+ 1379 01ec D21A     		subs	r2, r2, r3
+ 1380 01ee 1346     		mov	r3, r2
+ 1381 01f0 5B00     		lsls	r3, r3, #1
+ 1382 01f2 1344     		add	r3, r3, r2
+ 1383 01f4 5B00     		lsls	r3, r3, #1
+ 1384 01f6 CA1A     		subs	r2, r1, r3
+ 1385 01f8 694B     		ldr	r3, .L47+120
+ 1386 01fa 1A60     		str	r2, [r3]
+ 363:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Region_List.item.name = "region";
+ 1387              		.loc 1 363 0
+ 1388 01fc 694B     		ldr	r3, .L47+124
+ 1389 01fe C7F87032 		str	r3, [r7, #624]
+ 364:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Region_List.item.buf = (char *)Regions[Region_Random];
+ 1390              		.loc 1 364 0
+ 1391 0202 674B     		ldr	r3, .L47+120
+ 1392 0204 1B68     		ldr	r3, [r3]
+ 1393 0206 684A     		ldr	r2, .L47+128
+ 1394 0208 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 1395 020c C7F87432 		str	r3, [r7, #628]
+ 365:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Region_List.item.len = sizeof(Regions[Region_Random]);
+ 1396              		.loc 1 365 0
+ 1397 0210 0423     		movs	r3, #4
+ 1398 0212 C7F87832 		str	r3, [r7, #632]
+ 366:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Region_List.item.type = en_key_value_type_string;
+ 1399              		.loc 1 366 0
+ 1400 0216 0123     		movs	r3, #1
+ 1401 0218 87F87C32 		strb	r3, [r7, #636]
+ 367:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Region_List.next = &Longitude_List;
+ 1402              		.loc 1 367 0
+ 1403 021c 07F51673 		add	r3, r7, #600
+ 1404 0220 C7F86C32 		str	r3, [r7, #620]
+ 368:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 369:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Longitude_List.item.name = "longitude";
+ 1405              		.loc 1 369 0
+ 1406 0224 614B     		ldr	r3, .L47+132
+ 1407 0226 C7F85C32 		str	r3, [r7, #604]
+ 370:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Longitude_List.item.buf = (char *)&longitude;
+ 1408              		.loc 1 370 0
+ 1409 022a 614B     		ldr	r3, .L47+136
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 36
+
+
+ 1410 022c C7F86032 		str	r3, [r7, #608]
+ 371:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Longitude_List.item.len = sizeof(longitude);
+ 1411              		.loc 1 371 0
+ 1412 0230 0423     		movs	r3, #4
+ 1413 0232 C7F86432 		str	r3, [r7, #612]
+ 372:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Longitude_List.item.type = en_key_value_type_int;
+ 1414              		.loc 1 372 0
+ 1415 0236 0023     		movs	r3, #0
+ 1416 0238 87F86832 		strb	r3, [r7, #616]
+ 373:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Longitude_List.next = &Latitude_List;
+ 1417              		.loc 1 373 0
+ 1418 023c 07F51173 		add	r3, r7, #580
+ 1419 0240 C7F85832 		str	r3, [r7, #600]
+ 374:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 375:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Latitude_List.item.name = "latitude";
+ 1420              		.loc 1 375 0
+ 1421 0244 5B4B     		ldr	r3, .L47+140
+ 1422 0246 C7F84832 		str	r3, [r7, #584]
+ 376:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Latitude_List.item.buf = (char *)&latitude;
+ 1423              		.loc 1 376 0
+ 1424 024a 5B4B     		ldr	r3, .L47+144
+ 1425 024c C7F84C32 		str	r3, [r7, #588]
+ 377:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Latitude_List.item.len = sizeof(latitude);
+ 1426              		.loc 1 377 0
+ 1427 0250 0423     		movs	r3, #4
+ 1428 0252 C7F85032 		str	r3, [r7, #592]
+ 378:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Latitude_List.item.type = en_key_value_type_int;
+ 1429              		.loc 1 378 0
+ 1430 0256 0023     		movs	r3, #0
+ 1431 0258 87F85432 		strb	r3, [r7, #596]
+ 379:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Latitude_List.next = &orderTime_List;
+ 1432              		.loc 1 379 0
+ 1433 025c 07F50C73 		add	r3, r7, #560
+ 1434 0260 C7F84432 		str	r3, [r7, #580]
+ 380:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 
+ 381:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 sprintf(orderTime_string,"%d%d",orderTime1,orderTime);
+ 1435              		.loc 1 381 0
+ 1436 0264 554B     		ldr	r3, .L47+148
+ 1437 0266 1A68     		ldr	r2, [r3]
+ 1438 0268 554B     		ldr	r3, .L47+152
+ 1439 026a 1B68     		ldr	r3, [r3]
+ 1440 026c 5549     		ldr	r1, .L47+156
+ 1441 026e 5648     		ldr	r0, .L47+160
+ 1442 0270 FFF7FEFF 		bl	sprintf
+ 382:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderTime_List.item.name = "orderTime";
+ 1443              		.loc 1 382 0
+ 1444 0274 554B     		ldr	r3, .L47+164
+ 1445 0276 C7F83432 		str	r3, [r7, #564]
+ 383:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderTime_List.item.buf = (char *)orderTime_string;
+ 1446              		.loc 1 383 0
+ 1447 027a 534B     		ldr	r3, .L47+160
+ 1448 027c C7F83832 		str	r3, [r7, #568]
+ 384:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderTime_List.item.len = sizeof(orderTime_string);
+ 1449              		.loc 1 384 0
+ 1450 0280 0D23     		movs	r3, #13
+ 1451 0282 C7F83C32 		str	r3, [r7, #572]
+ 385:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderTime_List.item.type = en_key_value_type_string;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 37
+
+
+ 1452              		.loc 1 385 0
+ 1453 0286 0123     		movs	r3, #1
+ 1454 0288 87F84032 		strb	r3, [r7, #576]
+ 386:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 orderTime_List.next = &Pay_List;                    
+ 1455              		.loc 1 386 0
+ 1456 028c 07F50773 		add	r3, r7, #540
+ 1457 0290 C7F83032 		str	r3, [r7, #560]
+ 387:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 
+ 388:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 pay_Random = rand()%3;
+ 1458              		.loc 1 388 0
+ 1459 0294 FFF7FEFF 		bl	rand
+ 1460 0298 0146     		mov	r1, r0
+ 1461 029a 324B     		ldr	r3, .L47+60
+ 1462 029c 83FB0132 		smull	r3, r2, r3, r1
+ 1463 02a0 CB17     		asrs	r3, r1, #31
+ 1464 02a2 D21A     		subs	r2, r2, r3
+ 1465 02a4 1346     		mov	r3, r2
+ 1466 02a6 5B00     		lsls	r3, r3, #1
+ 1467 02a8 1344     		add	r3, r3, r2
+ 1468 02aa CA1A     		subs	r2, r1, r3
+ 1469 02ac 2E4B     		ldr	r3, .L47+64
+ 1470 02ae 1A60     		str	r2, [r3]
+ 389:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Pay_List.item.name = "payment";
+ 1471              		.loc 1 389 0
+ 1472 02b0 474B     		ldr	r3, .L47+168
+ 1473 02b2 C7F82032 		str	r3, [r7, #544]
+ 390:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Pay_List.item.buf = (char *)Pay[pay_Random];
+ 1474              		.loc 1 390 0
+ 1475 02b6 2C4B     		ldr	r3, .L47+64
+ 1476 02b8 1B68     		ldr	r3, [r3]
+ 1477 02ba 464A     		ldr	r2, .L47+172
+ 1478 02bc 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 1479 02c0 C7F82432 		str	r3, [r7, #548]
+ 391:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Pay_List.item.len = sizeof(Pay[pay_Random]);                   
+ 1480              		.loc 1 391 0
+ 1481 02c4 0423     		movs	r3, #4
+ 1482 02c6 C7F82832 		str	r3, [r7, #552]
+ 392:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Pay_List.item.type = en_key_value_type_string;
+ 1483              		.loc 1 392 0
+ 1484 02ca 0123     		movs	r3, #1
+ 1485 02cc 87F82C32 		strb	r3, [r7, #556]
+ 393:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Pay_List.next = &Goods_Num_List[0];
+ 1486              		.loc 1 393 0
+ 1487 02d0 07F5AA73 		add	r3, r7, #340
+ 1488 02d4 C7F81C32 		str	r3, [r7, #540]
+ 394:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 395:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 if(goodsOptionX==X[1]){ //"Cancel"
+ 1489              		.loc 1 395 0
+ 1490 02d8 3F4B     		ldr	r3, .L47+176
+ 1491 02da 5A68     		ldr	r2, [r3, #4]
+ 1492 02dc 3F4B     		ldr	r3, .L47+180
+ 1493 02de 1B68     		ldr	r3, [r3]
+ 1494 02e0 9A42     		cmp	r2, r3
+ 1495 02e2 19D1     		bne	.L29
+ 396:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Status = 0;
+ 1496              		.loc 1 396 0
+ 1497 02e4 3E4B     		ldr	r3, .L47+184
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 38
+
+
+ 1498 02e6 0022     		movs	r2, #0
+ 1499 02e8 1A60     		str	r2, [r3]
+ 1500              	.LBB5:
+ 397:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     for(int i=0;i<10;i++){
+ 1501              		.loc 1 397 0
+ 1502 02ea 0023     		movs	r3, #0
+ 1503 02ec C7F8FC32 		str	r3, [r7, #764]
+ 1504 02f0 0AE0     		b	.L30
+ 1505              	.L31:
+ 398:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         Goods_Num[i]=0;
+ 1506              		.loc 1 398 0 discriminator 3
+ 1507 02f2 3C4A     		ldr	r2, .L47+188
+ 1508 02f4 D7F8FC32 		ldr	r3, [r7, #764]
+ 1509 02f8 0021     		movs	r1, #0
+ 1510 02fa 42F82310 		str	r1, [r2, r3, lsl #2]
+ 397:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     for(int i=0;i<10;i++){
+ 1511              		.loc 1 397 0 discriminator 3
+ 1512 02fe D7F8FC32 		ldr	r3, [r7, #764]
+ 1513 0302 0133     		adds	r3, r3, #1
+ 1514 0304 C7F8FC32 		str	r3, [r7, #764]
+ 1515              	.L30:
+ 397:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     for(int i=0;i<10;i++){
+ 1516              		.loc 1 397 0 is_stmt 0 discriminator 1
+ 1517 0308 D7F8FC32 		ldr	r3, [r7, #764]
+ 1518 030c 092B     		cmp	r3, #9
+ 1519 030e F0DD     		ble	.L31
+ 1520              	.LBE5:
+ 399:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     }
+ 400:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Total_Cost = 0;
+ 1521              		.loc 1 400 0 is_stmt 1
+ 1522 0310 354B     		ldr	r3, .L47+192
+ 1523 0312 0022     		movs	r2, #0
+ 1524 0314 1A60     		str	r2, [r3]
+ 1525 0316 02E0     		b	.L32
+ 1526              	.L29:
+ 401:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }else{
+ 402:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Status = 1; //"Submit"
+ 1527              		.loc 1 402 0
+ 1528 0318 314B     		ldr	r3, .L47+184
+ 1529 031a 0122     		movs	r2, #1
+ 1530 031c 1A60     		str	r2, [r3]
+ 1531              	.L32:
+ 1532              	.LBB6:
+ 403:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 404:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 405:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 for(int i=0;i<10;i++){
+ 1533              		.loc 1 405 0
+ 1534 031e 0023     		movs	r3, #0
+ 1535 0320 C7F8F832 		str	r3, [r7, #760]
+ 1536 0324 02E1     		b	.L33
+ 1537              	.L48:
+ 1538 0326 00BF     		.align	2
+ 1539              	.L47:
+ 1540 0328 B8020000 		.word	.LC61
+ 1541 032c E0020000 		.word	.LC62
+ 1542 0330 00000000 		.word	app_msg_deal
+ 1543 0334 E8020000 		.word	.LC63
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 39
+
+
+ 1544 0338 F4020000 		.word	.LC64
+ 1545 033c 00000000 		.word	s_mqtt_ca_crt
+ 1546 0340 08030000 		.word	.LC65
+ 1547 0344 18030000 		.word	.LC66
+ 1548 0348 00000000 		.word	s_mqtt_handle
+ 1549 034c 00000000 		.word	Y
+ 1550 0350 00000000 		.word	goodsOptionY
+ 1551 0354 00000000 		.word	orderID
+ 1552 0358 28030000 		.word	.LC67
+ 1553 035c 00000000 		.word	orderID_string
+ 1554 0360 2C030000 		.word	.LC68
+ 1555 0364 56555555 		.word	1431655766
+ 1556 0368 00000000 		.word	pay_Random
+ 1557 036c 83DE1B43 		.word	1125899907
+ 1558 0370 40420F00 		.word	1000000
+ 1559 0374 00000000 		.word	userID
+ 1560 0378 34030000 		.word	.LC69
+ 1561 037c 00000000 		.word	userID_string
+ 1562 0380 3C030000 		.word	.LC70
+ 1563 0384 44030000 		.word	.LC71
+ 1564 0388 00000000 		.word	userAge
+ 1565 038c 4C030000 		.word	.LC72
+ 1566 0390 00000000 		.word	deviceID
+ 1567 0394 58030000 		.word	.LC73
+ 1568 0398 00000000 		.word	area
+ 1569 039c ABAAAA2A 		.word	715827883
+ 1570 03a0 00000000 		.word	Region_Random
+ 1571 03a4 60030000 		.word	.LC74
+ 1572 03a8 00000000 		.word	Regions
+ 1573 03ac 68030000 		.word	.LC75
+ 1574 03b0 00000000 		.word	longitude
+ 1575 03b4 74030000 		.word	.LC76
+ 1576 03b8 00000000 		.word	latitude
+ 1577 03bc 00000000 		.word	orderTime1
+ 1578 03c0 00000000 		.word	orderTime
+ 1579 03c4 80030000 		.word	.LC77
+ 1580 03c8 00000000 		.word	orderTime_string
+ 1581 03cc 88030000 		.word	.LC78
+ 1582 03d0 94030000 		.word	.LC79
+ 1583 03d4 00000000 		.word	Pay
+ 1584 03d8 00000000 		.word	X
+ 1585 03dc 00000000 		.word	goodsOptionX
+ 1586 03e0 00000000 		.word	Status
+ 1587 03e4 00000000 		.word	Goods_Num
+ 1588 03e8 00000000 		.word	Total_Cost
+ 1589              	.L35:
+ 406:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Num_List[i].item.name = Goods_Num_String[i];
+ 1590              		.loc 1 406 0
+ 1591 03ec BB4A     		ldr	r2, .L49
+ 1592 03ee D7F8F832 		ldr	r3, [r7, #760]
+ 1593 03f2 52F82310 		ldr	r1, [r2, r3, lsl #2]
+ 1594 03f6 07F5AA70 		add	r0, r7, #340
+ 1595 03fa D7F8F822 		ldr	r2, [r7, #760]
+ 1596 03fe 1346     		mov	r3, r2
+ 1597 0400 9B00     		lsls	r3, r3, #2
+ 1598 0402 1344     		add	r3, r3, r2
+ 1599 0404 9B00     		lsls	r3, r3, #2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 40
+
+
+ 1600 0406 0344     		add	r3, r3, r0
+ 1601 0408 0433     		adds	r3, r3, #4
+ 1602 040a 1960     		str	r1, [r3]
+ 407:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Num_List[i].item.buf = (char *)&Goods_Num[i];
+ 1603              		.loc 1 407 0
+ 1604 040c D7F8F832 		ldr	r3, [r7, #760]
+ 1605 0410 9B00     		lsls	r3, r3, #2
+ 1606 0412 B34A     		ldr	r2, .L49+4
+ 1607 0414 9918     		adds	r1, r3, r2
+ 1608 0416 07F5AA70 		add	r0, r7, #340
+ 1609 041a D7F8F822 		ldr	r2, [r7, #760]
+ 1610 041e 1346     		mov	r3, r2
+ 1611 0420 9B00     		lsls	r3, r3, #2
+ 1612 0422 1344     		add	r3, r3, r2
+ 1613 0424 9B00     		lsls	r3, r3, #2
+ 1614 0426 0344     		add	r3, r3, r0
+ 1615 0428 0833     		adds	r3, r3, #8
+ 1616 042a 1960     		str	r1, [r3]
+ 408:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Num_List[i].item.len = sizeof(Goods_Num[i]);                
+ 1617              		.loc 1 408 0
+ 1618 042c 07F5AA71 		add	r1, r7, #340
+ 1619 0430 D7F8F822 		ldr	r2, [r7, #760]
+ 1620 0434 1346     		mov	r3, r2
+ 1621 0436 9B00     		lsls	r3, r3, #2
+ 1622 0438 1344     		add	r3, r3, r2
+ 1623 043a 9B00     		lsls	r3, r3, #2
+ 1624 043c 0B44     		add	r3, r3, r1
+ 1625 043e 0C33     		adds	r3, r3, #12
+ 1626 0440 0422     		movs	r2, #4
+ 1627 0442 1A60     		str	r2, [r3]
+ 409:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Num_List[i].item.type = en_key_value_type_int;
+ 1628              		.loc 1 409 0
+ 1629 0444 07F5AA71 		add	r1, r7, #340
+ 1630 0448 D7F8F822 		ldr	r2, [r7, #760]
+ 1631 044c 1346     		mov	r3, r2
+ 1632 044e 9B00     		lsls	r3, r3, #2
+ 1633 0450 1344     		add	r3, r3, r2
+ 1634 0452 9B00     		lsls	r3, r3, #2
+ 1635 0454 0B44     		add	r3, r3, r1
+ 1636 0456 1033     		adds	r3, r3, #16
+ 1637 0458 0022     		movs	r2, #0
+ 1638 045a 1A70     		strb	r2, [r3]
+ 410:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Num_List[i].next = &Goods_Price_List[i];
+ 1639              		.loc 1 410 0
+ 1640 045c 07F18C01 		add	r1, r7, #140
+ 1641 0460 D7F8F822 		ldr	r2, [r7, #760]
+ 1642 0464 1346     		mov	r3, r2
+ 1643 0466 9B00     		lsls	r3, r3, #2
+ 1644 0468 1344     		add	r3, r3, r2
+ 1645 046a 9B00     		lsls	r3, r3, #2
+ 1646 046c 1944     		add	r1, r1, r3
+ 1647 046e 07F5AA70 		add	r0, r7, #340
+ 1648 0472 D7F8F822 		ldr	r2, [r7, #760]
+ 1649 0476 1346     		mov	r3, r2
+ 1650 0478 9B00     		lsls	r3, r3, #2
+ 1651 047a 1344     		add	r3, r3, r2
+ 1652 047c 9B00     		lsls	r3, r3, #2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 41
+
+
+ 1653 047e 0344     		add	r3, r3, r0
+ 1654 0480 1960     		str	r1, [r3]
+ 411:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Price_List[i].item.name = Goods_Price_String[i];
+ 1655              		.loc 1 411 0
+ 1656 0482 984A     		ldr	r2, .L49+8
+ 1657 0484 D7F8F832 		ldr	r3, [r7, #760]
+ 1658 0488 52F82310 		ldr	r1, [r2, r3, lsl #2]
+ 1659 048c 07F18C00 		add	r0, r7, #140
+ 1660 0490 D7F8F822 		ldr	r2, [r7, #760]
+ 1661 0494 1346     		mov	r3, r2
+ 1662 0496 9B00     		lsls	r3, r3, #2
+ 1663 0498 1344     		add	r3, r3, r2
+ 1664 049a 9B00     		lsls	r3, r3, #2
+ 1665 049c 0344     		add	r3, r3, r0
+ 1666 049e 0433     		adds	r3, r3, #4
+ 1667 04a0 1960     		str	r1, [r3]
+ 412:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Price_List[i].item.buf = (char *)&Goods_Price[i];
+ 1668              		.loc 1 412 0
+ 1669 04a2 D7F8F832 		ldr	r3, [r7, #760]
+ 1670 04a6 9B00     		lsls	r3, r3, #2
+ 1671 04a8 8F4A     		ldr	r2, .L49+12
+ 1672 04aa 9918     		adds	r1, r3, r2
+ 1673 04ac 07F18C00 		add	r0, r7, #140
+ 1674 04b0 D7F8F822 		ldr	r2, [r7, #760]
+ 1675 04b4 1346     		mov	r3, r2
+ 1676 04b6 9B00     		lsls	r3, r3, #2
+ 1677 04b8 1344     		add	r3, r3, r2
+ 1678 04ba 9B00     		lsls	r3, r3, #2
+ 1679 04bc 0344     		add	r3, r3, r0
+ 1680 04be 0833     		adds	r3, r3, #8
+ 1681 04c0 1960     		str	r1, [r3]
+ 413:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Price_List[i].item.len = sizeof(Goods_Price[i]);                   
+ 1682              		.loc 1 413 0
+ 1683 04c2 07F18C01 		add	r1, r7, #140
+ 1684 04c6 D7F8F822 		ldr	r2, [r7, #760]
+ 1685 04ca 1346     		mov	r3, r2
+ 1686 04cc 9B00     		lsls	r3, r3, #2
+ 1687 04ce 1344     		add	r3, r3, r2
+ 1688 04d0 9B00     		lsls	r3, r3, #2
+ 1689 04d2 0B44     		add	r3, r3, r1
+ 1690 04d4 0C33     		adds	r3, r3, #12
+ 1691 04d6 0422     		movs	r2, #4
+ 1692 04d8 1A60     		str	r2, [r3]
+ 414:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Price_List[i].item.type = en_key_value_type_int;
+ 1693              		.loc 1 414 0
+ 1694 04da 07F18C01 		add	r1, r7, #140
+ 1695 04de D7F8F822 		ldr	r2, [r7, #760]
+ 1696 04e2 1346     		mov	r3, r2
+ 1697 04e4 9B00     		lsls	r3, r3, #2
+ 1698 04e6 1344     		add	r3, r3, r2
+ 1699 04e8 9B00     		lsls	r3, r3, #2
+ 1700 04ea 0B44     		add	r3, r3, r1
+ 1701 04ec 1033     		adds	r3, r3, #16
+ 1702 04ee 0022     		movs	r2, #0
+ 1703 04f0 1A70     		strb	r2, [r3]
+ 415:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     if(i<9){
+ 1704              		.loc 1 415 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 42
+
+
+ 1705 04f2 D7F8F832 		ldr	r3, [r7, #760]
+ 1706 04f6 082B     		cmp	r3, #8
+ 1707 04f8 13DC     		bgt	.L34
+ 416:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         Goods_Price_List[i].next = &Goods_Num_List[i+1];
+ 1708              		.loc 1 416 0
+ 1709 04fa D7F8F832 		ldr	r3, [r7, #760]
+ 1710 04fe 5A1C     		adds	r2, r3, #1
+ 1711 0500 07F5AA71 		add	r1, r7, #340
+ 1712 0504 1346     		mov	r3, r2
+ 1713 0506 9B00     		lsls	r3, r3, #2
+ 1714 0508 1344     		add	r3, r3, r2
+ 1715 050a 9B00     		lsls	r3, r3, #2
+ 1716 050c 1944     		add	r1, r1, r3
+ 1717 050e 07F18C00 		add	r0, r7, #140
+ 1718 0512 D7F8F822 		ldr	r2, [r7, #760]
+ 1719 0516 1346     		mov	r3, r2
+ 1720 0518 9B00     		lsls	r3, r3, #2
+ 1721 051a 1344     		add	r3, r3, r2
+ 1722 051c 9B00     		lsls	r3, r3, #2
+ 1723 051e 0344     		add	r3, r3, r0
+ 1724 0520 1960     		str	r1, [r3]
+ 1725              	.L34:
+ 405:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Num_List[i].item.name = Goods_Num_String[i];
+ 1726              		.loc 1 405 0 discriminator 2
+ 1727 0522 D7F8F832 		ldr	r3, [r7, #760]
+ 1728 0526 0133     		adds	r3, r3, #1
+ 1729 0528 C7F8F832 		str	r3, [r7, #760]
+ 1730              	.L33:
+ 405:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     Goods_Num_List[i].item.name = Goods_Num_String[i];
+ 1731              		.loc 1 405 0 is_stmt 0 discriminator 1
+ 1732 052c D7F8F832 		ldr	r3, [r7, #760]
+ 1733 0530 092B     		cmp	r3, #9
+ 1734 0532 7FF75BAF 		ble	.L35
+ 1735              	.LBE6:
+ 417:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     }
+ 418:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 419:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Goods_Price_List[9].next = &Status_List;
+ 1736              		.loc 1 419 0 is_stmt 1
+ 1737 0536 07F18C03 		add	r3, r7, #140
+ 1738 053a 07F17802 		add	r2, r7, #120
+ 1739 053e C3F8B420 		str	r2, [r3, #180]
+ 420:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 
+ 421:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Status_List.item.name = "status";
+ 1740              		.loc 1 421 0
+ 1741 0542 07F17803 		add	r3, r7, #120
+ 1742 0546 694A     		ldr	r2, .L49+16
+ 1743 0548 5A60     		str	r2, [r3, #4]
+ 422:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Status_List.item.buf = (char *)&Status;
+ 1744              		.loc 1 422 0
+ 1745 054a 07F17803 		add	r3, r7, #120
+ 1746 054e 684A     		ldr	r2, .L49+20
+ 1747 0550 9A60     		str	r2, [r3, #8]
+ 423:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Status_List.item.len = sizeof(Status);                   
+ 1748              		.loc 1 423 0
+ 1749 0552 07F17803 		add	r3, r7, #120
+ 1750 0556 0422     		movs	r2, #4
+ 1751 0558 DA60     		str	r2, [r3, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 43
+
+
+ 424:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Status_List.item.type = en_key_value_type_int;
+ 1752              		.loc 1 424 0
+ 1753 055a 07F17803 		add	r3, r7, #120
+ 1754 055e 0022     		movs	r2, #0
+ 1755 0560 1A74     		strb	r2, [r3, #16]
+ 425:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Status_List.next = &Total_Cost_List;
+ 1756              		.loc 1 425 0
+ 1757 0562 07F17803 		add	r3, r7, #120
+ 1758 0566 07F16402 		add	r2, r7, #100
+ 1759 056a 1A60     		str	r2, [r3]
+ 426:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 427:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Total_Cost_List.item.name = "totalCost";
+ 1760              		.loc 1 427 0
+ 1761 056c 07F16403 		add	r3, r7, #100
+ 1762 0570 604A     		ldr	r2, .L49+24
+ 1763 0572 5A60     		str	r2, [r3, #4]
+ 428:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Total_Cost_List.item.buf = (char *)&Total_Cost;
+ 1764              		.loc 1 428 0
+ 1765 0574 07F16403 		add	r3, r7, #100
+ 1766 0578 5F4A     		ldr	r2, .L49+28
+ 1767 057a 9A60     		str	r2, [r3, #8]
+ 429:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Total_Cost_List.item.len = sizeof(Total_Cost);                   
+ 1768              		.loc 1 429 0
+ 1769 057c 07F16403 		add	r3, r7, #100
+ 1770 0580 0422     		movs	r2, #4
+ 1771 0582 DA60     		str	r2, [r3, #12]
+ 430:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Total_Cost_List.item.type = en_key_value_type_int;
+ 1772              		.loc 1 430 0
+ 1773 0584 07F16403 		add	r3, r7, #100
+ 1774 0588 0022     		movs	r2, #0
+ 1775 058a 1A74     		strb	r2, [r3, #16]
+ 431:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 Total_Cost_List.next = NULL;
+ 1776              		.loc 1 431 0
+ 1777 058c 07F16403 		add	r3, r7, #100
+ 1778 0590 0022     		movs	r2, #0
+ 1779 0592 1A60     		str	r2, [r3]
+ 432:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 433:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 report.hasmore = en_oc_mqtt_has_more_no;
+ 1780              		.loc 1 433 0
+ 1781 0594 07F15403 		add	r3, r7, #84
+ 1782 0598 0022     		movs	r2, #0
+ 1783 059a 1A73     		strb	r2, [r3, #12]
+ 434:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 report.paralst= &orderID_List;
+ 1784              		.loc 1 434 0
+ 1785 059c 07F15403 		add	r3, r7, #84
+ 1786 05a0 07F53472 		add	r2, r7, #720
+ 1787 05a4 5A60     		str	r2, [r3, #4]
+ 435:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 report.serviceid = "order";
+ 1788              		.loc 1 435 0
+ 1789 05a6 07F15403 		add	r3, r7, #84
+ 1790 05aa 544A     		ldr	r2, .L49+32
+ 1791 05ac 1A60     		str	r2, [r3]
+ 436:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 report.eventtime = NULL;
+ 1792              		.loc 1 436 0
+ 1793 05ae 07F15403 		add	r3, r7, #84
+ 1794 05b2 0022     		movs	r2, #0
+ 1795 05b4 9A60     		str	r2, [r3, #8]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 44
+
+
+ 437:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 438:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 //package json data
+ 439:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 root = oc_mqtt_json_fmt_report(&report);
+ 1796              		.loc 1 439 0
+ 1797 05b6 07F15403 		add	r3, r7, #84
+ 1798 05ba 1846     		mov	r0, r3
+ 1799 05bc FFF7FEFF 		bl	oc_mqtt_json_fmt_report
+ 1800 05c0 C7F8EC02 		str	r0, [r7, #748]
+ 440:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 if(NULL != root)
+ 1801              		.loc 1 440 0
+ 1802 05c4 D7F8EC32 		ldr	r3, [r7, #748]
+ 1803 05c8 002B     		cmp	r3, #0
+ 1804 05ca 00F03081 		beq	.L27
+ 441:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 {
+ 442:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     buf = cJSON_Print(root);
+ 1805              		.loc 1 442 0
+ 1806 05ce D7F8EC02 		ldr	r0, [r7, #748]
+ 1807 05d2 FFF7FEFF 		bl	cJSON_Print
+ 1808 05d6 C7F8E802 		str	r0, [r7, #744]
+ 443:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     if(NULL != buf)
+ 1809              		.loc 1 443 0
+ 1810 05da D7F8E832 		ldr	r3, [r7, #744]
+ 1811 05de 002B     		cmp	r3, #0
+ 1812 05e0 73D0     		beq	.L37
+ 444:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     {
+ 445:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     	//data report
+ 446:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         if(0 == oc_mqtt_report(handle,buf,strlen(buf),en_mqtt_al_qos_1))
+ 1813              		.loc 1 446 0
+ 1814 05e2 D7F8E802 		ldr	r0, [r7, #744]
+ 1815 05e6 FFF7FEFF 		bl	strlen
+ 1816 05ea 0346     		mov	r3, r0
+ 1817 05ec 1A46     		mov	r2, r3
+ 1818 05ee 0123     		movs	r3, #1
+ 1819 05f0 D7F8E812 		ldr	r1, [r7, #744]
+ 1820 05f4 D7F8E402 		ldr	r0, [r7, #740]
+ 1821 05f8 FFF7FEFF 		bl	oc_mqtt_report
+ 1822 05fc 0346     		mov	r3, r0
+ 1823 05fe 002B     		cmp	r3, #0
+ 1824 0600 5FD1     		bne	.L38
+ 447:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         {
+ 448:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             printf("%s\r\n","My report success");
+ 1825              		.loc 1 448 0
+ 1826 0602 3F49     		ldr	r1, .L49+36
+ 1827 0604 3F48     		ldr	r0, .L49+40
+ 1828 0606 FFF7FEFF 		bl	printf
+ 449:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 450:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             //clear data after report success
+ 451:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             Total_Cost = 0;
+ 1829              		.loc 1 451 0
+ 1830 060a 3B4B     		ldr	r3, .L49+28
+ 1831 060c 0022     		movs	r2, #0
+ 1832 060e 1A60     		str	r2, [r3]
+ 452:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             Total_Num = 0;
+ 1833              		.loc 1 452 0
+ 1834 0610 3D4B     		ldr	r3, .L49+44
+ 1835 0612 0022     		movs	r2, #0
+ 1836 0614 1A60     		str	r2, [r3]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 45
+
+
+ 453:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             orderID++;
+ 1837              		.loc 1 453 0
+ 1838 0616 3D4B     		ldr	r3, .L49+48
+ 1839 0618 1B68     		ldr	r3, [r3]
+ 1840 061a 0133     		adds	r3, r3, #1
+ 1841 061c 3B4A     		ldr	r2, .L49+48
+ 1842 061e 1360     		str	r3, [r2]
+ 454:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             orderTime += 1000;
+ 1843              		.loc 1 454 0
+ 1844 0620 3B4B     		ldr	r3, .L49+52
+ 1845 0622 1B68     		ldr	r3, [r3]
+ 1846 0624 03F57A73 		add	r3, r3, #1000
+ 1847 0628 394A     		ldr	r2, .L49+52
+ 1848 062a 1360     		str	r3, [r2]
+ 1849              	.LBB7:
+ 455:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             for(int i=0;i<10;i++){
+ 1850              		.loc 1 455 0
+ 1851 062c 0023     		movs	r3, #0
+ 1852 062e C7F8F432 		str	r3, [r7, #756]
+ 1853 0632 0AE0     		b	.L39
+ 1854              	.L40:
+ 456:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                                 Goods_Num[i]=0;
+ 1855              		.loc 1 456 0 discriminator 3
+ 1856 0634 2A4A     		ldr	r2, .L49+4
+ 1857 0636 D7F8F432 		ldr	r3, [r7, #756]
+ 1858 063a 0021     		movs	r1, #0
+ 1859 063c 42F82310 		str	r1, [r2, r3, lsl #2]
+ 455:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             for(int i=0;i<10;i++){
+ 1860              		.loc 1 455 0 discriminator 3
+ 1861 0640 D7F8F432 		ldr	r3, [r7, #756]
+ 1862 0644 0133     		adds	r3, r3, #1
+ 1863 0646 C7F8F432 		str	r3, [r7, #756]
+ 1864              	.L39:
+ 455:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             for(int i=0;i<10;i++){
+ 1865              		.loc 1 455 0 is_stmt 0 discriminator 1
+ 1866 064a D7F8F432 		ldr	r3, [r7, #756]
+ 1867 064e 092B     		cmp	r3, #9
+ 1868 0650 F0DD     		ble	.L40
+ 1869              	.LBE7:
+ 457:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             }
+ 458:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             LCD_ShowxNum(X[1], Y[6], Total_Num, 3, 24, 1);
+ 1870              		.loc 1 458 0 is_stmt 1
+ 1871 0652 304B     		ldr	r3, .L49+56
+ 1872 0654 5B68     		ldr	r3, [r3, #4]
+ 1873 0656 98B2     		uxth	r0, r3
+ 1874 0658 2F4B     		ldr	r3, .L49+60
+ 1875 065a 9B69     		ldr	r3, [r3, #24]
+ 1876 065c 99B2     		uxth	r1, r3
+ 1877 065e 2A4B     		ldr	r3, .L49+44
+ 1878 0660 1B68     		ldr	r3, [r3]
+ 1879 0662 1A46     		mov	r2, r3
+ 1880 0664 0123     		movs	r3, #1
+ 1881 0666 0193     		str	r3, [sp, #4]
+ 1882 0668 1823     		movs	r3, #24
+ 1883 066a 0093     		str	r3, [sp]
+ 1884 066c 0323     		movs	r3, #3
+ 1885 066e FFF7FEFF 		bl	LCD_ShowxNum
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 46
+
+
+ 459:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             LCD_ShowString(goodsOptionX-10, goodsOptionY, 10, 24, 24, " ");
+ 1886              		.loc 1 459 0
+ 1887 0672 2A4B     		ldr	r3, .L49+64
+ 1888 0674 1B68     		ldr	r3, [r3]
+ 1889 0676 9BB2     		uxth	r3, r3
+ 1890 0678 0A3B     		subs	r3, r3, #10
+ 1891 067a 98B2     		uxth	r0, r3
+ 1892 067c 284B     		ldr	r3, .L49+68
+ 1893 067e 1B68     		ldr	r3, [r3]
+ 1894 0680 99B2     		uxth	r1, r3
+ 1895 0682 284B     		ldr	r3, .L49+72
+ 1896 0684 0193     		str	r3, [sp, #4]
+ 1897 0686 1823     		movs	r3, #24
+ 1898 0688 0093     		str	r3, [sp]
+ 1899 068a 1823     		movs	r3, #24
+ 1900 068c 0A22     		movs	r2, #10
+ 1901 068e FFF7FEFF 		bl	LCD_ShowString
+ 460:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             goodsOptionX = X[0];
+ 1902              		.loc 1 460 0
+ 1903 0692 204B     		ldr	r3, .L49+56
+ 1904 0694 1B68     		ldr	r3, [r3]
+ 1905 0696 214A     		ldr	r2, .L49+64
+ 1906 0698 1360     		str	r3, [r2]
+ 461:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             goodsOptionY = Y[0];
+ 1907              		.loc 1 461 0
+ 1908 069a 1F4B     		ldr	r3, .L49+60
+ 1909 069c 1B68     		ldr	r3, [r3]
+ 1910 069e 204A     		ldr	r2, .L49+68
+ 1911 06a0 1360     		str	r3, [r2]
+ 462:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             LCD_ShowString(goodsOptionX-10, goodsOptionY, 10, 24, 24, "*");
+ 1912              		.loc 1 462 0
+ 1913 06a2 1E4B     		ldr	r3, .L49+64
+ 1914 06a4 1B68     		ldr	r3, [r3]
+ 1915 06a6 9BB2     		uxth	r3, r3
+ 1916 06a8 0A3B     		subs	r3, r3, #10
+ 1917 06aa 98B2     		uxth	r0, r3
+ 1918 06ac 1C4B     		ldr	r3, .L49+68
+ 1919 06ae 1B68     		ldr	r3, [r3]
+ 1920 06b0 99B2     		uxth	r1, r3
+ 1921 06b2 1D4B     		ldr	r3, .L49+76
+ 1922 06b4 0193     		str	r3, [sp, #4]
+ 1923 06b6 1823     		movs	r3, #24
+ 1924 06b8 0093     		str	r3, [sp]
+ 1925 06ba 1823     		movs	r3, #24
+ 1926 06bc 0A22     		movs	r2, #10
+ 1927 06be FFF7FEFF 		bl	LCD_ShowString
+ 1928              	.L38:
+ 463:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         }
+ 464:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         osal_free(buf);
+ 1929              		.loc 1 464 0
+ 1930 06c2 D7F8E802 		ldr	r0, [r7, #744]
+ 1931 06c6 FFF7FEFF 		bl	osal_free
+ 1932              	.L37:
+ 465:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     }
+ 466:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     cJSON_Delete(root);
+ 1933              		.loc 1 466 0
+ 1934 06ca D7F8EC02 		ldr	r0, [r7, #748]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 47
+
+
+ 1935 06ce FFF7FEFF 		bl	cJSON_Delete
+ 1936 06d2 ACE0     		b	.L27
+ 1937              	.L28:
+ 1938              	.LBB8:
+ 467:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 468:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             }else {
+ 469:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             	//if cursor points to goods, add good to shopping cart
+ 470:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 for(int i=0;i<10;i++){
+ 1939              		.loc 1 470 0
+ 1940 06d4 0023     		movs	r3, #0
+ 1941 06d6 C7F8F032 		str	r3, [r7, #752]
+ 1942 06da A3E0     		b	.L41
+ 1943              	.L50:
+ 1944              		.align	2
+ 1945              	.L49:
+ 1946 06dc 00000000 		.word	Goods_Num_String
+ 1947 06e0 00000000 		.word	Goods_Num
+ 1948 06e4 00000000 		.word	Goods_Price_String
+ 1949 06e8 00000000 		.word	Goods_Price
+ 1950 06ec 9C030000 		.word	.LC80
+ 1951 06f0 00000000 		.word	Status
+ 1952 06f4 A4030000 		.word	.LC81
+ 1953 06f8 00000000 		.word	Total_Cost
+ 1954 06fc B0030000 		.word	.LC82
+ 1955 0700 B8030000 		.word	.LC83
+ 1956 0704 CC030000 		.word	.LC84
+ 1957 0708 00000000 		.word	Total_Num
+ 1958 070c 00000000 		.word	orderID
+ 1959 0710 00000000 		.word	orderTime
+ 1960 0714 00000000 		.word	X
+ 1961 0718 00000000 		.word	Y
+ 1962 071c 00000000 		.word	goodsOptionX
+ 1963 0720 00000000 		.word	goodsOptionY
+ 1964 0724 D4030000 		.word	.LC85
+ 1965 0728 78020000 		.word	.LC58
+ 1966              	.L44:
+ 471:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     if(goodsOptionX==X[0]){
+ 1967              		.loc 1 471 0
+ 1968 072c 444B     		ldr	r3, .L51
+ 1969 072e 1A68     		ldr	r2, [r3]
+ 1970 0730 444B     		ldr	r3, .L51+4
+ 1971 0732 1B68     		ldr	r3, [r3]
+ 1972 0734 9A42     		cmp	r2, r3
+ 1973 0736 37D1     		bne	.L42
+ 472:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         if(goodsOptionY==Y[i]){
+ 1974              		.loc 1 472 0
+ 1975 0738 434A     		ldr	r2, .L51+8
+ 1976 073a D7F8F032 		ldr	r3, [r7, #752]
+ 1977 073e 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 1978 0742 424B     		ldr	r3, .L51+12
+ 1979 0744 1B68     		ldr	r3, [r3]
+ 1980 0746 9A42     		cmp	r2, r3
+ 1981 0748 67D1     		bne	.L43
+ 473:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             Goods_Num[goods_position[i]]++;                                
+ 1982              		.loc 1 473 0
+ 1983 074a 414A     		ldr	r2, .L51+16
+ 1984 074c D7F8F032 		ldr	r3, [r7, #752]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 48
+
+
+ 1985 0750 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 1986 0754 3F4A     		ldr	r2, .L51+20
+ 1987 0756 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 1988 075a 0132     		adds	r2, r2, #1
+ 1989 075c 3D49     		ldr	r1, .L51+20
+ 1990 075e 41F82320 		str	r2, [r1, r3, lsl #2]
+ 474:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             Total_Num++;
+ 1991              		.loc 1 474 0
+ 1992 0762 3D4B     		ldr	r3, .L51+24
+ 1993 0764 1B68     		ldr	r3, [r3]
+ 1994 0766 0133     		adds	r3, r3, #1
+ 1995 0768 3B4A     		ldr	r2, .L51+24
+ 1996 076a 1360     		str	r3, [r2]
+ 475:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             Total_Cost+=Goods_Price[goods_position[i]];
+ 1997              		.loc 1 475 0
+ 1998 076c 384A     		ldr	r2, .L51+16
+ 1999 076e D7F8F032 		ldr	r3, [r7, #752]
+ 2000 0772 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2001 0776 394A     		ldr	r2, .L51+28
+ 2002 0778 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 2003 077c 384B     		ldr	r3, .L51+32
+ 2004 077e 1B68     		ldr	r3, [r3]
+ 2005 0780 1344     		add	r3, r3, r2
+ 2006 0782 374A     		ldr	r2, .L51+32
+ 2007 0784 1360     		str	r3, [r2]
+ 476:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             LCD_ShowxNum(X[1], Y[6], Total_Num, 3, 24, 1);
+ 2008              		.loc 1 476 0
+ 2009 0786 2E4B     		ldr	r3, .L51
+ 2010 0788 5B68     		ldr	r3, [r3, #4]
+ 2011 078a 98B2     		uxth	r0, r3
+ 2012 078c 2E4B     		ldr	r3, .L51+8
+ 2013 078e 9B69     		ldr	r3, [r3, #24]
+ 2014 0790 99B2     		uxth	r1, r3
+ 2015 0792 314B     		ldr	r3, .L51+24
+ 2016 0794 1B68     		ldr	r3, [r3]
+ 2017 0796 1A46     		mov	r2, r3
+ 2018 0798 0123     		movs	r3, #1
+ 2019 079a 0193     		str	r3, [sp, #4]
+ 2020 079c 1823     		movs	r3, #24
+ 2021 079e 0093     		str	r3, [sp]
+ 2022 07a0 0323     		movs	r3, #3
+ 2023 07a2 FFF7FEFF 		bl	LCD_ShowxNum
+ 477:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             break;
+ 2024              		.loc 1 477 0
+ 2025 07a6 42E0     		b	.L27
+ 2026              	.L42:
+ 478:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         }
+ 479:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     }else{
+ 480:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         if(goodsOptionY==Y[i-5]){
+ 2027              		.loc 1 480 0
+ 2028 07a8 D7F8F032 		ldr	r3, [r7, #752]
+ 2029 07ac 053B     		subs	r3, r3, #5
+ 2030 07ae 264A     		ldr	r2, .L51+8
+ 2031 07b0 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 2032 07b4 254B     		ldr	r3, .L51+12
+ 2033 07b6 1B68     		ldr	r3, [r3]
+ 2034 07b8 9A42     		cmp	r2, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 49
+
+
+ 2035 07ba 2ED1     		bne	.L43
+ 481:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             Goods_Num[goods_position[i]]++;
+ 2036              		.loc 1 481 0
+ 2037 07bc 244A     		ldr	r2, .L51+16
+ 2038 07be D7F8F032 		ldr	r3, [r7, #752]
+ 2039 07c2 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2040 07c6 234A     		ldr	r2, .L51+20
+ 2041 07c8 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 2042 07cc 0132     		adds	r2, r2, #1
+ 2043 07ce 2149     		ldr	r1, .L51+20
+ 2044 07d0 41F82320 		str	r2, [r1, r3, lsl #2]
+ 482:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             Total_Num++;
+ 2045              		.loc 1 482 0
+ 2046 07d4 204B     		ldr	r3, .L51+24
+ 2047 07d6 1B68     		ldr	r3, [r3]
+ 2048 07d8 0133     		adds	r3, r3, #1
+ 2049 07da 1F4A     		ldr	r2, .L51+24
+ 2050 07dc 1360     		str	r3, [r2]
+ 483:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             Total_Cost+=Goods_Price[goods_position[i]];
+ 2051              		.loc 1 483 0
+ 2052 07de 1C4A     		ldr	r2, .L51+16
+ 2053 07e0 D7F8F032 		ldr	r3, [r7, #752]
+ 2054 07e4 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2055 07e8 1C4A     		ldr	r2, .L51+28
+ 2056 07ea 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 2057 07ee 1C4B     		ldr	r3, .L51+32
+ 2058 07f0 1B68     		ldr	r3, [r3]
+ 2059 07f2 1344     		add	r3, r3, r2
+ 2060 07f4 1A4A     		ldr	r2, .L51+32
+ 2061 07f6 1360     		str	r3, [r2]
+ 484:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             LCD_ShowxNum(X[1], Y[6], Total_Num, 3, 24, 1);
+ 2062              		.loc 1 484 0
+ 2063 07f8 114B     		ldr	r3, .L51
+ 2064 07fa 5B68     		ldr	r3, [r3, #4]
+ 2065 07fc 98B2     		uxth	r0, r3
+ 2066 07fe 124B     		ldr	r3, .L51+8
+ 2067 0800 9B69     		ldr	r3, [r3, #24]
+ 2068 0802 99B2     		uxth	r1, r3
+ 2069 0804 144B     		ldr	r3, .L51+24
+ 2070 0806 1B68     		ldr	r3, [r3]
+ 2071 0808 1A46     		mov	r2, r3
+ 2072 080a 0123     		movs	r3, #1
+ 2073 080c 0193     		str	r3, [sp, #4]
+ 2074 080e 1823     		movs	r3, #24
+ 2075 0810 0093     		str	r3, [sp]
+ 2076 0812 0323     		movs	r3, #3
+ 2077 0814 FFF7FEFF 		bl	LCD_ShowxNum
+ 485:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                             break;
+ 2078              		.loc 1 485 0
+ 2079 0818 09E0     		b	.L27
+ 2080              	.L43:
+ 470:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     if(goodsOptionX==X[0]){
+ 2081              		.loc 1 470 0 discriminator 2
+ 2082 081a D7F8F032 		ldr	r3, [r7, #752]
+ 2083 081e 0133     		adds	r3, r3, #1
+ 2084 0820 C7F8F032 		str	r3, [r7, #752]
+ 2085              	.L41:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 50
+
+
+ 470:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     if(goodsOptionX==X[0]){
+ 2086              		.loc 1 470 0 is_stmt 0 discriminator 1
+ 2087 0824 D7F8F032 		ldr	r3, [r7, #752]
+ 2088 0828 092B     		cmp	r3, #9
+ 2089 082a 7FF77FAF 		ble	.L44
+ 2090              	.L27:
+ 2091              	.LBE8:
+ 486:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                         }
+ 487:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                     }                  
+ 488:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 }
+ 489:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             }
+ 490:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         }
+ 491:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         osal_task_sleep(120);
+ 2092              		.loc 1 491 0 is_stmt 1
+ 2093 082e 7820     		movs	r0, #120
+ 2094 0830 FFF7FEFF 		bl	osal_task_sleep
+ 323:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 		{
+ 2095              		.loc 1 323 0
+ 2096 0834 48E4     		b	.L45
+ 2097              	.L46:
+ 492:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     }
+ 493:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     return 0;
+ 494:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** }
+ 2098              		.loc 1 494 0 discriminator 1
+ 2099 0836 1846     		mov	r0, r3
+ 2100 0838 07F54077 		add	r7, r7, #768
+ 2101              	.LCFI11:
+ 2102              		.cfi_def_cfa_offset 8
+ 2103 083c BD46     		mov	sp, r7
+ 2104              	.LCFI12:
+ 2105              		.cfi_def_cfa_register 13
+ 2106              		@ sp needed
+ 2107 083e 80BD     		pop	{r7, pc}
+ 2108              	.L52:
+ 2109              		.align	2
+ 2110              	.L51:
+ 2111 0840 00000000 		.word	X
+ 2112 0844 00000000 		.word	goodsOptionX
+ 2113 0848 00000000 		.word	Y
+ 2114 084c 00000000 		.word	goodsOptionY
+ 2115 0850 00000000 		.word	goods_position
+ 2116 0854 00000000 		.word	Goods_Num
+ 2117 0858 00000000 		.word	Total_Num
+ 2118 085c 00000000 		.word	Goods_Price
+ 2119 0860 00000000 		.word	Total_Cost
+ 2120              		.cfi_endproc
+ 2121              	.LFE128:
+ 2123              		.section	.text.EXTI1_IRQHandler,"ax",%progbits
+ 2124              		.align	1
+ 2125              		.global	EXTI1_IRQHandler
+ 2126              		.syntax unified
+ 2127              		.thumb
+ 2128              		.thumb_func
+ 2129              		.fpu fpv4-sp-d16
+ 2131              	EXTI1_IRQHandler:
+ 2132              	.LFB129:
+ 495:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 51
+
+
+ 496:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** /*!
+ 497:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     \brief      irq handler, change the location of cursor when F1 is pressed
+ 498:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     \param[in]  none
+ 499:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     \param[out] none
+ 500:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     \retval     none
+ 501:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** */
+ 502:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** void EXTI1_IRQHandler(void)
+ 503:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** {
+ 2133              		.loc 1 503 0
+ 2134              		.cfi_startproc
+ 2135              		@ args = 0, pretend = 0, frame = 8
+ 2136              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2137 0000 80B5     		push	{r7, lr}
+ 2138              	.LCFI13:
+ 2139              		.cfi_def_cfa_offset 8
+ 2140              		.cfi_offset 7, -8
+ 2141              		.cfi_offset 14, -4
+ 2142 0002 84B0     		sub	sp, sp, #16
+ 2143              	.LCFI14:
+ 2144              		.cfi_def_cfa_offset 24
+ 2145 0004 02AF     		add	r7, sp, #8
+ 2146              	.LCFI15:
+ 2147              		.cfi_def_cfa 7, 16
+ 504:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     if(RESET != exti_interrupt_flag_get(EXTI_1)){
+ 2148              		.loc 1 504 0
+ 2149 0006 0220     		movs	r0, #2
+ 2150 0008 FFF7FEFF 		bl	exti_interrupt_flag_get
+ 2151 000c 0346     		mov	r3, r0
+ 2152 000e 002B     		cmp	r3, #0
+ 2153 0010 7AD0     		beq	.L62
+ 2154              	.LBB9:
+ 505:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         for(int i=0;i<6;i++){
+ 2155              		.loc 1 505 0
+ 2156 0012 0023     		movs	r3, #0
+ 2157 0014 7B60     		str	r3, [r7, #4]
+ 2158 0016 71E0     		b	.L55
+ 2159              	.L61:
+ 506:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             if(goodsOptionY==Y[i]&&i<5){
+ 2160              		.loc 1 506 0
+ 2161 0018 3D4A     		ldr	r2, .L63
+ 2162 001a 7B68     		ldr	r3, [r7, #4]
+ 2163 001c 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 2164 0020 3C4B     		ldr	r3, .L63+4
+ 2165 0022 1B68     		ldr	r3, [r3]
+ 2166 0024 9A42     		cmp	r2, r3
+ 2167 0026 2AD1     		bne	.L56
+ 2168              		.loc 1 506 0 is_stmt 0 discriminator 1
+ 2169 0028 7B68     		ldr	r3, [r7, #4]
+ 2170 002a 042B     		cmp	r3, #4
+ 2171 002c 27DC     		bgt	.L56
+ 507:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 LCD_ShowString(goodsOptionX-10, goodsOptionY, 10, 24, 24, " ");
+ 2172              		.loc 1 507 0 is_stmt 1
+ 2173 002e 3A4B     		ldr	r3, .L63+8
+ 2174 0030 1B68     		ldr	r3, [r3]
+ 2175 0032 9BB2     		uxth	r3, r3
+ 2176 0034 0A3B     		subs	r3, r3, #10
+ 2177 0036 98B2     		uxth	r0, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 52
+
+
+ 2178 0038 364B     		ldr	r3, .L63+4
+ 2179 003a 1B68     		ldr	r3, [r3]
+ 2180 003c 99B2     		uxth	r1, r3
+ 2181 003e 374B     		ldr	r3, .L63+12
+ 2182 0040 0193     		str	r3, [sp, #4]
+ 2183 0042 1823     		movs	r3, #24
+ 2184 0044 0093     		str	r3, [sp]
+ 2185 0046 1823     		movs	r3, #24
+ 2186 0048 0A22     		movs	r2, #10
+ 2187 004a FFF7FEFF 		bl	LCD_ShowString
+ 508:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 goodsOptionY=Y[i+1];
+ 2188              		.loc 1 508 0
+ 2189 004e 7B68     		ldr	r3, [r7, #4]
+ 2190 0050 0133     		adds	r3, r3, #1
+ 2191 0052 2F4A     		ldr	r2, .L63
+ 2192 0054 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2193 0058 2E4A     		ldr	r2, .L63+4
+ 2194 005a 1360     		str	r3, [r2]
+ 509:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 LCD_ShowString(goodsOptionX-10, goodsOptionY, 10, 24, 24, "*");
+ 2195              		.loc 1 509 0
+ 2196 005c 2E4B     		ldr	r3, .L63+8
+ 2197 005e 1B68     		ldr	r3, [r3]
+ 2198 0060 9BB2     		uxth	r3, r3
+ 2199 0062 0A3B     		subs	r3, r3, #10
+ 2200 0064 98B2     		uxth	r0, r3
+ 2201 0066 2B4B     		ldr	r3, .L63+4
+ 2202 0068 1B68     		ldr	r3, [r3]
+ 2203 006a 99B2     		uxth	r1, r3
+ 2204 006c 2C4B     		ldr	r3, .L63+16
+ 2205 006e 0193     		str	r3, [sp, #4]
+ 2206 0070 1823     		movs	r3, #24
+ 2207 0072 0093     		str	r3, [sp]
+ 2208 0074 1823     		movs	r3, #24
+ 2209 0076 0A22     		movs	r2, #10
+ 2210 0078 FFF7FEFF 		bl	LCD_ShowString
+ 510:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 break;
+ 2211              		.loc 1 510 0
+ 2212 007c 41E0     		b	.L57
+ 2213              	.L56:
+ 511:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             }else if(goodsOptionY==Y[i]&&i==5){
+ 2214              		.loc 1 511 0
+ 2215 007e 244A     		ldr	r2, .L63
+ 2216 0080 7B68     		ldr	r3, [r7, #4]
+ 2217 0082 52F82320 		ldr	r2, [r2, r3, lsl #2]
+ 2218 0086 234B     		ldr	r3, .L63+4
+ 2219 0088 1B68     		ldr	r3, [r3]
+ 2220 008a 9A42     		cmp	r2, r3
+ 2221 008c 33D1     		bne	.L58
+ 2222              		.loc 1 511 0 is_stmt 0 discriminator 1
+ 2223 008e 7B68     		ldr	r3, [r7, #4]
+ 2224 0090 052B     		cmp	r3, #5
+ 2225 0092 30D1     		bne	.L58
+ 512:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 LCD_ShowString(goodsOptionX-10, goodsOptionY, 10, 24, 24, " ");
+ 2226              		.loc 1 512 0 is_stmt 1
+ 2227 0094 204B     		ldr	r3, .L63+8
+ 2228 0096 1B68     		ldr	r3, [r3]
+ 2229 0098 9BB2     		uxth	r3, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 53
+
+
+ 2230 009a 0A3B     		subs	r3, r3, #10
+ 2231 009c 98B2     		uxth	r0, r3
+ 2232 009e 1D4B     		ldr	r3, .L63+4
+ 2233 00a0 1B68     		ldr	r3, [r3]
+ 2234 00a2 99B2     		uxth	r1, r3
+ 2235 00a4 1D4B     		ldr	r3, .L63+12
+ 2236 00a6 0193     		str	r3, [sp, #4]
+ 2237 00a8 1823     		movs	r3, #24
+ 2238 00aa 0093     		str	r3, [sp]
+ 2239 00ac 1823     		movs	r3, #24
+ 2240 00ae 0A22     		movs	r2, #10
+ 2241 00b0 FFF7FEFF 		bl	LCD_ShowString
+ 513:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 goodsOptionY=Y[0];
+ 2242              		.loc 1 513 0
+ 2243 00b4 164B     		ldr	r3, .L63
+ 2244 00b6 1B68     		ldr	r3, [r3]
+ 2245 00b8 164A     		ldr	r2, .L63+4
+ 2246 00ba 1360     		str	r3, [r2]
+ 514:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 goodsOptionX=(goodsOptionX==X[0])?X[1]:X[0];
+ 2247              		.loc 1 514 0
+ 2248 00bc 194B     		ldr	r3, .L63+20
+ 2249 00be 1A68     		ldr	r2, [r3]
+ 2250 00c0 154B     		ldr	r3, .L63+8
+ 2251 00c2 1B68     		ldr	r3, [r3]
+ 2252 00c4 9A42     		cmp	r2, r3
+ 2253 00c6 02D1     		bne	.L59
+ 2254              		.loc 1 514 0 is_stmt 0 discriminator 1
+ 2255 00c8 164B     		ldr	r3, .L63+20
+ 2256 00ca 5B68     		ldr	r3, [r3, #4]
+ 2257 00cc 01E0     		b	.L60
+ 2258              	.L59:
+ 2259              		.loc 1 514 0 discriminator 2
+ 2260 00ce 154B     		ldr	r3, .L63+20
+ 2261 00d0 1B68     		ldr	r3, [r3]
+ 2262              	.L60:
+ 2263              		.loc 1 514 0 discriminator 4
+ 2264 00d2 114A     		ldr	r2, .L63+8
+ 2265 00d4 1360     		str	r3, [r2]
+ 515:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****                 LCD_ShowString(goodsOptionX-10, goodsOptionY, 10, 24, 24, "*");
+ 2266              		.loc 1 515 0 is_stmt 1 discriminator 4
+ 2267 00d6 104B     		ldr	r3, .L63+8
+ 2268 00d8 1B68     		ldr	r3, [r3]
+ 2269 00da 9BB2     		uxth	r3, r3
+ 2270 00dc 0A3B     		subs	r3, r3, #10
+ 2271 00de 98B2     		uxth	r0, r3
+ 2272 00e0 0C4B     		ldr	r3, .L63+4
+ 2273 00e2 1B68     		ldr	r3, [r3]
+ 2274 00e4 99B2     		uxth	r1, r3
+ 2275 00e6 0E4B     		ldr	r3, .L63+16
+ 2276 00e8 0193     		str	r3, [sp, #4]
+ 2277 00ea 1823     		movs	r3, #24
+ 2278 00ec 0093     		str	r3, [sp]
+ 2279 00ee 1823     		movs	r3, #24
+ 2280 00f0 0A22     		movs	r2, #10
+ 2281 00f2 FFF7FEFF 		bl	LCD_ShowString
+ 2282              	.L58:
+ 505:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             if(goodsOptionY==Y[i]&&i<5){
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 54
+
+
+ 2283              		.loc 1 505 0 discriminator 2
+ 2284 00f6 7B68     		ldr	r3, [r7, #4]
+ 2285 00f8 0133     		adds	r3, r3, #1
+ 2286 00fa 7B60     		str	r3, [r7, #4]
+ 2287              	.L55:
+ 505:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             if(goodsOptionY==Y[i]&&i<5){
+ 2288              		.loc 1 505 0 is_stmt 0 discriminator 1
+ 2289 00fc 7B68     		ldr	r3, [r7, #4]
+ 2290 00fe 052B     		cmp	r3, #5
+ 2291 0100 8ADD     		ble	.L61
+ 2292              	.L57:
+ 2293              	.LBE9:
+ 516:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             }                                       
+ 517:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         }    
+ 518:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         exti_interrupt_flag_clear(EXTI_1);
+ 2294              		.loc 1 518 0 is_stmt 1
+ 2295 0102 0220     		movs	r0, #2
+ 2296 0104 FFF7FEFF 		bl	exti_interrupt_flag_clear
+ 2297              	.L62:
+ 519:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     }
+ 520:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** }
+ 2298              		.loc 1 520 0
+ 2299 0108 00BF     		nop
+ 2300 010a 0837     		adds	r7, r7, #8
+ 2301              	.LCFI16:
+ 2302              		.cfi_def_cfa_offset 8
+ 2303 010c BD46     		mov	sp, r7
+ 2304              	.LCFI17:
+ 2305              		.cfi_def_cfa_register 13
+ 2306              		@ sp needed
+ 2307 010e 80BD     		pop	{r7, pc}
+ 2308              	.L64:
+ 2309              		.align	2
+ 2310              	.L63:
+ 2311 0110 00000000 		.word	Y
+ 2312 0114 00000000 		.word	goodsOptionY
+ 2313 0118 00000000 		.word	goodsOptionX
+ 2314 011c D4030000 		.word	.LC85
+ 2315 0120 78020000 		.word	.LC58
+ 2316 0124 00000000 		.word	X
+ 2317              		.cfi_endproc
+ 2318              	.LFE129:
+ 2320              		.section	.rodata
+ 2321 03d6 0000     		.align	2
+ 2322              	.LC86:
+ 2323 03d8 6F636D71 		.ascii	"ocmqtt_report\000"
+ 2323      74745F72 
+ 2323      65706F72 
+ 2323      7400
+ 2324 03e6 0000     		.align	2
+ 2325              	.LC87:
+ 2326 03e8 6F636D71 		.ascii	"ocmqtt_cmd\000"
+ 2326      74745F63 
+ 2326      6D6400
+ 2327              		.section	.text.standard_app_demo_main,"ax",%progbits
+ 2328              		.align	1
+ 2329              		.global	standard_app_demo_main
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 55
+
+
+ 2330              		.syntax unified
+ 2331              		.thumb
+ 2332              		.thumb_func
+ 2333              		.fpu fpv4-sp-d16
+ 2335              	standard_app_demo_main:
+ 2336              	.LFB130:
+ 521:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** //demo entry
+ 522:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** int standard_app_demo_main()
+ 523:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** {
+ 2337              		.loc 1 523 0
+ 2338              		.cfi_startproc
+ 2339              		@ args = 0, pretend = 0, frame = 8
+ 2340              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2341 0000 80B5     		push	{r7, lr}
+ 2342              	.LCFI18:
+ 2343              		.cfi_def_cfa_offset 8
+ 2344              		.cfi_offset 7, -8
+ 2345              		.cfi_offset 14, -4
+ 2346 0002 84B0     		sub	sp, sp, #16
+ 2347              	.LCFI19:
+ 2348              		.cfi_def_cfa_offset 24
+ 2349 0004 02AF     		add	r7, sp, #8
+ 2350              	.LCFI20:
+ 2351              		.cfi_def_cfa 7, 16
+ 524:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     LCD_Init();
+ 2352              		.loc 1 524 0
+ 2353 0006 FFF7FEFF 		bl	LCD_Init
+ 525:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 	LCD_Clear(BLACK);       //set lcd background color as black
+ 2354              		.loc 1 525 0
+ 2355 000a 0020     		movs	r0, #0
+ 2356 000c FFF7FEFF 		bl	LCD_Clear
+ 526:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 	POINT_COLOR = GREEN;    //set lcd font color as green
+ 2357              		.loc 1 526 0
+ 2358 0010 544B     		ldr	r3, .L71
+ 2359 0012 4FF4FC62 		mov	r2, #2016
+ 2360 0016 1A80     		strh	r2, [r3]	@ movhi
+ 2361              	.LBB10:
+ 527:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 528:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 	//display goods
+ 529:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     for(int i=0;i<10;i++){
+ 2362              		.loc 1 529 0
+ 2363 0018 0023     		movs	r3, #0
+ 2364 001a 7B60     		str	r3, [r7, #4]
+ 2365 001c 33E0     		b	.L66
+ 2366              	.L69:
+ 530:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         if(i<5){
+ 2367              		.loc 1 530 0
+ 2368 001e 7B68     		ldr	r3, [r7, #4]
+ 2369 0020 042B     		cmp	r3, #4
+ 2370 0022 16DC     		bgt	.L67
+ 531:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             LCD_ShowString(X[0], Y[i], 240, 24, 24, goodsView[goods_position[i]]);
+ 2371              		.loc 1 531 0
+ 2372 0024 504B     		ldr	r3, .L71+4
+ 2373 0026 1B68     		ldr	r3, [r3]
+ 2374 0028 98B2     		uxth	r0, r3
+ 2375 002a 504A     		ldr	r2, .L71+8
+ 2376 002c 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 56
+
+
+ 2377 002e 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2378 0032 99B2     		uxth	r1, r3
+ 2379 0034 4E4A     		ldr	r2, .L71+12
+ 2380 0036 7B68     		ldr	r3, [r7, #4]
+ 2381 0038 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2382 003c 4D4A     		ldr	r2, .L71+16
+ 2383 003e 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2384 0042 0193     		str	r3, [sp, #4]
+ 2385 0044 1823     		movs	r3, #24
+ 2386 0046 0093     		str	r3, [sp]
+ 2387 0048 1823     		movs	r3, #24
+ 2388 004a F022     		movs	r2, #240
+ 2389 004c FFF7FEFF 		bl	LCD_ShowString
+ 2390 0050 16E0     		b	.L68
+ 2391              	.L67:
+ 532:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         }else{
+ 533:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****             LCD_ShowString(X[1], Y[i-5], 240, 24, 24, goodsView[goods_position[i]]);
+ 2392              		.loc 1 533 0
+ 2393 0052 454B     		ldr	r3, .L71+4
+ 2394 0054 5B68     		ldr	r3, [r3, #4]
+ 2395 0056 98B2     		uxth	r0, r3
+ 2396 0058 7B68     		ldr	r3, [r7, #4]
+ 2397 005a 053B     		subs	r3, r3, #5
+ 2398 005c 434A     		ldr	r2, .L71+8
+ 2399 005e 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2400 0062 99B2     		uxth	r1, r3
+ 2401 0064 424A     		ldr	r2, .L71+12
+ 2402 0066 7B68     		ldr	r3, [r7, #4]
+ 2403 0068 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2404 006c 414A     		ldr	r2, .L71+16
+ 2405 006e 52F82330 		ldr	r3, [r2, r3, lsl #2]
+ 2406 0072 0193     		str	r3, [sp, #4]
+ 2407 0074 1823     		movs	r3, #24
+ 2408 0076 0093     		str	r3, [sp]
+ 2409 0078 1823     		movs	r3, #24
+ 2410 007a F022     		movs	r2, #240
+ 2411 007c FFF7FEFF 		bl	LCD_ShowString
+ 2412              	.L68:
+ 529:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         if(i<5){
+ 2413              		.loc 1 529 0 discriminator 2
+ 2414 0080 7B68     		ldr	r3, [r7, #4]
+ 2415 0082 0133     		adds	r3, r3, #1
+ 2416 0084 7B60     		str	r3, [r7, #4]
+ 2417              	.L66:
+ 529:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         if(i<5){
+ 2418              		.loc 1 529 0 is_stmt 0 discriminator 1
+ 2419 0086 7B68     		ldr	r3, [r7, #4]
+ 2420 0088 092B     		cmp	r3, #9
+ 2421 008a C8DD     		ble	.L69
+ 2422              	.LBE10:
+ 534:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****         }
+ 535:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     }
+ 536:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 537:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     //display "Submit" and "Cancel"
+ 538:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     LCD_ShowString(X[0], Y[5], 240, 24, 24, Submit_View[0]);
+ 2423              		.loc 1 538 0 is_stmt 1
+ 2424 008c 364B     		ldr	r3, .L71+4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 57
+
+
+ 2425 008e 1B68     		ldr	r3, [r3]
+ 2426 0090 98B2     		uxth	r0, r3
+ 2427 0092 364B     		ldr	r3, .L71+8
+ 2428 0094 5B69     		ldr	r3, [r3, #20]
+ 2429 0096 99B2     		uxth	r1, r3
+ 2430 0098 374B     		ldr	r3, .L71+20
+ 2431 009a 1B68     		ldr	r3, [r3]
+ 2432 009c 0193     		str	r3, [sp, #4]
+ 2433 009e 1823     		movs	r3, #24
+ 2434 00a0 0093     		str	r3, [sp]
+ 2435 00a2 1823     		movs	r3, #24
+ 2436 00a4 F022     		movs	r2, #240
+ 2437 00a6 FFF7FEFF 		bl	LCD_ShowString
+ 539:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     LCD_ShowString(X[1], Y[5], 240, 24, 24, Submit_View[1]);
+ 2438              		.loc 1 539 0
+ 2439 00aa 2F4B     		ldr	r3, .L71+4
+ 2440 00ac 5B68     		ldr	r3, [r3, #4]
+ 2441 00ae 98B2     		uxth	r0, r3
+ 2442 00b0 2E4B     		ldr	r3, .L71+8
+ 2443 00b2 5B69     		ldr	r3, [r3, #20]
+ 2444 00b4 99B2     		uxth	r1, r3
+ 2445 00b6 304B     		ldr	r3, .L71+20
+ 2446 00b8 5B68     		ldr	r3, [r3, #4]
+ 2447 00ba 0193     		str	r3, [sp, #4]
+ 2448 00bc 1823     		movs	r3, #24
+ 2449 00be 0093     		str	r3, [sp]
+ 2450 00c0 1823     		movs	r3, #24
+ 2451 00c2 F022     		movs	r2, #240
+ 2452 00c4 FFF7FEFF 		bl	LCD_ShowString
+ 540:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 541:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     LCD_ShowString(X[0]-10, goodsOptionY, 10, 24, 24, "*");//display original position of cursor
+ 2453              		.loc 1 541 0
+ 2454 00c8 274B     		ldr	r3, .L71+4
+ 2455 00ca 1B68     		ldr	r3, [r3]
+ 2456 00cc 9BB2     		uxth	r3, r3
+ 2457 00ce 0A3B     		subs	r3, r3, #10
+ 2458 00d0 98B2     		uxth	r0, r3
+ 2459 00d2 2A4B     		ldr	r3, .L71+24
+ 2460 00d4 1B68     		ldr	r3, [r3]
+ 2461 00d6 99B2     		uxth	r1, r3
+ 2462 00d8 294B     		ldr	r3, .L71+28
+ 2463 00da 0193     		str	r3, [sp, #4]
+ 2464 00dc 1823     		movs	r3, #24
+ 2465 00de 0093     		str	r3, [sp]
+ 2466 00e0 1823     		movs	r3, #24
+ 2467 00e2 0A22     		movs	r2, #10
+ 2468 00e4 FFF7FEFF 		bl	LCD_ShowString
+ 542:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     LCD_ShowxNum(X[1], Y[6], 0, 3, 24, 1);//display current goods number in shopping cart
+ 2469              		.loc 1 542 0
+ 2470 00e8 1F4B     		ldr	r3, .L71+4
+ 2471 00ea 5B68     		ldr	r3, [r3, #4]
+ 2472 00ec 98B2     		uxth	r0, r3
+ 2473 00ee 1F4B     		ldr	r3, .L71+8
+ 2474 00f0 9B69     		ldr	r3, [r3, #24]
+ 2475 00f2 99B2     		uxth	r1, r3
+ 2476 00f4 0123     		movs	r3, #1
+ 2477 00f6 0193     		str	r3, [sp, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 58
+
+
+ 2478 00f8 1823     		movs	r3, #24
+ 2479 00fa 0093     		str	r3, [sp]
+ 2480 00fc 0323     		movs	r3, #3
+ 2481 00fe 0022     		movs	r2, #0
+ 2482 0100 FFF7FEFF 		bl	LCD_ShowxNum
+ 543:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 544:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     gd_eval_key_init(F1_KEY, KEY_MODE_EXTI);//set key F1 as external interrupt mode
+ 2483              		.loc 1 544 0
+ 2484 0104 0121     		movs	r1, #1
+ 2485 0106 0020     		movs	r0, #0
+ 2486 0108 FFF7FEFF 		bl	gd_eval_key_init
+ 545:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     gd_eval_key_init(F2_KEY, KEY_MODE_GPIO);//set key F2 as GPIO mode
+ 2487              		.loc 1 545 0
+ 2488 010c 0021     		movs	r1, #0
+ 2489 010e 0120     		movs	r0, #1
+ 2490 0110 FFF7FEFF 		bl	gd_eval_key_init
+ 546:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 547:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     osal_int_connect(EXTI1_IRQn, 2,0,EXTI1_IRQHandler,NULL);//init F1 irq handler
+ 2491              		.loc 1 547 0
+ 2492 0114 0023     		movs	r3, #0
+ 2493 0116 0093     		str	r3, [sp]
+ 2494 0118 1A4B     		ldr	r3, .L71+32
+ 2495 011a 0022     		movs	r2, #0
+ 2496 011c 0221     		movs	r1, #2
+ 2497 011e 0720     		movs	r0, #7
+ 2498 0120 FFF7FEFF 		bl	osal_int_connect
+ 548:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     
+ 549:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     osal_semp_create(&s_rcv_sync,1,0);//create semaphore for oc cmd handler
+ 2499              		.loc 1 549 0
+ 2500 0124 0022     		movs	r2, #0
+ 2501 0126 0121     		movs	r1, #1
+ 2502 0128 1748     		ldr	r0, .L71+36
+ 2503 012a FFF7FEFF 		bl	osal_semp_create
+ 550:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 551:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     osal_task_create("ocmqtt_report",oc_mqtt_report_entry,NULL,0x1200,NULL,8); //create data report
+ 2504              		.loc 1 551 0
+ 2505 012e 0823     		movs	r3, #8
+ 2506 0130 0193     		str	r3, [sp, #4]
+ 2507 0132 0023     		movs	r3, #0
+ 2508 0134 0093     		str	r3, [sp]
+ 2509 0136 4FF49053 		mov	r3, #4608
+ 2510 013a 0022     		movs	r2, #0
+ 2511 013c 1349     		ldr	r1, .L71+40
+ 2512 013e 1448     		ldr	r0, .L71+44
+ 2513 0140 FFF7FEFF 		bl	osal_task_create
+ 552:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 553:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     osal_task_create("ocmqtt_cmd",oc_mqtt_cmd_entry,NULL,0x1000,NULL,8);//create oc cmd handle task
+ 2514              		.loc 1 553 0
+ 2515 0144 0823     		movs	r3, #8
+ 2516 0146 0193     		str	r3, [sp, #4]
+ 2517 0148 0023     		movs	r3, #0
+ 2518 014a 0093     		str	r3, [sp]
+ 2519 014c 4FF48053 		mov	r3, #4096
+ 2520 0150 0022     		movs	r2, #0
+ 2521 0152 1049     		ldr	r1, .L71+48
+ 2522 0154 1048     		ldr	r0, .L71+52
+ 2523 0156 FFF7FEFF 		bl	osal_task_create
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 59
+
+
+ 554:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** 
+ 555:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c ****     return 0;
+ 2524              		.loc 1 555 0
+ 2525 015a 0023     		movs	r3, #0
+ 556:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/demos\oc_tls_mqtt_demo.c **** }
+ 2526              		.loc 1 556 0
+ 2527 015c 1846     		mov	r0, r3
+ 2528 015e 0837     		adds	r7, r7, #8
+ 2529              	.LCFI21:
+ 2530              		.cfi_def_cfa_offset 8
+ 2531 0160 BD46     		mov	sp, r7
+ 2532              	.LCFI22:
+ 2533              		.cfi_def_cfa_register 13
+ 2534              		@ sp needed
+ 2535 0162 80BD     		pop	{r7, pc}
+ 2536              	.L72:
+ 2537              		.align	2
+ 2538              	.L71:
+ 2539 0164 00000000 		.word	POINT_COLOR
+ 2540 0168 00000000 		.word	X
+ 2541 016c 00000000 		.word	Y
+ 2542 0170 00000000 		.word	goods_position
+ 2543 0174 00000000 		.word	goodsView
+ 2544 0178 00000000 		.word	Submit_View
+ 2545 017c 00000000 		.word	goodsOptionY
+ 2546 0180 78020000 		.word	.LC58
+ 2547 0184 00000000 		.word	EXTI1_IRQHandler
+ 2548 0188 00000000 		.word	s_rcv_sync
+ 2549 018c 00000000 		.word	oc_mqtt_report_entry
+ 2550 0190 D8030000 		.word	.LC86
+ 2551 0194 00000000 		.word	oc_mqtt_cmd_entry
+ 2552 0198 E8030000 		.word	.LC87
+ 2553              		.cfi_endproc
+ 2554              	.LFE130:
+ 2556              		.text
+ 2557              	.Letext0:
+ 2558              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2559              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2560              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2561              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2562              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2563              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 2564              		.file 8 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/os/osal/osal_types.h"
+ 2565              		.file 9 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/mqtt_al/mqtt_al.h"
+ 2566              		.file 10 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/cJSON/cJSON.h"
+ 2567              		.file 11 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al/oc_mqtt_al.h
+ 2568              		.file 12 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/os/liteos/arch/arm/common/cmsis/co
+ 2569              		.file 13 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/targets/GD32F303_BearPi/Inc/system_gd32f30x
+ 2570              		.file 14 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/targets/GD32F303_BearPi/Inc/gd32f30x.h"
+ 2571              		.file 15 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_sta
+ 2572              		.file 16 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/drivers/third_party/GigaDevice/GD32F30x_sta
+ 2573              		.file 17 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 2574              		.file 18 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/targets/GD32F303_BearPi/Inc/BearPi-IoT_gd32
+ 2575              		.file 19 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/targets/GD32F303_BearPi/Hardware/LCD/lcd.h"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 60
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 oc_tls_mqtt_demo.c
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:18     .data.s_mqtt_ca_crt:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:21     .data.s_mqtt_ca_crt:00000000 s_mqtt_ca_crt
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:54     .bss.s_rcv_buffer:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:57     .bss.s_rcv_buffer:00000000 s_rcv_buffer
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:60     .bss.s_rcv_datalen:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:63     .bss.s_rcv_datalen:00000000 s_rcv_datalen
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:66     .bss.s_rcv_sync:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:69     .bss.s_rcv_sync:00000000 s_rcv_sync
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:72     .bss.s_mqtt_handle:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:75     .bss.s_mqtt_handle:00000000 s_mqtt_handle
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:78     .data.X:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:81     .data.X:00000000 X
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:85     .data.Y:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:88     .data.Y:00000000 Y
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:97     .data.goodsOptionX:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:100    .data.goodsOptionX:00000000 goodsOptionX
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:103    .data.goodsOptionY:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:106    .data.goodsOptionY:00000000 goodsOptionY
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:144    .data.goodsView:00000000 goodsView
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:110    .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:141    .data.goodsView:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:167    .data.Submit_View:00000000 Submit_View
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:164    .data.Submit_View:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:175    .data.Goods_Price:00000000 Goods_Price
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:172    .data.Goods_Price:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:191    .data.goods_position:00000000 goods_position
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:188    .data.goods_position:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:207    .data.orderID:00000000 orderID
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:204    .data.orderID:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:214    .data.userID:00000000 userID
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:211    .data.userID:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:221    .data.userAge:00000000 userAge
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:218    .data.userAge:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:232    .data.deviceID:00000000 deviceID
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:229    .data.deviceID:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:243    .data.area:00000000 area
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:240    .data.area:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:272    .data.Regions:00000000 Regions
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:269    .data.Regions:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:285    .bss.Region_Random:00000000 Region_Random
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:282    .bss.Region_Random:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:292    .data.longitude:00000000 longitude
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:289    .data.longitude:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:299    .data.latitude:00000000 latitude
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:296    .data.latitude:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:306    .data.orderTime:00000000 orderTime
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:303    .data.orderTime:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:313    .data.orderTime1:00000000 orderTime1
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:310    .data.orderTime1:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:333    .data.Pay:00000000 Pay
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:330    .data.Pay:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:343    .bss.pay_Random:00000000 pay_Random
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:340    .bss.pay_Random:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:350    .bss.Status:00000000 Status
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:347    .bss.Status:00000000 $d
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 61
+
+
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:357    .bss.Total_Num:00000000 Total_Num
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:354    .bss.Total_Num:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:364    .bss.Total_Cost:00000000 Total_Cost
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:361    .bss.Total_Cost:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:371    .bss.Goods_Num:00000000 Goods_Num
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:368    .bss.Goods_Num:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:409    .data.Goods_Num_String:00000000 Goods_Num_String
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:406    .data.Goods_Num_String:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:456    .data.Goods_Price_String:00000000 Goods_Price_String
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:453    .data.Goods_Price_String:00000000 $d
+                            *COM*:00000009 orderID_string
+                            *COM*:00000006 userID_string
+                            *COM*:0000000d orderTime_string
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:478    .text.app_msg_deal:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:484    .text.app_msg_deal:00000000 app_msg_deal
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:567    .text.app_msg_deal:0000006c $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:619    .text.oc_mqtt_cmd_entry:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:625    .text.oc_mqtt_cmd_entry:00000000 oc_mqtt_cmd_entry
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:1025   .text.oc_mqtt_cmd_entry:000002b0 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:1129   .text.oc_mqtt_report_entry:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:1135   .text.oc_mqtt_report_entry:00000000 oc_mqtt_report_entry
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:1540   .text.oc_mqtt_report_entry:00000328 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:1591   .text.oc_mqtt_report_entry:000003ec $t
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:1946   .text.oc_mqtt_report_entry:000006dc $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:1968   .text.oc_mqtt_report_entry:0000072c $t
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:2111   .text.oc_mqtt_report_entry:00000840 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:2124   .text.EXTI1_IRQHandler:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:2131   .text.EXTI1_IRQHandler:00000000 EXTI1_IRQHandler
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:2311   .text.EXTI1_IRQHandler:00000110 $d
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:2328   .text.standard_app_demo_main:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:2335   .text.standard_app_demo_main:00000000 standard_app_demo_main
+C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s:2539   .text.standard_app_demo_main:00000164 $d
+
+UNDEFINED SYMBOLS
+printf
+memcpy
+osal_semp_post
+osal_semp_pend
+cJSON_Parse
+cJSON_GetObjectItem
+strcpy
+LCD_Clear
+LCD_ShowString
+LCD_ShowxNum
+puts
+cJSON_Delete
+oc_mqtt_json_fmt_response
+cJSON_Print
+strlen
+oc_mqtt_report
+osal_free
+POINT_COLOR
+oc_mqtt_config
+gd_eval_key_state_get
+sprintf
+rand
+oc_mqtt_json_fmt_report
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc2R1JHn.s 			page 62
+
+
+osal_task_sleep
+exti_interrupt_flag_get
+exti_interrupt_flag_clear
+LCD_Init
+gd_eval_key_init
+osal_int_connect
+osal_semp_create
+osal_task_create

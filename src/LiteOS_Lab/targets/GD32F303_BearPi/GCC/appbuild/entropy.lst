@@ -1,0 +1,2548 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"entropy.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.mbedtls_entropy_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	mbedtls_entropy_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	mbedtls_entropy_init:
+  26              	.LFB3:
+  27              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** /*
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  Entropy accumulator implementation
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  Copyright (C) 2006-2016, ARM Limited, All Rights Reserved
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  SPDX-License-Identifier: Apache-2.0
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  not use this file except in compliance with the License.
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  You may obtain a copy of the License at
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  http://www.apache.org/licenses/LICENSE-2.0
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  Unless required by applicable law or agreed to in writing, software
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  See the License for the specific language governing permissions and
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  limitations under the License.
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  This file is part of mbed TLS (https://tls.mbed.org)
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  */
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include "mbedtls/config.h"
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #else
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include MBEDTLS_CONFIG_FILE
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_C)
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_TEST_NULL_ENTROPY)
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #warning "**** WARNING!  MBEDTLS_TEST_NULL_ENTROPY defined! "
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 2
+
+
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #warning "**** THIS BUILD HAS NO DEFINED ENTROPY SOURCES "
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #warning "**** THIS BUILD IS *NOT* SUITABLE FOR PRODUCTION USE "
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include "mbedtls/entropy.h"
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include "mbedtls/entropy_poll.h"
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include "mbedtls/platform_util.h"
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include <string.h>
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_FS_IO)
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include <stdio.h>
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_NV_SEED)
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include "mbedtls/platform.h"
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_SELF_TEST)
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_PLATFORM_C)
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include "mbedtls/platform.h"
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #else
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include <stdio.h>
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #define mbedtls_printf     printf
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* MBEDTLS_PLATFORM_C */
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* MBEDTLS_SELF_TEST */
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_HAVEGE_C)
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #include "mbedtls/havege.h"
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #define ENTROPY_MAX_LOOP    256     /**< Maximum amount to loop before error */
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** void mbedtls_entropy_init( mbedtls_entropy_context *ctx )
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+  28              		.loc 1 66 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 84B0     		sub	sp, sp, #16
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 24
+  40 0004 02AF     		add	r7, sp, #8
+  41              	.LCFI2:
+  42              		.cfi_def_cfa 7, 16
+  43 0006 7860     		str	r0, [r7, #4]
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->source_count = 0;
+  44              		.loc 1 67 0
+  45 0008 7B68     		ldr	r3, [r7, #4]
+  46 000a 0022     		movs	r2, #0
+  47 000c C3F8E020 		str	r2, [r3, #224]
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     memset( ctx->source, 0, sizeof( ctx->source ) );
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 3
+
+
+  48              		.loc 1 68 0
+  49 0010 7B68     		ldr	r3, [r7, #4]
+  50 0012 E433     		adds	r3, r3, #228
+  51 0014 1422     		movs	r2, #20
+  52 0016 0021     		movs	r1, #0
+  53 0018 1846     		mov	r0, r3
+  54 001a FFF7FEFF 		bl	memset
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_mutex_init( &ctx->mutex );
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->accumulator_started = 0;
+  55              		.loc 1 74 0
+  56 001e 7B68     		ldr	r3, [r7, #4]
+  57 0020 0022     		movs	r2, #0
+  58 0022 1A60     		str	r2, [r3]
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_SHA512_ACCUMULATOR)
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_sha512_init( &ctx->accumulator );
+  59              		.loc 1 76 0
+  60 0024 7B68     		ldr	r3, [r7, #4]
+  61 0026 0833     		adds	r3, r3, #8
+  62 0028 1846     		mov	r0, r3
+  63 002a FFF7FEFF 		bl	mbedtls_sha512_init
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #else
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_sha256_init( &ctx->accumulator );
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_HAVEGE_C)
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_havege_init( &ctx->havege_data );
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /* Reminder: Update ENTROPY_HAVE_STRONG in the test files
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      *           when adding more strong entropy sources here. */
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_TEST_NULL_ENTROPY)
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_add_source( ctx, mbedtls_null_entropy_poll, NULL,
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 1, MBEDTLS_ENTROPY_SOURCE_STRONG );
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if !defined(MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES)
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if !defined(MBEDTLS_NO_PLATFORM_ENTROPY)
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_add_source( ctx, mbedtls_platform_entropy_poll, NULL,
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_MIN_PLATFORM,
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_SOURCE_STRONG );
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_TIMING_C)
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_add_source( ctx, mbedtls_hardclock_poll, NULL,
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_MIN_HARDCLOCK,
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_SOURCE_WEAK );
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_HAVEGE_C)
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_add_source( ctx, mbedtls_havege_poll, &ctx->havege_data,
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_MIN_HAVEGE,
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_SOURCE_STRONG );
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_HARDWARE_ALT)
+ 109:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_add_source( ctx, mbedtls_hardware_poll, NULL,
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 4
+
+
+  64              		.loc 1 109 0
+  65 002e 0123     		movs	r3, #1
+  66 0030 0093     		str	r3, [sp]
+  67 0032 2023     		movs	r3, #32
+  68 0034 0022     		movs	r2, #0
+  69 0036 0449     		ldr	r1, .L2
+  70 0038 7868     		ldr	r0, [r7, #4]
+  71 003a FFF7FEFF 		bl	mbedtls_entropy_add_source
+ 110:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_MIN_HARDWARE,
+ 111:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_SOURCE_STRONG );
+ 112:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 113:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_NV_SEED)
+ 114:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_add_source( ctx, mbedtls_nv_seed_poll, NULL,
+ 115:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_BLOCK_SIZE,
+ 116:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                 MBEDTLS_ENTROPY_SOURCE_STRONG );
+ 117:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->initial_entropy_run = 0;
+ 118:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 119:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES */
+ 120:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+  72              		.loc 1 120 0
+  73 003e 00BF     		nop
+  74 0040 0837     		adds	r7, r7, #8
+  75              	.LCFI3:
+  76              		.cfi_def_cfa_offset 8
+  77 0042 BD46     		mov	sp, r7
+  78              	.LCFI4:
+  79              		.cfi_def_cfa_register 13
+  80              		@ sp needed
+  81 0044 80BD     		pop	{r7, pc}
+  82              	.L3:
+  83 0046 00BF     		.align	2
+  84              	.L2:
+  85 0048 00000000 		.word	mbedtls_hardware_poll
+  86              		.cfi_endproc
+  87              	.LFE3:
+  89              		.section	.text.mbedtls_entropy_free,"ax",%progbits
+  90              		.align	1
+  91              		.global	mbedtls_entropy_free
+  92              		.syntax unified
+  93              		.thumb
+  94              		.thumb_func
+  95              		.fpu fpv4-sp-d16
+  97              	mbedtls_entropy_free:
+  98              	.LFB4:
+ 121:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 122:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** void mbedtls_entropy_free( mbedtls_entropy_context *ctx )
+ 123:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+  99              		.loc 1 123 0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 8
+ 102              		@ frame_needed = 1, uses_anonymous_args = 0
+ 103 0000 80B5     		push	{r7, lr}
+ 104              	.LCFI5:
+ 105              		.cfi_def_cfa_offset 8
+ 106              		.cfi_offset 7, -8
+ 107              		.cfi_offset 14, -4
+ 108 0002 82B0     		sub	sp, sp, #8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 5
+
+
+ 109              	.LCFI6:
+ 110              		.cfi_def_cfa_offset 16
+ 111 0004 00AF     		add	r7, sp, #0
+ 112              	.LCFI7:
+ 113              		.cfi_def_cfa_register 7
+ 114 0006 7860     		str	r0, [r7, #4]
+ 124:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_HAVEGE_C)
+ 125:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_havege_free( &ctx->havege_data );
+ 126:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 127:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+ 128:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_mutex_free( &ctx->mutex );
+ 129:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 130:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_SHA512_ACCUMULATOR)
+ 131:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_sha512_free( &ctx->accumulator );
+ 115              		.loc 1 131 0
+ 116 0008 7B68     		ldr	r3, [r7, #4]
+ 117 000a 0833     		adds	r3, r3, #8
+ 118 000c 1846     		mov	r0, r3
+ 119 000e FFF7FEFF 		bl	mbedtls_sha512_free
+ 132:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #else
+ 133:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_sha256_free( &ctx->accumulator );
+ 134:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 135:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_NV_SEED)
+ 136:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->initial_entropy_run = 0;
+ 137:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 138:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->source_count = 0;
+ 120              		.loc 1 138 0
+ 121 0012 7B68     		ldr	r3, [r7, #4]
+ 122 0014 0022     		movs	r2, #0
+ 123 0016 C3F8E020 		str	r2, [r3, #224]
+ 139:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_platform_zeroize( ctx->source, sizeof( ctx->source ) );
+ 124              		.loc 1 139 0
+ 125 001a 7B68     		ldr	r3, [r7, #4]
+ 126 001c E433     		adds	r3, r3, #228
+ 127 001e 1421     		movs	r1, #20
+ 128 0020 1846     		mov	r0, r3
+ 129 0022 FFF7FEFF 		bl	mbedtls_platform_zeroize
+ 140:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->accumulator_started = 0;
+ 130              		.loc 1 140 0
+ 131 0026 7B68     		ldr	r3, [r7, #4]
+ 132 0028 0022     		movs	r2, #0
+ 133 002a 1A60     		str	r2, [r3]
+ 141:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 134              		.loc 1 141 0
+ 135 002c 00BF     		nop
+ 136 002e 0837     		adds	r7, r7, #8
+ 137              	.LCFI8:
+ 138              		.cfi_def_cfa_offset 8
+ 139 0030 BD46     		mov	sp, r7
+ 140              	.LCFI9:
+ 141              		.cfi_def_cfa_register 13
+ 142              		@ sp needed
+ 143 0032 80BD     		pop	{r7, pc}
+ 144              		.cfi_endproc
+ 145              	.LFE4:
+ 147              		.section	.text.mbedtls_entropy_add_source,"ax",%progbits
+ 148              		.align	1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 6
+
+
+ 149              		.global	mbedtls_entropy_add_source
+ 150              		.syntax unified
+ 151              		.thumb
+ 152              		.thumb_func
+ 153              		.fpu fpv4-sp-d16
+ 155              	mbedtls_entropy_add_source:
+ 156              	.LFB5:
+ 142:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 143:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** int mbedtls_entropy_add_source( mbedtls_entropy_context *ctx,
+ 144:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                         mbedtls_entropy_f_source_ptr f_source, void *p_source,
+ 145:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                         size_t threshold, int strong )
+ 146:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 157              		.loc 1 146 0
+ 158              		.cfi_startproc
+ 159              		@ args = 4, pretend = 0, frame = 24
+ 160              		@ frame_needed = 1, uses_anonymous_args = 0
+ 161              		@ link register save eliminated.
+ 162 0000 80B4     		push	{r7}
+ 163              	.LCFI10:
+ 164              		.cfi_def_cfa_offset 4
+ 165              		.cfi_offset 7, -4
+ 166 0002 87B0     		sub	sp, sp, #28
+ 167              	.LCFI11:
+ 168              		.cfi_def_cfa_offset 32
+ 169 0004 00AF     		add	r7, sp, #0
+ 170              	.LCFI12:
+ 171              		.cfi_def_cfa_register 7
+ 172 0006 F860     		str	r0, [r7, #12]
+ 173 0008 B960     		str	r1, [r7, #8]
+ 174 000a 7A60     		str	r2, [r7, #4]
+ 175 000c 3B60     		str	r3, [r7]
+ 147:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int idx, ret = 0;
+ 176              		.loc 1 147 0
+ 177 000e 0023     		movs	r3, #0
+ 178 0010 7B61     		str	r3, [r7, #20]
+ 148:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 149:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+ 150:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_mutex_lock( &ctx->mutex ) ) != 0 )
+ 151:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( ret );
+ 152:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 153:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 154:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     idx = ctx->source_count;
+ 179              		.loc 1 154 0
+ 180 0012 FB68     		ldr	r3, [r7, #12]
+ 181 0014 D3F8E030 		ldr	r3, [r3, #224]
+ 182 0018 3B61     		str	r3, [r7, #16]
+ 155:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( idx >= MBEDTLS_ENTROPY_MAX_SOURCES )
+ 183              		.loc 1 155 0
+ 184 001a 3B69     		ldr	r3, [r7, #16]
+ 185 001c 002B     		cmp	r3, #0
+ 186 001e 03DD     		ble	.L6
+ 156:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 157:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ret = MBEDTLS_ERR_ENTROPY_MAX_SOURCES;
+ 187              		.loc 1 157 0
+ 188 0020 6FF03D03 		mvn	r3, #61
+ 189 0024 7B61     		str	r3, [r7, #20]
+ 158:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 7
+
+
+ 190              		.loc 1 158 0
+ 191 0026 2EE0     		b	.L7
+ 192              	.L6:
+ 159:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 160:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 161:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->source[idx].f_source  = f_source;
+ 193              		.loc 1 161 0
+ 194 0028 F968     		ldr	r1, [r7, #12]
+ 195 002a 3A69     		ldr	r2, [r7, #16]
+ 196 002c 1346     		mov	r3, r2
+ 197 002e 9B00     		lsls	r3, r3, #2
+ 198 0030 1344     		add	r3, r3, r2
+ 199 0032 9B00     		lsls	r3, r3, #2
+ 200 0034 0B44     		add	r3, r3, r1
+ 201 0036 E433     		adds	r3, r3, #228
+ 202 0038 BA68     		ldr	r2, [r7, #8]
+ 203 003a 1A60     		str	r2, [r3]
+ 162:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->source[idx].p_source  = p_source;
+ 204              		.loc 1 162 0
+ 205 003c F968     		ldr	r1, [r7, #12]
+ 206 003e 3A69     		ldr	r2, [r7, #16]
+ 207 0040 1346     		mov	r3, r2
+ 208 0042 9B00     		lsls	r3, r3, #2
+ 209 0044 1344     		add	r3, r3, r2
+ 210 0046 9B00     		lsls	r3, r3, #2
+ 211 0048 0B44     		add	r3, r3, r1
+ 212 004a E833     		adds	r3, r3, #232
+ 213 004c 7A68     		ldr	r2, [r7, #4]
+ 214 004e 1A60     		str	r2, [r3]
+ 163:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->source[idx].threshold = threshold;
+ 215              		.loc 1 163 0
+ 216 0050 F968     		ldr	r1, [r7, #12]
+ 217 0052 3A69     		ldr	r2, [r7, #16]
+ 218 0054 1346     		mov	r3, r2
+ 219 0056 9B00     		lsls	r3, r3, #2
+ 220 0058 1344     		add	r3, r3, r2
+ 221 005a 9B00     		lsls	r3, r3, #2
+ 222 005c 0B44     		add	r3, r3, r1
+ 223 005e F033     		adds	r3, r3, #240
+ 224 0060 3A68     		ldr	r2, [r7]
+ 225 0062 1A60     		str	r2, [r3]
+ 164:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->source[idx].strong    = strong;
+ 226              		.loc 1 164 0
+ 227 0064 F968     		ldr	r1, [r7, #12]
+ 228 0066 3A69     		ldr	r2, [r7, #16]
+ 229 0068 1346     		mov	r3, r2
+ 230 006a 9B00     		lsls	r3, r3, #2
+ 231 006c 1344     		add	r3, r3, r2
+ 232 006e 9B00     		lsls	r3, r3, #2
+ 233 0070 0B44     		add	r3, r3, r1
+ 234 0072 F433     		adds	r3, r3, #244
+ 235 0074 3A6A     		ldr	r2, [r7, #32]
+ 236 0076 1A60     		str	r2, [r3]
+ 165:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 166:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ctx->source_count++;
+ 237              		.loc 1 166 0
+ 238 0078 FB68     		ldr	r3, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 8
+
+
+ 239 007a D3F8E030 		ldr	r3, [r3, #224]
+ 240 007e 5A1C     		adds	r2, r3, #1
+ 241 0080 FB68     		ldr	r3, [r7, #12]
+ 242 0082 C3F8E020 		str	r2, [r3, #224]
+ 243              	.L7:
+ 167:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 168:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** exit:
+ 169:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+ 170:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( mbedtls_mutex_unlock( &ctx->mutex ) != 0 )
+ 171:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( MBEDTLS_ERR_THREADING_MUTEX_ERROR );
+ 172:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 173:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 174:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret );
+ 244              		.loc 1 174 0
+ 245 0086 7B69     		ldr	r3, [r7, #20]
+ 175:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 246              		.loc 1 175 0
+ 247 0088 1846     		mov	r0, r3
+ 248 008a 1C37     		adds	r7, r7, #28
+ 249              	.LCFI13:
+ 250              		.cfi_def_cfa_offset 4
+ 251 008c BD46     		mov	sp, r7
+ 252              	.LCFI14:
+ 253              		.cfi_def_cfa_register 13
+ 254              		@ sp needed
+ 255 008e 5DF8047B 		ldr	r7, [sp], #4
+ 256              	.LCFI15:
+ 257              		.cfi_restore 7
+ 258              		.cfi_def_cfa_offset 0
+ 259 0092 7047     		bx	lr
+ 260              		.cfi_endproc
+ 261              	.LFE5:
+ 263              		.section	.text.entropy_update,"ax",%progbits
+ 264              		.align	1
+ 265              		.syntax unified
+ 266              		.thumb
+ 267              		.thumb_func
+ 268              		.fpu fpv4-sp-d16
+ 270              	entropy_update:
+ 271              	.LFB6:
+ 176:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 177:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** /*
+ 178:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  * Entropy accumulator update
+ 179:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  */
+ 180:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** static int entropy_update( mbedtls_entropy_context *ctx, unsigned char source_id,
+ 181:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                            const unsigned char *data, size_t len )
+ 182:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 272              		.loc 1 182 0
+ 273              		.cfi_startproc
+ 274              		@ args = 0, pretend = 0, frame = 96
+ 275              		@ frame_needed = 1, uses_anonymous_args = 0
+ 276 0000 80B5     		push	{r7, lr}
+ 277              	.LCFI16:
+ 278              		.cfi_def_cfa_offset 8
+ 279              		.cfi_offset 7, -8
+ 280              		.cfi_offset 14, -4
+ 281 0002 98B0     		sub	sp, sp, #96
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 9
+
+
+ 282              	.LCFI17:
+ 283              		.cfi_def_cfa_offset 104
+ 284 0004 00AF     		add	r7, sp, #0
+ 285              	.LCFI18:
+ 286              		.cfi_def_cfa_register 7
+ 287 0006 F860     		str	r0, [r7, #12]
+ 288 0008 7A60     		str	r2, [r7, #4]
+ 289 000a 3B60     		str	r3, [r7]
+ 290 000c 0B46     		mov	r3, r1
+ 291 000e FB72     		strb	r3, [r7, #11]
+ 183:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char header[2];
+ 184:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char tmp[MBEDTLS_ENTROPY_BLOCK_SIZE];
+ 185:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     size_t use_len = len;
+ 292              		.loc 1 185 0
+ 293 0010 3B68     		ldr	r3, [r7]
+ 294 0012 FB65     		str	r3, [r7, #92]
+ 186:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     const unsigned char *p = data;
+ 295              		.loc 1 186 0
+ 296 0014 7B68     		ldr	r3, [r7, #4]
+ 297 0016 BB65     		str	r3, [r7, #88]
+ 187:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret = 0;
+ 298              		.loc 1 187 0
+ 299 0018 0023     		movs	r3, #0
+ 300 001a 7B65     		str	r3, [r7, #84]
+ 188:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 189:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( use_len > MBEDTLS_ENTROPY_BLOCK_SIZE )
+ 301              		.loc 1 189 0
+ 302 001c FB6D     		ldr	r3, [r7, #92]
+ 303 001e 402B     		cmp	r3, #64
+ 304 0020 0FD9     		bls	.L10
+ 190:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 191:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_SHA512_ACCUMULATOR)
+ 192:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ( ret = mbedtls_sha512_ret( data, len, tmp, 0 ) ) != 0 )
+ 305              		.loc 1 192 0
+ 306 0022 07F11002 		add	r2, r7, #16
+ 307 0026 0023     		movs	r3, #0
+ 308 0028 3968     		ldr	r1, [r7]
+ 309 002a 7868     		ldr	r0, [r7, #4]
+ 310 002c FFF7FEFF 		bl	mbedtls_sha512_ret
+ 311 0030 7865     		str	r0, [r7, #84]
+ 312 0032 7B6D     		ldr	r3, [r7, #84]
+ 313 0034 002B     		cmp	r3, #0
+ 314 0036 31D1     		bne	.L16
+ 193:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             goto cleanup;
+ 194:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #else
+ 195:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ( ret = mbedtls_sha256_ret( data, len, tmp, 0 ) ) != 0 )
+ 196:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             goto cleanup;
+ 197:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 198:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         p = tmp;
+ 315              		.loc 1 198 0
+ 316 0038 07F11003 		add	r3, r7, #16
+ 317 003c BB65     		str	r3, [r7, #88]
+ 199:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         use_len = MBEDTLS_ENTROPY_BLOCK_SIZE;
+ 318              		.loc 1 199 0
+ 319 003e 4023     		movs	r3, #64
+ 320 0040 FB65     		str	r3, [r7, #92]
+ 321              	.L10:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 10
+
+
+ 200:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 201:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 202:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     header[0] = source_id;
+ 322              		.loc 1 202 0
+ 323 0042 FB7A     		ldrb	r3, [r7, #11]
+ 324 0044 87F85030 		strb	r3, [r7, #80]
+ 203:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     header[1] = use_len & 0xFF;
+ 325              		.loc 1 203 0
+ 326 0048 FB6D     		ldr	r3, [r7, #92]
+ 327 004a DBB2     		uxtb	r3, r3
+ 328 004c 87F85130 		strb	r3, [r7, #81]
+ 204:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 205:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /*
+ 206:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * Start the accumulator if this has not already happened. Note that
+ 207:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * it is sufficient to start the accumulator here only because all calls to
+ 208:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * gather entropy eventually execute this code.
+ 209:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 210:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_SHA512_ACCUMULATOR)
+ 211:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ctx->accumulator_started == 0 &&
+ 329              		.loc 1 211 0
+ 330 0050 FB68     		ldr	r3, [r7, #12]
+ 331 0052 1B68     		ldr	r3, [r3]
+ 332 0054 002B     		cmp	r3, #0
+ 333 0056 09D1     		bne	.L13
+ 212:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ( ret = mbedtls_sha512_starts_ret( &ctx->accumulator, 0 ) ) != 0 )
+ 334              		.loc 1 212 0 discriminator 1
+ 335 0058 FB68     		ldr	r3, [r7, #12]
+ 336 005a 0833     		adds	r3, r3, #8
+ 211:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ( ret = mbedtls_sha512_starts_ret( &ctx->accumulator, 0 ) ) != 0 )
+ 337              		.loc 1 211 0 discriminator 1
+ 338 005c 0021     		movs	r1, #0
+ 339 005e 1846     		mov	r0, r3
+ 340 0060 FFF7FEFF 		bl	mbedtls_sha512_starts_ret
+ 341 0064 7865     		str	r0, [r7, #84]
+ 342 0066 7B6D     		ldr	r3, [r7, #84]
+ 343 0068 002B     		cmp	r3, #0
+ 344 006a 19D1     		bne	.L17
+ 345              	.L13:
+ 213:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 214:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     else
+ 215:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ctx->accumulator_started = 1;
+ 346              		.loc 1 215 0
+ 347 006c FB68     		ldr	r3, [r7, #12]
+ 348 006e 0122     		movs	r2, #1
+ 349 0070 1A60     		str	r2, [r3]
+ 216:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha512_update_ret( &ctx->accumulator, header, 2 ) ) != 0 )
+ 350              		.loc 1 216 0
+ 351 0072 FB68     		ldr	r3, [r7, #12]
+ 352 0074 0833     		adds	r3, r3, #8
+ 353 0076 07F15001 		add	r1, r7, #80
+ 354 007a 0222     		movs	r2, #2
+ 355 007c 1846     		mov	r0, r3
+ 356 007e FFF7FEFF 		bl	mbedtls_sha512_update_ret
+ 357 0082 7865     		str	r0, [r7, #84]
+ 358 0084 7B6D     		ldr	r3, [r7, #84]
+ 359 0086 002B     		cmp	r3, #0
+ 360 0088 0CD1     		bne	.L18
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 11
+
+
+ 217:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 218:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = mbedtls_sha512_update_ret( &ctx->accumulator, p, use_len );
+ 361              		.loc 1 218 0
+ 362 008a FB68     		ldr	r3, [r7, #12]
+ 363 008c 0833     		adds	r3, r3, #8
+ 364 008e FA6D     		ldr	r2, [r7, #92]
+ 365 0090 B96D     		ldr	r1, [r7, #88]
+ 366 0092 1846     		mov	r0, r3
+ 367 0094 FFF7FEFF 		bl	mbedtls_sha512_update_ret
+ 368 0098 7865     		str	r0, [r7, #84]
+ 369 009a 04E0     		b	.L12
+ 370              	.L16:
+ 193:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #else
+ 371              		.loc 1 193 0
+ 372 009c 00BF     		nop
+ 373 009e 02E0     		b	.L12
+ 374              	.L17:
+ 219:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #else
+ 220:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ctx->accumulator_started == 0 &&
+ 221:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ( ret = mbedtls_sha256_starts_ret( &ctx->accumulator, 0 ) ) != 0 )
+ 222:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 223:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     else
+ 224:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ctx->accumulator_started = 1;
+ 225:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha256_update_ret( &ctx->accumulator, header, 2 ) ) != 0 )
+ 226:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 227:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = mbedtls_sha256_update_ret( &ctx->accumulator, p, use_len );
+ 228:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 229:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 230:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** cleanup:
+ 375              		.loc 1 230 0
+ 376 00a0 00BF     		nop
+ 377 00a2 00E0     		b	.L12
+ 378              	.L18:
+ 217:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = mbedtls_sha512_update_ret( &ctx->accumulator, p, use_len );
+ 379              		.loc 1 217 0
+ 380 00a4 00BF     		nop
+ 381              	.L12:
+ 231:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_platform_zeroize( tmp, sizeof( tmp ) );
+ 382              		.loc 1 231 0
+ 383 00a6 07F11003 		add	r3, r7, #16
+ 384 00aa 4021     		movs	r1, #64
+ 385 00ac 1846     		mov	r0, r3
+ 386 00ae FFF7FEFF 		bl	mbedtls_platform_zeroize
+ 232:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 233:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret );
+ 387              		.loc 1 233 0
+ 388 00b2 7B6D     		ldr	r3, [r7, #84]
+ 234:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 389              		.loc 1 234 0
+ 390 00b4 1846     		mov	r0, r3
+ 391 00b6 6037     		adds	r7, r7, #96
+ 392              	.LCFI19:
+ 393              		.cfi_def_cfa_offset 8
+ 394 00b8 BD46     		mov	sp, r7
+ 395              	.LCFI20:
+ 396              		.cfi_def_cfa_register 13
+ 397              		@ sp needed
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 12
+
+
+ 398 00ba 80BD     		pop	{r7, pc}
+ 399              		.cfi_endproc
+ 400              	.LFE6:
+ 402              		.section	.text.mbedtls_entropy_update_manual,"ax",%progbits
+ 403              		.align	1
+ 404              		.global	mbedtls_entropy_update_manual
+ 405              		.syntax unified
+ 406              		.thumb
+ 407              		.thumb_func
+ 408              		.fpu fpv4-sp-d16
+ 410              	mbedtls_entropy_update_manual:
+ 411              	.LFB7:
+ 235:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 236:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** int mbedtls_entropy_update_manual( mbedtls_entropy_context *ctx,
+ 237:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                            const unsigned char *data, size_t len )
+ 238:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 412              		.loc 1 238 0
+ 413              		.cfi_startproc
+ 414              		@ args = 0, pretend = 0, frame = 24
+ 415              		@ frame_needed = 1, uses_anonymous_args = 0
+ 416 0000 80B5     		push	{r7, lr}
+ 417              	.LCFI21:
+ 418              		.cfi_def_cfa_offset 8
+ 419              		.cfi_offset 7, -8
+ 420              		.cfi_offset 14, -4
+ 421 0002 86B0     		sub	sp, sp, #24
+ 422              	.LCFI22:
+ 423              		.cfi_def_cfa_offset 32
+ 424 0004 00AF     		add	r7, sp, #0
+ 425              	.LCFI23:
+ 426              		.cfi_def_cfa_register 7
+ 427 0006 F860     		str	r0, [r7, #12]
+ 428 0008 B960     		str	r1, [r7, #8]
+ 429 000a 7A60     		str	r2, [r7, #4]
+ 239:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret;
+ 240:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 241:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+ 242:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_mutex_lock( &ctx->mutex ) ) != 0 )
+ 243:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( ret );
+ 244:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 245:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 246:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = entropy_update( ctx, MBEDTLS_ENTROPY_SOURCE_MANUAL, data, len );
+ 430              		.loc 1 246 0
+ 431 000c 7B68     		ldr	r3, [r7, #4]
+ 432 000e BA68     		ldr	r2, [r7, #8]
+ 433 0010 0121     		movs	r1, #1
+ 434 0012 F868     		ldr	r0, [r7, #12]
+ 435 0014 FFF7FEFF 		bl	entropy_update
+ 436 0018 7861     		str	r0, [r7, #20]
+ 247:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 248:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+ 249:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( mbedtls_mutex_unlock( &ctx->mutex ) != 0 )
+ 250:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( MBEDTLS_ERR_THREADING_MUTEX_ERROR );
+ 251:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 252:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 253:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret );
+ 437              		.loc 1 253 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 13
+
+
+ 438 001a 7B69     		ldr	r3, [r7, #20]
+ 254:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 439              		.loc 1 254 0
+ 440 001c 1846     		mov	r0, r3
+ 441 001e 1837     		adds	r7, r7, #24
+ 442              	.LCFI24:
+ 443              		.cfi_def_cfa_offset 8
+ 444 0020 BD46     		mov	sp, r7
+ 445              	.LCFI25:
+ 446              		.cfi_def_cfa_register 13
+ 447              		@ sp needed
+ 448 0022 80BD     		pop	{r7, pc}
+ 449              		.cfi_endproc
+ 450              	.LFE7:
+ 452              		.section	.text.entropy_gather_internal,"ax",%progbits
+ 453              		.align	1
+ 454              		.syntax unified
+ 455              		.thumb
+ 456              		.thumb_func
+ 457              		.fpu fpv4-sp-d16
+ 459              	entropy_gather_internal:
+ 460              	.LFB8:
+ 255:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 256:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** /*
+ 257:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  * Run through the different sources to add entropy to our accumulator
+ 258:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  */
+ 259:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** static int entropy_gather_internal( mbedtls_entropy_context *ctx )
+ 260:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 461              		.loc 1 260 0
+ 462              		.cfi_startproc
+ 463              		@ args = 0, pretend = 0, frame = 152
+ 464              		@ frame_needed = 1, uses_anonymous_args = 0
+ 465 0000 90B5     		push	{r4, r7, lr}
+ 466              	.LCFI26:
+ 467              		.cfi_def_cfa_offset 12
+ 468              		.cfi_offset 4, -12
+ 469              		.cfi_offset 7, -8
+ 470              		.cfi_offset 14, -4
+ 471 0002 A7B0     		sub	sp, sp, #156
+ 472              	.LCFI27:
+ 473              		.cfi_def_cfa_offset 168
+ 474 0004 00AF     		add	r7, sp, #0
+ 475              	.LCFI28:
+ 476              		.cfi_def_cfa_register 7
+ 477 0006 7860     		str	r0, [r7, #4]
+ 261:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret, i, have_one_strong = 0;
+ 478              		.loc 1 261 0
+ 479 0008 0023     		movs	r3, #0
+ 480 000a C7F88C30 		str	r3, [r7, #140]
+ 262:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char buf[MBEDTLS_ENTROPY_MAX_GATHER];
+ 263:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     size_t olen;
+ 264:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 265:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ctx->source_count == 0 )
+ 481              		.loc 1 265 0
+ 482 000e 7B68     		ldr	r3, [r7, #4]
+ 483 0010 D3F8E030 		ldr	r3, [r3, #224]
+ 484 0014 002B     		cmp	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 14
+
+
+ 485 0016 02D1     		bne	.L22
+ 266:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( MBEDTLS_ERR_ENTROPY_NO_SOURCES_DEFINED );
+ 486              		.loc 1 266 0
+ 487 0018 6FF03F03 		mvn	r3, #63
+ 488 001c 7FE0     		b	.L31
+ 489              	.L22:
+ 267:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 268:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /*
+ 269:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * Run through our entropy sources
+ 270:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 271:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     for( i = 0; i < ctx->source_count; i++ )
+ 490              		.loc 1 271 0
+ 491 001e 0023     		movs	r3, #0
+ 492 0020 C7F89030 		str	r3, [r7, #144]
+ 493 0024 60E0     		b	.L24
+ 494              	.L30:
+ 272:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 273:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ctx->source[i].strong == MBEDTLS_ENTROPY_SOURCE_STRONG )
+ 495              		.loc 1 273 0
+ 496 0026 7968     		ldr	r1, [r7, #4]
+ 497 0028 D7F89020 		ldr	r2, [r7, #144]
+ 498 002c 1346     		mov	r3, r2
+ 499 002e 9B00     		lsls	r3, r3, #2
+ 500 0030 1344     		add	r3, r3, r2
+ 501 0032 9B00     		lsls	r3, r3, #2
+ 502 0034 0B44     		add	r3, r3, r1
+ 503 0036 F433     		adds	r3, r3, #244
+ 504 0038 1B68     		ldr	r3, [r3]
+ 505 003a 012B     		cmp	r3, #1
+ 506 003c 02D1     		bne	.L25
+ 274:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             have_one_strong = 1;
+ 507              		.loc 1 274 0
+ 508 003e 0123     		movs	r3, #1
+ 509 0040 C7F88C30 		str	r3, [r7, #140]
+ 510              	.L25:
+ 275:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 276:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         olen = 0;
+ 511              		.loc 1 276 0
+ 512 0044 0023     		movs	r3, #0
+ 513 0046 BB60     		str	r3, [r7, #8]
+ 277:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ( ret = ctx->source[i].f_source( ctx->source[i].p_source,
+ 514              		.loc 1 277 0
+ 515 0048 7968     		ldr	r1, [r7, #4]
+ 516 004a D7F89020 		ldr	r2, [r7, #144]
+ 517 004e 1346     		mov	r3, r2
+ 518 0050 9B00     		lsls	r3, r3, #2
+ 519 0052 1344     		add	r3, r3, r2
+ 520 0054 9B00     		lsls	r3, r3, #2
+ 521 0056 0B44     		add	r3, r3, r1
+ 522 0058 E433     		adds	r3, r3, #228
+ 523 005a 1C68     		ldr	r4, [r3]
+ 524 005c 7968     		ldr	r1, [r7, #4]
+ 525 005e D7F89020 		ldr	r2, [r7, #144]
+ 526 0062 1346     		mov	r3, r2
+ 527 0064 9B00     		lsls	r3, r3, #2
+ 528 0066 1344     		add	r3, r3, r2
+ 529 0068 9B00     		lsls	r3, r3, #2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 15
+
+
+ 530 006a 0B44     		add	r3, r3, r1
+ 531 006c E833     		adds	r3, r3, #232
+ 532 006e 1868     		ldr	r0, [r3]
+ 533 0070 07F10803 		add	r3, r7, #8
+ 534 0074 07F10C01 		add	r1, r7, #12
+ 535 0078 8022     		movs	r2, #128
+ 536 007a A047     		blx	r4
+ 537              	.LVL0:
+ 538 007c C7F89400 		str	r0, [r7, #148]
+ 539 0080 D7F89430 		ldr	r3, [r7, #148]
+ 540 0084 002B     		cmp	r3, #0
+ 541 0086 3FD1     		bne	.L32
+ 278:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                         buf, MBEDTLS_ENTROPY_MAX_GATHER, &olen ) ) != 0 )
+ 279:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         {
+ 280:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             goto cleanup;
+ 281:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         }
+ 282:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 283:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         /*
+ 284:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****          * Add if we actually gathered something
+ 285:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****          */
+ 286:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( olen > 0 )
+ 542              		.loc 1 286 0
+ 543 0088 BB68     		ldr	r3, [r7, #8]
+ 544 008a 002B     		cmp	r3, #0
+ 545 008c 27D0     		beq	.L28
+ 287:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         {
+ 288:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             if( ( ret = entropy_update( ctx, (unsigned char) i,
+ 546              		.loc 1 288 0
+ 547 008e D7F89030 		ldr	r3, [r7, #144]
+ 548 0092 D9B2     		uxtb	r1, r3
+ 549 0094 BB68     		ldr	r3, [r7, #8]
+ 550 0096 07F10C02 		add	r2, r7, #12
+ 551 009a 7868     		ldr	r0, [r7, #4]
+ 552 009c FFF7FEFF 		bl	entropy_update
+ 553 00a0 C7F89400 		str	r0, [r7, #148]
+ 554 00a4 D7F89430 		ldr	r3, [r7, #148]
+ 555 00a8 002B     		cmp	r3, #0
+ 556 00aa 02D0     		beq	.L29
+ 289:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                         buf, olen ) ) != 0 )
+ 290:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                 return( ret );
+ 557              		.loc 1 290 0
+ 558 00ac D7F89430 		ldr	r3, [r7, #148]
+ 559 00b0 35E0     		b	.L31
+ 560              	.L29:
+ 291:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             ctx->source[i].size += olen;
+ 561              		.loc 1 291 0
+ 562 00b2 7968     		ldr	r1, [r7, #4]
+ 563 00b4 D7F89020 		ldr	r2, [r7, #144]
+ 564 00b8 1346     		mov	r3, r2
+ 565 00ba 9B00     		lsls	r3, r3, #2
+ 566 00bc 1344     		add	r3, r3, r2
+ 567 00be 9B00     		lsls	r3, r3, #2
+ 568 00c0 0B44     		add	r3, r3, r1
+ 569 00c2 EC33     		adds	r3, r3, #236
+ 570 00c4 1A68     		ldr	r2, [r3]
+ 571 00c6 BB68     		ldr	r3, [r7, #8]
+ 572 00c8 D118     		adds	r1, r2, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 16
+
+
+ 573 00ca 7868     		ldr	r0, [r7, #4]
+ 574 00cc D7F89020 		ldr	r2, [r7, #144]
+ 575 00d0 1346     		mov	r3, r2
+ 576 00d2 9B00     		lsls	r3, r3, #2
+ 577 00d4 1344     		add	r3, r3, r2
+ 578 00d6 9B00     		lsls	r3, r3, #2
+ 579 00d8 0344     		add	r3, r3, r0
+ 580 00da EC33     		adds	r3, r3, #236
+ 581 00dc 1960     		str	r1, [r3]
+ 582              	.L28:
+ 271:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 583              		.loc 1 271 0 discriminator 2
+ 584 00de D7F89030 		ldr	r3, [r7, #144]
+ 585 00e2 0133     		adds	r3, r3, #1
+ 586 00e4 C7F89030 		str	r3, [r7, #144]
+ 587              	.L24:
+ 271:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 588              		.loc 1 271 0 is_stmt 0 discriminator 1
+ 589 00e8 7B68     		ldr	r3, [r7, #4]
+ 590 00ea D3F8E030 		ldr	r3, [r3, #224]
+ 591 00ee D7F89020 		ldr	r2, [r7, #144]
+ 592 00f2 9A42     		cmp	r2, r3
+ 593 00f4 97DB     		blt	.L30
+ 292:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         }
+ 293:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 294:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 295:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( have_one_strong == 0 )
+ 594              		.loc 1 295 0 is_stmt 1
+ 595 00f6 D7F88C30 		ldr	r3, [r7, #140]
+ 596 00fa 002B     		cmp	r3, #0
+ 597 00fc 06D1     		bne	.L33
+ 296:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ret = MBEDTLS_ERR_ENTROPY_NO_STRONG_SOURCE;
+ 598              		.loc 1 296 0
+ 599 00fe 6FF03C03 		mvn	r3, #60
+ 600 0102 C7F89430 		str	r3, [r7, #148]
+ 601 0106 02E0     		b	.L27
+ 602              	.L32:
+ 280:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         }
+ 603              		.loc 1 280 0
+ 604 0108 00BF     		nop
+ 605 010a 00E0     		b	.L27
+ 606              	.L33:
+ 297:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 298:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** cleanup:
+ 607              		.loc 1 298 0
+ 608 010c 00BF     		nop
+ 609              	.L27:
+ 299:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_platform_zeroize( buf, sizeof( buf ) );
+ 610              		.loc 1 299 0
+ 611 010e 07F10C03 		add	r3, r7, #12
+ 612 0112 8021     		movs	r1, #128
+ 613 0114 1846     		mov	r0, r3
+ 614 0116 FFF7FEFF 		bl	mbedtls_platform_zeroize
+ 300:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 301:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret );
+ 615              		.loc 1 301 0
+ 616 011a D7F89430 		ldr	r3, [r7, #148]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 17
+
+
+ 617              	.L31:
+ 302:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 618              		.loc 1 302 0 discriminator 1
+ 619 011e 1846     		mov	r0, r3
+ 620 0120 9C37     		adds	r7, r7, #156
+ 621              	.LCFI29:
+ 622              		.cfi_def_cfa_offset 12
+ 623 0122 BD46     		mov	sp, r7
+ 624              	.LCFI30:
+ 625              		.cfi_def_cfa_register 13
+ 626              		@ sp needed
+ 627 0124 90BD     		pop	{r4, r7, pc}
+ 628              		.cfi_endproc
+ 629              	.LFE8:
+ 631              		.section	.text.mbedtls_entropy_gather,"ax",%progbits
+ 632              		.align	1
+ 633              		.global	mbedtls_entropy_gather
+ 634              		.syntax unified
+ 635              		.thumb
+ 636              		.thumb_func
+ 637              		.fpu fpv4-sp-d16
+ 639              	mbedtls_entropy_gather:
+ 640              	.LFB9:
+ 303:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 304:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** /*
+ 305:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  * Thread-safe wrapper for entropy_gather_internal()
+ 306:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  */
+ 307:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** int mbedtls_entropy_gather( mbedtls_entropy_context *ctx )
+ 308:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 641              		.loc 1 308 0
+ 642              		.cfi_startproc
+ 643              		@ args = 0, pretend = 0, frame = 16
+ 644              		@ frame_needed = 1, uses_anonymous_args = 0
+ 645 0000 80B5     		push	{r7, lr}
+ 646              	.LCFI31:
+ 647              		.cfi_def_cfa_offset 8
+ 648              		.cfi_offset 7, -8
+ 649              		.cfi_offset 14, -4
+ 650 0002 84B0     		sub	sp, sp, #16
+ 651              	.LCFI32:
+ 652              		.cfi_def_cfa_offset 24
+ 653 0004 00AF     		add	r7, sp, #0
+ 654              	.LCFI33:
+ 655              		.cfi_def_cfa_register 7
+ 656 0006 7860     		str	r0, [r7, #4]
+ 309:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret;
+ 310:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 311:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+ 312:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_mutex_lock( &ctx->mutex ) ) != 0 )
+ 313:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( ret );
+ 314:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 315:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 316:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = entropy_gather_internal( ctx );
+ 657              		.loc 1 316 0
+ 658 0008 7868     		ldr	r0, [r7, #4]
+ 659 000a FFF7FEFF 		bl	entropy_gather_internal
+ 660 000e F860     		str	r0, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 18
+
+
+ 317:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 318:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+ 319:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( mbedtls_mutex_unlock( &ctx->mutex ) != 0 )
+ 320:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( MBEDTLS_ERR_THREADING_MUTEX_ERROR );
+ 321:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 322:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 323:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret );
+ 661              		.loc 1 323 0
+ 662 0010 FB68     		ldr	r3, [r7, #12]
+ 324:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 663              		.loc 1 324 0
+ 664 0012 1846     		mov	r0, r3
+ 665 0014 1037     		adds	r7, r7, #16
+ 666              	.LCFI34:
+ 667              		.cfi_def_cfa_offset 8
+ 668 0016 BD46     		mov	sp, r7
+ 669              	.LCFI35:
+ 670              		.cfi_def_cfa_register 13
+ 671              		@ sp needed
+ 672 0018 80BD     		pop	{r7, pc}
+ 673              		.cfi_endproc
+ 674              	.LFE9:
+ 676              		.section	.text.mbedtls_entropy_func,"ax",%progbits
+ 677              		.align	1
+ 678              		.global	mbedtls_entropy_func
+ 679              		.syntax unified
+ 680              		.thumb
+ 681              		.thumb_func
+ 682              		.fpu fpv4-sp-d16
+ 684              	mbedtls_entropy_func:
+ 685              	.LFB10:
+ 325:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 326:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** int mbedtls_entropy_func( void *data, unsigned char *output, size_t len )
+ 327:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 686              		.loc 1 327 0
+ 687              		.cfi_startproc
+ 688              		@ args = 0, pretend = 0, frame = 104
+ 689              		@ frame_needed = 1, uses_anonymous_args = 0
+ 690 0000 80B5     		push	{r7, lr}
+ 691              	.LCFI36:
+ 692              		.cfi_def_cfa_offset 8
+ 693              		.cfi_offset 7, -8
+ 694              		.cfi_offset 14, -4
+ 695 0002 9AB0     		sub	sp, sp, #104
+ 696              	.LCFI37:
+ 697              		.cfi_def_cfa_offset 112
+ 698 0004 00AF     		add	r7, sp, #0
+ 699              	.LCFI38:
+ 700              		.cfi_def_cfa_register 7
+ 701 0006 F860     		str	r0, [r7, #12]
+ 702 0008 B960     		str	r1, [r7, #8]
+ 703 000a 7A60     		str	r2, [r7, #4]
+ 328:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret, count = 0, i, done;
+ 704              		.loc 1 328 0
+ 705 000c 0023     		movs	r3, #0
+ 706 000e 3B66     		str	r3, [r7, #96]
+ 329:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_context *ctx = (mbedtls_entropy_context *) data;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 19
+
+
+ 707              		.loc 1 329 0
+ 708 0010 FB68     		ldr	r3, [r7, #12]
+ 709 0012 7B65     		str	r3, [r7, #84]
+ 330:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char buf[MBEDTLS_ENTROPY_BLOCK_SIZE];
+ 331:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 332:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( len > MBEDTLS_ENTROPY_BLOCK_SIZE )
+ 710              		.loc 1 332 0
+ 711 0014 7B68     		ldr	r3, [r7, #4]
+ 712 0016 402B     		cmp	r3, #64
+ 713 0018 02D9     		bls	.L37
+ 333:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( MBEDTLS_ERR_ENTROPY_SOURCE_FAILED );
+ 714              		.loc 1 333 0
+ 715 001a 6FF03B03 		mvn	r3, #59
+ 716 001e A7E0     		b	.L51
+ 717              	.L37:
+ 334:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 335:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_NV_SEED)
+ 336:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /* Update the NV entropy seed before generating any entropy for outside
+ 337:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * use.
+ 338:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 339:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ctx->initial_entropy_run == 0 )
+ 340:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 341:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ctx->initial_entropy_run = 1;
+ 342:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ( ret = mbedtls_entropy_update_nv_seed( ctx ) ) != 0 )
+ 343:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             return( ret );
+ 344:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 345:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 346:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 347:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+ 348:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_mutex_lock( &ctx->mutex ) ) != 0 )
+ 349:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( ret );
+ 350:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 351:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 352:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /*
+ 353:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * Always gather extra entropy before a call
+ 354:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 355:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     do
+ 356:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 357:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( count++ > ENTROPY_MAX_LOOP )
+ 718              		.loc 1 357 0
+ 719 0020 3B6E     		ldr	r3, [r7, #96]
+ 720 0022 5A1C     		adds	r2, r3, #1
+ 721 0024 3A66     		str	r2, [r7, #96]
+ 722 0026 B3F5807F 		cmp	r3, #256
+ 723 002a 03DD     		ble	.L39
+ 358:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         {
+ 359:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             ret = MBEDTLS_ERR_ENTROPY_SOURCE_FAILED;
+ 724              		.loc 1 359 0
+ 725 002c 6FF03B03 		mvn	r3, #59
+ 726 0030 7B66     		str	r3, [r7, #100]
+ 360:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             goto exit;
+ 727              		.loc 1 360 0
+ 728 0032 96E0     		b	.L40
+ 729              	.L39:
+ 361:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         }
+ 362:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 363:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ( ret = entropy_gather_internal( ctx ) ) != 0 )
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 20
+
+
+ 730              		.loc 1 363 0
+ 731 0034 786D     		ldr	r0, [r7, #84]
+ 732 0036 FFF7FEFF 		bl	entropy_gather_internal
+ 733 003a 7866     		str	r0, [r7, #100]
+ 734 003c 7B6E     		ldr	r3, [r7, #100]
+ 735 003e 002B     		cmp	r3, #0
+ 736 0040 40F08680 		bne	.L52
+ 364:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             goto exit;
+ 365:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 366:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         done = 1;
+ 737              		.loc 1 366 0
+ 738 0044 0123     		movs	r3, #1
+ 739 0046 BB65     		str	r3, [r7, #88]
+ 367:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         for( i = 0; i < ctx->source_count; i++ )
+ 740              		.loc 1 367 0
+ 741 0048 0023     		movs	r3, #0
+ 742 004a FB65     		str	r3, [r7, #92]
+ 743 004c 18E0     		b	.L42
+ 744              	.L44:
+ 368:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             if( ctx->source[i].size < ctx->source[i].threshold )
+ 745              		.loc 1 368 0
+ 746 004e 796D     		ldr	r1, [r7, #84]
+ 747 0050 FA6D     		ldr	r2, [r7, #92]
+ 748 0052 1346     		mov	r3, r2
+ 749 0054 9B00     		lsls	r3, r3, #2
+ 750 0056 1344     		add	r3, r3, r2
+ 751 0058 9B00     		lsls	r3, r3, #2
+ 752 005a 0B44     		add	r3, r3, r1
+ 753 005c EC33     		adds	r3, r3, #236
+ 754 005e 1968     		ldr	r1, [r3]
+ 755 0060 786D     		ldr	r0, [r7, #84]
+ 756 0062 FA6D     		ldr	r2, [r7, #92]
+ 757 0064 1346     		mov	r3, r2
+ 758 0066 9B00     		lsls	r3, r3, #2
+ 759 0068 1344     		add	r3, r3, r2
+ 760 006a 9B00     		lsls	r3, r3, #2
+ 761 006c 0344     		add	r3, r3, r0
+ 762 006e F033     		adds	r3, r3, #240
+ 763 0070 1B68     		ldr	r3, [r3]
+ 764 0072 9942     		cmp	r1, r3
+ 765 0074 01D2     		bcs	.L43
+ 369:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                 done = 0;
+ 766              		.loc 1 369 0
+ 767 0076 0023     		movs	r3, #0
+ 768 0078 BB65     		str	r3, [r7, #88]
+ 769              	.L43:
+ 367:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         for( i = 0; i < ctx->source_count; i++ )
+ 770              		.loc 1 367 0 discriminator 2
+ 771 007a FB6D     		ldr	r3, [r7, #92]
+ 772 007c 0133     		adds	r3, r3, #1
+ 773 007e FB65     		str	r3, [r7, #92]
+ 774              	.L42:
+ 367:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         for( i = 0; i < ctx->source_count; i++ )
+ 775              		.loc 1 367 0 is_stmt 0 discriminator 1
+ 776 0080 7B6D     		ldr	r3, [r7, #84]
+ 777 0082 D3F8E030 		ldr	r3, [r3, #224]
+ 778 0086 FA6D     		ldr	r2, [r7, #92]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 21
+
+
+ 779 0088 9A42     		cmp	r2, r3
+ 780 008a E0DB     		blt	.L44
+ 370:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 371:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     while( ! done );
+ 781              		.loc 1 371 0 is_stmt 1
+ 782 008c BB6D     		ldr	r3, [r7, #88]
+ 783 008e 002B     		cmp	r3, #0
+ 784 0090 C6D0     		beq	.L37
+ 372:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 373:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     memset( buf, 0, MBEDTLS_ENTROPY_BLOCK_SIZE );
+ 785              		.loc 1 373 0
+ 786 0092 07F11403 		add	r3, r7, #20
+ 787 0096 4022     		movs	r2, #64
+ 788 0098 0021     		movs	r1, #0
+ 789 009a 1846     		mov	r0, r3
+ 790 009c FFF7FEFF 		bl	memset
+ 374:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 375:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_SHA512_ACCUMULATOR)
+ 376:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /*
+ 377:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * Note that at this stage it is assumed that the accumulator was started
+ 378:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * in a previous call to entropy_update(). If this is not guaranteed, the
+ 379:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * code below will fail.
+ 380:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 381:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha512_finish_ret( &ctx->accumulator, buf ) ) != 0 )
+ 791              		.loc 1 381 0
+ 792 00a0 7B6D     		ldr	r3, [r7, #84]
+ 793 00a2 0833     		adds	r3, r3, #8
+ 794 00a4 07F11402 		add	r2, r7, #20
+ 795 00a8 1146     		mov	r1, r2
+ 796 00aa 1846     		mov	r0, r3
+ 797 00ac FFF7FEFF 		bl	mbedtls_sha512_finish_ret
+ 798 00b0 7866     		str	r0, [r7, #100]
+ 799 00b2 7B6E     		ldr	r3, [r7, #100]
+ 800 00b4 002B     		cmp	r3, #0
+ 801 00b6 4DD1     		bne	.L53
+ 382:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 383:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 384:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /*
+ 385:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * Reset accumulator and counters and recycle existing entropy
+ 386:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 387:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_sha512_free( &ctx->accumulator );
+ 802              		.loc 1 387 0
+ 803 00b8 7B6D     		ldr	r3, [r7, #84]
+ 804 00ba 0833     		adds	r3, r3, #8
+ 805 00bc 1846     		mov	r0, r3
+ 806 00be FFF7FEFF 		bl	mbedtls_sha512_free
+ 388:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_sha512_init( &ctx->accumulator );
+ 807              		.loc 1 388 0
+ 808 00c2 7B6D     		ldr	r3, [r7, #84]
+ 809 00c4 0833     		adds	r3, r3, #8
+ 810 00c6 1846     		mov	r0, r3
+ 811 00c8 FFF7FEFF 		bl	mbedtls_sha512_init
+ 389:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha512_starts_ret( &ctx->accumulator, 0 ) ) != 0 )
+ 812              		.loc 1 389 0
+ 813 00cc 7B6D     		ldr	r3, [r7, #84]
+ 814 00ce 0833     		adds	r3, r3, #8
+ 815 00d0 0021     		movs	r1, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 22
+
+
+ 816 00d2 1846     		mov	r0, r3
+ 817 00d4 FFF7FEFF 		bl	mbedtls_sha512_starts_ret
+ 818 00d8 7866     		str	r0, [r7, #100]
+ 819 00da 7B6E     		ldr	r3, [r7, #100]
+ 820 00dc 002B     		cmp	r3, #0
+ 821 00de 3BD1     		bne	.L54
+ 390:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 391:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha512_update_ret( &ctx->accumulator, buf,
+ 822              		.loc 1 391 0
+ 823 00e0 7B6D     		ldr	r3, [r7, #84]
+ 824 00e2 0833     		adds	r3, r3, #8
+ 825 00e4 07F11401 		add	r1, r7, #20
+ 826 00e8 4022     		movs	r2, #64
+ 827 00ea 1846     		mov	r0, r3
+ 828 00ec FFF7FEFF 		bl	mbedtls_sha512_update_ret
+ 829 00f0 7866     		str	r0, [r7, #100]
+ 830 00f2 7B6E     		ldr	r3, [r7, #100]
+ 831 00f4 002B     		cmp	r3, #0
+ 832 00f6 31D1     		bne	.L55
+ 392:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                            MBEDTLS_ENTROPY_BLOCK_SIZE ) ) != 0 )
+ 393:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 394:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 395:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /*
+ 396:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * Perform second SHA-512 on entropy
+ 397:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 398:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha512_ret( buf, MBEDTLS_ENTROPY_BLOCK_SIZE,
+ 833              		.loc 1 398 0
+ 834 00f8 07F11402 		add	r2, r7, #20
+ 835 00fc 07F11400 		add	r0, r7, #20
+ 836 0100 0023     		movs	r3, #0
+ 837 0102 4021     		movs	r1, #64
+ 838 0104 FFF7FEFF 		bl	mbedtls_sha512_ret
+ 839 0108 7866     		str	r0, [r7, #100]
+ 840 010a 7B6E     		ldr	r3, [r7, #100]
+ 841 010c 002B     		cmp	r3, #0
+ 842 010e 27D1     		bne	.L56
+ 399:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                     buf, 0 ) ) != 0 )
+ 400:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 401:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #else /* MBEDTLS_ENTROPY_SHA512_ACCUMULATOR */
+ 402:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha256_finish_ret( &ctx->accumulator, buf ) ) != 0 )
+ 403:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 404:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 405:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /*
+ 406:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * Reset accumulator and counters and recycle existing entropy
+ 407:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 408:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_sha256_free( &ctx->accumulator );
+ 409:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_sha256_init( &ctx->accumulator );
+ 410:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha256_starts_ret( &ctx->accumulator, 0 ) ) != 0 )
+ 411:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 412:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha256_update_ret( &ctx->accumulator, buf,
+ 413:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                            MBEDTLS_ENTROPY_BLOCK_SIZE ) ) != 0 )
+ 414:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 415:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 416:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /*
+ 417:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * Perform second SHA-256 on entropy
+ 418:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 419:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha256_ret( buf, MBEDTLS_ENTROPY_BLOCK_SIZE,
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 23
+
+
+ 420:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                     buf, 0 ) ) != 0 )
+ 421:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 422:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* MBEDTLS_ENTROPY_SHA512_ACCUMULATOR */
+ 423:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 424:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     for( i = 0; i < ctx->source_count; i++ )
+ 843              		.loc 1 424 0
+ 844 0110 0023     		movs	r3, #0
+ 845 0112 FB65     		str	r3, [r7, #92]
+ 846 0114 0CE0     		b	.L49
+ 847              	.L50:
+ 425:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ctx->source[i].size = 0;
+ 848              		.loc 1 425 0 discriminator 3
+ 849 0116 796D     		ldr	r1, [r7, #84]
+ 850 0118 FA6D     		ldr	r2, [r7, #92]
+ 851 011a 1346     		mov	r3, r2
+ 852 011c 9B00     		lsls	r3, r3, #2
+ 853 011e 1344     		add	r3, r3, r2
+ 854 0120 9B00     		lsls	r3, r3, #2
+ 855 0122 0B44     		add	r3, r3, r1
+ 856 0124 EC33     		adds	r3, r3, #236
+ 857 0126 0022     		movs	r2, #0
+ 858 0128 1A60     		str	r2, [r3]
+ 424:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ctx->source[i].size = 0;
+ 859              		.loc 1 424 0 discriminator 3
+ 860 012a FB6D     		ldr	r3, [r7, #92]
+ 861 012c 0133     		adds	r3, r3, #1
+ 862 012e FB65     		str	r3, [r7, #92]
+ 863              	.L49:
+ 424:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ctx->source[i].size = 0;
+ 864              		.loc 1 424 0 is_stmt 0 discriminator 1
+ 865 0130 7B6D     		ldr	r3, [r7, #84]
+ 866 0132 D3F8E030 		ldr	r3, [r3, #224]
+ 867 0136 FA6D     		ldr	r2, [r7, #92]
+ 868 0138 9A42     		cmp	r2, r3
+ 869 013a ECDB     		blt	.L50
+ 426:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 427:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     memcpy( output, buf, len );
+ 870              		.loc 1 427 0 is_stmt 1
+ 871 013c 07F11403 		add	r3, r7, #20
+ 872 0140 7A68     		ldr	r2, [r7, #4]
+ 873 0142 1946     		mov	r1, r3
+ 874 0144 B868     		ldr	r0, [r7, #8]
+ 875 0146 FFF7FEFF 		bl	memcpy
+ 428:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 429:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = 0;
+ 876              		.loc 1 429 0
+ 877 014a 0023     		movs	r3, #0
+ 878 014c 7B66     		str	r3, [r7, #100]
+ 879 014e 08E0     		b	.L40
+ 880              	.L52:
+ 364:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 881              		.loc 1 364 0
+ 882 0150 00BF     		nop
+ 883 0152 06E0     		b	.L40
+ 884              	.L53:
+ 382:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 885              		.loc 1 382 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 24
+
+
+ 886 0154 00BF     		nop
+ 887 0156 04E0     		b	.L40
+ 888              	.L54:
+ 390:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_sha512_update_ret( &ctx->accumulator, buf,
+ 889              		.loc 1 390 0
+ 890 0158 00BF     		nop
+ 891 015a 02E0     		b	.L40
+ 892              	.L55:
+ 393:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 893              		.loc 1 393 0
+ 894 015c 00BF     		nop
+ 895 015e 00E0     		b	.L40
+ 896              	.L56:
+ 400:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #else /* MBEDTLS_ENTROPY_SHA512_ACCUMULATOR */
+ 897              		.loc 1 400 0
+ 898 0160 00BF     		nop
+ 899              	.L40:
+ 430:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 431:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** exit:
+ 432:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_platform_zeroize( buf, sizeof( buf ) );
+ 900              		.loc 1 432 0
+ 901 0162 07F11403 		add	r3, r7, #20
+ 902 0166 4021     		movs	r1, #64
+ 903 0168 1846     		mov	r0, r3
+ 904 016a FFF7FEFF 		bl	mbedtls_platform_zeroize
+ 433:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 434:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_THREADING_C)
+ 435:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( mbedtls_mutex_unlock( &ctx->mutex ) != 0 )
+ 436:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( MBEDTLS_ERR_THREADING_MUTEX_ERROR );
+ 437:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 438:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 439:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret );
+ 905              		.loc 1 439 0
+ 906 016e 7B6E     		ldr	r3, [r7, #100]
+ 907              	.L51:
+ 440:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 908              		.loc 1 440 0 discriminator 1
+ 909 0170 1846     		mov	r0, r3
+ 910 0172 6837     		adds	r7, r7, #104
+ 911              	.LCFI39:
+ 912              		.cfi_def_cfa_offset 8
+ 913 0174 BD46     		mov	sp, r7
+ 914              	.LCFI40:
+ 915              		.cfi_def_cfa_register 13
+ 916              		@ sp needed
+ 917 0176 80BD     		pop	{r7, pc}
+ 918              		.cfi_endproc
+ 919              	.LFE10:
+ 921              		.section	.text.entropy_dummy_source,"ax",%progbits
+ 922              		.align	1
+ 923              		.syntax unified
+ 924              		.thumb
+ 925              		.thumb_func
+ 926              		.fpu fpv4-sp-d16
+ 928              	entropy_dummy_source:
+ 929              	.LFB11:
+ 441:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 25
+
+
+ 442:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_NV_SEED)
+ 443:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** int mbedtls_entropy_update_nv_seed( mbedtls_entropy_context *ctx )
+ 444:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 445:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret = MBEDTLS_ERR_ENTROPY_FILE_IO_ERROR;
+ 446:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char buf[MBEDTLS_ENTROPY_BLOCK_SIZE];
+ 447:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 448:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /* Read new seed  and write it to NV */
+ 449:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_func( ctx, buf, MBEDTLS_ENTROPY_BLOCK_SIZE ) ) != 0 )
+ 450:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( ret );
+ 451:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 452:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( mbedtls_nv_seed_write( buf, MBEDTLS_ENTROPY_BLOCK_SIZE ) < 0 )
+ 453:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( MBEDTLS_ERR_ENTROPY_FILE_IO_ERROR );
+ 454:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 455:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /* Manually update the remaining stream with a separator value to diverge */
+ 456:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     memset( buf, 0, MBEDTLS_ENTROPY_BLOCK_SIZE );
+ 457:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = mbedtls_entropy_update_manual( ctx, buf, MBEDTLS_ENTROPY_BLOCK_SIZE );
+ 458:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 459:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret );
+ 460:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 461:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* MBEDTLS_ENTROPY_NV_SEED */
+ 462:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 463:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_FS_IO)
+ 464:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** int mbedtls_entropy_write_seed_file( mbedtls_entropy_context *ctx, const char *path )
+ 465:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 466:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret = MBEDTLS_ERR_ENTROPY_FILE_IO_ERROR;
+ 467:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     FILE *f;
+ 468:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char buf[MBEDTLS_ENTROPY_BLOCK_SIZE];
+ 469:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 470:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( f = fopen( path, "wb" ) ) == NULL )
+ 471:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( MBEDTLS_ERR_ENTROPY_FILE_IO_ERROR );
+ 472:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 473:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_func( ctx, buf, MBEDTLS_ENTROPY_BLOCK_SIZE ) ) != 0 )
+ 474:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 475:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 476:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( fwrite( buf, 1, MBEDTLS_ENTROPY_BLOCK_SIZE, f ) != MBEDTLS_ENTROPY_BLOCK_SIZE )
+ 477:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 478:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ret = MBEDTLS_ERR_ENTROPY_FILE_IO_ERROR;
+ 479:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto exit;
+ 480:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 481:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 482:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = 0;
+ 483:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 484:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** exit:
+ 485:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_platform_zeroize( buf, sizeof( buf ) );
+ 486:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 487:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     fclose( f );
+ 488:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret );
+ 489:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 490:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 491:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** int mbedtls_entropy_update_seed_file( mbedtls_entropy_context *ctx, const char *path )
+ 492:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 493:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret = 0;
+ 494:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     FILE *f;
+ 495:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     size_t n;
+ 496:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char buf[ MBEDTLS_ENTROPY_MAX_SEED_SIZE ];
+ 497:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 498:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( f = fopen( path, "rb" ) ) == NULL )
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 26
+
+
+ 499:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( MBEDTLS_ERR_ENTROPY_FILE_IO_ERROR );
+ 500:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 501:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     fseek( f, 0, SEEK_END );
+ 502:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     n = (size_t) ftell( f );
+ 503:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     fseek( f, 0, SEEK_SET );
+ 504:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 505:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( n > MBEDTLS_ENTROPY_MAX_SEED_SIZE )
+ 506:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         n = MBEDTLS_ENTROPY_MAX_SEED_SIZE;
+ 507:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 508:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( fread( buf, 1, n, f ) != n )
+ 509:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ret = MBEDTLS_ERR_ENTROPY_FILE_IO_ERROR;
+ 510:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     else
+ 511:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ret = mbedtls_entropy_update_manual( ctx, buf, n );
+ 512:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 513:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     fclose( f );
+ 514:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 515:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_platform_zeroize( buf, sizeof( buf ) );
+ 516:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 517:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ret != 0 )
+ 518:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         return( ret );
+ 519:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 520:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( mbedtls_entropy_write_seed_file( ctx, path ) );
+ 521:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 522:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* MBEDTLS_FS_IO */
+ 523:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 524:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_SELF_TEST)
+ 525:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if !defined(MBEDTLS_TEST_NULL_ENTROPY)
+ 526:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** /*
+ 527:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  * Dummy source function
+ 528:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  */
+ 529:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** static int entropy_dummy_source( void *data, unsigned char *output,
+ 530:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                  size_t len, size_t *olen )
+ 531:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 930              		.loc 1 531 0
+ 931              		.cfi_startproc
+ 932              		@ args = 0, pretend = 0, frame = 16
+ 933              		@ frame_needed = 1, uses_anonymous_args = 0
+ 934 0000 80B5     		push	{r7, lr}
+ 935              	.LCFI41:
+ 936              		.cfi_def_cfa_offset 8
+ 937              		.cfi_offset 7, -8
+ 938              		.cfi_offset 14, -4
+ 939 0002 84B0     		sub	sp, sp, #16
+ 940              	.LCFI42:
+ 941              		.cfi_def_cfa_offset 24
+ 942 0004 00AF     		add	r7, sp, #0
+ 943              	.LCFI43:
+ 944              		.cfi_def_cfa_register 7
+ 945 0006 F860     		str	r0, [r7, #12]
+ 946 0008 B960     		str	r1, [r7, #8]
+ 947 000a 7A60     		str	r2, [r7, #4]
+ 948 000c 3B60     		str	r3, [r7]
+ 532:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ((void) data);
+ 533:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 534:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     memset( output, 0x2a, len );
+ 949              		.loc 1 534 0
+ 950 000e 7A68     		ldr	r2, [r7, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 27
+
+
+ 951 0010 2A21     		movs	r1, #42
+ 952 0012 B868     		ldr	r0, [r7, #8]
+ 953 0014 FFF7FEFF 		bl	memset
+ 535:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     *olen = len;
+ 954              		.loc 1 535 0
+ 955 0018 3B68     		ldr	r3, [r7]
+ 956 001a 7A68     		ldr	r2, [r7, #4]
+ 957 001c 1A60     		str	r2, [r3]
+ 536:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 537:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( 0 );
+ 958              		.loc 1 537 0
+ 959 001e 0023     		movs	r3, #0
+ 538:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 960              		.loc 1 538 0
+ 961 0020 1846     		mov	r0, r3
+ 962 0022 1037     		adds	r7, r7, #16
+ 963              	.LCFI44:
+ 964              		.cfi_def_cfa_offset 8
+ 965 0024 BD46     		mov	sp, r7
+ 966              	.LCFI45:
+ 967              		.cfi_def_cfa_register 13
+ 968              		@ sp needed
+ 969 0026 80BD     		pop	{r7, pc}
+ 970              		.cfi_endproc
+ 971              	.LFE11:
+ 973              		.section	.text.mbedtls_entropy_source_self_test_gather,"ax",%progbits
+ 974              		.align	1
+ 975              		.syntax unified
+ 976              		.thumb
+ 977              		.thumb_func
+ 978              		.fpu fpv4-sp-d16
+ 980              	mbedtls_entropy_source_self_test_gather:
+ 981              	.LFB12:
+ 539:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* !MBEDTLS_TEST_NULL_ENTROPY */
+ 540:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 541:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_HARDWARE_ALT)
+ 542:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 543:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** static int mbedtls_entropy_source_self_test_gather( unsigned char *buf, size_t buf_len )
+ 544:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 982              		.loc 1 544 0
+ 983              		.cfi_startproc
+ 984              		@ args = 0, pretend = 0, frame = 24
+ 985              		@ frame_needed = 1, uses_anonymous_args = 0
+ 986 0000 80B5     		push	{r7, lr}
+ 987              	.LCFI46:
+ 988              		.cfi_def_cfa_offset 8
+ 989              		.cfi_offset 7, -8
+ 990              		.cfi_offset 14, -4
+ 991 0002 86B0     		sub	sp, sp, #24
+ 992              	.LCFI47:
+ 993              		.cfi_def_cfa_offset 32
+ 994 0004 00AF     		add	r7, sp, #0
+ 995              	.LCFI48:
+ 996              		.cfi_def_cfa_register 7
+ 997 0006 7860     		str	r0, [r7, #4]
+ 998 0008 3960     		str	r1, [r7]
+ 545:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret = 0;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 28
+
+
+ 999              		.loc 1 545 0
+ 1000 000a 0023     		movs	r3, #0
+ 1001 000c 7B61     		str	r3, [r7, #20]
+ 546:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     size_t entropy_len = 0;
+ 1002              		.loc 1 546 0
+ 1003 000e 0023     		movs	r3, #0
+ 1004 0010 3B61     		str	r3, [r7, #16]
+ 547:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     size_t olen = 0;
+ 1005              		.loc 1 547 0
+ 1006 0012 0023     		movs	r3, #0
+ 1007 0014 BB60     		str	r3, [r7, #8]
+ 548:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     size_t attempts = buf_len;
+ 1008              		.loc 1 548 0
+ 1009 0016 3B68     		ldr	r3, [r7]
+ 1010 0018 FB60     		str	r3, [r7, #12]
+ 549:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 550:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     while( attempts > 0 && entropy_len < buf_len )
+ 1011              		.loc 1 550 0
+ 1012 001a 17E0     		b	.L60
+ 1013              	.L64:
+ 551:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 552:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ( ret = mbedtls_hardware_poll( NULL, buf + entropy_len,
+ 1014              		.loc 1 552 0
+ 1015 001c 7A68     		ldr	r2, [r7, #4]
+ 1016 001e 3B69     		ldr	r3, [r7, #16]
+ 1017 0020 D118     		adds	r1, r2, r3
+ 1018 0022 3A68     		ldr	r2, [r7]
+ 1019 0024 3B69     		ldr	r3, [r7, #16]
+ 1020 0026 D21A     		subs	r2, r2, r3
+ 1021 0028 07F10803 		add	r3, r7, #8
+ 1022 002c 0020     		movs	r0, #0
+ 1023 002e FFF7FEFF 		bl	mbedtls_hardware_poll
+ 1024 0032 7861     		str	r0, [r7, #20]
+ 1025 0034 7B69     		ldr	r3, [r7, #20]
+ 1026 0036 002B     		cmp	r3, #0
+ 1027 0038 01D0     		beq	.L61
+ 553:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             buf_len - entropy_len, &olen ) ) != 0 )
+ 554:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             return( ret );
+ 1028              		.loc 1 554 0
+ 1029 003a 7B69     		ldr	r3, [r7, #20]
+ 1030 003c 14E0     		b	.L66
+ 1031              	.L61:
+ 555:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 556:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         entropy_len += olen;
+ 1032              		.loc 1 556 0
+ 1033 003e BB68     		ldr	r3, [r7, #8]
+ 1034 0040 3A69     		ldr	r2, [r7, #16]
+ 1035 0042 1344     		add	r3, r3, r2
+ 1036 0044 3B61     		str	r3, [r7, #16]
+ 557:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         attempts--;
+ 1037              		.loc 1 557 0
+ 1038 0046 FB68     		ldr	r3, [r7, #12]
+ 1039 0048 013B     		subs	r3, r3, #1
+ 1040 004a FB60     		str	r3, [r7, #12]
+ 1041              	.L60:
+ 550:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 1042              		.loc 1 550 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 29
+
+
+ 1043 004c FB68     		ldr	r3, [r7, #12]
+ 1044 004e 002B     		cmp	r3, #0
+ 1045 0050 03D0     		beq	.L63
+ 550:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 1046              		.loc 1 550 0 is_stmt 0 discriminator 1
+ 1047 0052 3A69     		ldr	r2, [r7, #16]
+ 1048 0054 3B68     		ldr	r3, [r7]
+ 1049 0056 9A42     		cmp	r2, r3
+ 1050 0058 E0D3     		bcc	.L64
+ 1051              	.L63:
+ 558:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 559:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 560:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( entropy_len < buf_len )
+ 1052              		.loc 1 560 0 is_stmt 1
+ 1053 005a 3A69     		ldr	r2, [r7, #16]
+ 1054 005c 3B68     		ldr	r3, [r7]
+ 1055 005e 9A42     		cmp	r2, r3
+ 1056 0060 01D2     		bcs	.L65
+ 561:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 562:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         ret = 1;
+ 1057              		.loc 1 562 0
+ 1058 0062 0123     		movs	r3, #1
+ 1059 0064 7B61     		str	r3, [r7, #20]
+ 1060              	.L65:
+ 563:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 564:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 565:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret );
+ 1061              		.loc 1 565 0
+ 1062 0066 7B69     		ldr	r3, [r7, #20]
+ 1063              	.L66:
+ 566:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 1064              		.loc 1 566 0 discriminator 1
+ 1065 0068 1846     		mov	r0, r3
+ 1066 006a 1837     		adds	r7, r7, #24
+ 1067              	.LCFI49:
+ 1068              		.cfi_def_cfa_offset 8
+ 1069 006c BD46     		mov	sp, r7
+ 1070              	.LCFI50:
+ 1071              		.cfi_def_cfa_register 13
+ 1072              		@ sp needed
+ 1073 006e 80BD     		pop	{r7, pc}
+ 1074              		.cfi_endproc
+ 1075              	.LFE12:
+ 1077              		.section	.text.mbedtls_entropy_source_self_test_check_bits,"ax",%progbits
+ 1078              		.align	1
+ 1079              		.syntax unified
+ 1080              		.thumb
+ 1081              		.thumb_func
+ 1082              		.fpu fpv4-sp-d16
+ 1084              	mbedtls_entropy_source_self_test_check_bits:
+ 1085              	.LFB13:
+ 567:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 568:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 569:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** static int mbedtls_entropy_source_self_test_check_bits( const unsigned char *buf,
+ 570:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                                         size_t buf_len )
+ 571:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 1086              		.loc 1 571 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 30
+
+
+ 1087              		.cfi_startproc
+ 1088              		@ args = 0, pretend = 0, frame = 16
+ 1089              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1090              		@ link register save eliminated.
+ 1091 0000 80B4     		push	{r7}
+ 1092              	.LCFI51:
+ 1093              		.cfi_def_cfa_offset 4
+ 1094              		.cfi_offset 7, -4
+ 1095 0002 85B0     		sub	sp, sp, #20
+ 1096              	.LCFI52:
+ 1097              		.cfi_def_cfa_offset 24
+ 1098 0004 00AF     		add	r7, sp, #0
+ 1099              	.LCFI53:
+ 1100              		.cfi_def_cfa_register 7
+ 1101 0006 7860     		str	r0, [r7, #4]
+ 1102 0008 3960     		str	r1, [r7]
+ 572:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char set= 0xFF;
+ 1103              		.loc 1 572 0
+ 1104 000a FF23     		movs	r3, #255
+ 1105 000c FB73     		strb	r3, [r7, #15]
+ 573:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char unset = 0x00;
+ 1106              		.loc 1 573 0
+ 1107 000e 0023     		movs	r3, #0
+ 1108 0010 BB73     		strb	r3, [r7, #14]
+ 574:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     size_t i;
+ 575:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 576:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     for( i = 0; i < buf_len; i++ )
+ 1109              		.loc 1 576 0
+ 1110 0012 0023     		movs	r3, #0
+ 1111 0014 BB60     		str	r3, [r7, #8]
+ 1112 0016 10E0     		b	.L68
+ 1113              	.L69:
+ 577:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 578:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         set &= buf[i];
+ 1114              		.loc 1 578 0 discriminator 3
+ 1115 0018 7A68     		ldr	r2, [r7, #4]
+ 1116 001a BB68     		ldr	r3, [r7, #8]
+ 1117 001c 1344     		add	r3, r3, r2
+ 1118 001e 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1119 0020 FB7B     		ldrb	r3, [r7, #15]
+ 1120 0022 1340     		ands	r3, r3, r2
+ 1121 0024 FB73     		strb	r3, [r7, #15]
+ 579:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         unset |= buf[i];
+ 1122              		.loc 1 579 0 discriminator 3
+ 1123 0026 7A68     		ldr	r2, [r7, #4]
+ 1124 0028 BB68     		ldr	r3, [r7, #8]
+ 1125 002a 1344     		add	r3, r3, r2
+ 1126 002c 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1127 002e BB7B     		ldrb	r3, [r7, #14]
+ 1128 0030 1343     		orrs	r3, r3, r2
+ 1129 0032 BB73     		strb	r3, [r7, #14]
+ 576:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 1130              		.loc 1 576 0 discriminator 3
+ 1131 0034 BB68     		ldr	r3, [r7, #8]
+ 1132 0036 0133     		adds	r3, r3, #1
+ 1133 0038 BB60     		str	r3, [r7, #8]
+ 1134              	.L68:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 31
+
+
+ 576:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 1135              		.loc 1 576 0 is_stmt 0 discriminator 1
+ 1136 003a BA68     		ldr	r2, [r7, #8]
+ 1137 003c 3B68     		ldr	r3, [r7]
+ 1138 003e 9A42     		cmp	r2, r3
+ 1139 0040 EAD3     		bcc	.L69
+ 580:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 581:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 582:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( set == 0xFF || unset == 0x00 );
+ 1140              		.loc 1 582 0 is_stmt 1
+ 1141 0042 FB7B     		ldrb	r3, [r7, #15]	@ zero_extendqisi2
+ 1142 0044 FF2B     		cmp	r3, #255
+ 1143 0046 02D0     		beq	.L70
+ 1144              		.loc 1 582 0 is_stmt 0 discriminator 2
+ 1145 0048 BB7B     		ldrb	r3, [r7, #14]	@ zero_extendqisi2
+ 1146 004a 002B     		cmp	r3, #0
+ 1147 004c 01D1     		bne	.L71
+ 1148              	.L70:
+ 1149              		.loc 1 582 0 discriminator 3
+ 1150 004e 0123     		movs	r3, #1
+ 1151 0050 00E0     		b	.L73
+ 1152              	.L71:
+ 1153              		.loc 1 582 0 discriminator 4
+ 1154 0052 0023     		movs	r3, #0
+ 1155              	.L73:
+ 583:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 1156              		.loc 1 583 0 is_stmt 1 discriminator 7
+ 1157 0054 1846     		mov	r0, r3
+ 1158 0056 1437     		adds	r7, r7, #20
+ 1159              	.LCFI54:
+ 1160              		.cfi_def_cfa_offset 4
+ 1161 0058 BD46     		mov	sp, r7
+ 1162              	.LCFI55:
+ 1163              		.cfi_def_cfa_register 13
+ 1164              		@ sp needed
+ 1165 005a 5DF8047B 		ldr	r7, [sp], #4
+ 1166              	.LCFI56:
+ 1167              		.cfi_restore 7
+ 1168              		.cfi_def_cfa_offset 0
+ 1169 005e 7047     		bx	lr
+ 1170              		.cfi_endproc
+ 1171              	.LFE13:
+ 1173              		.section	.rodata
+ 1174              		.align	2
+ 1175              	.LC0:
+ 1176 0000 2020454E 		.ascii	"  ENTROPY_BIAS test: \000"
+ 1176      54524F50 
+ 1176      595F4249 
+ 1176      41532074 
+ 1176      6573743A 
+ 1177 0016 0000     		.align	2
+ 1178              	.LC1:
+ 1179 0018 6661696C 		.ascii	"failed\012\000"
+ 1179      65640A00 
+ 1180              		.align	2
+ 1181              	.LC2:
+ 1182 0020 70617373 		.ascii	"passed\012\000"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 32
+
+
+ 1182      65640A00 
+ 1183              		.align	2
+ 1184              	.LC3:
+ 1185 0028 0A00     		.ascii	"\012\000"
+ 1186              		.section	.text.mbedtls_entropy_source_self_test,"ax",%progbits
+ 1187              		.align	1
+ 1188              		.global	mbedtls_entropy_source_self_test
+ 1189              		.syntax unified
+ 1190              		.thumb
+ 1191              		.thumb_func
+ 1192              		.fpu fpv4-sp-d16
+ 1194              	mbedtls_entropy_source_self_test:
+ 1195              	.LFB14:
+ 584:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 585:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** /*
+ 586:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  * A test to ensure hat the entropy sources are functioning correctly
+ 587:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  * and there is no obvious failure. The test performs the following checks:
+ 588:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  - The entropy source is not providing only 0s (all bits unset) or 1s (all
+ 589:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *    bits set).
+ 590:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  - The entropy source is not providing values in a pattern. Because the
+ 591:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *    hardware could be providing data in an arbitrary length, this check polls
+ 592:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *    the hardware entropy source twice and compares the result to ensure they
+ 593:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *    are not equal.
+ 594:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  *  - The error code returned by the entropy source is not an error.
+ 595:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  */
+ 596:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** int mbedtls_entropy_source_self_test( int verbose )
+ 597:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 1196              		.loc 1 597 0
+ 1197              		.cfi_startproc
+ 1198              		@ args = 0, pretend = 0, frame = 48
+ 1199              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1200 0000 80B5     		push	{r7, lr}
+ 1201              	.LCFI57:
+ 1202              		.cfi_def_cfa_offset 8
+ 1203              		.cfi_offset 7, -8
+ 1204              		.cfi_offset 14, -4
+ 1205 0002 8CB0     		sub	sp, sp, #48
+ 1206              	.LCFI58:
+ 1207              		.cfi_def_cfa_offset 56
+ 1208 0004 00AF     		add	r7, sp, #0
+ 1209              	.LCFI59:
+ 1210              		.cfi_def_cfa_register 7
+ 1211 0006 7860     		str	r0, [r7, #4]
+ 598:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret = 0;
+ 1212              		.loc 1 598 0
+ 1213 0008 0023     		movs	r3, #0
+ 1214 000a FB62     		str	r3, [r7, #44]
+ 599:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char buf0[2 * sizeof( unsigned long long int )];
+ 600:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char buf1[2 * sizeof( unsigned long long int )];
+ 601:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 602:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( verbose != 0 )
+ 1215              		.loc 1 602 0
+ 1216 000c 7B68     		ldr	r3, [r7, #4]
+ 1217 000e 002B     		cmp	r3, #0
+ 1218 0010 03D0     		beq	.L75
+ 603:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         mbedtls_printf( "  ENTROPY_BIAS test: " );
+ 1219              		.loc 1 603 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 33
+
+
+ 1220 0012 374B     		ldr	r3, .L89
+ 1221 0014 1B68     		ldr	r3, [r3]
+ 1222 0016 3748     		ldr	r0, .L89+4
+ 1223 0018 9847     		blx	r3
+ 1224              	.LVL1:
+ 1225              	.L75:
+ 604:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 605:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     memset( buf0, 0x00, sizeof( buf0 ) );
+ 1226              		.loc 1 605 0
+ 1227 001a 07F11C03 		add	r3, r7, #28
+ 1228 001e 1022     		movs	r2, #16
+ 1229 0020 0021     		movs	r1, #0
+ 1230 0022 1846     		mov	r0, r3
+ 1231 0024 FFF7FEFF 		bl	memset
+ 606:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     memset( buf1, 0x00, sizeof( buf1 ) );
+ 1232              		.loc 1 606 0
+ 1233 0028 07F10C03 		add	r3, r7, #12
+ 1234 002c 1022     		movs	r2, #16
+ 1235 002e 0021     		movs	r1, #0
+ 1236 0030 1846     		mov	r0, r3
+ 1237 0032 FFF7FEFF 		bl	memset
+ 607:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 608:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_source_self_test_gather( buf0, sizeof( buf0 ) ) ) != 0 )
+ 1238              		.loc 1 608 0
+ 1239 0036 07F11C03 		add	r3, r7, #28
+ 1240 003a 1021     		movs	r1, #16
+ 1241 003c 1846     		mov	r0, r3
+ 1242 003e FFF7FEFF 		bl	mbedtls_entropy_source_self_test_gather
+ 1243 0042 F862     		str	r0, [r7, #44]
+ 1244 0044 FB6A     		ldr	r3, [r7, #44]
+ 1245 0046 002B     		cmp	r3, #0
+ 1246 0048 2DD1     		bne	.L85
+ 609:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 610:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_source_self_test_gather( buf1, sizeof( buf1 ) ) ) != 0 )
+ 1247              		.loc 1 610 0
+ 1248 004a 07F10C03 		add	r3, r7, #12
+ 1249 004e 1021     		movs	r1, #16
+ 1250 0050 1846     		mov	r0, r3
+ 1251 0052 FFF7FEFF 		bl	mbedtls_entropy_source_self_test_gather
+ 1252 0056 F862     		str	r0, [r7, #44]
+ 1253 0058 FB6A     		ldr	r3, [r7, #44]
+ 1254 005a 002B     		cmp	r3, #0
+ 1255 005c 25D1     		bne	.L86
+ 611:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 612:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 613:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /* Make sure that the returned values are not all 0 or 1 */
+ 614:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_source_self_test_check_bits( buf0, sizeof( buf0 ) ) ) != 0 )
+ 1256              		.loc 1 614 0
+ 1257 005e 07F11C03 		add	r3, r7, #28
+ 1258 0062 1021     		movs	r1, #16
+ 1259 0064 1846     		mov	r0, r3
+ 1260 0066 FFF7FEFF 		bl	mbedtls_entropy_source_self_test_check_bits
+ 1261 006a F862     		str	r0, [r7, #44]
+ 1262 006c FB6A     		ldr	r3, [r7, #44]
+ 1263 006e 002B     		cmp	r3, #0
+ 1264 0070 1DD1     		bne	.L87
+ 615:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 34
+
+
+ 616:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_source_self_test_check_bits( buf1, sizeof( buf1 ) ) ) != 0 )
+ 1265              		.loc 1 616 0
+ 1266 0072 07F10C03 		add	r3, r7, #12
+ 1267 0076 1021     		movs	r1, #16
+ 1268 0078 1846     		mov	r0, r3
+ 1269 007a FFF7FEFF 		bl	mbedtls_entropy_source_self_test_check_bits
+ 1270 007e F862     		str	r0, [r7, #44]
+ 1271 0080 FB6A     		ldr	r3, [r7, #44]
+ 1272 0082 002B     		cmp	r3, #0
+ 1273 0084 15D1     		bne	.L88
+ 617:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 618:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 619:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /* Make sure that the entropy source is not returning values in a
+ 620:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * pattern */
+ 621:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = memcmp( buf0, buf1, sizeof( buf0 ) ) == 0;
+ 1274              		.loc 1 621 0
+ 1275 0086 07F10C01 		add	r1, r7, #12
+ 1276 008a 07F11C03 		add	r3, r7, #28
+ 1277 008e 1022     		movs	r2, #16
+ 1278 0090 1846     		mov	r0, r3
+ 1279 0092 FFF7FEFF 		bl	memcmp
+ 1280 0096 0346     		mov	r3, r0
+ 1281 0098 002B     		cmp	r3, #0
+ 1282 009a 0CBF     		ite	eq
+ 1283 009c 0123     		moveq	r3, #1
+ 1284 009e 0023     		movne	r3, #0
+ 1285 00a0 DBB2     		uxtb	r3, r3
+ 1286 00a2 FB62     		str	r3, [r7, #44]
+ 1287 00a4 06E0     		b	.L77
+ 1288              	.L85:
+ 609:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_source_self_test_gather( buf1, sizeof( buf1 ) ) ) != 0 )
+ 1289              		.loc 1 609 0
+ 1290 00a6 00BF     		nop
+ 1291 00a8 04E0     		b	.L77
+ 1292              	.L86:
+ 611:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 1293              		.loc 1 611 0
+ 1294 00aa 00BF     		nop
+ 1295 00ac 02E0     		b	.L77
+ 1296              	.L87:
+ 615:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_source_self_test_check_bits( buf1, sizeof( buf1 ) ) ) != 0 )
+ 1297              		.loc 1 615 0
+ 1298 00ae 00BF     		nop
+ 1299 00b0 00E0     		b	.L77
+ 1300              	.L88:
+ 617:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 1301              		.loc 1 617 0
+ 1302 00b2 00BF     		nop
+ 1303              	.L77:
+ 622:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 623:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** cleanup:
+ 624:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( verbose != 0 )
+ 1304              		.loc 1 624 0
+ 1305 00b4 7B68     		ldr	r3, [r7, #4]
+ 1306 00b6 002B     		cmp	r3, #0
+ 1307 00b8 0FD0     		beq	.L81
+ 625:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 35
+
+
+ 626:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ret != 0 )
+ 1308              		.loc 1 626 0
+ 1309 00ba FB6A     		ldr	r3, [r7, #44]
+ 1310 00bc 002B     		cmp	r3, #0
+ 1311 00be 04D0     		beq	.L82
+ 627:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             mbedtls_printf( "failed\n" );
+ 1312              		.loc 1 627 0
+ 1313 00c0 0B4B     		ldr	r3, .L89
+ 1314 00c2 1B68     		ldr	r3, [r3]
+ 1315 00c4 0C48     		ldr	r0, .L89+8
+ 1316 00c6 9847     		blx	r3
+ 1317              	.LVL2:
+ 1318 00c8 03E0     		b	.L83
+ 1319              	.L82:
+ 628:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         else
+ 629:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             mbedtls_printf( "passed\n" );
+ 1320              		.loc 1 629 0
+ 1321 00ca 094B     		ldr	r3, .L89
+ 1322 00cc 1B68     		ldr	r3, [r3]
+ 1323 00ce 0B48     		ldr	r0, .L89+12
+ 1324 00d0 9847     		blx	r3
+ 1325              	.LVL3:
+ 1326              	.L83:
+ 630:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 631:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         mbedtls_printf( "\n" );
+ 1327              		.loc 1 631 0
+ 1328 00d2 074B     		ldr	r3, .L89
+ 1329 00d4 1B68     		ldr	r3, [r3]
+ 1330 00d6 0A48     		ldr	r0, .L89+16
+ 1331 00d8 9847     		blx	r3
+ 1332              	.LVL4:
+ 1333              	.L81:
+ 632:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 633:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 634:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret != 0 );
+ 1334              		.loc 1 634 0
+ 1335 00da FB6A     		ldr	r3, [r7, #44]
+ 1336 00dc 002B     		cmp	r3, #0
+ 1337 00de 14BF     		ite	ne
+ 1338 00e0 0123     		movne	r3, #1
+ 1339 00e2 0023     		moveq	r3, #0
+ 1340 00e4 DBB2     		uxtb	r3, r3
+ 635:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 1341              		.loc 1 635 0
+ 1342 00e6 1846     		mov	r0, r3
+ 1343 00e8 3037     		adds	r7, r7, #48
+ 1344              	.LCFI60:
+ 1345              		.cfi_def_cfa_offset 8
+ 1346 00ea BD46     		mov	sp, r7
+ 1347              	.LCFI61:
+ 1348              		.cfi_def_cfa_register 13
+ 1349              		@ sp needed
+ 1350 00ec 80BD     		pop	{r7, pc}
+ 1351              	.L90:
+ 1352 00ee 00BF     		.align	2
+ 1353              	.L89:
+ 1354 00f0 00000000 		.word	mbedtls_printf
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 36
+
+
+ 1355 00f4 00000000 		.word	.LC0
+ 1356 00f8 18000000 		.word	.LC1
+ 1357 00fc 20000000 		.word	.LC2
+ 1358 0100 28000000 		.word	.LC3
+ 1359              		.cfi_endproc
+ 1360              	.LFE14:
+ 1362              		.section	.rodata
+ 1363 002a 0000     		.align	2
+ 1364              	.LC4:
+ 1365 002c 2020454E 		.ascii	"  ENTROPY test: \000"
+ 1365      54524F50 
+ 1365      59207465 
+ 1365      73743A20 
+ 1365      00
+ 1366              		.section	.text.mbedtls_entropy_self_test,"ax",%progbits
+ 1367              		.align	1
+ 1368              		.global	mbedtls_entropy_self_test
+ 1369              		.syntax unified
+ 1370              		.thumb
+ 1371              		.thumb_func
+ 1372              		.fpu fpv4-sp-d16
+ 1374              	mbedtls_entropy_self_test:
+ 1375              	.LFB15:
+ 636:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 637:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* MBEDTLS_ENTROPY_HARDWARE_ALT */
+ 638:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 639:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** /*
+ 640:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  * The actual entropy quality is hard to test, but we can at least
+ 641:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  * test that the functions don't cause errors and write the correct
+ 642:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  * amount of data to buffers.
+ 643:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****  */
+ 644:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** int mbedtls_entropy_self_test( int verbose )
+ 645:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** {
+ 1376              		.loc 1 645 0
+ 1377              		.cfi_startproc
+ 1378              		@ args = 0, pretend = 0, frame = 400
+ 1379              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1380 0000 80B5     		push	{r7, lr}
+ 1381              	.LCFI62:
+ 1382              		.cfi_def_cfa_offset 8
+ 1383              		.cfi_offset 7, -8
+ 1384              		.cfi_offset 14, -4
+ 1385 0002 E6B0     		sub	sp, sp, #408
+ 1386              	.LCFI63:
+ 1387              		.cfi_def_cfa_offset 416
+ 1388 0004 02AF     		add	r7, sp, #8
+ 1389              	.LCFI64:
+ 1390              		.cfi_def_cfa 7, 408
+ 1391 0006 3B1D     		adds	r3, r7, #4
+ 1392 0008 1860     		str	r0, [r3]
+ 646:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     int ret = 1;
+ 1393              		.loc 1 646 0
+ 1394 000a 0123     		movs	r3, #1
+ 1395 000c C7F88C31 		str	r3, [r7, #396]
+ 647:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if !defined(MBEDTLS_TEST_NULL_ENTROPY)
+ 648:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_context ctx;
+ 649:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char buf[MBEDTLS_ENTROPY_BLOCK_SIZE] = { 0 };
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 37
+
+
+ 1396              		.loc 1 649 0
+ 1397 0010 07F14803 		add	r3, r7, #72
+ 1398 0014 1846     		mov	r0, r3
+ 1399 0016 4023     		movs	r3, #64
+ 1400 0018 1A46     		mov	r2, r3
+ 1401 001a 0021     		movs	r1, #0
+ 1402 001c FFF7FEFF 		bl	memset
+ 650:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     unsigned char acc[MBEDTLS_ENTROPY_BLOCK_SIZE] = { 0 };
+ 1403              		.loc 1 650 0
+ 1404 0020 07F10803 		add	r3, r7, #8
+ 1405 0024 1846     		mov	r0, r3
+ 1406 0026 4023     		movs	r3, #64
+ 1407 0028 1A46     		mov	r2, r3
+ 1408 002a 0021     		movs	r1, #0
+ 1409 002c FFF7FEFF 		bl	memset
+ 651:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     size_t i, j;
+ 652:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* !MBEDTLS_TEST_NULL_ENTROPY */
+ 653:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 654:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( verbose != 0 )
+ 1410              		.loc 1 654 0
+ 1411 0030 3B1D     		adds	r3, r7, #4
+ 1412 0032 1B68     		ldr	r3, [r3]
+ 1413 0034 002B     		cmp	r3, #0
+ 1414 0036 03D0     		beq	.L92
+ 655:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         mbedtls_printf( "  ENTROPY test: " );
+ 1415              		.loc 1 655 0
+ 1416 0038 5E4B     		ldr	r3, .L113
+ 1417 003a 1B68     		ldr	r3, [r3]
+ 1418 003c 5E48     		ldr	r0, .L113+4
+ 1419 003e 9847     		blx	r3
+ 1420              	.LVL5:
+ 1421              	.L92:
+ 656:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 657:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if !defined(MBEDTLS_TEST_NULL_ENTROPY)
+ 658:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_init( &ctx );
+ 1422              		.loc 1 658 0
+ 1423 0040 07F18803 		add	r3, r7, #136
+ 1424 0044 1846     		mov	r0, r3
+ 1425 0046 FFF7FEFF 		bl	mbedtls_entropy_init
+ 659:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 660:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /* First do a gather to make sure we have default sources */
+ 661:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_gather( &ctx ) ) != 0 )
+ 1426              		.loc 1 661 0
+ 1427 004a 07F18803 		add	r3, r7, #136
+ 1428 004e 1846     		mov	r0, r3
+ 1429 0050 FFF7FEFF 		bl	mbedtls_entropy_gather
+ 1430 0054 C7F88C01 		str	r0, [r7, #396]
+ 1431 0058 D7F88C31 		ldr	r3, [r7, #396]
+ 1432 005c 002B     		cmp	r3, #0
+ 1433 005e 7BD1     		bne	.L109
+ 662:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 663:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 664:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     ret = mbedtls_entropy_add_source( &ctx, entropy_dummy_source, NULL, 16,
+ 1434              		.loc 1 664 0
+ 1435 0060 07F18800 		add	r0, r7, #136
+ 1436 0064 0023     		movs	r3, #0
+ 1437 0066 0093     		str	r3, [sp]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 38
+
+
+ 1438 0068 1023     		movs	r3, #16
+ 1439 006a 0022     		movs	r2, #0
+ 1440 006c 5349     		ldr	r1, .L113+8
+ 1441 006e FFF7FEFF 		bl	mbedtls_entropy_add_source
+ 1442 0072 C7F88C01 		str	r0, [r7, #396]
+ 665:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****                                       MBEDTLS_ENTROPY_SOURCE_WEAK );
+ 666:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ret != 0 )
+ 1443              		.loc 1 666 0
+ 1444 0076 D7F88C31 		ldr	r3, [r7, #396]
+ 1445 007a 002B     		cmp	r3, #0
+ 1446 007c 6ED1     		bne	.L110
+ 667:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 668:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 669:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_update_manual( &ctx, buf, sizeof buf ) ) != 0 )
+ 1447              		.loc 1 669 0
+ 1448 007e 07F14801 		add	r1, r7, #72
+ 1449 0082 07F18803 		add	r3, r7, #136
+ 1450 0086 4022     		movs	r2, #64
+ 1451 0088 1846     		mov	r0, r3
+ 1452 008a FFF7FEFF 		bl	mbedtls_entropy_update_manual
+ 1453 008e C7F88C01 		str	r0, [r7, #396]
+ 1454 0092 D7F88C31 		ldr	r3, [r7, #396]
+ 1455 0096 002B     		cmp	r3, #0
+ 1456 0098 62D1     		bne	.L111
+ 670:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 671:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 672:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     /*
+ 673:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * To test that mbedtls_entropy_func writes correct number of bytes:
+ 674:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * - use the whole buffer and rely on ASan to detect overruns
+ 675:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      * - collect entropy 8 times and OR the result in an accumulator:
+ 676:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      *   any byte should then be 0 with probably 2^(-64), so requiring
+ 677:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      *   each of the 32 or 64 bytes to be non-zero has a false failure rate
+ 678:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      *   of at most 2^(-58) which is acceptable.
+ 679:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****      */
+ 680:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     for( i = 0; i < 8; i++ )
+ 1457              		.loc 1 680 0
+ 1458 009a 0023     		movs	r3, #0
+ 1459 009c C7F88831 		str	r3, [r7, #392]
+ 1460 00a0 34E0     		b	.L97
+ 1461              	.L101:
+ 681:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 682:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ( ret = mbedtls_entropy_func( &ctx, buf, sizeof( buf ) ) ) != 0 )
+ 1462              		.loc 1 682 0
+ 1463 00a2 07F14801 		add	r1, r7, #72
+ 1464 00a6 07F18803 		add	r3, r7, #136
+ 1465 00aa 4022     		movs	r2, #64
+ 1466 00ac 1846     		mov	r0, r3
+ 1467 00ae FFF7FEFF 		bl	mbedtls_entropy_func
+ 1468 00b2 C7F88C01 		str	r0, [r7, #396]
+ 1469 00b6 D7F88C31 		ldr	r3, [r7, #396]
+ 1470 00ba 002B     		cmp	r3, #0
+ 1471 00bc 52D1     		bne	.L112
+ 683:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             goto cleanup;
+ 684:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 685:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         for( j = 0; j < sizeof( buf ); j++ )
+ 1472              		.loc 1 685 0
+ 1473 00be 0023     		movs	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 39
+
+
+ 1474 00c0 C7F88431 		str	r3, [r7, #388]
+ 1475 00c4 19E0     		b	.L99
+ 1476              	.L100:
+ 686:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             acc[j] |= buf[j];
+ 1477              		.loc 1 686 0 discriminator 3
+ 1478 00c6 07F10802 		add	r2, r7, #8
+ 1479 00ca D7F88431 		ldr	r3, [r7, #388]
+ 1480 00ce 1344     		add	r3, r3, r2
+ 1481 00d0 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1482 00d2 07F14801 		add	r1, r7, #72
+ 1483 00d6 D7F88431 		ldr	r3, [r7, #388]
+ 1484 00da 0B44     		add	r3, r3, r1
+ 1485 00dc 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1486 00de 1343     		orrs	r3, r3, r2
+ 1487 00e0 D9B2     		uxtb	r1, r3
+ 1488 00e2 07F10802 		add	r2, r7, #8
+ 1489 00e6 D7F88431 		ldr	r3, [r7, #388]
+ 1490 00ea 1344     		add	r3, r3, r2
+ 1491 00ec 0A46     		mov	r2, r1
+ 1492 00ee 1A70     		strb	r2, [r3]
+ 685:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             acc[j] |= buf[j];
+ 1493              		.loc 1 685 0 discriminator 3
+ 1494 00f0 D7F88431 		ldr	r3, [r7, #388]
+ 1495 00f4 0133     		adds	r3, r3, #1
+ 1496 00f6 C7F88431 		str	r3, [r7, #388]
+ 1497              	.L99:
+ 685:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             acc[j] |= buf[j];
+ 1498              		.loc 1 685 0 is_stmt 0 discriminator 1
+ 1499 00fa D7F88431 		ldr	r3, [r7, #388]
+ 1500 00fe 3F2B     		cmp	r3, #63
+ 1501 0100 E1D9     		bls	.L100
+ 680:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 1502              		.loc 1 680 0 is_stmt 1 discriminator 2
+ 1503 0102 D7F88831 		ldr	r3, [r7, #392]
+ 1504 0106 0133     		adds	r3, r3, #1
+ 1505 0108 C7F88831 		str	r3, [r7, #392]
+ 1506              	.L97:
+ 680:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 1507              		.loc 1 680 0 is_stmt 0 discriminator 1
+ 1508 010c D7F88831 		ldr	r3, [r7, #392]
+ 1509 0110 072B     		cmp	r3, #7
+ 1510 0112 C6D9     		bls	.L101
+ 687:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 688:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 689:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     for( j = 0; j < sizeof( buf ); j++ )
+ 1511              		.loc 1 689 0 is_stmt 1
+ 1512 0114 0023     		movs	r3, #0
+ 1513 0116 C7F88431 		str	r3, [r7, #388]
+ 1514 011a 10E0     		b	.L102
+ 1515              	.L104:
+ 690:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 691:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( acc[j] == 0 )
+ 1516              		.loc 1 691 0
+ 1517 011c 07F10802 		add	r2, r7, #8
+ 1518 0120 D7F88431 		ldr	r3, [r7, #388]
+ 1519 0124 1344     		add	r3, r3, r2
+ 1520 0126 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 40
+
+
+ 1521 0128 002B     		cmp	r3, #0
+ 1522 012a 03D1     		bne	.L103
+ 692:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         {
+ 693:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             ret = 1;
+ 1523              		.loc 1 693 0
+ 1524 012c 0123     		movs	r3, #1
+ 1525 012e C7F88C31 		str	r3, [r7, #396]
+ 694:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             goto cleanup;
+ 1526              		.loc 1 694 0
+ 1527 0132 18E0     		b	.L94
+ 1528              	.L103:
+ 689:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 1529              		.loc 1 689 0 discriminator 2
+ 1530 0134 D7F88431 		ldr	r3, [r7, #388]
+ 1531 0138 0133     		adds	r3, r3, #1
+ 1532 013a C7F88431 		str	r3, [r7, #388]
+ 1533              	.L102:
+ 689:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 1534              		.loc 1 689 0 is_stmt 0 discriminator 1
+ 1535 013e D7F88431 		ldr	r3, [r7, #388]
+ 1536 0142 3F2B     		cmp	r3, #63
+ 1537 0144 EAD9     		bls	.L104
+ 695:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         }
+ 696:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 697:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 698:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #if defined(MBEDTLS_ENTROPY_HARDWARE_ALT)
+ 699:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( ( ret = mbedtls_entropy_source_self_test( 0 ) ) != 0 )
+ 1538              		.loc 1 699 0 is_stmt 1
+ 1539 0146 0020     		movs	r0, #0
+ 1540 0148 FFF7FEFF 		bl	mbedtls_entropy_source_self_test
+ 1541 014c C7F88C01 		str	r0, [r7, #396]
+ 1542 0150 D7F88C31 		ldr	r3, [r7, #396]
+ 1543 0154 002B     		cmp	r3, #0
+ 700:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         goto cleanup;
+ 701:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif
+ 702:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 703:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** cleanup:
+ 1544              		.loc 1 703 0
+ 1545 0156 06E0     		b	.L94
+ 1546              	.L109:
+ 662:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 1547              		.loc 1 662 0
+ 1548 0158 00BF     		nop
+ 1549 015a 04E0     		b	.L94
+ 1550              	.L110:
+ 667:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 1551              		.loc 1 667 0
+ 1552 015c 00BF     		nop
+ 1553 015e 02E0     		b	.L94
+ 1554              	.L111:
+ 670:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 1555              		.loc 1 670 0
+ 1556 0160 00BF     		nop
+ 1557 0162 00E0     		b	.L94
+ 1558              	.L112:
+ 683:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 1559              		.loc 1 683 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 41
+
+
+ 1560 0164 00BF     		nop
+ 1561              	.L94:
+ 704:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     mbedtls_entropy_free( &ctx );
+ 1562              		.loc 1 704 0
+ 1563 0166 07F18803 		add	r3, r7, #136
+ 1564 016a 1846     		mov	r0, r3
+ 1565 016c FFF7FEFF 		bl	mbedtls_entropy_free
+ 705:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** #endif /* !MBEDTLS_TEST_NULL_ENTROPY */
+ 706:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 707:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     if( verbose != 0 )
+ 1566              		.loc 1 707 0
+ 1567 0170 3B1D     		adds	r3, r7, #4
+ 1568 0172 1B68     		ldr	r3, [r3]
+ 1569 0174 002B     		cmp	r3, #0
+ 1570 0176 10D0     		beq	.L105
+ 708:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     {
+ 709:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         if( ret != 0 )
+ 1571              		.loc 1 709 0
+ 1572 0178 D7F88C31 		ldr	r3, [r7, #396]
+ 1573 017c 002B     		cmp	r3, #0
+ 1574 017e 04D0     		beq	.L106
+ 710:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             mbedtls_printf( "failed\n" );
+ 1575              		.loc 1 710 0
+ 1576 0180 0C4B     		ldr	r3, .L113
+ 1577 0182 1B68     		ldr	r3, [r3]
+ 1578 0184 0E48     		ldr	r0, .L113+12
+ 1579 0186 9847     		blx	r3
+ 1580              	.LVL6:
+ 1581 0188 03E0     		b	.L107
+ 1582              	.L106:
+ 711:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         else
+ 712:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****             mbedtls_printf( "passed\n" );
+ 1583              		.loc 1 712 0
+ 1584 018a 0A4B     		ldr	r3, .L113
+ 1585 018c 1B68     		ldr	r3, [r3]
+ 1586 018e 0D48     		ldr	r0, .L113+16
+ 1587 0190 9847     		blx	r3
+ 1588              	.LVL7:
+ 1589              	.L107:
+ 713:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 714:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****         mbedtls_printf( "\n" );
+ 1590              		.loc 1 714 0
+ 1591 0192 084B     		ldr	r3, .L113
+ 1592 0194 1B68     		ldr	r3, [r3]
+ 1593 0196 0C48     		ldr	r0, .L113+20
+ 1594 0198 9847     		blx	r3
+ 1595              	.LVL8:
+ 1596              	.L105:
+ 715:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     }
+ 716:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** 
+ 717:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c ****     return( ret != 0 );
+ 1597              		.loc 1 717 0
+ 1598 019a D7F88C31 		ldr	r3, [r7, #396]
+ 1599 019e 002B     		cmp	r3, #0
+ 1600 01a0 14BF     		ite	ne
+ 1601 01a2 0123     		movne	r3, #1
+ 1602 01a4 0023     		moveq	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 42
+
+
+ 1603 01a6 DBB2     		uxtb	r3, r3
+ 718:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\entropy.c **** }
+ 1604              		.loc 1 718 0
+ 1605 01a8 1846     		mov	r0, r3
+ 1606 01aa 07F5C877 		add	r7, r7, #400
+ 1607              	.LCFI65:
+ 1608              		.cfi_def_cfa_offset 8
+ 1609 01ae BD46     		mov	sp, r7
+ 1610              	.LCFI66:
+ 1611              		.cfi_def_cfa_register 13
+ 1612              		@ sp needed
+ 1613 01b0 80BD     		pop	{r7, pc}
+ 1614              	.L114:
+ 1615 01b2 00BF     		.align	2
+ 1616              	.L113:
+ 1617 01b4 00000000 		.word	mbedtls_printf
+ 1618 01b8 2C000000 		.word	.LC4
+ 1619 01bc 00000000 		.word	entropy_dummy_source
+ 1620 01c0 18000000 		.word	.LC1
+ 1621 01c4 20000000 		.word	.LC2
+ 1622 01c8 28000000 		.word	.LC3
+ 1623              		.cfi_endproc
+ 1624              	.LFE15:
+ 1626              		.text
+ 1627              	.Letext0:
+ 1628              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1629              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1630              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1631              		.file 5 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 1632              		.file 6 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 1633              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1634              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1635              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1636              		.file 10 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1637              		.file 11 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.201807
+ 1638              		.file 12 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s 			page 43
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 entropy.c
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:18     .text.mbedtls_entropy_init:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:25     .text.mbedtls_entropy_init:00000000 mbedtls_entropy_init
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:155    .text.mbedtls_entropy_add_source:00000000 mbedtls_entropy_add_source
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:85     .text.mbedtls_entropy_init:00000048 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:90     .text.mbedtls_entropy_free:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:97     .text.mbedtls_entropy_free:00000000 mbedtls_entropy_free
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:148    .text.mbedtls_entropy_add_source:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:264    .text.entropy_update:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:270    .text.entropy_update:00000000 entropy_update
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:403    .text.mbedtls_entropy_update_manual:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:410    .text.mbedtls_entropy_update_manual:00000000 mbedtls_entropy_update_manual
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:453    .text.entropy_gather_internal:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:459    .text.entropy_gather_internal:00000000 entropy_gather_internal
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:632    .text.mbedtls_entropy_gather:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:639    .text.mbedtls_entropy_gather:00000000 mbedtls_entropy_gather
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:677    .text.mbedtls_entropy_func:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:684    .text.mbedtls_entropy_func:00000000 mbedtls_entropy_func
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:922    .text.entropy_dummy_source:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:928    .text.entropy_dummy_source:00000000 entropy_dummy_source
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:974    .text.mbedtls_entropy_source_self_test_gather:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:980    .text.mbedtls_entropy_source_self_test_gather:00000000 mbedtls_entropy_source_self_test_gather
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:1078   .text.mbedtls_entropy_source_self_test_check_bits:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:1084   .text.mbedtls_entropy_source_self_test_check_bits:00000000 mbedtls_entropy_source_self_test_check_bits
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:1174   .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:1187   .text.mbedtls_entropy_source_self_test:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:1194   .text.mbedtls_entropy_source_self_test:00000000 mbedtls_entropy_source_self_test
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:1354   .text.mbedtls_entropy_source_self_test:000000f0 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:1367   .text.mbedtls_entropy_self_test:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:1374   .text.mbedtls_entropy_self_test:00000000 mbedtls_entropy_self_test
+C:\Users\dtjld\AppData\Local\Temp\ccJW0R6C.s:1617   .text.mbedtls_entropy_self_test:000001b4 $d
+
+UNDEFINED SYMBOLS
+memset
+mbedtls_sha512_init
+mbedtls_hardware_poll
+mbedtls_sha512_free
+mbedtls_platform_zeroize
+mbedtls_sha512_ret
+mbedtls_sha512_starts_ret
+mbedtls_sha512_update_ret
+mbedtls_sha512_finish_ret
+memcpy
+memcmp
+mbedtls_printf

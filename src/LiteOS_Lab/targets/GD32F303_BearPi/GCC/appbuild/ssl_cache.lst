@@ -1,0 +1,1051 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"ssl_cache.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.mbedtls_ssl_cache_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	mbedtls_ssl_cache_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	mbedtls_ssl_cache_init:
+  26              	.LFB20:
+  27              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** /*
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  SSL session cache implementation
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  SPDX-License-Identifier: Apache-2.0
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  not use this file except in compliance with the License.
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  You may obtain a copy of the License at
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  http://www.apache.org/licenses/LICENSE-2.0
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  Unless required by applicable law or agreed to in writing, software
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  See the License for the specific language governing permissions and
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  limitations under the License.
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  *  This file is part of mbed TLS (https://tls.mbed.org)
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  */
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** /*
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  * These session callbacks use a simple chained list
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  * to store and retrieve the session information.
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****  */
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #include "mbedtls/config.h"
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #else
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #include MBEDTLS_CONFIG_FILE
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 2
+
+
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_SSL_CACHE_C)
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_PLATFORM_C)
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #include "mbedtls/platform.h"
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #else
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #include <stdlib.h>
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #define mbedtls_calloc    calloc
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #define mbedtls_free      free
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #include "mbedtls/ssl_cache.h"
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #include <string.h>
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** void mbedtls_ssl_cache_init( mbedtls_ssl_cache_context *cache )
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** {
+  28              		.loc 1 47 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 82B0     		sub	sp, sp, #8
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 16
+  40 0004 00AF     		add	r7, sp, #0
+  41              	.LCFI2:
+  42              		.cfi_def_cfa_register 7
+  43 0006 7860     		str	r0, [r7, #4]
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     memset( cache, 0, sizeof( mbedtls_ssl_cache_context ) );
+  44              		.loc 1 48 0
+  45 0008 0C22     		movs	r2, #12
+  46 000a 0021     		movs	r1, #0
+  47 000c 7868     		ldr	r0, [r7, #4]
+  48 000e FFF7FEFF 		bl	memset
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     cache->timeout = MBEDTLS_SSL_CACHE_DEFAULT_TIMEOUT;
+  49              		.loc 1 50 0
+  50 0012 7B68     		ldr	r3, [r7, #4]
+  51 0014 044A     		ldr	r2, .L2
+  52 0016 5A60     		str	r2, [r3, #4]
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     cache->max_entries = MBEDTLS_SSL_CACHE_DEFAULT_MAX_ENTRIES;
+  53              		.loc 1 51 0
+  54 0018 7B68     		ldr	r3, [r7, #4]
+  55 001a 3222     		movs	r2, #50
+  56 001c 9A60     		str	r2, [r3, #8]
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_THREADING_C)
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_mutex_init( &cache->mutex );
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** }
+  57              		.loc 1 56 0
+  58 001e 00BF     		nop
+  59 0020 0837     		adds	r7, r7, #8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 3
+
+
+  60              	.LCFI3:
+  61              		.cfi_def_cfa_offset 8
+  62 0022 BD46     		mov	sp, r7
+  63              	.LCFI4:
+  64              		.cfi_def_cfa_register 13
+  65              		@ sp needed
+  66 0024 80BD     		pop	{r7, pc}
+  67              	.L3:
+  68 0026 00BF     		.align	2
+  69              	.L2:
+  70 0028 80510100 		.word	86400
+  71              		.cfi_endproc
+  72              	.LFE20:
+  74              		.section	.text.mbedtls_ssl_cache_get,"ax",%progbits
+  75              		.align	1
+  76              		.global	mbedtls_ssl_cache_get
+  77              		.syntax unified
+  78              		.thumb
+  79              		.thumb_func
+  80              		.fpu fpv4-sp-d16
+  82              	mbedtls_ssl_cache_get:
+  83              	.LFB21:
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** int mbedtls_ssl_cache_get( void *data, mbedtls_ssl_session *session )
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** {
+  84              		.loc 1 59 0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 24
+  87              		@ frame_needed = 1, uses_anonymous_args = 0
+  88 0000 80B5     		push	{r7, lr}
+  89              	.LCFI5:
+  90              		.cfi_def_cfa_offset 8
+  91              		.cfi_offset 7, -8
+  92              		.cfi_offset 14, -4
+  93 0002 86B0     		sub	sp, sp, #24
+  94              	.LCFI6:
+  95              		.cfi_def_cfa_offset 32
+  96 0004 00AF     		add	r7, sp, #0
+  97              	.LCFI7:
+  98              		.cfi_def_cfa_register 7
+  99 0006 7860     		str	r0, [r7, #4]
+ 100 0008 3960     		str	r1, [r7]
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     int ret = 1;
+ 101              		.loc 1 60 0
+ 102 000a 0123     		movs	r3, #1
+ 103 000c 7B61     		str	r3, [r7, #20]
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_HAVE_TIME)
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_time_t t = mbedtls_time( NULL );
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_ssl_cache_context *cache = (mbedtls_ssl_cache_context *) data;
+ 104              		.loc 1 64 0
+ 105 000e 7B68     		ldr	r3, [r7, #4]
+ 106 0010 FB60     		str	r3, [r7, #12]
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_ssl_cache_entry *cur, *entry;
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_THREADING_C)
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     if( mbedtls_mutex_lock( &cache->mutex ) != 0 )
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 4
+
+
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         return( 1 );
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     cur = cache->chain;
+ 107              		.loc 1 72 0
+ 108 0012 FB68     		ldr	r3, [r7, #12]
+ 109 0014 1B68     		ldr	r3, [r3]
+ 110 0016 3B61     		str	r3, [r7, #16]
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     entry = NULL;
+ 111              		.loc 1 73 0
+ 112 0018 0023     		movs	r3, #0
+ 113 001a BB60     		str	r3, [r7, #8]
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     while( cur != NULL )
+ 114              		.loc 1 75 0
+ 115 001c 69E0     		b	.L5
+ 116              	.L12:
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     {
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         entry = cur;
+ 117              		.loc 1 77 0
+ 118 001e 3B69     		ldr	r3, [r7, #16]
+ 119 0020 BB60     		str	r3, [r7, #8]
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         cur = cur->next;
+ 120              		.loc 1 78 0
+ 121 0022 3B69     		ldr	r3, [r7, #16]
+ 122 0024 D3F88830 		ldr	r3, [r3, #136]
+ 123 0028 3B61     		str	r3, [r7, #16]
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_HAVE_TIME)
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( cache->timeout != 0 &&
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             (int) ( t - entry->timestamp ) > cache->timeout )
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             continue;
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( session->ciphersuite != entry->session.ciphersuite ||
+ 124              		.loc 1 86 0
+ 125 002a 3B68     		ldr	r3, [r7]
+ 126 002c 1A68     		ldr	r2, [r3]
+ 127 002e BB68     		ldr	r3, [r7, #8]
+ 128 0030 1B68     		ldr	r3, [r3]
+ 129 0032 9A42     		cmp	r2, r3
+ 130 0034 5DD1     		bne	.L5
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             session->compression != entry->session.compression ||
+ 131              		.loc 1 87 0 discriminator 1
+ 132 0036 3B68     		ldr	r3, [r7]
+ 133 0038 5A68     		ldr	r2, [r3, #4]
+ 134 003a BB68     		ldr	r3, [r7, #8]
+ 135 003c 5B68     		ldr	r3, [r3, #4]
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             session->compression != entry->session.compression ||
+ 136              		.loc 1 86 0 discriminator 1
+ 137 003e 9A42     		cmp	r2, r3
+ 138 0040 57D1     		bne	.L5
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             session->id_len != entry->session.id_len )
+ 139              		.loc 1 88 0
+ 140 0042 3B68     		ldr	r3, [r7]
+ 141 0044 9A68     		ldr	r2, [r3, #8]
+ 142 0046 BB68     		ldr	r3, [r7, #8]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 5
+
+
+ 143 0048 9B68     		ldr	r3, [r3, #8]
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             session->compression != entry->session.compression ||
+ 144              		.loc 1 87 0
+ 145 004a 9A42     		cmp	r2, r3
+ 146 004c 00D0     		beq	.L7
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             continue;
+ 147              		.loc 1 89 0
+ 148 004e 50E0     		b	.L5
+ 149              	.L7:
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( memcmp( session->id, entry->session.id,
+ 150              		.loc 1 91 0
+ 151 0050 3B68     		ldr	r3, [r7]
+ 152 0052 03F10C00 		add	r0, r3, #12
+ 153 0056 BB68     		ldr	r3, [r7, #8]
+ 154 0058 03F10C01 		add	r1, r3, #12
+ 155 005c BB68     		ldr	r3, [r7, #8]
+ 156 005e 9B68     		ldr	r3, [r3, #8]
+ 157 0060 1A46     		mov	r2, r3
+ 158 0062 FFF7FEFF 		bl	memcmp
+ 159 0066 0346     		mov	r3, r0
+ 160 0068 002B     		cmp	r3, #0
+ 161 006a 00D0     		beq	.L8
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                     entry->session.id_len ) != 0 )
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             continue;
+ 162              		.loc 1 93 0
+ 163 006c 41E0     		b	.L5
+ 164              	.L8:
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         memcpy( session->master, entry->session.master, 48 );
+ 165              		.loc 1 95 0
+ 166 006e 3B68     		ldr	r3, [r7]
+ 167 0070 03F12C00 		add	r0, r3, #44
+ 168 0074 BB68     		ldr	r3, [r7, #8]
+ 169 0076 2C33     		adds	r3, r3, #44
+ 170 0078 3022     		movs	r2, #48
+ 171 007a 1946     		mov	r1, r3
+ 172 007c FFF7FEFF 		bl	memcpy
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         session->verify_result = entry->session.verify_result;
+ 173              		.loc 1 97 0
+ 174 0080 BB68     		ldr	r3, [r7, #8]
+ 175 0082 1A6E     		ldr	r2, [r3, #96]
+ 176 0084 3B68     		ldr	r3, [r7]
+ 177 0086 1A66     		str	r2, [r3, #96]
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_X509_CRT_PARSE_C)
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         /*
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****          * Restore peer certificate (without rest of the original chain)
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****          */
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( entry->peer_cert.p != NULL )
+ 178              		.loc 1 103 0
+ 179 0088 BB68     		ldr	r3, [r7, #8]
+ 180 008a D3F88430 		ldr	r3, [r3, #132]
+ 181 008e 002B     		cmp	r3, #0
+ 182 0090 2CD0     		beq	.L9
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         {
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 6
+
+
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             if( ( session->peer_cert = mbedtls_calloc( 1,
+ 183              		.loc 1 105 0
+ 184 0092 4FF49A71 		mov	r1, #308
+ 185 0096 0120     		movs	r0, #1
+ 186 0098 FFF7FEFF 		bl	mbedtls_calloc
+ 187 009c 0246     		mov	r2, r0
+ 188 009e 3B68     		ldr	r3, [r7]
+ 189 00a0 DA65     		str	r2, [r3, #92]
+ 190 00a2 3B68     		ldr	r3, [r7]
+ 191 00a4 DB6D     		ldr	r3, [r3, #92]
+ 192 00a6 002B     		cmp	r3, #0
+ 193 00a8 02D1     		bne	.L10
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                                  sizeof(mbedtls_x509_crt) ) ) == NULL )
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             {
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 ret = 1;
+ 194              		.loc 1 108 0
+ 195 00aa 0123     		movs	r3, #1
+ 196 00ac 7B61     		str	r3, [r7, #20]
+ 109:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 goto exit;
+ 197              		.loc 1 109 0
+ 198 00ae 24E0     		b	.L11
+ 199              	.L10:
+ 110:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             }
+ 111:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 112:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             mbedtls_x509_crt_init( session->peer_cert );
+ 200              		.loc 1 112 0
+ 201 00b0 3B68     		ldr	r3, [r7]
+ 202 00b2 DB6D     		ldr	r3, [r3, #92]
+ 203 00b4 1846     		mov	r0, r3
+ 204 00b6 FFF7FEFF 		bl	mbedtls_x509_crt_init
+ 113:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             if( mbedtls_x509_crt_parse( session->peer_cert, entry->peer_cert.p,
+ 205              		.loc 1 113 0
+ 206 00ba 3B68     		ldr	r3, [r7]
+ 207 00bc D86D     		ldr	r0, [r3, #92]
+ 208 00be BB68     		ldr	r3, [r7, #8]
+ 209 00c0 D3F88410 		ldr	r1, [r3, #132]
+ 210 00c4 BB68     		ldr	r3, [r7, #8]
+ 211 00c6 D3F88030 		ldr	r3, [r3, #128]
+ 212 00ca 1A46     		mov	r2, r3
+ 213 00cc FFF7FEFF 		bl	mbedtls_x509_crt_parse
+ 214 00d0 0346     		mov	r3, r0
+ 215 00d2 002B     		cmp	r3, #0
+ 216 00d4 0AD0     		beq	.L9
+ 114:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                                 entry->peer_cert.len ) != 0 )
+ 115:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             {
+ 116:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 mbedtls_free( session->peer_cert );
+ 217              		.loc 1 116 0
+ 218 00d6 3B68     		ldr	r3, [r7]
+ 219 00d8 DB6D     		ldr	r3, [r3, #92]
+ 220 00da 1846     		mov	r0, r3
+ 221 00dc FFF7FEFF 		bl	mbedtls_free
+ 117:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 session->peer_cert = NULL;
+ 222              		.loc 1 117 0
+ 223 00e0 3B68     		ldr	r3, [r7]
+ 224 00e2 0022     		movs	r2, #0
+ 225 00e4 DA65     		str	r2, [r3, #92]
+ 118:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 ret = 1;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 7
+
+
+ 226              		.loc 1 118 0
+ 227 00e6 0123     		movs	r3, #1
+ 228 00e8 7B61     		str	r3, [r7, #20]
+ 119:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 goto exit;
+ 229              		.loc 1 119 0
+ 230 00ea 06E0     		b	.L11
+ 231              	.L9:
+ 120:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             }
+ 121:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         }
+ 122:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif /* MBEDTLS_X509_CRT_PARSE_C */
+ 123:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 124:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         ret = 0;
+ 232              		.loc 1 124 0
+ 233 00ec 0023     		movs	r3, #0
+ 234 00ee 7B61     		str	r3, [r7, #20]
+ 125:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         goto exit;
+ 235              		.loc 1 125 0
+ 236 00f0 03E0     		b	.L11
+ 237              	.L5:
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     {
+ 238              		.loc 1 75 0
+ 239 00f2 3B69     		ldr	r3, [r7, #16]
+ 240 00f4 002B     		cmp	r3, #0
+ 241 00f6 92D1     		bne	.L12
+ 126:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     }
+ 127:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 128:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** exit:
+ 242              		.loc 1 128 0
+ 243 00f8 00BF     		nop
+ 244              	.L11:
+ 129:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_THREADING_C)
+ 130:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     if( mbedtls_mutex_unlock( &cache->mutex ) != 0 )
+ 131:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         ret = 1;
+ 132:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+ 133:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 134:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     return( ret );
+ 245              		.loc 1 134 0
+ 246 00fa 7B69     		ldr	r3, [r7, #20]
+ 135:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** }
+ 247              		.loc 1 135 0
+ 248 00fc 1846     		mov	r0, r3
+ 249 00fe 1837     		adds	r7, r7, #24
+ 250              	.LCFI8:
+ 251              		.cfi_def_cfa_offset 8
+ 252 0100 BD46     		mov	sp, r7
+ 253              	.LCFI9:
+ 254              		.cfi_def_cfa_register 13
+ 255              		@ sp needed
+ 256 0102 80BD     		pop	{r7, pc}
+ 257              		.cfi_endproc
+ 258              	.LFE21:
+ 260              		.section	.text.mbedtls_ssl_cache_set,"ax",%progbits
+ 261              		.align	1
+ 262              		.global	mbedtls_ssl_cache_set
+ 263              		.syntax unified
+ 264              		.thumb
+ 265              		.thumb_func
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 8
+
+
+ 266              		.fpu fpv4-sp-d16
+ 268              	mbedtls_ssl_cache_set:
+ 269              	.LFB22:
+ 136:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 137:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** int mbedtls_ssl_cache_set( void *data, const mbedtls_ssl_session *session )
+ 138:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** {
+ 270              		.loc 1 138 0
+ 271              		.cfi_startproc
+ 272              		@ args = 0, pretend = 0, frame = 32
+ 273              		@ frame_needed = 1, uses_anonymous_args = 0
+ 274 0000 80B5     		push	{r7, lr}
+ 275              	.LCFI10:
+ 276              		.cfi_def_cfa_offset 8
+ 277              		.cfi_offset 7, -8
+ 278              		.cfi_offset 14, -4
+ 279 0002 88B0     		sub	sp, sp, #32
+ 280              	.LCFI11:
+ 281              		.cfi_def_cfa_offset 40
+ 282 0004 00AF     		add	r7, sp, #0
+ 283              	.LCFI12:
+ 284              		.cfi_def_cfa_register 7
+ 285 0006 7860     		str	r0, [r7, #4]
+ 286 0008 3960     		str	r1, [r7]
+ 139:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     int ret = 1;
+ 287              		.loc 1 139 0
+ 288 000a 0123     		movs	r3, #1
+ 289 000c FB61     		str	r3, [r7, #28]
+ 140:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_HAVE_TIME)
+ 141:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_time_t t = mbedtls_time( NULL ), oldest = 0;
+ 142:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_ssl_cache_entry *old = NULL;
+ 143:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+ 144:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_ssl_cache_context *cache = (mbedtls_ssl_cache_context *) data;
+ 290              		.loc 1 144 0
+ 291 000e 7B68     		ldr	r3, [r7, #4]
+ 292 0010 FB60     		str	r3, [r7, #12]
+ 145:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_ssl_cache_entry *cur, *prv;
+ 146:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     int count = 0;
+ 293              		.loc 1 146 0
+ 294 0012 0023     		movs	r3, #0
+ 295 0014 3B61     		str	r3, [r7, #16]
+ 147:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 148:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_THREADING_C)
+ 149:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     if( ( ret = mbedtls_mutex_lock( &cache->mutex ) ) != 0 )
+ 150:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         return( ret );
+ 151:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+ 152:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 153:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     cur = cache->chain;
+ 296              		.loc 1 153 0
+ 297 0016 FB68     		ldr	r3, [r7, #12]
+ 298 0018 1B68     		ldr	r3, [r3]
+ 299 001a BB61     		str	r3, [r7, #24]
+ 154:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     prv = NULL;
+ 300              		.loc 1 154 0
+ 301 001c 0023     		movs	r3, #0
+ 302 001e 7B61     		str	r3, [r7, #20]
+ 155:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 156:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     while( cur != NULL )
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 9
+
+
+ 303              		.loc 1 156 0
+ 304 0020 16E0     		b	.L15
+ 305              	.L18:
+ 157:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     {
+ 158:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         count++;
+ 306              		.loc 1 158 0
+ 307 0022 3B69     		ldr	r3, [r7, #16]
+ 308 0024 0133     		adds	r3, r3, #1
+ 309 0026 3B61     		str	r3, [r7, #16]
+ 159:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 160:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_HAVE_TIME)
+ 161:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( cache->timeout != 0 &&
+ 162:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             (int) ( t - cur->timestamp ) > cache->timeout )
+ 163:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         {
+ 164:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             cur->timestamp = t;
+ 165:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             break; /* expired, reuse this slot, update timestamp */
+ 166:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         }
+ 167:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+ 168:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 169:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( memcmp( session->id, cur->session.id, cur->session.id_len ) == 0 )
+ 310              		.loc 1 169 0
+ 311 0028 3B68     		ldr	r3, [r7]
+ 312 002a 03F10C00 		add	r0, r3, #12
+ 313 002e BB69     		ldr	r3, [r7, #24]
+ 314 0030 03F10C01 		add	r1, r3, #12
+ 315 0034 BB69     		ldr	r3, [r7, #24]
+ 316 0036 9B68     		ldr	r3, [r3, #8]
+ 317 0038 1A46     		mov	r2, r3
+ 318 003a FFF7FEFF 		bl	memcmp
+ 319 003e 0346     		mov	r3, r0
+ 320 0040 002B     		cmp	r3, #0
+ 321 0042 09D0     		beq	.L29
+ 170:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             break; /* client reconnected, keep timestamp for session id */
+ 171:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 172:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_HAVE_TIME)
+ 173:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( oldest == 0 || cur->timestamp < oldest )
+ 174:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         {
+ 175:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             oldest = cur->timestamp;
+ 176:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             old = cur;
+ 177:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         }
+ 178:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+ 179:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 180:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         prv = cur;
+ 322              		.loc 1 180 0
+ 323 0044 BB69     		ldr	r3, [r7, #24]
+ 324 0046 7B61     		str	r3, [r7, #20]
+ 181:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         cur = cur->next;
+ 325              		.loc 1 181 0
+ 326 0048 BB69     		ldr	r3, [r7, #24]
+ 327 004a D3F88830 		ldr	r3, [r3, #136]
+ 328 004e BB61     		str	r3, [r7, #24]
+ 329              	.L15:
+ 156:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     {
+ 330              		.loc 1 156 0
+ 331 0050 BB69     		ldr	r3, [r7, #24]
+ 332 0052 002B     		cmp	r3, #0
+ 333 0054 E5D1     		bne	.L18
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 10
+
+
+ 334 0056 00E0     		b	.L17
+ 335              	.L29:
+ 170:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             break; /* client reconnected, keep timestamp for session id */
+ 336              		.loc 1 170 0
+ 337 0058 00BF     		nop
+ 338              	.L17:
+ 182:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     }
+ 183:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 184:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     if( cur == NULL )
+ 339              		.loc 1 184 0
+ 340 005a BB69     		ldr	r3, [r7, #24]
+ 341 005c 002B     		cmp	r3, #0
+ 342 005e 32D1     		bne	.L19
+ 185:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     {
+ 186:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_HAVE_TIME)
+ 187:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         /*
+ 188:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****          * Reuse oldest entry if max_entries reached
+ 189:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****          */
+ 190:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( count >= cache->max_entries )
+ 191:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         {
+ 192:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             if( old == NULL )
+ 193:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             {
+ 194:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 ret = 1;
+ 195:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 goto exit;
+ 196:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             }
+ 197:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 198:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             cur = old;
+ 199:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         }
+ 200:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #else /* MBEDTLS_HAVE_TIME */
+ 201:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         /*
+ 202:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****          * Reuse first entry in chain if max_entries reached,
+ 203:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****          * but move to last place
+ 204:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****          */
+ 205:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( count >= cache->max_entries )
+ 343              		.loc 1 205 0
+ 344 0060 FB68     		ldr	r3, [r7, #12]
+ 345 0062 9B68     		ldr	r3, [r3, #8]
+ 346 0064 3A69     		ldr	r2, [r7, #16]
+ 347 0066 9A42     		cmp	r2, r3
+ 348 0068 17DB     		blt	.L20
+ 206:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         {
+ 207:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             if( cache->chain == NULL )
+ 349              		.loc 1 207 0
+ 350 006a FB68     		ldr	r3, [r7, #12]
+ 351 006c 1B68     		ldr	r3, [r3]
+ 352 006e 002B     		cmp	r3, #0
+ 353 0070 02D1     		bne	.L21
+ 208:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             {
+ 209:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 ret = 1;
+ 354              		.loc 1 209 0
+ 355 0072 0123     		movs	r3, #1
+ 356 0074 FB61     		str	r3, [r7, #28]
+ 210:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 goto exit;
+ 357              		.loc 1 210 0
+ 358 0076 6CE0     		b	.L22
+ 359              	.L21:
+ 211:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             }
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 11
+
+
+ 212:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 213:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             cur = cache->chain;
+ 360              		.loc 1 213 0
+ 361 0078 FB68     		ldr	r3, [r7, #12]
+ 362 007a 1B68     		ldr	r3, [r3]
+ 363 007c BB61     		str	r3, [r7, #24]
+ 214:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             cache->chain = cur->next;
+ 364              		.loc 1 214 0
+ 365 007e BB69     		ldr	r3, [r7, #24]
+ 366 0080 D3F88820 		ldr	r2, [r3, #136]
+ 367 0084 FB68     		ldr	r3, [r7, #12]
+ 368 0086 1A60     		str	r2, [r3]
+ 215:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             cur->next = NULL;
+ 369              		.loc 1 215 0
+ 370 0088 BB69     		ldr	r3, [r7, #24]
+ 371 008a 0022     		movs	r2, #0
+ 372 008c C3F88820 		str	r2, [r3, #136]
+ 216:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             prv->next = cur;
+ 373              		.loc 1 216 0
+ 374 0090 7B69     		ldr	r3, [r7, #20]
+ 375 0092 BA69     		ldr	r2, [r7, #24]
+ 376 0094 C3F88820 		str	r2, [r3, #136]
+ 377 0098 15E0     		b	.L19
+ 378              	.L20:
+ 217:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         }
+ 218:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif /* MBEDTLS_HAVE_TIME */
+ 219:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         else
+ 220:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         {
+ 221:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             /*
+ 222:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****              * max_entries not reached, create new entry
+ 223:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****              */
+ 224:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             cur = mbedtls_calloc( 1, sizeof(mbedtls_ssl_cache_entry) );
+ 379              		.loc 1 224 0
+ 380 009a 8C21     		movs	r1, #140
+ 381 009c 0120     		movs	r0, #1
+ 382 009e FFF7FEFF 		bl	mbedtls_calloc
+ 383 00a2 B861     		str	r0, [r7, #24]
+ 225:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             if( cur == NULL )
+ 384              		.loc 1 225 0
+ 385 00a4 BB69     		ldr	r3, [r7, #24]
+ 386 00a6 002B     		cmp	r3, #0
+ 387 00a8 02D1     		bne	.L23
+ 226:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             {
+ 227:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 ret = 1;
+ 388              		.loc 1 227 0
+ 389 00aa 0123     		movs	r3, #1
+ 390 00ac FB61     		str	r3, [r7, #28]
+ 228:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 goto exit;
+ 391              		.loc 1 228 0
+ 392 00ae 50E0     		b	.L22
+ 393              	.L23:
+ 229:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             }
+ 230:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 231:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             if( prv == NULL )
+ 394              		.loc 1 231 0
+ 395 00b0 7B69     		ldr	r3, [r7, #20]
+ 396 00b2 002B     		cmp	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 12
+
+
+ 397 00b4 03D1     		bne	.L24
+ 232:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 cache->chain = cur;
+ 398              		.loc 1 232 0
+ 399 00b6 FB68     		ldr	r3, [r7, #12]
+ 400 00b8 BA69     		ldr	r2, [r7, #24]
+ 401 00ba 1A60     		str	r2, [r3]
+ 402 00bc 03E0     		b	.L19
+ 403              	.L24:
+ 233:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             else
+ 234:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 prv->next = cur;
+ 404              		.loc 1 234 0
+ 405 00be 7B69     		ldr	r3, [r7, #20]
+ 406 00c0 BA69     		ldr	r2, [r7, #24]
+ 407 00c2 C3F88820 		str	r2, [r3, #136]
+ 408              	.L19:
+ 235:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         }
+ 236:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 237:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_HAVE_TIME)
+ 238:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         cur->timestamp = t;
+ 239:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+ 240:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     }
+ 241:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 242:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     memcpy( &cur->session, session, sizeof( mbedtls_ssl_session ) );
+ 409              		.loc 1 242 0
+ 410 00c6 BB69     		ldr	r3, [r7, #24]
+ 411 00c8 7C22     		movs	r2, #124
+ 412 00ca 3968     		ldr	r1, [r7]
+ 413 00cc 1846     		mov	r0, r3
+ 414 00ce FFF7FEFF 		bl	memcpy
+ 243:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 244:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_X509_CRT_PARSE_C)
+ 245:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     /*
+ 246:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****      * If we're reusing an entry, free its certificate first
+ 247:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****      */
+ 248:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     if( cur->peer_cert.p != NULL )
+ 415              		.loc 1 248 0
+ 416 00d2 BB69     		ldr	r3, [r7, #24]
+ 417 00d4 D3F88430 		ldr	r3, [r3, #132]
+ 418 00d8 002B     		cmp	r3, #0
+ 419 00da 0CD0     		beq	.L25
+ 249:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     {
+ 250:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         mbedtls_free( cur->peer_cert.p );
+ 420              		.loc 1 250 0
+ 421 00dc BB69     		ldr	r3, [r7, #24]
+ 422 00de D3F88430 		ldr	r3, [r3, #132]
+ 423 00e2 1846     		mov	r0, r3
+ 424 00e4 FFF7FEFF 		bl	mbedtls_free
+ 251:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         memset( &cur->peer_cert, 0, sizeof(mbedtls_x509_buf) );
+ 425              		.loc 1 251 0
+ 426 00e8 BB69     		ldr	r3, [r7, #24]
+ 427 00ea 7C33     		adds	r3, r3, #124
+ 428 00ec 0C22     		movs	r2, #12
+ 429 00ee 0021     		movs	r1, #0
+ 430 00f0 1846     		mov	r0, r3
+ 431 00f2 FFF7FEFF 		bl	memset
+ 432              	.L25:
+ 252:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     }
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 13
+
+
+ 253:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 254:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     /*
+ 255:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****      * Store peer certificate
+ 256:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****      */
+ 257:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     if( session->peer_cert != NULL )
+ 433              		.loc 1 257 0
+ 434 00f6 3B68     		ldr	r3, [r7]
+ 435 00f8 DB6D     		ldr	r3, [r3, #92]
+ 436 00fa 002B     		cmp	r3, #0
+ 437 00fc 27D0     		beq	.L26
+ 258:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     {
+ 259:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         cur->peer_cert.p = mbedtls_calloc( 1, session->peer_cert->raw.len );
+ 438              		.loc 1 259 0
+ 439 00fe 3B68     		ldr	r3, [r7]
+ 440 0100 DB6D     		ldr	r3, [r3, #92]
+ 441 0102 5B68     		ldr	r3, [r3, #4]
+ 442 0104 1946     		mov	r1, r3
+ 443 0106 0120     		movs	r0, #1
+ 444 0108 FFF7FEFF 		bl	mbedtls_calloc
+ 445 010c 0246     		mov	r2, r0
+ 446 010e BB69     		ldr	r3, [r7, #24]
+ 447 0110 C3F88420 		str	r2, [r3, #132]
+ 260:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         if( cur->peer_cert.p == NULL )
+ 448              		.loc 1 260 0
+ 449 0114 BB69     		ldr	r3, [r7, #24]
+ 450 0116 D3F88430 		ldr	r3, [r3, #132]
+ 451 011a 002B     		cmp	r3, #0
+ 452 011c 02D1     		bne	.L27
+ 261:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         {
+ 262:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             ret = 1;
+ 453              		.loc 1 262 0
+ 454 011e 0123     		movs	r3, #1
+ 455 0120 FB61     		str	r3, [r7, #28]
+ 263:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****             goto exit;
+ 456              		.loc 1 263 0
+ 457 0122 16E0     		b	.L22
+ 458              	.L27:
+ 264:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         }
+ 265:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 266:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         memcpy( cur->peer_cert.p, session->peer_cert->raw.p,
+ 459              		.loc 1 266 0
+ 460 0124 BB69     		ldr	r3, [r7, #24]
+ 461 0126 D3F88400 		ldr	r0, [r3, #132]
+ 462 012a 3B68     		ldr	r3, [r7]
+ 463 012c DB6D     		ldr	r3, [r3, #92]
+ 464 012e 9968     		ldr	r1, [r3, #8]
+ 267:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 session->peer_cert->raw.len );
+ 465              		.loc 1 267 0
+ 466 0130 3B68     		ldr	r3, [r7]
+ 467 0132 DB6D     		ldr	r3, [r3, #92]
+ 266:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****                 session->peer_cert->raw.len );
+ 468              		.loc 1 266 0
+ 469 0134 5B68     		ldr	r3, [r3, #4]
+ 470 0136 1A46     		mov	r2, r3
+ 471 0138 FFF7FEFF 		bl	memcpy
+ 268:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         cur->peer_cert.len = session->peer_cert->raw.len;
+ 472              		.loc 1 268 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 14
+
+
+ 473 013c 3B68     		ldr	r3, [r7]
+ 474 013e DB6D     		ldr	r3, [r3, #92]
+ 475 0140 5A68     		ldr	r2, [r3, #4]
+ 476 0142 BB69     		ldr	r3, [r7, #24]
+ 477 0144 C3F88020 		str	r2, [r3, #128]
+ 269:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 270:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         cur->session.peer_cert = NULL;
+ 478              		.loc 1 270 0
+ 479 0148 BB69     		ldr	r3, [r7, #24]
+ 480 014a 0022     		movs	r2, #0
+ 481 014c DA65     		str	r2, [r3, #92]
+ 482              	.L26:
+ 271:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     }
+ 272:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif /* MBEDTLS_X509_CRT_PARSE_C */
+ 273:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 274:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     ret = 0;
+ 483              		.loc 1 274 0
+ 484 014e 0023     		movs	r3, #0
+ 485 0150 FB61     		str	r3, [r7, #28]
+ 486              	.L22:
+ 275:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 276:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** exit:
+ 277:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_THREADING_C)
+ 278:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     if( mbedtls_mutex_unlock( &cache->mutex ) != 0 )
+ 279:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         ret = 1;
+ 280:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+ 281:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 282:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     return( ret );
+ 487              		.loc 1 282 0
+ 488 0152 FB69     		ldr	r3, [r7, #28]
+ 283:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** }
+ 489              		.loc 1 283 0
+ 490 0154 1846     		mov	r0, r3
+ 491 0156 2037     		adds	r7, r7, #32
+ 492              	.LCFI13:
+ 493              		.cfi_def_cfa_offset 8
+ 494 0158 BD46     		mov	sp, r7
+ 495              	.LCFI14:
+ 496              		.cfi_def_cfa_register 13
+ 497              		@ sp needed
+ 498 015a 80BD     		pop	{r7, pc}
+ 499              		.cfi_endproc
+ 500              	.LFE22:
+ 502              		.section	.text.mbedtls_ssl_cache_set_max_entries,"ax",%progbits
+ 503              		.align	1
+ 504              		.global	mbedtls_ssl_cache_set_max_entries
+ 505              		.syntax unified
+ 506              		.thumb
+ 507              		.thumb_func
+ 508              		.fpu fpv4-sp-d16
+ 510              	mbedtls_ssl_cache_set_max_entries:
+ 511              	.LFB23:
+ 284:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 285:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_HAVE_TIME)
+ 286:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** void mbedtls_ssl_cache_set_timeout( mbedtls_ssl_cache_context *cache, int timeout )
+ 287:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** {
+ 288:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     if( timeout < 0 ) timeout = 0;
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 15
+
+
+ 289:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 290:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     cache->timeout = timeout;
+ 291:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** }
+ 292:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif /* MBEDTLS_HAVE_TIME */
+ 293:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 294:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** void mbedtls_ssl_cache_set_max_entries( mbedtls_ssl_cache_context *cache, int max )
+ 295:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** {
+ 512              		.loc 1 295 0
+ 513              		.cfi_startproc
+ 514              		@ args = 0, pretend = 0, frame = 8
+ 515              		@ frame_needed = 1, uses_anonymous_args = 0
+ 516              		@ link register save eliminated.
+ 517 0000 80B4     		push	{r7}
+ 518              	.LCFI15:
+ 519              		.cfi_def_cfa_offset 4
+ 520              		.cfi_offset 7, -4
+ 521 0002 83B0     		sub	sp, sp, #12
+ 522              	.LCFI16:
+ 523              		.cfi_def_cfa_offset 16
+ 524 0004 00AF     		add	r7, sp, #0
+ 525              	.LCFI17:
+ 526              		.cfi_def_cfa_register 7
+ 527 0006 7860     		str	r0, [r7, #4]
+ 528 0008 3960     		str	r1, [r7]
+ 296:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     if( max < 0 ) max = 0;
+ 529              		.loc 1 296 0
+ 530 000a 3B68     		ldr	r3, [r7]
+ 531 000c 002B     		cmp	r3, #0
+ 532 000e 01DA     		bge	.L31
+ 533              		.loc 1 296 0 is_stmt 0 discriminator 1
+ 534 0010 0023     		movs	r3, #0
+ 535 0012 3B60     		str	r3, [r7]
+ 536              	.L31:
+ 297:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 298:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     cache->max_entries = max;
+ 537              		.loc 1 298 0 is_stmt 1
+ 538 0014 7B68     		ldr	r3, [r7, #4]
+ 539 0016 3A68     		ldr	r2, [r7]
+ 540 0018 9A60     		str	r2, [r3, #8]
+ 299:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** }
+ 541              		.loc 1 299 0
+ 542 001a 00BF     		nop
+ 543 001c 0C37     		adds	r7, r7, #12
+ 544              	.LCFI18:
+ 545              		.cfi_def_cfa_offset 4
+ 546 001e BD46     		mov	sp, r7
+ 547              	.LCFI19:
+ 548              		.cfi_def_cfa_register 13
+ 549              		@ sp needed
+ 550 0020 5DF8047B 		ldr	r7, [sp], #4
+ 551              	.LCFI20:
+ 552              		.cfi_restore 7
+ 553              		.cfi_def_cfa_offset 0
+ 554 0024 7047     		bx	lr
+ 555              		.cfi_endproc
+ 556              	.LFE23:
+ 558              		.section	.text.mbedtls_ssl_cache_free,"ax",%progbits
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 16
+
+
+ 559              		.align	1
+ 560              		.global	mbedtls_ssl_cache_free
+ 561              		.syntax unified
+ 562              		.thumb
+ 563              		.thumb_func
+ 564              		.fpu fpv4-sp-d16
+ 566              	mbedtls_ssl_cache_free:
+ 567              	.LFB24:
+ 300:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 301:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** void mbedtls_ssl_cache_free( mbedtls_ssl_cache_context *cache )
+ 302:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** {
+ 568              		.loc 1 302 0
+ 569              		.cfi_startproc
+ 570              		@ args = 0, pretend = 0, frame = 16
+ 571              		@ frame_needed = 1, uses_anonymous_args = 0
+ 572 0000 80B5     		push	{r7, lr}
+ 573              	.LCFI21:
+ 574              		.cfi_def_cfa_offset 8
+ 575              		.cfi_offset 7, -8
+ 576              		.cfi_offset 14, -4
+ 577 0002 84B0     		sub	sp, sp, #16
+ 578              	.LCFI22:
+ 579              		.cfi_def_cfa_offset 24
+ 580 0004 00AF     		add	r7, sp, #0
+ 581              	.LCFI23:
+ 582              		.cfi_def_cfa_register 7
+ 583 0006 7860     		str	r0, [r7, #4]
+ 303:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_ssl_cache_entry *cur, *prv;
+ 304:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 305:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     cur = cache->chain;
+ 584              		.loc 1 305 0
+ 585 0008 7B68     		ldr	r3, [r7, #4]
+ 586 000a 1B68     		ldr	r3, [r3]
+ 587 000c FB60     		str	r3, [r7, #12]
+ 306:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 307:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     while( cur != NULL )
+ 588              		.loc 1 307 0
+ 589 000e 12E0     		b	.L33
+ 590              	.L34:
+ 308:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     {
+ 309:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         prv = cur;
+ 591              		.loc 1 309 0
+ 592 0010 FB68     		ldr	r3, [r7, #12]
+ 593 0012 BB60     		str	r3, [r7, #8]
+ 310:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         cur = cur->next;
+ 594              		.loc 1 310 0
+ 595 0014 FB68     		ldr	r3, [r7, #12]
+ 596 0016 D3F88830 		ldr	r3, [r3, #136]
+ 597 001a FB60     		str	r3, [r7, #12]
+ 311:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 312:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         mbedtls_ssl_session_free( &prv->session );
+ 598              		.loc 1 312 0
+ 599 001c BB68     		ldr	r3, [r7, #8]
+ 600 001e 1846     		mov	r0, r3
+ 601 0020 FFF7FEFF 		bl	mbedtls_ssl_session_free
+ 313:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 314:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_X509_CRT_PARSE_C)
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 17
+
+
+ 315:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         mbedtls_free( prv->peer_cert.p );
+ 602              		.loc 1 315 0
+ 603 0024 BB68     		ldr	r3, [r7, #8]
+ 604 0026 D3F88430 		ldr	r3, [r3, #132]
+ 605 002a 1846     		mov	r0, r3
+ 606 002c FFF7FEFF 		bl	mbedtls_free
+ 316:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif /* MBEDTLS_X509_CRT_PARSE_C */
+ 317:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 318:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****         mbedtls_free( prv );
+ 607              		.loc 1 318 0
+ 608 0030 B868     		ldr	r0, [r7, #8]
+ 609 0032 FFF7FEFF 		bl	mbedtls_free
+ 610              	.L33:
+ 307:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     {
+ 611              		.loc 1 307 0
+ 612 0036 FB68     		ldr	r3, [r7, #12]
+ 613 0038 002B     		cmp	r3, #0
+ 614 003a E9D1     		bne	.L34
+ 319:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     }
+ 320:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** 
+ 321:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #if defined(MBEDTLS_THREADING_C)
+ 322:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     mbedtls_mutex_free( &cache->mutex );
+ 323:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** #endif
+ 324:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c ****     cache->chain = NULL;
+ 615              		.loc 1 324 0
+ 616 003c 7B68     		ldr	r3, [r7, #4]
+ 617 003e 0022     		movs	r2, #0
+ 618 0040 1A60     		str	r2, [r3]
+ 325:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\ssl_cache.c **** }
+ 619              		.loc 1 325 0
+ 620 0042 00BF     		nop
+ 621 0044 1037     		adds	r7, r7, #16
+ 622              	.LCFI24:
+ 623              		.cfi_def_cfa_offset 8
+ 624 0046 BD46     		mov	sp, r7
+ 625              	.LCFI25:
+ 626              		.cfi_def_cfa_register 13
+ 627              		@ sp needed
+ 628 0048 80BD     		pop	{r7, pc}
+ 629              		.cfi_endproc
+ 630              	.LFE24:
+ 632              		.text
+ 633              	.Letext0:
+ 634              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 635              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 636              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 637              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 638              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 639              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 640              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 641              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 642              		.file 10 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 643              		.file 11 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 644              		.file 12 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 645              		.file 13 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 646              		.file 14 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 647              		.file 15 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 18
+
+
+ 648              		.file 16 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ 649              		.file 17 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 ssl_cache.c
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:18     .text.mbedtls_ssl_cache_init:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:25     .text.mbedtls_ssl_cache_init:00000000 mbedtls_ssl_cache_init
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:70     .text.mbedtls_ssl_cache_init:00000028 $d
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:75     .text.mbedtls_ssl_cache_get:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:82     .text.mbedtls_ssl_cache_get:00000000 mbedtls_ssl_cache_get
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:261    .text.mbedtls_ssl_cache_set:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:268    .text.mbedtls_ssl_cache_set:00000000 mbedtls_ssl_cache_set
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:503    .text.mbedtls_ssl_cache_set_max_entries:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:510    .text.mbedtls_ssl_cache_set_max_entries:00000000 mbedtls_ssl_cache_set_max_entries
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:559    .text.mbedtls_ssl_cache_free:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccMA79pT.s:566    .text.mbedtls_ssl_cache_free:00000000 mbedtls_ssl_cache_free
+
+UNDEFINED SYMBOLS
+memset
+memcmp
+memcpy
+mbedtls_calloc
+mbedtls_x509_crt_init
+mbedtls_x509_crt_parse
+mbedtls_free
+mbedtls_ssl_session_free

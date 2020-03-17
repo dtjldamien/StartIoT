@@ -1,0 +1,412 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"MQTTUnsubscribeServer.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.MQTTDeserialize_unsubscribe,"ax",%progbits
+  18              		.align	1
+  19              		.global	MQTTDeserialize_unsubscribe
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	MQTTDeserialize_unsubscribe:
+  26              	.LFB3:
+  27              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** /*******************************************************************************
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  * Copyright (c) 2014 IBM Corp.
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  *
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  * All rights reserved. This program and the accompanying materials
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  * are made available under the terms of the Eclipse Public License v1.0
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  * and Eclipse Distribution License v1.0 which accompany this distribution.
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  *
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  * The Eclipse Public License is available at
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  *    http://www.eclipse.org/legal/epl-v10.html
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  * and the Eclipse Distribution License is available at
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  *   http://www.eclipse.org/org/documents/edl-v10.php.
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  *
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  * Contributors:
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  *    Ian Craggs - initial API and implementation and/or initial documentation
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****  *******************************************************************************/
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** #include "MQTTPacket.h"
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** #include "StackTrace.h"
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** #include <string.h>
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** /**
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * Deserializes the supplied (wire) buffer into unsubscribe data
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param dup integer returned - the MQTT dup flag
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param packetid integer returned - the MQTT packet identifier
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param maxcount - the maximum number of members allowed in the topicFilters and requestedQoSs a
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param count - number of members in the topicFilters and requestedQoSs arrays
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param topicFilters - array of topic filter names
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param buf the raw buffer data, of the correct length determined by the remaining length field
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param buflen the length in bytes of the data in the supplied buffer
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s 			page 2
+
+
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @return the length of the serialized data.  <= 0 indicates error
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   */
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** int MQTTDeserialize_unsubscribe(unsigned char* dup, unsigned short* packetid, int maxcount, int* co
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 		unsigned char* buf, int len)
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** {
+  28              		.loc 1 36 0
+  29              		.cfi_startproc
+  30              		@ args = 12, pretend = 0, frame = 40
+  31              		@ frame_needed = 1, uses_anonymous_args = 0
+  32 0000 80B5     		push	{r7, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 7, -8
+  36              		.cfi_offset 14, -4
+  37 0002 8AB0     		sub	sp, sp, #40
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 48
+  40 0004 00AF     		add	r7, sp, #0
+  41              	.LCFI2:
+  42              		.cfi_def_cfa_register 7
+  43 0006 F860     		str	r0, [r7, #12]
+  44 0008 B960     		str	r1, [r7, #8]
+  45 000a 7A60     		str	r2, [r7, #4]
+  46 000c 3B60     		str	r3, [r7]
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	MQTTHeader header = {0};
+  47              		.loc 1 37 0
+  48 000e 0023     		movs	r3, #0
+  49 0010 FB61     		str	r3, [r7, #28]
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	unsigned char* curdata = buf;
+  50              		.loc 1 38 0
+  51 0012 7B6B     		ldr	r3, [r7, #52]
+  52 0014 BB61     		str	r3, [r7, #24]
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	unsigned char* enddata = NULL;
+  53              		.loc 1 39 0
+  54 0016 0023     		movs	r3, #0
+  55 0018 3B62     		str	r3, [r7, #32]
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	int rc = 0;
+  56              		.loc 1 40 0
+  57 001a 0023     		movs	r3, #0
+  58 001c 7B62     		str	r3, [r7, #36]
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	int mylen = 0;
+  59              		.loc 1 41 0
+  60 001e 0023     		movs	r3, #0
+  61 0020 7B61     		str	r3, [r7, #20]
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	FUNC_ENTRY;
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	header.byte = readChar(&curdata);
+  62              		.loc 1 44 0
+  63 0022 07F11803 		add	r3, r7, #24
+  64 0026 1846     		mov	r0, r3
+  65 0028 FFF7FEFF 		bl	readChar
+  66 002c 0346     		mov	r3, r0
+  67 002e 3B77     		strb	r3, [r7, #28]
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	if (header.bits.type != UNSUBSCRIBE)
+  68              		.loc 1 45 0
+  69 0030 3B7F     		ldrb	r3, [r7, #28]	@ zero_extendqisi2
+  70 0032 23F00F03 		bic	r3, r3, #15
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s 			page 3
+
+
+  71 0036 DBB2     		uxtb	r3, r3
+  72 0038 A02B     		cmp	r3, #160
+  73 003a 42D1     		bne	.L8
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 		goto exit;
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	*dup = header.bits.dup;
+  74              		.loc 1 47 0
+  75 003c 3B7F     		ldrb	r3, [r7, #28]
+  76 003e C3F3C003 		ubfx	r3, r3, #3, #1
+  77 0042 DBB2     		uxtb	r3, r3
+  78 0044 1A46     		mov	r2, r3
+  79 0046 FB68     		ldr	r3, [r7, #12]
+  80 0048 1A70     		strb	r2, [r3]
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	curdata += (rc = MQTTPacket_decodeBuf(curdata, &mylen)); /* read remaining length */
+  81              		.loc 1 49 0
+  82 004a BB69     		ldr	r3, [r7, #24]
+  83 004c 07F11402 		add	r2, r7, #20
+  84 0050 1146     		mov	r1, r2
+  85 0052 1846     		mov	r0, r3
+  86 0054 FFF7FEFF 		bl	MQTTPacket_decodeBuf
+  87 0058 7862     		str	r0, [r7, #36]
+  88 005a 7A6A     		ldr	r2, [r7, #36]
+  89 005c BB69     		ldr	r3, [r7, #24]
+  90 005e 1344     		add	r3, r3, r2
+  91 0060 BB61     		str	r3, [r7, #24]
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	enddata = curdata + mylen;
+  92              		.loc 1 50 0
+  93 0062 BB69     		ldr	r3, [r7, #24]
+  94 0064 7A69     		ldr	r2, [r7, #20]
+  95 0066 1344     		add	r3, r3, r2
+  96 0068 3B62     		str	r3, [r7, #32]
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	*packetid = readInt(&curdata);
+  97              		.loc 1 52 0
+  98 006a 07F11803 		add	r3, r7, #24
+  99 006e 1846     		mov	r0, r3
+ 100 0070 FFF7FEFF 		bl	readInt
+ 101 0074 0346     		mov	r3, r0
+ 102 0076 9AB2     		uxth	r2, r3
+ 103 0078 BB68     		ldr	r3, [r7, #8]
+ 104 007a 1A80     		strh	r2, [r3]	@ movhi
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	*count = 0;
+ 105              		.loc 1 54 0
+ 106 007c 3B68     		ldr	r3, [r7]
+ 107 007e 0022     		movs	r2, #0
+ 108 0080 1A60     		str	r2, [r3]
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	while (curdata < enddata)
+ 109              		.loc 1 55 0
+ 110 0082 17E0     		b	.L4
+ 111              	.L6:
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	{
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 		if (!readMQTTLenString(&topicFilters[*count], &curdata, enddata))
+ 112              		.loc 1 57 0
+ 113 0084 3B68     		ldr	r3, [r7]
+ 114 0086 1B68     		ldr	r3, [r3]
+ 115 0088 1A46     		mov	r2, r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s 			page 4
+
+
+ 116 008a 1346     		mov	r3, r2
+ 117 008c 5B00     		lsls	r3, r3, #1
+ 118 008e 1344     		add	r3, r3, r2
+ 119 0090 9B00     		lsls	r3, r3, #2
+ 120 0092 1A46     		mov	r2, r3
+ 121 0094 3B6B     		ldr	r3, [r7, #48]
+ 122 0096 1344     		add	r3, r3, r2
+ 123 0098 07F11801 		add	r1, r7, #24
+ 124 009c 3A6A     		ldr	r2, [r7, #32]
+ 125 009e 1846     		mov	r0, r3
+ 126 00a0 FFF7FEFF 		bl	readMQTTLenString
+ 127 00a4 0346     		mov	r3, r0
+ 128 00a6 002B     		cmp	r3, #0
+ 129 00a8 0DD0     		beq	.L9
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 			goto exit;
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 		(*count)++;
+ 130              		.loc 1 59 0
+ 131 00aa 3B68     		ldr	r3, [r7]
+ 132 00ac 1B68     		ldr	r3, [r3]
+ 133 00ae 5A1C     		adds	r2, r3, #1
+ 134 00b0 3B68     		ldr	r3, [r7]
+ 135 00b2 1A60     		str	r2, [r3]
+ 136              	.L4:
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	{
+ 137              		.loc 1 55 0
+ 138 00b4 BB69     		ldr	r3, [r7, #24]
+ 139 00b6 3A6A     		ldr	r2, [r7, #32]
+ 140 00b8 9A42     		cmp	r2, r3
+ 141 00ba E3D8     		bhi	.L6
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	}
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	rc = 1;
+ 142              		.loc 1 62 0
+ 143 00bc 0123     		movs	r3, #1
+ 144 00be 7B62     		str	r3, [r7, #36]
+ 145 00c0 02E0     		b	.L3
+ 146              	.L8:
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	*dup = header.bits.dup;
+ 147              		.loc 1 46 0
+ 148 00c2 00BF     		nop
+ 149 00c4 00E0     		b	.L3
+ 150              	.L9:
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 		(*count)++;
+ 151              		.loc 1 58 0
+ 152 00c6 00BF     		nop
+ 153              	.L3:
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** exit:
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	FUNC_EXIT_RC(rc);
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	return rc;
+ 154              		.loc 1 65 0
+ 155 00c8 7B6A     		ldr	r3, [r7, #36]
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** }
+ 156              		.loc 1 66 0
+ 157 00ca 1846     		mov	r0, r3
+ 158 00cc 2837     		adds	r7, r7, #40
+ 159              	.LCFI3:
+ 160              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s 			page 5
+
+
+ 161 00ce BD46     		mov	sp, r7
+ 162              	.LCFI4:
+ 163              		.cfi_def_cfa_register 13
+ 164              		@ sp needed
+ 165 00d0 80BD     		pop	{r7, pc}
+ 166              		.cfi_endproc
+ 167              	.LFE3:
+ 169              		.section	.text.MQTTSerialize_unsuback,"ax",%progbits
+ 170              		.align	1
+ 171              		.global	MQTTSerialize_unsuback
+ 172              		.syntax unified
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.fpu fpv4-sp-d16
+ 177              	MQTTSerialize_unsuback:
+ 178              	.LFB4:
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** /**
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * Serializes the supplied unsuback data into the supplied buffer, ready for sending
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param buf the buffer into which the packet will be serialized
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param buflen the length in bytes of the supplied buffer
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @param packetid integer - the MQTT packet identifier
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   * @return the length of the serialized data.  <= 0 indicates error
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c ****   */
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** int MQTTSerialize_unsuback(unsigned char* buf, int buflen, unsigned short packetid)
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** {
+ 179              		.loc 1 77 0
+ 180              		.cfi_startproc
+ 181              		@ args = 0, pretend = 0, frame = 32
+ 182              		@ frame_needed = 1, uses_anonymous_args = 0
+ 183 0000 80B5     		push	{r7, lr}
+ 184              	.LCFI5:
+ 185              		.cfi_def_cfa_offset 8
+ 186              		.cfi_offset 7, -8
+ 187              		.cfi_offset 14, -4
+ 188 0002 88B0     		sub	sp, sp, #32
+ 189              	.LCFI6:
+ 190              		.cfi_def_cfa_offset 40
+ 191 0004 00AF     		add	r7, sp, #0
+ 192              	.LCFI7:
+ 193              		.cfi_def_cfa_register 7
+ 194 0006 F860     		str	r0, [r7, #12]
+ 195 0008 B960     		str	r1, [r7, #8]
+ 196 000a 1346     		mov	r3, r2
+ 197 000c FB80     		strh	r3, [r7, #6]	@ movhi
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	MQTTHeader header = {0};
+ 198              		.loc 1 78 0
+ 199 000e 0023     		movs	r3, #0
+ 200 0010 BB61     		str	r3, [r7, #24]
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	int rc = 0;
+ 201              		.loc 1 79 0
+ 202 0012 0023     		movs	r3, #0
+ 203 0014 FB61     		str	r3, [r7, #28]
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	unsigned char *ptr = buf;
+ 204              		.loc 1 80 0
+ 205 0016 FB68     		ldr	r3, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s 			page 6
+
+
+ 206 0018 7B61     		str	r3, [r7, #20]
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	FUNC_ENTRY;
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	if (buflen < 2)
+ 207              		.loc 1 83 0
+ 208 001a BB68     		ldr	r3, [r7, #8]
+ 209 001c 012B     		cmp	r3, #1
+ 210 001e 03DC     		bgt	.L11
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	{
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 		rc = MQTTPACKET_BUFFER_TOO_SHORT;
+ 211              		.loc 1 85 0
+ 212 0020 6FF00103 		mvn	r3, #1
+ 213 0024 FB61     		str	r3, [r7, #28]
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 		goto exit;
+ 214              		.loc 1 86 0
+ 215 0026 22E0     		b	.L12
+ 216              	.L11:
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	}
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	header.byte = 0;
+ 217              		.loc 1 88 0
+ 218 0028 0023     		movs	r3, #0
+ 219 002a 3B76     		strb	r3, [r7, #24]
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	header.bits.type = UNSUBACK;
+ 220              		.loc 1 89 0
+ 221 002c 3B7E     		ldrb	r3, [r7, #24]
+ 222 002e 0B22     		movs	r2, #11
+ 223 0030 62F30713 		bfi	r3, r2, #4, #4
+ 224 0034 3B76     		strb	r3, [r7, #24]
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	writeChar(&ptr, header.byte); /* write header */
+ 225              		.loc 1 90 0
+ 226 0036 3A7E     		ldrb	r2, [r7, #24]	@ zero_extendqisi2
+ 227 0038 07F11403 		add	r3, r7, #20
+ 228 003c 1146     		mov	r1, r2
+ 229 003e 1846     		mov	r0, r3
+ 230 0040 FFF7FEFF 		bl	writeChar
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	ptr += MQTTPacket_encode(ptr, 2); /* write remaining length */
+ 231              		.loc 1 92 0
+ 232 0044 7B69     		ldr	r3, [r7, #20]
+ 233 0046 0221     		movs	r1, #2
+ 234 0048 1846     		mov	r0, r3
+ 235 004a FFF7FEFF 		bl	MQTTPacket_encode
+ 236 004e 0246     		mov	r2, r0
+ 237 0050 7B69     		ldr	r3, [r7, #20]
+ 238 0052 1344     		add	r3, r3, r2
+ 239 0054 7B61     		str	r3, [r7, #20]
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	writeInt(&ptr, packetid);
+ 240              		.loc 1 94 0
+ 241 0056 FA88     		ldrh	r2, [r7, #6]
+ 242 0058 07F11403 		add	r3, r7, #20
+ 243 005c 1146     		mov	r1, r2
+ 244 005e 1846     		mov	r0, r3
+ 245 0060 FFF7FEFF 		bl	writeInt
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	rc = ptr - buf;
+ 246              		.loc 1 96 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s 			page 7
+
+
+ 247 0064 7B69     		ldr	r3, [r7, #20]
+ 248 0066 1A46     		mov	r2, r3
+ 249 0068 FB68     		ldr	r3, [r7, #12]
+ 250 006a D31A     		subs	r3, r2, r3
+ 251 006c FB61     		str	r3, [r7, #28]
+ 252              	.L12:
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** exit:
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	FUNC_EXIT_RC(rc);
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** 	return rc;
+ 253              		.loc 1 99 0
+ 254 006e FB69     		ldr	r3, [r7, #28]
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPacket/src\MQTTUnsubscribeServer.c **** }
+ 255              		.loc 1 100 0
+ 256 0070 1846     		mov	r0, r3
+ 257 0072 2037     		adds	r7, r7, #32
+ 258              	.LCFI8:
+ 259              		.cfi_def_cfa_offset 8
+ 260 0074 BD46     		mov	sp, r7
+ 261              	.LCFI9:
+ 262              		.cfi_def_cfa_register 13
+ 263              		@ sp needed
+ 264 0076 80BD     		pop	{r7, pc}
+ 265              		.cfi_endproc
+ 266              	.LFE4:
+ 268              		.text
+ 269              	.Letext0:
+ 270              		.file 2 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/paho_mqtt/paho/MQTTPac
+ 271              		.file 3 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 272              		.file 4 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 273              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 274              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 MQTTUnsubscribeServer.c
+C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s:18     .text.MQTTDeserialize_unsubscribe:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s:25     .text.MQTTDeserialize_unsubscribe:00000000 MQTTDeserialize_unsubscribe
+C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s:170    .text.MQTTSerialize_unsuback:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\cc6AyltU.s:177    .text.MQTTSerialize_unsuback:00000000 MQTTSerialize_unsuback
+
+UNDEFINED SYMBOLS
+readChar
+MQTTPacket_decodeBuf
+readInt
+readMQTTLenString
+writeChar
+MQTTPacket_encode
+writeInt

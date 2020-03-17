@@ -1,0 +1,2635 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"md.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.rodata.supported_digests,"a",%progbits
+  18              		.align	2
+  21              	supported_digests:
+  22 0000 08000000 		.word	8
+  23 0004 07000000 		.word	7
+  24 0008 06000000 		.word	6
+  25 000c 05000000 		.word	5
+  26 0010 04000000 		.word	4
+  27 0014 09000000 		.word	9
+  28 0018 03000000 		.word	3
+  29 001c 00000000 		.word	0
+  30              		.section	.text.mbedtls_md_list,"ax",%progbits
+  31              		.align	1
+  32              		.global	mbedtls_md_list
+  33              		.syntax unified
+  34              		.thumb
+  35              		.thumb_func
+  36              		.fpu fpv4-sp-d16
+  38              	mbedtls_md_list:
+  39              	.LFB3:
+  40              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** /**
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  * \file mbedtls_md.c
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  * \brief Generic message digest wrapper for mbed TLS
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  * \author Adriaan de Jong <dejong@fox-it.com>
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  Copyright (C) 2006-2015, ARM Limited, All Rights Reserved
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  SPDX-License-Identifier: Apache-2.0
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  Licensed under the Apache License, Version 2.0 (the "License"); you may
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  not use this file except in compliance with the License.
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  You may obtain a copy of the License at
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  http://www.apache.org/licenses/LICENSE-2.0
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  Unless required by applicable law or agreed to in writing, software
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  See the License for the specific language governing permissions and
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 2
+
+
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  limitations under the License.
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  *  This file is part of mbed TLS (https://tls.mbed.org)
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  */
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if !defined(MBEDTLS_CONFIG_FILE)
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #include "mbedtls/config.h"
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #else
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #include MBEDTLS_CONFIG_FILE
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD_C)
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #include "mbedtls/md.h"
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #include "mbedtls/md_internal.h"
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #include "mbedtls/platform_util.h"
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_PLATFORM_C)
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #include "mbedtls/platform.h"
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #else
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #include <stdlib.h>
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #define mbedtls_calloc    calloc
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #define mbedtls_free       free
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #include <string.h>
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_FS_IO)
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #include <stdio.h>
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** /*
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  * Reminder: update profiles in x509_crt.c when adding a new hash!
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****  */
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** static const int supported_digests[] = {
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_SHA512_C)
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_SHA512,
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_SHA384,
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_SHA256_C)
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_SHA256,
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_SHA224,
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_SHA1_C)
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_SHA1,
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_RIPEMD160_C)
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_RIPEMD160,
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD5_C)
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_MD5,
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 3
+
+
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD4_C)
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_MD4,
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD2_C)
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_MD2,
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         MBEDTLS_MD_NONE
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** };
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** const int *mbedtls_md_list( void )
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+  41              		.loc 1 91 0
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 1, uses_anonymous_args = 0
+  45              		@ link register save eliminated.
+  46 0000 80B4     		push	{r7}
+  47              	.LCFI0:
+  48              		.cfi_def_cfa_offset 4
+  49              		.cfi_offset 7, -4
+  50 0002 00AF     		add	r7, sp, #0
+  51              	.LCFI1:
+  52              		.cfi_def_cfa_register 7
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( supported_digests );
+  53              		.loc 1 92 0
+  54 0004 024B     		ldr	r3, .L3
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+  55              		.loc 1 93 0
+  56 0006 1846     		mov	r0, r3
+  57 0008 BD46     		mov	sp, r7
+  58              	.LCFI2:
+  59              		.cfi_def_cfa_register 13
+  60              		@ sp needed
+  61 000a 5DF8047B 		ldr	r7, [sp], #4
+  62              	.LCFI3:
+  63              		.cfi_restore 7
+  64              		.cfi_def_cfa_offset 0
+  65 000e 7047     		bx	lr
+  66              	.L4:
+  67              		.align	2
+  68              	.L3:
+  69 0010 00000000 		.word	supported_digests
+  70              		.cfi_endproc
+  71              	.LFE3:
+  73              		.section	.rodata
+  74              		.align	2
+  75              	.LC0:
+  76 0000 4D443500 		.ascii	"MD5\000"
+  77              		.align	2
+  78              	.LC1:
+  79 0004 52495045 		.ascii	"RIPEMD160\000"
+  79      4D443136 
+  79      3000
+  80 000e 0000     		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 4
+
+
+  81              	.LC2:
+  82 0010 53484131 		.ascii	"SHA1\000"
+  82      00
+  83 0015 000000   		.align	2
+  84              	.LC3:
+  85 0018 53484100 		.ascii	"SHA\000"
+  86              		.align	2
+  87              	.LC4:
+  88 001c 53484132 		.ascii	"SHA224\000"
+  88      323400
+  89 0023 00       		.align	2
+  90              	.LC5:
+  91 0024 53484132 		.ascii	"SHA256\000"
+  91      353600
+  92 002b 00       		.align	2
+  93              	.LC6:
+  94 002c 53484133 		.ascii	"SHA384\000"
+  94      383400
+  95 0033 00       		.align	2
+  96              	.LC7:
+  97 0034 53484135 		.ascii	"SHA512\000"
+  97      313200
+  98              		.section	.text.mbedtls_md_info_from_string,"ax",%progbits
+  99              		.align	1
+ 100              		.global	mbedtls_md_info_from_string
+ 101              		.syntax unified
+ 102              		.thumb
+ 103              		.thumb_func
+ 104              		.fpu fpv4-sp-d16
+ 106              	mbedtls_md_info_from_string:
+ 107              	.LFB4:
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** const mbedtls_md_info_t *mbedtls_md_info_from_string( const char *md_name )
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 108              		.loc 1 96 0
+ 109              		.cfi_startproc
+ 110              		@ args = 0, pretend = 0, frame = 8
+ 111              		@ frame_needed = 1, uses_anonymous_args = 0
+ 112 0000 80B5     		push	{r7, lr}
+ 113              	.LCFI4:
+ 114              		.cfi_def_cfa_offset 8
+ 115              		.cfi_offset 7, -8
+ 116              		.cfi_offset 14, -4
+ 117 0002 82B0     		sub	sp, sp, #8
+ 118              	.LCFI5:
+ 119              		.cfi_def_cfa_offset 16
+ 120 0004 00AF     		add	r7, sp, #0
+ 121              	.LCFI6:
+ 122              		.cfi_def_cfa_register 7
+ 123 0006 7860     		str	r0, [r7, #4]
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( NULL == md_name )
+ 124              		.loc 1 97 0
+ 125 0008 7B68     		ldr	r3, [r7, #4]
+ 126 000a 002B     		cmp	r3, #0
+ 127 000c 01D1     		bne	.L6
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( NULL );
+ 128              		.loc 1 98 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 5
+
+
+ 129 000e 0023     		movs	r3, #0
+ 130 0010 5BE0     		b	.L7
+ 131              	.L6:
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     /* Get the appropriate digest information */
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD2_C)
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( !strcmp( "MD2", md_name ) )
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_MD2 );
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD4_C)
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( !strcmp( "MD4", md_name ) )
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_MD4 );
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 109:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD5_C)
+ 110:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( !strcmp( "MD5", md_name ) )
+ 132              		.loc 1 110 0
+ 133 0012 7968     		ldr	r1, [r7, #4]
+ 134 0014 2F48     		ldr	r0, .L16
+ 135 0016 FFF7FEFF 		bl	strcmp
+ 136 001a 0346     		mov	r3, r0
+ 137 001c 002B     		cmp	r3, #0
+ 138 001e 04D1     		bne	.L8
+ 111:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_MD5 );
+ 139              		.loc 1 111 0
+ 140 0020 0320     		movs	r0, #3
+ 141 0022 FFF7FEFF 		bl	mbedtls_md_info_from_type
+ 142 0026 0346     		mov	r3, r0
+ 143 0028 4FE0     		b	.L7
+ 144              	.L8:
+ 112:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 113:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_RIPEMD160_C)
+ 114:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( !strcmp( "RIPEMD160", md_name ) )
+ 145              		.loc 1 114 0
+ 146 002a 7968     		ldr	r1, [r7, #4]
+ 147 002c 2A48     		ldr	r0, .L16+4
+ 148 002e FFF7FEFF 		bl	strcmp
+ 149 0032 0346     		mov	r3, r0
+ 150 0034 002B     		cmp	r3, #0
+ 151 0036 04D1     		bne	.L9
+ 115:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_RIPEMD160 );
+ 152              		.loc 1 115 0
+ 153 0038 0920     		movs	r0, #9
+ 154 003a FFF7FEFF 		bl	mbedtls_md_info_from_type
+ 155 003e 0346     		mov	r3, r0
+ 156 0040 43E0     		b	.L7
+ 157              	.L9:
+ 116:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 117:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_SHA1_C)
+ 118:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( !strcmp( "SHA1", md_name ) || !strcmp( "SHA", md_name ) )
+ 158              		.loc 1 118 0
+ 159 0042 7968     		ldr	r1, [r7, #4]
+ 160 0044 2548     		ldr	r0, .L16+8
+ 161 0046 FFF7FEFF 		bl	strcmp
+ 162 004a 0346     		mov	r3, r0
+ 163 004c 002B     		cmp	r3, #0
+ 164 004e 06D0     		beq	.L10
+ 165              		.loc 1 118 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 6
+
+
+ 166 0050 7968     		ldr	r1, [r7, #4]
+ 167 0052 2348     		ldr	r0, .L16+12
+ 168 0054 FFF7FEFF 		bl	strcmp
+ 169 0058 0346     		mov	r3, r0
+ 170 005a 002B     		cmp	r3, #0
+ 171 005c 04D1     		bne	.L11
+ 172              	.L10:
+ 119:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA1 );
+ 173              		.loc 1 119 0 is_stmt 1
+ 174 005e 0420     		movs	r0, #4
+ 175 0060 FFF7FEFF 		bl	mbedtls_md_info_from_type
+ 176 0064 0346     		mov	r3, r0
+ 177 0066 30E0     		b	.L7
+ 178              	.L11:
+ 120:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 121:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_SHA256_C)
+ 122:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( !strcmp( "SHA224", md_name ) )
+ 179              		.loc 1 122 0
+ 180 0068 7968     		ldr	r1, [r7, #4]
+ 181 006a 1E48     		ldr	r0, .L16+16
+ 182 006c FFF7FEFF 		bl	strcmp
+ 183 0070 0346     		mov	r3, r0
+ 184 0072 002B     		cmp	r3, #0
+ 185 0074 04D1     		bne	.L12
+ 123:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA224 );
+ 186              		.loc 1 123 0
+ 187 0076 0520     		movs	r0, #5
+ 188 0078 FFF7FEFF 		bl	mbedtls_md_info_from_type
+ 189 007c 0346     		mov	r3, r0
+ 190 007e 24E0     		b	.L7
+ 191              	.L12:
+ 124:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( !strcmp( "SHA256", md_name ) )
+ 192              		.loc 1 124 0
+ 193 0080 7968     		ldr	r1, [r7, #4]
+ 194 0082 1948     		ldr	r0, .L16+20
+ 195 0084 FFF7FEFF 		bl	strcmp
+ 196 0088 0346     		mov	r3, r0
+ 197 008a 002B     		cmp	r3, #0
+ 198 008c 04D1     		bne	.L13
+ 125:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA256 );
+ 199              		.loc 1 125 0
+ 200 008e 0620     		movs	r0, #6
+ 201 0090 FFF7FEFF 		bl	mbedtls_md_info_from_type
+ 202 0094 0346     		mov	r3, r0
+ 203 0096 18E0     		b	.L7
+ 204              	.L13:
+ 126:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 127:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_SHA512_C)
+ 128:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( !strcmp( "SHA384", md_name ) )
+ 205              		.loc 1 128 0
+ 206 0098 7968     		ldr	r1, [r7, #4]
+ 207 009a 1448     		ldr	r0, .L16+24
+ 208 009c FFF7FEFF 		bl	strcmp
+ 209 00a0 0346     		mov	r3, r0
+ 210 00a2 002B     		cmp	r3, #0
+ 211 00a4 04D1     		bne	.L14
+ 129:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA384 );
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 7
+
+
+ 212              		.loc 1 129 0
+ 213 00a6 0720     		movs	r0, #7
+ 214 00a8 FFF7FEFF 		bl	mbedtls_md_info_from_type
+ 215 00ac 0346     		mov	r3, r0
+ 216 00ae 0CE0     		b	.L7
+ 217              	.L14:
+ 130:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( !strcmp( "SHA512", md_name ) )
+ 218              		.loc 1 130 0
+ 219 00b0 7968     		ldr	r1, [r7, #4]
+ 220 00b2 0F48     		ldr	r0, .L16+28
+ 221 00b4 FFF7FEFF 		bl	strcmp
+ 222 00b8 0346     		mov	r3, r0
+ 223 00ba 002B     		cmp	r3, #0
+ 224 00bc 04D1     		bne	.L15
+ 131:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return mbedtls_md_info_from_type( MBEDTLS_MD_SHA512 );
+ 225              		.loc 1 131 0
+ 226 00be 0820     		movs	r0, #8
+ 227 00c0 FFF7FEFF 		bl	mbedtls_md_info_from_type
+ 228 00c4 0346     		mov	r3, r0
+ 229 00c6 00E0     		b	.L7
+ 230              	.L15:
+ 132:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 133:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( NULL );
+ 231              		.loc 1 133 0
+ 232 00c8 0023     		movs	r3, #0
+ 233              	.L7:
+ 134:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 234              		.loc 1 134 0
+ 235 00ca 1846     		mov	r0, r3
+ 236 00cc 0837     		adds	r7, r7, #8
+ 237              	.LCFI7:
+ 238              		.cfi_def_cfa_offset 8
+ 239 00ce BD46     		mov	sp, r7
+ 240              	.LCFI8:
+ 241              		.cfi_def_cfa_register 13
+ 242              		@ sp needed
+ 243 00d0 80BD     		pop	{r7, pc}
+ 244              	.L17:
+ 245 00d2 00BF     		.align	2
+ 246              	.L16:
+ 247 00d4 00000000 		.word	.LC0
+ 248 00d8 04000000 		.word	.LC1
+ 249 00dc 10000000 		.word	.LC2
+ 250 00e0 18000000 		.word	.LC3
+ 251 00e4 1C000000 		.word	.LC4
+ 252 00e8 24000000 		.word	.LC5
+ 253 00ec 2C000000 		.word	.LC6
+ 254 00f0 34000000 		.word	.LC7
+ 255              		.cfi_endproc
+ 256              	.LFE4:
+ 258              		.section	.text.mbedtls_md_info_from_type,"ax",%progbits
+ 259              		.align	1
+ 260              		.global	mbedtls_md_info_from_type
+ 261              		.syntax unified
+ 262              		.thumb
+ 263              		.thumb_func
+ 264              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 8
+
+
+ 266              	mbedtls_md_info_from_type:
+ 267              	.LFB5:
+ 135:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 136:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** const mbedtls_md_info_t *mbedtls_md_info_from_type( mbedtls_md_type_t md_type )
+ 137:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 268              		.loc 1 137 0
+ 269              		.cfi_startproc
+ 270              		@ args = 0, pretend = 0, frame = 8
+ 271              		@ frame_needed = 1, uses_anonymous_args = 0
+ 272              		@ link register save eliminated.
+ 273 0000 80B4     		push	{r7}
+ 274              	.LCFI9:
+ 275              		.cfi_def_cfa_offset 4
+ 276              		.cfi_offset 7, -4
+ 277 0002 83B0     		sub	sp, sp, #12
+ 278              	.LCFI10:
+ 279              		.cfi_def_cfa_offset 16
+ 280 0004 00AF     		add	r7, sp, #0
+ 281              	.LCFI11:
+ 282              		.cfi_def_cfa_register 7
+ 283 0006 0346     		mov	r3, r0
+ 284 0008 FB71     		strb	r3, [r7, #7]
+ 138:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     switch( md_type )
+ 285              		.loc 1 138 0
+ 286 000a FB79     		ldrb	r3, [r7, #7]	@ zero_extendqisi2
+ 287 000c 033B     		subs	r3, r3, #3
+ 288 000e 062B     		cmp	r3, #6
+ 289 0010 1ED8     		bhi	.L19
+ 290 0012 01A2     		adr	r2, .L21
+ 291 0014 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 292              		.p2align 2
+ 293              	.L21:
+ 294 0018 35000000 		.word	.L20+1
+ 295 001c 3D000000 		.word	.L22+1
+ 296 0020 41000000 		.word	.L23+1
+ 297 0024 45000000 		.word	.L24+1
+ 298 0028 49000000 		.word	.L25+1
+ 299 002c 4D000000 		.word	.L26+1
+ 300 0030 39000000 		.word	.L27+1
+ 301              		.p2align 1
+ 302              	.L20:
+ 139:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     {
+ 140:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD2_C)
+ 141:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         case MBEDTLS_MD_MD2:
+ 142:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( &mbedtls_md2_info );
+ 143:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 144:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD4_C)
+ 145:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         case MBEDTLS_MD_MD4:
+ 146:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( &mbedtls_md4_info );
+ 147:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 148:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_MD5_C)
+ 149:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         case MBEDTLS_MD_MD5:
+ 150:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( &mbedtls_md5_info );
+ 303              		.loc 1 150 0
+ 304 0034 0A4B     		ldr	r3, .L29
+ 305 0036 0CE0     		b	.L28
+ 306              	.L27:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 9
+
+
+ 151:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 152:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_RIPEMD160_C)
+ 153:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         case MBEDTLS_MD_RIPEMD160:
+ 154:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( &mbedtls_ripemd160_info );
+ 307              		.loc 1 154 0
+ 308 0038 0A4B     		ldr	r3, .L29+4
+ 309 003a 0AE0     		b	.L28
+ 310              	.L22:
+ 155:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 156:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_SHA1_C)
+ 157:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         case MBEDTLS_MD_SHA1:
+ 158:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( &mbedtls_sha1_info );
+ 311              		.loc 1 158 0
+ 312 003c 0A4B     		ldr	r3, .L29+8
+ 313 003e 08E0     		b	.L28
+ 314              	.L23:
+ 159:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 160:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_SHA256_C)
+ 161:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         case MBEDTLS_MD_SHA224:
+ 162:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( &mbedtls_sha224_info );
+ 315              		.loc 1 162 0
+ 316 0040 0A4B     		ldr	r3, .L29+12
+ 317 0042 06E0     		b	.L28
+ 318              	.L24:
+ 163:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         case MBEDTLS_MD_SHA256:
+ 164:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( &mbedtls_sha256_info );
+ 319              		.loc 1 164 0
+ 320 0044 0A4B     		ldr	r3, .L29+16
+ 321 0046 04E0     		b	.L28
+ 322              	.L25:
+ 165:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 166:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_SHA512_C)
+ 167:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         case MBEDTLS_MD_SHA384:
+ 168:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( &mbedtls_sha384_info );
+ 323              		.loc 1 168 0
+ 324 0048 0A4B     		ldr	r3, .L29+20
+ 325 004a 02E0     		b	.L28
+ 326              	.L26:
+ 169:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         case MBEDTLS_MD_SHA512:
+ 170:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( &mbedtls_sha512_info );
+ 327              		.loc 1 170 0
+ 328 004c 0A4B     		ldr	r3, .L29+24
+ 329 004e 00E0     		b	.L28
+ 330              	.L19:
+ 171:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 172:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         default:
+ 173:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( NULL );
+ 331              		.loc 1 173 0
+ 332 0050 0023     		movs	r3, #0
+ 333              	.L28:
+ 174:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     }
+ 175:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 334              		.loc 1 175 0
+ 335 0052 1846     		mov	r0, r3
+ 336 0054 0C37     		adds	r7, r7, #12
+ 337              	.LCFI12:
+ 338              		.cfi_def_cfa_offset 4
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 10
+
+
+ 339 0056 BD46     		mov	sp, r7
+ 340              	.LCFI13:
+ 341              		.cfi_def_cfa_register 13
+ 342              		@ sp needed
+ 343 0058 5DF8047B 		ldr	r7, [sp], #4
+ 344              	.LCFI14:
+ 345              		.cfi_restore 7
+ 346              		.cfi_def_cfa_offset 0
+ 347 005c 7047     		bx	lr
+ 348              	.L30:
+ 349 005e 00BF     		.align	2
+ 350              	.L29:
+ 351 0060 00000000 		.word	mbedtls_md5_info
+ 352 0064 00000000 		.word	mbedtls_ripemd160_info
+ 353 0068 00000000 		.word	mbedtls_sha1_info
+ 354 006c 00000000 		.word	mbedtls_sha224_info
+ 355 0070 00000000 		.word	mbedtls_sha256_info
+ 356 0074 00000000 		.word	mbedtls_sha384_info
+ 357 0078 00000000 		.word	mbedtls_sha512_info
+ 358              		.cfi_endproc
+ 359              	.LFE5:
+ 361              		.section	.text.mbedtls_md_init,"ax",%progbits
+ 362              		.align	1
+ 363              		.global	mbedtls_md_init
+ 364              		.syntax unified
+ 365              		.thumb
+ 366              		.thumb_func
+ 367              		.fpu fpv4-sp-d16
+ 369              	mbedtls_md_init:
+ 370              	.LFB6:
+ 176:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 177:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** void mbedtls_md_init( mbedtls_md_context_t *ctx )
+ 178:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 371              		.loc 1 178 0
+ 372              		.cfi_startproc
+ 373              		@ args = 0, pretend = 0, frame = 8
+ 374              		@ frame_needed = 1, uses_anonymous_args = 0
+ 375 0000 80B5     		push	{r7, lr}
+ 376              	.LCFI15:
+ 377              		.cfi_def_cfa_offset 8
+ 378              		.cfi_offset 7, -8
+ 379              		.cfi_offset 14, -4
+ 380 0002 82B0     		sub	sp, sp, #8
+ 381              	.LCFI16:
+ 382              		.cfi_def_cfa_offset 16
+ 383 0004 00AF     		add	r7, sp, #0
+ 384              	.LCFI17:
+ 385              		.cfi_def_cfa_register 7
+ 386 0006 7860     		str	r0, [r7, #4]
+ 179:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     memset( ctx, 0, sizeof( mbedtls_md_context_t ) );
+ 387              		.loc 1 179 0
+ 388 0008 0C22     		movs	r2, #12
+ 389 000a 0021     		movs	r1, #0
+ 390 000c 7868     		ldr	r0, [r7, #4]
+ 391 000e FFF7FEFF 		bl	memset
+ 180:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 392              		.loc 1 180 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 11
+
+
+ 393 0012 00BF     		nop
+ 394 0014 0837     		adds	r7, r7, #8
+ 395              	.LCFI18:
+ 396              		.cfi_def_cfa_offset 8
+ 397 0016 BD46     		mov	sp, r7
+ 398              	.LCFI19:
+ 399              		.cfi_def_cfa_register 13
+ 400              		@ sp needed
+ 401 0018 80BD     		pop	{r7, pc}
+ 402              		.cfi_endproc
+ 403              	.LFE6:
+ 405              		.section	.text.mbedtls_md_free,"ax",%progbits
+ 406              		.align	1
+ 407              		.global	mbedtls_md_free
+ 408              		.syntax unified
+ 409              		.thumb
+ 410              		.thumb_func
+ 411              		.fpu fpv4-sp-d16
+ 413              	mbedtls_md_free:
+ 414              	.LFB7:
+ 181:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 182:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** void mbedtls_md_free( mbedtls_md_context_t *ctx )
+ 183:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 415              		.loc 1 183 0
+ 416              		.cfi_startproc
+ 417              		@ args = 0, pretend = 0, frame = 8
+ 418              		@ frame_needed = 1, uses_anonymous_args = 0
+ 419 0000 80B5     		push	{r7, lr}
+ 420              	.LCFI20:
+ 421              		.cfi_def_cfa_offset 8
+ 422              		.cfi_offset 7, -8
+ 423              		.cfi_offset 14, -4
+ 424 0002 82B0     		sub	sp, sp, #8
+ 425              	.LCFI21:
+ 426              		.cfi_def_cfa_offset 16
+ 427 0004 00AF     		add	r7, sp, #0
+ 428              	.LCFI22:
+ 429              		.cfi_def_cfa_register 7
+ 430 0006 7860     		str	r0, [r7, #4]
+ 184:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 431              		.loc 1 184 0
+ 432 0008 7B68     		ldr	r3, [r7, #4]
+ 433 000a 002B     		cmp	r3, #0
+ 434 000c 26D0     		beq	.L38
+ 435              		.loc 1 184 0 is_stmt 0 discriminator 1
+ 436 000e 7B68     		ldr	r3, [r7, #4]
+ 437 0010 1B68     		ldr	r3, [r3]
+ 438 0012 002B     		cmp	r3, #0
+ 439 0014 22D0     		beq	.L38
+ 185:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return;
+ 186:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 187:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx->md_ctx != NULL )
+ 440              		.loc 1 187 0 is_stmt 1
+ 441 0016 7B68     		ldr	r3, [r7, #4]
+ 442 0018 5B68     		ldr	r3, [r3, #4]
+ 443 001a 002B     		cmp	r3, #0
+ 444 001c 06D0     		beq	.L36
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 12
+
+
+ 188:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         ctx->md_info->ctx_free_func( ctx->md_ctx );
+ 445              		.loc 1 188 0
+ 446 001e 7B68     		ldr	r3, [r7, #4]
+ 447 0020 1B68     		ldr	r3, [r3]
+ 448 0022 5B6A     		ldr	r3, [r3, #36]
+ 449 0024 7A68     		ldr	r2, [r7, #4]
+ 450 0026 5268     		ldr	r2, [r2, #4]
+ 451 0028 1046     		mov	r0, r2
+ 452 002a 9847     		blx	r3
+ 453              	.LVL0:
+ 454              	.L36:
+ 189:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 190:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx->hmac_ctx != NULL )
+ 455              		.loc 1 190 0
+ 456 002c 7B68     		ldr	r3, [r7, #4]
+ 457 002e 9B68     		ldr	r3, [r3, #8]
+ 458 0030 002B     		cmp	r3, #0
+ 459 0032 0ED0     		beq	.L37
+ 191:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     {
+ 192:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         mbedtls_platform_zeroize( ctx->hmac_ctx,
+ 460              		.loc 1 192 0
+ 461 0034 7B68     		ldr	r3, [r7, #4]
+ 462 0036 9A68     		ldr	r2, [r3, #8]
+ 193:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                                   2 * ctx->md_info->block_size );
+ 463              		.loc 1 193 0
+ 464 0038 7B68     		ldr	r3, [r7, #4]
+ 465 003a 1B68     		ldr	r3, [r3]
+ 466 003c DB68     		ldr	r3, [r3, #12]
+ 467 003e 5B00     		lsls	r3, r3, #1
+ 192:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                                   2 * ctx->md_info->block_size );
+ 468              		.loc 1 192 0
+ 469 0040 1946     		mov	r1, r3
+ 470 0042 1046     		mov	r0, r2
+ 471 0044 FFF7FEFF 		bl	mbedtls_platform_zeroize
+ 194:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         mbedtls_free( ctx->hmac_ctx );
+ 472              		.loc 1 194 0
+ 473 0048 7B68     		ldr	r3, [r7, #4]
+ 474 004a 9B68     		ldr	r3, [r3, #8]
+ 475 004c 1846     		mov	r0, r3
+ 476 004e FFF7FEFF 		bl	mbedtls_free
+ 477              	.L37:
+ 195:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     }
+ 196:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 197:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     mbedtls_platform_zeroize( ctx, sizeof( mbedtls_md_context_t ) );
+ 478              		.loc 1 197 0
+ 479 0052 0C21     		movs	r1, #12
+ 480 0054 7868     		ldr	r0, [r7, #4]
+ 481 0056 FFF7FEFF 		bl	mbedtls_platform_zeroize
+ 482 005a 00E0     		b	.L32
+ 483              	.L38:
+ 185:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 484              		.loc 1 185 0
+ 485 005c 00BF     		nop
+ 486              	.L32:
+ 198:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 487              		.loc 1 198 0
+ 488 005e 0837     		adds	r7, r7, #8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 13
+
+
+ 489              	.LCFI23:
+ 490              		.cfi_def_cfa_offset 8
+ 491 0060 BD46     		mov	sp, r7
+ 492              	.LCFI24:
+ 493              		.cfi_def_cfa_register 13
+ 494              		@ sp needed
+ 495 0062 80BD     		pop	{r7, pc}
+ 496              		.cfi_endproc
+ 497              	.LFE7:
+ 499              		.section	.text.mbedtls_md_clone,"ax",%progbits
+ 500              		.align	1
+ 501              		.global	mbedtls_md_clone
+ 502              		.syntax unified
+ 503              		.thumb
+ 504              		.thumb_func
+ 505              		.fpu fpv4-sp-d16
+ 507              	mbedtls_md_clone:
+ 508              	.LFB8:
+ 199:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 200:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_clone( mbedtls_md_context_t *dst,
+ 201:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                       const mbedtls_md_context_t *src )
+ 202:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 509              		.loc 1 202 0
+ 510              		.cfi_startproc
+ 511              		@ args = 0, pretend = 0, frame = 8
+ 512              		@ frame_needed = 1, uses_anonymous_args = 0
+ 513 0000 80B5     		push	{r7, lr}
+ 514              	.LCFI25:
+ 515              		.cfi_def_cfa_offset 8
+ 516              		.cfi_offset 7, -8
+ 517              		.cfi_offset 14, -4
+ 518 0002 82B0     		sub	sp, sp, #8
+ 519              	.LCFI26:
+ 520              		.cfi_def_cfa_offset 16
+ 521 0004 00AF     		add	r7, sp, #0
+ 522              	.LCFI27:
+ 523              		.cfi_def_cfa_register 7
+ 524 0006 7860     		str	r0, [r7, #4]
+ 525 0008 3960     		str	r1, [r7]
+ 203:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( dst == NULL || dst->md_info == NULL ||
+ 526              		.loc 1 203 0
+ 527 000a 7B68     		ldr	r3, [r7, #4]
+ 528 000c 002B     		cmp	r3, #0
+ 529 000e 10D0     		beq	.L40
+ 530              		.loc 1 203 0 is_stmt 0 discriminator 1
+ 531 0010 7B68     		ldr	r3, [r7, #4]
+ 532 0012 1B68     		ldr	r3, [r3]
+ 533 0014 002B     		cmp	r3, #0
+ 534 0016 0CD0     		beq	.L40
+ 535              		.loc 1 203 0 discriminator 2
+ 536 0018 3B68     		ldr	r3, [r7]
+ 537 001a 002B     		cmp	r3, #0
+ 538 001c 09D0     		beq	.L40
+ 204:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         src == NULL || src->md_info == NULL ||
+ 539              		.loc 1 204 0 is_stmt 1
+ 540 001e 3B68     		ldr	r3, [r7]
+ 541 0020 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 14
+
+
+ 542 0022 002B     		cmp	r3, #0
+ 543 0024 05D0     		beq	.L40
+ 205:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         dst->md_info != src->md_info )
+ 544              		.loc 1 205 0 discriminator 1
+ 545 0026 7B68     		ldr	r3, [r7, #4]
+ 546 0028 1A68     		ldr	r2, [r3]
+ 547 002a 3B68     		ldr	r3, [r7]
+ 548 002c 1B68     		ldr	r3, [r3]
+ 204:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         src == NULL || src->md_info == NULL ||
+ 549              		.loc 1 204 0 discriminator 1
+ 550 002e 9A42     		cmp	r2, r3
+ 551 0030 01D0     		beq	.L41
+ 552              	.L40:
+ 206:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     {
+ 207:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 553              		.loc 1 207 0
+ 554 0032 084B     		ldr	r3, .L43
+ 555 0034 09E0     		b	.L42
+ 556              	.L41:
+ 208:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     }
+ 209:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 210:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     dst->md_info->clone_func( dst->md_ctx, src->md_ctx );
+ 557              		.loc 1 210 0
+ 558 0036 7B68     		ldr	r3, [r7, #4]
+ 559 0038 1B68     		ldr	r3, [r3]
+ 560 003a 9B6A     		ldr	r3, [r3, #40]
+ 561 003c 7A68     		ldr	r2, [r7, #4]
+ 562 003e 5068     		ldr	r0, [r2, #4]
+ 563 0040 3A68     		ldr	r2, [r7]
+ 564 0042 5268     		ldr	r2, [r2, #4]
+ 565 0044 1146     		mov	r1, r2
+ 566 0046 9847     		blx	r3
+ 567              	.LVL1:
+ 211:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 212:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( 0 );
+ 568              		.loc 1 212 0
+ 569 0048 0023     		movs	r3, #0
+ 570              	.L42:
+ 213:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 571              		.loc 1 213 0
+ 572 004a 1846     		mov	r0, r3
+ 573 004c 0837     		adds	r7, r7, #8
+ 574              	.LCFI28:
+ 575              		.cfi_def_cfa_offset 8
+ 576 004e BD46     		mov	sp, r7
+ 577              	.LCFI29:
+ 578              		.cfi_def_cfa_register 13
+ 579              		@ sp needed
+ 580 0050 80BD     		pop	{r7, pc}
+ 581              	.L44:
+ 582 0052 00BF     		.align	2
+ 583              	.L43:
+ 584 0054 00AFFFFF 		.word	-20736
+ 585              		.cfi_endproc
+ 586              	.LFE8:
+ 588              		.section	.text.mbedtls_md_init_ctx,"ax",%progbits
+ 589              		.align	1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 15
+
+
+ 590              		.global	mbedtls_md_init_ctx
+ 591              		.syntax unified
+ 592              		.thumb
+ 593              		.thumb_func
+ 594              		.fpu fpv4-sp-d16
+ 596              	mbedtls_md_init_ctx:
+ 597              	.LFB9:
+ 214:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 215:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if ! defined(MBEDTLS_DEPRECATED_REMOVED)
+ 216:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_init_ctx( mbedtls_md_context_t *ctx, const mbedtls_md_info_t *md_info )
+ 217:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 598              		.loc 1 217 0
+ 599              		.cfi_startproc
+ 600              		@ args = 0, pretend = 0, frame = 8
+ 601              		@ frame_needed = 1, uses_anonymous_args = 0
+ 602 0000 80B5     		push	{r7, lr}
+ 603              	.LCFI30:
+ 604              		.cfi_def_cfa_offset 8
+ 605              		.cfi_offset 7, -8
+ 606              		.cfi_offset 14, -4
+ 607 0002 82B0     		sub	sp, sp, #8
+ 608              	.LCFI31:
+ 609              		.cfi_def_cfa_offset 16
+ 610 0004 00AF     		add	r7, sp, #0
+ 611              	.LCFI32:
+ 612              		.cfi_def_cfa_register 7
+ 613 0006 7860     		str	r0, [r7, #4]
+ 614 0008 3960     		str	r1, [r7]
+ 218:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return mbedtls_md_setup( ctx, md_info, 1 );
+ 615              		.loc 1 218 0
+ 616 000a 0122     		movs	r2, #1
+ 617 000c 3968     		ldr	r1, [r7]
+ 618 000e 7868     		ldr	r0, [r7, #4]
+ 619 0010 FFF7FEFF 		bl	mbedtls_md_setup
+ 620 0014 0346     		mov	r3, r0
+ 219:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 621              		.loc 1 219 0
+ 622 0016 1846     		mov	r0, r3
+ 623 0018 0837     		adds	r7, r7, #8
+ 624              	.LCFI33:
+ 625              		.cfi_def_cfa_offset 8
+ 626 001a BD46     		mov	sp, r7
+ 627              	.LCFI34:
+ 628              		.cfi_def_cfa_register 13
+ 629              		@ sp needed
+ 630 001c 80BD     		pop	{r7, pc}
+ 631              		.cfi_endproc
+ 632              	.LFE9:
+ 634              		.section	.text.mbedtls_md_setup,"ax",%progbits
+ 635              		.align	1
+ 636              		.global	mbedtls_md_setup
+ 637              		.syntax unified
+ 638              		.thumb
+ 639              		.thumb_func
+ 640              		.fpu fpv4-sp-d16
+ 642              	mbedtls_md_setup:
+ 643              	.LFB10:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 16
+
+
+ 220:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif
+ 221:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 222:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_setup( mbedtls_md_context_t *ctx, const mbedtls_md_info_t *md_info, int hmac )
+ 223:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 644              		.loc 1 223 0
+ 645              		.cfi_startproc
+ 646              		@ args = 0, pretend = 0, frame = 16
+ 647              		@ frame_needed = 1, uses_anonymous_args = 0
+ 648 0000 80B5     		push	{r7, lr}
+ 649              	.LCFI35:
+ 650              		.cfi_def_cfa_offset 8
+ 651              		.cfi_offset 7, -8
+ 652              		.cfi_offset 14, -4
+ 653 0002 84B0     		sub	sp, sp, #16
+ 654              	.LCFI36:
+ 655              		.cfi_def_cfa_offset 24
+ 656 0004 00AF     		add	r7, sp, #0
+ 657              	.LCFI37:
+ 658              		.cfi_def_cfa_register 7
+ 659 0006 F860     		str	r0, [r7, #12]
+ 660 0008 B960     		str	r1, [r7, #8]
+ 661 000a 7A60     		str	r2, [r7, #4]
+ 224:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( md_info == NULL || ctx == NULL )
+ 662              		.loc 1 224 0
+ 663 000c BB68     		ldr	r3, [r7, #8]
+ 664 000e 002B     		cmp	r3, #0
+ 665 0010 02D0     		beq	.L48
+ 666              		.loc 1 224 0 is_stmt 0 discriminator 1
+ 667 0012 FB68     		ldr	r3, [r7, #12]
+ 668 0014 002B     		cmp	r3, #0
+ 669 0016 01D1     		bne	.L49
+ 670              	.L48:
+ 225:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 671              		.loc 1 225 0 is_stmt 1
+ 672 0018 164B     		ldr	r3, .L53
+ 673 001a 27E0     		b	.L50
+ 674              	.L49:
+ 226:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 227:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ctx->md_ctx = md_info->ctx_alloc_func() ) == NULL )
+ 675              		.loc 1 227 0
+ 676 001c BB68     		ldr	r3, [r7, #8]
+ 677 001e 1B6A     		ldr	r3, [r3, #32]
+ 678 0020 9847     		blx	r3
+ 679              	.LVL2:
+ 680 0022 0246     		mov	r2, r0
+ 681 0024 FB68     		ldr	r3, [r7, #12]
+ 682 0026 5A60     		str	r2, [r3, #4]
+ 683 0028 FB68     		ldr	r3, [r7, #12]
+ 684 002a 5B68     		ldr	r3, [r3, #4]
+ 685 002c 002B     		cmp	r3, #0
+ 686 002e 01D1     		bne	.L51
+ 228:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_ALLOC_FAILED );
+ 687              		.loc 1 228 0
+ 688 0030 114B     		ldr	r3, .L53+4
+ 689 0032 1BE0     		b	.L50
+ 690              	.L51:
+ 229:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 17
+
+
+ 230:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( hmac != 0 )
+ 691              		.loc 1 230 0
+ 692 0034 7B68     		ldr	r3, [r7, #4]
+ 693 0036 002B     		cmp	r3, #0
+ 694 0038 14D0     		beq	.L52
+ 231:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     {
+ 232:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         ctx->hmac_ctx = mbedtls_calloc( 2, md_info->block_size );
+ 695              		.loc 1 232 0
+ 696 003a BB68     		ldr	r3, [r7, #8]
+ 697 003c DB68     		ldr	r3, [r3, #12]
+ 698 003e 1946     		mov	r1, r3
+ 699 0040 0220     		movs	r0, #2
+ 700 0042 FFF7FEFF 		bl	mbedtls_calloc
+ 701 0046 0246     		mov	r2, r0
+ 702 0048 FB68     		ldr	r3, [r7, #12]
+ 703 004a 9A60     		str	r2, [r3, #8]
+ 233:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         if( ctx->hmac_ctx == NULL )
+ 704              		.loc 1 233 0
+ 705 004c FB68     		ldr	r3, [r7, #12]
+ 706 004e 9B68     		ldr	r3, [r3, #8]
+ 707 0050 002B     		cmp	r3, #0
+ 708 0052 07D1     		bne	.L52
+ 234:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         {
+ 235:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             md_info->ctx_free_func( ctx->md_ctx );
+ 709              		.loc 1 235 0
+ 710 0054 BB68     		ldr	r3, [r7, #8]
+ 711 0056 5B6A     		ldr	r3, [r3, #36]
+ 712 0058 FA68     		ldr	r2, [r7, #12]
+ 713 005a 5268     		ldr	r2, [r2, #4]
+ 714 005c 1046     		mov	r0, r2
+ 715 005e 9847     		blx	r3
+ 716              	.LVL3:
+ 236:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             return( MBEDTLS_ERR_MD_ALLOC_FAILED );
+ 717              		.loc 1 236 0
+ 718 0060 054B     		ldr	r3, .L53+4
+ 719 0062 03E0     		b	.L50
+ 720              	.L52:
+ 237:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         }
+ 238:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     }
+ 239:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 240:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     ctx->md_info = md_info;
+ 721              		.loc 1 240 0
+ 722 0064 FB68     		ldr	r3, [r7, #12]
+ 723 0066 BA68     		ldr	r2, [r7, #8]
+ 724 0068 1A60     		str	r2, [r3]
+ 241:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 242:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( 0 );
+ 725              		.loc 1 242 0
+ 726 006a 0023     		movs	r3, #0
+ 727              	.L50:
+ 243:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 728              		.loc 1 243 0
+ 729 006c 1846     		mov	r0, r3
+ 730 006e 1037     		adds	r7, r7, #16
+ 731              	.LCFI38:
+ 732              		.cfi_def_cfa_offset 8
+ 733 0070 BD46     		mov	sp, r7
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 18
+
+
+ 734              	.LCFI39:
+ 735              		.cfi_def_cfa_register 13
+ 736              		@ sp needed
+ 737 0072 80BD     		pop	{r7, pc}
+ 738              	.L54:
+ 739              		.align	2
+ 740              	.L53:
+ 741 0074 00AFFFFF 		.word	-20736
+ 742 0078 80AEFFFF 		.word	-20864
+ 743              		.cfi_endproc
+ 744              	.LFE10:
+ 746              		.section	.text.mbedtls_md_starts,"ax",%progbits
+ 747              		.align	1
+ 748              		.global	mbedtls_md_starts
+ 749              		.syntax unified
+ 750              		.thumb
+ 751              		.thumb_func
+ 752              		.fpu fpv4-sp-d16
+ 754              	mbedtls_md_starts:
+ 755              	.LFB11:
+ 244:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 245:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_starts( mbedtls_md_context_t *ctx )
+ 246:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 756              		.loc 1 246 0
+ 757              		.cfi_startproc
+ 758              		@ args = 0, pretend = 0, frame = 8
+ 759              		@ frame_needed = 1, uses_anonymous_args = 0
+ 760 0000 80B5     		push	{r7, lr}
+ 761              	.LCFI40:
+ 762              		.cfi_def_cfa_offset 8
+ 763              		.cfi_offset 7, -8
+ 764              		.cfi_offset 14, -4
+ 765 0002 82B0     		sub	sp, sp, #8
+ 766              	.LCFI41:
+ 767              		.cfi_def_cfa_offset 16
+ 768 0004 00AF     		add	r7, sp, #0
+ 769              	.LCFI42:
+ 770              		.cfi_def_cfa_register 7
+ 771 0006 7860     		str	r0, [r7, #4]
+ 247:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 772              		.loc 1 247 0
+ 773 0008 7B68     		ldr	r3, [r7, #4]
+ 774 000a 002B     		cmp	r3, #0
+ 775 000c 03D0     		beq	.L56
+ 776              		.loc 1 247 0 is_stmt 0 discriminator 1
+ 777 000e 7B68     		ldr	r3, [r7, #4]
+ 778 0010 1B68     		ldr	r3, [r3]
+ 779 0012 002B     		cmp	r3, #0
+ 780 0014 01D1     		bne	.L57
+ 781              	.L56:
+ 248:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 782              		.loc 1 248 0 is_stmt 1
+ 783 0016 074B     		ldr	r3, .L59
+ 784 0018 07E0     		b	.L58
+ 785              	.L57:
+ 249:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 250:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ctx->md_info->starts_func( ctx->md_ctx ) );
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 19
+
+
+ 786              		.loc 1 250 0
+ 787 001a 7B68     		ldr	r3, [r7, #4]
+ 788 001c 1B68     		ldr	r3, [r3]
+ 789 001e 1B69     		ldr	r3, [r3, #16]
+ 790 0020 7A68     		ldr	r2, [r7, #4]
+ 791 0022 5268     		ldr	r2, [r2, #4]
+ 792 0024 1046     		mov	r0, r2
+ 793 0026 9847     		blx	r3
+ 794              	.LVL4:
+ 795 0028 0346     		mov	r3, r0
+ 796              	.L58:
+ 251:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 797              		.loc 1 251 0
+ 798 002a 1846     		mov	r0, r3
+ 799 002c 0837     		adds	r7, r7, #8
+ 800              	.LCFI43:
+ 801              		.cfi_def_cfa_offset 8
+ 802 002e BD46     		mov	sp, r7
+ 803              	.LCFI44:
+ 804              		.cfi_def_cfa_register 13
+ 805              		@ sp needed
+ 806 0030 80BD     		pop	{r7, pc}
+ 807              	.L60:
+ 808 0032 00BF     		.align	2
+ 809              	.L59:
+ 810 0034 00AFFFFF 		.word	-20736
+ 811              		.cfi_endproc
+ 812              	.LFE11:
+ 814              		.section	.text.mbedtls_md_update,"ax",%progbits
+ 815              		.align	1
+ 816              		.global	mbedtls_md_update
+ 817              		.syntax unified
+ 818              		.thumb
+ 819              		.thumb_func
+ 820              		.fpu fpv4-sp-d16
+ 822              	mbedtls_md_update:
+ 823              	.LFB12:
+ 252:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 253:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_update( mbedtls_md_context_t *ctx, const unsigned char *input, size_t ilen )
+ 254:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 824              		.loc 1 254 0
+ 825              		.cfi_startproc
+ 826              		@ args = 0, pretend = 0, frame = 16
+ 827              		@ frame_needed = 1, uses_anonymous_args = 0
+ 828 0000 80B5     		push	{r7, lr}
+ 829              	.LCFI45:
+ 830              		.cfi_def_cfa_offset 8
+ 831              		.cfi_offset 7, -8
+ 832              		.cfi_offset 14, -4
+ 833 0002 84B0     		sub	sp, sp, #16
+ 834              	.LCFI46:
+ 835              		.cfi_def_cfa_offset 24
+ 836 0004 00AF     		add	r7, sp, #0
+ 837              	.LCFI47:
+ 838              		.cfi_def_cfa_register 7
+ 839 0006 F860     		str	r0, [r7, #12]
+ 840 0008 B960     		str	r1, [r7, #8]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 20
+
+
+ 841 000a 7A60     		str	r2, [r7, #4]
+ 255:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 842              		.loc 1 255 0
+ 843 000c FB68     		ldr	r3, [r7, #12]
+ 844 000e 002B     		cmp	r3, #0
+ 845 0010 03D0     		beq	.L62
+ 846              		.loc 1 255 0 is_stmt 0 discriminator 1
+ 847 0012 FB68     		ldr	r3, [r7, #12]
+ 848 0014 1B68     		ldr	r3, [r3]
+ 849 0016 002B     		cmp	r3, #0
+ 850 0018 01D1     		bne	.L63
+ 851              	.L62:
+ 256:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 852              		.loc 1 256 0 is_stmt 1
+ 853 001a 074B     		ldr	r3, .L65
+ 854 001c 08E0     		b	.L64
+ 855              	.L63:
+ 257:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 258:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ctx->md_info->update_func( ctx->md_ctx, input, ilen ) );
+ 856              		.loc 1 258 0
+ 857 001e FB68     		ldr	r3, [r7, #12]
+ 858 0020 1B68     		ldr	r3, [r3]
+ 859 0022 5B69     		ldr	r3, [r3, #20]
+ 860 0024 FA68     		ldr	r2, [r7, #12]
+ 861 0026 5068     		ldr	r0, [r2, #4]
+ 862 0028 7A68     		ldr	r2, [r7, #4]
+ 863 002a B968     		ldr	r1, [r7, #8]
+ 864 002c 9847     		blx	r3
+ 865              	.LVL5:
+ 866 002e 0346     		mov	r3, r0
+ 867              	.L64:
+ 259:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 868              		.loc 1 259 0
+ 869 0030 1846     		mov	r0, r3
+ 870 0032 1037     		adds	r7, r7, #16
+ 871              	.LCFI48:
+ 872              		.cfi_def_cfa_offset 8
+ 873 0034 BD46     		mov	sp, r7
+ 874              	.LCFI49:
+ 875              		.cfi_def_cfa_register 13
+ 876              		@ sp needed
+ 877 0036 80BD     		pop	{r7, pc}
+ 878              	.L66:
+ 879              		.align	2
+ 880              	.L65:
+ 881 0038 00AFFFFF 		.word	-20736
+ 882              		.cfi_endproc
+ 883              	.LFE12:
+ 885              		.section	.text.mbedtls_md_finish,"ax",%progbits
+ 886              		.align	1
+ 887              		.global	mbedtls_md_finish
+ 888              		.syntax unified
+ 889              		.thumb
+ 890              		.thumb_func
+ 891              		.fpu fpv4-sp-d16
+ 893              	mbedtls_md_finish:
+ 894              	.LFB13:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 21
+
+
+ 260:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 261:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_finish( mbedtls_md_context_t *ctx, unsigned char *output )
+ 262:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 895              		.loc 1 262 0
+ 896              		.cfi_startproc
+ 897              		@ args = 0, pretend = 0, frame = 8
+ 898              		@ frame_needed = 1, uses_anonymous_args = 0
+ 899 0000 80B5     		push	{r7, lr}
+ 900              	.LCFI50:
+ 901              		.cfi_def_cfa_offset 8
+ 902              		.cfi_offset 7, -8
+ 903              		.cfi_offset 14, -4
+ 904 0002 82B0     		sub	sp, sp, #8
+ 905              	.LCFI51:
+ 906              		.cfi_def_cfa_offset 16
+ 907 0004 00AF     		add	r7, sp, #0
+ 908              	.LCFI52:
+ 909              		.cfi_def_cfa_register 7
+ 910 0006 7860     		str	r0, [r7, #4]
+ 911 0008 3960     		str	r1, [r7]
+ 263:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 912              		.loc 1 263 0
+ 913 000a 7B68     		ldr	r3, [r7, #4]
+ 914 000c 002B     		cmp	r3, #0
+ 915 000e 03D0     		beq	.L68
+ 916              		.loc 1 263 0 is_stmt 0 discriminator 1
+ 917 0010 7B68     		ldr	r3, [r7, #4]
+ 918 0012 1B68     		ldr	r3, [r3]
+ 919 0014 002B     		cmp	r3, #0
+ 920 0016 01D1     		bne	.L69
+ 921              	.L68:
+ 264:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 922              		.loc 1 264 0 is_stmt 1
+ 923 0018 074B     		ldr	r3, .L71
+ 924 001a 08E0     		b	.L70
+ 925              	.L69:
+ 265:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 266:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ctx->md_info->finish_func( ctx->md_ctx, output ) );
+ 926              		.loc 1 266 0
+ 927 001c 7B68     		ldr	r3, [r7, #4]
+ 928 001e 1B68     		ldr	r3, [r3]
+ 929 0020 9B69     		ldr	r3, [r3, #24]
+ 930 0022 7A68     		ldr	r2, [r7, #4]
+ 931 0024 5268     		ldr	r2, [r2, #4]
+ 932 0026 3968     		ldr	r1, [r7]
+ 933 0028 1046     		mov	r0, r2
+ 934 002a 9847     		blx	r3
+ 935              	.LVL6:
+ 936 002c 0346     		mov	r3, r0
+ 937              	.L70:
+ 267:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 938              		.loc 1 267 0
+ 939 002e 1846     		mov	r0, r3
+ 940 0030 0837     		adds	r7, r7, #8
+ 941              	.LCFI53:
+ 942              		.cfi_def_cfa_offset 8
+ 943 0032 BD46     		mov	sp, r7
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 22
+
+
+ 944              	.LCFI54:
+ 945              		.cfi_def_cfa_register 13
+ 946              		@ sp needed
+ 947 0034 80BD     		pop	{r7, pc}
+ 948              	.L72:
+ 949 0036 00BF     		.align	2
+ 950              	.L71:
+ 951 0038 00AFFFFF 		.word	-20736
+ 952              		.cfi_endproc
+ 953              	.LFE13:
+ 955              		.section	.text.mbedtls_md,"ax",%progbits
+ 956              		.align	1
+ 957              		.global	mbedtls_md
+ 958              		.syntax unified
+ 959              		.thumb
+ 960              		.thumb_func
+ 961              		.fpu fpv4-sp-d16
+ 963              	mbedtls_md:
+ 964              	.LFB14:
+ 268:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 269:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md( const mbedtls_md_info_t *md_info, const unsigned char *input, size_t ilen,
+ 270:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             unsigned char *output )
+ 271:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 965              		.loc 1 271 0
+ 966              		.cfi_startproc
+ 967              		@ args = 0, pretend = 0, frame = 16
+ 968              		@ frame_needed = 1, uses_anonymous_args = 0
+ 969 0000 80B5     		push	{r7, lr}
+ 970              	.LCFI55:
+ 971              		.cfi_def_cfa_offset 8
+ 972              		.cfi_offset 7, -8
+ 973              		.cfi_offset 14, -4
+ 974 0002 84B0     		sub	sp, sp, #16
+ 975              	.LCFI56:
+ 976              		.cfi_def_cfa_offset 24
+ 977 0004 00AF     		add	r7, sp, #0
+ 978              	.LCFI57:
+ 979              		.cfi_def_cfa_register 7
+ 980 0006 F860     		str	r0, [r7, #12]
+ 981 0008 B960     		str	r1, [r7, #8]
+ 982 000a 7A60     		str	r2, [r7, #4]
+ 983 000c 3B60     		str	r3, [r7]
+ 272:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( md_info == NULL )
+ 984              		.loc 1 272 0
+ 985 000e FB68     		ldr	r3, [r7, #12]
+ 986 0010 002B     		cmp	r3, #0
+ 987 0012 01D1     		bne	.L74
+ 273:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 988              		.loc 1 273 0
+ 989 0014 064B     		ldr	r3, .L76
+ 990 0016 06E0     		b	.L75
+ 991              	.L74:
+ 274:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 275:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( md_info->digest_func( input, ilen, output ) );
+ 992              		.loc 1 275 0
+ 993 0018 FB68     		ldr	r3, [r7, #12]
+ 994 001a DB69     		ldr	r3, [r3, #28]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 23
+
+
+ 995 001c 3A68     		ldr	r2, [r7]
+ 996 001e 7968     		ldr	r1, [r7, #4]
+ 997 0020 B868     		ldr	r0, [r7, #8]
+ 998 0022 9847     		blx	r3
+ 999              	.LVL7:
+ 1000 0024 0346     		mov	r3, r0
+ 1001              	.L75:
+ 276:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1002              		.loc 1 276 0
+ 1003 0026 1846     		mov	r0, r3
+ 1004 0028 1037     		adds	r7, r7, #16
+ 1005              	.LCFI58:
+ 1006              		.cfi_def_cfa_offset 8
+ 1007 002a BD46     		mov	sp, r7
+ 1008              	.LCFI59:
+ 1009              		.cfi_def_cfa_register 13
+ 1010              		@ sp needed
+ 1011 002c 80BD     		pop	{r7, pc}
+ 1012              	.L77:
+ 1013 002e 00BF     		.align	2
+ 1014              	.L76:
+ 1015 0030 00AFFFFF 		.word	-20736
+ 1016              		.cfi_endproc
+ 1017              	.LFE14:
+ 1019              		.section	.text.mbedtls_md_hmac_starts,"ax",%progbits
+ 1020              		.align	1
+ 1021              		.global	mbedtls_md_hmac_starts
+ 1022              		.syntax unified
+ 1023              		.thumb
+ 1024              		.thumb_func
+ 1025              		.fpu fpv4-sp-d16
+ 1027              	mbedtls_md_hmac_starts:
+ 1028              	.LFB15:
+ 277:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 278:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #if defined(MBEDTLS_FS_IO)
+ 279:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_file( const mbedtls_md_info_t *md_info, const char *path, unsigned char *output )
+ 280:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 281:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     int ret;
+ 282:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     FILE *f;
+ 283:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     size_t n;
+ 284:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     mbedtls_md_context_t ctx;
+ 285:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     unsigned char buf[1024];
+ 286:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 287:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( md_info == NULL )
+ 288:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 289:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 290:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( f = fopen( path, "rb" ) ) == NULL )
+ 291:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_FILE_IO_ERROR );
+ 292:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 293:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     mbedtls_md_init( &ctx );
+ 294:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 295:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = mbedtls_md_setup( &ctx, md_info, 0 ) ) != 0 )
+ 296:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         goto cleanup;
+ 297:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 298:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = md_info->starts_func( ctx.md_ctx ) ) != 0 )
+ 299:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         goto cleanup;
+ 300:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 24
+
+
+ 301:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     while( ( n = fread( buf, 1, sizeof( buf ), f ) ) > 0 )
+ 302:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         if( ( ret = md_info->update_func( ctx.md_ctx, buf, n ) ) != 0 )
+ 303:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             goto cleanup;
+ 304:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 305:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ferror( f ) != 0 )
+ 306:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         ret = MBEDTLS_ERR_MD_FILE_IO_ERROR;
+ 307:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     else
+ 308:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         ret = md_info->finish_func( ctx.md_ctx, output );
+ 309:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 310:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** cleanup:
+ 311:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     mbedtls_platform_zeroize( buf, sizeof( buf ) );
+ 312:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     fclose( f );
+ 313:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     mbedtls_md_free( &ctx );
+ 314:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 315:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ret );
+ 316:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 317:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** #endif /* MBEDTLS_FS_IO */
+ 318:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 319:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_hmac_starts( mbedtls_md_context_t *ctx, const unsigned char *key, size_t keylen )
+ 320:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 1029              		.loc 1 320 0
+ 1030              		.cfi_startproc
+ 1031              		@ args = 0, pretend = 0, frame = 96
+ 1032              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1033 0000 80B5     		push	{r7, lr}
+ 1034              	.LCFI60:
+ 1035              		.cfi_def_cfa_offset 8
+ 1036              		.cfi_offset 7, -8
+ 1037              		.cfi_offset 14, -4
+ 1038 0002 98B0     		sub	sp, sp, #96
+ 1039              	.LCFI61:
+ 1040              		.cfi_def_cfa_offset 104
+ 1041 0004 00AF     		add	r7, sp, #0
+ 1042              	.LCFI62:
+ 1043              		.cfi_def_cfa_register 7
+ 1044 0006 F860     		str	r0, [r7, #12]
+ 1045 0008 B960     		str	r1, [r7, #8]
+ 1046 000a 7A60     		str	r2, [r7, #4]
+ 321:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     int ret;
+ 322:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     unsigned char sum[MBEDTLS_MD_MAX_SIZE];
+ 323:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     unsigned char *ipad, *opad;
+ 324:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     size_t i;
+ 325:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 326:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+ 1047              		.loc 1 326 0
+ 1048 000c FB68     		ldr	r3, [r7, #12]
+ 1049 000e 002B     		cmp	r3, #0
+ 1050 0010 07D0     		beq	.L79
+ 1051              		.loc 1 326 0 is_stmt 0 discriminator 1
+ 1052 0012 FB68     		ldr	r3, [r7, #12]
+ 1053 0014 1B68     		ldr	r3, [r3]
+ 1054 0016 002B     		cmp	r3, #0
+ 1055 0018 03D0     		beq	.L79
+ 1056              		.loc 1 326 0 discriminator 2
+ 1057 001a FB68     		ldr	r3, [r7, #12]
+ 1058 001c 9B68     		ldr	r3, [r3, #8]
+ 1059 001e 002B     		cmp	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 25
+
+
+ 1060 0020 01D1     		bne	.L80
+ 1061              	.L79:
+ 327:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 1062              		.loc 1 327 0 is_stmt 1
+ 1063 0022 4F4B     		ldr	r3, .L95
+ 1064 0024 98E0     		b	.L90
+ 1065              	.L80:
+ 328:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 329:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( keylen > (size_t) ctx->md_info->block_size )
+ 1066              		.loc 1 329 0
+ 1067 0026 FB68     		ldr	r3, [r7, #12]
+ 1068 0028 1B68     		ldr	r3, [r3]
+ 1069 002a DB68     		ldr	r3, [r3, #12]
+ 1070 002c 1A46     		mov	r2, r3
+ 1071 002e 7B68     		ldr	r3, [r7, #4]
+ 1072 0030 9342     		cmp	r3, r2
+ 1073 0032 2AD9     		bls	.L82
+ 330:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     {
+ 331:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         if( ( ret = ctx->md_info->starts_func( ctx->md_ctx ) ) != 0 )
+ 1074              		.loc 1 331 0
+ 1075 0034 FB68     		ldr	r3, [r7, #12]
+ 1076 0036 1B68     		ldr	r3, [r3]
+ 1077 0038 1B69     		ldr	r3, [r3, #16]
+ 1078 003a FA68     		ldr	r2, [r7, #12]
+ 1079 003c 5268     		ldr	r2, [r2, #4]
+ 1080 003e 1046     		mov	r0, r2
+ 1081 0040 9847     		blx	r3
+ 1082              	.LVL8:
+ 1083 0042 F865     		str	r0, [r7, #92]
+ 1084 0044 FB6D     		ldr	r3, [r7, #92]
+ 1085 0046 002B     		cmp	r3, #0
+ 1086 0048 78D1     		bne	.L91
+ 332:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             goto cleanup;
+ 333:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         if( ( ret = ctx->md_info->update_func( ctx->md_ctx, key, keylen ) ) != 0 )
+ 1087              		.loc 1 333 0
+ 1088 004a FB68     		ldr	r3, [r7, #12]
+ 1089 004c 1B68     		ldr	r3, [r3]
+ 1090 004e 5B69     		ldr	r3, [r3, #20]
+ 1091 0050 FA68     		ldr	r2, [r7, #12]
+ 1092 0052 5068     		ldr	r0, [r2, #4]
+ 1093 0054 7A68     		ldr	r2, [r7, #4]
+ 1094 0056 B968     		ldr	r1, [r7, #8]
+ 1095 0058 9847     		blx	r3
+ 1096              	.LVL9:
+ 1097 005a F865     		str	r0, [r7, #92]
+ 1098 005c FB6D     		ldr	r3, [r7, #92]
+ 1099 005e 002B     		cmp	r3, #0
+ 1100 0060 6ED1     		bne	.L92
+ 334:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             goto cleanup;
+ 335:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         if( ( ret = ctx->md_info->finish_func( ctx->md_ctx, sum ) ) != 0 )
+ 1101              		.loc 1 335 0
+ 1102 0062 FB68     		ldr	r3, [r7, #12]
+ 1103 0064 1B68     		ldr	r3, [r3]
+ 1104 0066 9B69     		ldr	r3, [r3, #24]
+ 1105 0068 FA68     		ldr	r2, [r7, #12]
+ 1106 006a 5268     		ldr	r2, [r2, #4]
+ 1107 006c 07F11001 		add	r1, r7, #16
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 26
+
+
+ 1108 0070 1046     		mov	r0, r2
+ 1109 0072 9847     		blx	r3
+ 1110              	.LVL10:
+ 1111 0074 F865     		str	r0, [r7, #92]
+ 1112 0076 FB6D     		ldr	r3, [r7, #92]
+ 1113 0078 002B     		cmp	r3, #0
+ 1114 007a 63D1     		bne	.L93
+ 336:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****             goto cleanup;
+ 337:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 338:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         keylen = ctx->md_info->size;
+ 1115              		.loc 1 338 0
+ 1116 007c FB68     		ldr	r3, [r7, #12]
+ 1117 007e 1B68     		ldr	r3, [r3]
+ 1118 0080 9B68     		ldr	r3, [r3, #8]
+ 1119 0082 7B60     		str	r3, [r7, #4]
+ 339:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         key = sum;
+ 1120              		.loc 1 339 0
+ 1121 0084 07F11003 		add	r3, r7, #16
+ 1122 0088 BB60     		str	r3, [r7, #8]
+ 1123              	.L82:
+ 340:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     }
+ 341:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 342:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     ipad = (unsigned char *) ctx->hmac_ctx;
+ 1124              		.loc 1 342 0
+ 1125 008a FB68     		ldr	r3, [r7, #12]
+ 1126 008c 9B68     		ldr	r3, [r3, #8]
+ 1127 008e 7B65     		str	r3, [r7, #84]
+ 343:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     opad = (unsigned char *) ctx->hmac_ctx + ctx->md_info->block_size;
+ 1128              		.loc 1 343 0
+ 1129 0090 FB68     		ldr	r3, [r7, #12]
+ 1130 0092 9B68     		ldr	r3, [r3, #8]
+ 1131 0094 FA68     		ldr	r2, [r7, #12]
+ 1132 0096 1268     		ldr	r2, [r2]
+ 1133 0098 D268     		ldr	r2, [r2, #12]
+ 1134 009a 1344     		add	r3, r3, r2
+ 1135 009c 3B65     		str	r3, [r7, #80]
+ 344:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 345:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     memset( ipad, 0x36, ctx->md_info->block_size );
+ 1136              		.loc 1 345 0
+ 1137 009e FB68     		ldr	r3, [r7, #12]
+ 1138 00a0 1B68     		ldr	r3, [r3]
+ 1139 00a2 DB68     		ldr	r3, [r3, #12]
+ 1140 00a4 1A46     		mov	r2, r3
+ 1141 00a6 3621     		movs	r1, #54
+ 1142 00a8 786D     		ldr	r0, [r7, #84]
+ 1143 00aa FFF7FEFF 		bl	memset
+ 346:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     memset( opad, 0x5C, ctx->md_info->block_size );
+ 1144              		.loc 1 346 0
+ 1145 00ae FB68     		ldr	r3, [r7, #12]
+ 1146 00b0 1B68     		ldr	r3, [r3]
+ 1147 00b2 DB68     		ldr	r3, [r3, #12]
+ 1148 00b4 1A46     		mov	r2, r3
+ 1149 00b6 5C21     		movs	r1, #92
+ 1150 00b8 386D     		ldr	r0, [r7, #80]
+ 1151 00ba FFF7FEFF 		bl	memset
+ 347:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 348:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     for( i = 0; i < keylen; i++ )
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 27
+
+
+ 1152              		.loc 1 348 0
+ 1153 00be 0023     		movs	r3, #0
+ 1154 00c0 BB65     		str	r3, [r7, #88]
+ 1155 00c2 1EE0     		b	.L87
+ 1156              	.L88:
+ 349:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     {
+ 350:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         ipad[i] = (unsigned char)( ipad[i] ^ key[i] );
+ 1157              		.loc 1 350 0 discriminator 3
+ 1158 00c4 7A6D     		ldr	r2, [r7, #84]
+ 1159 00c6 BB6D     		ldr	r3, [r7, #88]
+ 1160 00c8 1344     		add	r3, r3, r2
+ 1161 00ca 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 1162 00cc BA68     		ldr	r2, [r7, #8]
+ 1163 00ce BB6D     		ldr	r3, [r7, #88]
+ 1164 00d0 1344     		add	r3, r3, r2
+ 1165 00d2 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1166 00d4 786D     		ldr	r0, [r7, #84]
+ 1167 00d6 BB6D     		ldr	r3, [r7, #88]
+ 1168 00d8 0344     		add	r3, r3, r0
+ 1169 00da 4A40     		eors	r2, r2, r1
+ 1170 00dc D2B2     		uxtb	r2, r2
+ 1171 00de 1A70     		strb	r2, [r3]
+ 351:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         opad[i] = (unsigned char)( opad[i] ^ key[i] );
+ 1172              		.loc 1 351 0 discriminator 3
+ 1173 00e0 3A6D     		ldr	r2, [r7, #80]
+ 1174 00e2 BB6D     		ldr	r3, [r7, #88]
+ 1175 00e4 1344     		add	r3, r3, r2
+ 1176 00e6 1978     		ldrb	r1, [r3]	@ zero_extendqisi2
+ 1177 00e8 BA68     		ldr	r2, [r7, #8]
+ 1178 00ea BB6D     		ldr	r3, [r7, #88]
+ 1179 00ec 1344     		add	r3, r3, r2
+ 1180 00ee 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 1181 00f0 386D     		ldr	r0, [r7, #80]
+ 1182 00f2 BB6D     		ldr	r3, [r7, #88]
+ 1183 00f4 0344     		add	r3, r3, r0
+ 1184 00f6 4A40     		eors	r2, r2, r1
+ 1185 00f8 D2B2     		uxtb	r2, r2
+ 1186 00fa 1A70     		strb	r2, [r3]
+ 348:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     {
+ 1187              		.loc 1 348 0 discriminator 3
+ 1188 00fc BB6D     		ldr	r3, [r7, #88]
+ 1189 00fe 0133     		adds	r3, r3, #1
+ 1190 0100 BB65     		str	r3, [r7, #88]
+ 1191              	.L87:
+ 348:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     {
+ 1192              		.loc 1 348 0 is_stmt 0 discriminator 1
+ 1193 0102 BA6D     		ldr	r2, [r7, #88]
+ 1194 0104 7B68     		ldr	r3, [r7, #4]
+ 1195 0106 9A42     		cmp	r2, r3
+ 1196 0108 DCD3     		bcc	.L88
+ 352:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     }
+ 353:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 354:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->starts_func( ctx->md_ctx ) ) != 0 )
+ 1197              		.loc 1 354 0 is_stmt 1
+ 1198 010a FB68     		ldr	r3, [r7, #12]
+ 1199 010c 1B68     		ldr	r3, [r3]
+ 1200 010e 1B69     		ldr	r3, [r3, #16]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 28
+
+
+ 1201 0110 FA68     		ldr	r2, [r7, #12]
+ 1202 0112 5268     		ldr	r2, [r2, #4]
+ 1203 0114 1046     		mov	r0, r2
+ 1204 0116 9847     		blx	r3
+ 1205              	.LVL11:
+ 1206 0118 F865     		str	r0, [r7, #92]
+ 1207 011a FB6D     		ldr	r3, [r7, #92]
+ 1208 011c 002B     		cmp	r3, #0
+ 1209 011e 13D1     		bne	.L94
+ 355:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         goto cleanup;
+ 356:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->update_func( ctx->md_ctx, ipad,
+ 1210              		.loc 1 356 0
+ 1211 0120 FB68     		ldr	r3, [r7, #12]
+ 1212 0122 1B68     		ldr	r3, [r3]
+ 1213 0124 5B69     		ldr	r3, [r3, #20]
+ 1214 0126 FA68     		ldr	r2, [r7, #12]
+ 1215 0128 5068     		ldr	r0, [r2, #4]
+ 357:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                                            ctx->md_info->block_size ) ) != 0 )
+ 1216              		.loc 1 357 0
+ 1217 012a FA68     		ldr	r2, [r7, #12]
+ 1218 012c 1268     		ldr	r2, [r2]
+ 1219 012e D268     		ldr	r2, [r2, #12]
+ 356:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                                            ctx->md_info->block_size ) ) != 0 )
+ 1220              		.loc 1 356 0
+ 1221 0130 796D     		ldr	r1, [r7, #84]
+ 1222 0132 9847     		blx	r3
+ 1223              	.LVL12:
+ 1224 0134 F865     		str	r0, [r7, #92]
+ 1225 0136 FB6D     		ldr	r3, [r7, #92]
+ 1226 0138 002B     		cmp	r3, #0
+ 358:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         goto cleanup;
+ 359:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 360:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** cleanup:
+ 1227              		.loc 1 360 0
+ 1228 013a 06E0     		b	.L84
+ 1229              	.L91:
+ 332:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         if( ( ret = ctx->md_info->update_func( ctx->md_ctx, key, keylen ) ) != 0 )
+ 1230              		.loc 1 332 0
+ 1231 013c 00BF     		nop
+ 1232 013e 04E0     		b	.L84
+ 1233              	.L92:
+ 334:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         if( ( ret = ctx->md_info->finish_func( ctx->md_ctx, sum ) ) != 0 )
+ 1234              		.loc 1 334 0
+ 1235 0140 00BF     		nop
+ 1236 0142 02E0     		b	.L84
+ 1237              	.L93:
+ 336:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 1238              		.loc 1 336 0
+ 1239 0144 00BF     		nop
+ 1240 0146 00E0     		b	.L84
+ 1241              	.L94:
+ 355:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->update_func( ctx->md_ctx, ipad,
+ 1242              		.loc 1 355 0
+ 1243 0148 00BF     		nop
+ 1244              	.L84:
+ 361:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     mbedtls_platform_zeroize( sum, sizeof( sum ) );
+ 1245              		.loc 1 361 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 29
+
+
+ 1246 014a 07F11003 		add	r3, r7, #16
+ 1247 014e 4021     		movs	r1, #64
+ 1248 0150 1846     		mov	r0, r3
+ 1249 0152 FFF7FEFF 		bl	mbedtls_platform_zeroize
+ 362:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 363:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ret );
+ 1250              		.loc 1 363 0
+ 1251 0156 FB6D     		ldr	r3, [r7, #92]
+ 1252              	.L90:
+ 364:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1253              		.loc 1 364 0 discriminator 1
+ 1254 0158 1846     		mov	r0, r3
+ 1255 015a 6037     		adds	r7, r7, #96
+ 1256              	.LCFI63:
+ 1257              		.cfi_def_cfa_offset 8
+ 1258 015c BD46     		mov	sp, r7
+ 1259              	.LCFI64:
+ 1260              		.cfi_def_cfa_register 13
+ 1261              		@ sp needed
+ 1262 015e 80BD     		pop	{r7, pc}
+ 1263              	.L96:
+ 1264              		.align	2
+ 1265              	.L95:
+ 1266 0160 00AFFFFF 		.word	-20736
+ 1267              		.cfi_endproc
+ 1268              	.LFE15:
+ 1270              		.section	.text.mbedtls_md_hmac_update,"ax",%progbits
+ 1271              		.align	1
+ 1272              		.global	mbedtls_md_hmac_update
+ 1273              		.syntax unified
+ 1274              		.thumb
+ 1275              		.thumb_func
+ 1276              		.fpu fpv4-sp-d16
+ 1278              	mbedtls_md_hmac_update:
+ 1279              	.LFB16:
+ 365:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 366:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_hmac_update( mbedtls_md_context_t *ctx, const unsigned char *input, size_t ilen )
+ 367:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 1280              		.loc 1 367 0
+ 1281              		.cfi_startproc
+ 1282              		@ args = 0, pretend = 0, frame = 16
+ 1283              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1284 0000 80B5     		push	{r7, lr}
+ 1285              	.LCFI65:
+ 1286              		.cfi_def_cfa_offset 8
+ 1287              		.cfi_offset 7, -8
+ 1288              		.cfi_offset 14, -4
+ 1289 0002 84B0     		sub	sp, sp, #16
+ 1290              	.LCFI66:
+ 1291              		.cfi_def_cfa_offset 24
+ 1292 0004 00AF     		add	r7, sp, #0
+ 1293              	.LCFI67:
+ 1294              		.cfi_def_cfa_register 7
+ 1295 0006 F860     		str	r0, [r7, #12]
+ 1296 0008 B960     		str	r1, [r7, #8]
+ 1297 000a 7A60     		str	r2, [r7, #4]
+ 368:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 30
+
+
+ 1298              		.loc 1 368 0
+ 1299 000c FB68     		ldr	r3, [r7, #12]
+ 1300 000e 002B     		cmp	r3, #0
+ 1301 0010 07D0     		beq	.L98
+ 1302              		.loc 1 368 0 is_stmt 0 discriminator 1
+ 1303 0012 FB68     		ldr	r3, [r7, #12]
+ 1304 0014 1B68     		ldr	r3, [r3]
+ 1305 0016 002B     		cmp	r3, #0
+ 1306 0018 03D0     		beq	.L98
+ 1307              		.loc 1 368 0 discriminator 2
+ 1308 001a FB68     		ldr	r3, [r7, #12]
+ 1309 001c 9B68     		ldr	r3, [r3, #8]
+ 1310 001e 002B     		cmp	r3, #0
+ 1311 0020 01D1     		bne	.L99
+ 1312              	.L98:
+ 369:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 1313              		.loc 1 369 0 is_stmt 1
+ 1314 0022 074B     		ldr	r3, .L101
+ 1315 0024 08E0     		b	.L100
+ 1316              	.L99:
+ 370:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 371:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ctx->md_info->update_func( ctx->md_ctx, input, ilen ) );
+ 1317              		.loc 1 371 0
+ 1318 0026 FB68     		ldr	r3, [r7, #12]
+ 1319 0028 1B68     		ldr	r3, [r3]
+ 1320 002a 5B69     		ldr	r3, [r3, #20]
+ 1321 002c FA68     		ldr	r2, [r7, #12]
+ 1322 002e 5068     		ldr	r0, [r2, #4]
+ 1323 0030 7A68     		ldr	r2, [r7, #4]
+ 1324 0032 B968     		ldr	r1, [r7, #8]
+ 1325 0034 9847     		blx	r3
+ 1326              	.LVL13:
+ 1327 0036 0346     		mov	r3, r0
+ 1328              	.L100:
+ 372:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1329              		.loc 1 372 0
+ 1330 0038 1846     		mov	r0, r3
+ 1331 003a 1037     		adds	r7, r7, #16
+ 1332              	.LCFI68:
+ 1333              		.cfi_def_cfa_offset 8
+ 1334 003c BD46     		mov	sp, r7
+ 1335              	.LCFI69:
+ 1336              		.cfi_def_cfa_register 13
+ 1337              		@ sp needed
+ 1338 003e 80BD     		pop	{r7, pc}
+ 1339              	.L102:
+ 1340              		.align	2
+ 1341              	.L101:
+ 1342 0040 00AFFFFF 		.word	-20736
+ 1343              		.cfi_endproc
+ 1344              	.LFE16:
+ 1346              		.section	.text.mbedtls_md_hmac_finish,"ax",%progbits
+ 1347              		.align	1
+ 1348              		.global	mbedtls_md_hmac_finish
+ 1349              		.syntax unified
+ 1350              		.thumb
+ 1351              		.thumb_func
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 31
+
+
+ 1352              		.fpu fpv4-sp-d16
+ 1354              	mbedtls_md_hmac_finish:
+ 1355              	.LFB17:
+ 373:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 374:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_hmac_finish( mbedtls_md_context_t *ctx, unsigned char *output )
+ 375:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 1356              		.loc 1 375 0
+ 1357              		.cfi_startproc
+ 1358              		@ args = 0, pretend = 0, frame = 80
+ 1359              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1360 0000 80B5     		push	{r7, lr}
+ 1361              	.LCFI70:
+ 1362              		.cfi_def_cfa_offset 8
+ 1363              		.cfi_offset 7, -8
+ 1364              		.cfi_offset 14, -4
+ 1365 0002 94B0     		sub	sp, sp, #80
+ 1366              	.LCFI71:
+ 1367              		.cfi_def_cfa_offset 88
+ 1368 0004 00AF     		add	r7, sp, #0
+ 1369              	.LCFI72:
+ 1370              		.cfi_def_cfa_register 7
+ 1371 0006 7860     		str	r0, [r7, #4]
+ 1372 0008 3960     		str	r1, [r7]
+ 376:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     int ret;
+ 377:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     unsigned char tmp[MBEDTLS_MD_MAX_SIZE];
+ 378:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     unsigned char *opad;
+ 379:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 380:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+ 1373              		.loc 1 380 0
+ 1374 000a 7B68     		ldr	r3, [r7, #4]
+ 1375 000c 002B     		cmp	r3, #0
+ 1376 000e 07D0     		beq	.L104
+ 1377              		.loc 1 380 0 is_stmt 0 discriminator 1
+ 1378 0010 7B68     		ldr	r3, [r7, #4]
+ 1379 0012 1B68     		ldr	r3, [r3]
+ 1380 0014 002B     		cmp	r3, #0
+ 1381 0016 03D0     		beq	.L104
+ 1382              		.loc 1 380 0 discriminator 2
+ 1383 0018 7B68     		ldr	r3, [r7, #4]
+ 1384 001a 9B68     		ldr	r3, [r3, #8]
+ 1385 001c 002B     		cmp	r3, #0
+ 1386 001e 01D1     		bne	.L105
+ 1387              	.L104:
+ 381:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 1388              		.loc 1 381 0 is_stmt 1
+ 1389 0020 294B     		ldr	r3, .L112
+ 1390 0022 4CE0     		b	.L111
+ 1391              	.L105:
+ 382:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 383:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     opad = (unsigned char *) ctx->hmac_ctx + ctx->md_info->block_size;
+ 1392              		.loc 1 383 0
+ 1393 0024 7B68     		ldr	r3, [r7, #4]
+ 1394 0026 9B68     		ldr	r3, [r3, #8]
+ 1395 0028 7A68     		ldr	r2, [r7, #4]
+ 1396 002a 1268     		ldr	r2, [r2]
+ 1397 002c D268     		ldr	r2, [r2, #12]
+ 1398 002e 1344     		add	r3, r3, r2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 32
+
+
+ 1399 0030 FB64     		str	r3, [r7, #76]
+ 384:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 385:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->finish_func( ctx->md_ctx, tmp ) ) != 0 )
+ 1400              		.loc 1 385 0
+ 1401 0032 7B68     		ldr	r3, [r7, #4]
+ 1402 0034 1B68     		ldr	r3, [r3]
+ 1403 0036 9B69     		ldr	r3, [r3, #24]
+ 1404 0038 7A68     		ldr	r2, [r7, #4]
+ 1405 003a 5268     		ldr	r2, [r2, #4]
+ 1406 003c 07F10801 		add	r1, r7, #8
+ 1407 0040 1046     		mov	r0, r2
+ 1408 0042 9847     		blx	r3
+ 1409              	.LVL14:
+ 1410 0044 B864     		str	r0, [r7, #72]
+ 1411 0046 BB6C     		ldr	r3, [r7, #72]
+ 1412 0048 002B     		cmp	r3, #0
+ 1413 004a 01D0     		beq	.L107
+ 386:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( ret );
+ 1414              		.loc 1 386 0
+ 1415 004c BB6C     		ldr	r3, [r7, #72]
+ 1416 004e 36E0     		b	.L111
+ 1417              	.L107:
+ 387:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->starts_func( ctx->md_ctx ) ) != 0 )
+ 1418              		.loc 1 387 0
+ 1419 0050 7B68     		ldr	r3, [r7, #4]
+ 1420 0052 1B68     		ldr	r3, [r3]
+ 1421 0054 1B69     		ldr	r3, [r3, #16]
+ 1422 0056 7A68     		ldr	r2, [r7, #4]
+ 1423 0058 5268     		ldr	r2, [r2, #4]
+ 1424 005a 1046     		mov	r0, r2
+ 1425 005c 9847     		blx	r3
+ 1426              	.LVL15:
+ 1427 005e B864     		str	r0, [r7, #72]
+ 1428 0060 BB6C     		ldr	r3, [r7, #72]
+ 1429 0062 002B     		cmp	r3, #0
+ 1430 0064 01D0     		beq	.L108
+ 388:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( ret );
+ 1431              		.loc 1 388 0
+ 1432 0066 BB6C     		ldr	r3, [r7, #72]
+ 1433 0068 29E0     		b	.L111
+ 1434              	.L108:
+ 389:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->update_func( ctx->md_ctx, opad,
+ 1435              		.loc 1 389 0
+ 1436 006a 7B68     		ldr	r3, [r7, #4]
+ 1437 006c 1B68     		ldr	r3, [r3]
+ 1438 006e 5B69     		ldr	r3, [r3, #20]
+ 1439 0070 7A68     		ldr	r2, [r7, #4]
+ 1440 0072 5068     		ldr	r0, [r2, #4]
+ 390:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                                            ctx->md_info->block_size ) ) != 0 )
+ 1441              		.loc 1 390 0
+ 1442 0074 7A68     		ldr	r2, [r7, #4]
+ 1443 0076 1268     		ldr	r2, [r2]
+ 1444 0078 D268     		ldr	r2, [r2, #12]
+ 389:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->update_func( ctx->md_ctx, opad,
+ 1445              		.loc 1 389 0
+ 1446 007a F96C     		ldr	r1, [r7, #76]
+ 1447 007c 9847     		blx	r3
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 33
+
+
+ 1448              	.LVL16:
+ 1449 007e B864     		str	r0, [r7, #72]
+ 1450 0080 BB6C     		ldr	r3, [r7, #72]
+ 1451 0082 002B     		cmp	r3, #0
+ 1452 0084 01D0     		beq	.L109
+ 391:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( ret );
+ 1453              		.loc 1 391 0
+ 1454 0086 BB6C     		ldr	r3, [r7, #72]
+ 1455 0088 19E0     		b	.L111
+ 1456              	.L109:
+ 392:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->update_func( ctx->md_ctx, tmp,
+ 1457              		.loc 1 392 0
+ 1458 008a 7B68     		ldr	r3, [r7, #4]
+ 1459 008c 1B68     		ldr	r3, [r3]
+ 1460 008e 5B69     		ldr	r3, [r3, #20]
+ 1461 0090 7A68     		ldr	r2, [r7, #4]
+ 1462 0092 5068     		ldr	r0, [r2, #4]
+ 393:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                                            ctx->md_info->size ) ) != 0 )
+ 1463              		.loc 1 393 0
+ 1464 0094 7A68     		ldr	r2, [r7, #4]
+ 1465 0096 1268     		ldr	r2, [r2]
+ 1466 0098 9268     		ldr	r2, [r2, #8]
+ 392:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->update_func( ctx->md_ctx, tmp,
+ 1467              		.loc 1 392 0
+ 1468 009a 07F10801 		add	r1, r7, #8
+ 1469 009e 9847     		blx	r3
+ 1470              	.LVL17:
+ 1471 00a0 B864     		str	r0, [r7, #72]
+ 1472 00a2 BB6C     		ldr	r3, [r7, #72]
+ 1473 00a4 002B     		cmp	r3, #0
+ 1474 00a6 01D0     		beq	.L110
+ 394:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( ret );
+ 1475              		.loc 1 394 0
+ 1476 00a8 BB6C     		ldr	r3, [r7, #72]
+ 1477 00aa 08E0     		b	.L111
+ 1478              	.L110:
+ 395:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ctx->md_info->finish_func( ctx->md_ctx, output ) );
+ 1479              		.loc 1 395 0
+ 1480 00ac 7B68     		ldr	r3, [r7, #4]
+ 1481 00ae 1B68     		ldr	r3, [r3]
+ 1482 00b0 9B69     		ldr	r3, [r3, #24]
+ 1483 00b2 7A68     		ldr	r2, [r7, #4]
+ 1484 00b4 5268     		ldr	r2, [r2, #4]
+ 1485 00b6 3968     		ldr	r1, [r7]
+ 1486 00b8 1046     		mov	r0, r2
+ 1487 00ba 9847     		blx	r3
+ 1488              	.LVL18:
+ 1489 00bc 0346     		mov	r3, r0
+ 1490              	.L111:
+ 396:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1491              		.loc 1 396 0 discriminator 1
+ 1492 00be 1846     		mov	r0, r3
+ 1493 00c0 5037     		adds	r7, r7, #80
+ 1494              	.LCFI73:
+ 1495              		.cfi_def_cfa_offset 8
+ 1496 00c2 BD46     		mov	sp, r7
+ 1497              	.LCFI74:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 34
+
+
+ 1498              		.cfi_def_cfa_register 13
+ 1499              		@ sp needed
+ 1500 00c4 80BD     		pop	{r7, pc}
+ 1501              	.L113:
+ 1502 00c6 00BF     		.align	2
+ 1503              	.L112:
+ 1504 00c8 00AFFFFF 		.word	-20736
+ 1505              		.cfi_endproc
+ 1506              	.LFE17:
+ 1508              		.section	.text.mbedtls_md_hmac_reset,"ax",%progbits
+ 1509              		.align	1
+ 1510              		.global	mbedtls_md_hmac_reset
+ 1511              		.syntax unified
+ 1512              		.thumb
+ 1513              		.thumb_func
+ 1514              		.fpu fpv4-sp-d16
+ 1516              	mbedtls_md_hmac_reset:
+ 1517              	.LFB18:
+ 397:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 398:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_hmac_reset( mbedtls_md_context_t *ctx )
+ 399:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 1518              		.loc 1 399 0
+ 1519              		.cfi_startproc
+ 1520              		@ args = 0, pretend = 0, frame = 16
+ 1521              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1522 0000 80B5     		push	{r7, lr}
+ 1523              	.LCFI75:
+ 1524              		.cfi_def_cfa_offset 8
+ 1525              		.cfi_offset 7, -8
+ 1526              		.cfi_offset 14, -4
+ 1527 0002 84B0     		sub	sp, sp, #16
+ 1528              	.LCFI76:
+ 1529              		.cfi_def_cfa_offset 24
+ 1530 0004 00AF     		add	r7, sp, #0
+ 1531              	.LCFI77:
+ 1532              		.cfi_def_cfa_register 7
+ 1533 0006 7860     		str	r0, [r7, #4]
+ 400:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     int ret;
+ 401:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     unsigned char *ipad;
+ 402:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 403:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL || ctx->hmac_ctx == NULL )
+ 1534              		.loc 1 403 0
+ 1535 0008 7B68     		ldr	r3, [r7, #4]
+ 1536 000a 002B     		cmp	r3, #0
+ 1537 000c 07D0     		beq	.L115
+ 1538              		.loc 1 403 0 is_stmt 0 discriminator 1
+ 1539 000e 7B68     		ldr	r3, [r7, #4]
+ 1540 0010 1B68     		ldr	r3, [r3]
+ 1541 0012 002B     		cmp	r3, #0
+ 1542 0014 03D0     		beq	.L115
+ 1543              		.loc 1 403 0 discriminator 2
+ 1544 0016 7B68     		ldr	r3, [r7, #4]
+ 1545 0018 9B68     		ldr	r3, [r3, #8]
+ 1546 001a 002B     		cmp	r3, #0
+ 1547 001c 01D1     		bne	.L116
+ 1548              	.L115:
+ 404:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 35
+
+
+ 1549              		.loc 1 404 0 is_stmt 1
+ 1550 001e 104B     		ldr	r3, .L119
+ 1551 0020 1AE0     		b	.L117
+ 1552              	.L116:
+ 405:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 406:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     ipad = (unsigned char *) ctx->hmac_ctx;
+ 1553              		.loc 1 406 0
+ 1554 0022 7B68     		ldr	r3, [r7, #4]
+ 1555 0024 9B68     		ldr	r3, [r3, #8]
+ 1556 0026 FB60     		str	r3, [r7, #12]
+ 407:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 408:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = ctx->md_info->starts_func( ctx->md_ctx ) ) != 0 )
+ 1557              		.loc 1 408 0
+ 1558 0028 7B68     		ldr	r3, [r7, #4]
+ 1559 002a 1B68     		ldr	r3, [r3]
+ 1560 002c 1B69     		ldr	r3, [r3, #16]
+ 1561 002e 7A68     		ldr	r2, [r7, #4]
+ 1562 0030 5268     		ldr	r2, [r2, #4]
+ 1563 0032 1046     		mov	r0, r2
+ 1564 0034 9847     		blx	r3
+ 1565              	.LVL19:
+ 1566 0036 B860     		str	r0, [r7, #8]
+ 1567 0038 BB68     		ldr	r3, [r7, #8]
+ 1568 003a 002B     		cmp	r3, #0
+ 1569 003c 01D0     		beq	.L118
+ 409:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( ret );
+ 1570              		.loc 1 409 0
+ 1571 003e BB68     		ldr	r3, [r7, #8]
+ 1572 0040 0AE0     		b	.L117
+ 1573              	.L118:
+ 410:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ctx->md_info->update_func( ctx->md_ctx, ipad,
+ 1574              		.loc 1 410 0
+ 1575 0042 7B68     		ldr	r3, [r7, #4]
+ 1576 0044 1B68     		ldr	r3, [r3]
+ 1577 0046 5B69     		ldr	r3, [r3, #20]
+ 1578 0048 7A68     		ldr	r2, [r7, #4]
+ 1579 004a 5068     		ldr	r0, [r2, #4]
+ 411:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                                        ctx->md_info->block_size ) );
+ 1580              		.loc 1 411 0
+ 1581 004c 7A68     		ldr	r2, [r7, #4]
+ 1582 004e 1268     		ldr	r2, [r2]
+ 1583 0050 D268     		ldr	r2, [r2, #12]
+ 410:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ctx->md_info->update_func( ctx->md_ctx, ipad,
+ 1584              		.loc 1 410 0
+ 1585 0052 F968     		ldr	r1, [r7, #12]
+ 1586 0054 9847     		blx	r3
+ 1587              	.LVL20:
+ 1588 0056 0346     		mov	r3, r0
+ 1589              	.L117:
+ 412:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1590              		.loc 1 412 0
+ 1591 0058 1846     		mov	r0, r3
+ 1592 005a 1037     		adds	r7, r7, #16
+ 1593              	.LCFI78:
+ 1594              		.cfi_def_cfa_offset 8
+ 1595 005c BD46     		mov	sp, r7
+ 1596              	.LCFI79:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 36
+
+
+ 1597              		.cfi_def_cfa_register 13
+ 1598              		@ sp needed
+ 1599 005e 80BD     		pop	{r7, pc}
+ 1600              	.L120:
+ 1601              		.align	2
+ 1602              	.L119:
+ 1603 0060 00AFFFFF 		.word	-20736
+ 1604              		.cfi_endproc
+ 1605              	.LFE18:
+ 1607              		.section	.text.mbedtls_md_hmac,"ax",%progbits
+ 1608              		.align	1
+ 1609              		.global	mbedtls_md_hmac
+ 1610              		.syntax unified
+ 1611              		.thumb
+ 1612              		.thumb_func
+ 1613              		.fpu fpv4-sp-d16
+ 1615              	mbedtls_md_hmac:
+ 1616              	.LFB19:
+ 413:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 414:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_hmac( const mbedtls_md_info_t *md_info,
+ 415:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                      const unsigned char *key, size_t keylen,
+ 416:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                      const unsigned char *input, size_t ilen,
+ 417:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****                      unsigned char *output )
+ 418:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 1617              		.loc 1 418 0
+ 1618              		.cfi_startproc
+ 1619              		@ args = 8, pretend = 0, frame = 32
+ 1620              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1621 0000 80B5     		push	{r7, lr}
+ 1622              	.LCFI80:
+ 1623              		.cfi_def_cfa_offset 8
+ 1624              		.cfi_offset 7, -8
+ 1625              		.cfi_offset 14, -4
+ 1626 0002 88B0     		sub	sp, sp, #32
+ 1627              	.LCFI81:
+ 1628              		.cfi_def_cfa_offset 40
+ 1629 0004 00AF     		add	r7, sp, #0
+ 1630              	.LCFI82:
+ 1631              		.cfi_def_cfa_register 7
+ 1632 0006 F860     		str	r0, [r7, #12]
+ 1633 0008 B960     		str	r1, [r7, #8]
+ 1634 000a 7A60     		str	r2, [r7, #4]
+ 1635 000c 3B60     		str	r3, [r7]
+ 419:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     mbedtls_md_context_t ctx;
+ 420:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     int ret;
+ 421:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 422:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( md_info == NULL )
+ 1636              		.loc 1 422 0
+ 1637 000e FB68     		ldr	r3, [r7, #12]
+ 1638 0010 002B     		cmp	r3, #0
+ 1639 0012 01D1     		bne	.L122
+ 423:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 1640              		.loc 1 423 0
+ 1641 0014 204B     		ldr	r3, .L132
+ 1642 0016 3AE0     		b	.L128
+ 1643              	.L122:
+ 424:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 37
+
+
+ 425:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     mbedtls_md_init( &ctx );
+ 1644              		.loc 1 425 0
+ 1645 0018 07F11003 		add	r3, r7, #16
+ 1646 001c 1846     		mov	r0, r3
+ 1647 001e FFF7FEFF 		bl	mbedtls_md_init
+ 426:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 427:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = mbedtls_md_setup( &ctx, md_info, 1 ) ) != 0 )
+ 1648              		.loc 1 427 0
+ 1649 0022 07F11003 		add	r3, r7, #16
+ 1650 0026 0122     		movs	r2, #1
+ 1651 0028 F968     		ldr	r1, [r7, #12]
+ 1652 002a 1846     		mov	r0, r3
+ 1653 002c FFF7FEFF 		bl	mbedtls_md_setup
+ 1654 0030 F861     		str	r0, [r7, #28]
+ 1655 0032 FB69     		ldr	r3, [r7, #28]
+ 1656 0034 002B     		cmp	r3, #0
+ 1657 0036 1FD1     		bne	.L129
+ 428:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         goto cleanup;
+ 429:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 430:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = mbedtls_md_hmac_starts( &ctx, key, keylen ) ) != 0 )
+ 1658              		.loc 1 430 0
+ 1659 0038 07F11003 		add	r3, r7, #16
+ 1660 003c 7A68     		ldr	r2, [r7, #4]
+ 1661 003e B968     		ldr	r1, [r7, #8]
+ 1662 0040 1846     		mov	r0, r3
+ 1663 0042 FFF7FEFF 		bl	mbedtls_md_hmac_starts
+ 1664 0046 F861     		str	r0, [r7, #28]
+ 1665 0048 FB69     		ldr	r3, [r7, #28]
+ 1666 004a 002B     		cmp	r3, #0
+ 1667 004c 16D1     		bne	.L130
+ 431:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         goto cleanup;
+ 432:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = mbedtls_md_hmac_update( &ctx, input, ilen ) ) != 0 )
+ 1668              		.loc 1 432 0
+ 1669 004e 07F11003 		add	r3, r7, #16
+ 1670 0052 BA6A     		ldr	r2, [r7, #40]
+ 1671 0054 3968     		ldr	r1, [r7]
+ 1672 0056 1846     		mov	r0, r3
+ 1673 0058 FFF7FEFF 		bl	mbedtls_md_hmac_update
+ 1674 005c F861     		str	r0, [r7, #28]
+ 1675 005e FB69     		ldr	r3, [r7, #28]
+ 1676 0060 002B     		cmp	r3, #0
+ 1677 0062 0DD1     		bne	.L131
+ 433:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         goto cleanup;
+ 434:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = mbedtls_md_hmac_finish( &ctx, output ) ) != 0 )
+ 1678              		.loc 1 434 0
+ 1679 0064 07F11003 		add	r3, r7, #16
+ 1680 0068 F96A     		ldr	r1, [r7, #44]
+ 1681 006a 1846     		mov	r0, r3
+ 1682 006c FFF7FEFF 		bl	mbedtls_md_hmac_finish
+ 1683 0070 F861     		str	r0, [r7, #28]
+ 1684 0072 FB69     		ldr	r3, [r7, #28]
+ 1685 0074 002B     		cmp	r3, #0
+ 435:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         goto cleanup;
+ 436:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 437:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** cleanup:
+ 1686              		.loc 1 437 0
+ 1687 0076 04E0     		b	.L125
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 38
+
+
+ 1688              	.L129:
+ 428:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 1689              		.loc 1 428 0
+ 1690 0078 00BF     		nop
+ 1691 007a 02E0     		b	.L125
+ 1692              	.L130:
+ 431:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = mbedtls_md_hmac_update( &ctx, input, ilen ) ) != 0 )
+ 1693              		.loc 1 431 0
+ 1694 007c 00BF     		nop
+ 1695 007e 00E0     		b	.L125
+ 1696              	.L131:
+ 433:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ( ret = mbedtls_md_hmac_finish( &ctx, output ) ) != 0 )
+ 1697              		.loc 1 433 0
+ 1698 0080 00BF     		nop
+ 1699              	.L125:
+ 438:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     mbedtls_md_free( &ctx );
+ 1700              		.loc 1 438 0
+ 1701 0082 07F11003 		add	r3, r7, #16
+ 1702 0086 1846     		mov	r0, r3
+ 1703 0088 FFF7FEFF 		bl	mbedtls_md_free
+ 439:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 440:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ret );
+ 1704              		.loc 1 440 0
+ 1705 008c FB69     		ldr	r3, [r7, #28]
+ 1706              	.L128:
+ 441:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1707              		.loc 1 441 0 discriminator 1
+ 1708 008e 1846     		mov	r0, r3
+ 1709 0090 2037     		adds	r7, r7, #32
+ 1710              	.LCFI83:
+ 1711              		.cfi_def_cfa_offset 8
+ 1712 0092 BD46     		mov	sp, r7
+ 1713              	.LCFI84:
+ 1714              		.cfi_def_cfa_register 13
+ 1715              		@ sp needed
+ 1716 0094 80BD     		pop	{r7, pc}
+ 1717              	.L133:
+ 1718 0096 00BF     		.align	2
+ 1719              	.L132:
+ 1720 0098 00AFFFFF 		.word	-20736
+ 1721              		.cfi_endproc
+ 1722              	.LFE19:
+ 1724              		.section	.text.mbedtls_md_process,"ax",%progbits
+ 1725              		.align	1
+ 1726              		.global	mbedtls_md_process
+ 1727              		.syntax unified
+ 1728              		.thumb
+ 1729              		.thumb_func
+ 1730              		.fpu fpv4-sp-d16
+ 1732              	mbedtls_md_process:
+ 1733              	.LFB20:
+ 442:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 443:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** int mbedtls_md_process( mbedtls_md_context_t *ctx, const unsigned char *data )
+ 444:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 1734              		.loc 1 444 0
+ 1735              		.cfi_startproc
+ 1736              		@ args = 0, pretend = 0, frame = 8
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 39
+
+
+ 1737              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1738 0000 80B5     		push	{r7, lr}
+ 1739              	.LCFI85:
+ 1740              		.cfi_def_cfa_offset 8
+ 1741              		.cfi_offset 7, -8
+ 1742              		.cfi_offset 14, -4
+ 1743 0002 82B0     		sub	sp, sp, #8
+ 1744              	.LCFI86:
+ 1745              		.cfi_def_cfa_offset 16
+ 1746 0004 00AF     		add	r7, sp, #0
+ 1747              	.LCFI87:
+ 1748              		.cfi_def_cfa_register 7
+ 1749 0006 7860     		str	r0, [r7, #4]
+ 1750 0008 3960     		str	r1, [r7]
+ 445:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( ctx == NULL || ctx->md_info == NULL )
+ 1751              		.loc 1 445 0
+ 1752 000a 7B68     		ldr	r3, [r7, #4]
+ 1753 000c 002B     		cmp	r3, #0
+ 1754 000e 03D0     		beq	.L135
+ 1755              		.loc 1 445 0 is_stmt 0 discriminator 1
+ 1756 0010 7B68     		ldr	r3, [r7, #4]
+ 1757 0012 1B68     		ldr	r3, [r3]
+ 1758 0014 002B     		cmp	r3, #0
+ 1759 0016 01D1     		bne	.L136
+ 1760              	.L135:
+ 446:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_ERR_MD_BAD_INPUT_DATA );
+ 1761              		.loc 1 446 0 is_stmt 1
+ 1762 0018 074B     		ldr	r3, .L138
+ 1763 001a 08E0     		b	.L137
+ 1764              	.L136:
+ 447:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 448:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return( ctx->md_info->process_func( ctx->md_ctx, data ) );
+ 1765              		.loc 1 448 0
+ 1766 001c 7B68     		ldr	r3, [r7, #4]
+ 1767 001e 1B68     		ldr	r3, [r3]
+ 1768 0020 DB6A     		ldr	r3, [r3, #44]
+ 1769 0022 7A68     		ldr	r2, [r7, #4]
+ 1770 0024 5268     		ldr	r2, [r2, #4]
+ 1771 0026 3968     		ldr	r1, [r7]
+ 1772 0028 1046     		mov	r0, r2
+ 1773 002a 9847     		blx	r3
+ 1774              	.LVL21:
+ 1775 002c 0346     		mov	r3, r0
+ 1776              	.L137:
+ 449:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1777              		.loc 1 449 0
+ 1778 002e 1846     		mov	r0, r3
+ 1779 0030 0837     		adds	r7, r7, #8
+ 1780              	.LCFI88:
+ 1781              		.cfi_def_cfa_offset 8
+ 1782 0032 BD46     		mov	sp, r7
+ 1783              	.LCFI89:
+ 1784              		.cfi_def_cfa_register 13
+ 1785              		@ sp needed
+ 1786 0034 80BD     		pop	{r7, pc}
+ 1787              	.L139:
+ 1788 0036 00BF     		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 40
+
+
+ 1789              	.L138:
+ 1790 0038 00AFFFFF 		.word	-20736
+ 1791              		.cfi_endproc
+ 1792              	.LFE20:
+ 1794              		.section	.text.mbedtls_md_get_size,"ax",%progbits
+ 1795              		.align	1
+ 1796              		.global	mbedtls_md_get_size
+ 1797              		.syntax unified
+ 1798              		.thumb
+ 1799              		.thumb_func
+ 1800              		.fpu fpv4-sp-d16
+ 1802              	mbedtls_md_get_size:
+ 1803              	.LFB21:
+ 450:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 451:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** unsigned char mbedtls_md_get_size( const mbedtls_md_info_t *md_info )
+ 452:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 1804              		.loc 1 452 0
+ 1805              		.cfi_startproc
+ 1806              		@ args = 0, pretend = 0, frame = 8
+ 1807              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1808              		@ link register save eliminated.
+ 1809 0000 80B4     		push	{r7}
+ 1810              	.LCFI90:
+ 1811              		.cfi_def_cfa_offset 4
+ 1812              		.cfi_offset 7, -4
+ 1813 0002 83B0     		sub	sp, sp, #12
+ 1814              	.LCFI91:
+ 1815              		.cfi_def_cfa_offset 16
+ 1816 0004 00AF     		add	r7, sp, #0
+ 1817              	.LCFI92:
+ 1818              		.cfi_def_cfa_register 7
+ 1819 0006 7860     		str	r0, [r7, #4]
+ 453:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( md_info == NULL )
+ 1820              		.loc 1 453 0
+ 1821 0008 7B68     		ldr	r3, [r7, #4]
+ 1822 000a 002B     		cmp	r3, #0
+ 1823 000c 01D1     		bne	.L141
+ 454:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( 0 );
+ 1824              		.loc 1 454 0
+ 1825 000e 0023     		movs	r3, #0
+ 1826 0010 02E0     		b	.L142
+ 1827              	.L141:
+ 455:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 456:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return md_info->size;
+ 1828              		.loc 1 456 0
+ 1829 0012 7B68     		ldr	r3, [r7, #4]
+ 1830 0014 9B68     		ldr	r3, [r3, #8]
+ 1831 0016 DBB2     		uxtb	r3, r3
+ 1832              	.L142:
+ 457:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1833              		.loc 1 457 0
+ 1834 0018 1846     		mov	r0, r3
+ 1835 001a 0C37     		adds	r7, r7, #12
+ 1836              	.LCFI93:
+ 1837              		.cfi_def_cfa_offset 4
+ 1838 001c BD46     		mov	sp, r7
+ 1839              	.LCFI94:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 41
+
+
+ 1840              		.cfi_def_cfa_register 13
+ 1841              		@ sp needed
+ 1842 001e 5DF8047B 		ldr	r7, [sp], #4
+ 1843              	.LCFI95:
+ 1844              		.cfi_restore 7
+ 1845              		.cfi_def_cfa_offset 0
+ 1846 0022 7047     		bx	lr
+ 1847              		.cfi_endproc
+ 1848              	.LFE21:
+ 1850              		.section	.text.mbedtls_md_get_type,"ax",%progbits
+ 1851              		.align	1
+ 1852              		.global	mbedtls_md_get_type
+ 1853              		.syntax unified
+ 1854              		.thumb
+ 1855              		.thumb_func
+ 1856              		.fpu fpv4-sp-d16
+ 1858              	mbedtls_md_get_type:
+ 1859              	.LFB22:
+ 458:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 459:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** mbedtls_md_type_t mbedtls_md_get_type( const mbedtls_md_info_t *md_info )
+ 460:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 1860              		.loc 1 460 0
+ 1861              		.cfi_startproc
+ 1862              		@ args = 0, pretend = 0, frame = 8
+ 1863              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1864              		@ link register save eliminated.
+ 1865 0000 80B4     		push	{r7}
+ 1866              	.LCFI96:
+ 1867              		.cfi_def_cfa_offset 4
+ 1868              		.cfi_offset 7, -4
+ 1869 0002 83B0     		sub	sp, sp, #12
+ 1870              	.LCFI97:
+ 1871              		.cfi_def_cfa_offset 16
+ 1872 0004 00AF     		add	r7, sp, #0
+ 1873              	.LCFI98:
+ 1874              		.cfi_def_cfa_register 7
+ 1875 0006 7860     		str	r0, [r7, #4]
+ 461:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( md_info == NULL )
+ 1876              		.loc 1 461 0
+ 1877 0008 7B68     		ldr	r3, [r7, #4]
+ 1878 000a 002B     		cmp	r3, #0
+ 1879 000c 01D1     		bne	.L144
+ 462:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( MBEDTLS_MD_NONE );
+ 1880              		.loc 1 462 0
+ 1881 000e 0023     		movs	r3, #0
+ 1882 0010 01E0     		b	.L145
+ 1883              	.L144:
+ 463:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 464:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return md_info->type;
+ 1884              		.loc 1 464 0
+ 1885 0012 7B68     		ldr	r3, [r7, #4]
+ 1886 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 1887              	.L145:
+ 465:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1888              		.loc 1 465 0
+ 1889 0016 1846     		mov	r0, r3
+ 1890 0018 0C37     		adds	r7, r7, #12
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 42
+
+
+ 1891              	.LCFI99:
+ 1892              		.cfi_def_cfa_offset 4
+ 1893 001a BD46     		mov	sp, r7
+ 1894              	.LCFI100:
+ 1895              		.cfi_def_cfa_register 13
+ 1896              		@ sp needed
+ 1897 001c 5DF8047B 		ldr	r7, [sp], #4
+ 1898              	.LCFI101:
+ 1899              		.cfi_restore 7
+ 1900              		.cfi_def_cfa_offset 0
+ 1901 0020 7047     		bx	lr
+ 1902              		.cfi_endproc
+ 1903              	.LFE22:
+ 1905              		.section	.text.mbedtls_md_get_name,"ax",%progbits
+ 1906              		.align	1
+ 1907              		.global	mbedtls_md_get_name
+ 1908              		.syntax unified
+ 1909              		.thumb
+ 1910              		.thumb_func
+ 1911              		.fpu fpv4-sp-d16
+ 1913              	mbedtls_md_get_name:
+ 1914              	.LFB23:
+ 466:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 467:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** const char *mbedtls_md_get_name( const mbedtls_md_info_t *md_info )
+ 468:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** {
+ 1915              		.loc 1 468 0
+ 1916              		.cfi_startproc
+ 1917              		@ args = 0, pretend = 0, frame = 8
+ 1918              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1919              		@ link register save eliminated.
+ 1920 0000 80B4     		push	{r7}
+ 1921              	.LCFI102:
+ 1922              		.cfi_def_cfa_offset 4
+ 1923              		.cfi_offset 7, -4
+ 1924 0002 83B0     		sub	sp, sp, #12
+ 1925              	.LCFI103:
+ 1926              		.cfi_def_cfa_offset 16
+ 1927 0004 00AF     		add	r7, sp, #0
+ 1928              	.LCFI104:
+ 1929              		.cfi_def_cfa_register 7
+ 1930 0006 7860     		str	r0, [r7, #4]
+ 469:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     if( md_info == NULL )
+ 1931              		.loc 1 469 0
+ 1932 0008 7B68     		ldr	r3, [r7, #4]
+ 1933 000a 002B     		cmp	r3, #0
+ 1934 000c 01D1     		bne	.L147
+ 470:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****         return( NULL );
+ 1935              		.loc 1 470 0
+ 1936 000e 0023     		movs	r3, #0
+ 1937 0010 01E0     		b	.L148
+ 1938              	.L147:
+ 471:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** 
+ 472:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c ****     return md_info->name;
+ 1939              		.loc 1 472 0
+ 1940 0012 7B68     		ldr	r3, [r7, #4]
+ 1941 0014 5B68     		ldr	r3, [r3, #4]
+ 1942              	.L148:
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 43
+
+
+ 473:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2/library\md.c **** }
+ 1943              		.loc 1 473 0
+ 1944 0016 1846     		mov	r0, r3
+ 1945 0018 0C37     		adds	r7, r7, #12
+ 1946              	.LCFI105:
+ 1947              		.cfi_def_cfa_offset 4
+ 1948 001a BD46     		mov	sp, r7
+ 1949              	.LCFI106:
+ 1950              		.cfi_def_cfa_register 13
+ 1951              		@ sp needed
+ 1952 001c 5DF8047B 		ldr	r7, [sp], #4
+ 1953              	.LCFI107:
+ 1954              		.cfi_restore 7
+ 1955              		.cfi_def_cfa_offset 0
+ 1956 0020 7047     		bx	lr
+ 1957              		.cfi_endproc
+ 1958              	.LFE23:
+ 1960              		.text
+ 1961              	.Letext0:
+ 1962              		.file 2 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1963              		.file 3 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 1964              		.file 4 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.2
+ 1965              		.file 5 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1966              		.file 6 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1967              		.file 7 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1968              		.file 8 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1969              		.file 9 "c:\\ac6\\systemworkbench\\plugins\\fr.ac6.mcu.externaltools.arm-none.win32_1.16.0.2018071
+ 1970              		.file 10 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/dtls/mbedtls/mbedtls-2.16.
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 44
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 md.c
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:18     .rodata.supported_digests:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:21     .rodata.supported_digests:00000000 supported_digests
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:31     .text.mbedtls_md_list:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:38     .text.mbedtls_md_list:00000000 mbedtls_md_list
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:69     .text.mbedtls_md_list:00000010 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:74     .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:99     .text.mbedtls_md_info_from_string:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:106    .text.mbedtls_md_info_from_string:00000000 mbedtls_md_info_from_string
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:266    .text.mbedtls_md_info_from_type:00000000 mbedtls_md_info_from_type
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:247    .text.mbedtls_md_info_from_string:000000d4 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:259    .text.mbedtls_md_info_from_type:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:294    .text.mbedtls_md_info_from_type:00000018 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:301    .text.mbedtls_md_info_from_type:00000034 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:351    .text.mbedtls_md_info_from_type:00000060 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:362    .text.mbedtls_md_init:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:369    .text.mbedtls_md_init:00000000 mbedtls_md_init
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:406    .text.mbedtls_md_free:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:413    .text.mbedtls_md_free:00000000 mbedtls_md_free
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:500    .text.mbedtls_md_clone:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:507    .text.mbedtls_md_clone:00000000 mbedtls_md_clone
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:584    .text.mbedtls_md_clone:00000054 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:589    .text.mbedtls_md_init_ctx:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:596    .text.mbedtls_md_init_ctx:00000000 mbedtls_md_init_ctx
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:642    .text.mbedtls_md_setup:00000000 mbedtls_md_setup
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:635    .text.mbedtls_md_setup:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:741    .text.mbedtls_md_setup:00000074 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:747    .text.mbedtls_md_starts:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:754    .text.mbedtls_md_starts:00000000 mbedtls_md_starts
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:810    .text.mbedtls_md_starts:00000034 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:815    .text.mbedtls_md_update:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:822    .text.mbedtls_md_update:00000000 mbedtls_md_update
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:881    .text.mbedtls_md_update:00000038 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:886    .text.mbedtls_md_finish:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:893    .text.mbedtls_md_finish:00000000 mbedtls_md_finish
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:951    .text.mbedtls_md_finish:00000038 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:956    .text.mbedtls_md:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:963    .text.mbedtls_md:00000000 mbedtls_md
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1015   .text.mbedtls_md:00000030 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1020   .text.mbedtls_md_hmac_starts:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1027   .text.mbedtls_md_hmac_starts:00000000 mbedtls_md_hmac_starts
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1266   .text.mbedtls_md_hmac_starts:00000160 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1271   .text.mbedtls_md_hmac_update:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1278   .text.mbedtls_md_hmac_update:00000000 mbedtls_md_hmac_update
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1342   .text.mbedtls_md_hmac_update:00000040 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1347   .text.mbedtls_md_hmac_finish:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1354   .text.mbedtls_md_hmac_finish:00000000 mbedtls_md_hmac_finish
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1504   .text.mbedtls_md_hmac_finish:000000c8 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1509   .text.mbedtls_md_hmac_reset:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1516   .text.mbedtls_md_hmac_reset:00000000 mbedtls_md_hmac_reset
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1603   .text.mbedtls_md_hmac_reset:00000060 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1608   .text.mbedtls_md_hmac:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1615   .text.mbedtls_md_hmac:00000000 mbedtls_md_hmac
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1720   .text.mbedtls_md_hmac:00000098 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1725   .text.mbedtls_md_process:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1732   .text.mbedtls_md_process:00000000 mbedtls_md_process
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s 			page 45
+
+
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1790   .text.mbedtls_md_process:00000038 $d
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1795   .text.mbedtls_md_get_size:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1802   .text.mbedtls_md_get_size:00000000 mbedtls_md_get_size
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1851   .text.mbedtls_md_get_type:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1858   .text.mbedtls_md_get_type:00000000 mbedtls_md_get_type
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1906   .text.mbedtls_md_get_name:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccJSZMN5.s:1913   .text.mbedtls_md_get_name:00000000 mbedtls_md_get_name
+
+UNDEFINED SYMBOLS
+strcmp
+mbedtls_md5_info
+mbedtls_ripemd160_info
+mbedtls_sha1_info
+mbedtls_sha224_info
+mbedtls_sha256_info
+mbedtls_sha384_info
+mbedtls_sha512_info
+memset
+mbedtls_platform_zeroize
+mbedtls_free
+mbedtls_calloc

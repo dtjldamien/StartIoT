@@ -32,6 +32,10 @@
  * applicable export control laws and regulations.
  *---------------------------------------------------------------------------*/
 
+/*
+ *  From MCU to WiFi, WiFi will also transmit the message back to MCU
+ */
+
 #include "gd32f30x.h"
 #include "BearPi-IoT_gd32f303.h"
 #include <stdint.h>

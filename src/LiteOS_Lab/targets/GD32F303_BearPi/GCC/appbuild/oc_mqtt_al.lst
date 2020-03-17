@@ -1,0 +1,1388 @@
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"oc_mqtt_al.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.bss.s_oc_mqtt,"aw",%nobits
+  18              		.align	2
+  21              	s_oc_mqtt:
+  22 0000 00000000 		.space	4
+  23              		.section	.text.oc_mqtt_register,"ax",%progbits
+  24              		.align	1
+  25              		.global	oc_mqtt_register
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  29              		.fpu fpv4-sp-d16
+  31              	oc_mqtt_register:
+  32              	.LFB0:
+  33              		.file 1 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al/oc_mqtt_al.c"
+   1:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** /*----------------------------------------------------------------------------
+   2:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * Copyright (c) <2018>, <Huawei Technologies Co., Ltd>
+   3:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * All rights reserved.
+   4:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * Redistribution and use in source and binary forms, with or without modification,
+   5:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * are permitted provided that the following conditions are met:
+   6:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * 1. Redistributions of source code must retain the above copyright notice, this list of
+   7:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * conditions and the following disclaimer.
+   8:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * 2. Redistributions in binary form must reproduce the above copyright notice, this list
+   9:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * of conditions and the following disclaimer in the documentation and/or other materials
+  10:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * provided with the distribution.
+  11:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * 3. Neither the name of the copyright holder nor the names of its contributors may be used
+  12:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * to endorse or promote products derived from this software without specific prior written
+  13:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * permission.
+  14:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  15:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+  16:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+  17:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+  18:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+  19:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+  20:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+  21:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+  22:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+  23:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+  24:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  25:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  *---------------------------------------------------------------------------*/
+  26:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** /*----------------------------------------------------------------------------
+  27:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * Notice of Export Control Law
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 2
+
+
+  28:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * ===============================================
+  29:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * Huawei LiteOS may be subject to applicable export control laws and regulations, which might
+  30:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * include those applicable to Huawei LiteOS of U.S. and the country in which you are located.
+  31:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * Import, export and usage of Huawei LiteOS in any manner by you shall be in compliance with such
+  32:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  * applicable export control laws and regulations.
+  33:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****  *---------------------------------------------------------------------------*/
+  34:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  35:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** #include <oc_mqtt_al.h>
+  36:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  37:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  38:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  39:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** static tag_oc_mqtt_ops *s_oc_mqtt = NULL;
+  40:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  41:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  42:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** ///////////////////////OC AGENT INSTALL INTERFACE///////////////////////////////////////
+  43:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** int oc_mqtt_register(const tag_oc_mqtt_ops *opt)
+  44:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** {
+  34              		.loc 1 44 0
+  35              		.cfi_startproc
+  36              		@ args = 0, pretend = 0, frame = 16
+  37              		@ frame_needed = 1, uses_anonymous_args = 0
+  38              		@ link register save eliminated.
+  39 0000 80B4     		push	{r7}
+  40              	.LCFI0:
+  41              		.cfi_def_cfa_offset 4
+  42              		.cfi_offset 7, -4
+  43 0002 85B0     		sub	sp, sp, #20
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 24
+  46 0004 00AF     		add	r7, sp, #0
+  47              	.LCFI2:
+  48              		.cfi_def_cfa_register 7
+  49 0006 7860     		str	r0, [r7, #4]
+  45:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     int ret = -1;
+  50              		.loc 1 45 0
+  51 0008 4FF0FF33 		mov	r3, #-1
+  52 000c FB60     		str	r3, [r7, #12]
+  46:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  47:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL != opt)
+  53              		.loc 1 47 0
+  54 000e 7B68     		ldr	r3, [r7, #4]
+  55 0010 002B     		cmp	r3, #0
+  56 0012 04D0     		beq	.L2
+  48:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+  49:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         s_oc_mqtt = (tag_oc_mqtt_ops *) opt;
+  57              		.loc 1 49 0
+  58 0014 054A     		ldr	r2, .L4
+  59 0016 7B68     		ldr	r3, [r7, #4]
+  60 0018 1360     		str	r3, [r2]
+  50:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  51:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         ret = 0;
+  61              		.loc 1 51 0
+  62 001a 0023     		movs	r3, #0
+  63 001c FB60     		str	r3, [r7, #12]
+  64              	.L2:
+  52:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+  53:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 3
+
+
+  54:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return ret;
+  65              		.loc 1 54 0
+  66 001e FB68     		ldr	r3, [r7, #12]
+  55:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** }
+  67              		.loc 1 55 0
+  68 0020 1846     		mov	r0, r3
+  69 0022 1437     		adds	r7, r7, #20
+  70              	.LCFI3:
+  71              		.cfi_def_cfa_offset 4
+  72 0024 BD46     		mov	sp, r7
+  73              	.LCFI4:
+  74              		.cfi_def_cfa_register 13
+  75              		@ sp needed
+  76 0026 5DF8047B 		ldr	r7, [sp], #4
+  77              	.LCFI5:
+  78              		.cfi_restore 7
+  79              		.cfi_def_cfa_offset 0
+  80 002a 7047     		bx	lr
+  81              	.L5:
+  82              		.align	2
+  83              	.L4:
+  84 002c 00000000 		.word	s_oc_mqtt
+  85              		.cfi_endproc
+  86              	.LFE0:
+  88              		.section	.text.oc_mqtt_config,"ax",%progbits
+  89              		.align	1
+  90              		.global	oc_mqtt_config
+  91              		.syntax unified
+  92              		.thumb
+  93              		.thumb_func
+  94              		.fpu fpv4-sp-d16
+  96              	oc_mqtt_config:
+  97              	.LFB1:
+  56:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  57:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** //////////////////////////APPLICATION INTERFACE/////////////////////////////////
+  58:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** void* oc_mqtt_config(tag_oc_mqtt_config *param)
+  59:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** {
+  98              		.loc 1 59 0
+  99              		.cfi_startproc
+ 100              		@ args = 0, pretend = 0, frame = 16
+ 101              		@ frame_needed = 1, uses_anonymous_args = 0
+ 102 0000 80B5     		push	{r7, lr}
+ 103              	.LCFI6:
+ 104              		.cfi_def_cfa_offset 8
+ 105              		.cfi_offset 7, -8
+ 106              		.cfi_offset 14, -4
+ 107 0002 84B0     		sub	sp, sp, #16
+ 108              	.LCFI7:
+ 109              		.cfi_def_cfa_offset 24
+ 110 0004 00AF     		add	r7, sp, #0
+ 111              	.LCFI8:
+ 112              		.cfi_def_cfa_register 7
+ 113 0006 7860     		str	r0, [r7, #4]
+  60:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     void *ret = NULL;
+ 114              		.loc 1 60 0
+ 115 0008 0023     		movs	r3, #0
+ 116 000a FB60     		str	r3, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 4
+
+
+  61:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  62:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if((NULL != s_oc_mqtt) &&(NULL != s_oc_mqtt->config))
+ 117              		.loc 1 62 0
+ 118 000c 094B     		ldr	r3, .L9
+ 119 000e 1B68     		ldr	r3, [r3]
+ 120 0010 002B     		cmp	r3, #0
+ 121 0012 0AD0     		beq	.L7
+ 122              		.loc 1 62 0 is_stmt 0 discriminator 1
+ 123 0014 074B     		ldr	r3, .L9
+ 124 0016 1B68     		ldr	r3, [r3]
+ 125 0018 5B68     		ldr	r3, [r3, #4]
+ 126 001a 002B     		cmp	r3, #0
+ 127 001c 05D0     		beq	.L7
+  63:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+  64:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****        ret = s_oc_mqtt->config(param);
+ 128              		.loc 1 64 0 is_stmt 1
+ 129 001e 054B     		ldr	r3, .L9
+ 130 0020 1B68     		ldr	r3, [r3]
+ 131 0022 5B68     		ldr	r3, [r3, #4]
+ 132 0024 7868     		ldr	r0, [r7, #4]
+ 133 0026 9847     		blx	r3
+ 134              	.LVL0:
+ 135 0028 F860     		str	r0, [r7, #12]
+ 136              	.L7:
+  65:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+  66:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  67:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return ret;
+ 137              		.loc 1 67 0
+ 138 002a FB68     		ldr	r3, [r7, #12]
+  68:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** }
+ 139              		.loc 1 68 0
+ 140 002c 1846     		mov	r0, r3
+ 141 002e 1037     		adds	r7, r7, #16
+ 142              	.LCFI9:
+ 143              		.cfi_def_cfa_offset 8
+ 144 0030 BD46     		mov	sp, r7
+ 145              	.LCFI10:
+ 146              		.cfi_def_cfa_register 13
+ 147              		@ sp needed
+ 148 0032 80BD     		pop	{r7, pc}
+ 149              	.L10:
+ 150              		.align	2
+ 151              	.L9:
+ 152 0034 00000000 		.word	s_oc_mqtt
+ 153              		.cfi_endproc
+ 154              	.LFE1:
+ 156              		.section	.text.oc_mqtt_deconfig,"ax",%progbits
+ 157              		.align	1
+ 158              		.global	oc_mqtt_deconfig
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 162              		.fpu fpv4-sp-d16
+ 164              	oc_mqtt_deconfig:
+ 165              	.LFB2:
+  69:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  70:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** int oc_mqtt_deconfig(void *handle)
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 5
+
+
+  71:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** {
+ 166              		.loc 1 71 0
+ 167              		.cfi_startproc
+ 168              		@ args = 0, pretend = 0, frame = 16
+ 169              		@ frame_needed = 1, uses_anonymous_args = 0
+ 170 0000 80B5     		push	{r7, lr}
+ 171              	.LCFI11:
+ 172              		.cfi_def_cfa_offset 8
+ 173              		.cfi_offset 7, -8
+ 174              		.cfi_offset 14, -4
+ 175 0002 84B0     		sub	sp, sp, #16
+ 176              	.LCFI12:
+ 177              		.cfi_def_cfa_offset 24
+ 178 0004 00AF     		add	r7, sp, #0
+ 179              	.LCFI13:
+ 180              		.cfi_def_cfa_register 7
+ 181 0006 7860     		str	r0, [r7, #4]
+  72:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     int ret = -1;
+ 182              		.loc 1 72 0
+ 183 0008 4FF0FF33 		mov	r3, #-1
+ 184 000c FB60     		str	r3, [r7, #12]
+  73:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  74:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if((NULL != handle)&&(NULL != s_oc_mqtt) \
+ 185              		.loc 1 74 0
+ 186 000e 7B68     		ldr	r3, [r7, #4]
+ 187 0010 002B     		cmp	r3, #0
+ 188 0012 0ED0     		beq	.L12
+ 189              		.loc 1 74 0 is_stmt 0 discriminator 1
+ 190 0014 094B     		ldr	r3, .L14
+ 191 0016 1B68     		ldr	r3, [r3]
+ 192 0018 002B     		cmp	r3, #0
+ 193 001a 0AD0     		beq	.L12
+  75:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****        &&(NULL != s_oc_mqtt->deconfig))
+ 194              		.loc 1 75 0 is_stmt 1
+ 195 001c 074B     		ldr	r3, .L14
+ 196 001e 1B68     		ldr	r3, [r3]
+ 197 0020 DB68     		ldr	r3, [r3, #12]
+ 198 0022 002B     		cmp	r3, #0
+ 199 0024 05D0     		beq	.L12
+  76:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+  77:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****        ret = s_oc_mqtt->deconfig(handle);
+ 200              		.loc 1 77 0
+ 201 0026 054B     		ldr	r3, .L14
+ 202 0028 1B68     		ldr	r3, [r3]
+ 203 002a DB68     		ldr	r3, [r3, #12]
+ 204 002c 7868     		ldr	r0, [r7, #4]
+ 205 002e 9847     		blx	r3
+ 206              	.LVL1:
+ 207 0030 F860     		str	r0, [r7, #12]
+ 208              	.L12:
+  78:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+  79:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  80:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return ret;
+ 209              		.loc 1 80 0
+ 210 0032 FB68     		ldr	r3, [r7, #12]
+  81:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** }
+ 211              		.loc 1 81 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 6
+
+
+ 212 0034 1846     		mov	r0, r3
+ 213 0036 1037     		adds	r7, r7, #16
+ 214              	.LCFI14:
+ 215              		.cfi_def_cfa_offset 8
+ 216 0038 BD46     		mov	sp, r7
+ 217              	.LCFI15:
+ 218              		.cfi_def_cfa_register 13
+ 219              		@ sp needed
+ 220 003a 80BD     		pop	{r7, pc}
+ 221              	.L15:
+ 222              		.align	2
+ 223              	.L14:
+ 224 003c 00000000 		.word	s_oc_mqtt
+ 225              		.cfi_endproc
+ 226              	.LFE2:
+ 228              		.section	.text.oc_mqtt_report,"ax",%progbits
+ 229              		.align	1
+ 230              		.global	oc_mqtt_report
+ 231              		.syntax unified
+ 232              		.thumb
+ 233              		.thumb_func
+ 234              		.fpu fpv4-sp-d16
+ 236              	oc_mqtt_report:
+ 237              	.LFB3:
+  82:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  83:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** int oc_mqtt_report(void *handle, char *msg, int len, en_mqtt_al_qos_t qos)
+  84:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** {
+ 238              		.loc 1 84 0
+ 239              		.cfi_startproc
+ 240              		@ args = 0, pretend = 0, frame = 24
+ 241              		@ frame_needed = 1, uses_anonymous_args = 0
+ 242 0000 90B5     		push	{r4, r7, lr}
+ 243              	.LCFI16:
+ 244              		.cfi_def_cfa_offset 12
+ 245              		.cfi_offset 4, -12
+ 246              		.cfi_offset 7, -8
+ 247              		.cfi_offset 14, -4
+ 248 0002 87B0     		sub	sp, sp, #28
+ 249              	.LCFI17:
+ 250              		.cfi_def_cfa_offset 40
+ 251 0004 00AF     		add	r7, sp, #0
+ 252              	.LCFI18:
+ 253              		.cfi_def_cfa_register 7
+ 254 0006 F860     		str	r0, [r7, #12]
+ 255 0008 B960     		str	r1, [r7, #8]
+ 256 000a 7A60     		str	r2, [r7, #4]
+ 257 000c FB70     		strb	r3, [r7, #3]
+  85:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     int ret = -1;
+ 258              		.loc 1 85 0
+ 259 000e 4FF0FF33 		mov	r3, #-1
+ 260 0012 7B61     		str	r3, [r7, #20]
+  86:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if((NULL != handle)&&(NULL!= msg)&&\
+ 261              		.loc 1 87 0
+ 262 0014 FB68     		ldr	r3, [r7, #12]
+ 263 0016 002B     		cmp	r3, #0
+ 264 0018 14D0     		beq	.L17
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 7
+
+
+ 265              		.loc 1 87 0 is_stmt 0 discriminator 1
+ 266 001a BB68     		ldr	r3, [r7, #8]
+ 267 001c 002B     		cmp	r3, #0
+ 268 001e 11D0     		beq	.L17
+  88:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****        (NULL != s_oc_mqtt) &&(NULL != s_oc_mqtt->report))
+ 269              		.loc 1 88 0 is_stmt 1 discriminator 2
+ 270 0020 0B4B     		ldr	r3, .L19
+ 271 0022 1B68     		ldr	r3, [r3]
+  87:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****        (NULL != s_oc_mqtt) &&(NULL != s_oc_mqtt->report))
+ 272              		.loc 1 87 0 discriminator 2
+ 273 0024 002B     		cmp	r3, #0
+ 274 0026 0DD0     		beq	.L17
+ 275              		.loc 1 88 0
+ 276 0028 094B     		ldr	r3, .L19
+ 277 002a 1B68     		ldr	r3, [r3]
+ 278 002c 9B68     		ldr	r3, [r3, #8]
+ 279 002e 002B     		cmp	r3, #0
+ 280 0030 08D0     		beq	.L17
+  89:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+  90:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****        ret = s_oc_mqtt->report(handle,msg,len,qos);
+ 281              		.loc 1 90 0
+ 282 0032 074B     		ldr	r3, .L19
+ 283 0034 1B68     		ldr	r3, [r3]
+ 284 0036 9C68     		ldr	r4, [r3, #8]
+ 285 0038 FB78     		ldrb	r3, [r7, #3]	@ zero_extendqisi2
+ 286 003a 7A68     		ldr	r2, [r7, #4]
+ 287 003c B968     		ldr	r1, [r7, #8]
+ 288 003e F868     		ldr	r0, [r7, #12]
+ 289 0040 A047     		blx	r4
+ 290              	.LVL2:
+ 291 0042 7861     		str	r0, [r7, #20]
+ 292              	.L17:
+  91:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+  92:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  93:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return ret;
+ 293              		.loc 1 93 0
+ 294 0044 7B69     		ldr	r3, [r7, #20]
+  94:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** }
+ 295              		.loc 1 94 0
+ 296 0046 1846     		mov	r0, r3
+ 297 0048 1C37     		adds	r7, r7, #28
+ 298              	.LCFI19:
+ 299              		.cfi_def_cfa_offset 12
+ 300 004a BD46     		mov	sp, r7
+ 301              	.LCFI20:
+ 302              		.cfi_def_cfa_register 13
+ 303              		@ sp needed
+ 304 004c 90BD     		pop	{r4, r7, pc}
+ 305              	.L20:
+ 306 004e 00BF     		.align	2
+ 307              	.L19:
+ 308 0050 00000000 		.word	s_oc_mqtt
+ 309              		.cfi_endproc
+ 310              	.LFE3:
+ 312              		.global	__aeabi_i2d
+ 313              		.section	.text.json_fmt_value,"ax",%progbits
+ 314              		.align	1
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 8
+
+
+ 315              		.syntax unified
+ 316              		.thumb
+ 317              		.thumb_func
+ 318              		.fpu fpv4-sp-d16
+ 320              	json_fmt_value:
+ 321              	.LFB4:
+  95:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  96:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+  97:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** ///< format the report data to json string mode
+  98:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** static cJSON  *json_fmt_value(tag_key_value  *disc)
+  99:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** {
+ 322              		.loc 1 99 0
+ 323              		.cfi_startproc
+ 324              		@ args = 0, pretend = 0, frame = 16
+ 325              		@ frame_needed = 1, uses_anonymous_args = 0
+ 326 0000 90B5     		push	{r4, r7, lr}
+ 327              	.LCFI21:
+ 328              		.cfi_def_cfa_offset 12
+ 329              		.cfi_offset 4, -12
+ 330              		.cfi_offset 7, -8
+ 331              		.cfi_offset 14, -4
+ 332 0002 85B0     		sub	sp, sp, #20
+ 333              	.LCFI22:
+ 334              		.cfi_def_cfa_offset 32
+ 335 0004 00AF     		add	r7, sp, #0
+ 336              	.LCFI23:
+ 337              		.cfi_def_cfa_register 7
+ 338 0006 7860     		str	r0, [r7, #4]
+ 100:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *ret = NULL;
+ 339              		.loc 1 100 0
+ 340 0008 0023     		movs	r3, #0
+ 341 000a FB60     		str	r3, [r7, #12]
+ 101:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     switch (disc->type)
+ 342              		.loc 1 101 0
+ 343 000c 7B68     		ldr	r3, [r7, #4]
+ 344 000e 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 345 0010 002B     		cmp	r3, #0
+ 346 0012 02D0     		beq	.L23
+ 347 0014 012B     		cmp	r3, #1
+ 348 0016 0ED0     		beq	.L24
+ 102:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 103:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         case en_key_value_type_int:
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             ret = cJSON_CreateNumber((double)(*(int *)disc->buf));
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             break;
+ 106:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         case en_key_value_type_string:
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             ret = cJSON_CreateString((const char *)disc->buf);
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             break;
+ 109:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         default:
+ 110:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             break;
+ 349              		.loc 1 110 0
+ 350 0018 14E0     		b	.L25
+ 351              	.L23:
+ 104:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             break;
+ 352              		.loc 1 104 0
+ 353 001a 7B68     		ldr	r3, [r7, #4]
+ 354 001c 5B68     		ldr	r3, [r3, #4]
+ 355 001e 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 9
+
+
+ 356 0020 1846     		mov	r0, r3
+ 357 0022 FFF7FEFF 		bl	__aeabi_i2d
+ 358              	.LVL3:
+ 359 0026 0346     		mov	r3, r0
+ 360 0028 0C46     		mov	r4, r1
+ 361 002a 44EC103B 		vmov	d0, r3, r4
+ 362 002e FFF7FEFF 		bl	cJSON_CreateNumber
+ 363 0032 F860     		str	r0, [r7, #12]
+ 105:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         case en_key_value_type_string:
+ 364              		.loc 1 105 0
+ 365 0034 06E0     		b	.L25
+ 366              	.L24:
+ 107:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             break;
+ 367              		.loc 1 107 0
+ 368 0036 7B68     		ldr	r3, [r7, #4]
+ 369 0038 5B68     		ldr	r3, [r3, #4]
+ 370 003a 1846     		mov	r0, r3
+ 371 003c FFF7FEFF 		bl	cJSON_CreateString
+ 372 0040 F860     		str	r0, [r7, #12]
+ 108:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         default:
+ 373              		.loc 1 108 0
+ 374 0042 00BF     		nop
+ 375              	.L25:
+ 111:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 112:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 113:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return ret;
+ 376              		.loc 1 113 0
+ 377 0044 FB68     		ldr	r3, [r7, #12]
+ 114:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** }
+ 378              		.loc 1 114 0
+ 379 0046 1846     		mov	r0, r3
+ 380 0048 1437     		adds	r7, r7, #20
+ 381              	.LCFI24:
+ 382              		.cfi_def_cfa_offset 12
+ 383 004a BD46     		mov	sp, r7
+ 384              	.LCFI25:
+ 385              		.cfi_def_cfa_register 13
+ 386              		@ sp needed
+ 387 004c 90BD     		pop	{r4, r7, pc}
+ 388              		.cfi_endproc
+ 389              	.LFE4:
+ 391              		.section	.rodata
+ 392              		.align	2
+ 393              	.LC0:
+ 394 0000 64657669 		.ascii	"deviceReq\000"
+ 394      63655265 
+ 394      7100
+ 395 000a 0000     		.align	2
+ 396              	.LC1:
+ 397 000c 6D736754 		.ascii	"msgType\000"
+ 397      79706500 
+ 398              		.global	__aeabi_ui2d
+ 399              		.align	2
+ 400              	.LC2:
+ 401 0014 6861734D 		.ascii	"hasMore\000"
+ 401      6F726500 
+ 402              		.align	2
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 10
+
+
+ 403              	.LC3:
+ 404 001c 64617461 		.ascii	"data\000"
+ 404      00
+ 405 0021 000000   		.align	2
+ 406              	.LC4:
+ 407 0024 73657276 		.ascii	"serviceId\000"
+ 407      69636549 
+ 407      6400
+ 408 002e 0000     		.align	2
+ 409              	.LC5:
+ 410 0030 73657276 		.ascii	"serviceData\000"
+ 410      69636544 
+ 410      61746100 
+ 411              		.align	2
+ 412              	.LC6:
+ 413 003c 6576656E 		.ascii	"eventTime\000"
+ 413      7454696D 
+ 413      6500
+ 414              		.section	.text.oc_mqtt_json_fmt_report,"ax",%progbits
+ 415              		.align	1
+ 416              		.global	oc_mqtt_json_fmt_report
+ 417              		.syntax unified
+ 418              		.thumb
+ 419              		.thumb_func
+ 420              		.fpu fpv4-sp-d16
+ 422              	oc_mqtt_json_fmt_report:
+ 423              	.LFB5:
+ 115:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 116:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** cJSON *oc_mqtt_json_fmt_report(tag_oc_mqtt_report  *report)
+ 117:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** {
+ 424              		.loc 1 117 0
+ 425              		.cfi_startproc
+ 426              		@ args = 0, pretend = 0, frame = 40
+ 427              		@ frame_needed = 1, uses_anonymous_args = 0
+ 428 0000 90B5     		push	{r4, r7, lr}
+ 429              	.LCFI26:
+ 430              		.cfi_def_cfa_offset 12
+ 431              		.cfi_offset 4, -12
+ 432              		.cfi_offset 7, -8
+ 433              		.cfi_offset 14, -4
+ 434 0002 8BB0     		sub	sp, sp, #44
+ 435              	.LCFI27:
+ 436              		.cfi_def_cfa_offset 56
+ 437 0004 00AF     		add	r7, sp, #0
+ 438              	.LCFI28:
+ 439              		.cfi_def_cfa_register 7
+ 440 0006 7860     		str	r0, [r7, #4]
+ 118:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *ret = NULL;
+ 441              		.loc 1 118 0
+ 442 0008 0023     		movs	r3, #0
+ 443 000a 3B62     		str	r3, [r7, #32]
+ 119:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *service_data =  NULL;
+ 444              		.loc 1 119 0
+ 445 000c 0023     		movs	r3, #0
+ 446 000e FB61     		str	r3, [r7, #28]
+ 120:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *data_array = NULL;
+ 447              		.loc 1 120 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 11
+
+
+ 448 0010 0023     		movs	r3, #0
+ 449 0012 BB61     		str	r3, [r7, #24]
+ 121:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *service = NULL;
+ 450              		.loc 1 121 0
+ 451 0014 0023     		movs	r3, #0
+ 452 0016 7B61     		str	r3, [r7, #20]
+ 122:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *root;
+ 123:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *tmp;
+ 124:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 125:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     tag_key_value_list  *kvlst;
+ 126:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 127:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the root object
+ 128:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     root = cJSON_CreateObject();
+ 453              		.loc 1 128 0
+ 454 0018 FFF7FEFF 		bl	cJSON_CreateObject
+ 455 001c 3861     		str	r0, [r7, #16]
+ 129:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == root)
+ 456              		.loc 1 129 0
+ 457 001e 3B69     		ldr	r3, [r7, #16]
+ 458 0020 002B     		cmp	r3, #0
+ 459 0022 7DD0     		beq	.L43
+ 130:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 131:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 132:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 133:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the msg type object and add it to the root
+ 134:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     tmp = cJSON_CreateString(cn_msg_type_device_req);
+ 460              		.loc 1 134 0
+ 461 0024 4C48     		ldr	r0, .L52
+ 462 0026 FFF7FEFF 		bl	cJSON_CreateString
+ 463 002a F860     		str	r0, [r7, #12]
+ 135:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == tmp)
+ 464              		.loc 1 135 0
+ 465 002c FB68     		ldr	r3, [r7, #12]
+ 466 002e 002B     		cmp	r3, #0
+ 467 0030 78D0     		beq	.L44
+ 136:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 137:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 138:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 139:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(root,cn_msg_type_name,tmp);
+ 468              		.loc 1 139 0
+ 469 0032 FA68     		ldr	r2, [r7, #12]
+ 470 0034 4949     		ldr	r1, .L52+4
+ 471 0036 3869     		ldr	r0, [r7, #16]
+ 472 0038 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 140:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the has more item and add it to the root
+ 141:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     tmp = cJSON_CreateNumber((double)report->hasmore);
+ 473              		.loc 1 141 0
+ 474 003c 7B68     		ldr	r3, [r7, #4]
+ 475 003e 1B7B     		ldrb	r3, [r3, #12]	@ zero_extendqisi2
+ 476 0040 1846     		mov	r0, r3
+ 477 0042 FFF7FEFF 		bl	__aeabi_ui2d
+ 478              	.LVL4:
+ 479 0046 0346     		mov	r3, r0
+ 480 0048 0C46     		mov	r4, r1
+ 481 004a 44EC103B 		vmov	d0, r3, r4
+ 482 004e FFF7FEFF 		bl	cJSON_CreateNumber
+ 483 0052 F860     		str	r0, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 12
+
+
+ 142:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == tmp)
+ 484              		.loc 1 142 0
+ 485 0054 FB68     		ldr	r3, [r7, #12]
+ 486 0056 002B     		cmp	r3, #0
+ 487 0058 66D0     		beq	.L45
+ 143:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 144:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 145:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 146:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(root,cn_has_more_name,tmp);
+ 488              		.loc 1 146 0
+ 489 005a FA68     		ldr	r2, [r7, #12]
+ 490 005c 4049     		ldr	r1, .L52+8
+ 491 005e 3869     		ldr	r0, [r7, #16]
+ 492 0060 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 147:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the data array and add it to the root
+ 148:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     data_array = cJSON_CreateArray();
+ 493              		.loc 1 148 0
+ 494 0064 FFF7FEFF 		bl	cJSON_CreateArray
+ 495 0068 B861     		str	r0, [r7, #24]
+ 149:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == data_array)
+ 496              		.loc 1 149 0
+ 497 006a BB69     		ldr	r3, [r7, #24]
+ 498 006c 002B     		cmp	r3, #0
+ 499 006e 5DD0     		beq	.L46
+ 150:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 151:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 152:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 153:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(root,cn_data_name,data_array);
+ 500              		.loc 1 153 0
+ 501 0070 BA69     		ldr	r2, [r7, #24]
+ 502 0072 3C49     		ldr	r1, .L52+12
+ 503 0074 3869     		ldr	r0, [r7, #16]
+ 504 0076 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 154:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 155:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the service and add it to the data_array
+ 156:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     service = cJSON_CreateObject();
+ 505              		.loc 1 156 0
+ 506 007a FFF7FEFF 		bl	cJSON_CreateObject
+ 507 007e 7861     		str	r0, [r7, #20]
+ 157:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == service)
+ 508              		.loc 1 157 0
+ 509 0080 7B69     		ldr	r3, [r7, #20]
+ 510 0082 002B     		cmp	r3, #0
+ 511 0084 54D0     		beq	.L47
+ 158:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 159:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 160:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 161:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToArray(data_array,service);
+ 512              		.loc 1 161 0
+ 513 0086 7969     		ldr	r1, [r7, #20]
+ 514 0088 B869     		ldr	r0, [r7, #24]
+ 515 008a FFF7FEFF 		bl	cJSON_AddItemToArray
+ 162:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 163:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the service id and add to the service
+ 164:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     tmp = cJSON_CreateString(report->serviceid);
+ 516              		.loc 1 164 0
+ 517 008e 7B68     		ldr	r3, [r7, #4]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 13
+
+
+ 518 0090 1B68     		ldr	r3, [r3]
+ 519 0092 1846     		mov	r0, r3
+ 520 0094 FFF7FEFF 		bl	cJSON_CreateString
+ 521 0098 F860     		str	r0, [r7, #12]
+ 165:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == tmp)
+ 522              		.loc 1 165 0
+ 523 009a FB68     		ldr	r3, [r7, #12]
+ 524 009c 002B     		cmp	r3, #0
+ 525 009e 49D0     		beq	.L48
+ 166:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 167:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 168:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 169:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(service,cn_service_id_name,tmp);
+ 526              		.loc 1 169 0
+ 527 00a0 FA68     		ldr	r2, [r7, #12]
+ 528 00a2 3149     		ldr	r1, .L52+16
+ 529 00a4 7869     		ldr	r0, [r7, #20]
+ 530 00a6 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 170:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 171:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the service_data object and add it  to the service
+ 172:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     service_data = cJSON_CreateObject();
+ 531              		.loc 1 172 0
+ 532 00aa FFF7FEFF 		bl	cJSON_CreateObject
+ 533 00ae F861     		str	r0, [r7, #28]
+ 173:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == tmp)
+ 534              		.loc 1 173 0
+ 535 00b0 FB68     		ldr	r3, [r7, #12]
+ 536 00b2 002B     		cmp	r3, #0
+ 537 00b4 40D0     		beq	.L49
+ 174:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 175:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 176:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 177:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(service,cn_service_data_name,service_data);
+ 538              		.loc 1 177 0
+ 539 00b6 FA69     		ldr	r2, [r7, #28]
+ 540 00b8 2C49     		ldr	r1, .L52+20
+ 541 00ba 7869     		ldr	r0, [r7, #20]
+ 542 00bc FFF7FEFF 		bl	cJSON_AddItemToObject
+ 178:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 179:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< loop the report data and make the corresponding k-v object,then add it to the service_data
+ 180:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     kvlst = report->paralst;
+ 543              		.loc 1 180 0
+ 544 00c0 7B68     		ldr	r3, [r7, #4]
+ 545 00c2 5B68     		ldr	r3, [r3, #4]
+ 546 00c4 7B62     		str	r3, [r7, #36]
+ 181:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     while(NULL != kvlst)
+ 547              		.loc 1 181 0
+ 548 00c6 12E0     		b	.L36
+ 549              	.L38:
+ 182:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 183:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         ///< fmt the value to a json object
+ 184:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         tmp = json_fmt_value(&kvlst->item);
+ 550              		.loc 1 184 0
+ 551 00c8 7B6A     		ldr	r3, [r7, #36]
+ 552 00ca 0433     		adds	r3, r3, #4
+ 553 00cc 1846     		mov	r0, r3
+ 554 00ce FFF7FEFF 		bl	json_fmt_value
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 14
+
+
+ 555 00d2 F860     		str	r0, [r7, #12]
+ 185:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         if(NULL == tmp)
+ 556              		.loc 1 185 0
+ 557 00d4 FB68     		ldr	r3, [r7, #12]
+ 558 00d6 002B     		cmp	r3, #0
+ 559 00d8 30D0     		beq	.L50
+ 186:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         {
+ 187:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             goto EXIT_CJSON_ERR;
+ 188:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         }
+ 189:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         ///< add the object to the serice data
+ 190:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         cJSON_AddItemToObject(service_data,kvlst->item.name,tmp);
+ 560              		.loc 1 190 0
+ 561 00da 7B6A     		ldr	r3, [r7, #36]
+ 562 00dc 5B68     		ldr	r3, [r3, #4]
+ 563 00de FA68     		ldr	r2, [r7, #12]
+ 564 00e0 1946     		mov	r1, r3
+ 565 00e2 F869     		ldr	r0, [r7, #28]
+ 566 00e4 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 191:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         kvlst= kvlst->next;
+ 567              		.loc 1 191 0
+ 568 00e8 7B6A     		ldr	r3, [r7, #36]
+ 569 00ea 1B68     		ldr	r3, [r3]
+ 570 00ec 7B62     		str	r3, [r7, #36]
+ 571              	.L36:
+ 181:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 572              		.loc 1 181 0
+ 573 00ee 7B6A     		ldr	r3, [r7, #36]
+ 574 00f0 002B     		cmp	r3, #0
+ 575 00f2 E9D1     		bne	.L38
+ 192:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 193:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 194:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the time service_data object and add it to the service
+ 195:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL != report->eventtime)
+ 576              		.loc 1 195 0
+ 577 00f4 7B68     		ldr	r3, [r7, #4]
+ 578 00f6 9B68     		ldr	r3, [r3, #8]
+ 579 00f8 002B     		cmp	r3, #0
+ 580 00fa 0DD0     		beq	.L39
+ 196:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 197:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         tmp = cJSON_CreateString(report->eventtime);
+ 581              		.loc 1 197 0
+ 582 00fc 7B68     		ldr	r3, [r7, #4]
+ 583 00fe 9B68     		ldr	r3, [r3, #8]
+ 584 0100 1846     		mov	r0, r3
+ 585 0102 FFF7FEFF 		bl	cJSON_CreateString
+ 586 0106 F860     		str	r0, [r7, #12]
+ 198:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         if(NULL == tmp)
+ 587              		.loc 1 198 0
+ 588 0108 FB68     		ldr	r3, [r7, #12]
+ 589 010a 002B     		cmp	r3, #0
+ 590 010c 18D0     		beq	.L51
+ 199:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         {
+ 200:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             goto EXIT_CJSON_ERR;
+ 201:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         }
+ 202:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         cJSON_AddItemToObject(service,cn_service_time_name,tmp);
+ 591              		.loc 1 202 0
+ 592 010e FA68     		ldr	r2, [r7, #12]
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 15
+
+
+ 593 0110 1749     		ldr	r1, .L52+24
+ 594 0112 7869     		ldr	r0, [r7, #20]
+ 595 0114 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 596              	.L39:
+ 203:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 204:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 205:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ret = root;
+ 597              		.loc 1 205 0
+ 598 0118 3B69     		ldr	r3, [r7, #16]
+ 599 011a 3B62     		str	r3, [r7, #32]
+ 206:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return ret;
+ 600              		.loc 1 206 0
+ 601 011c 3B6A     		ldr	r3, [r7, #32]
+ 602 011e 17E0     		b	.L41
+ 603              	.L43:
+ 131:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 604              		.loc 1 131 0
+ 605 0120 00BF     		nop
+ 606 0122 0EE0     		b	.L29
+ 607              	.L44:
+ 137:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 608              		.loc 1 137 0
+ 609 0124 00BF     		nop
+ 610 0126 0CE0     		b	.L29
+ 611              	.L45:
+ 144:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 612              		.loc 1 144 0
+ 613 0128 00BF     		nop
+ 614 012a 0AE0     		b	.L29
+ 615              	.L46:
+ 151:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 616              		.loc 1 151 0
+ 617 012c 00BF     		nop
+ 618 012e 08E0     		b	.L29
+ 619              	.L47:
+ 159:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 620              		.loc 1 159 0
+ 621 0130 00BF     		nop
+ 622 0132 06E0     		b	.L29
+ 623              	.L48:
+ 167:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 624              		.loc 1 167 0
+ 625 0134 00BF     		nop
+ 626 0136 04E0     		b	.L29
+ 627              	.L49:
+ 175:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 628              		.loc 1 175 0
+ 629 0138 00BF     		nop
+ 630 013a 02E0     		b	.L29
+ 631              	.L50:
+ 187:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         }
+ 632              		.loc 1 187 0
+ 633 013c 00BF     		nop
+ 634 013e 00E0     		b	.L29
+ 635              	.L51:
+ 200:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         }
+ 636              		.loc 1 200 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 16
+
+
+ 637 0140 00BF     		nop
+ 638              	.L29:
+ 207:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 208:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 209:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** EXIT_CJSON_ERR:
+ 210:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(root)
+ 639              		.loc 1 210 0
+ 640 0142 3B69     		ldr	r3, [r7, #16]
+ 641 0144 002B     		cmp	r3, #0
+ 642 0146 02D0     		beq	.L42
+ 211:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 212:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         cJSON_Delete(root);
+ 643              		.loc 1 212 0
+ 644 0148 3869     		ldr	r0, [r7, #16]
+ 645 014a FFF7FEFF 		bl	cJSON_Delete
+ 646              	.L42:
+ 213:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 214:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 215:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return ret;
+ 647              		.loc 1 215 0
+ 648 014e 3B6A     		ldr	r3, [r7, #32]
+ 649              	.L41:
+ 216:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** }
+ 650              		.loc 1 216 0
+ 651 0150 1846     		mov	r0, r3
+ 652 0152 2C37     		adds	r7, r7, #44
+ 653              	.LCFI29:
+ 654              		.cfi_def_cfa_offset 12
+ 655 0154 BD46     		mov	sp, r7
+ 656              	.LCFI30:
+ 657              		.cfi_def_cfa_register 13
+ 658              		@ sp needed
+ 659 0156 90BD     		pop	{r4, r7, pc}
+ 660              	.L53:
+ 661              		.align	2
+ 662              	.L52:
+ 663 0158 00000000 		.word	.LC0
+ 664 015c 0C000000 		.word	.LC1
+ 665 0160 14000000 		.word	.LC2
+ 666 0164 1C000000 		.word	.LC3
+ 667 0168 24000000 		.word	.LC4
+ 668 016c 30000000 		.word	.LC5
+ 669 0170 3C000000 		.word	.LC6
+ 670              		.cfi_endproc
+ 671              	.LFE5:
+ 673              		.section	.rodata
+ 674 0046 0000     		.align	2
+ 675              	.LC7:
+ 676 0048 64657669 		.ascii	"deviceRsp\000"
+ 676      63655273 
+ 676      7000
+ 677 0052 0000     		.align	2
+ 678              	.LC8:
+ 679 0054 6D696400 		.ascii	"mid\000"
+ 680              		.align	2
+ 681              	.LC9:
+ 682 0058 65727263 		.ascii	"errcode\000"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 17
+
+
+ 682      6F646500 
+ 683              		.align	2
+ 684              	.LC10:
+ 685 0060 626F6479 		.ascii	"body\000"
+ 685      00
+ 686              		.section	.text.oc_mqtt_json_fmt_response,"ax",%progbits
+ 687              		.align	1
+ 688              		.global	oc_mqtt_json_fmt_response
+ 689              		.syntax unified
+ 690              		.thumb
+ 691              		.thumb_func
+ 692              		.fpu fpv4-sp-d16
+ 694              	oc_mqtt_json_fmt_response:
+ 695              	.LFB6:
+ 217:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 218:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** cJSON *oc_mqtt_json_fmt_response(tag_oc_mqtt_response  *response)
+ 219:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** {
+ 696              		.loc 1 219 0
+ 697              		.cfi_startproc
+ 698              		@ args = 0, pretend = 0, frame = 32
+ 699              		@ frame_needed = 1, uses_anonymous_args = 0
+ 700 0000 90B5     		push	{r4, r7, lr}
+ 701              	.LCFI31:
+ 702              		.cfi_def_cfa_offset 12
+ 703              		.cfi_offset 4, -12
+ 704              		.cfi_offset 7, -8
+ 705              		.cfi_offset 14, -4
+ 706 0002 89B0     		sub	sp, sp, #36
+ 707              	.LCFI32:
+ 708              		.cfi_def_cfa_offset 48
+ 709 0004 00AF     		add	r7, sp, #0
+ 710              	.LCFI33:
+ 711              		.cfi_def_cfa_register 7
+ 712 0006 7860     		str	r0, [r7, #4]
+ 220:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *ret = NULL;
+ 713              		.loc 1 220 0
+ 714 0008 0023     		movs	r3, #0
+ 715 000a BB61     		str	r3, [r7, #24]
+ 221:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *body =  NULL;
+ 716              		.loc 1 221 0
+ 717 000c 0023     		movs	r3, #0
+ 718 000e 7B61     		str	r3, [r7, #20]
+ 222:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *root;
+ 223:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON  *tmp;
+ 224:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 225:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     tag_key_value_list  *kvlst;
+ 226:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 227:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the root object
+ 228:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     root = cJSON_CreateObject();
+ 719              		.loc 1 228 0
+ 720 0010 FFF7FEFF 		bl	cJSON_CreateObject
+ 721 0014 3861     		str	r0, [r7, #16]
+ 229:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == root)
+ 722              		.loc 1 229 0
+ 723 0016 3B69     		ldr	r3, [r7, #16]
+ 724 0018 002B     		cmp	r3, #0
+ 725 001a 70D0     		beq	.L67
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 18
+
+
+ 230:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 231:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 232:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 233:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the msg type object and add it to the root
+ 234:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     tmp = cJSON_CreateString(cn_msg_type_device_resp);
+ 726              		.loc 1 234 0
+ 727 001c 4448     		ldr	r0, .L74
+ 728 001e FFF7FEFF 		bl	cJSON_CreateString
+ 729 0022 F860     		str	r0, [r7, #12]
+ 235:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == tmp)
+ 730              		.loc 1 235 0
+ 731 0024 FB68     		ldr	r3, [r7, #12]
+ 732 0026 002B     		cmp	r3, #0
+ 733 0028 6BD0     		beq	.L68
+ 236:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 237:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 238:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 239:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(root,cn_msg_type_name,tmp);
+ 734              		.loc 1 239 0
+ 735 002a FA68     		ldr	r2, [r7, #12]
+ 736 002c 4149     		ldr	r1, .L74+4
+ 737 002e 3869     		ldr	r0, [r7, #16]
+ 738 0030 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 240:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the mid item and add it to the root
+ 241:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     tmp = cJSON_CreateNumber((double)response->mid);
+ 739              		.loc 1 241 0
+ 740 0034 7B68     		ldr	r3, [r7, #4]
+ 741 0036 1B68     		ldr	r3, [r3]
+ 742 0038 1846     		mov	r0, r3
+ 743 003a FFF7FEFF 		bl	__aeabi_i2d
+ 744              	.LVL5:
+ 745 003e 0346     		mov	r3, r0
+ 746 0040 0C46     		mov	r4, r1
+ 747 0042 44EC103B 		vmov	d0, r3, r4
+ 748 0046 FFF7FEFF 		bl	cJSON_CreateNumber
+ 749 004a F860     		str	r0, [r7, #12]
+ 242:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == tmp)
+ 750              		.loc 1 242 0
+ 751 004c FB68     		ldr	r3, [r7, #12]
+ 752 004e 002B     		cmp	r3, #0
+ 753 0050 59D0     		beq	.L69
+ 243:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 244:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 245:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 246:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(root,cn_mid_name,tmp);
+ 754              		.loc 1 246 0
+ 755 0052 FA68     		ldr	r2, [r7, #12]
+ 756 0054 3849     		ldr	r1, .L74+8
+ 757 0056 3869     		ldr	r0, [r7, #16]
+ 758 0058 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 247:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the err code item and add it to the root
+ 248:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     tmp = cJSON_CreateNumber((double)response->errcode);
+ 759              		.loc 1 248 0
+ 760 005c 7B68     		ldr	r3, [r7, #4]
+ 761 005e 1B79     		ldrb	r3, [r3, #4]	@ zero_extendqisi2
+ 762 0060 1846     		mov	r0, r3
+ 763 0062 FFF7FEFF 		bl	__aeabi_ui2d
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 19
+
+
+ 764              	.LVL6:
+ 765 0066 0346     		mov	r3, r0
+ 766 0068 0C46     		mov	r4, r1
+ 767 006a 44EC103B 		vmov	d0, r3, r4
+ 768 006e FFF7FEFF 		bl	cJSON_CreateNumber
+ 769 0072 F860     		str	r0, [r7, #12]
+ 249:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == tmp)
+ 770              		.loc 1 249 0
+ 771 0074 FB68     		ldr	r3, [r7, #12]
+ 772 0076 002B     		cmp	r3, #0
+ 773 0078 47D0     		beq	.L70
+ 250:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 251:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 252:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 253:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(root,cn_err_code_name,tmp);
+ 774              		.loc 1 253 0
+ 775 007a FA68     		ldr	r2, [r7, #12]
+ 776 007c 2F49     		ldr	r1, .L74+12
+ 777 007e 3869     		ldr	r0, [r7, #16]
+ 778 0080 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 254:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the has more item and add it to the root
+ 255:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     tmp = cJSON_CreateNumber((double)response->hasmore);
+ 779              		.loc 1 255 0
+ 780 0084 7B68     		ldr	r3, [r7, #4]
+ 781 0086 5B79     		ldrb	r3, [r3, #5]	@ zero_extendqisi2
+ 782 0088 1846     		mov	r0, r3
+ 783 008a FFF7FEFF 		bl	__aeabi_ui2d
+ 784              	.LVL7:
+ 785 008e 0346     		mov	r3, r0
+ 786 0090 0C46     		mov	r4, r1
+ 787 0092 44EC103B 		vmov	d0, r3, r4
+ 788 0096 FFF7FEFF 		bl	cJSON_CreateNumber
+ 789 009a F860     		str	r0, [r7, #12]
+ 256:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == tmp)
+ 790              		.loc 1 256 0
+ 791 009c FB68     		ldr	r3, [r7, #12]
+ 792 009e 002B     		cmp	r3, #0
+ 793 00a0 35D0     		beq	.L71
+ 257:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 258:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 259:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 260:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(root,cn_has_more_name,tmp);
+ 794              		.loc 1 260 0
+ 795 00a2 FA68     		ldr	r2, [r7, #12]
+ 796 00a4 2649     		ldr	r1, .L74+16
+ 797 00a6 3869     		ldr	r0, [r7, #16]
+ 798 00a8 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 261:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 262:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the body object and add it to root
+ 263:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     body = cJSON_CreateObject();
+ 799              		.loc 1 263 0
+ 800 00ac FFF7FEFF 		bl	cJSON_CreateObject
+ 801 00b0 7861     		str	r0, [r7, #20]
+ 264:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(NULL == body)
+ 802              		.loc 1 264 0
+ 803 00b2 7B69     		ldr	r3, [r7, #20]
+ 804 00b4 002B     		cmp	r3, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 20
+
+
+ 805 00b6 2CD0     		beq	.L72
+ 265:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 266:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         goto EXIT_CJSON_ERR;
+ 267:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 268:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     cJSON_AddItemToObject(root,cn_body_name,body);
+ 806              		.loc 1 268 0
+ 807 00b8 7A69     		ldr	r2, [r7, #20]
+ 808 00ba 2249     		ldr	r1, .L74+20
+ 809 00bc 3869     		ldr	r0, [r7, #16]
+ 810 00be FFF7FEFF 		bl	cJSON_AddItemToObject
+ 269:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 270:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ///< create the body paras object and add it to body
+ 271:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     kvlst = response->bodylst;
+ 811              		.loc 1 271 0
+ 812 00c2 7B68     		ldr	r3, [r7, #4]
+ 813 00c4 9B68     		ldr	r3, [r3, #8]
+ 814 00c6 FB61     		str	r3, [r7, #28]
+ 272:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 273:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     while(NULL != kvlst)
+ 815              		.loc 1 273 0
+ 816 00c8 12E0     		b	.L62
+ 817              	.L64:
+ 274:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 275:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         ///< fmt the value to a json object
+ 276:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         tmp = json_fmt_value(&kvlst->item);
+ 818              		.loc 1 276 0
+ 819 00ca FB69     		ldr	r3, [r7, #28]
+ 820 00cc 0433     		adds	r3, r3, #4
+ 821 00ce 1846     		mov	r0, r3
+ 822 00d0 FFF7FEFF 		bl	json_fmt_value
+ 823 00d4 F860     		str	r0, [r7, #12]
+ 277:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         if(NULL == tmp)
+ 824              		.loc 1 277 0
+ 825 00d6 FB68     		ldr	r3, [r7, #12]
+ 826 00d8 002B     		cmp	r3, #0
+ 827 00da 1CD0     		beq	.L73
+ 278:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         {
+ 279:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****             goto EXIT_CJSON_ERR;
+ 280:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         }
+ 281:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         ///< add the object to the serice data
+ 282:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         cJSON_AddItemToObject(body,kvlst->item.name,tmp);
+ 828              		.loc 1 282 0
+ 829 00dc FB69     		ldr	r3, [r7, #28]
+ 830 00de 5B68     		ldr	r3, [r3, #4]
+ 831 00e0 FA68     		ldr	r2, [r7, #12]
+ 832 00e2 1946     		mov	r1, r3
+ 833 00e4 7869     		ldr	r0, [r7, #20]
+ 834 00e6 FFF7FEFF 		bl	cJSON_AddItemToObject
+ 283:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 284:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         kvlst= kvlst->next;
+ 835              		.loc 1 284 0
+ 836 00ea FB69     		ldr	r3, [r7, #28]
+ 837 00ec 1B68     		ldr	r3, [r3]
+ 838 00ee FB61     		str	r3, [r7, #28]
+ 839              	.L62:
+ 273:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 840              		.loc 1 273 0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 21
+
+
+ 841 00f0 FB69     		ldr	r3, [r7, #28]
+ 842 00f2 002B     		cmp	r3, #0
+ 843 00f4 E9D1     		bne	.L64
+ 285:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 286:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 287:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     ret = root;
+ 844              		.loc 1 287 0
+ 845 00f6 3B69     		ldr	r3, [r7, #16]
+ 846 00f8 BB61     		str	r3, [r7, #24]
+ 288:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return ret;
+ 847              		.loc 1 288 0
+ 848 00fa BB69     		ldr	r3, [r7, #24]
+ 849 00fc 13E0     		b	.L65
+ 850              	.L67:
+ 231:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 851              		.loc 1 231 0
+ 852 00fe 00BF     		nop
+ 853 0100 0AE0     		b	.L56
+ 854              	.L68:
+ 237:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 855              		.loc 1 237 0
+ 856 0102 00BF     		nop
+ 857 0104 08E0     		b	.L56
+ 858              	.L69:
+ 244:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 859              		.loc 1 244 0
+ 860 0106 00BF     		nop
+ 861 0108 06E0     		b	.L56
+ 862              	.L70:
+ 251:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 863              		.loc 1 251 0
+ 864 010a 00BF     		nop
+ 865 010c 04E0     		b	.L56
+ 866              	.L71:
+ 258:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 867              		.loc 1 258 0
+ 868 010e 00BF     		nop
+ 869 0110 02E0     		b	.L56
+ 870              	.L72:
+ 266:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 871              		.loc 1 266 0
+ 872 0112 00BF     		nop
+ 873 0114 00E0     		b	.L56
+ 874              	.L73:
+ 279:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         }
+ 875              		.loc 1 279 0
+ 876 0116 00BF     		nop
+ 877              	.L56:
+ 289:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 290:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** EXIT_CJSON_ERR:
+ 291:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     if(root)
+ 878              		.loc 1 291 0
+ 879 0118 3B69     		ldr	r3, [r7, #16]
+ 880 011a 002B     		cmp	r3, #0
+ 881 011c 02D0     		beq	.L66
+ 292:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     {
+ 293:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****         cJSON_Delete(root);
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 22
+
+
+ 882              		.loc 1 293 0
+ 883 011e 3869     		ldr	r0, [r7, #16]
+ 884 0120 FFF7FEFF 		bl	cJSON_Delete
+ 885              	.L66:
+ 294:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     }
+ 295:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 296:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return ret;
+ 886              		.loc 1 296 0
+ 887 0124 BB69     		ldr	r3, [r7, #24]
+ 888              	.L65:
+ 297:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** }
+ 889              		.loc 1 297 0
+ 890 0126 1846     		mov	r0, r3
+ 891 0128 2437     		adds	r7, r7, #36
+ 892              	.LCFI34:
+ 893              		.cfi_def_cfa_offset 12
+ 894 012a BD46     		mov	sp, r7
+ 895              	.LCFI35:
+ 896              		.cfi_def_cfa_register 13
+ 897              		@ sp needed
+ 898 012c 90BD     		pop	{r4, r7, pc}
+ 899              	.L75:
+ 900 012e 00BF     		.align	2
+ 901              	.L74:
+ 902 0130 48000000 		.word	.LC7
+ 903 0134 0C000000 		.word	.LC1
+ 904 0138 54000000 		.word	.LC8
+ 905 013c 58000000 		.word	.LC9
+ 906 0140 14000000 		.word	.LC2
+ 907 0144 60000000 		.word	.LC10
+ 908              		.cfi_endproc
+ 909              	.LFE6:
+ 911              		.section	.text.oc_mqtt_init,"ax",%progbits
+ 912              		.align	1
+ 913              		.global	oc_mqtt_init
+ 914              		.syntax unified
+ 915              		.thumb
+ 916              		.thumb_func
+ 917              		.fpu fpv4-sp-d16
+ 919              	oc_mqtt_init:
+ 920              	.LFB7:
+ 298:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 299:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 300:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** 
+ 301:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** ///////////////////////OC LWM2M AGENT INITIALIZE////////////////////////////////
+ 302:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** int oc_mqtt_init()
+ 303:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** {
+ 921              		.loc 1 303 0
+ 922              		.cfi_startproc
+ 923              		@ args = 0, pretend = 0, frame = 0
+ 924              		@ frame_needed = 1, uses_anonymous_args = 0
+ 925              		@ link register save eliminated.
+ 926 0000 80B4     		push	{r7}
+ 927              	.LCFI36:
+ 928              		.cfi_def_cfa_offset 4
+ 929              		.cfi_offset 7, -4
+ 930 0002 00AF     		add	r7, sp, #0
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 23
+
+
+ 931              	.LCFI37:
+ 932              		.cfi_def_cfa_register 7
+ 304:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c ****     return 0;
+ 933              		.loc 1 304 0
+ 934 0004 0023     		movs	r3, #0
+ 305:C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al\oc_mqtt_al.c **** }
+ 935              		.loc 1 305 0
+ 936 0006 1846     		mov	r0, r3
+ 937 0008 BD46     		mov	sp, r7
+ 938              	.LCFI38:
+ 939              		.cfi_def_cfa_register 13
+ 940              		@ sp needed
+ 941 000a 5DF8047B 		ldr	r7, [sp], #4
+ 942              	.LCFI39:
+ 943              		.cfi_restore 7
+ 944              		.cfi_def_cfa_offset 0
+ 945 000e 7047     		bx	lr
+ 946              		.cfi_endproc
+ 947              	.LFE7:
+ 949              		.text
+ 950              	.Letext0:
+ 951              		.file 2 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/network/mqtt/mqtt_al/mqtt_al.h"
+ 952              		.file 3 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/cJSON/cJSON.h"
+ 953              		.file 4 "C:/Users/dtjld/workspace/AIoT/src/LiteOS_Lab/iot_link/oc/oc_mqtt/oc_mqtt_al/oc_mqtt_al.h"
+ARM GAS  C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 oc_mqtt_al.c
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:18     .bss.s_oc_mqtt:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:21     .bss.s_oc_mqtt:00000000 s_oc_mqtt
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:24     .text.oc_mqtt_register:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:31     .text.oc_mqtt_register:00000000 oc_mqtt_register
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:84     .text.oc_mqtt_register:0000002c $d
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:89     .text.oc_mqtt_config:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:96     .text.oc_mqtt_config:00000000 oc_mqtt_config
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:152    .text.oc_mqtt_config:00000034 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:157    .text.oc_mqtt_deconfig:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:164    .text.oc_mqtt_deconfig:00000000 oc_mqtt_deconfig
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:224    .text.oc_mqtt_deconfig:0000003c $d
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:229    .text.oc_mqtt_report:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:236    .text.oc_mqtt_report:00000000 oc_mqtt_report
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:308    .text.oc_mqtt_report:00000050 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:314    .text.json_fmt_value:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:320    .text.json_fmt_value:00000000 json_fmt_value
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:392    .rodata:00000000 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:415    .text.oc_mqtt_json_fmt_report:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:422    .text.oc_mqtt_json_fmt_report:00000000 oc_mqtt_json_fmt_report
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:663    .text.oc_mqtt_json_fmt_report:00000158 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:687    .text.oc_mqtt_json_fmt_response:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:694    .text.oc_mqtt_json_fmt_response:00000000 oc_mqtt_json_fmt_response
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:902    .text.oc_mqtt_json_fmt_response:00000130 $d
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:912    .text.oc_mqtt_init:00000000 $t
+C:\Users\dtjld\AppData\Local\Temp\ccDvlgkv.s:919    .text.oc_mqtt_init:00000000 oc_mqtt_init
+
+UNDEFINED SYMBOLS
+__aeabi_i2d
+cJSON_CreateNumber
+cJSON_CreateString
+__aeabi_ui2d
+cJSON_CreateObject
+cJSON_AddItemToObject
+cJSON_CreateArray
+cJSON_AddItemToArray
+cJSON_Delete
